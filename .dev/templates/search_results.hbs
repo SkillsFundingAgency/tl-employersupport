@@ -1,0 +1,226 @@
+<script>
+    $(document).ready(function () {
+
+        function getParameterByName(name, url = window.location.href) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        datalayer = [{ 'searchquery': 'test12345' }];
+    });
+</script>
+
+<div class="govuk-width-container ">
+    <!-- Phase banner -->
+    <div class="govuk-phase-banner tl-phase-banner">
+        <p class="govuk-phase-banner__content">
+            <a href="{{settings.survey_link}}" id="tl-header--feedback-button">
+                <strong class="govuk-tag govuk-phase-banner__content__tag">
+                    Give feedback
+                </strong>
+            </a>
+            <span class="govuk-phase-banner__text">
+                This is a new service - <a class="govuk-link" href="{{settings.survey_link}}" id="tl-header--feedback-link">help us to improve it</a>
+            </span>
+        </p>
+    </div>
+</div>
+<div class="govuk-width-container" id="tl-breadcrumbs--search">
+    <div class="tl-breadcrumbs">
+        {{breadcrumbs}}
+    </div>
+</div>
+
+
+<!-- Main content -->
+<main id="main-content" role="main">
+    <!-- Article Content -->
+    <div class="govuk-width-container govuk-main-wrapper">
+        <section id="tl-search--box">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+                    <h1 class="govuk-heading-xl govuk-!-margin-bottom-5">Search results</h1>
+
+                    <div class="tl-form-group tl-search--container" id="tl-search--results">
+                        <div class="tl-search--error tl-hidden">
+                            <span class="tl-error--message"></span>
+                        </div>
+                        {{search placeholder="Search for support"  submit=true instant=settings.instant_search class='tl-search govuk-!-margin-top-2'}}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="tl-search--results">
+            <div class="govuk-grid-row">
+                {{#if help_center.community_enabled}}
+                <div class="govuk-grid-column-one-third">
+                    <div class="govuk-form-group govuk-!-margin-top-6 tl-search--filters">
+                        <fieldset class="govuk-fieldset">
+                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                                <h1 class="govuk-fieldset__heading">
+                                    Show me
+                                </h1>
+                            </legend>
+                            <div class="govuk-radios--small">
+                                {{#each filters}}
+                                {{#if selected}}
+                                <a class="tl-search--filter--radio tl-search--filter--radio--checked" href="{{url}}">
+                                    <span class="tl-search--filter--radio--button"></span>
+                                    {{#is name 'All types'}}
+                                    All results
+                                    {{else}}
+                                    {{#is name 'Articles'}}
+                                    Articles only
+                                    {{else}}
+                                    {{#is name 'Community'}}
+                                    Discussions only
+                                    {{else}}
+                                    {{name}}
+                                    {{/is}}
+                                    {{/is}}
+                                    {{/is}}
+                                </a>
+
+                                {{else}}
+                                <a class="tl-search--filter--radio" href="{{url}}">
+                                    <span class="tl-search--filter--radio--button"></span>
+                                    {{#is name 'All types'}}
+                                    All results
+                                    {{else}}
+                                    {{#is name 'Articles'}}
+                                    Articles only
+                                    {{else}}
+                                    {{#is name 'Community'}}
+                                    Discussions only
+                                    {{else}}
+                                    {{name}}
+                                    {{/is}}
+                                    {{/is}}
+                                    {{/is}}
+                                </a>
+                                {{/if}}
+                                {{/each}}
+
+                            </div>
+
+                        </fieldset>
+                    </div>
+                </div>
+
+                <script>
+                    $(".tl-search--filter-radio").click(function () {
+                        location.href = $(this).attr("value");
+                    });
+                </script>
+
+                {{/if}}
+            <div class="govuk-grid-column-two-thirds">
+                {{#if results}}
+                {{#is results_count 1}}
+                <h2 class="govuk-body-m govuk-!-margin-top-6">
+                    There is <span class="govuk-!-font-weight-bold" id="tl-search--results-count">{{results_count}}</span> result for <span class="govuk-!-font-weight-bold">"{{query}}"</span>
+                </h2>
+                {{else}}
+                <h2 class="govuk-body-m govuk-!-margin-top-6">
+                    There are <span class="govuk-!-font-weight-bold" id="tl-search--results-count">{{results_count}}</span> results for <span class="govuk-!-font-weight-bold">"{{query}}"</span>
+                </h2>
+                {{/is}}
+                <ul class="tl-search--results--list">
+                    {{#each results}}
+                    <li>
+                        {{#each path_steps}}
+                        {{#is @index 1}}
+
+                        {{#is name 'Community'}}
+                        <span class="tl-search--results--category tl-search--results--category--discussion">Discussion</span>
+                        {{else}}
+                        <span class="tl-search--results--section">{{name}}</span>
+                        <span class="tl-search--results--category tl-search--results--category--article">Article</span>
+                        {{/is}}
+
+                        {{/is}}
+                        {{/each}}
+
+                        <h3 class="govuk-heading-m govuk-!-margin-bottom-2"><a class="govuk-link tl-search--results--link" href="{{url}}">{{title}}</a></h3>
+                        <p class="govuk-body tl-search--results--body">{{text}}</p>
+                    </li>
+                    {{/each}}
+                </ul>
+                
+                <div class="tl-search--pagination tl-js-hidden">
+                    {{pagination}}
+                </div>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                    var results = "{{results_count}}";
+                    if (results > 10) {
+                        $(".tl-search--pagination").show();
+                    }
+                    else {
+
+                    }
+                    });
+                </script>
+                {{else}}
+                <h2 class="govuk-body-m govuk-!-margin-top-6">
+                    No results for <span class="govuk-!-font-weight-bold">"{{query}}"</span>
+                    <span class="tl-hidden" id="tl-search--results-count">0</span>
+                </h2>
+                <p class="govuk-body">Improve your search results by:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>making sure your filter is set to show all results</li>
+                    <li>double-checking your spelling</li>
+                    <li>using fewer keywords</li>
+                    <li>searching for something less specific</li>
+                </ul>
+
+
+
+                {{/if}}
+
+
+                <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-top-9 govuk-!-margin-bottom-8">
+                <h2 class="govuk-heading-m">Can't find what you're looking for?</h2>
+                <p class="govuk-body">If you have questions about T Levels, you can ask the T Levels community in the discussion forum.</p>
+                <p class="govuk-body">
+                    {{#link 'posts' class='govuk-link tl-search--results--forums'}}
+                    Go to the forum
+                    {{/link}}
+                </p>
+                <div id="tl-search--ticket" class="tl-js-hidden">
+                    <p class="govuk-body">You can also contact the Education and Skills Funding Agency (ESFA) directly if you have questions about marketing, events or general feedback. </p>
+                    <p class="govuk-body">
+                        {{#link 'new_request' class='govuk-link tl-search--results--contact'}}
+                        Contact us
+                        {{/link}}
+                    </p>
+                </div>
+            </div>
+
+            </div>
+        </section>
+
+    </div>
+</main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        if (isLoggedIn()) {
+            if (isApprovedUser()) {
+            }
+            else {
+                $(".tl-search--results--question").attr("href", "/hc/en-gb/articles/{{settings.article_id_interrupt}}");
+            }
+        };
+
+        if (!isAgent()) {
+            $("#tl-search--ticket").show();
+        }
+    });
+
+</script>

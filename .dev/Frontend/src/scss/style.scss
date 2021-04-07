@@ -1,0 +1,54 @@
+$govuk-images-path: "/assets/" !default;
+
+
+@function str-replace($string, $search, $replace: '') {
+    $index: str-index($string, $search);
+
+    @if $index {
+        @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    }
+
+    @return $string;
+}
+
+@function zendesk-asset($filename) {
+    @return url(#{"$assets-" + str-replace($filename, '.', '-')});
+}
+
+
+$govuk-image-url-function: 'zendesk-asset';
+
+$govuk-font-url-function: 'zendesk-asset';
+
+@import "../../../node_modules/govuk-frontend/govuk/all";
+@import "imports/helpers";
+@import "imports/search";
+@import "imports/articles";
+@import "imports/sections";
+@import "imports/home";
+@import "imports/breadcrumbs";
+@import "imports/header";
+@import "imports/forms";
+@import "imports/phasebanner";
+@import "imports/cards";
+@import "imports/cookies";
+@import "imports/community";
+@import "imports/text";
+@import "imports/dropdown";
+@import "imports/userprofile";
+@import "imports/tickets";
+@import "imports/newsletters";
+
+
+
+
+
+
+
+
+
+
+
+
+
+

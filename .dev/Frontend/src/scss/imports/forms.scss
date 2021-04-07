@@ -1,0 +1,52 @@
+.tl-form-group--error {
+    padding-left: 15px;
+    border-left: 5px solid govuk-colour("red");
+}
+
+.tl-input {
+    @extend .govuk-input;
+}
+
+.tl-input--error {
+    @extend .govuk-input--error;
+}
+
+.tl-error--message {
+    @extend .govuk-error-message;
+}
+
+.tl-search--container {
+
+    input[type="search"].tl-input--error {
+        @extend .govuk-input--error;
+        border: 4px solid $govuk-error-colour;
+    }
+
+    .tl-error--message {
+        @extend .govuk-error-message;
+        color: $govuk-error-colour;
+    }
+}
+
+
+.tl-search--home {
+    &.tl-form-group--error {
+        padding-left: 15px;
+        border-left: 5px solid $govuk-focus-colour;
+    }
+
+    .tl-input {
+        @extend .govuk-input;
+    }
+
+    input[type="search"].tl-input--error {
+        @extend .govuk-input--error;
+        border: 4px solid $govuk-focus-colour;
+    }
+
+    .tl-error--message {
+        @extend .govuk-error-message;
+        color: $govuk-focus-colour;
+    }
+}
+

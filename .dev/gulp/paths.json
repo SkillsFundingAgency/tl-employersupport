@@ -1,0 +1,20 @@
+{
+  "src": {
+    "default": "Frontend/Frontend/src/",
+    "SCSS": "Frontend/src/scss/*.scss",
+    "SCSSWATCH": "Frontend/src/scss/**/*.scss",
+    "JS": "Frontend/src/js/*.js",
+    "Assets": "Frontend/src/assets/**/*",
+    "Templates": "templates/**/*"
+
+  },
+
+  "dist": {
+    "default": "../",
+    "CSS": "../",
+    "SCSS": "Frontend/src/scss/",
+    "JS": "../assets",
+    "Assets": "../assets/",
+    "Templates": "../templates"
+  }
+}

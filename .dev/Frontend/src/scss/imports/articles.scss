@@ -1,0 +1,177 @@
+
+.tl-article--content {
+    p {
+        @extend %govuk-body-m;
+    }
+
+    img {
+        max-width: 100%;
+    }
+}
+
+.tl-article--date {
+    @include govuk-responsive-margin(7, "top");
+}
+
+.tl-attachments {
+    @include govuk-clearfix;
+    @include govuk-responsive-margin(7, "top");
+}
+
+.tl-attachment {
+    display: inline-block;
+    width: 100%;
+}
+
+.tl-attachment--thumbnail {
+    position: relative;
+    width: auto;
+    margin-right: 25px;
+    margin-bottom: 15px;
+    padding: 5px;
+    float: left;
+
+    svg {
+        display: block;
+        width: auto;
+        max-width: 99px;
+        height: 140px;
+        border: rgba(11, 12, 12, 0.1);
+        outline: 5px solid rgba(11, 12, 12, 0.1);
+        background: #ffffff;
+        box-shadow: 0 2px 2px rgba(11, 12, 12, 0.4);
+        fill: #b1b4b6;
+        stroke: #b1b4b6;
+    }
+}
+
+.tl-attachment--link {
+    @include govuk-font($size: 24, $weight: normal);
+    @include govuk-responsive-margin(4, "bottom");
+    font-weight: normal;
+    word-wrap: break-word;
+}
+
+
+.tl-article--vote {
+    background-color: $govuk-link-colour;
+    color: govuk-colour("white");
+    padding: 10px 0;
+    position: relative;
+    top: 1px;
+
+    .tl-article--vote--container {
+        @extend .govuk-width-container;
+    }
+
+    .tl-article--vote--question {
+        @include govuk-font($size: 19, $weight: bold);
+        color: govuk-colour("white");
+        float: left;
+        @include govuk-responsive-margin(3, "right");
+    }
+
+    .tl-article--vote--button {
+        @extend .govuk-link;
+        color: govuk-colour("white") !important;
+        @include govuk-font($size: 19, $weight: normal);
+        @include govuk-responsive-margin(3, "right");
+        border: none;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+
+.tl-article--subscribe {
+    button {
+        margin-top: 5px;
+        @extend .govuk-button;
+        @extend .govuk-button--secondary;
+    }
+
+    &--signedin {
+        button {
+            margin-top: 5px;
+            @extend .govuk-button;
+            @extend .govuk-button--secondary;
+        }
+    }
+}
+
+#tl-article--subscribe {
+    button[data-selected="false"] {
+        text-align: left;
+        font-size: 0;
+
+        &:after {
+            content: "Get updates";
+            @include govuk-font($size: 19, $weight: normal);
+        }
+    }
+
+    button[data-selected="true"] {
+        text-align: left;
+        font-size: 0;
+
+        &:after {
+            content: "Stop getting updates";
+            @include govuk-font($size: 19, $weight: normal);
+        }
+    }
+}
+
+.tl-article--resources {
+    background-color: #003A69;
+
+    .tl-article--resources--container {
+        @extend .govuk-width-container;
+    }
+
+    .govuk-link {
+        color: govuk-colour("white");
+    }
+
+    .tl-article--resources--header {
+        color: govuk-colour("white");
+        border-bottom: 1px solid govuk-colour("white");
+    }
+}
+
+
+/* Article content styling */
+.tl-article--content {
+
+    h1 {
+        @extend .govuk-heading-xl
+    }
+
+    h2 {
+        @extend .govuk-heading-l
+    }
+
+    h3 {
+        @extend .govuk-heading-m
+    }
+
+    h4 {
+        @extend .govuk-heading-s
+    }
+
+    p {
+        @extend .govuk-body;
+    }
+
+    ul {
+        @extend .govuk-list;
+        @extend .govuk-list--bullet;
+    }
+
+    a {
+        @extend .govuk-link;
+    }
+
+    ol {
+        @extend .govuk-list;
+        @extend .govuk-list--number;
+    }
+}

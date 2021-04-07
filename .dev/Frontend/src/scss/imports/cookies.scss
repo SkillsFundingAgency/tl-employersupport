@@ -1,0 +1,247 @@
+
+/*** cookie msg starts ***/
+.gem-c-cookie-banner__wrapper.govuk-width-container {
+    max-width: 960px;
+    margin: 0 auto;
+    display: none;
+    padding: 22px 0 0 0;
+}
+
+.gem-c-cookie-banner__confirmation.govuk-width-container {
+    display: none;
+    padding: 20px 0;
+}
+
+div.gem-c-cookie-banner__buttons .govuk-button {
+    padding: 8px 10px;
+    border-color: #00823b;
+    color: #00823b;
+    background-color: #ffffff;
+    box-shadow: none;
+}
+
+div.gem-c-cookie-banner__buttons .govuk-button:hover {
+    border-color: #00692f;
+    color: #00692f;
+    background-color: #f8f8f8;
+    text-decoration: none;
+}
+
+p {
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+}
+
+#global-cookie-message-help p {
+    font-family: "nta", Arial, sans-serif;
+    font-weight: 400;
+    text-transform: none;
+    font-size: 14px;
+    line-height: 1.14286;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#global-header-bar,
+#global-cookie-message-help p,
+#footer .footer-wrapper {
+    max-width: 960px;
+    margin: 0 15px;
+}
+
+.gem-c-cookie-banner {
+    font-family: "nta", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.1428571429;
+    padding: 10px 0;
+    background-color: #ffffff;
+    border: 2px solid #0b0c0c;
+}
+
+.gem-c-cookie-banner#global-cookie-message-help {
+    margin: 0;
+    background-color: #ffffff;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.gem-c-cookie-banner__message {
+    display: inline-block;
+    margin-bottom: 5px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    color: #00823b;
+    float: left;
+    line-height: 2.5rem !important;
+}
+
+#global-cookie-message-help {
+    width: 100%;
+    background-color: #d5e8f3;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.gem-c-cookie-banner {
+    font-family: "nta", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.1428571429;
+    padding: 10px 0;
+    background-color: #ffffff;
+    border: 2px solid #0b0c0c;
+}
+
+.gem-c-cookie-banner#global-cookie-message-help .gem-c-cookie-banner__message,
+.gem-c-cookie-banner#global-cookie-message-help .gem-c-cookie-banner__buttons,
+.gem-c-cookie-banner#global-cookie-message-help .gem-c-cookie-banner__confirmation,
+.gem-c-cookie-banner#global-cookie-message-help .gem-c-cookie-banner__confirmation-message {
+    font-family: "nta", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.25;
+}
+
+.gem-c-cookie-banner__button-accept {
+    /*display: none; */
+    float: left;
+    margin-right: 16px;
+}
+
+.gem-c-button--secondary {
+    padding: 8px 10px;
+    border-color: #00823b;
+    color: #00823b;
+    background-color: #ffffff;
+    box-shadow: none;
+}
+
+
+@media (max-width: 641px) {
+    .gem-c-cookie-banner__button-accept {
+        float: none;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 1020px) {
+    .gem-c-cookie-banner__buttons {
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+}
+
+@media (min-width: 1020px) {
+    #global-header-bar,
+    #global-cookie-message-help p,
+    #footer .footer-wrapper {
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 641px) {
+    #global-cookie-message-help p {
+        font-size: 16px;
+        line-height: 1.25;
+    }
+
+    p {
+        font-size: 19px;
+        line-height: 1.3157894737;
+    }
+}
+
+@media (min-width: 40.0625em) {
+    .gem-c-cookie-banner {
+        font-size: 16px;
+        line-height: 1.25;
+    }
+
+    .gem-c-cookie-banner#global-cookie-message-help .gem-c-cookie-banner__message,
+    .gem-c-cookie-banner#global-cookie-message-help .gem-c-cookie-banner__buttons,
+    .gem-c-cookie-banner#global-cookie-message-help .gem-c-cookie-banner__confirmation,
+    .gem-c-cookie-banner#global-cookie-message-help .gem-c-cookie-banner__confirmation-message {
+        font-size: 19px;
+        line-height: 1.3157894737;
+    }
+}
+
+
+.gem-c-cookie-banner__confirmation {
+    position: relative;
+    padding: 5px;
+}
+
+@media (min-width: 48.0625em) {
+    .gem-c-cookie-banner__hide-button {
+        margin-top: 4px;
+        position: absolute;
+        right: 5px;
+    }
+}
+
+@media (min-width: 40.0625em) {
+    .gem-c-cookie-banner__hide-button,
+    .gem-c-cookie-banner__confirmation-message {
+        font-size: 19px;
+        line-height: 1.3157894737;
+    }
+}
+
+.gem-c-cookie-banner__hide-button {
+    font-family: "nta", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.25;
+    outline: 0;
+    border: 0;
+    background: none;
+    text-decoration: underline;
+    color: #005ea5;
+    padding: 0;
+    margin-left: 14px;
+}
+
+.gem-c-cookie-banner__confirmation-message {
+    display: inline-block;
+    max-width: 940px;
+}
+/*** cookie msg ends ***/
+
+
+/* radios on cookies page */
+ul.govuk-radios {
+    padding-left: 10px;
+}
+
+ul.govuk-radios li {
+    margin: 0;
+    padding: 0;
+}
+
+ul.govuk-radios label .gem-radios__input {
+    -ms-transform: scale(1.8);
+    -webkit-transform: scale(1.8);
+    transform: scale(1.8);
+    margin: 0 14px 0 0 !important
+}
+/* radios on cookies page ends */
+
+.hide {
+    display: none !important;
+}
+
+.show {
+    display: block !important;
+}

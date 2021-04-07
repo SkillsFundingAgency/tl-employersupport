@@ -1,0 +1,134 @@
+﻿<div class="govuk-width-container ">
+    <!-- Phase banner -->
+    <div class="govuk-phase-banner tl-phase-banner tl-phase-banner--home">
+        <p class="govuk-phase-banner__content">
+            <a href="{{settings.survey_link}}" id="tl-header--feedback-button">
+                <strong class="govuk-tag govuk-phase-banner__content__tag">
+                    Give feedback
+                </strong>
+            </a>
+            <span class="govuk-phase-banner__text">
+                This is a new service - <a class="govuk-link" href="{{settings.survey_link}}" id="tl-header--feedback-link">help us to improve it</a>
+            </span>
+        </p>
+    </div>
+</div>
+
+<!-- Main content -->
+<main id="main-content" role="main">
+    <!-- Search Hero -->
+    <div class="tl-hero tl-hero--minimal">
+        <div class="govuk-width-container">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-half">
+
+                    <div id="tl-breadcrumbs--article">
+                        <div class="tl-breadcrumbs">
+                            {{breadcrumbs}}
+                        </div>
+                    </div>
+                </div>
+                <div class="govuk-grid-column-one-half tl-text--right govuk-!-margin-top-1">
+                    <div class="tl-form-group tl-search--container tl-search--home tl-search--home--minimal" id="tl-search--article">
+
+                        <div class="tl-search--error tl-hidden">
+                            <span class="tl-error--message"></span>
+                        </div>
+                        <form role="search" class="tl-search" data-search="" action="/hc/en-gb/search" accept-charset="UTF-8" method="get">
+                            <input name="utf8" type="hidden" value="✓"><input type="search" name="query" id="query" placeholder="Search for support" aria-label="Search for support">
+                            <input type="hidden" name="filter_by" value="knowledge_base" />
+                            <input type="submit" name="commit" value="Search">
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- Article Content -->
+    <div class="govuk-width-container govuk-main-wrapper">
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <h1 class="govuk-heading-xl">{{article.title}}</h1>
+                <div class="tl-article--content">{{article.body}}</div>
+
+                <section class="tl-attachments">
+                    {{#each attachments}}
+                    <div class="tl-attachment">
+                        <div class="tl-attachment--thumbnail">
+                            <a href="{{url}}" class="govuk-link">
+                                <svg class="gem-c-attachment__thumbnail-image" version="1.1" viewBox="0 0 99 140" width="99" height="140" aria-hidden="true">
+                                    <path d="M12 12h75v27H12zM12 59h9v9h-9zM12 77h9v9h-9zM12 95h9v9h-9zM12 113h9v9h-9zM30 59h57v9H30zM30 77h39v9H30zM30 95h57v9H30zM30 113h48v9H30z" stroke-width="0"></path>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="tl-attachment--details">
+                            <h2 class="tl-attachment--title">
+                                <a class="govuk-link tl-attachment--link" target="_self" href="{{url}}" download>{{name}}</a>
+                            </h2>
+                            <p class="tl-attachment--metadata govuk-body-s">File size: <span class="tl-attachment--attribute">{{size}}</span></p>
+                        </div>
+                    </div>
+                    {{/each}}
+                </section>
+
+                <p class="govuk-body-s tl-article--date">
+                    {{#is article.created_at article.edited_at}}
+                    Created: {{date article.created_at format='medium'}}
+                    {{else}}
+                    Last updated: {{date article.edited_at format='medium'}}
+                    {{/is}}
+                </p>
+
+
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+    {{#with article}}
+
+    <div class="tl-article--vote">
+        <div class="tl-article--vote--container">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-full">
+                    <span class="tl-article--vote--question" id="article-votes-label">Was this page helpful?</span>
+                    <div role="group" aria-labelledby="article-votes-label" class="tl-article--vote--buttons">
+                        <a class="tl-article--vote--button" href="#" id="tl-article--vote--yes" vote="yes">Yes <span class="govuk-visually-hidden">this article was useful</span></a>
+                        <a class="tl-article--vote--button" href="#" id="tl-article--vote--no" vote="no">No <span class="govuk-visually-hidden">this article wasn't useful</span></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="tl-article--resources">
+        <div class="tl-article--resources--container">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-full">
+                    <h3 class="govuk-heading-m govuk-!-padding-bottom-4 govuk-!-padding-top-6 govuk-!-margin-top-0 govuk-!-margin-bottom-0 tl-article--resources--header">Other helpful resources</h3>
+
+                    <div class="govuk-!-padding-bottom-4 govuk-!-padding-top-4">
+                        <a href="https://help.apprenticeships.education.gov.uk/hc/en-gb" class="govuk-link" id="tl-article--resourcelink--AS">Apprenticeships Service Support</a>
+                        <a href="https://esfahelp.education.gov.uk/hc/en-gb" class="govuk-!-margin-left-6 govuk-link" id="tl-article--resourcelink--ESFAHelp">Get help with ESFA services</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    {{/with}}
+
+</main>

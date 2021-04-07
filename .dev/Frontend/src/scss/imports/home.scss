@@ -1,0 +1,58 @@
+.tl-home--categories {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.tl-home--category {
+    width: 100%;
+    padding: 0 15px;
+    @include govuk-responsive-margin(3, "bottom");
+
+    @include govuk-media-query($from: tablet) {
+        width: calc(33.333% - 30px);
+    }
+}
+
+.tl-hero {
+    background-color: $govuk-link-colour;
+    color: govuk-colour("white");
+    @include govuk-responsive-padding(7, "top");
+    @include govuk-responsive-padding(7, "bottom");
+
+    * {
+        color: govuk-colour("white");
+    }
+
+    .govuk-link {
+        color: govuk-colour("white");
+    }
+
+    .govuk-details__summary:focus {
+        .govuk-details__summary-text {
+            color: govuk-colour("black");
+        }
+    }
+
+    .tl-breadcrumbs {
+
+        li:before {
+            border-color: govuk-colour("white");
+        }
+
+        * {
+            color: govuk-colour("white") !important;
+        }
+    }
+
+    &--minimal {
+        @include govuk-responsive-padding(2, "bottom");
+        @include govuk-responsive-padding(2, "top");
+
+        .tl-search--error {
+            text-align: left;
+        }
+    }
+}

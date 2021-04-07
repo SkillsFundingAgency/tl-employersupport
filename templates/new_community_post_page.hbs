@@ -1,0 +1,174 @@
+<script>
+    $(document).ready(function () {
+        var userRole = HelpCenter.user.role;
+        var userOrgsCount = HelpCenter.user.organizations.length;
+
+        if (userRole != "anonymous" && userOrgsCount > 0) {
+            var userTags = HelpCenter.user.organizations[0].tags;
+
+
+            if (userRole != "end_user" || userTags.includes('tlevels_approved')) {
+            }
+
+            else {
+                window.location.href = "/hc/en-gb/articles/{{settings.article_id_interrupt}}";
+            }
+        }
+
+        else {
+            window.location.href = "/hc/en-gb/articles/{{settings.article_id_interrupt}}";
+        }
+    });
+
+    document.title = "Post a question | Support with delivering T Levels"
+
+</script>
+
+
+<div class="govuk-width-container ">
+    <!-- Phase banner -->
+    <div class="govuk-phase-banner tl-phase-banner tl-phase-banner--home">
+        <p class="govuk-phase-banner__content">
+            <a href="{{settings.survey_link}}" id="tl-header--feedback-button">
+                <strong class="govuk-tag govuk-phase-banner__content__tag">
+                    Give feedback
+                </strong>
+            </a>
+            <span class="govuk-phase-banner__text">
+                This is a new service - <a class="govuk-link" href="{{settings.survey_link}}" id="tl-header--feedback">help us to improve it</a>
+            </span>
+        </p>
+    </div>
+</div>
+
+
+
+<!-- Main content -->
+<main id="main-content" role="main">
+
+
+    <!-- Hero Banner -->
+    <div class="tl-hero--community--minimal">
+        <div class="govuk-width-container">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+
+                    <div id="tl-breadcrumbs--community--post">
+                        <div class="tl-breadcrumbs">
+                            {{breadcrumbs}}
+                        </div>
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function breadcrumbChangelink() {
+                                var link = document.querySelector(".tl-breadcrumbs a[href='/hc/en-gb/community/topics']");
+                                link.setAttribute('href', "/hc/en-gb/community/posts");
+                                link.innerHTML = "Discussion forum";
+                            });
+                        </script>
+                    </div>
+                </div>
+                <div class="govuk-grid-column-two-thirds tl-text--right govuk-!-margin-top-1">
+                    <div class="tl-form-group tl-search--container tl-search--community tl-search--community--minimal govuk-!-margin-bottom-1" id="tl-search--community--newpost">
+
+                        <div class="tl-search--error tl-hidden">
+                            <span class="tl-error--message"></span>
+                        </div>
+                        <form role="search" class="tl-search" data-search="" action="/hc/en-gb/search" accept-charset="UTF-8" method="get">
+                            <input name="utf8" type="hidden" value="✓"><input type="search" name="query" id="query" placeholder="Search all discussions" aria-label="Search discussions">
+                            <input type="hidden" name="filter_by" value="community" />
+                            <input type="submit" name="commit" value="Search all discussions">
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Page content -->
+    <div class="govuk-width-container govuk-!-margin-top-7 govuk-!-margin-bottom-7">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <h1 class="govuk-heading-l">Post a question</h1>
+                <p class="govuk-body">Before you do make sure you've:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>checked the forum to see if someone else has already asked your question</li>
+                    <li>read our <a href="/hc/en-gb/articles/{{settings.article_id_terms}}" id="tl-community-newpost--guidelines" target="_blank" class="govuk-link">discussion forum guidelines (opens in a new window or tab)</a></li>
+                </ul>
+            </div>
+            {{#form 'post' class="tl-community--newpost--form"}}
+            <div class="govuk-grid-column-two-thirds govuk-!-margin-top-4">
+
+                <div class="govuk-form-group {{#validate 'title'}}govuk-form-group--error{{/validate}}">
+                    <h2 class="govuk-label-wrapper">
+                        {{#required 'title'}}
+                        {{#label 'title' class="govuk-label govuk-label--m"}}
+                        What is your question?
+                        {{/label}}
+                        {{else}}
+                        {{#label 'title' class="govuk-label govuk-label--m"}}
+                        What is your question? <span class="optional">({{t 'optional'}})</span>
+                        {{/label}}
+                        {{/required}}
+                    </h2>
+                    {{#validate 'title'}}
+                    <span id="event-name-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> You must tell us what your question is
+                    </span>
+                    {{/validate}}
+                    <div class="govuk-hint">
+                        Summarise the issue as clearly as possible, so anyone can understand it
+                    </div>
+                    {{input 'title' autofocus=true class="govuk-input tl-community--post-title"}}
+
+                    <div id="event-name-hint" class="govuk-hint govuk-!-margin-top-2">
+                        You have <span class="tl-community--post-title--char">64</span> characters remaining
+                    </div>
+                    <script>
+                        $(document).ready(function () {
+                            $(".tl-community--post-title").attr('maxlength', '64');
+
+                            var maxLength = 64;
+                            $('.tl-community--post-title').keyup(function () {
+                                var length = $(this).val().length;
+                                var length = maxLength - length;
+                                $('.tl-community--post-title--char').text(length);
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+
+            {{select 'topic' class="tl-community--post--topic"}}
+            <script>
+                $(function () {
+                    $(".tl-community--post--topic option:last").attr("selected", "selected");
+                });
+            </script>
+
+            <div class="govuk-grid-column-full">
+
+                <div class="govuk-form-group {{#validate 'details'}}govuk-form-group--error{{/validate}}">
+                    <h2 class="govuk-label-wrapper">
+                        {{#label 'details' class="govuk-label govuk-label--m"}}
+                        Add some extra detail (optional)
+                        {{/label}}
+                    </h2>
+                    {{#validate 'details'}}
+                    <span id="event-name-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> You must enter something below
+                    </span>
+                    {{/validate}}
+                    <div class="tl-wysiwyg">
+                        {{wysiwyg 'details' autofocus=true class="govuk-textarea"}}
+                    </div>
+                </div>
+
+
+                <input value="Post your question" type='submit' class="govuk-button" id="tl-community--newpost--submit" />
+
+            </div>
+            {{/form}}
+        </div>
+    </div>
+</main>

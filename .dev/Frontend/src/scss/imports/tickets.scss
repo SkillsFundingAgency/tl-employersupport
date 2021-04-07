@@ -1,0 +1,63 @@
+.tl-ticket--form {
+    input {
+
+        &[type="text"] {
+            @extend .govuk-input;
+        }
+
+        &[type="submit"] {
+            @extend .govuk-button;
+        }
+    }
+
+    .nesty-input {
+        @extend .govuk-input;
+    }
+
+    textarea {
+        @extend .govuk-textarea;
+        min-height: 140px;
+    }
+
+    label {
+        @extend .govuk-label;
+    }
+
+    .form-field {
+        @extend .govuk-form-group;
+    }
+
+    p {
+        @extend .govuk-body;
+    }
+
+    .request_subject {
+        display: none;
+    }
+
+    #request_description_hint {
+        display: none;
+    }
+
+    #upload-dropzone {
+        background-color: govuk-colour("light-grey");
+        border: none;
+        padding: 30px 0 20px 0;
+
+        span {
+            @extend .govuk-body;
+
+            a {
+                font-size: unset;
+            }
+        }
+    }
+
+    .notification-error {
+        @extend .govuk-error-message;
+    }
+
+    #request_description_label {
+        display: none;
+    }
+}

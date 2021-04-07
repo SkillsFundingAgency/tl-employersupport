@@ -1,0 +1,22 @@
+.tl-phase-banner {
+    .govuk-tag {
+        background-color: govuk-colour("pink");
+
+        &:hover {
+            background-color: darken(govuk-colour("pink"), 10%);
+        }
+
+        &:focus {
+            background-color: $govuk-focus-colour;
+            color: $govuk-focus-text-colour;
+        }
+    }
+
+    &--home {
+        border-bottom: none;
+    }
+
+    .govuk-phase-banner__text {
+        vertical-align: middle;
+    }
+}

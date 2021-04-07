@@ -1,0 +1,82 @@
+<div class="govuk-width-container ">
+    <!-- Phase banner -->
+    <div class="govuk-phase-banner tl-phase-banner">
+        <p class="govuk-phase-banner__content">
+            <a href="{{settings.survey_link}}" id="tl-header--feedback-button">
+                <strong class="govuk-tag govuk-phase-banner__content__tag">
+                    Give feedback
+                </strong>
+            </a>
+            <span class="govuk-phase-banner__text">
+                This is a new service - <a class="govuk-link" href="{{settings.survey_link}}" id="tl-header--feedback-link">help us to improve it</a>
+            </span>
+        </p>
+    </div>
+</div>
+
+
+<!-- Main content -->
+<main id="main-content" role="main">
+
+    <!-- Search Hero -->
+    <div class="tl-hero tl-hero--minimal">
+        <div class="govuk-width-container">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-half">
+
+                    <div id="tl-breadcrumbs--help">
+                        <div class="tl-breadcrumbs">
+                            {{breadcrumbs}}
+                        </div>
+                    </div>
+                </div>
+                <div class="govuk-grid-column-one-half tl-text--right govuk-!-margin-top-1">
+                    <div class="tl-form-group tl-search--container tl-search--home tl-search--home--minimal">
+
+                        <div class="tl-search--error tl-hidden">
+                            <span class="tl-error--message"></span>
+                        </div>
+                        <form role="search" class="tl-search" data-search="" action="/hc/en-gb/search" accept-charset="UTF-8" method="get">
+                            <input name="utf8" type="hidden" value="✓"><input type="search" name="query" id="query" placeholder="Search for support" aria-label="Search for support">
+                            <input type="hidden" name="filter_by" value="knowledge_base" />
+                            <input type="submit" name="commit" value="Search">
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Article Content -->
+    <div class="govuk-width-container govuk-main-wrapper">
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <h1 class="govuk-heading-xl">{{section.name}}</h1>
+                {{#if section.description}}
+                <p class="govuk-body-l">{{section.description}}</p>
+                {{/if}}
+                <section>
+                    <ul class="govuk-list">
+                        {{#if section.articles}}
+
+                        {{#each section.articles}}
+                        <li>
+                            <a class="govuk-link govuk-!-margin-bottom-1 tl-category--article" href="{{url}}">{{title}}</a>
+                        </li>
+                        {{/each}}
+                        {{else}}
+                        <li>
+                            <p class="govuk-body">There's nothing here at the moment</p>
+                        </li>
+
+                        {{/if}}
+                    </ul>
+
+                </section>
+            </div>
+        </div>
+    </div>
+</main>

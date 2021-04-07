@@ -1,0 +1,154 @@
+﻿<!-- Google Tag Manager -->
+<script>
+    (function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-M4PZ3D4');</script>
+<!-- End Google Tag Manager -->
+
+
+<script type="text/javascript">
+    var helpers = function () {
+
+        var getPosts = function () {
+            return $.getJSON('/api/v2/community/posts', function (data) {
+                return data;
+            });
+        }
+
+        var getUserPostSubcribeStatus = function (postId) {
+            var subscriptions;
+
+            return $.getJSON('/hc/api/internal/csrf_token.json').then(function (r) { return r; })
+                .then(function (r) {
+                    return $.ajax(
+                        {
+                            url: '/api/v2/community/posts/' + postId + '/subscriptions.json',
+                            type: "GET",
+                            headers: {
+                                "X-CSRF-Token": r.current_session.csrf_token
+                            }
+                        })
+                }).then(function (subscriptionsresult) {
+                    subscriptions = subscriptionsresult;
+                    return $.getJSON('/api/v2/users/me.json');
+                })
+                .then(function (user) {
+                    return subscriptionsStatus = $.grep(subscriptions.subscriptions, function (e) { return e.user_id == user.user.id; })[0];
+                })
+        }
+
+        var subscribeToPost = function (postId) {
+            return $.getJSON('/hc/api/internal/csrf_token.json').then(function (r) { return r; })
+                .then(function (r) {
+                    return $.ajax(
+                        {
+                            url: '/api/v2/community/posts/' + postId + '/subscriptions.json',
+                            type: "POST",
+                            headers: {
+                                "X-CSRF-Token": r.current_session.csrf_token
+                            }
+                        })
+                });
+        }
+
+        var deletePostSubscribeStatus = function (postId) {
+            var subscriptions;
+            var csrf;
+
+            return $.getJSON('/hc/api/internal/csrf_token.json').then(function (r) { csrf = r; return r; })
+                .then(function (r) {
+                    return $.ajax(
+                        {
+                            url: '/api/v2/community/posts/' + postId + '/subscriptions.json',
+                            type: "GET",
+                            headers: {
+                                "X-CSRF-Token": r.current_session.csrf_token
+                            }
+                        })
+                }).then(function (subscriptionsresult) {
+                    subscriptions = subscriptionsresult;
+                    return $.getJSON('/api/v2/users/me.json');
+                }).then(
+                    function (user) {
+                        var subscriptionsStatus = $.grep(subscriptions.subscriptions, function (e) { return e.user_id == user.user.id; })[0];
+                        return $.ajax(
+                            {
+                                url: '/api/v2/community/posts/' + subscriptionsStatus.content_id + '/subscriptions/' + subscriptionsStatus.id,
+                                type: "DELETE",
+                                headers: {
+                                    "X-CSRF-Token": csrf.current_session.csrf_token
+                                }
+                            })
+                    }
+                );
+
+        }
+
+
+        return {
+            getPosts: function () {
+                return getPosts();
+            },
+            subscribeToTopic: function (topicId) {
+                return subscribeToTopic(topicId);
+            },
+            deleteTopicSubscribeStatus: function (topicID) {
+                return deleteTopicSubscribeStatus(topicID);
+            },
+            getUserTopicStatus: function (topicID) {
+                return getUserTopicStatus(topicID);
+            },
+            deleteComment: function (postID, commentID) {
+                return deleteComment(postID, commentID);
+            },
+            deletePost: function (postID) {
+                return deletePost(postID);
+            },
+            getUserPostSubcribeStatus: function (postId) {
+                return getUserPostSubcribeStatus(postId);
+            },
+            subscribeToPost: function (postId) {
+                return subscribeToPost(postId);
+            },
+            deletePostSubscribeStatus: function (postId) {
+                return deletePostSubscribeStatus(postId);
+            },
+            addComment: function (postID, comment) {
+                return addComment(postID, comment);
+            }
+        }
+    }();
+
+
+</script>
+
+
+
+
+
+
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta charset="utf-8">
+<title>GOV.UK - The best place to find government services and information</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0c0c">
+<meta name="robots" content="noindex">
+<meta name="robots" content="nofollow">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<link rel="shortcut icon" sizes="16x16 32x32 48x48" href="{{asset 'favicon.ico'}}" type="image/x-icon">
+<link rel="mask-icon" href="{{asset 'govuk-mask-icon.svg'}}" color="#0b0c0c">
+<link rel="apple-touch-icon" sizes="180x180" href="{{asset 'govuk-apple-touch-icon-180x180.png'}}">
+<link rel="apple-touch-icon" sizes="167x167" href="{{asset 'govuk-apple-touch-icon-167x167.png'}}">
+<link rel="apple-touch-icon" sizes="152x152" href="{{asset 'govuk-apple-touch-icon-152x152.png'}}">
+<link rel="apple-touch-icon" href="{{asset 'govuk-apple-touch-icon.png'}}">
+
+<meta property="og:image" content="{{asset 'govuk-opengraph-image.png'}}">
+<script src="{{asset 'govuk.js'}}" />
+

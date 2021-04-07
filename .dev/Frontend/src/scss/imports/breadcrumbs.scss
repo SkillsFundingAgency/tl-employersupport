@@ -1,0 +1,52 @@
+/*Breadcrumbs*/
+.tl-breadcrumbs {
+    @extend .govuk-breadcrumbs;
+
+    ol {
+        @extend .govuk-breadcrumbs__list;
+    }
+
+    li {
+        @extend .govuk-breadcrumbs__list-item;
+    }
+
+    a {
+        @extend .govuk-breadcrumbs__link;
+    }
+}
+
+
+/* Prevents sections from showing in breadcrumb on article page */
+
+#tl-breadcrumbs--article {
+    ol {
+        li:nth-child(3) {
+            display: none;
+        }
+    }
+}
+
+#tl-breadcrumbs--help {
+    ol {
+        li:nth-child(2), li:nth-child(3) {
+            display: none;
+        }
+    }
+}
+
+#tl-breadcrumbs--section, #tl-breadcrumbs--help, #tl-breadcrumbs--community--post {
+    ol {
+        li:nth-child(3) {
+            display: none;
+        }
+    }
+}
+
+#tl-breadcrumbs--category, #tl-breadcrumbs--search, #tl-breadcrumbs--newsletter, #tl-breadcrumbs--community {
+    ol {
+        li:nth-child(2) {
+            display: none;
+        }
+    }
+}
+

@@ -1,0 +1,34 @@
+.tl-header--links {
+    float: right;
+    margin-top: 8px;
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            float: left;
+            margin-right: 20px;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+.tl-header--link {
+    color: govuk-colour("white");
+    text-decoration: none;
+    @include govuk-font($size: 16, $weight: bold);
+
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.tl-header--title {
+    width: auto;
+}

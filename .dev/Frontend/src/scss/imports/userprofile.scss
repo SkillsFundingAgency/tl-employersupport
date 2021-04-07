@@ -1,0 +1,79 @@
+.tl-profile {
+
+    &--avatar {
+        border-radius: 50%;
+        height: 60px;
+        width: 60px;
+        line-height: 60px;
+        text-align: center;
+        display: inline-block;
+        margin-right: 20px;
+        float: left;
+
+        span {
+            @include govuk-font($size: 19);
+            color: govuk-colour("white");
+        }
+    }
+}
+
+.tl-profile--left {
+
+    @include govuk-media-query ($from: tablet) {
+        border-right: 2px solid white;
+        @include govuk-responsive-padding(7, "right");
+    }
+
+    @include govuk-responsive-padding(2, "top");
+
+    &--upper, &--lower {
+        display: inline-block;
+    }
+}
+
+.tl-profile--right {
+    @include govuk-media-query ($from: tablet) {
+        @include govuk-responsive-padding(7, "left");
+    }
+
+    @include govuk-responsive-padding(2, "top");
+}
+
+.tl-profile--delete {
+    .govuk-details__text {
+        border-color: white;
+    }
+}
+
+
+.tl-profile-user--only {
+    display: none;
+}
+
+.tl-profile-user--hidden {
+    display: none;
+}
+
+.tl-profile--me {
+    .tl-profile-user--only {
+        display: inline-block;
+    }
+}
+
+.tl-profile--notme {
+    .tl-profile-user--hidden {
+        display: inline-block;
+    }
+}
+
+.tl-profile--userdetails {
+    padding-left: 80px;
+    max-width: 100%;
+}
+
+.tl-profile--password {
+    @include govuk-media-query ($from: tablet) {
+        padding-left: 80px;
+    }
+    max-width: 100%;
+}

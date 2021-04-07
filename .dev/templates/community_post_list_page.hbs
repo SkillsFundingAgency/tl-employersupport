@@ -1,0 +1,156 @@
+﻿<script>
+    document.title = "Discussion forum | Support with delivering T Levels"
+</script>
+
+
+
+<div class="govuk-width-container ">
+    <!-- Phase banner -->
+    <div class="govuk-phase-banner tl-phase-banner tl-phase-banner--home">
+        <p class="govuk-phase-banner__content">
+            <a href="{{settings.survey_link}}" id="tl-header--feedback-button">
+                <strong class="govuk-tag govuk-phase-banner__content__tag">
+                    Give feedback
+                </strong>
+            </a>
+            <span class="govuk-phase-banner__text">
+                This is a new service - <a class="govuk-link" href="{{settings.survey_link}}" id="tl-header--feedback">help us to improve it</a>
+            </span>
+        </p>
+    </div>
+</div>
+
+
+
+<!-- Main content -->
+<main id="main-content" role="main">
+
+    <!-- Hero Banner -->
+    <div class="tl-hero--community">
+
+
+        <div class="govuk-width-container" id="tl-breadcrumbs--community">
+            <div class="tl-breadcrumbs">
+                {{breadcrumbs}}
+            </div>
+        </div>
+        <div class="govuk-width-container">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+                    <h1 class="govuk-heading-xl govuk-!-margin-bottom-7">Discussion forum</h1>
+                    <label class="tl-hidden" for="query">
+                        Search all discussions
+                    </label>
+                    <div class="tl-form-group tl-search--container tl-search--community" id="tl-search--community--home">
+
+                        <div class="tl-search--error tl-hidden">
+                            <span class="tl-error--message"></span>
+                        </div>
+                        <form role="search" class="tl-search govuk-!-margin-top-2" data-search="" action="/hc/en-gb/search" accept-charset="UTF-8" method="get">
+                            <input name="utf8" type="hidden" value="✓"><input type="search" name="query" id="query" placeholder="Search all discussions" aria-label="Search discussions">
+                            <input type="hidden" name="filter_by" value="community" />
+                            <input type="submit" name="commit" value="Search all discussions">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Community content -->
+    <div class="govuk-width-container govuk-!-margin-top-7">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-half">
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="tl-community-sortby">Sort by</label>
+
+                    <select name="sortby" class="govuk-select" id="tl-community-sortby" onchange="if (this.value) window.location.href=this.value">
+                        {{#each sorters}}
+                        {{#is name 'Votes'}}
+                        {{else}}
+                        <option value="{{url}}" {{#if selected}} selected {{/if}}>
+                            {{#is name 'Newest post'}}
+                            Newest questions
+                            {{else}}
+                            {{#is name 'Recent activity'}}
+                            Latest activity
+                            {{else}}
+                            {{#is name 'Comments'}}
+                            Most replies
+                            {{else}}
+                            {{name}}
+                            {{/is}}
+                            {{/is}}
+                            {{/is}}
+                        </option>
+                        {{/is}}
+                        {{/each}}
+                    </select>
+                </div>
+            </div>
+            <div class="govuk-grid-column-one-half tl-text--right govuk-!-margin-top-5">
+                {{#if signed_in}}
+                <a href="#" class="govuk-button govuk-!-margin-bottom-0" id="tl-community--newpost">Post a question</a>
+
+                <script>
+                    $(document).ready(function () {
+                        if (isApprovedUser()) {
+                            $("#tl-community--newpost").attr('href', "/hc/en-gb/community/posts/new");
+
+                        }
+                        else {
+                            $("#tl-community--newpost").attr('href', "/hc/en-gb/articles/{{settings.article_id_interrupt}}");
+                        }
+                    });
+                </script>
+                {{else}}
+                {{#link 'new_post' class="govuk-button tl-community--newpost--signin"}}Sign in to post a question{{/link}}</li>
+                {{/if}}
+            </div>
+        </div>
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+
+                <table class="govuk-table">
+                    <thead class="govuk-table__head">
+                        <tr class="govuk-table__row">
+                            <th scope="col" class="govuk-table__header tl-community--table__header">Question</th>
+                            <th scope="col" class="govuk-table__header tl-community--table__header">Replies</th>
+                        </tr>
+                    </thead>
+                    <tbody class="govuk-table__body">
+
+
+
+                        {{#each posts}}
+                        <tr class="govuk-table__row tl-community--table__row">
+                            <th scope="row" class="govuk-table__cell">
+                                <a href="{{url}}" id="tl-community-home--post" class="govuk-link tl-community-table-post--link">{{title}}</a>
+                                <script>
+                                  $.getJSON('/api/v2/community/posts/{{id}}.json', function(title) {
+                                      $('.{{id}}post').html(title.post.details.replace(/(<([^>]+)>)/gi, "").replace("&nbsp;", " ").substring(0, 75) + '...');
+                                  });
+                                </script>
+                                <div class="{{id}}post govuk-!-margin-top-0 tl-community-table-post--description">
+                                </div>
+                            </th>
+                            <td class="govuk-table__cell">{{comment_count}}</td>
+
+                        </tr>
+                        {{/each}}
+
+                    </tbody>
+                </table>
+
+                <div class="tl-community--pagination govuk-!-margin-bottom-6">
+                    {{pagination}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+
+
+
