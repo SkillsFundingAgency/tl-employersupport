@@ -24,14 +24,14 @@
                 <button class="gem-c-button govuk-button gem-c-button--secondary gem-c-button--inline" type="submit" data-module="track-click" data-accept-cookies="true" data-track-category="cookieBanner" data-track-action="Cookie banner accepted">Accept cookies</button>
             </div>
             <div class="gem-c-cookie-banner__button gem-c-cookie-banner__button-settings">
-                <a class="gem-c-button govuk-button gem-c-button--secondary gem-c-button--inline" role="button" data-module="track-click" data-track-category="cookieBanner" data-track-action="Cookie banner settings clicked" href="/hc/en-gb/articles/360015340619/">Cookie settings</a>
+                <a class="gem-c-button govuk-button gem-c-button--secondary gem-c-button--inline" role="button" data-module="track-click" data-track-category="cookieBanner" data-track-action="Cookie banner settings clicked" href="/hc/en-gb/articles/{{settings.article_id_cookies}}/">Cookie settings</a>
             </div>
         </div>
     </div>
 
     <div class="gem-c-cookie-banner__confirmation govuk-width-container" tabindex="-1">
         <p class="gem-c-cookie-banner__confirmation-message">
-            You've accepted all cookies. You can <a class="govuk-link" href="/hc/en-gb/articles/360015340619/" data-module="track-click" data-track-category="cookieBanner" data-track-action="Cookie banner settings clicked from confirmation">change your cookie settings</a> at any time.
+            You've accepted all cookies. You can <a class="govuk-link" href="/hc/en-gb/articles/{{settings.article_id_cookies}}/ data-module="track-click" data-track-category="cookieBanner" data-track-action="Cookie banner settings clicked from confirmation">change your cookie settings</a> at any time.
         </p>
         <button class="gem-c-cookie-banner__hide-button" data-hide-cookie-banner="true" data-module="track-click" data-track-category="cookieBanner" data-track-action="Hide cookie banner">Hide</button>
     </div>
@@ -41,14 +41,6 @@
 
 <header class="govuk-header " role="banner" data-module="govuk-header">
     <div class="govuk-header__container govuk-width-container">
-        <div class="tl-header--links">
-            <ul>
-                {{#if signed_in}}
-                <li><a href="/hc/en-gb/profile" class="tl-header--link" id="tl-header--profile">Your profile</a></li>
-                <li>{{link 'sign_out' class="tl-header--link"}}</li>
-                {{/if}}
-            </ul>
-        </div>
         <div class="govuk-header__logo">
             <a href="https://www.gov.uk/" class="govuk-header__link govuk-header__link--homepage" id="tl-header--govuk">
                 <span class="govuk-header__logotype">
@@ -64,7 +56,7 @@
         </div>
         <div class="govuk-header__content tl-header--title">
             {{#link "help_center" class="govuk-header__link govuk-header__link--service-name tl-header--title"}}
-            Support with delivering T Levels
+            T Levels - Employer support
             {{/link}}
         </div>
 
