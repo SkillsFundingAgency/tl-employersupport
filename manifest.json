@@ -243,6 +243,13 @@
           "description": "Footer section",
           "label": "Terms",
           "value": "360017593039"
+        },
+        {
+          "identifier": "survey_link",
+          "type": "text",
+          "description": "Survey Link",
+          "label": "Survey Link",
+          "value": "#"
         }
       ]
     }
