@@ -207,20 +207,3 @@
 
     </div>
 </main>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        if (isLoggedIn()) {
-            if (isApprovedUser()) {
-            }
-            else {
-                $(".tl-search--results--question").attr("href", "/hc/en-gb/articles/{{settings.article_id_interrupt}}");
-            }
-        };
-
-        if (!isAgent()) {
-            $("#tl-search--ticket").show();
-        }
-    });
-
-</script>

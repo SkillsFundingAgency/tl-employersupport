@@ -91,17 +91,7 @@
                 {{#if signed_in}}
                 <a href="#" class="govuk-button govuk-!-margin-bottom-0" id="tl-community--newpost">Post a question</a>
 
-                <script>
-                    $(document).ready(function () {
-                        if (isApprovedUser()) {
-                            $("#tl-community--newpost").attr('href', "/hc/en-gb/community/posts/new");
 
-                        }
-                        else {
-                            $("#tl-community--newpost").attr('href', "/hc/en-gb/articles/{{settings.article_id_interrupt}}");
-                        }
-                    });
-                </script>
                 {{else}}
                 {{#link 'new_post' class="govuk-button tl-community--newpost--signin"}}Sign in to post a question{{/link}}</li>
                 {{/if}}
