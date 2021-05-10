@@ -9,6 +9,23 @@
     }
 }
 
+.tl-article--sidebar {
+    .related-articles {
+        h2 {
+            display: none;
+        }
+    }
+
+    ul {
+        @extend .govuk-list;
+    }
+
+    a {
+        @extend .govuk-body-s;
+        @extend .govuk-link;
+    }
+}
+
 .tl-article--date {
     @include govuk-responsive-margin(7, "top");
 }
@@ -64,7 +81,7 @@
         @extend .govuk-width-container;
     }
 
-    .tl-article--vote--question {
+    .tl-article--vote--question, .tl-article--vote--response {
         @include govuk-font($size: 19, $weight: bold);
         color: govuk-colour("white");
         float: left;
@@ -79,6 +96,19 @@
         border: none;
         text-decoration: underline;
         cursor: pointer;
+        background: none;
+        padding: 0;
+    }
+
+    &--form {
+        .govuk-label {
+            color: govuk-colour("white") !important;
+        }
+
+        &--count {
+            color: govuk-colour("white") !important;
+            @include govuk-font($size: 16, $weight: normal);
+        }
     }
 }
 
@@ -173,5 +203,41 @@
     ol {
         @extend .govuk-list;
         @extend .govuk-list--number;
+    }
+
+    .wysiwyg-indent1 {
+        @extend .govuk-inset-text;
+    }
+
+    table {
+        @extend .govuk-table;
+        border: none !important;
+    }
+
+    th {
+        border-left: none;
+        border-top: none;
+        border-right: none;
+        @extend .govuk-table__header;
+    }
+
+    td {
+        border-left: none;
+        border-top: none;
+        border-right: none;
+        @extend .govuk-table__cell;
+    }
+}
+
+.tl-article--content--casestudy {
+
+    h2 {
+        @extend .govuk-heading-m;
+        @include govuk-responsive-margin(7, "top");
+    }
+
+    h3 {
+        @extend .govuk-heading-s;
+        @include govuk-responsive-margin(7, "top");
     }
 }
