@@ -5324,7 +5324,7 @@
 
 .govuk-tabs__list {
   list-style: none !important;
-  padding-left: 0; }
+  padding-left: 0 !important; }
 
 .tl-section--subscribe button {
   margin-top: 5px; }
