@@ -135,9 +135,6 @@
 
 <script>
     $(document).ready(function () {
-        var $tabs = scope.querySelectorAll('.govuk-tabs');
-        nodeListForEach($tabs, function ($tabs) {
-            new Tabs($tabs).init();
-        });
+        $(".govuk-tabs").attr("data-module", "govuk-tabs");
     });
 </script>
