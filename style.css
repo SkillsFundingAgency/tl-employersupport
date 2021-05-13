@@ -5357,6 +5357,39 @@
     .tl-home--banner {
       padding-top: 30px; } }
 
+.tl-hero {
+  background-color: #1d70b8;
+  color: #ffffff;
+  padding-top: 25px;
+  padding-bottom: 25px; }
+  @media (min-width: 40.0625em) {
+    .tl-hero {
+      padding-top: 40px; } }
+  @media (min-width: 40.0625em) {
+    .tl-hero {
+      padding-bottom: 40px; } }
+  .tl-hero * {
+    color: #ffffff; }
+  .tl-hero .govuk-link, .tl-hero .tl-search--pagination ul li a, .tl-search--pagination ul li .tl-hero a, .tl-hero .tl-community--pagination ul li a, .tl-community--pagination ul li .tl-hero a, .tl-hero .tl-article--sidebar a, .tl-article--sidebar .tl-hero a, .tl-hero .tl-article--vote .tl-article--vote--button, .tl-article--vote .tl-hero .tl-article--vote--button, .tl-hero .tl-article--content a, .tl-article--content .tl-hero a, .tl-hero .tl-community--post--content a, .tl-community--post--content .tl-hero a, .tl-hero .tl-community--comment--actions button, .tl-community--comment--actions .tl-hero button, .tl-hero .tl-community--post--actions button, .tl-community--post--actions .tl-hero button {
+    color: #ffffff; }
+  .tl-hero .govuk-details__summary:focus .govuk-details__summary-text {
+    color: #0b0c0c; }
+  .tl-hero .tl-breadcrumbs li:before {
+    border-color: #ffffff; }
+  .tl-hero .tl-breadcrumbs * {
+    color: #ffffff !important; }
+  .tl-hero--minimal {
+    padding-bottom: 10px;
+    padding-top: 10px; }
+    @media (min-width: 40.0625em) {
+      .tl-hero--minimal {
+        padding-bottom: 10px; } }
+    @media (min-width: 40.0625em) {
+      .tl-hero--minimal {
+        padding-top: 10px; } }
+    .tl-hero--minimal .tl-search--error {
+      text-align: left; }
+
 /*Breadcrumbs*/
 /* Prevents sections from showing in breadcrumb on article page */
 #tl-breadcrumbs--article ol li:nth-child(3) {
