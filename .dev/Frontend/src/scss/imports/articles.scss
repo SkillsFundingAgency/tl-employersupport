@@ -241,3 +241,8 @@
         @include govuk-responsive-margin(7, "top");
     }
 }
+
+
+.govuk-tabs__list {
+    list-style: none !important;
+}

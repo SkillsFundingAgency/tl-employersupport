@@ -132,3 +132,10 @@
     {{/with}}
 
 </main>
+
+<script>
+    var $tabs = scope.querySelectorAll('.govuk-tabs');
+    nodeListForEach($tabs, function ($tabs) {
+        new Tabs($tabs).init();
+    });
+</script>

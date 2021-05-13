@@ -1,6 +1,6 @@
 <div class="govuk-width-container ">
     <!-- Phase banner -->
-    <div class="govuk-phase-banner tl-phase-banner tl-phase-banner--home">
+    <div class="govuk-phase-banner tl-phase-banner">
         <p class="govuk-phase-banner__content">
             <a href="{{settings.survey_link}}" id="tl-header--feedback-button">
                 <strong class="govuk-tag govuk-phase-banner__content__tag">
@@ -16,40 +16,34 @@
 
 <!-- Main content -->
 <main id="main-content" role="main">
-    <!-- Hero Banner -->
-    <div class="tl-hero">
+    <!-- Banner -->
+    <div class="tl-home--banner">
         <div class="govuk-width-container">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-two-thirds">
-                    <h1 class="govuk-heading-xl govuk-!-margin-bottom-7">T Levels - Employer Industry Placements</h1>
-                    <label class="tl-inlineblock govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-5" for="query">
-                        Employer support for industry placements
-                    </label>
-                    <div class="tl-form-group tl-search--container tl-search--home" id="tl-search--home">
-
-                        <div class="tl-search--error tl-hidden">
-                            <span class="tl-error--message"></span>
-                        </div>
-                        {{search placeholder="Search for support" submit=true instant=settings.instant_search class='tl-search govuk-!-margin-top-2'}}
-
-                    </div>
+                    <h1 class="govuk-heading-xl govuk-!-margin-bottom-7">T Levels - Employer Support</h1>
+                    <p class="govuk-body-l">Employer support for industry placements</p>
+                </div>
+                <div class="govuk-grid-column-full govuk-!-margin-top-5">
+                    <hr class="govuk-section-break govuk-section-break--visible tl-section-break--blue">
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Lower Content -->
-    <div class="govuk-width-container govuk-main-wrapper">
-        <div class="tl-home--categories">
+</div>
 
-            {{#each categories}}
-            <div class="tl-home--category">
-                <h3 class="govuk-heading-m"><a href="{{url}}" class="govuk-link" GTMname="{{name}}">{{name}}</a></h3>
-                <p class="govuk-body">{{excerpt description}}</p>
+        <!-- Lower Content -->
+        <div class="govuk-width-container govuk-main-wrapper">
+            <div class="tl-home--categories">
+
+                {{#each categories}}
+                <div class="tl-home--category">
+                    <h3 class="govuk-heading-m"><a href="{{url}}" class="govuk-link" GTMname="{{name}}">{{name}}</a></h3>
+                    <p class="govuk-body">{{excerpt description}}</p>
+                </div>
+                {{/each}}
+
+
             </div>
-            {{/each}}
-
 
         </div>
-
-    </div>
 </main>
