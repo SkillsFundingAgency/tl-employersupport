@@ -5323,7 +5323,8 @@
       margin-top: 40px; } }
 
 .govuk-tabs__list {
-  list-style: none !important; }
+  list-style: none !important;
+  padding-left: 0; }
 
 .tl-section--subscribe button {
   margin-top: 5px; }
