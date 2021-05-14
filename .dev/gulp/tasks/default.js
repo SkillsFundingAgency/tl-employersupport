@@ -34,7 +34,6 @@ gulp.task('customjs', () => {
         'Frontend/src/js/custom.js',
         'node_modules/moment/moment.js',
         'node_modules/jquery-ui-dist/jquery-ui.min.js',
-
     ])
         .pipe(concat('custom.js'))
         .pipe(gulp.dest(paths.dist.Assets));
