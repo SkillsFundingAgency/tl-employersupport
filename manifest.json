@@ -250,6 +250,13 @@
           "description": "Survey Link",
           "label": "Survey Link",
           "value": "#"
+        },
+        {
+          "identifier": "postcodes_api",
+          "type": "text",
+          "description": "Postcodes API",
+          "label": "Postcodes API",
+          "value": "EC68-PM92-AG92-GA77"
         }
       ]
     }

@@ -37,6 +37,14 @@ gulp.task('customjs', () => {
         .pipe(gulp.dest(paths.dist.Assets));
 });
 
+gulp.task('jsfiles', () => {
+    return src([
+        'Frontend/src/js/*.js',
+        '!Frontend/src/js/custom.js',
+    ])
+        .pipe(gulp.dest(paths.dist.Assets));
+});
+
 gulp.task('sass', () => {
         return src(paths.src.SCSS)
             .pipe(wait(200))
