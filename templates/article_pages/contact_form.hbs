@@ -59,13 +59,13 @@
                 <div class="tl-article--content">{{article.body}}</div>
 
                 <form method="post">
-                    <input type="hidden" asp-for="Latitude" data-val-number="The field Longitude must be a number." />
-                    <input type="hidden" asp-for="Longitude" data-val-number="The field Longitude must be a number." />
+                    <input type="hidden" id="Latitude" data-val-number="The field Longitude must be a number." />
+                    <input type="hidden" id="Longitude" data-val-number="The field Longitude must be a number." />
 
                     <div class="form-group">
-                        <label asp-for="CompanyName">Company name</label>
+                        <label id="CompanyName">Company name</label>
                         <div class="input-group">
-                            <input type="text" class="form-control" asp-for="CompanyName" />
+                            <input type="text" class="form-control" id="CompanyName" />
                             <span class="text-danger" asp-validation-for="CompanyName"></span>
                         </div>
                     </div>
@@ -86,28 +86,23 @@
                     <div id="addressManualWrapper">
                         <div id="address-details" class="address-manual-input">
                             <div class="form-group">
-                                <label asp-for="AddressLine1">Address</label>
+                                <label id="AddressLine1">Address</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" asp-for="AddressLine1" />
-                                    <span class="text-danger" asp-validation-for="AddressLine1"></span>
+                                    <input type="text" class="form-control" id="AddressLine1" />
                                 </div>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" asp-for="AddressLine2" />
-                                    <span class="text-danger" asp-validation-for="AddressLine2"></span>
+                                    <input type="text" class="form-control" id="AddressLine2" />
                                 </div>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" asp-for="AddressLine3" />
-                                    <span class="text-danger" asp-validation-for="AddressLine3"></span>
+                                    <input type="text" class="form-control" id="AddressLine3" />
                                 </div>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" asp-for="AddressCity" />
-                                    <span class="text-danger" asp-validation-for="AddressCity"></span>
+                                    <input type="text" class="form-control" id="AddressCity" />
                                 </div>
 
-                                <label asp-for="Postcode">Postcode</label>
+                                <label id="Postcode">Postcode</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" asp-for="Postcode" autocapitalize="characters" autocorrect="off" />
-                                    <span class="text-danger" asp-validation-for="Postcode"></span>
+                                    <input type="text" class="form-control" id="Postcode" autocapitalize="characters" autocorrect="off" />
                                 </div>
                             </div>
                         </div>
