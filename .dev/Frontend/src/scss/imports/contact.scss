@@ -1,0 +1,16 @@
+/* css for employer form */
+.disabled,
+.disabled > * {
+    -ms-opacity: .5;
+    opacity: .5;
+    pointer-events: none
+}
+
+.loading-text {
+    color: #f47738;
+}
+
+/* Hides toggled content on initial load */
+.toggle-content {
+    display: none
+}

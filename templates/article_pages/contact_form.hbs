@@ -58,7 +58,66 @@
                 <h1 class="govuk-heading-xl">{{article.title}}</h1>
                 <div class="tl-article--content">{{article.body}}</div>
 
+                <form method="post">
+                    <input type="hidden" asp-for="Latitude" data-val-number="The field Longitude must be a number." />
+                    <input type="hidden" asp-for="Longitude" data-val-number="The field Longitude must be a number." />
 
+                    <div class="form-group">
+                        <label asp-for="CompanyName">Company name</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" asp-for="CompanyName" />
+                            <span class="text-danger" asp-validation-for="CompanyName"></span>
+                        </div>
+                    </div>
+
+                    <div id="address-lookup" class="hide-nojs">
+                        <div class="form-group form-group-compound" id="addressInputWrapper">
+                            <label for="postcode-search" class="form-label">Enter your postcode or start typing address</label>
+                            <input id="postcode-search" type="text" class="form-control form-control-1-3" spellcheck="false" autocorrect="off">
+                            <span class="visuallyhidden" id="ariaAddressEntered" aria-live="polite"></span>
+                        </div>
+                        <div id="address-manual" class="form-group form-group-compound">
+                            <a href="#" class="copy-19" id="enterAddressManually">Or enter address manually</a>
+                            <span class="toggle-content hide-nojs loading-text" id="addressLoading">Loading address...</span>
+                            <span style="color: red" id="postcodeServiceUnavailable" class="copy-19 toggle-content hide-nojs text">Service is currently unavailable, please enter address manually</span>
+                        </div>
+                    </div>
+
+                    <div id="addressManualWrapper">
+                        <div id="address-details" class="address-manual-input">
+                            <div class="form-group">
+                                <label asp-for="AddressLine1">Address</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" asp-for="AddressLine1" />
+                                    <span class="text-danger" asp-validation-for="AddressLine1"></span>
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" asp-for="AddressLine2" />
+                                    <span class="text-danger" asp-validation-for="AddressLine2"></span>
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" asp-for="AddressLine3" />
+                                    <span class="text-danger" asp-validation-for="AddressLine3"></span>
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" asp-for="AddressCity" />
+                                    <span class="text-danger" asp-validation-for="AddressCity"></span>
+                                </div>
+
+                                <label asp-for="Postcode">Postcode</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" asp-for="Postcode" autocapitalize="characters" autocorrect="off" />
+                                    <span class="text-danger" asp-validation-for="Postcode"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-sm" asp-page-handler="SubmitForm">Submit</button>
+                        <button type="submit" class="btn btn-primary btn-sm" asp-page-handler="ClearForm">Clear</button>
+                    </div>
+                </form>
 
 
 
@@ -87,8 +146,6 @@
 
         </div>
     </div>
-
-
     {{/with}}
 
 </main>
