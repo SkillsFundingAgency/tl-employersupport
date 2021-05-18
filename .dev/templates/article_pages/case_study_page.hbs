@@ -146,11 +146,32 @@
                     </ul>
                     <hr class="govuk-section-break govuk-section-break--m">
 
-                    <a href="#main-content" class="tl-article--backtotop">Back to top</a>
+                    <a href="#main-content" class="tl-article--backtotop">
+                        <span>&#708;</span>
+                        Back to top
+                    </a>
                     <script>
-                        $(document).ready(function () {
-                            $('.tl-article--backtotop').scrollToFixed({ limit: $('.tl-article--vote').offset().top });
-                        });
+                        function checkOffset() {
+                            var a = $(document).scrollTop() + window.innerHeight;
+                            var b = $('.tl-article--vote').offset().top;
+                            var c = $('.tl-hero').offset().top;
+                            var scroll = $(window).scrollTop();
+
+
+                            if (a < b) {
+                                $('.tl-article--backtotop').css('bottom', '0px');
+                            } else {
+                                $('.tl-article--backtotop').css('bottom', (10 + (a - b)) + 'px');
+                            }
+
+                            if (scroll >= c + 1) {
+                                $('.tl-article--backtotop').show()
+                            } else {
+                                $('.tl-article--backtotop').hide()
+                            }
+                        }
+                        $(document).ready(checkOffset);
+                        $(document).scroll(checkOffset);
                     </script>
                 </div>
 

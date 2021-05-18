@@ -1,5 +1,4 @@
 
-
 .tl-article--content {
     p {
         @extend %govuk-body-m;
@@ -229,6 +228,14 @@
         border-right: none;
         @extend .govuk-table__cell;
     }
+
+    .govuk-details[open] > .govuk-details__text {
+        display: inline-block !important;
+    }
+
+    .govuk-details__text {
+        display: none;
+    }
 }
 
 .tl-article--content--casestudy {
@@ -244,14 +251,27 @@
     }
 }
 
-.tl-article--backtotop {
-    @extend .govuk-link;
-    width: auto !important;
-    padding-top: 10px;
-}
-
-
 .govuk-tabs__list {
     list-style: none !important;
     padding-left: 0 !important;
+}
+
+.tl-article--backtotop {
+    @extend .govuk-link;
+    position: fixed;
+
+
+    @include govuk-media-query ($from: tablet) {
+        width: auto !important;
+        padding-top: 10px;
+        bottom: 0;
+        display: none;
+    }
+
+    @include govuk-media-query($until: tablet) {
+        width: 100%;
+        background-color: white;
+        padding: 10px 0;
+        margin-bottom: 0 !important;
+    }
 }
