@@ -21,8 +21,7 @@
         <div class="govuk-width-container">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-two-thirds">
-                    <h1 class="govuk-heading-xl govuk-!-margin-bottom-7">T Levels - Employer Support</h1>
-                    <p class="govuk-body-l">Employer support for industry placements</p>
+                    <h1 class="govuk-heading-xl govuk-!-margin-bottom-7">{{settings.service_name}}</h1>
                 </div>
                 <div class="govuk-grid-column-full govuk-!-margin-top-5">
                     <hr class="govuk-section-break govuk-section-break--visible tl-section-break--blue">
@@ -37,6 +36,7 @@
 
                 {{#each categories}}
                 <div class="tl-home--category">
+                    <span class="tl-home--category--image"></span>
                     <h3 class="govuk-heading-m"><a href="{{url}}" class="govuk-link" GTMname="{{name}}">{{name}}</a></h3>
                     <p class="govuk-body">{{excerpt description}}</p>
                 </div>

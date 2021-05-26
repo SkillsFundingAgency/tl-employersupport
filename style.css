@@ -5374,9 +5374,23 @@
   @media (min-width: 40.0625em) {
     .tl-home--category {
       width: calc(33.333% - 30px); } }
-  .tl-home--category img {
+  .tl-home--category span {
     max-width: 100%;
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+    background-image: url("$home_image_1");
+    background-size: auto;
+    min-height: 200px;
+    display: block; }
+  .tl-home--category:nth-child(2) span {
+    background-image: url("$home_image_2"); }
+  .tl-home--category:nth-child(3) span {
+    background-image: url("$home_image_3"); }
+  .tl-home--category:nth-child(4) span {
+    background-image: url("$home_image_4"); }
+  .tl-home--category:nth-child(5) span {
+    background-image: url("$home_image_5"); }
+  .tl-home--category:nth-child(6) span {
+    background-image: url("$home_image_6"); }
 
 .tl-home--banner {
   padding-top: 20px; }

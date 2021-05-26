@@ -1,58 +1,19 @@
 {
   "name": "GDS Style - Employer Support ",
   "author": "Ash Anderton",
-  "version": "0.0.29",
+  "version": "0.0.30",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [
     {
-      "label": "colors_group_label",
-      "variables": [
-        {
-          "identifier": "brand_color",
-          "type": "color",
-          "description": "brand_color_description",
-          "label": "brand_color_label",
-          "value": "rgba(29, 112, 184, 1)"
-        },
-        {
-          "identifier": "brand_text_color",
-          "type": "color",
-          "description": "brand_text_color_description",
-          "label": "brand_text_color_label",
-          "value": "#FFFFFF"
-        },
-        {
-          "identifier": "text_color",
-          "type": "color",
-          "description": "text_color_description",
-          "label": "text_color_label",
-          "value": "rgba(11, 12, 12, 1)"
-        },
-        {
-          "identifier": "link_color",
-          "type": "color",
-          "description": "link_color_description",
-          "label": "link_color_label",
-          "value": "rgba(0, 94, 165, 1)"
-        },
-        {
-          "identifier": "background_color",
-          "type": "color",
-          "description": "background_color_description",
-          "label": "background_color_label",
-          "value": "#FFFFFF"
-        }
-      ]
-    },
-    {
       "label": "brand_group_label",
       "variables": [
         {
-          "identifier": "logo",
-          "type": "file",
-          "description": "logo_description",
-          "label": "logo_label"
+          "identifier": "service_name",
+          "type": "text",
+          "description": "Name of the service",
+          "label": "Service Name",
+          "value": "T Levels and industry placement support for employers"
         },
         {
           "identifier": "favicon",
