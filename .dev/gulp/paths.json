@@ -5,6 +5,7 @@
     "SCSSWATCH": "Frontend/src/scss/**/*.scss",
     "JS": "Frontend/src/js/*.js",
     "Assets": "Frontend/src/assets/**/*",
+    "Settings": "Frontend/src/settings/**/*",
     "Templates": "templates/**/*"
 
   },
@@ -15,6 +16,7 @@
     "SCSS": "Frontend/src/scss/",
     "JS": "../assets",
     "Assets": "../assets/",
+    "Settings": "../settings/",
     "Templates": "../templates"
   }
 }

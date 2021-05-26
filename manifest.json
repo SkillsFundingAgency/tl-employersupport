@@ -1,7 +1,7 @@
 {
   "name": "GDS Style - Employer Support ",
   "author": "Ash Anderton",
-  "version": "0.0.28",
+  "version": "0.0.29",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [
@@ -66,37 +66,37 @@
       "label": "Home Page Images",
       "variables": [
         {
-          "identifier": "homepage_image_1",
+          "identifier": "home_image_1",
           "type": "file",
           "description": "Home page image 1",
           "label": "Image 1"
         },
         {
-          "identifier": "homepage_image_2",
+          "identifier": "home_image_2",
           "type": "file",
           "description": "Home page image 1",
           "label": "Image 2"
         },
         {
-          "identifier": "homepage_image_3",
+          "identifier": "home_image_3",
           "type": "file",
           "description": "Home page image 1",
           "label": "Image 3"
         },
         {
-          "identifier": "homepage_image_4",
+          "identifier": "home_image_4",
           "type": "file",
           "description": "Home page image 1",
           "label": "Image 4"
         },
         {
-          "identifier": "homepage_image_5",
+          "identifier": "home_image_5",
           "type": "file",
           "description": "Home page image 1",
           "label": "Image 5"
         },
         {
-          "identifier": "homepage_image_6",
+          "identifier": "home_image_6",
           "type": "file",
           "description": "Home page image 1",
           "label": "Image 6"
