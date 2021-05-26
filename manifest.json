@@ -66,37 +66,37 @@
       "label": "Home Page Images",
       "variables": [
         {
-          "identifier": "homepage_background_image_1",
+          "identifier": "homepage_image_1",
           "type": "file",
           "description": "Home page image 1",
           "label": "Image 1"
         },
         {
-          "identifier": "homepage_background_image_2",
+          "identifier": "homepage_image_2",
           "type": "file",
           "description": "Home page image 1",
           "label": "Image 2"
         },
         {
-          "identifier": "homepage_background_image_3",
+          "identifier": "homepage_image_3",
           "type": "file",
           "description": "Home page image 1",
           "label": "Image 3"
         },
         {
-          "identifier": "homepage_background_image_4",
+          "identifier": "homepage_image_4",
           "type": "file",
           "description": "Home page image 1",
           "label": "Image 4"
         },
         {
-          "identifier": "homepage_background_image_5",
+          "identifier": "homepage_image_5",
           "type": "file",
           "description": "Home page image 1",
           "label": "Image 5"
         },
         {
-          "identifier": "homepage_background_image_6",
+          "identifier": "homepage_image_6",
           "type": "file",
           "description": "Home page image 1",
           "label": "Image 6"
