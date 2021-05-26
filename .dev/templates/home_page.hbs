@@ -31,19 +31,46 @@
 </div>
 
         <!-- Lower Content -->
-        <div class="govuk-width-container govuk-main-wrapper">
-            <div class="tl-home--categories">
+    <div class="govuk-width-container govuk-main-wrapper">
+        <div class="tl-home--categories">
 
-                {{#each categories}}
-                <div class="tl-home--category">
-                    <span class="tl-home--category--image"></span>
-                    <h3 class="govuk-heading-m"><a href="{{url}}" class="govuk-link" GTMname="{{name}}">{{name}}</a></h3>
-                    <p class="govuk-body">{{excerpt description}}</p>
+            {{#each categories}}
+            <div class="tl-home--category">
+                <span class="tl-home--category--image"></span>
+                <h3 class="govuk-heading-m"><a href="{{url}}" class="govuk-link" GTMname="{{name}}">{{name}}</a></h3>
+                <p class="govuk-body">{{excerpt description}}</p>
+            </div>
+            {{/each}}
+
+
+        </div>
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-half">
+                <div class="tl-card" id="tl-home--email">
+                    <h3 class="govuk-heading-m">Email</h3>
+                    <p class="govuk-body">
+                        Send an email to
+                    </p>
+                    <p class="govuk-body">
+                        <a class="govuk-link" href="mailto:helpdesk@t-levels.service.gov.uk">helpdesk@t-levels.service.gov.uk</a>
+                    </p>
+                    <p class="govuk-body">
+                        Alternatively you can you can {{#link 'new_request' class='govuk-link' }}send a message{{/link}}. During our opening times, we’ll reply within 2 working days.
+                    </p>
                 </div>
-                {{/each}}
+            </div>
 
-
+            <div class="govuk-grid-column-one-half">
+                <div class="tl-card" id="tl-home--phone">
+                    <h3 class="govuk-heading-m">Phone</h3>
+                    <p class="govuk-body">Call us on 08000 150 600.</p>
+                    <p class="govuk-body">Text us on <a href="sms:07588690018" class="mobile-link">07588 690018</a>.</p>
+                    <p class="govuk-body">You cannot send us photos or videos via text.</p>
+                    <p class="govuk-body">Your phone company may charge you separately, standard <abbr>SMS</abbr> rates apply.</p>
+                    <p class="govuk-body"><a href="https://www.gov.uk/call-charges" class="govuk-link" target="_blank">Find out about call charges</a>.</p>
+                </div>
             </div>
 
         </div>
+    </div>
 </main>
