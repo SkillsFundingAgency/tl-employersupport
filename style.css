@@ -5374,6 +5374,9 @@
   @media (min-width: 40.0625em) {
     .tl-home--category {
       width: calc(33.333% - 30px); } }
+  .tl-home--category img {
+    max-width: 100%;
+    margin-bottom: 20px; }
 
 .tl-home--banner {
   padding-top: 20px; }
