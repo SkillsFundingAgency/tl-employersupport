@@ -60,7 +60,7 @@
                 <div class="tl-ticket--form">
                     {{request_form}}
 
-                    <div class="govuk-form-group govuk-!-margin-top-5">
+                    <div class="govuk-form-group govuk-!-margin-top-5" id="tl-consent">
                         <fieldset class="govuk-fieldset">
                             <div class="govuk-checkboxes govuk-checkboxes--small">
                                 <div class="govuk-checkboxes__item">
@@ -116,6 +116,9 @@
             }
 
         });
+
+        $("#tl-consent").insertBefore($("input[type='submit']"));
+
 
         $('label[for="request_anonymous_requester_email"]').text("Email address");
 
