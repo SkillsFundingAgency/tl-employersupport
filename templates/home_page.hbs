@@ -1,0 +1,43 @@
+<div class="govuk-width-container ">
+    <!-- Phase banner -->
+    <div class="govuk-phase-banner tl-phase-banner">
+        <p class="govuk-phase-banner__content">
+            <a href="{{settings.survey_link}}" id="tl-header--feedback-button">
+                <strong class="govuk-tag govuk-phase-banner__content__tag">
+                    Give feedback
+                </strong>
+            </a>
+            <span class="govuk-phase-banner__text">
+                This is a new service - <a class="govuk-link" href="{{settings.survey_link}}" id="tl-header--feedback">help us to improve it</a>
+            </span>
+        </p>
+    </div>
+</div>
+
+<!-- Main content -->
+<main id="main-content" role="main">
+    <!-- Banner -->
+    <div class="tl-home--banner">
+        <div class="govuk-width-container">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-three-quarters">
+                    <h1 class="govuk-heading-xl govuk-!-margin-bottom-5 govuk-!-margin-top-3">{{settings.service_name}}</h1>
+                </div>
+                <div class="govuk-grid-column-full govuk-!-margin-top-5">
+                    <hr class="govuk-section-break govuk-section-break--visible tl-section-break--blue">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lower Content -->
+
+</main>
+
+<script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (!isAgent()) {
+                $("#tl-home--ticket").show();
+            }
+        });
+</script>
