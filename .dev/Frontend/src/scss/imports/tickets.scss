@@ -1,7 +1,7 @@
 .tl-ticket--form {
     input {
 
-        &[type="text"] {
+        &[type="text"], &[type="tel"], &[type="number"] {
             @extend .govuk-input;
         }
 

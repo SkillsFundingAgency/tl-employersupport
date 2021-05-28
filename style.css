@@ -2204,7 +2204,7 @@
     padding-bottom: 11px;
     border: 0; } }
 
-.govuk-input, .tl-search input[type=search], .tl-input, .tl-search--home .tl-input, .tl-ticket--form input[type="text"], .tl-ticket--form .nesty-input {
+.govuk-input, .tl-search input[type=search], .tl-input, .tl-search--home .tl-input, .tl-ticket--form input[type="text"], .tl-ticket--form input[type="tel"], .tl-ticket--form input[type="number"], .tl-ticket--form .nesty-input {
   font-family: "GDS Transport", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -2224,33 +2224,35 @@
   -moz-appearance: none;
   appearance: none; }
   @media print {
-    .govuk-input, .tl-search input[type=search], .tl-input, .tl-search--home .tl-input, .tl-ticket--form input[type="text"], .tl-ticket--form .nesty-input {
+    .govuk-input, .tl-search input[type=search], .tl-input, .tl-search--home .tl-input, .tl-ticket--form input[type="text"], .tl-ticket--form input[type="tel"], .tl-ticket--form input[type="number"], .tl-ticket--form .nesty-input {
       font-family: sans-serif; } }
   @media (min-width: 40.0625em) {
-    .govuk-input, .tl-search input[type=search], .tl-input, .tl-search--home .tl-input, .tl-ticket--form input[type="text"], .tl-ticket--form .nesty-input {
+    .govuk-input, .tl-search input[type=search], .tl-input, .tl-search--home .tl-input, .tl-ticket--form input[type="text"], .tl-ticket--form input[type="tel"], .tl-ticket--form input[type="number"], .tl-ticket--form .nesty-input {
       font-size: 19px;
       font-size: 1.1875rem;
       line-height: 1.31579; } }
   @media print {
-    .govuk-input, .tl-search input[type=search], .tl-input, .tl-search--home .tl-input, .tl-ticket--form input[type="text"], .tl-ticket--form .nesty-input {
+    .govuk-input, .tl-search input[type=search], .tl-input, .tl-search--home .tl-input, .tl-ticket--form input[type="text"], .tl-ticket--form input[type="tel"], .tl-ticket--form input[type="number"], .tl-ticket--form .nesty-input {
       font-size: 14pt;
       line-height: 1.15; } }
-  .govuk-input:focus, .tl-search input:focus[type=search], .tl-input:focus, .tl-ticket--form input:focus[type="text"], .tl-ticket--form .nesty-input:focus {
+  .govuk-input:focus, .tl-search input:focus[type=search], .tl-input:focus, .tl-ticket--form input:focus[type="text"], .tl-ticket--form input:focus[type="tel"], .tl-ticket--form input:focus[type="number"], .tl-ticket--form .nesty-input:focus {
     outline: 3px solid #ffdd00;
     outline-offset: 0;
     box-shadow: inset 0 0 0 2px; }
 
-.govuk-input::-webkit-outer-spin-button, .tl-search input[type=search]::-webkit-outer-spin-button, .tl-input::-webkit-outer-spin-button, .tl-search--home .tl-input::-webkit-outer-spin-button, .tl-ticket--form input[type="text"]::-webkit-outer-spin-button, .tl-ticket--form .nesty-input::-webkit-outer-spin-button,
+.govuk-input::-webkit-outer-spin-button, .tl-search input[type=search]::-webkit-outer-spin-button, .tl-input::-webkit-outer-spin-button, .tl-search--home .tl-input::-webkit-outer-spin-button, .tl-ticket--form input[type="text"]::-webkit-outer-spin-button, .tl-ticket--form input[type="tel"]::-webkit-outer-spin-button, .tl-ticket--form input[type="number"]::-webkit-outer-spin-button, .tl-ticket--form .nesty-input::-webkit-outer-spin-button,
 .govuk-input::-webkit-inner-spin-button,
 .tl-search input[type=search]::-webkit-inner-spin-button,
 .tl-input::-webkit-inner-spin-button,
 .tl-search--home .tl-input::-webkit-inner-spin-button,
 .tl-ticket--form input[type="text"]::-webkit-inner-spin-button,
+.tl-ticket--form input[type="tel"]::-webkit-inner-spin-button,
+.tl-ticket--form input[type="number"]::-webkit-inner-spin-button,
 .tl-ticket--form .nesty-input::-webkit-inner-spin-button {
   margin: 0;
   -webkit-appearance: none; }
 
-.govuk-input[type="number"], .tl-search input[type="number"][type=search], .tl-input[type="number"], .tl-ticket--form input[type="number"][type="text"], .tl-ticket--form .nesty-input[type="number"] {
+.govuk-input[type="number"], .tl-search input[type="number"][type=search], .tl-input[type="number"], .tl-ticket--form input[type="number"], .tl-ticket--form .nesty-input[type="number"] {
   -moz-appearance: textfield; }
 
 .govuk-input--error, .tl-input--error, .tl-search--container input.tl-input--error[type="search"], .tl-search--home input.tl-input--error[type="search"] {
