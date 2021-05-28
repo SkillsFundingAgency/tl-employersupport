@@ -121,10 +121,10 @@
         $('label[for="request-attachments"]').parent(".form-field").addClass('tl-js-hidden');
 
         $('#tl-consent-check').change(function () {
-            $("input[type='submit']").prop("disabled", !this.checked);
+            $(".request-form input[type='submit']").prop("disabled", !this.checked);
         }).change()
 
-        $("#tl-consent").insertBefore($("input[type='submit']"));
+        $("#tl-consent").insertBefore($(".request-form input[type='submit']"));
 
     });
 
