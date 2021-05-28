@@ -2264,7 +2264,7 @@
 .govuk-input--width-30 {
   max-width: 59ex; }
 
-.govuk-input--width-20, .tl-ticket--form input[type="text"], .tl-ticket--form input[type="tel"], .tl-ticket--form input[type="number"] {
+.govuk-input--width-20, .tl-ticket--form input[type="text"], .tl-ticket--form input[type="tel"], .tl-ticket--form input[type="number"], .tl-ticket--form .nesty-input {
   max-width: 41ex; }
 
 .govuk-input--width-10 {
