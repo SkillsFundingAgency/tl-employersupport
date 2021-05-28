@@ -31,7 +31,21 @@
     </div>
 
     <!-- Lower Content -->
+    <div class="govuk-width-container govuk-main-wrapper">
+        <div class="tl-home--categories">
 
+            {{#each categories}}
+            <div class="tl-home--category">
+                <span class="tl-home--category--image"></span>
+                <h3 class="govuk-heading-m"><a href="{{url}}" class="govuk-link" GTMname="{{name}}">{{name}}</a></h3>
+                <p class="govuk-body">{{excerpt description}}</p>
+            </div>
+            {{/each}}
+
+
+        </div>
+        
+    </div>
 </main>
 
 <script>
