@@ -117,17 +117,14 @@
 
         });
 
-        $("#tl-consent").insertBefore($("input[type='submit']"));
-
-
         $('label[for="request_anonymous_requester_email"]').text("Email address");
-
-
         $('label[for="request-attachments"]').parent(".form-field").addClass('tl-js-hidden');
 
         $('#tl-consent-check').change(function () {
             $("input[type='submit']").prop("disabled", !this.checked);
         }).change()
+
+        $("#tl-consent").insertBefore($("input[type='submit']"));
 
     });
 
