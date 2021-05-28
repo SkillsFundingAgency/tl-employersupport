@@ -13,7 +13,7 @@
 
     .nesty-input {
         @extend .govuk-input;
-        @extend .govuk-input--width-20;
+        max-width: 41ex !important;
     }
 
     textarea {

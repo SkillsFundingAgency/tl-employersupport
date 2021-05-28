@@ -2264,7 +2264,7 @@
 .govuk-input--width-30 {
   max-width: 59ex; }
 
-.govuk-input--width-20, .tl-ticket--form input[type="text"], .tl-ticket--form input[type="tel"], .tl-ticket--form input[type="number"], .tl-ticket--form .nesty-input {
+.govuk-input--width-20, .tl-ticket--form input[type="text"], .tl-ticket--form input[type="tel"], .tl-ticket--form input[type="number"] {
   max-width: 41ex; }
 
 .govuk-input--width-10 {
@@ -6060,6 +6060,9 @@ ul.govuk-radios label .gem-radios__input {
   @media (min-width: 40.0625em) {
     .tl-profile--password {
       padding-left: 80px; } }
+
+.tl-ticket--form .nesty-input {
+  max-width: 41ex !important; }
 
 .tl-ticket--form textarea {
   min-height: 140px; }
