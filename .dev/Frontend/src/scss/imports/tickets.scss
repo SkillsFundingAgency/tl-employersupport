@@ -3,6 +3,7 @@
 
         &[type="text"], &[type="tel"], &[type="number"] {
             @extend .govuk-input;
+            @extend .govuk-input--width-20;
         }
 
         &[type="submit"] {
