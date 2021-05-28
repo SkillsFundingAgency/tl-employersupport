@@ -238,6 +238,32 @@
           "value": "EC68-PM92-AG92-GA77"
         }
       ]
+    },
+    {
+      "label": "Custom form field IDs",
+      "variables": [
+        {
+          "identifier": "field_id_name",
+          "type": "text",
+          "description": "Name Field ID",
+          "label": "Name field ID",
+          "value": "none set"
+        },
+        {
+          "identifier": "field_id_company",
+          "type": "text",
+          "description": "Company Field ID",
+          "label": "Company field ID",
+          "value": "none set"
+        },
+        {
+          "identifier": "field_id_about",
+          "type": "text",
+          "description": "About Field ID",
+          "label": "About field ID",
+          "value": "none set"
+        }
+      ]
     }
   ]
 }

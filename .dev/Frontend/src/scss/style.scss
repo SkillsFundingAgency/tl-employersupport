@@ -19,6 +19,7 @@ $govuk-images-path: "/assets/" !default;
 $govuk-image-url-function: 'zendesk-asset';
 
 $govuk-font-url-function: 'zendesk-asset';
+$department-for-education: #003a69;
 
 @import "../../../node_modules/govuk-frontend/govuk/all";
 @import "imports/helpers";

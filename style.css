@@ -5484,7 +5484,28 @@
     text-decoration: underline; }
 
 .tl-header--title {
-  width: auto; }
+  width: 100%;
+  float: right;
+  text-align: left;
+  padding-left: 0; }
+  @media (max-width: 40.0525em) {
+    .tl-header--title {
+      margin-top: 10px; } }
+
+.tl-header--search {
+  max-width: 300px;
+  float: right; }
+  .tl-header--search .tl-search input[type="search"] {
+    border: none;
+    padding-left: 10px; }
+  .tl-header--search .tl-search input[type=submit]:hover {
+    background-color: #5694ca; }
+
+.tl-header--logo {
+  width: 100%;
+  padding-right: 0; }
+  .tl-header--logo #tl-header--govuk {
+    margin-bottom: 10px; }
 
 .tl-form-group--error {
   padding-left: 15px;
@@ -5523,7 +5544,8 @@
 .tl-card {
   background-color: #f3f2f1;
   padding: 30px;
-  margin: 20px 0; }
+  margin: 20px 0;
+  border-bottom: 5px solid #1d70b8; }
   @media (max-width: 40.0525em) {
     .tl-card {
       padding: 20px; } }

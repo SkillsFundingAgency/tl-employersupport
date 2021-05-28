@@ -21,16 +21,16 @@
         <div class="govuk-width-container">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-three-quarters">
-                    <h1 class="govuk-heading-xl govuk-!-margin-bottom-7">{{settings.service_name}}</h1>
+                    <h1 class="govuk-heading-xl govuk-!-margin-bottom-5 govuk-!-margin-top-3">{{settings.service_name}}</h1>
                 </div>
                 <div class="govuk-grid-column-full govuk-!-margin-top-5">
                     <hr class="govuk-section-break govuk-section-break--visible tl-section-break--blue">
                 </div>
             </div>
         </div>
-</div>
+    </div>
 
-        <!-- Lower Content -->
+    <!-- Lower Content -->
     <div class="govuk-width-container govuk-main-wrapper">
         <div class="tl-home--categories">
 
@@ -45,32 +45,37 @@
 
         </div>
         <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+                <h2 class="govuk-heading-l govuk-!-margin-top-7">Contact us</h2>
+                <p class="govuk-body">Have questions, or interested in offering an industry placement? Get in touch.</p>
+            </div>
+
             <div class="govuk-grid-column-one-half">
-                <div class="tl-card" id="tl-home--email">
-                    <h3 class="govuk-heading-m">Email</h3>
+                <div class="tl-card tl-js-hidden" id="tl-home--ticket">
+                    <h3 class="govuk-heading-m">Online</h3>
                     <p class="govuk-body">
-                        Send an email to
+                        Use our {{#link 'new_request' class='govuk-link' }}contact form{{/link}} to ask us a question or tell us if you’re ready to offer an industry placement.
                     </p>
-                    <p class="govuk-body">
-                        <a class="govuk-link" href="mailto:helpdesk@t-levels.service.gov.uk">helpdesk@t-levels.service.gov.uk</a>
-                    </p>
-                    <p class="govuk-body">
-                        Alternatively you can you can . During our opening times, we’ll reply within 2 working days.
-                    </p>
+                    <p class="govuk-body">You’ll usually receive a reply within 2 working days. </p>
                 </div>
             </div>
 
             <div class="govuk-grid-column-one-half">
                 <div class="tl-card" id="tl-home--phone">
                     <h3 class="govuk-heading-m">Phone</h3>
-                    <p class="govuk-body">Call us on 08000 150 600.</p>
-                    <p class="govuk-body">Text us on <a href="sms:07588690018" class="mobile-link">07588 690018</a>.</p>
-                    <p class="govuk-body">You cannot send us photos or videos via text.</p>
-                    <p class="govuk-body">Your phone company may charge you separately, standard <abbr>SMS</abbr> rates apply.</p>
-                    <p class="govuk-body"><a href="https://www.gov.uk/call-charges" class="govuk-link" target="_blank">Find out about call charges</a>.</p>
+                    <p class="govuk-body">Call us on 0800 150 600 (choose option 4)</p>
+                    <p class="govuk-body">Our opening times are 8am to 8pm, Monday to Friday.</p><p class="govuk-body"><a href="https://www.gov.uk/call-charges" class="govuk-link" target="_blank">Find out about call charges</a>.</p>
                 </div>
             </div>
 
         </div>
     </div>
 </main>
+
+<script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (!isAgent()) {
+                $("#tl-home--ticket").show();
+            }
+        });
+</script>
