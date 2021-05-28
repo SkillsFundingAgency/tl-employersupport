@@ -58,4 +58,9 @@
     .notification-error {
         @extend .govuk-error-message;
     }
+
+    span.optional {
+        display: inline-block;
+        margin-left: 5px;
+    }
 }

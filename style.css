@@ -6080,6 +6080,10 @@ ul.govuk-radios label .gem-radios__input {
   .tl-ticket--form #upload-dropzone span a {
     font-size: unset; }
 
+.tl-ticket--form span.optional {
+  display: inline-block;
+  margin-left: 5px; }
+
 .tl-newsletter--list li:nth-child(n+5) {
   display: none; }
 
