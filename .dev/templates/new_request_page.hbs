@@ -64,8 +64,8 @@
                         <fieldset class="govuk-fieldset">
                             <div class="govuk-checkboxes govuk-checkboxes--small">
                                 <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="organisation" name="privacynotice" type="checkbox" value="agree">
-                                    <label class="govuk-label govuk-checkboxes__label" for="privacynotice">
+                                    <input class="govuk-checkboxes__input" id="tl-consent-check" name="consent" type="checkbox" value="agree" >
+                                    <label class="govuk-label govuk-checkboxes__label" for="consent">
                                         By checking this box you confirm that you consent to the Department for Education processing and storing your data for the purposes described in the <a href="https://www.gov.uk/government/publications/esfa-privacy-notice" class="govuk-link">privacy notice</a>.
                                     </label>
                                 </div>
@@ -103,7 +103,7 @@
         $('#request_custom_fields_' + form_telephone_field_id).attr('type', 'tel');;
 
 
-        $("input[type='submit']").attr('value', 'Send');
+        $("input[type='submit']").attr('value', 'Send').prop("disabled");
 
 
         var NameField = $('input#request_custom_fields_' + form_name_field_id).parent();
@@ -121,6 +121,10 @@
 
 
         $('label[for="request-attachments"]').parent(".form-field").addClass('tl-js-hidden');
+
+        $('#tl-consent-check').change(function () {
+            $("input[type='submit']").prop("disabled", !this.checked);
+        }).change()
 
     });
 
