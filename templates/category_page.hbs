@@ -18,37 +18,12 @@
 <!-- Main content -->
 <main id="main-content" role="main">
 
-    <!-- Search Hero -->
-    <div class="tl-hero tl-hero--minimal">
-        <div class="govuk-width-container">
-            <div class="govuk-grid-row">
-                <div class="govuk-grid-column-one-half">
 
-                    <div id="tl-breadcrumbs--category">
-                        <div class="tl-breadcrumbs">
-                            {{breadcrumbs}}
-                        </div>
-                    </div>
-                </div>
-                <div class="govuk-grid-column-one-half tl-text--right govuk-!-margin-top-1">
-                    <div class="tl-form-group tl-search--container tl-search--home tl-search--home--minimal" id="tl-search--category">
-
-                        <div class="tl-search--error tl-hidden">
-                            <span class="tl-error--message"></span>
-                        </div>
-                        <form role="search" class="tl-search" data-search="" action="/hc/en-gb/search" accept-charset="UTF-8" method="get">
-                            <input name="utf8" type="hidden" value="✓"><input type="search" name="query" id="query" placeholder="Search for support" aria-label="Search for support">
-                            <input type="hidden" name="filter_by" value="knowledge_base" />
-                            <input type="submit" name="commit" value="Search">
-                        </form>
-
-                    </div>
-                </div>
-            </div>
+    <div class="govuk-width-container">
+        <div class="tl-breadcrumbs" id="tl-breadcrumbs--help">
+            {{breadcrumbs}}
         </div>
     </div>
-
-
 
 
     <!-- Article Content -->
