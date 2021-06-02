@@ -14,12 +14,12 @@
     </div>
 </div>
 
-
-<div class="govuk-width-container">
-    <div class="tl-breadcrumbs" id="tl-breadcrumbs--help">
-        {{breadcrumbs}}
+<main id="main-content" role="main">
+    <div class="govuk-width-container">
+        <div class="tl-breadcrumbs" id="tl-breadcrumbs--help">
+            {{breadcrumbs}}
+        </div>
     </div>
-</div>
 
 
 
@@ -74,15 +74,32 @@
     <div class="tl-article--vote">
         <div class="tl-article--vote--container">
             <div class="govuk-grid-row">
-                <div class="govuk-grid-column-full">
-                    <span class="tl-article--vote--question" id="article-votes-label">Was this page helpful?</span>
-                    <div role="group" aria-labelledby="article-votes-label" class="tl-article--vote--buttons">
+                <span id="feedbackbuttonyes" class="govuk-grid-column-full">
+                    <p class="govuk-body govuk-!-margin-0 vote-prompt" id="voteQuestion">
+                        <span id="isPageUseful" class="tl-article--vote--question">Was this page helpful?</span>
                         <a class="tl-article--vote--button" href="#" id="tl-article--vote--yes" vote="yes">Yes <span class="govuk-visually-hidden">this article was useful</span></a>
                         <a class="tl-article--vote--button" href="#" id="tl-article--vote--no" vote="no">No <span class="govuk-visually-hidden">this article wasn't useful</span></a>
-                    </div>
+                    </p>
+                    <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-0 vote-prompt tl-article--vote--response" id="voteResponse" style="display: none;">Thank you for your feedback</p>
+                </span>
+            </div>
+            <div class="govuk-grid-row">
+                <div id="commentform" class="govuk-grid-column-two-thirds govuk-!-margin-top-3">
+                    <form id="formoid" action="/api/v2/requests.json" title="articlefeedback" method="post" class="tl-article--vote--form">
+                        <div class="govuk-character-count">
+                            <div class="govuk-form-group">
+                                <label class="govuk-label" for="Comment">Is there anything we could do to further improve this page? (optional)</label>
+                                <textarea maxlength="500" class="govuk-textarea govuk-js-character-count" id="Comment" name="Comment" rows="5" aria-describedby="Comment-info"></textarea>
+                            </div>
+                            <div id="Comment-info" class="tl-article--vote--form--count" aria-live="polite">You have <span id="chars">500</span> characters remaining</div>
+                        </div>
+                        <div class="govuk-!-margin-top-3">
+                            <input class="govuk-button articlefeedbackbutton" type="submit" id="submitButton" name="submitButton" value="Submit">
+                        </div>
+                    </form>
+
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -105,8 +122,93 @@
 
     {{/with}}
 
-</main>
 
-<script>
+
+    <script type="text/javascript">
     $(".govuk-tabs").attr("data-module", "govuk-tabs");
-</script>
+
+
+                var maxLength = 500;
+            $('#Comment').keyup(function() {
+            	var length = $(this).val().length;
+            	var length = maxLength-length;
+            	$('#chars').text(length);
+
+              if (length < 0) {
+      					$('#submitButton').attr('disabled', true);
+							} else {
+                $('#submitButton').removeAttr('disabled');
+              }
+            });
+
+            $("#tl-article--vote--yes").click(function() {
+							$('#isPageUseful').text('Thank you for your feedback').addClass('govuk-!-font-weight-bold');
+              $('#articlefeedbacklabel').html('Is there anything we could do to further improve this page? (optional)');
+            });
+
+            $(".vote-confirm").click(function() {
+             		$('#isPageUseful').text('Is this page useful?');
+            });
+
+            $("#tl-article--vote--no").click(function() {
+             		$('#isPageUseful').text('Thank you for your feedback').addClass('govuk-!-font-weight-bold');
+                $('#articlefeedbacklabel').html('Why is this page not useful? (optional)');
+            });
+
+
+
+            $('#commentform').hide();
+
+            $('#tl-article--vote--no').click(function(){
+            	$('#commentform').toggle();
+              $('#feedbackbuttonyes a').toggle();
+            });
+
+            $('#tl-article--vote--yes').click(function () {
+                $('#feedbackbuttonyes a').toggle();
+            });
+
+            function getCSRFToken(callback,comment) {
+                $.ajax({
+                    url: "/api/v2/users/me.json",
+                    type: 'GET',
+                    contentType: "application/json",
+                    dataType: 'json',
+                    success: function(result){
+                        var csrfToken = result.user.authenticity_token;
+                        callback(csrfToken,comment);
+                    }
+                });
+            }
+
+            function updateRequest(csrfToken,comment) {
+
+                var request = { "requester": { "name": "Article Feedback" }, "subject": "T Levels Employers Article Feedback - {{article.title}}", "comment": {"body": comment}}
+
+                $.ajax({
+                    url: "https://esfa1567428279.zendesk.com/api/v2/requests.json",
+                    type: 'POST',
+                    data: JSON.stringify({request: request}),
+                    contentType: "application/json",
+                    headers: {"X-CSRF-Token": csrfToken},
+                    success: function(data, textStatus, jqXHR) {
+
+                    },
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+
+                    }
+                });
+            }
+
+            $("#formoid").submit(function(e){
+                e.preventDefault();
+                var comment = $("#Comment").val();
+                getCSRFToken(updateRequest,comment);
+                $('#commentform').hide();
+              	$('#voteQuestion').hide();
+              	$('#voteResponse').show();
+            });
+
+    </script>
+
+</main>
