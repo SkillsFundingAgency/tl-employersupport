@@ -46,6 +46,20 @@ $(document).ready(function () {
 });
 
 
+/* Make tabs and details work in articles */
+
+$(".govuk-tabs").attr("data-module", "govuk-tabs");
+
+$(".govuk-details").attr("data-module", "govuk-details");
+$(".govuk-details__summary").click(function () {
+    if (this.closest(".govuk-details").hasAttribute("open")) {
+        $(this).closest(".govuk-details").removeAttr('open');
+    }
+    else {
+        $(this).closest(".govuk-details").attr('open', true);
+    }
+});
+
 
 /* cookie banner starts */
 //to delete cookie banner cookies ...
