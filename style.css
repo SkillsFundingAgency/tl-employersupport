@@ -5502,6 +5502,8 @@
     padding-left: 10px; }
   .tl-header--search .tl-search input[type=submit]:hover {
     background-color: #5694ca; }
+  .tl-header--search .tl-error--message {
+    color: #ffdd00; }
 
 .tl-header--logo {
   width: 100%;

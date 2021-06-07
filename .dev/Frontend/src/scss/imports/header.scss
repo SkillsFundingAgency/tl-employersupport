@@ -54,6 +54,10 @@
             background-color: govuk-colour("light-blue");
         }
     }
+
+    .tl-error--message {
+        color: $govuk-focus-colour;
+    }
 }
 
 .tl-header--logo {
