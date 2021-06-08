@@ -6127,7 +6127,7 @@ ul.govuk-radios label .gem-radios__input {
 .tl-filter {
   border: 3px solid #f3f2f1;
   overflow: hidden; }
-  .tl-filter filedset legend {
+  .tl-filter fieldset legend {
     background: #f3f2f1;
     padding: 10px;
     box-sizing: border-box;
