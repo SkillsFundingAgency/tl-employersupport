@@ -35,11 +35,27 @@
         <div class="tl-home--categories">
 
             {{#each categories}}
+            {{#isnt name "How this site works"}}
+            {{#isnt name "Workshops and webinars"}}
             <div class="tl-home--category">
                 <span class="tl-home--category--image"></span>
                 <h3 class="govuk-heading-m"><a href="{{url}}" class="govuk-link" GTMname="{{name}}">{{name}}</a></h3>
                 <p class="govuk-body">{{excerpt description}}</p>
             </div>
+            {{/isnt}}
+            {{/isnt}}
+            {{/each}}
+
+            {{#each categories}}
+            {{#is name "Workshops and webinars"}}
+            {{#each sections}}
+            <div class="tl-home--category">
+                <span class="tl-home--category--image"></span>
+                <h3 class="govuk-heading-m"><a href="{{url}}" class="govuk-link" GTMname="{{name}}">{{name}}</a></h3>
+                <p class="govuk-body">{{excerpt description}}</p>
+            </div>
+            {{/each}}
+            {{/is}}
             {{/each}}
 
 

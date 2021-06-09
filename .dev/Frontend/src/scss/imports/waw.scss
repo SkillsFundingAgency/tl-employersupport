@@ -1,0 +1,29 @@
+/*Workshops and webinars CSS*/
+
+.tl-event--list {
+    li {
+        display: none;
+
+        p {
+            margin: 10px 0 15px 0;
+        }
+    }
+
+    &[data-event--filter="workshops"] {
+        li[data-event--labels*="workshop"] {
+            display: block;
+        }
+    }
+
+    &[data-event--filter="webinars"] {
+        li[data-event--labels*="webinar"] {
+            display: block;
+        }
+    }
+
+    &[data-event--filter="all"] {
+        li {
+            display: block;
+        }
+    }
+}

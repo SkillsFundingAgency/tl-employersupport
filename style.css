@@ -6116,3 +6116,18 @@ ul.govuk-radios label .gem-radios__input {
     width: 400px; }
   .tl-filter .tl-filter--radios {
     padding: 0 15px; }
+
+/*Workshops and webinars CSS*/
+.tl-event--list li {
+  display: none; }
+  .tl-event--list li p {
+    margin: 10px 0 15px 0; }
+
+.tl-event--list[data-event--filter="workshops"] li[data-event--labels*="workshop"] {
+  display: block; }
+
+.tl-event--list[data-event--filter="webinars"] li[data-event--labels*="webinar"] {
+  display: block; }
+
+.tl-event--list[data-event--filter="all"] li {
+  display: block; }

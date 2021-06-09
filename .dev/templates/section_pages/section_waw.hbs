@@ -27,8 +27,6 @@
     </div>
 
 
-
-
     <!-- Category Content -->
     <div class="govuk-width-container govuk-main-wrapper">
 
@@ -46,7 +44,7 @@
             <div class="govuk-grid-column-one-third">
                 <div class="govuk-form-group tl-filter">
                     <fieldset class="govuk-fieldset">
-                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
                             <h1 class="govuk-fieldset__heading">
                                 Filter by event type
                             </h1>
@@ -65,11 +63,21 @@
                                 </label>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="event-type-3" name="Event type" type="radio" value="workshops">
+                                <input class="govuk-radios__input" id="event-type-3" name="Event type" type="radio" value="webinars">
                                 <label class="govuk-label govuk-radios__label" for="event-type-3">
-                                    Workshops
+                                    Webinars
                                 </label>
                             </div>
+
+                            <script>
+                                $('input:radio[name="Event type"]').change(
+                                    function () {
+                                        if ($(this).is(':checked')) {
+                                            var eventtype = $(this).val()
+                                            $(".tl-event--list").attr("data-event--filter", eventtype)
+                                        }
+                                    });
+                            </script>
                         </div>
 
                     </fieldset>
@@ -79,11 +87,15 @@
 
             <div class="govuk-grid-column-two-thirds">
                 <section>
-                    <ul class="govuk-list">
+                    <ul class="govuk-list tl-event--list" data-event--filter="all">
 
                         {{#each section.articles}}
-                        <li>
-                            <a class="govuk-link tl-category--article" href="{{url}}">{{title}}</a>
+                        <li data-event--labels="{{#each labels}}{{identifier}}{{/each}}">
+                            <span class="govuk-body-s">{{#each labels}}{{#is @index 1}}{{identifier}}{{/is}}{{/each}}</span>
+                            <h3 class="govuk-heading-m govuk-!-margin-bottom-0">{{title}}</h3>
+                            <p class="govuk-body">{{excerpt body characters=400}}</p>
+                            <a class="govuk-link tl-category--article" href="{{url}}">Book your place</a>
+                            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
                         </li>
                         {{/each}}
 

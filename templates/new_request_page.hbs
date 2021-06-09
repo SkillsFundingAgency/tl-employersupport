@@ -18,38 +18,18 @@
         </p>
     </div>
 </div>
-<!-- Search Hero -->
-<div class="tl-hero tl-hero--minimal">
-    <div class="govuk-width-container">
-        <div class="govuk-grid-row">
-            <div class="govuk-grid-column-one-half">
 
-                <div id="tl-breadcrumbs--help">
-                    <div class="tl-breadcrumbs">
-                        {{breadcrumbs}}
-                    </div>
-                </div>
-            </div>
-            <div class="govuk-grid-column-one-half tl-text--right govuk-!-margin-top-1">
-                <div class="tl-form-group tl-search--container tl-search--home tl-search--home--minimal" id="tl-search--article">
-
-                    <div class="tl-search--error tl-hidden">
-                        <span class="tl-error--message"></span>
-                    </div>
-                    <form role="search" class="tl-search" data-search="" action="/hc/en-gb/search" accept-charset="UTF-8" method="get">
-                        <input name="utf8" type="hidden" value="✓"><input type="search" name="query" id="query" placeholder="Search for support" aria-label="Search for support">
-                        <input type="hidden" name="filter_by" value="knowledge_base" />
-                        <input type="submit" name="commit" value="Search">
-                    </form>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- Main content -->
 <main id="main-content" role="main">
+
+    <div class="govuk-width-container">
+        <div id="tl-breadcrumbs--help">
+            <div class="tl-breadcrumbs">
+                {{breadcrumbs}}
+            </div>
+        </div>
+    </div>
     <div class="govuk-width-container govuk-main-wrapper">
 
         <div class="govuk-grid-row">
@@ -64,7 +44,7 @@
                         <fieldset class="govuk-fieldset">
                             <div class="govuk-checkboxes govuk-checkboxes--small">
                                 <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="tl-consent-check" name="consent" type="checkbox" value="agree" >
+                                    <input class="govuk-checkboxes__input" id="tl-consent-check" name="consent" type="checkbox" value="agree">
                                     <label class="govuk-label govuk-checkboxes__label" for="tl-consent-check">
                                         By checking this box you confirm that you consent to the Department for Education processing and storing your data for the purposes described in the <a href="https://www.gov.uk/government/publications/esfa-privacy-notice" class="govuk-link">privacy notice</a>.
                                     </label>
