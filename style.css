@@ -6113,7 +6113,9 @@ ul.govuk-radios label .gem-radios__input {
     background: #f3f2f1;
     padding: 10px;
     box-sizing: border-box;
-    width: 400px; }
+    width: 400px;
+    min-width: 100%;
+    max-width: 100%; }
   .tl-filter .tl-filter--radios {
     padding: 0 15px; }
 
