@@ -108,22 +108,21 @@
 
         $("#request_description_label").html('Enter any additional information<span class="optional">(optional)</span>');
 
-        var requestdescription = $("#request_description").val()
 
-        if (!requestdescription) {
-            requestdescription("Enter your message here")
+        if (!$("#request_description").val()) {
+            $("#request_description").val("Enter your message here")
         }
 
 
         $("#request_description").focus(function () {
-
-            if (requestdescription = "Enter your message here") {
+            if ($("#request_description").val() = "Enter your message here") {
                 var $this = $(this);
                 $this.select();
                 $this.mouseup(function () {
                     $this.unbind("mouseup");
                     return false;
                 });
+
             }
         });
 
