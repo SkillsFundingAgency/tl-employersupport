@@ -23,7 +23,9 @@
         background-size: auto;
         min-height: 200px;
         display: block;
+        background-repeat: no-repeat;
     }
+
 
     &:nth-child(2) {
         span {

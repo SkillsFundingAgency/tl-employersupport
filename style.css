@@ -5382,7 +5382,8 @@
     background-image: url("$home_image_1");
     background-size: auto;
     min-height: 200px;
-    display: block; }
+    display: block;
+    background-repeat: no-repeat; }
   .tl-home--category:nth-child(2) span {
     background-image: url("$home_image_2"); }
   .tl-home--category:nth-child(3) span {
