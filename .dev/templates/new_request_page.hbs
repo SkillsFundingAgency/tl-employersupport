@@ -113,16 +113,17 @@
             $("#request_description").val("Enter your message here")
         }
 
-        if (!$("#request_description").val("Enter your message here")) {
             $("#request_description").focus(function () {
                 var $this = $(this);
+                if (!$("#request_description").val("Enter your message here")) {
+
                 $this.select();
                 $this.mouseup(function () {
                     $this.unbind("mouseup");
                     return false;
                 });
-            });
-        }
+                });
+    }
 
 
 
