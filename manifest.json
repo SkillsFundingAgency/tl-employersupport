@@ -1,7 +1,7 @@
 {
   "name": "GDS Style - Employer Support ",
   "author": "Ash Anderton",
-  "version": "0.0.78",
+  "version": "0.0.79",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [
@@ -207,21 +207,21 @@
           "type": "text",
           "description": "Footer section",
           "label": "Cookies",
-          "value": "360015340619"
+          "value": "4402359036050"
         },
         {
           "identifier": "article_id_accessibility",
           "type": "text",
           "description": "Footer section",
           "label": "Accesibility",
-          "value": "360015324220"
+          "value": "4402359031570"
         },
         {
           "identifier": "article_id_terms",
           "type": "text",
           "description": "Footer section",
           "label": "Terms",
-          "value": "360017593039"
+          "value": "4402351171730"
         },
         {
           "identifier": "article_id_confirmation",
