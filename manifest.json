@@ -1,7 +1,7 @@
 {
   "name": "GDS Style - Employer Support ",
   "author": "Ash Anderton",
-  "version": "0.0.79",
+  "version": "0.0.80",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [
@@ -227,7 +227,7 @@
           "identifier": "article_id_confirmation",
           "type": "text",
           "description": "Footer section",
-          "label": "Terms",
+          "label": "Confirmation",
           "value": "4402151904786"
         },
         {
