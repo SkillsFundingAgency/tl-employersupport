@@ -5978,6 +5978,9 @@ ul.govuk-radios label .gem-radios__input {
 .tl-text--red {
   color: #d4351c; }
 
+.tl-text-headercase {
+  text-transform: capitalize; }
+
 .tl-dropdown label {
   display: block; }
 

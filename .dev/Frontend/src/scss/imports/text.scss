@@ -5,3 +5,7 @@
 .tl-text--red {
     color: govuk-colour("red");
 }
+
+.tl-text-headercase {
+    text-transform: capitalize;
+}
