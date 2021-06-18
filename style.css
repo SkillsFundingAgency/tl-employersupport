@@ -5436,13 +5436,10 @@
 
 /*Breadcrumbs*/
 /* Prevents sections from showing in breadcrumb on article page */
-#tl-breadcrumbs--article ol li:nth-child(3) {
-  display: none; }
-
 #tl-breadcrumbs--help ol li:nth-child(2), #tl-breadcrumbs--help ol li:nth-child(3) {
   display: none; }
 
-#tl-breadcrumbs--section ol li:nth-child(3), #tl-breadcrumbs--help ol li:nth-child(3), #tl-breadcrumbs--community--post ol li:nth-child(3) {
+#tl-breadcrumbs--article ol li:nth-child(3), #tl-breadcrumbs--section ol li:nth-child(3), #tl-breadcrumbs--help ol li:nth-child(3), #tl-breadcrumbs--community--post ol li:nth-child(3) {
   display: none; }
 
 #tl-breadcrumbs--category ol li:nth-child(2), #tl-breadcrumbs--search ol li:nth-child(2), #tl-breadcrumbs--newsletter ol li:nth-child(2), #tl-breadcrumbs--community ol li:nth-child(2) {
