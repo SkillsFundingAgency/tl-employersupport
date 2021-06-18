@@ -17,7 +17,7 @@
 <!-- Main content -->
 <main id="main-content" role="main">
     <div class="govuk-width-container">
-        <div id="tl-breadcrumbs--article">
+        <div id="tl-breadcrumbs--newsletter">
             <div class="tl-breadcrumbs">
                 {{breadcrumbs}}
             </div>
@@ -34,7 +34,7 @@
 
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-                <span class="govuk-caption-l tl-text-headercase">{{#each article.labels}}{{#is @index 0}}{{identifier}}{{/is}}{{/each}}</span>
+                <span class="govuk-caption-l tl-text-headercase" id="tl-article--type"></span>
                 <h1 class="govuk-heading-l">{{article.title}}</h1>
 
 
@@ -42,9 +42,26 @@
         </div>
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-                <div class="tl-article--content tl-article--content--casestudy govuk-!-margin-top-6">
-                    {{article.body}}
+                <div id="tl-article--details" class="tl-hide">
+                    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+                    <p id="tl-article--date" class="tl-hide govuk-body">
+                        <strong>Date and time</strong><br>
+                        <span></span>
+                    </p>
+                    <p id="tl-article--location" class="tl-hide govuk-body">
+                        <strong>Location</strong><br>
+                        <span></span>
+                    </p>
+                    <p id="tl-article--book" class="tl-hide govuk-body">
+                        <a href="#" class="govuk-link">Book your place</a>. There is no charge to attend this webinar.
+                    </p>
                 </div>
+                    <hr class="govuk-section-break govuk-section-break--visible">
+
+                    <div class="tl-article--content tl-article--content--casestudy govuk-!-margin-top-6">
+                        {{article.body}}
+                    </div>
 
                 <section class="tl-attachments">
                     {{#each attachments}}
@@ -77,35 +94,7 @@
                         <li title="{{name}}"><a href="{{url}}" target="{{target}}">{{name}}</a></li>
                         {{/each}}
                     </ul>
-                    <hr class="govuk-section-break govuk-section-break--m">
 
-                    <a href="#main-content" class="tl-article--backtotop">
-                        <span>&#708;</span>
-                        Back to top
-                    </a>
-                    <script>
-                        function checkOffset() {
-                            var a = $(document).scrollTop() + window.innerHeight;
-                            var b = $('.tl-article--vote').offset().top;
-                            var c = $('.tl-hero').offset().top;
-                            var scroll = $(window).scrollTop();
-
-
-                            if (a < b) {
-                                $('.tl-article--backtotop').css('bottom', '0px');
-                            } else {
-                                $('.tl-article--backtotop').css('bottom', (10 + (a - b)) + 'px');
-                            }
-
-                            if (scroll >= c + 1) {
-                                $('.tl-article--backtotop').show()
-                            } else {
-                                $('.tl-article--backtotop').hide()
-                            }
-                        }
-                        $(document).ready(checkOffset);
-                        $(document).scroll(checkOffset);
-                    </script>
                 </div>
 
             </div>
@@ -256,6 +245,42 @@
               	$('#voteQuestion').hide();
               	$('#voteResponse').show();
             });
+
+
+        $.getJSON('/api/v2/help_center/articles/{{article.id}}', function (articlelabels) {
+
+            if (articlelabels.article.label_names && articlelabels.article.label_names.length)
+                for (const label of articlelabels.article.label_names) {
+                    var labelname = `${label}`;
+
+                    if (labelname.indexOf("type") != -1) {
+                        var type = labelname.split('/')[1]
+                        $("#tl-article--type").text(type)
+                    }
+
+                    if (labelname.indexOf("date") != -1) {
+                        var date = labelname.split('/')[1]
+                        $("#tl-article--details").show();
+                        $("#tl-article--date").show();
+                        $("#tl-article--date span").text(date)
+                    }
+
+                    if (labelname.indexOf("location") != -1) {
+                        var location = labelname.split('/')[1]
+                        $("#tl-article--details").show();
+                        $("#tl-article--location").show();
+                        $("#tl-article--location span").text(location)
+                    }
+
+                    if (labelname.indexOf("book") != -1) {
+                        var book = labelname.replace("book/", "");
+                        $("#tl-article--details").show();
+                        $("#tl-article--book").show();
+                        $("#tl-article--book a").attr("href", book)
+                    }
+                }
+
+        });
 
     </script>
 

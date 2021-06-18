@@ -19,7 +19,7 @@
 <main id="main-content" role="main">
 
     <div class="govuk-width-container">
-        <div id="tl-breadcrumbs--category">
+        <div id="tl-breadcrumbs--help">
             <div class="tl-breadcrumbs">
                 {{breadcrumbs}}
             </div>
@@ -41,7 +41,7 @@
             </div>
         </div>
         <div class="govuk-grid-row">
-            <div class="govuk-grid-column-one-third">
+            <div class="govuk-grid-column-one-third tl-hide tl-js-visible">
                 <div class="govuk-form-group tl-filter">
                     <fieldset class="govuk-fieldset">
                         <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
@@ -77,6 +77,11 @@
                                             $(".tl-event--list").attr("data-event--filter", eventtype)
                                         }
                                     });
+
+                                $(document).ready(function () {
+                                    var eventtype = $('input:radio[name="Event type"]:checked').val();
+                                    $(".tl-event--list").attr("data-event--filter", eventtype)
+                                });
                             </script>
                         </div>
 
@@ -90,18 +95,41 @@
                     <ul class="govuk-list tl-event--list" data-event--filter="all">
 
                         {{#each section.articles}}
-                        <li data-event--labels="{{#each labels}}{{identifier}}{{/each}}">
-                            <span class="govuk-body-s">{{#each labels}}{{#is @index 1}}{{identifier}}{{/is}}{{/each}}</span>
+                        <li id="tl-article--container--{{id}}">
+                            <span class="govuk-body-s tl-text-headercase" id="tl-article--type--{{id}}"></span>
                             <h3 class="govuk-heading-m govuk-!-margin-bottom-0">{{title}}</h3>
                             <p class="govuk-body">{{excerpt body characters=400}}</p>
                             <a class="govuk-link tl-category--article" href="{{url}}">Book your place</a>
                             <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
                         </li>
+
+                        <script>
+                            $.getJSON('/api/v2/help_center/articles/{{id}}', function (articlelabels) {
+
+                                if (articlelabels.article.label_names && articlelabels.article.label_names.length)
+                                    for (const label of articlelabels.article.label_names) {
+                                        var labelname = `${label}`;
+
+                                        if (labelname.indexOf("type") != -1) {
+                                            var type = labelname.split('/')[1]
+                                            $("#tl-article--type--{{id}}").text(type)
+                                            $("#tl-article--container--{{id}}").attr("data-event--labels", type)
+
+
+                                        }
+
+                                    }
+
+                            });
+
+                        </script>
                         {{/each}}
 
                     </ul>
                 </section>
-
+                <div class="tl-waw--pagination">
+                    {{pagination}}
+                </div>
             </div>
         </div>
         </div>
