@@ -1,7 +1,7 @@
 {
   "name": "GDS Style - Employer Support ",
   "author": "Ash Anderton",
-  "version": "0.0.84",
+  "version": "0.0.85",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [
@@ -254,28 +254,28 @@
           "type": "text",
           "description": "Name Field ID",
           "label": "Name field ID",
-          "value": "none set"
+          "value": "360019751459"
         },
         {
           "identifier": "field_id_company",
           "type": "text",
           "description": "Company Field ID",
           "label": "Company field ID",
-          "value": "none set"
+          "value": "360020522620"
         },
         {
           "identifier": "field_id_about",
           "type": "text",
           "description": "About Field ID",
           "label": "About field ID",
-          "value": "none set"
+          "value": "360020522600"
         },
         {
           "identifier": "field_id_telephone",
           "type": "text",
           "description": "Telephone Field ID",
           "label": "Telephone field ID",
-          "value": "none set"
+          "value": "360020522640"
         }
       ]
     }
