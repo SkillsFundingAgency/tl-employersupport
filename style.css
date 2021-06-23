@@ -5441,6 +5441,9 @@
     .tl-hero--minimal .tl-search--error {
       text-align: left; }
 
+.tl-home--video {
+  max-width: 100%; }
+
 /*Breadcrumbs*/
 /* Prevents sections from showing in breadcrumb on article page */
 #tl-breadcrumbs--help ol li:nth-child(2), #tl-breadcrumbs--help ol li:nth-child(3) {
