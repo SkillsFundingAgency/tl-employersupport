@@ -75,12 +75,21 @@
                                         if ($(this).is(':checked')) {
                                             var eventtype = $(this).val()
                                             $(".tl-event--list").attr("data-event--filter", eventtype)
+                                            sessionStorage.setItem('wawfilter', eventtype);
                                         }
                                     });
 
                                 $(document).ready(function () {
-                                    var eventtype = $('input:radio[name="Event type"]:checked').val();
-                                    $(".tl-event--list").attr("data-event--filter", eventtype)
+                                    if (sessionStorage.getItem("wawfilter")) {
+                                        var eventtype = sessionStorage.getItem('wawfilter');
+                                        $('.tl-event--list').attr("data-event--filter", eventtype)
+                                        $('input:radio[value=' + eventtype + ']').prop("checked", true);
+                                    }
+
+                                    else {
+                                        var eventtype = $('input:radio[name="Event type"]:checked').val();
+                                        $(".tl-event--list").attr("data-event--filter", eventtype)
+                                    }
                                 });
                             </script>
                         </div>
