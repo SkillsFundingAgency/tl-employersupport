@@ -4822,6 +4822,10 @@
 .tl-section-break--blue {
   border-bottom: 5px solid #1d70b8; }
 
+.tl-row-fill {
+  display: flex;
+  align-items: stretch; }
+
 .tl-search {
   display: flex; }
   .tl-search input[type=search] {
