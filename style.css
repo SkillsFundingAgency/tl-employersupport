@@ -4825,6 +4825,9 @@
 .tl-row-fill {
   display: flex;
   align-items: stretch; }
+  @media (max-width: 40.0525em) {
+    .tl-row-fill {
+      display: block; } }
 
 .tl-search {
   display: flex; }

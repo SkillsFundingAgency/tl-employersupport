@@ -113,5 +113,8 @@
 .tl-row-fill {
     display: flex;
     align-items: stretch;
-}
 
+    @include govuk-media-query ($until: tablet) {
+        display: block;
+    }
+}
