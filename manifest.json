@@ -1,7 +1,7 @@
 {
   "name": "GDS Style - Employer Support ",
   "author": "Ash Anderton",
-  "version": "0.1.07",
+  "version": "0.1.09",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [
@@ -276,6 +276,25 @@
           "description": "Telephone Field ID",
           "label": "Telephone field ID",
           "value": "360020522640"
+        }
+      ]
+    },
+    {
+      "label": "Talk to a specialist article IDs",
+      "variables": [
+        {
+          "identifier": "ttas_contact",
+          "type": "text",
+          "description": "Talk to a specialist - contact",
+          "label": "Talk to a specialist - contact",
+          "value": "4402821009938"
+        },
+        {
+          "identifier": "ttas_request",
+          "type": "text",
+          "description": "Talk to a specialist - request",
+          "label": "Talk to a specialist - request",
+          "value": "4402772542098"
         }
       ]
     }
