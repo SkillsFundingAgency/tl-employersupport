@@ -1,7 +1,7 @@
 {
   "name": "GDS Style - Employer Support ",
   "author": "Ash Anderton",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [
@@ -87,6 +87,13 @@
           "description": "scoped_community_search_description",
           "label": "scoped_community_search_label",
           "value": true
+        },
+        {
+          "identifier": "indexed_search",
+          "type": "checkbox",
+          "description": "Show website in google / bing etc search results",
+          "label": "Show on google / bing",
+          "value": false
         }
       ]
     },
