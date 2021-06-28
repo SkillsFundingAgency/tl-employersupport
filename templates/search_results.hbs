@@ -56,68 +56,6 @@
         </section>
         <section id="tl-search--results">
             <div class="govuk-grid-row">
-                {{#if help_center.community_enabled}}
-                <div class="govuk-grid-column-one-third">
-                    <div class="govuk-form-group govuk-!-margin-top-6 tl-search--filters">
-                        <fieldset class="govuk-fieldset">
-                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                                <h1 class="govuk-fieldset__heading">
-                                    Show me
-                                </h1>
-                            </legend>
-                            <div class="govuk-radios--small">
-                                {{#each filters}}
-                                {{#if selected}}
-                                <a class="tl-search--filter--radio tl-search--filter--radio--checked" href="{{url}}">
-                                    <span class="tl-search--filter--radio--button"></span>
-                                    {{#is name 'All types'}}
-                                    All results
-                                    {{else}}
-                                    {{#is name 'Articles'}}
-                                    Articles only
-                                    {{else}}
-                                    {{#is name 'Community'}}
-                                    Discussions only
-                                    {{else}}
-                                    {{name}}
-                                    {{/is}}
-                                    {{/is}}
-                                    {{/is}}
-                                </a>
-
-                                {{else}}
-                                <a class="tl-search--filter--radio" href="{{url}}">
-                                    <span class="tl-search--filter--radio--button"></span>
-                                    {{#is name 'All types'}}
-                                    All results
-                                    {{else}}
-                                    {{#is name 'Articles'}}
-                                    Articles only
-                                    {{else}}
-                                    {{#is name 'Community'}}
-                                    Discussions only
-                                    {{else}}
-                                    {{name}}
-                                    {{/is}}
-                                    {{/is}}
-                                    {{/is}}
-                                </a>
-                                {{/if}}
-                                {{/each}}
-
-                            </div>
-
-                        </fieldset>
-                    </div>
-                </div>
-
-                <script>
-                    $(".tl-search--filter-radio").click(function () {
-                        location.href = $(this).attr("value");
-                    });
-                </script>
-
-                {{/if}}
             <div class="govuk-grid-column-two-thirds">
                 {{#if results}}
                 {{#is results_count 1}}
@@ -182,24 +120,6 @@
 
 
                 {{/if}}
-
-
-                <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-top-9 govuk-!-margin-bottom-8">
-                <h2 class="govuk-heading-m">Can't find what you're looking for?</h2>
-                <p class="govuk-body">If you have questions about T Levels, you can ask the T Levels community in the discussion forum.</p>
-                <p class="govuk-body">
-                    {{#link 'posts' class='govuk-link tl-search--results--forums'}}
-                    Go to the forum
-                    {{/link}}
-                </p>
-                <div id="tl-search--ticket" class="tl-js-hidden">
-                    <p class="govuk-body">You can also contact the Education and Skills Funding Agency (ESFA) directly if you have questions about marketing, events or general feedback. </p>
-                    <p class="govuk-body">
-                        {{#link 'new_request' class='govuk-link tl-search--results--contact'}}
-                        Contact us
-                        {{/link}}
-                    </p>
-                </div>
             </div>
 
             </div>
