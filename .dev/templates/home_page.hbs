@@ -44,11 +44,13 @@
             {{#each categories}}
             {{#isnt name "How this site works"}}
             {{#isnt name "Workshops and webinars"}}
+            {{#isnt name "Talk to a specialist"}}
             <div class="tl-home--category">
                 <span class="tl-home--category--image"></span>
                 <h3 class="govuk-heading-m"><a href="{{url}}" class="govuk-link" GTMname="{{name}}">{{name}}</a></h3>
                 <p class="govuk-body">{{excerpt description}}</p>
             </div>
+            {{/isnt}}
             {{/isnt}}
             {{/isnt}}
             {{/each}}
@@ -89,20 +91,30 @@
 
             <div class="govuk-grid-column-one-half">
                 <div class="tl-card tl-js-hidden" id="tl-home--ticket">
-                    <h3 class="govuk-heading-m">Online</h3>
-                    <p class="govuk-body">
-                        Use our {{#link 'new_request' class='govuk-link' }}contact form{{/link}} to ask us a question or tell us if you're ready to offer an industry placement.
-                    </p>
-                    <p class="govuk-body govuk-!-margin-bottom-7">You'll usually receive a reply within 2 working days. </p>
+                    <h3 class="govuk-heading-m">Online and phone</h3>
+                    <p class="govuk-body">Use our {{#link 'new_request' class='govuk-link' }}online contact form{{/link}} to ask us a question or tell us if you’re ready to offer an industry placement.</p>
+                    <p class="govuk-body">You’ll usually receive a reply within 2 working days.</p>
+                    <p class="govuk-body">Or you can call us on 0800 150 600 (choose option 4).</p> 
+                    <p class="govuk-body">Our opening times are 8am to 10pm, Monday to Friday.</p>
+                    <p class="govuk-body"><a href="https://www.gov.uk/call-charges" class="govuk-link" target="_blank">Find out about call charges</a>.</p>                        
                 </div>
             </div>
 
             <div class="govuk-grid-column-one-half">
+                {{#each categories}}
+                {{#is name "Talk to a specialist"}}
                 <div class="tl-card" id="tl-home--phone">
-                    <h3 class="govuk-heading-m">Phone</h3>
-                    <p class="govuk-body">Call us on 0800 150 600 (choose option 4)</p>
-                    <p class="govuk-body">Our opening times are 8am to 8pm, Monday to Friday.</p><p class="govuk-body"><a href="https://www.gov.uk/call-charges" class="govuk-link" target="_blank">Find out about call charges</a>.</p>
+                    <h3 class="govuk-heading-m">{{name}}</h3>
+                    <p class="govuk-body">
+                        Get free, hands-on support to help you plan, prepare and deliver an industry placement.
+                    </p>
+                    <p class="govuk-body">
+                        We offer varying levels of support, from one-to-one phone calls to online group sessions.
+                    </p>
+                    <p class="govuk-body"><a href="{{url}}" class="govuk-link" target="_blank">Find out more</a>.</p>
                 </div>
+                {{/is}}
+                {{/each}}
             </div>
 
         </div>
