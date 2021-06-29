@@ -73,29 +73,12 @@
                             </div>
                             <div id="accordion-default-content-{{id}}" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-{{id}}">
                                 {{#if articles}}
-                                <ul class="govuk-list">
+                                <ul class="govuk-list tl-flex-list">
                                     {{#each articles}}
 
-                                    {{#if labels}}
-                                    <li class="govuk-!-font-weight-bold">
+                                    <li {{#each labels}}{{#is identifier 'casestudy'}}class="govuk-!-font-weight-bold tl-flex-list--first"{{/is}}{{/each}}>
                                         <a class="govuk-link tl-category--article" href="{{url}}">{{title}}</a>
                                     </li>
-                                    {{else}}
-                                    
-                                    {{/if}}
-
-                                    {{/each}}
-
-                                    {{#each articles}}
-
-                                    {{#if labels}}
-                                    
-                                    {{else}}
-                                    <li>
-                                        <a class="govuk-link tl-category--article" href="{{url}}">{{title}}</a>
-                                    </li>
-                                    {{/if}}
-
                                     {{/each}}
 
                                     {{#if more_articles}}
