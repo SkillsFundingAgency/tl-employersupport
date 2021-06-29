@@ -4832,10 +4832,10 @@
 .tl-flex-list {
   display: flex;
   flex-direction: column; }
-  .tl-flex-list li {
-    order: -1; }
   .tl-flex-list--first {
     order: 1; }
+  .tl-flex-list li {
+    order: -1; }
 
 .tl-search {
   display: flex; }

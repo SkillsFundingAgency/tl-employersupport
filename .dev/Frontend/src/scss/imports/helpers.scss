@@ -123,11 +123,11 @@
     display: flex;
     flex-direction: column;
 
-    li {
-        order: -1;
-    }
-
     &--first {
         order: 1
+    }
+
+    li {
+        order: -1;
     }
 }
