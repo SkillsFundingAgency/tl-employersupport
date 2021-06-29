@@ -1,0 +1,117 @@
+<div class="govuk-width-container ">
+    <!-- Phase banner -->
+    <div class="govuk-phase-banner tl-phase-banner tl-phase-banner--home">
+        <p class="govuk-phase-banner__content">
+            <a href="{{settings.survey_link}}" id="tl-header--feedback-button">
+                <strong class="govuk-tag govuk-phase-banner__content__tag">
+                    Give feedback
+                </strong>
+            </a>
+            <span class="govuk-phase-banner__text">
+                This is a new service - <a class="govuk-link" href="{{settings.survey_link}}" id="tl-header--feedback-link">help us to improve it</a>
+            </span>
+        </p>
+    </div>
+</div>
+
+
+<!-- Main content -->
+<main id="main-content" role="main">
+
+
+    <div class="govuk-width-container">
+        <div id="tl-breadcrumbs--category">
+            <div class="tl-breadcrumbs">
+                {{breadcrumbs}}
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Article Content -->
+    <div class="govuk-width-container govuk-main-wrapper">
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <h1 class="govuk-heading-xl">{{category.name}}</h1>
+                {{#if category.description}}
+                <p class="govuk-body-l">{{category.description}}</p>
+                {{/if}}
+                <section>
+
+                    {{#is sections.length 1}}
+                    {{#each sections}}
+                    <ul class="govuk-list">
+                        {{#if articles}}
+
+                        {{#each articles}}
+                        <li>
+                            <a class="govuk-link govuk-!-margin-bottom-1" href="{{url}}">{{title}}</a>
+                        </li>
+                        {{/each}}
+
+                        {{else}}
+                        <ul class="govuk-list">
+                            <li>
+                                <p class="govuk-body">There's nothing here at the moment</p>
+                            </li>
+                        </ul>
+                        {{/if}}
+                    </ul>
+                    {{/each}}
+                    {{else}}
+                    <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default--{{category.id}}">
+
+                        {{#each sections}}
+                        <div class="govuk-accordion__section ">
+                            <div class="govuk-accordion__section-header">
+                                <h2 class="govuk-accordion__section-heading">
+                                    <span class="govuk-accordion__section-button" id="accordion-default-heading-{{id}}">
+                                        {{name}}
+                                    </span>
+                                </h2>
+                            </div>
+                            <div id="accordion-default-content-{{id}}" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-{{id}}">
+                                {{#if articles}}
+                                <ul class="govuk-list">
+                                    {{#each articles}}
+
+                                    {{#if labels}}
+                                    <li>
+                                        <a class="govuk-link tl-category--article" href="{{url}}">{{title}}</a>
+                                    </li>
+                                    {{else}}
+                                    <li>
+                                        <a class="govuk-link tl-category--article" href="{{url}}">{{title}}</a>
+                                    </li>
+                                    {{/if}}
+
+                                    {{/each}}
+
+                                    {{#if more_articles}}
+                                    <li class="govuk-!-margin-top-4">
+                                        <a class="govuk-link govuk-body-s tl-category--more" href="{{url}}">
+                                            {{t 'show_all_articles' count=article_count}}
+                                        </a>
+                                    </li>
+                                    {{/if}}
+                                </ul>
+                                {{else}}
+                                <ul class="govuk-list">
+                                    <li>
+                                        <p class="govuk-body">There's nothing here at the moment</p>
+                                    </li>
+                                </ul>
+                                {{/if}}
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+
+                    {{/is}}
+                </section>
+            </div>
+        </div>
+    </div>
+</main>
+
