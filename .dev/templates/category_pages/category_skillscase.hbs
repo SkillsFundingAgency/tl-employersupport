@@ -81,6 +81,16 @@
                                         <a class="govuk-link tl-category--article" href="{{url}}">{{title}}</a>
                                     </li>
                                     {{else}}
+                                    
+                                    {{/if}}
+
+                                    {{/each}}
+
+                                    {{#each articles}}
+
+                                    {{#if labels}}
+                                    
+                                    {{else}}
                                     <li>
                                         <a class="govuk-link tl-category--article" href="{{url}}">{{title}}</a>
                                     </li>
