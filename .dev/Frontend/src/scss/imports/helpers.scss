@@ -124,10 +124,7 @@
     flex-direction: column;
 
     &--first {
-        order: 1
+        order: -1
     }
 
-    li {
-        order: -1;
-    }
 }
