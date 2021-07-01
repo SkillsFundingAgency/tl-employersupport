@@ -73,13 +73,13 @@
             <div class="govuk-grid-column-one-half">
                 <h2 class="govuk-heading-l">About T Levels</h2>
                 <p class="govuk-body">
-                    <a href="https://www.tlevels.gov.uk/" class="govuk-link">T Levels</a> are a new qualification for students aged 16-19 who've finished GSCEs. They sit alongside A Levels and apprenticeships to give young people the technical and practical skills needed to be an asset in the workplace.
+                    <a href="https://www.tlevels.gov.uk/" class="govuk-link" id="tl-home--tlevels">T Levels</a> are a new qualification for students aged 16-19 who've finished GSCEs. They sit alongside A Levels and apprenticeships to give young people the technical and practical skills needed to be an asset in the workplace.
                 </p>
                 <p class="govuk-body">T Levels combine classroom learning with a substantial industry placement.</p>
             </div>
 
             <div class="govuk-grid-column-one-half">
-                <iframe class="tl-home--video" width="560" height="315" src="https://www.youtube-nocookie.com/embed/tjNeXtgFQ4Y?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe class="tl-home--video" id="tl-home--video" width="560" height="315" src="https://www.youtube-nocookie.com/embed/tjNeXtgFQ4Y?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
 
@@ -93,10 +93,10 @@
             <div class="govuk-grid-column-one-half tl-row-fill">
                 <div class="tl-card tl-js-hidden" id="tl-home--ticket">
                     <h3 class="govuk-heading-m">Online and phone</h3>
-                    <p class="govuk-body">Use our {{#link 'new_request' class='govuk-link' }}online contact form{{/link}} to ask us a question or tell us if you're ready to offer an industry placement.</p>
+                    <p class="govuk-body">Use our {{#link 'new_request' class='govuk-link' id='tl-home--contact' }}online contact form{{/link}} to ask us a question or tell us if you're ready to offer an industry placement.</p>
                     <p class="govuk-body">You'll usually receive a reply within 2 working days.</p>
                     <p class="govuk-body">Or you can call us on 0800 150 600 (choose option 4). Our opening times are 8am to 10pm, Monday to Friday.</p>
-                    <p class="govuk-body"><a href="https://www.gov.uk/call-charges" class="govuk-link" target="_blank">Find out about call charges</a></p>
+                    <p class="govuk-body"><a href="https://www.gov.uk/call-charges" id="tl-home--charges" class="govuk-link" target="_blank">Find out about call charges</a></p>
                 </div>
             </div>
 
@@ -111,7 +111,7 @@
                     <p class="govuk-body">
                         We offer varying levels of support, from one-to-one phone calls to online group sessions.
                     </p>
-                    <p class="govuk-body"><a href="{{url}}" class="govuk-link">Find out more</a></p>
+                    <p class="govuk-body"><a href="{{url}}" id="tl-home--specialist" class="govuk-link">Find out more</a></p>
                 </div>
                 {{/is}}
                 {{/each}}
