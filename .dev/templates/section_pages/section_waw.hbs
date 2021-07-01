@@ -50,19 +50,19 @@
                             </h1>
                         </legend>
                         <div class="govuk-radios--small tl-filter--radios">
-                            <div class="govuk-radios__item">
+                            <div class="govuk-radios__item" id="tl-waw-filter--all">
                                 <input class="govuk-radios__input" id="event-type" name="Event type" type="radio" value="all" checked="checked">
                                 <label class="govuk-label govuk-radios__label" for="event-type">
                                     All events
                                 </label>
                             </div>
-                            <div class="govuk-radios__item">
+                            <div class="govuk-radios__item" id="tl-waw-filter--workshops">
                                 <input class="govuk-radios__input" id="event-type-2" name="Event type" type="radio" value="workshops">
                                 <label class="govuk-label govuk-radios__label" for="event-type-2">
                                     Workshops
                                 </label>
                             </div>
-                            <div class="govuk-radios__item">
+                            <div class="govuk-radios__item" id="tl-waw-filter--webinars">
                                 <input class="govuk-radios__input" id="event-type-3" name="Event type" type="radio" value="webinars">
                                 <label class="govuk-label govuk-radios__label" for="event-type-3">
                                     Webinars
@@ -109,7 +109,7 @@
                             <h3 class="govuk-heading-m govuk-!-margin-bottom-0">{{title}}</h3>
                             <span class="govuk-body-s tl-text-headercase" id="tl-article--date--{{id}}"></span>
                             <p class="govuk-body">{{excerpt body characters=400}}</p>
-                            <a class="govuk-link tl-category--article" href="{{url}}">Book your place</a>
+                            <a class="govuk-link tl-waw--book" GTMname="{{title}}" href="{{url}}">Book your place</a>
                             <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
                         </li>
 
