@@ -243,7 +243,7 @@
                 var request = { "requester": { "name": "Article Feedback" }, "subject": "T Levels Employers Article Feedback - {{article.title}}", "comment": {"body": comment}}
 
                 $.ajax({
-                    url: "/api/v2/requests.json",
+                    url: "https://esfa.zendesk.com/api/v2/requests.json",
                     type: 'POST',
                     data: JSON.stringify({request: request}),
                     contentType: "application/json",
