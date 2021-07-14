@@ -23,17 +23,16 @@ $(document).ready(function () {
     });
 });
 
-
 // Search error messaging
 
 var searchbox = $(".tl-search--container input[type=search]");
 
 function showerror(message) {
-    $(".tl-search--error").removeClass("tl-hidden");
-    $(".tl-form-group").addClass("tl-form-group--error");
-    $(".tl-search #query").addClass("tl-input--error");
-    $(".tl-error--message").text(message);
-    $(".tl-input--error:visible:first").focus();
+    $(".tl-search--container .tl-search--error").removeClass("tl-hidden");
+    $(".tl-search--container .tl-form-group").addClass("tl-form-group--error");
+    $(".tl-search--container .tl-search #query").addClass("tl-input--error");
+    $(".tl-search--container .tl-error--message").text(message);
+    $(".tl-search--container .tl-input--error:visible:first").focus();
 }
 
 $(document).ready(function () {
