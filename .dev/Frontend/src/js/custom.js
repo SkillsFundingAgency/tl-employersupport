@@ -45,6 +45,27 @@ $(document).ready(function () {
     });
 });
 
+// Search header messaging
+
+var headersearchbox = $(".tl-header--search input[type=search]");
+
+function showheadererror(message) {
+    $(".tl-header--search .tl-search--error").removeClass("tl-hidden");
+    $(".tl-header--search .tl-form-group").addClass("tl-form-group--error");
+    $(".tl-header--search .tl-search #query").addClass("tl-input--error");
+    $(".tl-header--search .tl-error--message").text(message);
+    $(".tl-header--search .tl-input--error:visible:first").focus();
+}
+
+$(document).ready(function () {
+    $(".tl-header--search").submit(function () {
+        if (!headersearchbox.val()) {
+            event.preventDefault();
+            showheadererror("You must enter a search term");
+        }
+    });
+});
+
 
 /* Make tabs and details work in articles */
 

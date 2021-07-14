@@ -1,4 +1,4 @@
-<!-- Google Tag Manager (noscript) -->
+﻿<!-- Google Tag Manager (noscript) -->
 <noscript>
     <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KC5LN7P"
             height="0" width="0" style="display:none;visibility:hidden"></iframe>
@@ -55,9 +55,13 @@
             </a>
 
             <div class="tl-header--search">
-
-                {{search placeholder="Search for support" submit=true instant=settings.instant_search class='tl-search'}}
-
+                <div class="tl-search--error tl-hidden">
+                    <span class="tl-error--message"></span>
+                </div>
+                <form role="search" class="tl-search" data-search="" action="/hc/en-gb/search" accept-charset="UTF-8" method="get">
+                    <input name="utf8" type="hidden" value="✓"><input type="search" name="query" id="query" placeholder="Search for support" aria-label="Search for support">
+                    <input type="submit" name="commit" value="Search">
+                </form>
             </div>
         </div>
 
