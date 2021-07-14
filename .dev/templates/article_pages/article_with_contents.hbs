@@ -18,6 +18,26 @@
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                 <h1 class="govuk-heading-xl">{{article.title}}</h1>
+
+                <script>
+                    $(document).ready(function () {
+                        $('.tl-article--content').find('h2').each(function (index, value) {
+                            if ($(this).text() == 'Overview') {
+                                $('#tl-article--contents').append('<li class="govuk-body-s">&#8212; ' + $(this).html() + '</li>');
+                            }
+
+                            else {
+                                $('#tl-article--contents').append('<li class="govuk-body-s">&#8212; <a class="govuk-link" href="#anchor-' + index + '">' + $(this).html() + '</a></li>');
+                                $(this).html('<a name="anchor-' + index + '">' + $(this).html() + '</a>');
+                            }
+                        });
+                    });
+
+                </script>
+                <h2 class="govuk-heading-m govuk-!-margin-top-6">Contents</h2>
+                <ul class="govuk-list" id="tl-article--contents">
+                </ul>
+
                 <div class="tl-article--content">{{article.body}}</div>
 
                 <section class="tl-attachments">

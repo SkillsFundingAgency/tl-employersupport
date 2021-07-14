@@ -1,18 +1,3 @@
-<div class="govuk-width-container ">
-    <!-- Phase banner -->
-    <div class="govuk-phase-banner tl-phase-banner tl-phase-banner--home">
-        <p class="govuk-phase-banner__content">
-            <a href="{{settings.survey_link}}" id="tl-header--feedback-button">
-                <strong class="govuk-tag govuk-phase-banner__content__tag">
-                    Give feedback
-                </strong>
-            </a>
-            <span class="govuk-phase-banner__text">
-                This is a new service - <a class="govuk-link" href="{{settings.survey_link}}" id="tl-header--feedback-link">help us to improve it</a>
-            </span>
-        </p>
-    </div>
-</div>
 
 <!-- Main content -->
 <main id="main-content" role="main">
@@ -201,7 +186,7 @@
                 var request = { "requester": { "name": "Article Feedback" }, "subject": "T Levels Employers Article Feedback - {{article.title}}", "comment": {"body": comment}}
 
                 $.ajax({
-                    url: "https://esfa1567428279.zendesk.com/api/v2/requests.json",
+                    url: "https://esfa.zendesk.com/api/v2/requests.json",
                     type: 'POST',
                     data: JSON.stringify({request: request}),
                     contentType: "application/json",
