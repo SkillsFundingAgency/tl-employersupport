@@ -1,0 +1,43 @@
+﻿<!-- Main content -->
+<main id="main-content" role="main">
+    <div class="govuk-width-container">
+        <div id="tl-breadcrumbs--article">
+            <div class="tl-breadcrumbs">
+                {{breadcrumbs}}
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- Article Content -->
+    <div class="govuk-width-container govuk-main-wrapper">
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+                <div class="tl-card">
+
+                    <h1 class="govuk-heading-xl">{{article.title}}</h1>
+                    
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+</main>
+
+
+<script src="{{asset 'postcodesapi.js'}}"></script>
+
+<script>
+    const postcodeAnywhereApiKey = "{{settings.postcodes_api}}";
+    $(function () {
+        console.log("disabling address-details");
+        $('#address-details').addClass('disabled');
+    });
+</script>

@@ -26,6 +26,7 @@
         <div class="tl-home--categories">
 
             {{#each categories}}
+            {{#isnt name "Find your nearest T Level Provider"}}
             {{#isnt name "How this site works"}}
             {{#isnt name "Workshops and webinars"}}
             {{#isnt name "Tailored support sessions"}}
@@ -34,6 +35,7 @@
                 <h3 class="govuk-heading-m"><a href="{{url}}" class="govuk-link" GTMname="{{name}}">{{name}}</a></h3>
                 <p class="govuk-body">{{excerpt description}}</p>
             </div>
+            {{/isnt}}
             {{/isnt}}
             {{/isnt}}
             {{/isnt}}
