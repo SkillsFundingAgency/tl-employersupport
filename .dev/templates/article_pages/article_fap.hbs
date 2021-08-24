@@ -44,7 +44,7 @@
 <script type="text/javascript">
 
 	$(document).ready(function() {
-        let findProvidersApiUrl = {{ settings.find_provider_api }};
+        let findProvidersApiUrl = "'"+{{ settings.find_provider_api }}+"'";
 		if (findProvidersApiUrl.substr(-1) != '/') findProvidersApiUrl += '/'
 
 		console.log(`findProvidersApiUrl is ${findProvidersApiUrl}`);
