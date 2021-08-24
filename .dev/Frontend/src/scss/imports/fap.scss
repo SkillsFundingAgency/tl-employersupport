@@ -1,0 +1,6 @@
+.tl-fap--distance {
+    @include govuk-font($size: 16, $weight: bold);
+    background-color: govuk-colour("light-grey");
+    padding: 3px 5px;
+    float: right;
+}
