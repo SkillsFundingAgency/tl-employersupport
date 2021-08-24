@@ -1,72 +1,219 @@
 ﻿<!-- Main content -->
 <main id="main-content" role="main">
 
-    
-    <div class="govuk-width-container govuk-main-wrapper govuk-!-padding-top-0">
+	<div class="govuk-width-container govuk-main-wrapper govuk-!-padding-top-0">
 
+		<!-- Search Box -->
+		<div class="govuk-grid-row">
+			<div class="govuk-grid-column-full">
+				<div class="tl-card">
+					<h1 class="govuk-heading-xl govuk-!-margin-top-2 govuk-!-margin-bottom-7">{{article.title}}</h1>
+					<p class="govuk-body">Search for providers who are delivering T Levels</p>
+					<!-- TODO: Style error -->
+					<span class="tl-hidden" id="tl-postcode-error">You must enter a postcode</span>
+					<input class="govuk-input govuk-input--width-10" id="tl-postcode" name="tl-postcode" type="text" placeholder="Enter a postcode">
+					<select class="govuk-select " id="tl-qualifications" name="qualifications">
+						<option value="0">All T Level Courses</option>
+					</select>
+					<button class="govuk-button tl-button--blue" id="tl-search-providers" data-module="govuk-button">
+						Search
+					</button>
+				</div>
+			</div>
+		</div>
 
-        <!-- Search Box -->
-        <div class="govuk-grid-row">
-            <div class="govuk-grid-column-full">
-                <div class="tl-card">
+		<!-- Search Results -->
+		<div class="govuk-grid-row">
+			<div class="govuk-grid-column-two-thirds govuk-!-margin-top-7" id="tl-fap--results">
 
-                    <h1 class="govuk-heading-xl govuk-!-margin-top-2 govuk-!-margin-bottom-7">{{article.title}}</h1>
-                    <p class="govuk-body">Search for providers who are delivering T Levels</p>
-                    <input class="govuk-input govuk-input--width-10" id="event-name" name="event-name" type="text" placeholder="Enter a postcode">
-                    <select class="govuk-select " id="sort" name="sort">
-                        <option>All T Level Courses</option>
-                        <option>Agriculture, environment and animal care</option>
-                        <option>Business and administration</option>
-                        <option>Catering</option>
-                        <option>Construction</option>
-                        <option>Creative and design</option>
-                        <option>Digital and IT</option>
-                        <option>Education and childcare</option>
-                        <option>Engineering and manufacturing</option>
-                        <option>Hair and beauty</option>
-                        <option>Health and science</option>
-                        <option>Legal, finance and accounting</option>
-                    </select>
-                    <button class="govuk-button tl-button--blue" data-module="govuk-button">
-                        Search
-                    </button>
+				<div class="tl-fap--noresult tl-hidden">
+					<h2 class="govuk-heading-l">0 results</h2>
+					<p class="govuk-body">Enter a postcode to search for providers offering T Levels.</p>
+				</div>
 
+				<div class="tl-fap--result">
+				</div>
 
-                </div>
-            </div>
-        </div>
-
-
-
-
-        <!-- Search Results -->
-        <div class="govuk-grid-row">
-            <div class="govuk-grid-column-two-thirds govuk-!-margin-top-7" id="tl-fap--results">
-
-                <!--<div class="tl-fap--noresult">
-                    <h2 class="govuk-heading-l">0 results</h2>
-                    <p class="govuk-body">Enter a postcode to search for providers offering T Levels.</p>
-                </div>-->
-                
-                
-                <div class="tl-fap--result">
-                    <h3 class="govuk-heading-m">Warwickshire College <span class="tl-fap--distance">3 miles</span></h3>
-                    <p class="govuk-body">Leamington Spa | CV32 5JE <a href="#" class="govuk-link govuk-!-margin-left-4">How do I get there?</a></p>
-                    <div class="tl-fap--courses">
-                        <p class="govuk-body govuk-!-font-weight-bold">From September 2021 onwards:</p>
-                        <ul class="govuk-list govuk-list--bullet">
-                            <li>Digital Support Services</li>
-                        </ul>
-                    </div>
-                    <p class="govuk-body"><a href="#" class="govuk-link govuk-!-margin-right-4">info@warwickshire.ac.uk</a> Call on: 0300 456 0047</p>
-                    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-                </div>
-
-                <p class="govuk-body"><a class="govuk-link" href="#">Show 5 more results</a></p>
-            </div>
-        </div>
-
-
-    </div>
-
+				<!--<p class="govuk-body"><a class="govuk-link" id="next-results-link" href="#">Show 5 more results</a></p>-->
+			</div>
+		</div>
+	</div>
 </main>
+
+<!-- <script src="{{asset 'findproviderapi.js'}}"></script> -->
+<script type="text/javascript">
+
+	$(document).ready(function() {
+        //TODO: Use handlebarred setting here
+        //let findProvidersApiUrl = __handlebars__settings.find_provider_api__handlebars__
+		let findProvidersApiUrl = "https://dev.api.findatlevelprovider.education.gov.uk/findproviders/api/";
+		if (findProvidersApiUrl.substr(-1) != '/') findProvidersApiUrl += '/'
+
+		console.log(`findProvidersApiUrl is ${findProvidersApiUrl}`);
+
+		loadQualifications();
+
+		//Check for query param
+		const postcode = getUrlParameter("search");
+		if (postcode) {
+			console.log(`Have postcode to search for ${urlDecode(postcode)}`);
+			providerSearch(urlDecode(postcode));
+		}
+
+		$("#tl-search-providers").click(function() {
+			return providerSearch($("#tl-postcode").val().trim(), $("#tl-qualifications").val(), 0, 5);
+		});
+
+        $('#tl-postcode').keypress(function (e) {
+            if (e.which === 13) {
+                $("#tl-search-providers").click();
+                return false;
+            }
+        }); 
+
+		$("#next-results-link").click(function() {
+			event.stopPropagation();
+			console.log("Get next n results link clicked");
+			//This would call the provider search function, passing in the current page + 1
+		});
+
+		function loadQualifications() {
+			console.log('loading qualifications');
+			$.getJSON(`${findProvidersApiUrl}qualifications`)
+				.then(function(data) {
+					console.log('Qualifications request succeeded with JSON response:', data);
+					populateQualifications(data);
+				})
+				.fail(function(jqxhr, error) {
+					console.log(`Call to get qualifications failed. ${error}`);
+				});
+		}
+
+		function providerSearch(postcode, qualificationId=null, page=0, pageSize=5) {
+			if (postcode === "") {
+				event.stopPropagation();
+				showPostcodeError("You must enter a postcode");
+				return false;
+			}
+
+			clearProviderSearchResults();
+
+			console.log(`Searching for postcode = '${postcode}', qualificationId = ${qualificationId}`);
+
+			const searchParams = new URLSearchParams({
+				postcode: postcode,
+				qualificationId: qualificationId,
+				page: page,
+				pageSize: pageSize
+			}).toString();
+
+            //TODO: Get findProvidersApiUrl again? It should come from closure above
+            /* /${encodeURIComponent(postcode)}`; */
+            const requestUri = `${findProvidersApiUrl}providers?${searchParams}`;
+            console.log(`requestUri = '${requestUri}`);
+
+			$.getJSON(requestUri)
+				.then(function(data) {
+					console.log('Provider request succeeded with JSON response:', data);
+					populateProviderSearchResults(data);
+				})
+				.fail(function(jqxhr, textStatus, error) {
+					if (jqxhr.status === 404) {
+						console.log("jqxhr.statusText: " + jqxhr.statusText);
+						console.log("jqxhr.status: " + jqxhr.status);
+						console.log("textStatus: " + textStatus);
+						console.log("error: " + error);
+						console.log("jqxhr: ");
+						console.log(jqxhr);
+
+						showPostcodeError("Postcode not found");
+					}
+				});
+
+			return true;
+		}
+
+		function clearProviderSearchResults() {
+			$('#tl-postcode-error').addClass("tl-hidden");
+			$("#tl-fap--results").find(".tl-fap--result").remove();
+		}
+
+		function populateProviderSearchResults(data) {
+			$.each(data,
+				function(_, providerLocation) {
+					console.log(providerLocation);
+
+					//TODO: check for missing journeyToLink
+					let searchResult =
+						`<div class="tl-fap--result"> \
+						 <h3 class="govuk-heading-m">${providerLocation.providerName} <span class="tl-fap--distance">${providerLocation.distance.toFixed(0)} miles</span></h3> \
+						 <p class="govuk-body">${providerLocation.locationName} | ${providerLocation.postcode} \
+						 <a target="_blank" href="${providerLocation.journeyToLink}" class="govuk-link govuk-!-margin-left-4">How do I get there?</a></p> \
+							<div class="tl-fap--courses">`;
+
+					$.each(providerLocation.deliveryYears,
+						function(_, deliveryYear) {
+                            const availability = deliveryYear.isAvailableNow
+                                ? 'Available now'
+                                : `From September ${deliveryYear.year} onwards`;
+
+                            searchResult += `<p class="govuk-body govuk-!-font-weight-bold">${availability}:</p> \
+								<ul class="govuk-list govuk-list--bullet">`;
+
+							$.each(deliveryYear.qualifications,
+								function(_, qualification) {
+									searchResult += `<li>${qualification.name}</li>`;
+								});
+
+							searchResult += `</ul>`;
+						});
+
+					//TODO: Deal with no email or no phone, hide as appropriate
+					searchResult += `</div> \
+						<p class="govuk-body"><a href="mailto:${providerLocation.email}" class="govuk-link govuk-!-margin-right-4">${providerLocation.email}</a> Call on: ${providerLocation.telephone}</p> \
+						<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible"> \
+					</div>`;
+
+					$("#tl-fap--results").append(searchResult);
+				});
+
+			//If we want 5 more, add the link here
+			//TODO: Can include page number as query on the link
+			//$("#tl-fap--results").append(`<p class="govuk-body"><a class="govuk-link" id="next-results-link" href="#">Show 5 more results</a></p>`);
+		}
+
+		function populateQualifications(data) {
+			const select = $("#tl-qualifications");
+			select.find("option:not(:first)").remove();
+			$.each(data,
+				function(_, item) {
+					//console.log(`${item.id} - ${item.name}`);
+					select.append(new Option(item.name, item.id));
+				});
+		}
+
+		function showPostcodeError(message) {
+			$("#tl-postcode-error").text(message);
+			//$(".tl-search--form").addClass("tl-validation--error");
+			$('#tl-postcode-error').removeClass("tl-hidden");
+		}
+
+		function urlDecode(str) {
+			return decodeURIComponent((str + '').replace(/\+/g, '%20'));
+		}
+
+		function getUrlParameter(key) {
+			const pageUrl = window.location.search.substring(1);
+			const urlVars = pageUrl.split('&');
+
+			for (let i = 0; i < urlVars.length; i++) {
+				const parameter = urlVars[i].split('=');
+				if (parameter[0] === key) {
+					return parameter[1];
+				}
+			}
+
+			return null;
+		}
+	});
+</script>
