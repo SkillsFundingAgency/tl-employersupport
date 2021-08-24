@@ -250,6 +250,20 @@
           "description": "Postcodes API",
           "label": "Postcodes API",
           "value": "EC68-PM92-AG92-GA77"
+        },
+        {
+          "identifier": "find_provider_api",
+          "type": "text",
+          "description": "Find a Provider API",
+          "label": "Postcodes API",
+          "value": "https://dev.api.findatlevelprovider.education.gov.uk/findproviders/api/"
+        },
+        {
+          "identifier": "article_id_find_provider",
+          "type": "text",
+          "description": "Find Provider",
+          "label": "Find Provider",
+          "value": "4404794078226"
         }
       ]
     },
