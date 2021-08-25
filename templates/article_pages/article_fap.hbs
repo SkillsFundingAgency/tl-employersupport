@@ -70,8 +70,9 @@
 		let postcode = getUrlParameter("search");
 		if (postcode) {
             postcode = urlDecode(postcode).toUpperCase();
-			console.log(`Found search query with postcode to search for '${postcode}''`);
+			console.log(`Found search query with postcode to search for '${postcode}'`);
             $("#tl-postcode").val(postcode);
+			providerSearch(postcode);
 		}
 
 		$("#tl-search-providers").click(function() {
