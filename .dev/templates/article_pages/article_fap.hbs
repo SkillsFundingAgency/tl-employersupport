@@ -9,7 +9,6 @@
 				<div class="tl-card">
 					<h1 class="govuk-heading-xl govuk-!-margin-top-2 govuk-!-margin-bottom-7">{{article.title}}</h1>
 					<p class="govuk-body">Search for providers who are delivering T Levels</p>
-					<!-- TODO: Style error -->
 					<span class="govuk-error-message tl-hidden" id="tl-postcode-error">You must enter a postcode</span>
 					<input class="govuk-input govuk-input--width-10 govuk-body-s" id="tl-postcode" name="tl-postcode" type="text" placeholder="Enter a postcode">
 					<select class="govuk-select govuk-body-s" id="tl-qualifications" name="qualifications">
@@ -67,11 +66,12 @@
 
 		loadQualifications();
 
-		//Check for query param
+		//Check for search query param with postcode
 		const postcode = getUrlParameter("search");
 		if (postcode) {
-			console.log(`Have postcode to search for ${urlDecode(postcode)}`);
-			providerSearch(urlDecode(postcode));
+            postcode = urlDecode(postcode).toUpperCase();
+			console.log(`Found search query with postcode to search for '${postcode}''`);
+            $("#tl-postcode").val(postcode);
 		}
 
 		$("#tl-search-providers").click(function() {
@@ -103,7 +103,7 @@
 				});
 		}
 
-		function providerSearch(postcode, qualificationId=null, page=0, pageSize=5) {
+		function providerSearch(postcode, qualificationId=0, page=0, pageSize=5) {
 			if (postcode === "") {
 				event.stopPropagation();
 				showPostcodeError("You must enter a postcode");
@@ -121,8 +121,6 @@
 				pageSize: pageSize
 			}).toString();
 
-            //TODO: Get findProvidersApiUrl again? It should come from closure above
-            /* /${encodeURIComponent(postcode)}`; */
             const requestUri = `${findProvidersApiUrl}providers?${searchParams}`;
             console.log(`requestUri = '${requestUri}`);
 
@@ -201,14 +199,12 @@
 			select.find("option:not(:first)").remove();
 			$.each(data,
 				function(_, item) {
-					//console.log(`${item.id} - ${item.name}`);
 					select.append(new Option(item.name, item.id));
 				});
 		}
 
 		function showPostcodeError(message) {
 			$("#tl-postcode-error").text(message);
-			//$(".tl-search--form").addClass("tl-validation--error");
 			$('#tl-postcode-error').removeClass("tl-hidden");
 		}
 
