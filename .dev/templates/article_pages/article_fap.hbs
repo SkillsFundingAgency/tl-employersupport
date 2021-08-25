@@ -10,9 +10,9 @@
 					<h1 class="govuk-heading-xl govuk-!-margin-top-2 govuk-!-margin-bottom-7">{{article.title}}</h1>
 					<p class="govuk-body">Search for providers who are delivering T Levels</p>
 					<!-- TODO: Style error -->
-					<span class="tl-hidden" id="tl-postcode-error">You must enter a postcode</span>
-					<input class="govuk-input govuk-input--width-10" id="tl-postcode" name="tl-postcode" type="text" placeholder="Enter a postcode">
-					<select class="govuk-select " id="tl-qualifications" name="qualifications">
+					<span class="govuk-error-message tl-hidden" id="tl-postcode-error">You must enter a postcode</span>
+					<input class="govuk-input govuk-input--width-10 govuk-body-s" id="tl-postcode" name="tl-postcode" type="text" placeholder="Enter a postcode">
+					<select class="govuk-select govuk-body-s" id="tl-qualifications" name="qualifications">
 						<option value="0">All T Level Courses</option>
 					</select>
 					<button class="govuk-button tl-button--blue" id="tl-search-providers" data-module="govuk-button">
