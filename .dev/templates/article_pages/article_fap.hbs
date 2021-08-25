@@ -147,10 +147,16 @@
 
 		function clearProviderSearchResults() {
 			$('#tl-postcode-error').addClass("tl-hidden");
+			$('.tl-fap--noresult').addClass("tl-hidden");
 			$("#tl-fap--results").find(".tl-fap--result").remove();
 		}
 
 		function populateProviderSearchResults(data) {
+			if (data.length === 0) {
+                $('.tl-fap--noresult').removeClass("tl-hidden");
+                return;
+            }
+			
 			$.each(data,
 				function(_, providerLocation) {
 					console.log(providerLocation);
