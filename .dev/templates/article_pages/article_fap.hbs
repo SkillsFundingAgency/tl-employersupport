@@ -67,7 +67,7 @@
 		loadQualifications();
 
 		//Check for search query param with postcode
-		const postcode = getUrlParameter("search");
+		let postcode = getUrlParameter("search");
 		if (postcode) {
             postcode = urlDecode(postcode).toUpperCase();
 			console.log(`Found search query with postcode to search for '${postcode}''`);
@@ -156,7 +156,7 @@
                 $('.tl-fap--noresult').removeClass("tl-hidden");
                 return;
             }
-			
+
 			$.each(data,
 				function(_, providerLocation) {
 					console.log(providerLocation);
