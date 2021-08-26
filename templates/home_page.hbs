@@ -159,18 +159,21 @@
     });
 
     $(document).ready(function() {
+        $('#tl-postcode').val("");
+
         $('#tl-postcode').keypress(function (e) {
             if (e.which === 13) {
                 $("#tl-search-providers").click();
                 return false;
             }
-        }); 
+        });
+
         $("#tl-search-providers").click(function() {
             const postcode = $("#tl-postcode").val().trim();
 
             if (postcode === "") {
                 event.stopPropagation();
-                showPostcodeError("You must enter a postcode");
+                showPostcodeError("Enter a postcode");
                 return false;
             }
 

@@ -8,8 +8,8 @@
 			<div class="govuk-grid-column-full">
 				<div class="tl-card">
 					<h1 class="govuk-heading-xl govuk-!-margin-top-2 govuk-!-margin-bottom-7">{{article.title}}</h1>
-					<p class="govuk-body">Search for providers who are delivering T Levels</p>
-					<span class="govuk-error-message tl-hidden" id="tl-postcode-error">You must enter a postcode</span>
+					<p class="govuk-body">Search for schools and colleges delivering T Levels near you.</p>
+					<span class="govuk-error-message tl-hidden" id="tl-postcode-error">Enter a postcode</span>
 					<input class="govuk-input govuk-input--width-10 govuk-body-s" id="tl-postcode" name="tl-postcode" type="text" placeholder="Enter a postcode">
 					<select class="govuk-select govuk-body-s" id="tl-qualifications" name="qualifications">
 						<option value="0">All T Level Courses</option>
@@ -43,7 +43,7 @@
 
 				<div class="tl-fap--noresult tl-hidden">
 					<h2 class="govuk-heading-l">0 results</h2>
-					<p class="govuk-body">Enter a postcode to search for providers offering T Levels.</p>
+					<p class="govuk-body">There are no schools or colleges providing T Levels near you yet. Enter another postcode to search another area.</p>
 				</div>
 
 				<div class="tl-fap--result">
@@ -107,7 +107,7 @@
 		function providerSearch(postcode, qualificationId=0, page=0, pageSize=5) {
 			if (postcode === "") {
 				event.stopPropagation();
-				showPostcodeError("You must enter a postcode");
+				showPostcodeError("Enter a postcode");
 				return false;
 			}
 
@@ -132,14 +132,7 @@
 				})
 				.fail(function(jqxhr, textStatus, error) {
 					if (jqxhr.status === 404) {
-						console.log("jqxhr.statusText: " + jqxhr.statusText);
-						console.log("jqxhr.status: " + jqxhr.status);
-						console.log("textStatus: " + textStatus);
-						console.log("error: " + error);
-						console.log("jqxhr: ");
-						console.log(jqxhr);
-
-						showPostcodeError("Postcode not found");
+						showPostcodeError("Enter a valid postcode");
 					}
 				});
 
@@ -162,13 +155,12 @@
 				function(_, providerLocation) {
 					console.log(providerLocation);
 
-					//TODO: check for missing journeyToLink
 					let searchResult =
 						`<div class="tl-fap--result"> \
 						 <h3 class="govuk-heading-m">${providerLocation.providerName} <span class="tl-fap--distance">${providerLocation.distance.toFixed(0)} miles</span></h3> \
 						 <p class="govuk-body">${providerLocation.locationName} | ${providerLocation.postcode} \
-						 <a target="_blank" href="${providerLocation.journeyToLink}" class="govuk-link govuk-!-margin-left-4">How do I get there?</a></p> \
-							<div class="tl-fap--courses">`;
+						 <a target="_blank" href="${providerLocation.website}" class="govuk-link govuk-!-margin-left-4">Visit website</a></p> \
+						 <div class="tl-fap--courses">`;
 
 					$.each(providerLocation.deliveryYears,
 						function(_, deliveryYear) {
