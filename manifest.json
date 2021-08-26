@@ -1,7 +1,7 @@
 {
   "name": "GDS Style - Employer Support - Find A Provider",
   "author": "Ash Anderton",
-  "version": "0.1.62",
+  "version": "0.1.63",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [
@@ -255,7 +255,7 @@
           "identifier": "find_provider_api",
           "type": "text",
           "description": "Find a Provider API",
-          "label": "Postcodes API",
+          "label": "Find a Provider API",
           "value": "https://test.api.findatlevelprovider.education.gov.uk/findproviders/api/"
         },
         {
