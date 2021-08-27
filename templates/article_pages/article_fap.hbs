@@ -152,41 +152,51 @@
             }
 
 			$.each(data,
-				function(_, providerLocation) {
-					console.log(providerLocation);
+                    function(_, providerLocation) {
+                        console.log(providerLocation);
 
-					let searchResult =
-						`<div class="tl-fap--result"> \
+                        let searchResult =
+                            `<div class="tl-fap--result"> \
 						 <h3 class="govuk-heading-m">${providerLocation.providerName} <span class="tl-fap--distance">${providerLocation.distance.toFixed(0)} miles</span></h3> \
-						 <p class="govuk-body">${providerLocation.locationName} | ${providerLocation.postcode} \
-						 <a target="_blank" href="${providerLocation.website}" class="govuk-link govuk-!-margin-left-4">Visit website</a></p> \
-						 <div class="tl-fap--courses">`;
+						 <p class="govuk-body">${providerLocation.locationName} | ${providerLocation.postcode} `;
 
-					$.each(providerLocation.deliveryYears,
-						function(_, deliveryYear) {
-                            const availability = deliveryYear.isAvailableNow
-                                ? 'Available now'
-                                : `From September ${deliveryYear.year} onwards`;
+                        if (providerLocation.website) searchResult += `<a target="_blank" href="${providerLocation.website}" class="govuk-link govuk-!-margin-left-4">Visit website</a>`
 
-                            searchResult += `<p class="govuk-body govuk-!-font-weight-bold">${availability}:</p> \
+                        searchResult += `</p><div class="tl-fap--courses">`;
+
+                        $.each(providerLocation.deliveryYears,
+                            function(_, deliveryYear) {
+                                const availability = deliveryYear.isAvailableNow
+                                    ? 'Available now'
+                                    : `From September ${deliveryYear.year} onwards`;
+
+                                searchResult += `<p class="govuk-body govuk-!-font-weight-bold">${availability}:</p> \
 								<ul class="govuk-list govuk-list--bullet">`;
 
-							$.each(deliveryYear.qualifications,
-								function(_, qualification) {
-									searchResult += `<li>${qualification.name}</li>`;
-								});
+                                $.each(deliveryYear.qualifications,
+                                    function(_, qualification) {
+                                        searchResult += `<li>${qualification.name}</li>`;
+                                    });
 
-							searchResult += `</ul>`;
-						});
+                                searchResult += `</ul>`;
+                            });
 
-					//TODO: Deal with no email or no phone, hide as appropriate
-					searchResult += `</div> \
-						<p class="govuk-body"><a href="mailto:${providerLocation.email}" class="govuk-link govuk-!-margin-right-4">${providerLocation.email}</a> Call on: ${providerLocation.telephone}</p> \
-						<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible"> \
-					</div>`;
+                        searchResult += `</div>`;
 
-					$("#tl-fap--results").append(searchResult);
-				});
+                        if (providerLocation.email || providerLocation.telephone) {
+                            searchResult += `<p class="govuk-body">`;
+
+                            if (providerLocation.email) searchResult += `<a href="mailto:${providerLocation.email}" class="govuk-link govuk-!-margin-right-4">${providerLocation.email}</a>`;
+                            if (providerLocation.telephone) searchResult += ` Call on: ${providerLocation.telephone}`;
+
+                            searchResult += `</p>`;
+                        }
+
+                        searchResult += `<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible"> \
+					      </div>`;
+
+                        $("#tl-fap--results").append(searchResult);
+                    });
 
 			//If we want 5 more, add the link here
 			//TODO: Can include page number as query on the link
