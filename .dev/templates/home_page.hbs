@@ -2,6 +2,10 @@
     if (window.location.href.indexOf("return_to=%2Fhc%2Frequests") > -1) {
         window.location.href = "/hc/en-gb/articles/{{settings.article_id_confirmation}}";
     }
+
+    $(document).ready(function () {
+        $("main").attr('id', 'main-content');
+    });
 </script>
 
 
