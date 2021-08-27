@@ -14,6 +14,13 @@ $(document).ready(function () {
     });
 });
 
+
+//Add id to main
+$(document).ready(function () {
+    $("main").attr('id', 'main-content');
+});
+
+
 // Article voting show/hide
 $(document).ready(function () {
     $(".tl-article--vote--button").click(function () {
@@ -43,6 +50,8 @@ $(document).ready(function () {
         }
     });
 });
+
+
 
 // Search header messaging
 
