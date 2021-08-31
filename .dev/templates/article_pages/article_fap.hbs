@@ -171,9 +171,32 @@
 
                         if (providerLocation.website) searchResult += `<a target="_blank" href="${providerLocation.website}" class="govuk-link govuk-!-margin-left-4 tl-fap--result-website">Visit <span class="govuk-visually-hidden">${providerLocation.providerName}</span> website</a>`
 
-                        searchResult += `</p><div class="tl-fap--courses">`;
+						const locationDeliveryYears = [];
+						let availableNow = null;
+						$.each(providerLocation.deliveryYears,
+							function(_, deliveryYear) {
+								if (deliveryYear.isAvailableNow) {
+									if(availableNow) {
+										for(let i=0; i<deliveryYear.qualifications.length; i++) {
+											if (availableNow.qualifications.filter(function(q) { return q.name === deliveryYear.qualifications[i].name; }).length === 0)
+												availableNow.qualifications.push(deliveryYear.qualifications[i]);
+										}
+								} else {
+										availableNow = deliveryYear;
+										locationDeliveryYears.push(availableNow);
+								}
+								} else {
+									locationDeliveryYears.push(deliveryYear);
+								}
+							});
 
-                        $.each(providerLocation.deliveryYears,
+						if(availableNow) {
+							availableNow.qualifications.sort(function(x, y) {return (x.name < y.name) ? -1 : ((x.name > y.name) ? 1 : 0)});
+						}
+
+						searchResult += `</p><div class="tl-fap--courses">`;
+
+						$.each(locationDeliveryYears,
                             function(_, deliveryYear) {
                                 const availability = deliveryYear.isAvailableNow
                                     ? 'Available now'
