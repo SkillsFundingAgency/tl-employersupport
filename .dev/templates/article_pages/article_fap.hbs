@@ -160,7 +160,7 @@
 						 <h3 class="govuk-heading-m">${providerLocation.providerName} <span class="tl-fap--distance">${providerLocation.distance.toFixed(0)} miles</span></h3> \
 						 <p class="govuk-body">${providerLocation.locationName} | ${providerLocation.postcode} `;
 
-                        if (providerLocation.website) searchResult += `<a target="_blank" href="${providerLocation.website}" class="govuk-link govuk-!-margin-left-4">Visit website</a>`
+                        if (providerLocation.website) searchResult += `<a target="_blank" href="${providerLocation.website}" class="govuk-link govuk-!-margin-left-4">Visit <span class="govuk-visually-hidden">${providerLocation.providerName}</span> website</a>`
 
                         searchResult += `</p><div class="tl-fap--courses">`;
 
