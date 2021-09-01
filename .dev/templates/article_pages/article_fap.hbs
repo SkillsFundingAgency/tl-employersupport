@@ -155,12 +155,16 @@
 		}
 
 		function populateProviderSearchResults(data) {
-			if (data.length === 0) {
+			if (data.postcode) {
+                $("#tl-postcode").val(data.postcode);
+            }
+
+			if (data.searchResults.length === 0) {
                 $('.tl-fap--noresult').removeClass("tl-hidden");
                 return;
             }
 
-			$.each(data,
+			$.each(data.searchResults,
                     function(_, providerLocation) {
                         console.log(providerLocation);
 
