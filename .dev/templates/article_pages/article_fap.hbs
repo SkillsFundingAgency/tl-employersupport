@@ -73,6 +73,11 @@
 			console.log(`Found search query with postcode to search for '${postcode}'`);
             $("#tl-postcode").val(postcode);
 			providerSearch(postcode);
+
+            //Remove query string from url
+            const urlSplit = (window.location.href).split( "?" );
+            const obj = { Title: document.title, Url: urlSplit[0] };
+            history.pushState(obj, obj.Title, obj.Url);
 		}
 
 		$("#tl-search-providers").click(function() {
