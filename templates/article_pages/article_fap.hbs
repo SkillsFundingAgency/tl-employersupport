@@ -60,7 +60,7 @@
 
 	$(document).ready(function() {
         let findProvidersApiUrl = "{{ settings.find_provider_api }}";
-		if (findProvidersApiUrl.substr(-1) != '/') findProvidersApiUrl += '/'
+		if (findProvidersApiUrl.substr(-1) !== '/') findProvidersApiUrl += '/';
 
 		console.log(`findProvidersApiUrl is ${findProvidersApiUrl}`);
 
@@ -73,6 +73,11 @@
 			console.log(`Found search query with postcode to search for '${postcode}'`);
             $("#tl-postcode").val(postcode);
 			providerSearch(postcode);
+
+            //Remove query string from url
+            const urlSplit = (window.location.href).split( "?" );
+            const obj = { Title: document.title, Url: urlSplit[0] };
+            history.pushState(obj, obj.Title, obj.Url);
 		}
 
 		$("#tl-search-providers").click(function() {
@@ -94,14 +99,19 @@
 
 		function loadQualifications() {
 			console.log('loading qualifications');
-			$.getJSON(`${findProvidersApiUrl}qualifications`)
-				.then(function(data) {
-					console.log('Qualifications request succeeded with JSON response:', data);
-					populateQualifications(data);
-				})
-				.fail(function(jqxhr, error) {
-					console.log(`Call to get qualifications failed. ${error}`);
-				});
+			$.ajax({
+				type: "GET",
+				url: `${findProvidersApiUrl}qualifications`,
+				contentType: "application/json",
+				beforeSend: function (xhr) {
+					xhr.setRequestHeader("Authorization", "Bearer {{ settings.find_provider_auth_token }}");
+				}
+			}).done(function (response) {
+				console.log('Qualifications request succeeded with JSON response:', response);
+				populateQualifications(response);
+			}).fail(function (error)  {
+				console.log(`Call to get qualifications failed. ${error}`);
+			});
 		}
 
 		function providerSearch(postcode, qualificationId=0, page=0, pageSize=5) {
@@ -122,19 +132,23 @@
 				pageSize: pageSize
 			}).toString();
 
-            const requestUri = `${findProvidersApiUrl}providers?${searchParams}`;
-            console.log(`requestUri = '${requestUri}`);
-
-			$.getJSON(requestUri)
-				.then(function(data) {
-					console.log('Provider request succeeded with JSON response:', data);
-					populateProviderSearchResults(data);
-				})
-				.fail(function(jqxhr, textStatus, error) {
-					if (jqxhr.status === 404) {
-						showPostcodeError("Enter a valid postcode");
-					}
-				});
+            $.ajax({
+                type: "GET",
+                url: `${findProvidersApiUrl}providers?${searchParams}`,
+                contentType: "application/json",
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Authorization", "Bearer {{ settings.find_provider_auth_token }}");
+                }
+            }).done(function (response) {
+                console.log('Provider request succeeded with JSON response:', response);
+                populateProviderSearchResults(response);
+            }).fail(function (jqxhr, textStatus, error)  {
+                if (jqxhr.status === 404) {
+                    showPostcodeError("Enter a valid postcode");
+                } else {
+                    console.log(`Call to get providers returned error - ${textStatus} ${error}`);
+                }
+            });
 
 			return true;
 		}
@@ -146,12 +160,16 @@
 		}
 
 		function populateProviderSearchResults(data) {
-			if (data.length === 0) {
+			if (data.postcode) {
+                $("#tl-postcode").val(data.postcode);
+            }
+
+			if (data.searchResults.length === 0) {
                 $('.tl-fap--noresult').removeClass("tl-hidden");
                 return;
             }
 
-			$.each(data,
+			$.each(data.searchResults,
                     function(_, providerLocation) {
                         console.log(providerLocation);
 
@@ -162,9 +180,32 @@
 
                         if (providerLocation.website) searchResult += `<a target="_blank" href="${providerLocation.website}" class="govuk-link govuk-!-margin-left-4 tl-fap--result-website">Visit <span class="govuk-visually-hidden">${providerLocation.providerName}</span> website</a>`
 
-                        searchResult += `</p><div class="tl-fap--courses">`;
+						const locationDeliveryYears = [];
+						let availableNow = null;
+						$.each(providerLocation.deliveryYears,
+							function(_, deliveryYear) {
+								if (deliveryYear.isAvailableNow) {
+									if(availableNow) {
+										for(let i=0; i<deliveryYear.qualifications.length; i++) {
+											if (availableNow.qualifications.filter(function(q) { return q.name === deliveryYear.qualifications[i].name; }).length === 0)
+												availableNow.qualifications.push(deliveryYear.qualifications[i]);
+										}
+								} else {
+										availableNow = deliveryYear;
+										locationDeliveryYears.push(availableNow);
+								}
+								} else {
+									locationDeliveryYears.push(deliveryYear);
+								}
+							});
 
-                        $.each(providerLocation.deliveryYears,
+						if(availableNow) {
+							availableNow.qualifications.sort(function(x, y) {return (x.name < y.name) ? -1 : ((x.name > y.name) ? 1 : 0)});
+						}
+
+						searchResult += `</p><div class="tl-fap--courses">`;
+
+						$.each(locationDeliveryYears,
                             function(_, deliveryYear) {
                                 const availability = deliveryYear.isAvailableNow
                                     ? 'Available now'
