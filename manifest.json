@@ -1,7 +1,7 @@
 {
   "name": "GDS Style - Employer Support - Find A Provider",
   "author": "Ash Anderton",
-  "version": "0.1.82",
+  "version": "0.1.83",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [
@@ -35,32 +35,38 @@
         {
           "identifier": "home_image_2",
           "type": "file",
-          "description": "Home page image 1",
+          "description": "Home page image 2",
           "label": "Image 2"
         },
         {
           "identifier": "home_image_3",
           "type": "file",
-          "description": "Home page image 1",
+          "description": "Home page image 3",
           "label": "Image 3"
         },
         {
           "identifier": "home_image_4",
           "type": "file",
-          "description": "Home page image 1",
+          "description": "Home page image 4",
           "label": "Image 4"
         },
         {
           "identifier": "home_image_5",
           "type": "file",
-          "description": "Home page image 1",
+          "description": "Home page image 5",
           "label": "Image 5"
         },
         {
           "identifier": "home_image_6",
           "type": "file",
-          "description": "Home page image 1",
+          "description": "Home page image 6",
           "label": "Image 6"
+        },
+        {
+          "identifier": "home_image_7",
+          "type": "file",
+          "description": "Home page image 7",
+          "label": "Image 7"
         }
       ]
     },
