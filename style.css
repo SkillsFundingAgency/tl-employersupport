@@ -6242,7 +6242,7 @@ ul.govuk-radios label .gem-radios__input {
 .tl-fap-home--image {
   width: 100%;
   height: 100%;
-  display: blocl;
+  display: block;
   background-image: url("$home_image_6");
   background-size: cover;
   background-repeat: no-repeat; }
