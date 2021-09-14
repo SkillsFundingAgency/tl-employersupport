@@ -110,7 +110,7 @@
 				url: `${findProvidersApiUrl}providers?${searchParams}`,
 				contentType: "application/json",
 				beforeSend: function(xhr) {
-                    xhr.setRequestHeader("Authorization", "Bearer {{ settings.find_provider_auth_token }}");
+                    xhr.setRequestHeader("Ocp-Apim-Subscription-Key", "{{ settings.find_provider_api_key }}");
 				}
 			}).done(function(response) {
 				console.log('Provider request succeeded with JSON response:', response);

@@ -1,7 +1,7 @@
 {
   "name": "GDS Style - Employer Support - Find A Provider",
   "author": "Ash Anderton",
-  "version": "0.1.85",
+  "version": "0.1.86",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [
@@ -265,11 +265,11 @@
           "value": "https://test.api.findatlevelprovider.education.gov.uk/findproviders/api/"
         },
         {
-          "identifier": "find_provider_auth_token",
+          "identifier": "find_provider_api_key",
           "type": "text",
-          "description": "Find a Provider API authentication token",
-          "label": "Find a Provider API authentication token",
-          "value": "TODO_SET_TOKEN"
+          "description": "Find a Provider API key",
+          "label": "Find a Provider API key",
+          "value": "TODO_SET_KEY"
         },
         {
           "identifier": "article_id_find_provider",
