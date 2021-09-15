@@ -9,7 +9,7 @@
 				<div class="tl-card">
 					<h1 class="govuk-heading-xl govuk-!-margin-top-2 govuk-!-margin-bottom-7">{{article.title}}</h1>
 					<p class="govuk-body">Search for schools and colleges delivering T Levels near you.<br />You can contact them directly to find the right industry placement student for your business.</p>
-                    <form role="search">
+                    <form role="search" class="tl-search-providers-form">
 						<span class="govuk-error-message tl-hidden" id="tl-postcode-error">Enter a postcode</span>
 						<input class="govuk-input govuk-input--width-10 govuk-body-s" id="tl-postcode" name="tl-postcode" type="text" placeholder="Enter a postcode">
 						<button class="govuk-button tl-button--blue" id="tl-search-providers" data-module="govuk-button">
@@ -63,10 +63,6 @@
 			$('.tl-fap--noresult').removeClass("tl-hidden");
 		}
 
-		$("#tl-search-providers").click(function() {
-			return providerSearch($("#tl-postcode").val().trim(), 0, 5);
-		});
-
 		$('#tl-postcode').keypress(function(e) {
 			if (e.which === 13) {
 				$("#tl-search-providers").click();
@@ -74,6 +70,14 @@
 			}
 		});
 
+		$("#tl-search-providers").click(function() {
+			return providerSearch($("#tl-postcode").val().trim(), 0, 5);
+		});
+
+		$(".tl-search-providers-form").submit(function() {
+			event.preventDefault();
+		});
+		
 		$(document).on('click',
 			"#next-results-link",
 			function() {
