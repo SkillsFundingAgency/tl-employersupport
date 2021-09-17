@@ -14,6 +14,13 @@ $(document).ready(function () {
     });
 });
 
+
+//Add id to main
+$(document).ready(function () {
+    $("main").attr('id', 'main-content');
+});
+
+
 // Article voting show/hide
 $(document).ready(function () {
     $(".tl-article--vote--button").click(function () {
@@ -44,6 +51,8 @@ $(document).ready(function () {
     });
 });
 
+
+
 // Search header messaging
 
 var headersearchbox = $(".tl-header--search input[type=search]");
@@ -70,8 +79,8 @@ $(document).ready(function () {
 
 $(".govuk-tabs").attr("data-module", "govuk-tabs");
 
-$(".govuk-details").attr("data-module", "govuk-details");
-$(".govuk-details__summary").click(function () {
+$(".tl-article--content .govuk-details").attr("data-module", "govuk-details");
+$(".tl-article--content .govuk-details__summary").click(function () {
     if (this.closest(".govuk-details").hasAttribute("open")) {
         $(this).closest(".govuk-details").removeAttr('open');
     }

@@ -1,0 +1,254 @@
+﻿<!-- Main content -->
+ 
+
+	<div class="govuk-width-container govuk-main-wrapper govuk-!-padding-top-0">
+
+		<!-- Search Box -->
+		<div class="govuk-grid-row">
+			<div class="govuk-grid-column-full">
+				<div class="tl-card">
+					<h1 class="govuk-heading-xl govuk-!-margin-top-2 govuk-!-margin-bottom-7">{{article.title}}</h1>
+					<p class="govuk-body">Search for schools and colleges delivering T Levels near you.<br />You can contact them directly to find the right industry placement student for your business.</p>
+                    <form role="search" class="tl-search-providers-form">
+						<span class="govuk-error-message tl-hidden" id="tl-postcode-error">Enter a postcode</span>
+						<input class="govuk-input govuk-input--width-10 govuk-body-s" id="tl-postcode" name="tl-postcode" type="text" placeholder="Enter a postcode">
+						<button class="govuk-button tl-button--blue" id="tl-search-providers" data-module="govuk-button">
+							Search
+						</button>
+                    <form>
+				</div>
+			</div>
+		</div>
+
+		<!-- Search Results -->
+		<div class="govuk-grid-row">
+			<div class="govuk-grid-column-two-thirds govuk-!-margin-top-7" id="tl-fap--results">
+
+				<div class="tl-fap--noresult tl-hidden">
+					<h2 class="govuk-heading-l">0 results</h2>
+					<p class="govuk-body">Enter a postcode to search for providers offering T Levels.</p>
+				</div>
+
+				<div class="tl-fap--result">
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+
+<!-- <script src="{{asset 'findproviderapi.js'}}"></script> -->
+<script type="text/javascript">
+
+	$(document).ready(function() {
+        let findProvidersApiUrl = "{{ settings.find_provider_api }}";
+		if (findProvidersApiUrl.substr(-1) !== '/') findProvidersApiUrl += '/';
+
+		let currentPage = 0;
+		let currentPostcode = 0;
+
+		//Check for search query param with postcode
+		let postcode = getUrlParameter("search");
+		if (postcode) {
+			postcode = urlDecode(postcode).toUpperCase();
+			console.log(`Found search query with postcode to search for '${postcode}'`);
+
+			$("#tl-postcode").val(postcode);
+			providerSearch(postcode);
+
+			//Remove query string from url
+			const urlSplit = (window.location.href).split("?");
+			const obj = { Title: document.title, Url: urlSplit[0] };
+			history.pushState(obj, obj.Title, obj.Url);
+		} else {
+			$('.tl-fap--noresult').removeClass("tl-hidden");
+		}
+
+		$('#tl-postcode').keypress(function(e) {
+			if (e.which === 13) {
+				$("#tl-search-providers").click();
+				return false;
+			}
+		});
+
+		$("#tl-search-providers").click(function() {
+			return providerSearch($("#tl-postcode").val().trim(), 0, 5);
+		});
+
+		$(".tl-search-providers-form").submit(function() {
+			event.preventDefault();
+		});
+		
+		$(document).on('click',
+			"#next-results-link",
+			function() {
+				event.stopPropagation();
+				event.preventDefault();
+				this.remove();
+
+				callProviderSearchApi(currentPostcode, currentPage + 1);
+
+				return false;
+			});
+
+		function providerSearch(postcode, page=0) {
+			if (postcode === "") {
+				event.stopPropagation();
+				showPostcodeError("Enter a postcode");
+				return false;
+			}
+
+			clearProviderSearchResults();
+
+			callProviderSearchApi(postcode, page);
+
+			return true;
+		}
+
+		function callProviderSearchApi(postcode, page=0, pageSize=5) {
+			const searchParams = new URLSearchParams({
+				postcode: postcode,
+				page: page,
+				pageSize: pageSize
+			}).toString();
+
+			$.ajax({
+				type: "GET",
+				url: `${findProvidersApiUrl}providers?${searchParams}`,
+				contentType: "application/json",
+				beforeSend: function(xhr) {
+                    xhr.setRequestHeader("Ocp-Apim-Subscription-Key", "{{ settings.find_provider_api_key }}");
+				}
+			}).done(function(response) {
+				console.log('Provider request succeeded with JSON response:', response);
+				currentPage = page;
+				currentPostcode = postcode;
+				console.log(`currentPage is now ${currentPage}`);
+				populateProviderSearchResults(response);
+			}).fail(function(jqxhr) {
+				console.log(`Error ${jqxhr.status} - ${jqxhr.responseText}`);
+				if (jqxhr.status === 404) {
+					showPostcodeError("Enter a valid postcode");
+				}
+			});
+
+			return true;
+		}
+		
+		function clearProviderSearchResults() {
+		    $('#tl-postcode-error').addClass("tl-hidden");
+		    $('.tl-fap--noresult').addClass("tl-hidden");
+		    $("#tl-fap--results").find(".tl-fap--result").remove();
+		    $("#tl-fap--results").find("#next-results-link").remove();
+
+		    currentPage = 0;
+	    }
+
+	    function populateProviderSearchResults(data) {
+		    if (data.postcode) {
+			    $("#tl-postcode").val(data.postcode);
+		    }
+
+		    if (data.searchResults.length === 0) {
+			    $('.tl-fap--noresult').removeClass("tl-hidden");
+			    return;
+		    }
+
+		    $.each(data.searchResults,
+			    function(_, providerLocation) {
+				    console.log(providerLocation);
+
+				    let searchResult =
+					    `<div class="tl-fap--result"> \
+					     <h3 class="govuk-heading-m">${providerLocation.providerName} <span class="tl-fap--distance">${providerLocation.distance.toFixed(0)} miles</span></h3> \
+					     <p class="govuk-body">${providerLocation.locationName} | ${providerLocation.postcode} `;
+
+				    if (providerLocation.website) searchResult += `<a target="_blank" href="${providerLocation.website}" class="govuk-link govuk-!-margin-left-4 tl-fap--result-website">Visit <span class="govuk-visually-hidden">${providerLocation.providerName}</span> website</a>`
+
+				    const locationDeliveryYears = [];
+				    let availableNow = null;
+				    $.each(providerLocation.deliveryYears,
+					    function(_, deliveryYear) {
+						    if (deliveryYear.isAvailableNow) {
+							    if (availableNow) {
+								    for (let i = 0; i < deliveryYear.qualifications.length; i++) {
+									    if (availableNow.qualifications.filter(function(q) { return q.name === deliveryYear.qualifications[i].name; }).length === 0)
+										    availableNow.qualifications.push(deliveryYear.qualifications[i]);
+								    }
+							    } else {
+								    availableNow = deliveryYear;
+								    locationDeliveryYears.push(availableNow);
+							    }
+						    } else {
+							    locationDeliveryYears.push(deliveryYear);
+						    }
+					    });
+
+				    if (availableNow) {
+					    availableNow.qualifications.sort(function(x, y) { return (x.name < y.name) ? -1 : ((x.name > y.name) ? 1 : 0) });
+				    }
+
+				    searchResult += `</p><div class="tl-fap--courses">`;
+
+				    $.each(locationDeliveryYears,
+					    function(_, deliveryYear) {
+						    const availability = deliveryYear.isAvailableNow
+							    ? 'Available now'
+							    : `From September ${deliveryYear.year} onwards`;
+
+						    searchResult += `<p class="govuk-body govuk-!-font-weight-bold">${availability}:</p> \
+							    <ul class="govuk-list govuk-list--bullet">`;
+
+						    $.each(deliveryYear.qualifications,
+							    function(_, qualification) {
+								    searchResult += `<li>${qualification.name}</li>`;
+							    });
+
+						    searchResult += `</ul>`;
+					    });
+
+				    searchResult += `</div>`;
+
+				    if (providerLocation.email || providerLocation.telephone) {
+					    searchResult += `<p class="govuk-body">`;
+
+					    if (providerLocation.email) searchResult += `<a href="mailto:${providerLocation.email}" class="govuk-link govuk-!-margin-right-4 tl-fap--result-email">${providerLocation.email}</a>`;
+					    if (providerLocation.telephone) searchResult += ` Call on: ${providerLocation.telephone}`;
+
+					    searchResult += `</p>`;
+				    }
+
+				    searchResult += `<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible"> \
+					      </div>`;
+
+				    $("#tl-fap--results").append(searchResult);
+			    });
+
+		    $("#tl-fap--results").append(`<p class="govuk-body"><a class="govuk-link" id="next-results-link" href="more-results">Show 5 more results</a></p>`);
+	    }
+
+	    function showPostcodeError(message) {
+		    $("#tl-postcode-error").text(message);
+		    $('#tl-postcode-error').removeClass("tl-hidden");
+	    }
+
+	    function urlDecode(str) {
+		    return decodeURIComponent((str + '').replace(/\+/g, '%20'));
+	    }
+
+	    function getUrlParameter(key, url) {
+		    if (!url) {
+			    url = window.location.search.substring(1);
+		    }
+
+		    const urlVars = url.split('&');
+		    for (let i = 0; i < urlVars.length; i++) {
+			    const parameter = urlVars[i].split('=');
+			    if (parameter[0] === key) {
+				    return parameter[1];
+			    }
+		    }
+
+		    return null;
+	    }
+	});
+</script>
