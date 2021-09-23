@@ -50,8 +50,6 @@
 		let postcode = getUrlParameter("search");
 		if (postcode) {
 			postcode = urlDecode(postcode).toUpperCase();
-			console.log(`Found search query with postcode to search for '${postcode}'`);
-
 			$("#tl-postcode").val(postcode);
 			providerSearch(postcode);
 
@@ -119,10 +117,8 @@
                     xhr.setRequestHeader("Ocp-Apim-Subscription-Key", "{{ settings.find_provider_api_key }}");
 				}
 			}).done(function(response) {
-				console.log('Provider request succeeded with JSON response:', response);
 				currentPage = page;
 				currentPostcode = postcode;
-				console.log(`currentPage is now ${currentPage}`);
 				populateProviderSearchResults(response);
 			}).fail(function(jqxhr) {
 				console.log(`Error ${jqxhr.status} - ${jqxhr.responseText}`);
@@ -155,8 +151,6 @@
 
 		    $.each(data.searchResults,
 			    function(_, providerLocation) {
-				    console.log(providerLocation);
-
 				    let searchResult =
 					    `<div class="tl-fap--result"> \
 					     <h3 class="govuk-heading-m">${providerLocation.providerName} <span class="tl-fap--distance">${providerLocation.distance.toFixed(0)} miles</span></h3> \
