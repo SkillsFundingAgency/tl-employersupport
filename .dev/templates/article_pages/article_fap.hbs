@@ -112,10 +112,7 @@
 			$.ajax({
 				type: "GET",
 				url: `${findProvidersApiUrl}providers?${searchParams}`,
-				contentType: "application/json",
-				beforeSend: function(xhr) {
-                    xhr.setRequestHeader("Ocp-Apim-Subscription-Key", "{{ settings.find_provider_api_key }}");
-				}
+				contentType: "application/json"
 			}).done(function(response) {
 				currentPage = page;
 				currentPostcode = postcode;
