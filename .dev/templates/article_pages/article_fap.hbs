@@ -43,6 +43,10 @@
         let findProvidersApiUrl = "{{ settings.find_provider_api }}";
 		if (findProvidersApiUrl.substr(-1) !== '/') findProvidersApiUrl += '/';
 
+		const apiAppId = "{{ settings.find_provider_api_app_id }}";
+		const apiKey = "{{ settings.find_provider_api_key }}";
+		console.log(`url: ${findProvidersApiUrl} app id ${apiAppId} key app id ${apiKey}`);
+
 		let currentPage = 0;
 		let currentPostcode = 0;
 
@@ -113,6 +117,9 @@
 				type: "GET",
 				url: `${findProvidersApiUrl}providers?${searchParams}`,
 				contentType: "application/json"
+				//beforeSend: function(xhr) {
+                //    xhr.setRequestHeader("Ocp-Apim-Subscription-Key", "{{ settings.find_provider_api_key }}");
+				//}
 			}).done(function(response) {
 				currentPage = page;
 				currentPostcode = postcode;
