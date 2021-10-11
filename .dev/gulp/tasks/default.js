@@ -43,6 +43,12 @@ gulp.task('customjs', () => {
     return src([
         'Frontend/src/js/custom.js',
         'node_modules/moment/moment.js',
+        'node_modules/crypto-js/crypto-js.js',
+        'node_modules/crypto-js/core.js',
+        'node_modules//crypto-js/enc-base64.js',
+        'node_modules//crypto-js/sha256.js',
+        'node_modules//crypto-js/hmac.js',
+        'node_modules//crypto-js/hmac-sha256.js',        
     ])
         .pipe(concat('custom.js'))
         .pipe(gulp.dest(paths.dist.Assets));
