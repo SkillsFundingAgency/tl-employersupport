@@ -1,7 +1,7 @@
 {
   "name": "GDS Style - Employer Support - Find A Provider",
   "author": "Ash Anderton",
-  "version": "0.1.107",
+  "version": "0.1.108",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [
@@ -256,28 +256,7 @@
           "description": "Postcodes API",
           "label": "Postcodes API",
           "value": "EC68-PM92-AG92-GA77"
-        },
-        {
-          "identifier": "find_provider_api",
-          "type": "text",
-          "description": "Find a Provider API URL",
-          "label": "Find a Provider API URL",
-          "value": "https://test.api.findatlevelprovider.education.gov.uk/api/v1/findproviders/"
-        },
-        {
-          "identifier": "find_provider_api_app_id",
-          "type": "text",
-          "description": "Find a Provider API App Id",
-          "label": "Find a Provider API App Id",
-          "value": "TODO_SET_APP_ID"
-        },
-        {
-          "identifier": "find_provider_api_key",
-          "type": "text",
-          "description": "Find a Provider API key",
-          "label": "Find a Provider API key",
-          "value": "TODO_SET_API_KEY"
-        },
+        },        
         {
           "identifier": "article_id_find_provider",
           "type": "text",
@@ -342,6 +321,27 @@
     {
       "label": "Find a provider",
       "variables": [
+        {
+          "identifier": "find_provider_api_uri",
+          "type": "text",
+          "description": "Find a Provider API URL",
+          "label": "Find a Provider API URL",
+          "value": "https://test.api.findatlevelprovider.education.gov.uk/api/v1/findproviders/"
+        },
+        {
+          "identifier": "find_provider_api_app_id",
+          "type": "text",
+          "description": "Find a Provider API App Id",
+          "label": "Find a Provider API App Id",
+          "value": "TODO_SET_APP_ID"
+        },
+        {
+          "identifier": "find_provider_api_key",
+          "type": "text",
+          "description": "Find a Provider API key",
+          "label": "Find a Provider API key",
+          "value": "TODO_SET_API_KEY"
+        },
         {
           "identifier": "qualification_article_map",
           "type": "text",

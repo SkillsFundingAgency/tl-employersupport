@@ -47,13 +47,14 @@
 <script type="text/javascript">
 
 	$(document).ready(function() {
-        let findProvidersApiUrl = "{{ settings.find_provider_api }}";
+        let findProvidersApiUrl = "{{ settings.find_provider_api_uri }}";
 		if (findProvidersApiUrl.substr(-1) !== '/') findProvidersApiUrl += '/';
 
 		let currentPage = 0;
 		let currentPostcode = 0;
 
 		try {
+			console.log("{{ settings.qualification_article_map }}");
 			const qualificationArticleMap = JSON.parse("{{ settings.qualification_article_map }}");
 			console.log('read qualificationArticleMap');
 			console.log(qualificationArticleMap);
@@ -248,6 +249,7 @@
                 $("#tl-error-header").text('Sorry, there is a problem with the service.');
                 $("#tl-error-detail").html(`Try again later or {{#link 'new_request' class='govuk-link tl-error--contact'}}contact us{{/link}} quoting error code ${status}.`);
             }
+			$('#tl-error').removeClass("tl-hidden");
         }
 
 	    function showPostcodeError(message) {
@@ -256,7 +258,7 @@
 			$('#tl-error').addClass("tl-hidden");
 	    }
 
-	function addHmacAuthHeader(xhr, uri) {
+		function addHmacAuthHeader(xhr, uri) {
             const appId = "{{ settings.find_provider_api_app_id }}";
             const apiKey = "{{ settings.find_provider_api_key }}";
             const ts = Math.round((new Date()).getTime() / 1000);
