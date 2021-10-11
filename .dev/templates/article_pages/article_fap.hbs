@@ -54,10 +54,6 @@
 		let currentPostcode = 0;
 
 		const qualificationArticleMap = loadQualificationMap();
-		//lookup check - TODO remove this
-		for (let q = 36; q <= 51; q++) {
-			console.log(`Lookup ${q} = ${qualificationArticleMap[q]}`);
-		}
 
 		//Check for search query param with postcode
 		let postcode = getUrlParameter("search");
@@ -233,9 +229,9 @@
 
 						    $.each(deliveryYear.qualifications,
 							    function(_, qualification) {
-                                    const artLink = qualificationArticleMap[qualification.id];
-                                    if (artLink) {
-                                        searchResult += `<li><a target="_blank" class="govuk-link" href="${articleBaseUrl}${artLink}">${qualification.name}</a></li>`;
+                                    const articleLink = qualificationArticleMap[qualification.id];
+                                    if (articleLink) {										
+                                        searchResult += `<li><a target="_blank" class="govuk-link" href="${articleLink}">${qualification.name}</a></li>`;
                                     } else {
                                         searchResult += `<li>${qualification.name}</li>`;
                                     }
