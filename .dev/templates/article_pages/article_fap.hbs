@@ -54,8 +54,11 @@
 		let currentPostcode = 0;
 
 		try {
-			console.log("{{ settings.qualification_article_map }}");
-			const qualificationArticleMap = JSON.parse("{{ settings.qualification_article_map }}");
+			console.log("{{ settings.qualification_article_map }}");			
+			const mapJson = decodeEntities("{{ settings.qualification_article_map }}");
+			console.log("decoded");
+			console.log(mapJson);
+			const qualificationArticleMap = JSON.parse(mapJson);
 			console.log('read qualificationArticleMap');
 			console.log(qualificationArticleMap);
 			console.log('json:');
@@ -144,7 +147,6 @@
 				currentPostcode = postcode;
 				populateProviderSearchResults(response);
 			}).fail(function(jqxhr) {
-				console.log(`Error ${jqxhr.status} - ${jqxhr.responseText}`);
 				if (jqxhr.status === 404 && jqxhr.responseText.startsWith('Postcode')) {
 					showPostcodeError("Enter a valid postcode");
                 } else {
@@ -283,6 +285,14 @@
 	    function urlDecode(str) {
 		    return decodeURIComponent((str + '').replace(/\+/g, '%20'));
 	    }
+
+		function decodeEntities(encodedString) {
+			var textArea = document.createElement('temp_textarea');
+			textArea.innerHTML = encodedString;
+			const decodedString =  textArea.value;
+			var textArea = document.remove(textarea);
+			return decodedString;
+		}
 
 	    function getUrlParameter(key, url) {
 		    if (!url) {
