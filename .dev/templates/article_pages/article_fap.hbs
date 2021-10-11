@@ -55,7 +55,7 @@
 
 		try {
 			console.log("{{ settings.qualification_article_map }}");			
-			const mapJson = decodeEntities("{{ settings.qualification_article_map }}");
+			const mapJson = "{{ settings.qualification_article_map }}".replace(/\&quot;/g, '"' );
 			console.log("decoded");
 			console.log(mapJson);
 			const qualificationArticleMap = JSON.parse(mapJson);
@@ -285,16 +285,6 @@
 	    function urlDecode(str) {
 		    return decodeURIComponent((str + '').replace(/\+/g, '%20'));
 	    }
-
-		function decodeEntities(encodedString) {
-			var textArea = document.createElement('temp_textarea');
-			textArea.innerHTML = encodedString;
-			console.log("decoding " + textArea.innerHTML);
-			const decodedString =  textArea.value;
-			console.log("decoded " + textArea.value);
-			textArea.remove();
-			return decodedString;
-		}
 
 	    function getUrlParameter(key, url) {
 		    if (!url) {
