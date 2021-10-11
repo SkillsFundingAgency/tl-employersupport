@@ -130,9 +130,10 @@
 				pageSize: pageSize
 			}).toString();
 
+            const uri = `${findProvidersApiUrl}providers?${searchParams}`;
 			$.ajax({
 				type: "GET",
-				url: `${findProvidersApiUrl}providers?${searchParams}`,
+				url: uri,
 				contentType: "application/json",
 				beforeSend: function(xhr) {
 					addHmacAuthHeader(xhr, uri);
