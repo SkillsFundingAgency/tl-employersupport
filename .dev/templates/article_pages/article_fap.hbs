@@ -289,7 +289,9 @@
 		function decodeEntities(encodedString) {
 			var textArea = document.createElement('temp_textarea');
 			textArea.innerHTML = encodedString;
+			console.log("decoding " + textArea.innerHTML);
 			const decodedString =  textArea.value;
+			console.log("decoded " + textArea.value);
 			textArea.remove();
 			return decodedString;
 		}
