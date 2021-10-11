@@ -53,22 +53,10 @@
 		let currentPage = 0;
 		let currentPostcode = 0;
 
-		try {
-			console.log("{{ settings.qualification_article_map }}");			
-			const mapJson = "{{ settings.qualification_article_map }}".replace(/\&quot;/g, '"' );
-			console.log("decoded");
-			console.log(mapJson);
-			const qualificationArticleMap = JSON.parse(mapJson);
-			console.log('read qualificationArticleMap');
-			console.log(qualificationArticleMap);
-			console.log('json:');
-			console.log(JSON.stringify(qualificationArticleMap));
-            //lookup check
-            console.log(`Lookup 45 = ${articleMap[45]}`);
-            console.log(`Lookup 99 = ${articleMap[99]}`);
-		}
-		catch(err) {
-			console.log(`Failed to load qualification map. ${err.message}`);
+		const qualificationArticleMap = loadQualificationMap();
+		//lookup check - TODO remove this
+		for (let q = 36; q <= 51; q++) {
+			console.log(`Lookup ${q} = ${qualificationArticleMap[q]}`);
 		}
 
 		//Check for search query param with postcode
@@ -157,6 +145,27 @@
 			return true;
 		}
 		
+		function loadQualificationMap() {
+			const map = {};
+			map[36] = "{{ settings.qualification_article_36] }}";
+			map[37] = "{{ settings.qualification_article_37] }}";
+			map[38] = "{{ settings.qualification_article_38] }}";
+			map[39] = "{{ settings.qualification_article_39] }}";
+			map[40] = "{{ settings.qualification_article_40] }}";
+			map[41] = "{{ settings.qualification_article_41] }}";
+			map[42] = "{{ settings.qualification_article_42] }}";
+			map[43] = "{{ settings.qualification_article_43] }}";
+			map[44] = "{{ settings.qualification_article_44] }}";
+			map[45] = "{{ settings.qualification_article_45] }}";
+			map[46] = "{{ settings.qualification_article_46] }}";
+			map[47] = "{{ settings.qualification_article_47] }}";
+			map[48] = "{{ settings.qualification_article_48] }}";
+			map[49] = "{{ settings.qualification_article_49] }}";
+			map[50] = "{{ settings.qualification_article_50] }}";
+			map[51] = "{{ settings.qualification_article_51] }}";
+			return map;
+		}
+
 		function clearProviderSearchResults() {
 			$('#tl-error').addClass("tl-hidden");
 		    $('#tl-postcode-error').addClass("tl-hidden");
@@ -224,7 +233,12 @@
 
 						    $.each(deliveryYear.qualifications,
 							    function(_, qualification) {
-								    searchResult += `<li>${qualification.name}</li>`;
+                                    const artLink = qualificationArticleMap[qualification.id];
+                                    if (artLink) {
+                                        searchResult += `<li><a target="_blank" class="govuk-link" href="${articleBaseUrl}${artLink}">${qualification.name}</a></li>`;
+                                    } else {
+                                        searchResult += `<li>${qualification.name}</li>`;
+                                    }
 							    });
 
 						    searchResult += `</ul>`;
