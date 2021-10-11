@@ -15,8 +15,15 @@
 						<button class="govuk-button tl-button--blue" id="tl-search-providers" data-module="govuk-button">
 							Search
 						</button>
-                    <form>
+                    <form>						
 				</div>
+			</div>
+		</div>
+
+		<div class="govuk-grid-row tl-hidden" id="tl-error">
+			<div class="govuk-grid-column-two-thirds govuk-!-margin-top-7" id="tl-error">
+				<h1 class="govuk-heading-l" id="tl-error-header"></h1>
+				<p class="govuk-body" id="tl-error-detail"></p>
 			</div>
 		</div>
 
@@ -43,12 +50,22 @@
         let findProvidersApiUrl = "{{ settings.find_provider_api }}";
 		if (findProvidersApiUrl.substr(-1) !== '/') findProvidersApiUrl += '/';
 
-		const apiAppId = "{{ settings.find_provider_api_app_id }}";
-		const apiKey = "{{ settings.find_provider_api_key }}";
-		console.log(`url: ${findProvidersApiUrl} app id ${apiAppId} key app id ${apiKey}`);
-
 		let currentPage = 0;
 		let currentPostcode = 0;
+
+		try {
+			const qualificationArticleMap = JSON.parse($('#qualification_article_map').val());
+			console.log('read qualificationArticleMap');
+			console.log(qualificationArticleMap);
+			console.log('json:');
+			console.log(JSON.stringify(qualificationArticleMap));
+            //lookup check
+            console.log(`Lookup 45 = ${articleMap[45]}`);
+            console.log(`Lookup 99 = ${articleMap[99]}`);
+		}
+		catch(err) {
+			console.log(`Failed to load qualification map. ${err.message}`);
+		}
 
 		//Check for search query param with postcode
 		let postcode = getUrlParameter("search");
@@ -116,18 +133,20 @@
 			$.ajax({
 				type: "GET",
 				url: `${findProvidersApiUrl}providers?${searchParams}`,
-				contentType: "application/json"
-				//beforeSend: function(xhr) {
-                //    xhr.setRequestHeader("Ocp-Apim-Subscription-Key", "{{ settings.find_provider_api_key }}");
-				//}
+				contentType: "application/json",
+				beforeSend: function(xhr) {
+					addHmacAuthHeader(xhr, uri);
+				}
 			}).done(function(response) {
 				currentPage = page;
 				currentPostcode = postcode;
 				populateProviderSearchResults(response);
 			}).fail(function(jqxhr) {
 				console.log(`Error ${jqxhr.status} - ${jqxhr.responseText}`);
-				if (jqxhr.status === 404) {
+				if (jqxhr.status === 404 && jqxhr.responseText.startsWith('Postcode')) {
 					showPostcodeError("Enter a valid postcode");
+                } else {
+                    showError(jqxhr.status, jqxhr.responseText);
 				}
 			});
 
@@ -135,6 +154,7 @@
 		}
 		
 		function clearProviderSearchResults() {
+			$('#tl-error').addClass("tl-hidden");
 		    $('#tl-postcode-error').addClass("tl-hidden");
 		    $('.tl-fap--noresult').addClass("tl-hidden");
 		    $("#tl-fap--results").find(".tl-fap--result").remove();
@@ -216,10 +236,46 @@
 		    $("#tl-fap--results").append(`<p class="govuk-body"><a class="govuk-link" id="next-results-link" href="more-results">Show 5 more results</a></p>`);
 	    }
 
+        function showError(status, errorText) {
+            console.log(`Error status ${status} was encountered. ${errorText}`);
+            switch (status) {
+            case 0:
+                $("#tl-error-header").text('There is a problem with your network connection.');
+                $("#tl-error-detail").html('There is a problem with your network connection. Check you’re connected to the internet and try again.');
+                break;
+            default:
+                $("#tl-error-header").text('Sorry, there is a problem with the service.');
+                $("#tl-error-detail").html(`Try again later or {{#link 'new_request' class='govuk-link tl-error--contact'}}contact us{{/link}} quoting error code ${status}.`);
+            }
+        }
+
 	    function showPostcodeError(message) {
 		    $("#tl-postcode-error").text(message);
 		    $('#tl-postcode-error').removeClass("tl-hidden");
+			$('#tl-error').addClass("tl-hidden");
 	    }
+
+	function addHmacAuthHeader(xhr, uri) {
+            const appId = {{ settings.find_provider_api_app_id }};
+            const apiKey = {{ settings.find_provider_api_key }};
+            const ts = Math.round((new Date()).getTime() / 1000);
+            const uuid = createUniqueId();
+            const nonce = CryptoJS.enc.Hex.parse(uuid);
+            const data = `${appId}GET${uri.toLowerCase()}${ts}${nonce}`;
+
+            const hash = CryptoJS.HmacSHA256(data, apiKey);
+            const hashInBase64 = CryptoJS.enc.Base64.stringify(hash);
+
+            xhr.setRequestHeader("Authorization", `amx ${appId}:${hashInBase64}:${nonce}:${ts}`);
+        }
+
+        function createUniqueId() {
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,
+                function(c) {
+                    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+                    return v.toString(16);
+                });
+        }
 
 	    function urlDecode(str) {
 		    return decodeURIComponent((str + '').replace(/\+/g, '%20'));
