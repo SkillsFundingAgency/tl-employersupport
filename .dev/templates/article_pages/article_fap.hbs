@@ -256,8 +256,8 @@
 	    }
 
 	function addHmacAuthHeader(xhr, uri) {
-            const appId = "{{ settings.find_provider_api_app_id }}"";
-            const apiKey = "{{ settings.find_provider_api_key }}"";
+            const appId = "{{ settings.find_provider_api_app_id }}";
+            const apiKey = "{{ settings.find_provider_api_key }}";
             const ts = Math.round((new Date()).getTime() / 1000);
             const uuid = createUniqueId();
             const nonce = CryptoJS.enc.Hex.parse(uuid);
