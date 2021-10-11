@@ -338,6 +338,18 @@
           "value": "4402772542098"
         }
       ]
+    },
+    {
+      "label": "Find a provider",
+      "variables": [
+        {
+          "identifier": "qualification_article_map",
+          "type": "text",
+          "description": "Qualification Article Mapping",
+          "label": "Qualification Article Mapping",
+          "value": "NULL"
+        }
+      ]
     }
   ]
 }
