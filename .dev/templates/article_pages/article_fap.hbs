@@ -280,6 +280,13 @@
 
             const hash = CryptoJS.HmacSHA256(data, apiKey);
             const hashInBase64 = CryptoJS.enc.Base64.stringify(hash);
+			
+			//TODO: Remove debugging
+			console.log(`ts ${ts}`);
+			console.log(`uuid ${uuid}`);
+			console.log(`nonce ${nonce}`);
+			console.log(`data ${data}`);
+			console.log(`amx ${appId}:${hashInBase64}:${nonce}:${ts}`);
 
             xhr.setRequestHeader("Authorization", `amx ${appId}:${hashInBase64}:${nonce}:${ts}`);
         }
