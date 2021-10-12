@@ -43,7 +43,6 @@
 	</div>
 </main>
 
-<!-- <script src="{{asset 'findproviderapi.js'}}"></script> -->
 <script type="text/javascript">
 
 	$(document).ready(function() {
@@ -133,15 +132,17 @@
 					addHmacAuthHeader(xhr, uri);
 				}
 			}).done(function(response) {
-				currentPage = page;
-				currentPostcode = postcode;
-				populateProviderSearchResults(response);
-			}).fail(function(jqxhr) {
-				if (jqxhr.status === 404 && jqxhr.responseText.startsWith('Postcode')) {
-					showPostcodeError("Enter a valid postcode");
+                if (response.error) {
+                    console.log(`Invalid postcode response received - ${response.error}`);
+                    showPostcodeError("Enter a valid postcode");
                 } else {
-                    showError(jqxhr.status, jqxhr.responseText);
-				}
+                    currentPage = page;
+                    currentPostcode = postcode;
+                    console.log(`currentPage is now ${currentPage}`);
+                    populateProviderSearchResults(response);
+                }
+			}).fail(function(jqxhr) {
+				showError(jqxhr.status, jqxhr.responseText);
 			});
 
 			return true;
@@ -183,7 +184,7 @@
 			    $("#tl-postcode").val(data.postcode);
 		    }
 
-		    if (data.searchResults.length === 0) {
+            if (!data.searchResults || data.searchResults.length === 0) {
 			    $('.tl-fap--noresult').removeClass("tl-hidden");
 			    return;
 		    }
@@ -287,13 +288,6 @@
             const hash = CryptoJS.HmacSHA256(data, apiKey);
             const hashInBase64 = CryptoJS.enc.Base64.stringify(hash);
 			
-			//TODO: Remove debugging
-			console.log(`ts ${ts}`);
-			console.log(`uuid ${uuid}`);
-			console.log(`nonce ${nonce}`);
-			console.log(`data ${data}`);
-			console.log(`amx ${appId}:${hashInBase64}:${nonce}:${ts}`);
-
             xhr.setRequestHeader("Authorization", `amx ${appId}:${hashInBase64}:${nonce}:${ts}`);
         }
 
