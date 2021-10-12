@@ -104,8 +104,14 @@
 				return false;
 			}
 
-			clearProviderSearchResults();
+			if (!postcode.match(/^[0-9a-zA-Z\s]+$/)) {
+                console.log(`${postcode} must be letters, numbers, and spaces only`);
+                event.stopPropagation();
+                showPostcodeError("Enter a valid postcode");
+                return false;
+            }
 
+			clearProviderSearchResults();
 			callProviderSearchApi(postcode, page);
 
 			return true;
