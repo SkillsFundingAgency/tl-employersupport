@@ -104,7 +104,6 @@
 			}
 
 			if (!postcode.match(/^[0-9a-zA-Z\s]+$/)) {
-                console.log(`${postcode} must be letters, numbers, and spaces only`);
                 event.stopPropagation();
                 showPostcodeError("Enter a valid postcode");
                 return false;
@@ -138,7 +137,6 @@
                 } else {
                     currentPage = page;
                     currentPostcode = postcode;
-                    console.log(`currentPage is now ${currentPage}`);
                     populateProviderSearchResults(response);
                 }
 			}).fail(function(jqxhr) {
