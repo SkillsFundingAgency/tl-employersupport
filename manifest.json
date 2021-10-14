@@ -1,7 +1,7 @@
 {
   "name": "GDS Style - Employer Support - Find A Provider",
   "author": "Ash Anderton",
-  "version": "0.1.107",
+  "version": "0.1.120",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [
@@ -256,28 +256,7 @@
           "description": "Postcodes API",
           "label": "Postcodes API",
           "value": "EC68-PM92-AG92-GA77"
-        },
-        {
-          "identifier": "find_provider_api",
-          "type": "text",
-          "description": "Find a Provider API URL",
-          "label": "Find a Provider API URL",
-          "value": "https://test.api.findatlevelprovider.education.gov.uk/api/v1/findproviders/"
-        },
-        {
-          "identifier": "find_provider_api_app_id",
-          "type": "text",
-          "description": "Find a Provider API App Id",
-          "label": "Find a Provider API App Id",
-          "value": "TODO_SET_APP_ID"
-        },
-        {
-          "identifier": "find_provider_api_key",
-          "type": "text",
-          "description": "Find a Provider API key",
-          "label": "Find a Provider API key",
-          "value": "TODO_SET_API_KEY"
-        },
+        },        
         {
           "identifier": "article_id_find_provider",
           "type": "text",
@@ -343,11 +322,137 @@
       "label": "Find a provider",
       "variables": [
         {
-          "identifier": "qualification_article_map",
+          "identifier": "find_provider_api_uri",
           "type": "text",
-          "description": "Qualification Article Mapping",
-          "label": "Qualification Article Mapping",
-          "value": "NULL"
+          "description": "Find a Provider API URL",
+          "label": "Find a Provider API URL",
+          "value": "https://test.api.findatlevelprovider.education.gov.uk/api/v1/findproviders/"
+        },
+        {
+          "identifier": "find_provider_api_app_id",
+          "type": "text",
+          "description": "Find a Provider API App Id",
+          "label": "Find a Provider API App Id",
+          "value": "TODO_SET_APP_ID"
+        },
+        {
+          "identifier": "find_provider_api_key",
+          "type": "text",
+          "description": "Find a Provider API key",
+          "label": "Find a Provider API key",
+          "value": "TODO_SET_API_KEY"
+        },
+        {
+          "identifier": "qualification_article_36",
+          "type": "text",
+          "description": "Qualification article for id 36",
+          "label": "Qualification article for id 36",
+          "value": "360021656060-About-Construction-industry-placements#design-surveying-and-planning"
+        },
+        {
+          "identifier": "qualification_article_37",
+          "type": "text",
+          "description": "Qualification article for id 37",
+          "label": "Qualification article for id 37",
+          "value": "360021700479-About-Digital-and-IT-industry-placements#digital-production"
+        },
+        {
+          "identifier": "qualification_article_38",
+          "type": "text",
+          "description": "Qualification article for id 38",
+          "label": "Qualification article for id 38",
+          "value": "360021672820-About-Education-and-Childcare-industry-placements"
+        },
+        {
+          "identifier": "qualification_article_39",
+          "type": "text",
+          "description": "Qualification article for id 39",
+          "label": "Qualification article for id 39",
+          "value": "360021700479-About-Digital-and-IT-industry-placements#digital-business-services"
+        },
+        {
+          "identifier": "qualification_article_40",
+          "type": "text",
+          "description": "Qualification article for id 40",
+          "label": "Qualification article for id 40",
+          "value": "360021700479-About-Digital-and-IT-industry-placements#digital-support"
+        },
+        {
+          "identifier": "qualification_article_41",
+          "type": "text",
+          "description": "Qualification article for id 41",
+          "label": "Qualification article for id 41",
+          "value": "360021708779-About-Health-and-Science-industry-placements#health"
+        },
+        {
+          "identifier": "qualification_article_42",
+          "type": "text",
+          "description": "Qualification article for id 42",
+          "label": "Qualification article for id 42",
+          "value": "360021708779-About-Health-and-Science-industry-placements#healthcare-science"
+        },
+        {
+          "identifier": "qualification_article_43",
+          "type": "text",
+          "description": "Qualification article for id 43",
+          "label": "Qualification article for id 43",
+          "value": "360021708779-About-Health-and-Science-industry-placements#science"
+        },
+        {
+          "identifier": "qualification_article_44",
+          "type": "text",
+          "description": "Qualification article for id 44",
+          "label": "Qualification article for id 44",
+          "value": "360021656060-About-Construction-industry-placements#onsite-construction"
+        },
+        {
+          "identifier": "qualification_article_45",
+          "type": "text",
+          "description": "Qualification article for id 45",
+          "label": "Qualification article for id 45",
+          "value": "360021656060-About-Construction-industry-placements#building-services-engineering"
+        },
+        {
+          "identifier": "qualification_article_46",
+          "type": "text",
+          "description": "Qualification article for id 46",
+          "label": "Qualification article for id 46",
+          "value": "360021774179-About-Legal-Finance-and-Accounting-industry-placements#finance"
+        },
+        {
+          "identifier": "qualification_article_47",
+          "type": "text",
+          "description": "Qualification article for id 47",
+          "label": "Qualification article for id 47",
+          "value": "360021774179-About-Legal-Finance-and-Accounting-industry-placements#accounting"
+        },
+        {
+          "identifier": "qualification_article_48",
+          "type": "text",
+          "description": "Qualification article for id 48",
+          "label": "Qualification article for id 48",
+          "value": "360021737940-About-Engineering-and-Manufacturing-industry-placements#design-and-development"
+        },
+        {
+          "identifier": "qualification_article_49",
+          "type": "text",
+          "description": "Qualification article for id 49",
+          "label": "Qualification article for id 49",
+          "value": "360021737940-About-Engineering-and-Manufacturing-industry-placements#maintenance"
+        },
+        {
+          "identifier": "qualification_article_50",
+          "type": "text",
+          "description": "Qualification article for id 50",
+          "label": "Qualification article for id 50",
+          "value": "360021737940-About-Engineering-and-Manufacturing-industry-placements#engineering"
+        },
+        {
+          "identifier": "qualification_article_51",
+          "type": "text",
+          "description": "Qualification article for id 51",
+          "label": "Qualification article for id 51",
+          "value": "360021741040-About-Business-and-Administration-industry-placements"
         }
       ]
     }
