@@ -14,12 +14,21 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    min-height: 250px;
+
+    @include govuk-media-query ($from: tablet) {
+        min-height: unset;
+    }
 }
 
 .tl-fap-home--container {
     @include govuk-media-query ($from: tablet) {
         display: flex;
         align-items: stretch;
+
+        div {
+            padding: 0;
+        }
     }
 }
 
