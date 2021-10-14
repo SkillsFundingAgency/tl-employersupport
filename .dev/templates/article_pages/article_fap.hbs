@@ -236,7 +236,7 @@
 							    function(_, qualification) {
                                     const articleLink = qualificationArticleMap[qualification.id];
                                     if (articleLink) {										
-                                        searchResult += `<li><a target="_blank" class="govuk-link" href="${articleLink}">${qualification.name}</a></li>`;
+                                        searchResult += `<li><a target="_blank" class="govuk-link tl-fap--result-course" href="${articleLink}">${qualification.name}</a></li>`;
                                     } else {
                                         searchResult += `<li>${qualification.name}</li>`;
                                     }
