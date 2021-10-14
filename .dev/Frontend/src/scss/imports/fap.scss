@@ -26,7 +26,7 @@
         display: flex;
         align-items: stretch;
 
-        div {
+        div[class*='govuk-grid-column'], div[class^='govuk-grid-column'] {
             padding: 0;
         }
     }
