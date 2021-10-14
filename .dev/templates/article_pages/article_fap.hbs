@@ -15,8 +15,15 @@
 						<button class="govuk-button tl-button--blue" id="tl-search-providers" data-module="govuk-button">
 							Search
 						</button>
-                    <form>
+                    <form>						
 				</div>
+			</div>
+		</div>
+
+		<div class="govuk-grid-row tl-hidden" id="tl-error">
+			<div class="govuk-grid-column-two-thirds govuk-!-margin-top-7" id="tl-error">
+				<h1 class="govuk-heading-l" id="tl-error-header"></h1>
+				<p class="govuk-body" id="tl-error-detail"></p>
 			</div>
 		</div>
 
@@ -36,22 +43,21 @@
 	</div>
 </main>
 
-<!-- <script src="{{asset 'findproviderapi.js'}}"></script> -->
 <script type="text/javascript">
 
 	$(document).ready(function() {
-        let findProvidersApiUrl = "{{ settings.find_provider_api }}";
+        let findProvidersApiUrl = "{{ settings.find_provider_api_uri }}";
 		if (findProvidersApiUrl.substr(-1) !== '/') findProvidersApiUrl += '/';
 
 		let currentPage = 0;
 		let currentPostcode = 0;
 
+		const qualificationArticleMap = loadQualificationMap();
+
 		//Check for search query param with postcode
 		let postcode = getUrlParameter("search");
 		if (postcode) {
 			postcode = urlDecode(postcode).toUpperCase();
-			console.log(`Found search query with postcode to search for '${postcode}'`);
-
 			$("#tl-postcode").val(postcode);
 			providerSearch(postcode);
 
@@ -97,8 +103,13 @@
 				return false;
 			}
 
-			clearProviderSearchResults();
+			if (!postcode.match(/^[0-9a-zA-Z\s]+$/)) {
+                event.stopPropagation();
+                showPostcodeError("Enter a valid postcode");
+                return false;
+            }
 
+			clearProviderSearchResults();
 			callProviderSearchApi(postcode, page);
 
 			return true;
@@ -111,30 +122,53 @@
 				pageSize: pageSize
 			}).toString();
 
+            const uri = `${findProvidersApiUrl}providers?${searchParams}`;
 			$.ajax({
 				type: "GET",
-				url: `${findProvidersApiUrl}providers?${searchParams}`,
+				url: uri,
 				contentType: "application/json",
 				beforeSend: function(xhr) {
-                    xhr.setRequestHeader("Ocp-Apim-Subscription-Key", "{{ settings.find_provider_api_key }}");
+					addHmacAuthHeader(xhr, uri);
 				}
 			}).done(function(response) {
-				console.log('Provider request succeeded with JSON response:', response);
-				currentPage = page;
-				currentPostcode = postcode;
-				console.log(`currentPage is now ${currentPage}`);
-				populateProviderSearchResults(response);
+                if (response.error) {
+                    console.log(`Invalid postcode response received - ${response.error}`);
+                    showPostcodeError("Enter a valid postcode");
+                } else {
+                    currentPage = page;
+                    currentPostcode = postcode;
+                    populateProviderSearchResults(response);
+                }
 			}).fail(function(jqxhr) {
-				console.log(`Error ${jqxhr.status} - ${jqxhr.responseText}`);
-				if (jqxhr.status === 404) {
-					showPostcodeError("Enter a valid postcode");
-				}
+				showError(jqxhr.status, jqxhr.responseText);
 			});
 
 			return true;
 		}
 		
+		function loadQualificationMap() {
+			const map = {};
+			map[36] = "{{ settings.qualification_article_36 }}";
+			map[37] = "{{ settings.qualification_article_37 }}";
+			map[38] = "{{ settings.qualification_article_38 }}";
+			map[39] = "{{ settings.qualification_article_39 }}";
+			map[40] = "{{ settings.qualification_article_40 }}";
+			map[41] = "{{ settings.qualification_article_41 }}";
+			map[42] = "{{ settings.qualification_article_42 }}";
+			map[43] = "{{ settings.qualification_article_43 }}";
+			map[44] = "{{ settings.qualification_article_44 }}";
+			map[45] = "{{ settings.qualification_article_45 }}";
+			map[46] = "{{ settings.qualification_article_46 }}";
+			map[47] = "{{ settings.qualification_article_47 }}";
+			map[48] = "{{ settings.qualification_article_48 }}";
+			map[49] = "{{ settings.qualification_article_49 }}";
+			map[50] = "{{ settings.qualification_article_50 }}";
+			map[51] = "{{ settings.qualification_article_51 }}";
+			return map;
+		}
+
 		function clearProviderSearchResults() {
+			$('#tl-error').addClass("tl-hidden");
 		    $('#tl-postcode-error').addClass("tl-hidden");
 		    $('.tl-fap--noresult').addClass("tl-hidden");
 		    $("#tl-fap--results").find(".tl-fap--result").remove();
@@ -148,21 +182,21 @@
 			    $("#tl-postcode").val(data.postcode);
 		    }
 
-		    if (data.searchResults.length === 0) {
+            if (!data.searchResults || data.searchResults.length === 0) {
 			    $('.tl-fap--noresult').removeClass("tl-hidden");
 			    return;
 		    }
 
 		    $.each(data.searchResults,
 			    function(_, providerLocation) {
-				    console.log(providerLocation);
-
 				    let searchResult =
 					    `<div class="tl-fap--result"> \
 					     <h3 class="govuk-heading-m">${providerLocation.providerName} <span class="tl-fap--distance">${providerLocation.distance.toFixed(0)} miles</span></h3> \
-					     <p class="govuk-body">${providerLocation.locationName} | ${providerLocation.postcode} `;
-
-				    if (providerLocation.website) searchResult += `<a target="_blank" href="${providerLocation.website}" class="govuk-link govuk-!-margin-left-4 tl-fap--result-website">Visit <span class="govuk-visually-hidden">${providerLocation.providerName}</span> website</a>`
+					     <p class="govuk-body">${providerLocation.town} | ${providerLocation.postcode}`;
+							 
+                    if (providerLocation.telephone) searchResult += ` | ${providerLocation.telephone}`;
+                    if (providerLocation.website) searchResult += ` | <a target="_blank" href="${providerLocation.website}" class="govuk-link tl-fap--result-website">Visit <span class="govuk-visually-hidden">${providerLocation.providerName}</span> website</a>`;
+                    if (providerLocation.email) searchResult += ` | <a href="mailto:${providerLocation.email}" class="govuk-link govuk-!-margin-right-4 tl-fap--result-email">${providerLocation.email}</a>`;
 
 				    const locationDeliveryYears = [];
 				    let availableNow = null;
@@ -200,25 +234,20 @@
 
 						    $.each(deliveryYear.qualifications,
 							    function(_, qualification) {
-								    searchResult += `<li>${qualification.name}</li>`;
+                                    const articleLink = qualificationArticleMap[qualification.id];
+                                    if (articleLink) {										
+                                        searchResult += `<li><a target="_blank" class="govuk-link" href="${articleLink}">${qualification.name}</a></li>`;
+                                    } else {
+                                        searchResult += `<li>${qualification.name}</li>`;
+                                    }
 							    });
 
 						    searchResult += `</ul>`;
 					    });
 
-				    searchResult += `</div>`;
-
-				    if (providerLocation.email || providerLocation.telephone) {
-					    searchResult += `<p class="govuk-body">`;
-
-					    if (providerLocation.email) searchResult += `<a href="mailto:${providerLocation.email}" class="govuk-link govuk-!-margin-right-4 tl-fap--result-email">${providerLocation.email}</a>`;
-					    if (providerLocation.telephone) searchResult += ` Call on: ${providerLocation.telephone}`;
-
-					    searchResult += `</p>`;
-				    }
-
-				    searchResult += `<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible"> \
-					      </div>`;
+					searchResult += `</div> \
+						<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible"> \
+						</div>`;
 
 				    $("#tl-fap--results").append(searchResult);
 			    });
@@ -226,10 +255,47 @@
 		    $("#tl-fap--results").append(`<p class="govuk-body"><a class="govuk-link" id="next-results-link" href="more-results">Show 5 more results</a></p>`);
 	    }
 
+        function showError(status, errorText) {
+            console.log(`Error status ${status} was encountered. ${errorText}`);
+            switch (status) {
+            case 0:
+                $("#tl-error-header").text('There is a problem with your network connection.');
+                $("#tl-error-detail").html('There is a problem with your network connection. Check you’re connected to the internet and try again.');
+                break;
+            default:
+                $("#tl-error-header").text('Sorry, there is a problem with the service.');
+                $("#tl-error-detail").html(`Try again later or {{#link 'new_request' class='govuk-link tl-error--contact'}}contact us{{/link}} quoting error code ${status}.`);
+            }
+			$('#tl-error').removeClass("tl-hidden");
+        }
+
 	    function showPostcodeError(message) {
 		    $("#tl-postcode-error").text(message);
 		    $('#tl-postcode-error').removeClass("tl-hidden");
+			$('#tl-error').addClass("tl-hidden");
 	    }
+
+		function addHmacAuthHeader(xhr, uri) {
+            const appId = "{{ settings.find_provider_api_app_id }}";
+            const apiKey = "{{ settings.find_provider_api_key }}";
+            const ts = Math.round((new Date()).getTime() / 1000);
+            const uuid = createUniqueId();
+            const nonce = CryptoJS.enc.Hex.parse(uuid);
+            const data = `${appId}GET${uri.toLowerCase()}${ts}${nonce}`;
+
+            const hash = CryptoJS.HmacSHA256(data, apiKey);
+            const hashInBase64 = CryptoJS.enc.Base64.stringify(hash);
+			
+            xhr.setRequestHeader("Authorization", `amx ${appId}:${hashInBase64}:${nonce}:${ts}`);
+        }
+
+        function createUniqueId() {
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,
+                function(c) {
+                    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+                    return v.toString(16);
+                });
+        }
 
 	    function urlDecode(str) {
 		    return decodeURIComponent((str + '').replace(/\+/g, '%20'));

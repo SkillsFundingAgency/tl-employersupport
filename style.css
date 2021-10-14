@@ -6246,8 +6246,21 @@ ul.govuk-radios label .gem-radios__input {
   background-image: url("$home_image_7");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center; }
+  background-position: center;
+  min-height: 250px; }
+  @media (min-width: 40.0625em) {
+    .tl-fap-home--image {
+      min-height: unset; } }
 
-.tl-fap-home--container {
-  display: flex;
-  align-items: stretch; }
+@media (min-width: 40.0625em) {
+  .tl-fap-home--container {
+    display: flex;
+    align-items: stretch; }
+    .tl-fap-home--container div[class*='govuk-grid-column'], .tl-fap-home--container div[class^='govuk-grid-column'] {
+      padding: 0; } }
+
+.tl-fap-home--submit {
+  max-width: 100px; }
+  @media (min-width: 40.0625em) {
+    .tl-fap-home--submit {
+      max-width: unset; } }
