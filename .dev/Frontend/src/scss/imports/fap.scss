@@ -17,6 +17,16 @@
 }
 
 .tl-fap-home--container {
-    display: flex;
-    align-items: stretch;
+    @include govuk-media-query ($from: tablet) {
+        display: flex;
+        align-items: stretch;
+    }
+}
+
+.tl-fap-home--submit {
+    max-width: 100px;
+
+    @include govuk-media-query ($from: tablet) {
+        max-width: unset;
+    }
 }

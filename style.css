@@ -6248,6 +6248,13 @@ ul.govuk-radios label .gem-radios__input {
   background-repeat: no-repeat;
   background-position: center; }
 
-.tl-fap-home--container {
-  display: flex;
-  align-items: stretch; }
+@media (min-width: 40.0625em) {
+  .tl-fap-home--container {
+    display: flex;
+    align-items: stretch; } }
+
+.tl-fap-home--submit {
+  max-width: 100px; }
+  @media (min-width: 40.0625em) {
+    .tl-fap-home--submit {
+      max-width: unset; } }
