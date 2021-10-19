@@ -7,4 +7,13 @@
     @include govuk-media-query ($until: tablet) {
         padding: 20px;
     }
+
+    &--grey {
+        background-color: govuk-colour("light-grey");
+        padding: 30px;
+
+        @include govuk-media-query ($until: tablet) {
+            padding: 20px;
+        }
+    }
 }

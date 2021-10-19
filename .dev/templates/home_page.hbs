@@ -6,7 +6,7 @@
 
 
 <!-- Main content -->
-<main id="main-content" role="main">
+ 
     <!-- Banner -->
     <div class="tl-home--banner">
         <div class="govuk-width-container">
@@ -26,6 +26,7 @@
         <div class="tl-home--categories">
 
             {{#each categories}}
+            {{#isnt name "Find your nearest T Level Provider"}}
             {{#isnt name "How this site works"}}
             {{#isnt name "Workshops and webinars"}}
             {{#isnt name "Tailored support sessions"}}
@@ -34,6 +35,7 @@
                 <h3 class="govuk-heading-m"><a href="{{url}}" class="govuk-link" GTMname="{{name}}">{{name}}</a></h3>
                 <p class="govuk-body">{{excerpt description}}</p>
             </div>
+            {{/isnt}}
             {{/isnt}}
             {{/isnt}}
             {{/isnt}}
@@ -64,6 +66,54 @@
 
             <div class="govuk-grid-column-one-half">
                 <iframe class="tl-home--video" id="tl-home--video" width="560" height="315" src="https://www.youtube-nocookie.com/embed/tjNeXtgFQ4Y?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <details class="govuk-details govuk-!-margin-top-2 govuk-!-margin-bottom-0" data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">
+                            Video transcript
+                        </span>
+                    </summary>
+                    <div class="govuk-details__text">
+                        <p class="govuk-body">
+                            Industry placements are really important to us because they're a way of us bringing in new perspectives on to the work that we're planning and delivering.
+                        </p>
+
+                        <p class="govuk-body">
+                            Our organisation has benefited from being involved with these placements because we're seeing the best and the brightest coming through that are eager to learn.
+                        </p>
+                        <p class="govuk-body">
+                            From our point of view we feel these longer placements works really well both for us and for the students.
+                        </p>
+                        <p class="govuk-body">
+                            The more of us that get on board we're trying to get people into work - whether it's through an apprenticeship, or through direct entry or through an industry placement - is really critical to helping sustain our future workforce.
+                        </p>
+                        <p class="govuk-body">
+                            So it's vitally important for us to have placements so we can bring them in, nurture them, help them with their training and hopefully retain them at the end of their qualification.
+                        </p>
+                        <p class="govuk-body">
+                            The important thing is to look at it as an opportunity and appreciate the impact that young people can have if given that opportunity and understanding how they can flourish and then really actually add value to your business.
+                        </p>
+                    </div>
+                </details>
+
+            </div>
+        </div>
+
+        <div class="govuk-grid-row govuk-!-margin-top-7 tl-fap-home--container"">
+            <div class="govuk-grid-column-two-thirds">
+                <div class="tl-card--grey">
+                    <h1 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-7">Find your nearest T Level provider</h1>
+                    <p class="govuk-body">Search for schools and colleges to offer industry placements to.</p>
+                    <form role="search" class="tl-search-providers-form">
+    					<span class="govuk-error-message tl-hidden" id="tl-postcode-error">You must enter a postcode</span>
+                        <input class="govuk-input govuk-input--width-10 tl-fap-home--input" id="tl-postcode" name="tl-postcode" type="text" placeholder="Enter a postcode">
+                        <button class="govuk-button tl-button--blue tl-fap-home--submit" id="tl-search-providers" data-module="govuk-button">
+                            Search
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="govuk-grid-column-one-third">
+                <span class="tl-fap-home--image"></span>
             </div>
         </div>
 
@@ -109,6 +159,44 @@
     document.addEventListener('DOMContentLoaded', function () {
         if (!isAgent()) {
             $("#tl-home--ticket").show();
+        }
+    });
+
+    $(document).ready(function() {
+        $('#tl-postcode').val("");
+
+        $('#tl-postcode').keypress(function (e) {
+            if (e.which === 13) {
+                $("#tl-search-providers").click();
+                return false;
+            }
+        });
+
+        $("#tl-search-providers").click(function() {
+            const postcode = $("#tl-postcode").val().trim();
+
+            if (postcode === "") {
+                event.stopPropagation();
+                showPostcodeError("Enter a postcode");
+                return false;
+            }
+
+            const searchParams = new URLSearchParams({
+                search: postcode
+            }).toString();
+
+            $(location).attr('href', `/hc/en-gb/articles/{{settings.article_id_find_provider}}?${searchParams}`);
+            
+            return true;
+        });
+
+		$(".tl-search-providers-form").submit(function() {
+			event.preventDefault();
+		});
+
+        function showPostcodeError(message) {
+            $("#tl-postcode-error").text(message);
+            $('#tl-postcode-error').removeClass("tl-hidden");
         }
     });
 </script>

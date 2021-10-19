@@ -1,0 +1,13 @@
+.tl-button {
+    @extend .govuk-button;
+
+    &--blue {
+        background-color: $govuk-link-colour;
+        color: govuk-colour("white");
+        box-shadow: 0 2px 0 $govuk-link-hover-colour;
+
+        &:hover {
+            background-color: $govuk-link-hover-colour;
+        }
+    }
+}
