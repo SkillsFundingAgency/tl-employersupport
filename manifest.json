@@ -322,6 +322,13 @@
       "label": "Find a provider",
       "variables": [
         {
+          "identifier": "fap_enabled",
+          "type": "checkbox",
+          "description": "Enable Find a Provider",
+          "label": "Show the find a provider search on home",
+          "value": false
+        },
+        {
           "identifier": "find_provider_api_uri",
           "type": "text",
           "description": "Find a Provider API URL",
