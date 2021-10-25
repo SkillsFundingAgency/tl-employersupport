@@ -93,7 +93,7 @@
 				return false;
 			});
 
-		function providerSearch(postcode, page=0) {
+		function providerSearch(postcode, page) {
 			if (postcode === "") {
 				event.stopPropagation();
 				showPostcodeError("Enter a postcode");
