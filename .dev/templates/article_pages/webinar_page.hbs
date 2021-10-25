@@ -213,7 +213,8 @@
         $.getJSON('/api/v2/help_center/articles/{{article.id}}', function (articlelabels) {
 
             if (articlelabels.article.label_names && articlelabels.article.label_names.length)
-                for (var labelname of articlelabels.article.label_names) {
+                //for (var labelname of articlelabels.article.label_names) {
+                articlelabels.article.label_names).forEach(function (labelname) {
                     console.log("webinar labelname: " + labelname);
 
                     if (labelname.indexOf("type") != -1) {
