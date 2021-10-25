@@ -119,7 +119,7 @@
 	        page = (page === undefined ? 0 : page);
 	        pageSize = (pageSize === undefined ? 5 : pageSize);
 
-			const uri = findProvidersApiUrl + "providers?postcode=" + + encodeURIComponent(postcode) + '&page=' + page + '&pageSize=' + pageSize;
+			const uri = findProvidersApiUrl + "providers?postcode=" + encodeURIComponent(postcode) + '&page=' + page + '&pageSize=' + pageSize;
 
 			$.ajax({
 				type: "GET",
