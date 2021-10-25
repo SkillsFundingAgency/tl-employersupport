@@ -102,8 +102,7 @@
                             $.getJSON('/api/v2/help_center/articles/{{id}}', function (articlelabels) {
 
                                 if (articlelabels.article.label_names && articlelabels.article.label_names.length)
-                                    for (var label of articlelabels.article.label_names) {
-                                        var labelname = `${label}`;
+                                    for (var labelname of articlelabels.article.label_names) {
 
                                         if (labelname.indexOf("type") != -1) {
                                             var type = labelname.split('/')[1]
@@ -115,9 +114,7 @@
                                             var date = labelname.split('/')[1]
                                             $("#tl-article--date--{{id}}").text(date)
                                         }
-
                                     }
-
                             });
 
                         </script>
