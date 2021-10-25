@@ -213,8 +213,7 @@
         $.getJSON('/api/v2/help_center/articles/{{article.id}}', function (articlelabels) {
 
             if (articlelabels.article.label_names && articlelabels.article.label_names.length)
-                for (const label of articlelabels.article.label_names) {
-                    var labelname = `${label}`;
+                for (var labelname of articlelabels.article.label_names) {
 
                     if (labelname.indexOf("type") != -1) {
                         var type = labelname.split('/')[1]
@@ -242,7 +241,6 @@
                         $("#tl-article--book a").attr("href", book)
                     }
                 }
-
         });
 
     </script>
