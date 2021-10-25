@@ -112,17 +112,15 @@
 			return true;
 		}
 
-		function callProviderSearchApi(postcode, page=0, pageSize=5) {
+		function callProviderSearchApi(postcode, page, pageSize) {
 			if (isSearchInProgress) return false;
             isSearchInProgress = true;
 
-			const searchParams = new URLSearchParams({
-				postcode: postcode,
-				page: page,
-				pageSize: pageSize
-			}).toString();
+	        page = (page === undefined ? 0 : page);
+	        pageSize = (pageSize === undefined ? 5 : pageSize);
 
-            const uri = `${findProvidersApiUrl}providers?${searchParams}`;
+			const uri = findProvidersApiUrl + "providers?postcode=" + + encodeURIComponent(postcode) + '&page=' + page + '&pageSize=' + pageSize;
+
 			$.ajax({
 				type: "GET",
 				url: uri,
@@ -132,7 +130,7 @@
 				}
 			}).done(function(response) {
                 if (response.error) {
-                    console.log(`Invalid postcode response received - ${response.error}`);
+                    console.log("Invalid postcode response received - " + response.error);
                     showPostcodeError("Enter a valid postcode");
                 } else {
                     currentPage = page;
@@ -191,13 +189,13 @@
 		    $.each(data.searchResults,
 			    function(_, providerLocation) {
 				    let searchResult =
-					    `<div class="tl-fap--result"> \
-					     <h3 class="govuk-heading-m">${providerLocation.providerName} <span class="tl-fap--distance">${providerLocation.distance.toFixed(0)} miles</span></h3> \
-					     <p class="govuk-body">${providerLocation.town} | ${providerLocation.postcode}`;
+					    '<div class="tl-fap--result"> \
+					     <h3 class="govuk-heading-m">' + providerLocation.providerName + ' <span class="tl-fap--distance">' + providerLocation.distance.toFixed(0) + ' miles</span></h3> \
+					     <p class="govuk-body">' + providerLocation.town + ' | ' + providerLocation.postcode;
 							 
-                    if (providerLocation.telephone) searchResult += ` | ${providerLocation.telephone}`;
-                    if (providerLocation.website) searchResult += ` | <a target="_blank" href="${providerLocation.website}" class="govuk-link tl-fap--result-website">Visit <span class="govuk-visually-hidden">${providerLocation.providerName}</span> website</a>`;
-                    if (providerLocation.email) searchResult += ` | <a href="mailto:${providerLocation.email}" class="govuk-link govuk-!-margin-right-4 tl-fap--result-email">${providerLocation.email}</a>`;
+                    if (providerLocation.telephone) searchResult += ' | ' + providerLocation.telephone;
+                    if (providerLocation.website) searchResult += ' | <a target="_blank" href="' + providerLocation.website +'" class="govuk-link tl-fap--result-website">Visit <span class="govuk-visually-hidden">' + providerLocation.providerName + '</span> website</a>';
+                    if (providerLocation.email) searchResult += ' | <a href="mailto:' + providerLocation.email + '" class="govuk-link govuk-!-margin-right-4 tl-fap--result-email">' + providerLocation.email +'</a>';
 
 				    const locationDeliveryYears = [];
 				    let availableNow = null;
@@ -222,33 +220,33 @@
 					    availableNow.qualifications.sort(function(x, y) { return (x.name < y.name) ? -1 : ((x.name > y.name) ? 1 : 0) });
 				    }
 
-				    searchResult += `</p><div class="tl-fap--courses">`;
+				    searchResult += '</p><div class="tl-fap--courses">';
 
 				    $.each(locationDeliveryYears,
 					    function(_, deliveryYear) {
 						    const availability = deliveryYear.isAvailableNow
 							    ? 'Available now'
-							    : `From September ${deliveryYear.year} onwards`;
+							    : 'From September ' + deliveryYear.year + ' onwards';
 
-						    searchResult += `<p class="govuk-body govuk-!-font-weight-bold">${availability}:</p> \
-							    <ul class="govuk-list govuk-list--bullet">`;
+						    searchResult += '<p class="govuk-body govuk-!-font-weight-bold">' + availability + ':</p> \
+							    <ul class="govuk-list govuk-list--bullet">';
 
 						    $.each(deliveryYear.qualifications,
 							    function(_, qualification) {
                                     const articleLink = qualificationArticleMap[qualification.id];
                                     if (articleLink) {										
-                                        searchResult += `<li><a target="_blank" class="govuk-link tl-fap--result-course" href="${articleLink}">${qualification.name}</a></li>`;
+                                        searchResult += '<li><a target="_blank" class="govuk-link tl-fap--result-course" href="' + articleLink + '">' + qualification.name + '</a></li>';
                                     } else {
-                                        searchResult += `<li>${qualification.name}</li>`;
+                                        searchResult += '<li>' + qualification.name + '</li>';
                                     }
 							    });
 
-						    searchResult += `</ul>`;
+						    searchResult += '</ul>';
 					    });
 
-					searchResult += `</div> \
-						<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible"> \
-						</div>`;
+                    searchResult += '</div> \
+                                <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible"> \
+                              </div>';
 
 				    $("#tl-fap--results").append(searchResult);
 			    });
@@ -257,7 +255,7 @@
 	    }
 
         function showError(status, errorText) {
-            console.log(`Error status ${status} was encountered. ${errorText}`);
+            console.log("Error status " + status + " was encountered. " + errorText);
             switch (status) {
             case 0:
                 $("#tl-error-header").text('There is a problem with your network connection.');
@@ -265,7 +263,7 @@
                 break;
             default:
                 $("#tl-error-header").text('Sorry, there is a problem with the service.');
-                $("#tl-error-detail").html(`Try again later or {{#link 'new_request' class='govuk-link tl-error--contact'}}contact us{{/link}} quoting error code ${status}.`);
+                $("#tl-error-detail").html('Try again later or <a class="govuk-link tl-error--contact" href="https://test.employers.tlevels.gov.uk/hc/en-gb/requests/new">contact us</a> quoting error code ' + status);
             }
 			$('#tl-error').removeClass("tl-hidden");
         }
@@ -286,12 +284,12 @@
                     return v.toString(16);
                 });
             const nonce = CryptoJS.enc.Hex.parse(uuid);
-            const data = `${appId}GET${uri.toLowerCase()}${ts}${nonce}`;
+            const data = appId + "GET" + uri.toLowerCase() + ts + nonce;
 
             const hash = CryptoJS.HmacSHA256(data, apiKey);
             const hashInBase64 = CryptoJS.enc.Base64.stringify(hash);
 			
-            xhr.setRequestHeader("Authorization", `amx ${appId}:${hashInBase64}:${nonce}:${ts}`);
+            xhr.setRequestHeader("Authorization", "amx " + appId + ":" + hashInBase64 + ":" + nonce + ":" + ts);
         }
 
 	    function urlDecode(str) {
