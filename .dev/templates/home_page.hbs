@@ -182,12 +182,8 @@
                 return false;
             }
 
-            const searchParams = new URLSearchParams({
-                search: postcode
-            }).toString();
+            $(location).attr('href', '/hc/en-gb/articles/{{settings.article_id_find_provider}}?search=' + encodeURIComponent(postcode));
 
-            $(location).attr('href', `/hc/en-gb/articles/{{settings.article_id_find_provider}}?${searchParams}`);
-            
             return true;
         });
 
