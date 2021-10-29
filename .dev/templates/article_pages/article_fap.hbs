@@ -21,7 +21,7 @@
 		</div>
 
 		<div class="govuk-grid-row tl-hidden" id="tl-error">
-			<div class="govuk-grid-column-two-thirds govuk-!-margin-top-7" id="tl-error">
+			<div class="govuk-grid-column-two-thirds govuk-!-margin-top-7">
 				<h1 class="govuk-heading-l" id="tl-error-header"></h1>
 				<p class="govuk-body" id="tl-error-detail"></p>
 			</div>
@@ -51,7 +51,7 @@
 		if (findProvidersApiUrl.substr(-1) !== '/') findProvidersApiUrl += '/';
 
 		let currentPage = 0;
-		let currentPostcode = 0;
+		let currentPostcode = null;
 		let isSearchInProgress = false;
 
 		const qualificationArticleMap = loadQualificationMap();
@@ -265,6 +265,8 @@
                 $("#tl-error-header").text('Sorry, there is a problem with the service.');
                 $("#tl-error-detail").html('Try again later or <a class="govuk-link tl-error--contact" href="https://test.employers.tlevels.gov.uk/hc/en-gb/requests/new">contact us</a> quoting error code ' + status);
             }
+			
+			clearProviderSearchResults();
 			$('#tl-error').removeClass("tl-hidden");
         }
 
