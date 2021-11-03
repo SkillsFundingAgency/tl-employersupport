@@ -1,7 +1,7 @@
 {
-  "name": "GDS Style - Employer Support - IE11 Bugs",
+  "name": "GDS Style - Employer Support - Accessibility Fixes",
   "author": "Ash Anderton",
-  "version": "0.1.141",
+  "version": "0.1.142",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [
