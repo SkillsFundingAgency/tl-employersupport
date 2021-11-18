@@ -1,7 +1,7 @@
 {
   "name": "GDS Style - Employer Support - Accessibility Fixes",
   "author": "Ash Anderton",
-  "version": "0.1.145",
+  "version": "0.1.146",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [
@@ -250,13 +250,6 @@
           "label": "Survey Link",
           "value": "#"
         },
-        {
-          "identifier": "postcodes_api",
-          "type": "text",
-          "description": "Postcodes API",
-          "label": "Postcodes API",
-          "value": "EC68-PM92-AG92-GA77"
-        },        
         {
           "identifier": "article_id_find_provider",
           "type": "text",
