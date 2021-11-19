@@ -1,7 +1,7 @@
 {
-  "name": "GDS Style - Employer Support - Accessibility Fixes",
+  "name": "GDS Style - Employer Support - Remove Postcodes API",
   "author": "Ash Anderton",
-  "version": "0.1.146",
+  "version": "0.1.147",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [
