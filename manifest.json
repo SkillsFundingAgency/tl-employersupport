@@ -1,7 +1,7 @@
 {
   "name": "GDS Style - Employer Support - Remove Postcode API",
   "author": "Ash Anderton",
-  "version": "0.1.148",
+  "version": "0.1.149",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [
@@ -256,6 +256,13 @@
           "description": "Find Provider",
           "label": "Find Provider",
           "value": "4404794078226"
+        },
+        {
+          "identifier": "subdomain",
+          "type": "text",
+          "description": "Subdomain of ZD instance",
+          "label": "Subdomain of ZD instance",
+          "value": "esfa"
         }
       ]
     },
