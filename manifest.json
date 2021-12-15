@@ -1,7 +1,7 @@
 {
-  "name": "GDS Style - Employer Support - Accessibility Fixes",
+  "name": "GDS Style - Employer Support - Business Benefits",
   "author": "Ash Anderton",
-  "version": "0.1.145",
+  "version": "0.1.150",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [
@@ -251,18 +251,18 @@
           "value": "#"
         },
         {
-          "identifier": "postcodes_api",
-          "type": "text",
-          "description": "Postcodes API",
-          "label": "Postcodes API",
-          "value": "EC68-PM92-AG92-GA77"
-        },        
-        {
           "identifier": "article_id_find_provider",
           "type": "text",
           "description": "Find Provider",
           "label": "Find Provider",
           "value": "4404794078226"
+        },
+        {
+          "identifier": "subdomain",
+          "type": "text",
+          "description": "Subdomain of ZD instance",
+          "label": "Subdomain of ZD instance",
+          "value": "esfa"
         }
       ]
     },
