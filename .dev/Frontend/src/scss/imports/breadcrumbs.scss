@@ -35,6 +35,14 @@
     }
 }
 
+#tl-breadcrumbs--casestudy {
+    ol {
+        li:nth-child(3), li:nth-child(4) {
+            display: none;
+        }
+    }
+}
+
 #tl-breadcrumbs--category, #tl-breadcrumbs--search, #tl-breadcrumbs--newsletter, #tl-breadcrumbs--community {
     ol {
         li:nth-child(2) {
