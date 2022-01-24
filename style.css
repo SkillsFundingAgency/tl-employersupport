@@ -6257,7 +6257,7 @@ ul.govuk-radios label .gem-radios__input {
 .tl-fap-home--image {
   width: 100%;
   height: 100%;
-  display: block;
+  display: none;
   background-image: url("$home_image_7");
   background-size: cover;
   background-repeat: no-repeat;
@@ -6265,7 +6265,8 @@ ul.govuk-radios label .gem-radios__input {
   min-height: 250px; }
   @media (min-width: 40.0625em) {
     .tl-fap-home--image {
-      min-height: unset; } }
+      min-height: unset;
+      display: block; } }
 
 @media (min-width: 40.0625em) {
   .tl-fap-home--container {
