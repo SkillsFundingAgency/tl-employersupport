@@ -5403,17 +5403,29 @@
   @media (min-width: 40.0625em) {
     .tl-home--category {
       margin-bottom: 15px; } }
-  @media (min-width: 40.0625em) {
+  @media (min-width: 48.0625em) {
     .tl-home--category {
       width: calc(33.333% - 30px); } }
   .tl-home--category span {
     max-width: 100%;
-    margin-bottom: 20px;
     background-image: url("$home_image_1");
     background-size: cover;
-    min-height: 200px;
+    min-height: 160px;
     display: block;
-    background-repeat: no-repeat; }
+    background-repeat: no-repeat;
+    width: 50%;
+    float: left;
+    margin: 0 20px 20px 0; }
+    @media (min-width: 48.0625em) {
+      .tl-home--category span {
+        width: 100%;
+        float: unset;
+        margin: 0 0 20px 0;
+        min-height: 200px; } }
+    @media (max-width: 420px) {
+      .tl-home--category span {
+        width: 100%;
+        margin: 0 0 20px 0; } }
   .tl-home--category:nth-child(2) span {
     background-image: url("$home_image_2"); }
   .tl-home--category:nth-child(3) span {
