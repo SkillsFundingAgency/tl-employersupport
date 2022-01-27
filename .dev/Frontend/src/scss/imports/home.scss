@@ -12,18 +12,33 @@
     padding: 0 15px;
     @include govuk-responsive-margin(3, "bottom");
 
-    @include govuk-media-query($from: tablet) {
+    @include govuk-media-query($from: desktop) {
         width: calc(33.333% - 30px);
     }
 
     span {
         max-width: 100%;
-        margin-bottom: 20px;
         background-image: url("$home_image_1");
         background-size: cover;
-        min-height: 200px;
+        min-height: 160px;
         display: block;
         background-repeat: no-repeat;
+        width: 50%;
+        float: left;
+        margin: 0 20px 20px 0;
+
+
+        @include govuk-media-query($from: desktop) {
+            width: 100%;
+            float: unset;
+            margin: 0 0 20px 0;
+            min-height: 200px;
+        }
+
+        @media(max-width: 420px) {
+            width: 100%;
+            margin: 0 0 20px 0;
+        }
     }
 
 

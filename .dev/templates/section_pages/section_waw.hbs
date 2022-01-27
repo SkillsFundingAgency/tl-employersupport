@@ -1,7 +1,7 @@
 ﻿
 
 <!-- Main content -->
-<main id="main-content" role="main">
+ 
 
     <div class="govuk-width-container">
         <div id="tl-breadcrumbs--help">
@@ -30,9 +30,9 @@
                 <div class="govuk-form-group tl-filter">
                     <fieldset class="govuk-fieldset">
                         <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                            <h1 class="govuk-fieldset__heading">
+                            <span class="govuk-fieldset__heading">
                                 Filter by event type
-                            </h1>
+                            </span>
                         </legend>
                         <div class="govuk-radios--small tl-filter--radios">
                             <div class="govuk-radios__item" id="tl-waw-filter--all">
@@ -58,8 +58,8 @@
                                 $('input:radio[name="Event type"]').change(
                                     function () {
                                         if ($(this).is(':checked')) {
-                                            var eventtype = $(this).val()
-                                            $(".tl-event--list").attr("data-event--filter", eventtype)
+                                            var eventtype = $(this).val();
+                                            $(".tl-event--list").attr("data-event--filter", eventtype);
                                             sessionStorage.setItem('wawfilter', eventtype);
                                         }
                                     });
@@ -67,13 +67,12 @@
                                 $(document).ready(function () {
                                     if (sessionStorage.getItem("wawfilter")) {
                                         var eventtype = sessionStorage.getItem('wawfilter');
-                                        $('.tl-event--list').attr("data-event--filter", eventtype)
+                                        $('.tl-event--list').attr("data-event--filter", eventtype);
                                         $('input:radio[value=' + eventtype + ']').prop("checked", true);
                                     }
-
                                     else {
                                         var eventtype = $('input:radio[name="Event type"]:checked').val();
-                                        $(".tl-event--list").attr("data-event--filter", eventtype)
+                                        $(".tl-event--list").attr("data-event--filter", eventtype);
                                     }
                                 });
                             </script>
@@ -101,23 +100,21 @@
                         <script>
                             $.getJSON('/api/v2/help_center/articles/{{id}}', function (articlelabels) {
 
-                                if (articlelabels.article.label_names && articlelabels.article.label_names.length)
-                                    for (const label of articlelabels.article.label_names) {
-                                        var labelname = `${label}`;
-
+                                if (articlelabels.article.label_names && articlelabels.article.label_names.length) {
+                                    articlelabels.article.label_names.forEach(function (labelname) {
+                                        
                                         if (labelname.indexOf("type") != -1) {
-                                            var type = labelname.split('/')[1]
-                                            $("#tl-article--type--{{id}}").text(type)
-                                            $("#tl-article--container--{{id}}").attr("data-event--labels", type)
+                                            var type = labelname.split('/')[1];
+                                            $("#tl-article--type--{{id}}").text(type);
+                                            $("#tl-article--container--{{id}}").attr("data-event--labels", type);
                                         }
 
                                         if (labelname.indexOf("date") != -1) {
-                                            var date = labelname.split('/')[1]
-                                            $("#tl-article--date--{{id}}").text(date)
+                                            var date = labelname.split('/')[1];
+                                            $("#tl-article--date--{{id}}").text(date);
                                         }
-
-                                    }
-
+                                    });
+                                }
                             });
 
                         </script>
@@ -129,8 +126,6 @@
                     {{pagination}}
                 </div>
             </div>
-        </div>
-        </div>
         </div>
     </div>
 </main>

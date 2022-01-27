@@ -22,25 +22,24 @@
 
 
 <!-- Main content -->
-<main id="main-content" role="main">
-    <!-- Article Content -->
-    <div class="govuk-width-container govuk-main-wrapper">
-        <section id="tl-search--box">
-            <div class="govuk-grid-row">
-                <div class="govuk-grid-column-two-thirds">
-                    <h1 class="govuk-heading-xl govuk-!-margin-bottom-5">Search results</h1>
+<!-- Article Content -->
+<div class="govuk-width-container govuk-main-wrapper">
+    <section id="tl-search--box">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <h1 class="govuk-heading-xl govuk-!-margin-bottom-5">Search results</h1>
 
-                    <div class="tl-form-group tl-search--container" id="tl-search--results">
-                        <div class="tl-search--error tl-hidden">
-                            <span class="tl-error--message"></span>
-                        </div>
-                        {{search placeholder="Search for support"  submit=true instant=settings.instant_search class='tl-search govuk-!-margin-top-2'}}
+                <div class="tl-form-group tl-search--container" id="tl-search--results">
+                    <div class="tl-search--error tl-hidden">
+                        <span class="tl-error--message"></span>
                     </div>
+                    {{search placeholder="Search for support"  submit=true instant=settings.instant_search class='tl-search govuk-!-margin-top-2'}}
                 </div>
             </div>
-        </section>
-        <section id="tl-search--results">
-            <div class="govuk-grid-row">
+        </div>
+    </section>
+    <section id="tl-search--results">
+        <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                 {{#if results}}
                 {{#is results_count 1}}
@@ -73,7 +72,7 @@
                     </li>
                     {{/each}}
                 </ul>
-                
+
                 <div class="tl-search--pagination tl-js-hidden">
                     {{pagination}}
                 </div>
@@ -107,8 +106,31 @@
                 {{/if}}
             </div>
 
-            </div>
-        </section>
+        </div>
+    </section>
 
-    </div>
-</main>
+</div>
+
+
+<!-- Start of tlevelsemployertest Zendesk Widget script -->
+<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=1028e6a2-424d-4c2e-9159-692569f0f6fe"></script>
+
+<script type="text/javascript">
+    window.zESettings = {
+        webWidget: {
+            answerBot: {
+                avatar: {
+                    url: "{{asset 'answerbot.gif'}}",
+                    name: {
+                        "*": 'Sandrabot'
+                    }
+                },
+                title: {
+                    "en-gb": "T Levels Employer Support"
+                },
+                contactOnlyAfterQuery: true
+            }
+        }
+    };
+</script>
+<!-- End of tlevelsemployertest Zendesk Widget script -->

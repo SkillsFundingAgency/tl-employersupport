@@ -6,43 +6,39 @@
 
 
 <!-- Main content -->
-<main id="main-content" role="main">
 
-    <div class="govuk-width-container">
-        <div id="tl-breadcrumbs--help">
-            <div class="tl-breadcrumbs">
-                {{breadcrumbs}}
-            </div>
+
+<div class="govuk-width-container">
+    <div id="tl-breadcrumbs--help">
+        <div class="tl-breadcrumbs">
+            {{breadcrumbs}}
         </div>
     </div>
-    <div class="govuk-width-container govuk-main-wrapper">
+</div>
+<div class="govuk-width-container govuk-main-wrapper">
 
-        <div class="govuk-grid-row">
-            <div class="govuk-grid-column-two-thirds">
-                <h1 class="govuk-heading-xl">Contact us</h1>
-                <p class="govuk-body">Use this form to contact us about industry placements. You can usually expect a reply within 2 working days.</p>
-                <p class="govuk-body">Alternatively, you can call us on <strong>0800 150 600</strong> (choose option 4). Phone lines are open 8am to 10pm, Monday to Friday.</p>
-                <div class="tl-ticket--form">
-                    {{request_form}}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-xl">Contact us</h1>
+            <p class="govuk-body">Use this form to contact us about industry placements. You can usually expect a reply within 2 working days.</p>
+            <p class="govuk-body">Alternatively, you can call us on <strong>08000 150 600</strong> (choose option 4). Phone lines are open 8am to 8pm, Monday to Friday.</p>
+            <div class="tl-ticket--form">
+                {{request_form}}
 
-                    <div class="govuk-form-group govuk-!-margin-top-5" id="tl-consent">
-                        <fieldset class="govuk-fieldset">
-                            <div class="govuk-checkboxes govuk-checkboxes--small">
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="tl-consent-check" name="consent" type="checkbox" value="agree">
-                                    <label class="govuk-label govuk-checkboxes__label" for="tl-consent-check">
-                                        By checking this box you confirm that you consent to the Department for Education processing and storing your data for the purposes described in the <a href="https://www.gov.uk/government/publications/esfa-privacy-notice" class="govuk-link">privacy notice</a>.
-                                    </label>
-                                </div>
-                            </div>
-
-
-                        </fieldset>
+                <div class="govuk-form-group govuk-!-margin-top-5" id="tl-consent">
+                    <div class="govuk-checkboxes govuk-checkboxes--small">
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="tl-consent-check" name="consent" type="checkbox" value="agree">
+                            <label class="govuk-label govuk-checkboxes__label" for="tl-consent-check">
+                                By checking this box you confirm that you consent to the Department for Education processing and storing your data for the purposes described in the <a href="https://www.gov.uk/government/publications/esfa-privacy-notice" class="govuk-link">privacy notice</a>.
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </main>
 
 <script>
@@ -97,3 +93,26 @@
     });
 
 </script>
+
+<!-- Start of tlevelsemployertest Zendesk Widget script -->
+<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=1028e6a2-424d-4c2e-9159-692569f0f6fe"></script>
+
+<script type="text/javascript">
+    window.zESettings = {
+        webWidget: {
+            answerBot: {
+                avatar: {
+                    url: "{{asset 'answerbot.gif'}}",
+                    name: {
+                        "*": 'Sandrabot'
+                    }
+                },
+                title: {
+                    "en-gb": "T Levels Employer Support"
+                },
+                contactOnlyAfterQuery: true
+            }
+        }
+    };
+</script>
+<!-- End of tlevelsemployertest Zendesk Widget script -->

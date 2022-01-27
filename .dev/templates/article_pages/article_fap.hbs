@@ -1,0 +1,318 @@
+﻿<!-- Main content -->
+ 
+
+	<div class="govuk-width-container govuk-main-wrapper govuk-!-padding-top-0">
+
+		<!-- Search Box -->
+		<div class="govuk-grid-row">
+			<div class="govuk-grid-column-full">
+				<div class="tl-card">
+					<h1 class="govuk-heading-xl govuk-!-margin-top-2 govuk-!-margin-bottom-7">{{article.title}}</h1>
+					<p class="govuk-body">Search for schools and colleges delivering T Levels near you.<br />You can contact them directly to find the right industry placement student for your business.</p>
+					<form role="search" class="tl-fap-search-providers-form">
+						<span class="govuk-error-message tl-hidden" id="tl-postcode-error">Enter a postcode</span>
+						<label class="govuk-visually-hidden" for="tl-postcode">Enter a postcode</label>
+						<input class="govuk-input govuk-input--width-10 govuk-body-s" id="tl-postcode" name="tl-postcode" type="text" placeholder="Enter a postcode">
+						<button class="govuk-button tl-button--blue" id="tl-search-providers" data-module="govuk-button">
+							Search
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div class="govuk-grid-row tl-hidden" id="tl-error">
+			<div class="govuk-grid-column-two-thirds govuk-!-margin-top-7">
+				<h1 class="govuk-heading-l" id="tl-error-header"></h1>
+				<p class="govuk-body" id="tl-error-detail"></p>
+			</div>
+		</div>
+
+		<!-- Search Results -->
+		<div class="govuk-grid-row">
+			<div class="govuk-grid-column-two-thirds govuk-!-margin-top-7">
+		        <div id="tl-fap--results">
+					<div class="tl-fap--noresult tl-hidden">
+						<h2 class="govuk-heading-l">0 results</h2>
+						<p class="govuk-body">Enter a postcode to search for providers offering T Levels.</p>
+					</div>
+					<div class="tl-fap--result">
+					</div>
+				</div>
+				<p class="govuk-body"><a class="govuk-link tl-hidden" id="tl-next-results-link" href="more-results">Show 5 more results</a></p>
+			</div>
+		</div>
+	</div>
+</main>
+
+<script type="text/javascript">
+
+	$(document).ready(function() {
+        let findProvidersApiUrl = "{{ settings.find_provider_api_uri }}";
+		if (findProvidersApiUrl.substr(-1) !== '/') findProvidersApiUrl += '/';
+
+		let currentPage = 0;
+		let currentPostcode = null;
+		let isSearchInProgress = false;
+
+		const qualificationArticleMap = loadQualificationMap();
+
+		//Check for search query param with postcode
+		let postcode = getUrlParameter("search");
+		if (postcode) {
+			postcode = urlDecode(postcode).toUpperCase();
+			$("#tl-postcode").val(postcode);
+			providerSearch(postcode);
+
+			//Remove query string from url
+			const urlSplit = (window.location.href).split("?");
+			const obj = { Title: document.title, Url: urlSplit[0] };
+			history.pushState(obj, obj.Title, obj.Url);
+		} else {
+			$('.tl-fap--noresult').removeClass("tl-hidden");
+		}
+
+		$('#tl-postcode').keypress(function(e) {
+			if (e.which === 13) {
+				$("#tl-search-providers").click();
+				return false;
+			}
+		});
+
+		$("#tl-search-providers").click(function() {
+			return providerSearch($("#tl-postcode").val().trim(), 0, 5);
+		});
+
+		$(".tl-fap-search-providers-form").submit(function() {
+			event.preventDefault();
+		});
+		
+		$("#tl-next-results-link").click(function() {
+				event.stopPropagation();
+				event.preventDefault();
+				callProviderSearchApi(currentPostcode, currentPage + 1);
+				return false;
+			});
+
+		function providerSearch(postcode, page) {
+			if (postcode === "") {
+				event.stopPropagation();
+				showPostcodeError("Enter a postcode");
+				return false;
+			}
+
+			if (!postcode.match(/^[0-9a-zA-Z\s]+$/)) {
+                event.stopPropagation();
+                showPostcodeError("Enter a valid postcode");
+                return false;
+            }
+
+			clearProviderSearchResults();
+			callProviderSearchApi(postcode, page);
+
+			return true;
+		}
+
+		function callProviderSearchApi(postcode, page, pageSize) {
+			if (isSearchInProgress) return false;
+            isSearchInProgress = true;
+
+	        page = (page === undefined ? 0 : page);
+	        pageSize = (pageSize === undefined ? 5 : pageSize);
+
+			const uri = findProvidersApiUrl + "providers?postcode=" + encodeURIComponent(postcode) + '&page=' + page + '&pageSize=' + pageSize;
+
+			$.ajax({
+				type: "GET",
+				url: uri,
+				contentType: "application/json",
+				beforeSend: function(xhr) {
+					addHmacAuthHeader(xhr, uri);
+				}
+			}).done(function(response) {
+                if (response.error) {
+                    console.log("Invalid postcode response received - " + response.error);
+                    showPostcodeError("Enter a valid postcode");
+                } else {
+                    currentPage = page;
+                    currentPostcode = postcode;
+                    populateProviderSearchResults(response);
+                }
+                isSearchInProgress = false;
+			}).fail(function(jqxhr) {
+				showError(jqxhr.status, jqxhr.responseText);
+                isSearchInProgress = false;
+			});
+
+			return true;
+		}
+		
+		function loadQualificationMap() {
+			const map = {};
+			map[36] = "{{ settings.qualification_article_36 }}";
+			map[37] = "{{ settings.qualification_article_37 }}";
+			map[38] = "{{ settings.qualification_article_38 }}";
+			map[39] = "{{ settings.qualification_article_39 }}";
+			map[40] = "{{ settings.qualification_article_40 }}";
+			map[41] = "{{ settings.qualification_article_41 }}";
+			map[42] = "{{ settings.qualification_article_42 }}";
+			map[43] = "{{ settings.qualification_article_43 }}";
+			map[44] = "{{ settings.qualification_article_44 }}";
+			map[45] = "{{ settings.qualification_article_45 }}";
+			map[46] = "{{ settings.qualification_article_46 }}";
+			map[47] = "{{ settings.qualification_article_47 }}";
+			map[48] = "{{ settings.qualification_article_48 }}";
+			map[49] = "{{ settings.qualification_article_49 }}";
+			map[50] = "{{ settings.qualification_article_50 }}";
+			map[51] = "{{ settings.qualification_article_51 }}";
+			return map;
+		}
+
+		function clearProviderSearchResults() {
+			$('#tl-error').addClass("tl-hidden");
+		    $('#tl-postcode-error').addClass("tl-hidden");
+		    $('.tl-fap--noresult').addClass("tl-hidden");
+		    $("#tl-next-results-link").addClass("tl-hidden");
+		    $("#tl-fap--results").find(".tl-fap--result").remove();
+		    currentPage = 0;
+	    }
+
+	    function populateProviderSearchResults(data) {
+		    if (data.postcode) {
+			    $("#tl-postcode").val(data.postcode);
+		    }
+
+            if (!data.searchResults || data.searchResults.length === 0) {
+			    $('.tl-fap--noresult').removeClass("tl-hidden");
+			    return;
+		    }
+
+		    $.each(data.searchResults,
+			    function(_, providerLocation) {
+				    let searchResult =
+					    '<div class="tl-fap--result"> \
+					     <h3 class="govuk-heading-m">' + providerLocation.providerName + ' <span class="tl-fap--distance">' + providerLocation.distance.toFixed(0) + ' miles</span></h3> \
+					     <p class="govuk-body">' + providerLocation.town + ' | ' + providerLocation.postcode;
+							 
+                    if (providerLocation.telephone) searchResult += ' | ' + providerLocation.telephone;
+                    if (providerLocation.website) searchResult += ' | <a target="_blank" href="' + providerLocation.website +'" class="govuk-link tl-fap--result-website">Visit <span class="govuk-visually-hidden">' + providerLocation.providerName + '</span> website</a>';
+                    if (providerLocation.email) searchResult += ' | <a href="mailto:' + providerLocation.email + '" class="govuk-link govuk-!-margin-right-4 tl-fap--result-email">' + providerLocation.email +'</a>';
+
+				    const locationDeliveryYears = [];
+				    let availableNow = null;
+				    $.each(providerLocation.deliveryYears,
+					    function(_, deliveryYear) {
+						    if (deliveryYear.isAvailableNow) {
+							    if (availableNow) {
+								    for (let i = 0; i < deliveryYear.qualifications.length; i++) {
+									    if (availableNow.qualifications.filter(function(q) { return q.name === deliveryYear.qualifications[i].name; }).length === 0)
+										    availableNow.qualifications.push(deliveryYear.qualifications[i]);
+								    }
+							    } else {
+								    availableNow = deliveryYear;
+								    locationDeliveryYears.push(availableNow);
+							    }
+						    } else {
+							    locationDeliveryYears.push(deliveryYear);
+						    }
+					    });
+
+				    if (availableNow) {
+					    availableNow.qualifications.sort(function(x, y) { return (x.name < y.name) ? -1 : ((x.name > y.name) ? 1 : 0) });
+				    }
+
+				    searchResult += '</p><div class="tl-fap--courses">';
+
+				    $.each(locationDeliveryYears,
+					    function(_, deliveryYear) {
+						    const availability = deliveryYear.isAvailableNow
+							    ? 'Available now'
+							    : 'From September ' + deliveryYear.year + ' onwards';
+
+						    searchResult += '<p class="govuk-body govuk-!-font-weight-bold">' + availability + ':</p> \
+							    <ul class="govuk-list govuk-list--bullet">';
+
+						    $.each(deliveryYear.qualifications,
+							    function(_, qualification) {
+                                    const articleLink = qualificationArticleMap[qualification.id];
+                                    if (articleLink) {										
+                                        searchResult += '<li><a target="_blank" class="govuk-link tl-fap--result-course" href="' + articleLink + '">' + qualification.name + '</a></li>';
+                                    } else {
+                                        searchResult += '<li>' + qualification.name + '</li>';
+                                    }
+							    });
+
+						    searchResult += '</ul>';
+					    });
+
+                    searchResult += '</div> \
+                                <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible"> \
+                              </div>';
+
+				    $("#tl-fap--results").append(searchResult);
+			    });
+
+			$('#tl-next-results-link').removeClass("tl-hidden");
+	    }
+
+        function showError(status, errorText) {
+            console.log("Error status " + status + " was encountered. " + errorText);
+            switch (status) {
+            case 0:
+                $("#tl-error-header").text('There is a problem with your network connection.');
+                $("#tl-error-detail").html('There is a problem with your network connection. Check you’re connected to the internet and try again.');
+                break;
+            default:
+                $("#tl-error-header").text('Sorry, there is a problem with the service.');
+                $("#tl-error-detail").html('Try again later or <a class="govuk-link tl-error--contact" href="https://test.employers.tlevels.gov.uk/hc/en-gb/requests/new">contact us</a> quoting error code ' + status);
+            }
+			
+			clearProviderSearchResults();
+			$('#tl-error').removeClass("tl-hidden");
+        }
+
+	    function showPostcodeError(message) {
+		    $("#tl-postcode-error").text(message);
+		    $('#tl-postcode-error').removeClass("tl-hidden");
+			$('#tl-error').addClass("tl-hidden");
+	    }
+
+		function addHmacAuthHeader(xhr, uri) {
+            const appId = "{{ settings.find_provider_api_app_id }}";
+            const apiKey = "{{ settings.find_provider_api_key }}";
+            const ts = Math.round((new Date()).getTime() / 1000);
+            const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,
+                function(c) {
+                    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+                    return v.toString(16);
+                });
+            const nonce = CryptoJS.enc.Hex.parse(uuid);
+            const data = appId + "GET" + uri.toLowerCase() + ts + nonce;
+
+            const hash = CryptoJS.HmacSHA256(data, apiKey);
+            const hashInBase64 = CryptoJS.enc.Base64.stringify(hash);
+			
+            xhr.setRequestHeader("Authorization", "amx " + appId + ":" + hashInBase64 + ":" + nonce + ":" + ts);
+        }
+
+	    function urlDecode(str) {
+		    return decodeURIComponent((str + '').replace(/\+/g, '%20'));
+	    }
+
+	    function getUrlParameter(key, url) {
+		    if (!url) {
+			    url = window.location.search.substring(1);
+		    }
+
+		    const urlVars = url.split('&');
+		    for (let i = 0; i < urlVars.length; i++) {
+			    const parameter = urlVars[i].split('=');
+			    if (parameter[0] === key) {
+				    return parameter[1];
+			    }
+		    }
+
+		    return null;
+	    }
+	});
+</script>

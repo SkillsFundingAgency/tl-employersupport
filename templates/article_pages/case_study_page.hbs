@@ -1,190 +1,190 @@
-
 <!-- Main content -->
-<main id="main-content" role="main">
-    <div class="govuk-width-container">
-        <div id="tl-breadcrumbs--article">
-            <div class="tl-breadcrumbs">
-                {{breadcrumbs}}
-            </div>
+
+<div class="govuk-width-container">
+    <div id="tl-breadcrumbs--casestudy">
+        <div class="tl-breadcrumbs">
+            {{breadcrumbs}}
         </div>
     </div>
+</div>
 
 
 
 
 
 
-    <!-- Article Content -->
-    <div class="govuk-width-container govuk-main-wrapper">
+<!-- Article Content -->
+<div class="govuk-width-container govuk-main-wrapper">
 
-        <div class="govuk-grid-row">
-            <div class="govuk-grid-column-two-thirds">
-                <span class="govuk-caption-xl">Case study</span>
-                <h1 class="govuk-heading-xl">{{article.title}}</h1>
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <span class="govuk-caption-xl">Case study</span>
+            <h1 class="govuk-heading-xl">{{article.title}}</h1>
 
 
-            </div>
         </div>
-        <div class="govuk-grid-row">
-            <div class="govuk-grid-column-full">
-                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-                <dl class="govuk-summary-list govuk-summary-list--no-border">
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key govuk-body-s">
-                            Published
-                        </dt>
-                        <dd class="govuk-summary-list__value govuk-body-s">
-                            {{date article.created_at format='medium'}}
-                        </dd>
-                    </div>
-                    {{#is article.created_at article.edited_at}}{{else}}
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key govuk-body-s">
-                            Last updated
-                        </dt>
-                        <dd class="govuk-summary-list__value govuk-body-s">
-                            {{date article.edited_at format='medium'}}
-                        </dd>
-                    </div>
-                    {{/is}}
-
-                </dl>
-            </div>
+    </div>
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+            <dl class="govuk-summary-list govuk-summary-list--no-border">
+                <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key govuk-body-s">
+                    Published
+                </dt>
+                <dd class="govuk-summary-list__value govuk-body-s">
+                    {{date article.created_at format='medium'}}
+                </dd>
         </div>
-        <div class="govuk-grid-row">
-            <div class="govuk-grid-column-two-thirds">
-                <hr class="govuk-section-break govuk-section-break--visible">
-                <script>
-                    $(document).ready(function () {
-                        $('.tl-article--content').find('h2').each(function (index, value) {
-                            if ($(this).text() == 'Overview') {
-                                $('#tl-article--contents').append('<li class="govuk-body-s">&#8212; ' + $(this).html() + '</li>');
-                            }
+        {{#is article.created_at article.edited_at}}{{else}}
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-body-s">
+                Last updated
+            </dt>
+            <dd class="govuk-summary-list__value govuk-body-s">
+                {{date article.edited_at format='medium'}}
+            </dd>
+        </div>
+        {{/is}}
 
-                            else {
-                                $('#tl-article--contents').append('<li class="govuk-body-s">&#8212; <a class="govuk-link" href="#anchor-' + index + '">' + $(this).html() + '</a></li>');
-                                $(this).html('<a name="anchor-' + index + '">' + $(this).html() + '</a>');
-                            }
-                        });
-                    });
+        </dl>
+    </div>
+</div>
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <hr class="govuk-section-break govuk-section-break--visible">
+        <script>
+            $(document).ready(function () {
+                $('.tl-article--content').find('h2').each(function (index, value) {
+                    if ($(this).text() == 'Overview') {
+                        $('#tl-article--contents').append('<li class="govuk-body-s">&#8212; ' + $(this).html() + '</li>');
+                    }
 
-                </script>
-                <h2 class="govuk-body-s govuk-!-margin-top-6">Contents</h2>
-                <ul class="govuk-list" id="tl-article--contents">
-                </ul>
+                    else {
+                        $('#tl-article--contents').append('<li class="govuk-body-s">&#8212; <a class="govuk-link" href="#anchor-' + index + '">' + $(this).html() + '</a></li>');
+                        $(this).html('<a name="anchor-' + index + '">' + $(this).html() + '</a>');
+                    }
+                });
+            });
 
-                <div class="tl-article--content tl-article--content--casestudy govuk-!-margin-top-6">
-                    {{article.body}}
-                </div>
+        </script>
+        <h2 class="govuk-body-s govuk-!-margin-top-6">Contents</h2>
+        <ul class="govuk-list" id="tl-article--contents">
+        </ul>
 
-                <section class="tl-attachments">
-                    {{#each attachments}}
-                    <div class="tl-attachment">
-                        <div class="tl-attachment--thumbnail">
-                            <a href="{{url}}" class="govuk-link">
-                                <svg class="gem-c-attachment__thumbnail-image" version="1.1" viewBox="0 0 99 140" width="99" height="140" aria-hidden="true">
-                                    <path d="M12 12h75v27H12zM12 59h9v9h-9zM12 77h9v9h-9zM12 95h9v9h-9zM12 113h9v9h-9zM30 59h57v9H30zM30 77h39v9H30zM30 95h57v9H30zM30 113h48v9H30z" stroke-width="0"></path>
-                                </svg>
-                            </a>
-                        </div>
-                        <div class="tl-attachment--details">
-                            <h2 class="tl-attachment--title">
-                                <a class="govuk-link tl-attachment--link" target="_self" href="{{url}}" download>{{name}}</a>
-                            </h2>
-                            <p class="tl-attachment--metadata govuk-body-s">File size: <span class="tl-attachment--attribute">{{size}}</span></p>
-                        </div>
-                    </div>
-                    {{/each}}
-                </section>
+        <div class="tl-article--content tl-article--content--casestudy govuk-!-margin-top-6">
+            {{article.body}}
+        </div>
 
-            </div>
-            <div class="govuk-grid-column-one-third">
-                <hr class="govuk-section-break govuk-section-break--visible tl-section-break--blue">
-                <div class="tl-article--sidebar govuk-!-margin-top-6">
-                    <h2 class="govuk-heading-m">Related content</h2>
-                    {{related_articles}}
-                    <ul>
-                        {{#each article.path_steps}}
-                        <li title="{{name}}"><a href="{{url}}" target="{{target}}">{{name}}</a></li>
-                        {{/each}}
-                    </ul>
-                    <hr class="govuk-section-break govuk-section-break--m">
-
-                    <a href="#main-content" class="tl-article--backtotop">
-                        <span>&#708;</span>
-                        Back to top
+        <section class="tl-attachments">
+            {{#each attachments}}
+            <div class="tl-attachment">
+                <div class="tl-attachment--thumbnail">
+                    <a href="{{url}}" class="govuk-link">
+                        <svg class="gem-c-attachment__thumbnail-image" version="1.1" viewBox="0 0 99 140" width="99" height="140" aria-hidden="true" alt="Download article attachment">
+                            <path d="M12 12h75v27H12zM12 59h9v9h-9zM12 77h9v9h-9zM12 95h9v9h-9zM12 113h9v9h-9zM30 59h57v9H30zM30 77h39v9H30zM30 95h57v9H30zM30 113h48v9H30z" stroke-width="0"></path>
+                        </svg>
+                        <span class="govuk-visually-hidden">Download {{name}}</span>
                     </a>
-                    <script>
-                        function checkOffset() {
-                            var a = $(document).scrollTop() + window.innerHeight;
-                            var b = $('.tl-article--vote').offset().top;
-                            var c = $('.tl-hero').offset().top;
-                            var scroll = $(window).scrollTop();
-
-
-                            if (a < b) {
-                                $('.tl-article--backtotop').css('bottom', '0px');
-                            } else {
-                                $('.tl-article--backtotop').css('bottom', (10 + (a - b)) + 'px');
-                            }
-
-                            if (scroll >= c + 1) {
-                                $('.tl-article--backtotop').show()
-                            } else {
-                                $('.tl-article--backtotop').hide()
-                            }
-                        }
-                        $(document).ready(checkOffset);
-                        $(document).scroll(checkOffset);
-                    </script>
                 </div>
-
+                <div class="tl-attachment--details">
+                    <h2 class="tl-attachment--title">
+                        <a class="govuk-link tl-attachment--link" target="_self" href="{{url}}" download>{{name}}</a>
+                    </h2>
+                    <p class="tl-attachment--metadata govuk-body-s">File size: <span class="tl-attachment--attribute">{{size}}</span></p>
+                </div>
             </div>
+            {{/each}}
+        </section>
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+        <hr class="govuk-section-break govuk-section-break--visible tl-section-break--blue">
+        <div class="tl-article--sidebar govuk-!-margin-top-6">
+            <h2 class="govuk-heading-m">Related content</h2>
+            {{related_articles}}
+            <ul>
+                {{#each article.path_steps}}
+                <li title="{{name}}"><a href="{{url}}" target="{{target}}">{{name}}</a></li>
+                {{/each}}
+            </ul>
+            <hr class="govuk-section-break govuk-section-break--m">
+
+            <a href="#main-content" class="tl-article--backtotop">
+                <span>&#708;</span>
+                Back to top
+            </a>
+            <script>
+                function checkOffset() {
+                    var a = $(document).scrollTop() + window.innerHeight;
+                    var b = $('.tl-article--vote').offset().top;
+                    var c = $('.tl-hero').offset().top;
+                    var scroll = $(window).scrollTop();
+
+
+                    if (a < b) {
+                        $('.tl-article--backtotop').css('bottom', '0px');
+                    } else {
+                        $('.tl-article--backtotop').css('bottom', (10 + (a - b)) + 'px');
+                    }
+
+                    if (scroll >= c + 1) {
+                        $('.tl-article--backtotop').show()
+                    } else {
+                        $('.tl-article--backtotop').hide()
+                    }
+                }
+                $(document).ready(checkOffset);
+                $(document).scroll(checkOffset);
+            </script>
         </div>
+
+    </div>
+</div>
 
 
 
     </div>
 
-    {{#with article}}
+{{#with article}}
 
 
-    <div class="tl-article--vote">
-        <div class="tl-article--vote--container">
-            <div class="govuk-grid-row">
-                <span id="feedbackbuttonyes" class="govuk-grid-column-full">
-                    <p class="govuk-body govuk-!-margin-0 vote-prompt" id="voteQuestion">
-                        <span id="isPageUseful" class="tl-article--vote--question">Was this page helpful?</span>
-                        <a class="tl-article--vote--button" href="#" id="tl-article--vote--yes" vote="yes">Yes <span class="govuk-visually-hidden">this article was useful</span></a>
-                        <a class="tl-article--vote--button" href="#" id="tl-article--vote--no" vote="no">No <span class="govuk-visually-hidden">this article wasn't useful</span></a>
-                    </p>
-                    <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-0 vote-prompt tl-article--vote--response" id="voteResponse" style="display: none;">Thank you for your feedback</p>
-                </span>
+<div class="tl-article--vote">
+    <div class="tl-article--vote--container">
+        <div class="govuk-grid-row">
+            <div id="feedbackbuttonyes" class="govuk-grid-column-full">
+                <p class="govuk-body govuk-!-margin-0 vote-prompt" id="voteQuestion">
+                    <span id="isPageUseful" class="tl-article--vote--question">Was this page helpful?</span>
+                    <a class="tl-article--vote--button" href="#" id="tl-article--vote--yes" vote="yes">Yes <span class="govuk-visually-hidden">this article was useful</span></a>
+                    <a class="tl-article--vote--button" href="#" id="tl-article--vote--no" vote="no">No <span class="govuk-visually-hidden">this article wasn't useful</span></a>
+                </p>
+                <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-0 vote-prompt tl-article--vote--response" id="voteResponse" style="display: none;">Thank you for your feedback</p>
             </div>
-            <div class="govuk-grid-row">
-                <div id="commentform" class="govuk-grid-column-two-thirds govuk-!-margin-top-3">
-                    <form id="formoid" action="/api/v2/requests.json" title="articlefeedback" method="post" class="tl-article--vote--form">
-                        <div class="govuk-character-count">
-                            <div class="govuk-form-group">
-                                <label class="govuk-label" for="Comment">Is there anything we could do to further improve this page? (optional)</label>
-                                <textarea maxlength="500" class="govuk-textarea govuk-js-character-count" id="Comment" name="Comment" rows="5" aria-describedby="Comment-info"></textarea>
-                            </div>
-                            <div id="Comment-info" class="tl-article--vote--form--count" aria-live="polite">You have <span id="chars">500</span> characters remaining</div>
+        </div>
+        <div class="govuk-grid-row">
+            <div id="commentform" class="govuk-grid-column-two-thirds govuk-!-margin-top-3">
+                <form id="formoid" action="/api/v2/requests.json" title="articlefeedback" method="post" class="tl-article--vote--form">
+                    <div class="govuk-character-count">
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="Comment">Is there anything we could do to further improve this page? (optional)</label>
+                            <textarea maxlength="500" class="govuk-textarea govuk-js-character-count" id="Comment" name="Comment" rows="5" aria-describedby="Comment-info"></textarea>
                         </div>
-                        <div class="govuk-!-margin-top-3">
-                            <input class="govuk-button articlefeedbackbutton" type="submit" id="submitButton" name="submitButton" value="Submit">
-                        </div>
-                    </form>
+                        <div id="Comment-info" class="tl-article--vote--form--count" aria-live="polite">You have <span id="chars">500</span> characters remaining</div>
+                    </div>
+                    <div class="govuk-!-margin-top-3">
+                        <input class="govuk-button articlefeedbackbutton" type="submit" id="submitButton" name="submitButton" value="Submit">
+                    </div>
+                </form>
 
-                </div>
             </div>
         </div>
     </div>
+</div>
 
-    {{/with}}
+{{/with}}
 
 
-    <script type="text/javascript">
+<script type="text/javascript">
                 var maxLength = 500;
             $('#Comment').keyup(function() {
             	var length = $(this).val().length;
@@ -243,7 +243,7 @@
                 var request = { "requester": { "name": "Article Feedback" }, "subject": "T Levels Employers Article Feedback - {{article.title}}", "comment": {"body": comment}}
 
                 $.ajax({
-                    url: "https://esfa.zendesk.com/api/v2/requests.json",
+                    url: "https://" + "{{settings.subdomain}}" + ".zendesk.com/api/v2/requests.json",
                     type: 'POST',
                     data: JSON.stringify({request: request}),
                     contentType: "application/json",
@@ -266,7 +266,30 @@
               	$('#voteResponse').show();
             });
 
-    </script>
+</script>
 
 
 </main>
+
+<!-- Start of tlevelsemployertest Zendesk Widget script -->
+<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=1028e6a2-424d-4c2e-9159-692569f0f6fe"></script>
+
+<script type="text/javascript">
+    window.zESettings = {
+        webWidget: {
+            answerBot: {
+                avatar: {
+                    url: "{{asset 'answerbot.gif'}}",
+                    name: {
+                        "*": 'Sandrabot'
+                    }
+                },
+                title: {
+                    "en-gb": "T Levels Employer Support"
+                },
+                contactOnlyAfterQuery: true
+            }
+        }
+    };
+</script>
+<!-- End of tlevelsemployertest Zendesk Widget script -->
