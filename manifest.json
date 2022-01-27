@@ -1,7 +1,7 @@
 {
   "name": "GDS Style - Employer Support - Chatbot",
   "author": "Ash Anderton",
-  "version": "0.1.168",
+  "version": "0.1.169",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [
@@ -220,28 +220,28 @@
           "type": "text",
           "description": "Footer section",
           "label": "Cookies",
-          "value": "4402359036050"
+          "value": "4416405125650"
         },
         {
           "identifier": "article_id_accessibility",
           "type": "text",
           "description": "Footer section",
           "label": "Accesibility",
-          "value": "4402359031570"
+          "value": "4416409732370"
         },
         {
           "identifier": "article_id_terms",
           "type": "text",
           "description": "Footer section",
           "label": "Terms",
-          "value": "4402351171730"
+          "value": "4416409730578"
         },
         {
           "identifier": "article_id_confirmation",
           "type": "text",
           "description": "Footer section",
           "label": "Confirmation",
-          "value": "4402151904786"
+          "value": "4416405129746"
         },
         {
           "identifier": "survey_link",
@@ -255,14 +255,14 @@
           "type": "text",
           "description": "Find Provider",
           "label": "Find Provider",
-          "value": "4404794078226"
+          "value": "4416405115154"
         },
         {
           "identifier": "subdomain",
           "type": "text",
           "description": "Subdomain of ZD instance",
           "label": "Subdomain of ZD instance",
-          "value": "esfa"
+          "value": "esfa1567428279"
         }
       ]
     },
@@ -307,14 +307,14 @@
           "type": "text",
           "description": "Talk to a specialist - contact",
           "label": "Talk to a specialist - contact",
-          "value": "4402821009938"
+          "value": "4416409729170"
         },
         {
           "identifier": "ttas_request",
           "type": "text",
           "description": "Talk to a specialist - request",
           "label": "Talk to a specialist - request",
-          "value": "4402772542098"
+          "value": "4416396573970"
         }
       ]
     },
