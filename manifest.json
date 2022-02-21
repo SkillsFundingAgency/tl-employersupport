@@ -1,7 +1,7 @@
 {
   "name": "GDS Style - Employer Support - Chatbot",
   "author": "Ash Anderton",
-  "version": "0.1.175",
+  "version": "0.1.176",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [
@@ -67,6 +67,24 @@
           "type": "file",
           "description": "Home page image 7",
           "label": "Image 7"
+        }
+      ]
+    },
+    {
+      "label": "Answerbot",
+      "variables": [
+        {
+          "identifier": "answerbot_icon",
+          "type": "file",
+          "description": "Answerbot Icon",
+          "label": "Answerbot Icon"
+        },
+        {
+          "identifier": "answerbot_name",
+          "type": "text",
+          "description": "Name of the answerbot",
+          "label": "Answerbot Name",
+          "value": "T Levels and industry placement support for employers"
         }
       ]
     },
