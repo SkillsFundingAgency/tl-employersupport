@@ -1,0 +1,71 @@
+<!-- Main content -->
+
+
+<div class="govuk-width-container">
+    <div id="tl-breadcrumbs--help">
+        <div class="tl-breadcrumbs">
+            {{breadcrumbs}}
+        </div>
+    </div>
+</div>
+
+<!-- Article Content -->
+<div class="govuk-width-container govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-xl">{{section.name}}</h1>
+            {{#if section.description}}
+            <p class="govuk-body-l">{{section.description}}</p>
+            {{/if}}
+
+
+
+
+
+            <section>
+                <div id="step-by-step-navigation" class="app-step-nav app-step-nav--large app-step-nav--active" data-show-text="Show" data-hide-text="Hide" data-show-all-text="Show all" data-hide-all-text="Hide all">
+                    <ol class="app-step-nav__steps">
+
+                        {{#each section.articles}}
+                        <li class="app-step-nav__step js-step" id="{{id}}">
+                            <div class="app-step-nav__header js-toggle-panel" data-position="1">
+                                <h2 class="app-step-nav__title">
+                                    <span class="app-step-nav__circle app-step-nav__circle--number">
+                                        <span class="app-step-nav__circle-inner">
+                                            <span class="app-step-nav__circle-background">
+                                                <span class="govuk-visually-hidden">{{name}}</span>
+                                            </span>
+                                        </span>
+                                    </span>
+
+                                    <span class="js-step-title">
+                                        {{name}}
+                                    </span>
+                                </h2>
+                            </div>
+
+                            <div class="app-step-nav__panel js-panel js-hidden" id="step-panel-{{id}}">
+                                <p class="app-step-nav__paragraph">{{excerpt body characters=200}}</p>
+                            </div>
+                        </li>
+                        {{/each}}
+                    </ol>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var $element = $('#step-by-step-navigation')
+        var stepByStepNavigation = new GOVUK.Modules.AppStepNav()
+        stepByStepNavigation.start($element);
+
+        $(".app-step-nav__circle--number").each(function (i) {
+            $(this).prepend(i + 1);
+        });
+    });
+</script>
