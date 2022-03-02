@@ -47,7 +47,8 @@ gulp.task('customjs', () => {
         'node_modules//crypto-js/enc-base64.js',
         'node_modules//crypto-js/sha256.js',
         'node_modules//crypto-js/hmac.js',
-        'node_modules//crypto-js/hmac-sha256.js',        
+        'node_modules//crypto-js/hmac-sha256.js',
+        'Frontend/src/js/step-by-step-nav.js',
     ])
         .pipe(concat('custom.js'))
         .pipe(gulp.dest(paths.dist.Assets));
