@@ -22,7 +22,7 @@
     }
 }
 
-.tl-fap-home--container {
+.tl-fap-home--container, .tl-fap--container {
     @include govuk-media-query ($from: tablet) {
         display: flex;
         align-items: stretch;
@@ -33,7 +33,7 @@
     }
 }
 
-.tl-fap-home--submit {
+.tl-fap-home--submit, .tl-fap--submit {
     max-width: 100px;
 
     @include govuk-media-query ($from: tablet) {

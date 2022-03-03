@@ -193,7 +193,40 @@ function isLoggedIn() {
 };
 
 
+/* Find a provider */
+$(document).ready(function () {
+    $('#tl-postcode').val("");
 
+    $('#tl-postcode').keypress(function (e) {
+        if (e.which === 13) {
+            $("#tl-search-providers").click();
+            return false;
+        }
+    });
+
+    $("#tl-search-providers").click(function () {
+        const postcode = $("#tl-postcode").val().trim();
+
+        if (postcode === "") {
+            event.stopPropagation();
+            showPostcodeError("Enter a postcode");
+            return false;
+        }
+
+        $(location).attr('href', '/hc/en-gb/articles/{{settings.article_id_find_provider}}?search=' + encodeURIComponent(postcode));
+
+        return true;
+    });
+
+    $(".tl-fap-search-providers-form").submit(function () {
+        event.preventDefault();
+    });
+
+    function showPostcodeError(message) {
+        $("#tl-postcode-error").text(message);
+        $('#tl-postcode-error').removeClass("tl-hidden");
+    }
+});
 //! moment.js
 //! version : 2.27.0
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors

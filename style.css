@@ -8106,20 +8106,20 @@ ul.govuk-radios label .gem-radios__input {
 }
 
 @media (min-width: 40.0625em) {
-  .tl-fap-home--container {
+  .tl-fap-home--container, .tl-fap--container {
     display: flex;
     align-items: stretch;
   }
-  .tl-fap-home--container div[class*=govuk-grid-column], .tl-fap-home--container div[class^=govuk-grid-column] {
+  .tl-fap-home--container div[class*=govuk-grid-column], .tl-fap-home--container div[class^=govuk-grid-column], .tl-fap--container div[class*=govuk-grid-column], .tl-fap--container div[class^=govuk-grid-column] {
     padding: 0;
   }
 }
 
-.tl-fap-home--submit {
+.tl-fap-home--submit, .tl-fap--submit {
   max-width: 100px;
 }
 @media (min-width: 40.0625em) {
-  .tl-fap-home--submit {
+  .tl-fap-home--submit, .tl-fap--submit {
     max-width: unset;
   }
 }
