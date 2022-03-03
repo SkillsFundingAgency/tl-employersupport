@@ -213,7 +213,7 @@ $(document).ready(function () {
             return false;
         }
 
-        $(location).attr('href', '/hc/en-gb/articles/{{settings.article_id_find_provider}}?search=' + encodeURIComponent(postcode));
+        $(location).attr('href', '/hc/en-gb/articles/' + faparticleid +'?search=' + encodeURIComponent(postcode));
 
         return true;
     });
