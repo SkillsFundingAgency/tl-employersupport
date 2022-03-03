@@ -48,17 +48,15 @@
                             <div class="app-step-nav__panel js-panel js-hidden" id="step-panel-{{id}}">
                                 <div class="app-step-nav__paragraph tl-article--content" id="articlebody{{id}}">{{excerpt body characters=600}}</div>
                             </div>
-                        </li>
 
-
-                        <script>
+                            <script>
                             $.getJSON('/api/v2/help_center/articles/{{id}}', function (articlebody) {
 
                                 var bodycontent = articlebody.article.body;
                                 $('#articlebody{{id}}').html(bodycontent);
                             });
-
-                        </script>
+                            </script>
+                        </li>
                         {{/each}}
                     </ol>
                 </div>
