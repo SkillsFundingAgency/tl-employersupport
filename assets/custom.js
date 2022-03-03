@@ -229,7 +229,7 @@ $(document).ready(function () {
 });
 
 window.onload = function () {
-    var fapcontent = '<div class="tl-card--grey"><h1 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-7" > Find your nearest T Level provider</h1><p class="govuk-body">Search for schools and colleges to offer industry placements to.</p><form role="search" class="tl-fap-search-providers-form"><span class="govuk-error-message tl-hidden" id="tl-postcode-error">You must enter a postcode</span><label class="govuk-visually-hidden" for="tl-postcode">Enter a postcode</label><input class="govuk-input govuk-input--width-10 tl-fap-home--input" id="tl-postcode" name="tl-postcode" type="text" placeholder="Enter a postcode"><button class="govuk-button tl-button--blue tl-fap--submit" id="tl-search-providers" data-module="govuk-button">Search</button></form></div>'
+    var fapcontent = '<div class="tl-card--grey"><p class="govuk-body govuk-!-font-weight-bold">Search for schools and colleges to offer industry placements to.</p><form role="search" class="tl-fap-search-providers-form"><span class="govuk-error-message tl-hidden" id="tl-postcode-error">You must enter a postcode</span><label class="govuk-visually-hidden" for="tl-postcode">Enter a postcode</label><input class="govuk-input govuk-input--width-10 tl-fap-home--input" id="tl-postcode" name="tl-postcode" type="text" placeholder="Enter a postcode"><button class="govuk-button tl-button--blue tl-fap--submit" id="tl-search-providers" data-module="govuk-button">Search</button></form></div>'
 
     $(".tl-fap--container").html(fapcontent)
 };
