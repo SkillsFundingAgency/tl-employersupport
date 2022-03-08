@@ -3,7 +3,7 @@
 var gulp = require('gulp'),
     concat = require('gulp-concat'),
     minify = require('gulp-minify'),
-    sass = require('gulp-sass'),
+    sass = require('gulp-sass')(require('sass'));
     wait = require('gulp-wait'),
     watch = require('gulp-watch');
 
