@@ -85,6 +85,13 @@
           "description": "Name of the answerbot",
           "label": "Answerbot Name",
           "value": "T Levels"
+        },
+        {
+          "identifier": "answerbot_key",
+          "type": "text",
+          "description": "Key for answerbot config",
+          "label": "Answerbot Key",
+          "value": "1028e6a2-424d-4c2e-9159-692569f0f6fe"
         }
       ]
     },
