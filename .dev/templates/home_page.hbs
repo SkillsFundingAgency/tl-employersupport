@@ -134,7 +134,15 @@
     <div class="govuk-grid-row tl-row-fill">
         <div class="govuk-grid-column-one-half tl-row-fill">
             <div class="tl-card tl-js-hidden" id="tl-home--ticket">
-                <h3 class="govuk-heading-m">Online and phone</h3>
+                <h3 class="govuk-heading-m">Have a T Levels question?</h3>
+                <p class="govuk-body">If you need more information or can’t find what you’re looking for, our T Levels Support Bot is here to help. </p>
+                <p class="govuk-body"><a href="#" id="tl-home--answerbot" class="govuk-link">Find out about call charges</a></p>
+            </div>
+        </div>
+
+        <div class="govuk-grid-column-one-half tl-row-fill">
+            <div class="tl-card tl-js-hidden" id="tl-home--ticket">
+                <h3 class="govuk-heading-m">Have a T Levels question?</h3>
                 <p class="govuk-body">If you have questions or you are ready to begin your T Level journey, then please contact us:</p>
                 <ul class="govuk-list govuk-list--bullet">
                     <li>using our {{#link 'new_request' class='govuk-link tl-home--contact'}}online contact form{{/link}}. You'll usually receive a reply within 2 working days.</li>
@@ -143,26 +151,9 @@
             </div>
         </div>
 
-        <div class="govuk-grid-column-one-half tl-row-fill">
-            {{#each categories}}
-            {{#is name "Tailored support sessions"}}
-            <div class="tl-card" id="tl-home--phone">
-                <h3 class="govuk-heading-m">{{name}}</h3>
-                <p class="govuk-body">
-                    If you are ready to host an industry placement, but need more help getting ready, we offer free, tailored support sessions.
-                </p>
-                <p class="govuk-body">
-                    Our industry placement specialists are here to help you plan, prepare and deliver your industry placement through one-to-one phone calls or online group sessions.
-                </p>
-                <p class="govuk-body"><a href="{{url}}" id="tl-home--specialist" class="govuk-link">Find out more</a></p>
-            </div>
-            {{/is}}
-            {{/each}}
-        </div>
-
     </div>
 </div>
-</main>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -204,6 +195,12 @@
             $('#tl-postcode-error').removeClass("tl-hidden");
         }
     });
+
+    $('#tl-home--answerbot').click(function () {
+        openHelp();
+        event.preventDefault();
+    });
+     
 </script>
 
 
