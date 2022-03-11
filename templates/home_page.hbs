@@ -124,7 +124,7 @@
 
         </div>
     </div>
-    <div id="tl-home--contact" class="govuk-!-margin-top-8 tl-js-hidden">
+    <div id="tl-home--contact" class="govuk-!-margin-top-8 tl-js-visible">
         <div class="govuk-grid-row tl-row-fill">
             <div class="govuk-grid-column-one-half tl-row-fill">
                 <div class="tl-card" id="tl-home--question">
@@ -148,10 +148,6 @@
     </div>
 </div>
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        $("#tl-home--contact").show();
-    });
-
     document.addEventListener('DOMContentLoaded', function () {
         if (!isAgent()) {
             $("#tl-home--ticket").show();
