@@ -7970,6 +7970,10 @@ ul.govuk-radios label .gem-radios__input {
   display: none;
 }
 
+.tl-reason label[id^=request_custom_fields], .tl-reason input[id^=request_custom_fields], .tl-reason .nesty-input {
+  display: none;
+}
+
 .tl-filter {
   border: 3px solid #f3f2f1;
   overflow: hidden;

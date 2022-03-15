@@ -14,3 +14,10 @@
 .toggle-content {
     display: none
 }
+
+
+.tl-reason {
+    label[id^='request_custom_fields'], input[id^='request_custom_fields'], .nesty-input {
+        display: none;
+    }
+}
