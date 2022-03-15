@@ -144,19 +144,12 @@
     const form_subject_field_id = {{ settings.field_id_company }}
     const form_about_field_id = {{ settings.field_id_about }}
     const form_telephone_field_id = {{ settings.field_id_telephone }}
-    const form_reason_field_id = {{ settings.field_id_reason }}
     const form_organisation_field_id = {{ settings.field_id_company }}
 
 
 
 
-    $(function () {
-        $("input[type='submit']").click(function () {
-            event.preventDefault;
-            var subjectselect = "T Levels and industry placement support for employers - Online query";
-            $("#request_subject").val(subjectselect);
-        });
-    });
+
 
     $(document).ready(function () {
 
@@ -186,17 +179,13 @@
 
 
         /* Contact Reason Radio Buttons */
-        $('#tl-reason').insertAfter($('#request_custom_fields_' + form_reason_field_id + '_label'));
-        $('.request_custom_fields_' + form_reason_field_id).addClass('tl-reason');
-
-
+        $('#tl-reason').insertAfter($('#request_subject_label'));
+        $('#request_subject').addClass('tl-reason');
+        $('#request_subject').insertAfter($('#tl-reason h1'));
 
         $('#tl-reason input[type=radio]').change(function () {
-            var reasonvalue = this.value
-            console.log(reasonvalue);
-            $('#request_custom_fields_' + form_reason_field_id).attr('value', reasonvalue)
-            $('.request_custom_fields_' + form_reason_field_id + ' a').text(reasonvalue)
-
+            var reasonlabel = $(this).parent().find('label').text()
+            $("#request_subject").val(reasonlabel);
         });
 
         /* Constent Checkbox */

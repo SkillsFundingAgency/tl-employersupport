@@ -33,10 +33,6 @@
         @extend .govuk-body;
     }
 
-    .request_subject {
-        display: none;
-    }
-
     #request_description_hint {
         display: none;
     }
@@ -63,4 +59,15 @@
         display: inline-block;
         margin-left: 5px;
     }
+}
+
+
+.tl-reason {
+    label[id^='request_custom_fields'], input[id^='request_custom_fields'], .nesty-input {
+        display: none;
+    }
+}
+
+#request_subject_label, #request_subject_input {
+    display: none;
 }
