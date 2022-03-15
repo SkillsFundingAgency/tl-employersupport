@@ -1,7 +1,7 @@
 {
-  "name": "GDS Style - Employer Support - FAP Move",
+  "name": "GDS Style - Employer Support - Chatbot",
   "author": "Ash Anderton",
-  "version": "0.1.200",
+  "version": "0.1.206",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [
@@ -67,6 +67,31 @@
           "type": "file",
           "description": "Home page image 7",
           "label": "Image 7"
+        }
+      ]
+    },
+    {
+      "label": "Answerbot",
+      "variables": [
+        {
+          "identifier": "answerbot_icon",
+          "type": "file",
+          "description": "Answerbot Icon",
+          "label": "Answerbot Icon"
+        },
+        {
+          "identifier": "answerbot_name",
+          "type": "text",
+          "description": "Name of the answerbot",
+          "label": "Answerbot Name",
+          "value": "T Levels"
+        },
+        {
+          "identifier": "answerbot_key",
+          "type": "text",
+          "description": "Key for answerbot config",
+          "label": "Answerbot Key",
+          "value": "1028e6a2-424d-4c2e-9159-692569f0f6fe"
         }
       ]
     },
@@ -220,28 +245,28 @@
           "type": "text",
           "description": "Footer section",
           "label": "Cookies",
-          "value": "4402359036050"
+          "value": "4416405125650"
         },
         {
           "identifier": "article_id_accessibility",
           "type": "text",
           "description": "Footer section",
           "label": "Accesibility",
-          "value": "4402359031570"
+          "value": "4416409732370"
         },
         {
           "identifier": "article_id_terms",
           "type": "text",
           "description": "Footer section",
           "label": "Terms",
-          "value": "4402351171730"
+          "value": "4416409730578"
         },
         {
           "identifier": "article_id_confirmation",
           "type": "text",
           "description": "Footer section",
           "label": "Confirmation",
-          "value": "4402151904786"
+          "value": "4416405129746"
         },
         {
           "identifier": "survey_link",
@@ -255,14 +280,14 @@
           "type": "text",
           "description": "Find Provider",
           "label": "Find Provider",
-          "value": "4404794078226"
+          "value": "4416405115154"
         },
         {
           "identifier": "subdomain",
           "type": "text",
           "description": "Subdomain of ZD instance",
           "label": "Subdomain of ZD instance",
-          "value": "esfa"
+          "value": "esfa1567428279"
         }
       ]
     },
@@ -307,14 +332,14 @@
           "type": "text",
           "description": "Talk to a specialist - contact",
           "label": "Talk to a specialist - contact",
-          "value": "4402821009938"
+          "value": "4416409729170"
         },
         {
           "identifier": "ttas_request",
           "type": "text",
           "description": "Talk to a specialist - request",
           "label": "Talk to a specialist - request",
-          "value": "4402772542098"
+          "value": "4416396573970"
         }
       ]
     },
@@ -354,112 +379,112 @@
           "type": "text",
           "description": "Qualification article for id 36",
           "label": "Qualification article for id 36",
-          "value": "360021656060-About-Construction-industry-placements#design-surveying-and-planning"
+          "value": "4416409823506-About-Construction-industry-placements#design-surveying-and-planning"
         },
         {
           "identifier": "qualification_article_37",
           "type": "text",
           "description": "Qualification article for id 37",
           "label": "Qualification article for id 37",
-          "value": "360021700479-About-Digital-and-IT-industry-placements#digital-production"
+          "value": "4416409743762-About-Digital-and-IT-industry-placements#digital-production"
         },
         {
           "identifier": "qualification_article_38",
           "type": "text",
           "description": "Qualification article for id 38",
           "label": "Qualification article for id 38",
-          "value": "360021672820-About-Education-and-Childcare-industry-placements"
+          "value": "4416405157394-About-Education-and-Childcare-industry-placements"
         },
         {
           "identifier": "qualification_article_39",
           "type": "text",
           "description": "Qualification article for id 39",
           "label": "Qualification article for id 39",
-          "value": "360021700479-About-Digital-and-IT-industry-placements#digital-business-services"
+          "value": "4416409743762-About-Digital-and-IT-industry-placements#digital-business-services"
         },
         {
           "identifier": "qualification_article_40",
           "type": "text",
           "description": "Qualification article for id 40",
           "label": "Qualification article for id 40",
-          "value": "360021700479-About-Digital-and-IT-industry-placements#digital-support"
+          "value": "4416409823506-About-Construction-industry-placements#design-surveying-and-planning"
         },
         {
           "identifier": "qualification_article_41",
           "type": "text",
           "description": "Qualification article for id 41",
           "label": "Qualification article for id 41",
-          "value": "360021708779-About-Health-and-Science-industry-placements#health"
+          "value": "4416565841298-About-Health-and-Science-industry-placements#health"
         },
         {
           "identifier": "qualification_article_42",
           "type": "text",
           "description": "Qualification article for id 42",
           "label": "Qualification article for id 42",
-          "value": "360021708779-About-Health-and-Science-industry-placements#healthcare-science"
+          "value": "4416565841298-About-Health-and-Science-industry-placements#healthcare-science"
         },
         {
           "identifier": "qualification_article_43",
           "type": "text",
           "description": "Qualification article for id 43",
           "label": "Qualification article for id 43",
-          "value": "360021708779-About-Health-and-Science-industry-placements#science"
+          "value": "4416565841298-About-Health-and-Science-industry-placements#science"
         },
         {
           "identifier": "qualification_article_44",
           "type": "text",
           "description": "Qualification article for id 44",
           "label": "Qualification article for id 44",
-          "value": "360021656060-About-Construction-industry-placements#onsite-construction"
+          "value": "4416409823506-About-Construction-industry-placements#onsite-construction"
         },
         {
           "identifier": "qualification_article_45",
           "type": "text",
           "description": "Qualification article for id 45",
           "label": "Qualification article for id 45",
-          "value": "360021656060-About-Construction-industry-placements#building-services-engineering"
+          "value": "4416409823506-About-Construction-industry-placements#building-services-engineering"
         },
         {
           "identifier": "qualification_article_46",
           "type": "text",
           "description": "Qualification article for id 46",
           "label": "Qualification article for id 46",
-          "value": "360021774179-About-Legal-Finance-and-Accounting-industry-placements#finance"
+          "value": "4416559604370-About-Legal-Finance-and-Accounting-industry-placements#finance"
         },
         {
           "identifier": "qualification_article_47",
           "type": "text",
           "description": "Qualification article for id 47",
           "label": "Qualification article for id 47",
-          "value": "360021774179-About-Legal-Finance-and-Accounting-industry-placements#accounting"
+          "value": "4416559604370-About-Legal-Finance-and-Accounting-industry-placements#accounting"
         },
         {
           "identifier": "qualification_article_48",
           "type": "text",
           "description": "Qualification article for id 48",
           "label": "Qualification article for id 48",
-          "value": "360021737940-About-Engineering-and-Manufacturing-industry-placements#design-and-development"
+          "value": "4416396618770-About-Engineering-and-Manufacturing-industry-placements#design-and-development"
         },
         {
           "identifier": "qualification_article_49",
           "type": "text",
           "description": "Qualification article for id 49",
           "label": "Qualification article for id 49",
-          "value": "360021737940-About-Engineering-and-Manufacturing-industry-placements#maintenance"
+          "value": "4416396618770-About-Engineering-and-Manufacturing-industry-placements#maintenance"
         },
         {
           "identifier": "qualification_article_50",
           "type": "text",
           "description": "Qualification article for id 50",
           "label": "Qualification article for id 50",
-          "value": "360021737940-About-Engineering-and-Manufacturing-industry-placements#engineering"
+          "value": "4416396618770-About-Engineering-and-Manufacturing-industry-placements#engineering"
         },
         {
           "identifier": "qualification_article_51",
           "type": "text",
           "description": "Qualification article for id 51",
           "label": "Qualification article for id 51",
-          "value": "360021741040-About-Business-and-Administration-industry-placements"
+          "value": "4416396581778-About-Business-and-Administration-industry-placements"
         }
       ]
     }

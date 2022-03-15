@@ -1,0 +1,64 @@
+﻿<!-- Main content -->
+
+
+<div class="govuk-width-container">
+    <div id="tl-breadcrumbs--help">
+        <div class="tl-breadcrumbs">
+            {{breadcrumbs}}
+        </div>
+    </div>
+</div>
+
+<!-- Article Content -->
+<div class="govuk-width-container govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-xl">{{section.name}}</h1>
+            {{#if section.description}}
+            <p class="govuk-body-l">{{section.description}}</p>
+            {{/if}}
+            <section>
+                <ul class="govuk-list">
+                    {{#if section.articles}}
+
+                    {{#each section.articles}}
+                    <li>
+                        <a class="govuk-link govuk-!-margin-bottom-1 tl-category--article" href="{{url}}">{{title}}</a>
+                    </li>
+                    {{/each}}
+                    {{else}}
+                    <li>
+                        <p class="govuk-body">There's nothing here at the moment</p>
+                    </li>
+
+                    {{/if}}
+                </ul>
+
+            </section>
+
+            <h2>Related workshops and webinars</h2>
+            
+                <ul class="govuk-list" id="workshopslist">
+                    
+                </ul>
+            
+
+
+        </div>
+    </div>
+</div>
+
+<script>
+
+    var sectionname = "{{section.name}}".replace(/[,\s]+|[,\s]+/g, '');
+    $.getJSON('/api/v2/help_center/en-gb/articles.json?label_names=type/webinar,' + sectionname, function (workshopsandwebinars) {
+        
+        $.each(workshopsandwebinars.articles, function (i, item) {
+            $("#workshopslist").append('<li><a class="govuk-link govuk-!-margin-bottom-1 tl-category--article" href="' + item.url + '">' + item.title + '</a></li>');
+        });
+    });
+
+</script>
+
+

@@ -93,3 +93,31 @@
     });
 
 </script>
+
+
+<!-- Start of tlevelsemployertest Zendesk Widget script -->
+<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key={{settings.answerbot_key}}"></script>
+
+<script type="text/javascript">
+    window.zESettings = {
+        webWidget: {
+            answerBot: {
+                avatar: {
+                    url: "{{settings.answerbot_icon}}",
+                    name: {
+                        "*": '{{settings.answerbot_name}}'
+                    }
+                },
+                title: {
+                    "en-gb": "T Levels Employer Support"
+                },
+                search: {
+                    labels:
+                        ['answerbot']
+                },
+                contactOnlyAfterQuery: true
+            }
+        }
+    };
+</script>
+<!-- End of tlevelsemployertest Zendesk Widget script -->
