@@ -173,12 +173,13 @@
             $(this).text(text.replace('Name: cannot be blank', 'Enter your name').replace('Requester: Email:  cannot be blank', 'Enter your email address').replace('Requester: Email: cannot be blank', 'Enter your email address').replace('Phone number: cannot be blank', 'Enter your telephone number').replace('Organisation name: cannot be blank', 'Enter your organisation’s name').replace('Description: cannot be blank', 'Enter your message').replace('Subject: cannot be blank', 'Choose a subject'));
         });
         $("#request_anonymous_requester_email_error:contains('is not properly formatted')").text("Enter an email address in the correct format, like name@example.com");
-        $("#request_subject_error").insertAfter($('#request_subject_label'));
 
         /* Contact Reason Radio Buttons */
         $('#tl-reason').insertAfter($('#request_subject_label'));
         $('#request_subject').addClass('tl-reason');
         $('#request_subject').insertAfter($('#tl-reason h1'));
+        $('#request_subject_error').insertAfter($('#tl-reason h1'));
+
 
         $('#tl-reason input[type=radio]').change(function () {
             var reasonlabel = $(this).parent().find('label').text()
