@@ -154,7 +154,7 @@
         $('.form-field.request_custom_fields_' + form_name_field_id).prepend('<h2 class="govuk-heading-l govuk-!-margin-top-7 govuk-!-margin-bottom-3">Your details</h2>');
         $('.request_custom_fields_' + form_telephone_field_id).attr('type', 'tel');
         $("#request_description_label").html('Enter your message - be as detailed as you can');
-        $('label[for="request_anonymous_requester_email"]').text("Email address");
+        $('label[for="request_anonymous_requester_email"]').text("Work email");
         $('label[for="request-attachments"]').parent(".form-field").addClass('tl-js-hidden');
         var NameField = $('input#request_custom_fields_' + form_name_field_id).parent();
         NameField.insertBefore($('input#request_anonymous_requester_email').parent());
@@ -170,7 +170,7 @@
 
         $("div[id$='_error']").each(function () {
             var text = $(this).text();
-            $(this).text(text.replace('Name: cannot be blank', 'Enter your name').replace('Requester: Email:  cannot be blank', 'Enter your email address').replace('Requester: Email: cannot be blank', 'Enter your email address').replace('Phone number: cannot be blank', 'Enter your telephone number').replace('Organisation name: cannot be blank', 'Enter your organisation’s name').replace('Description: cannot be blank', 'Enter your message'));
+            $(this).text(text.replace('Name: cannot be blank', 'Enter your name').replace('Requester: Email:  cannot be blank', 'Enter your email address').replace('Requester: Email: cannot be blank', 'Enter your email address').replace('Phone number: cannot be blank', 'Enter your telephone number').replace('Organisation name: cannot be blank', 'Enter your organisation’s name').replace('Description: cannot be blank', 'Enter your message').replace('Subject: cannot be blank', 'Choose a subject'));
         });
         $("#request_anonymous_requester_email_error:contains('is not properly formatted')").text("Enter an email address in the correct format, like name@example.com");
 
