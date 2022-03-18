@@ -187,7 +187,7 @@
         });
 
         /* Constent Checkbox */
-        $("input[type='submit']").attr('value', 'Send').prop("disabled");
+        $("input[type='submit']").attr('value', 'Send message').prop("disabled");
         $("#tl-consent").insertBefore($(".request-form input[type='submit']"));
         $('#tl-consent-check').change(function () {
             $(".request-form input[type='submit']").prop("disabled", !this.checked);
