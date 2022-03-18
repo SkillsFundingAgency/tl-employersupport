@@ -182,7 +182,7 @@
 
 
         $('#tl-reason input[type=radio]').change(function () {
-            var reasonlabel = $(this).parent().find('label').text()
+            var reasonlabel = $(this).val()
             $("#request_subject").val(reasonlabel);
         });
 
