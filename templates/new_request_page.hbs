@@ -186,6 +186,12 @@
             $("#request_subject").val(reasonlabel);
         });
 
+        var currentsubject = $("#request_subject").val()
+
+        $('#tl-reason input[value=' + currentsubject +']').prop('checked', true);
+
+
+
         /* Constent Checkbox */
         $("input[type='submit']").attr('value', 'Send message').prop("disabled");
         $("#tl-consent").insertBefore($(".request-form input[type='submit']"));
