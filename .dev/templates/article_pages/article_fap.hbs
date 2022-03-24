@@ -423,5 +423,44 @@
 
             return null;
         }
+
+        //Autocomplete
+        const $keywordsInput = $('#tl-search-term');
+        if ($keywordsInput.length > 0) {
+            $keywordsInput.wrap('<div id="autocomplete-container" class="tl-autocomplete-wrap"></div>');
+            var container = document.querySelector('#autocomplete-container');
+            $(container).empty();
+        }
+
+        function getSuggestions(query, populateResults) {
+            console.log('running getSuggestions');
+            var results = [];
+            const uri = findProvidersApiUrl + "locations/search?searchTerm=" + encodeURIComponent(query);
+            $.ajax({
+                url: uri,
+                type: "get",
+                dataType: 'json'
+            }).done(function (data) {
+                results = data.map(function (r) {
+                    return r.name;
+                });
+                populateResults(results);
+            });
+        }
+        function onConfirm(confirmed) {
+        }
+        accessibleAutocomplete({
+            element: container,
+            id: 'tl-search-term',
+            name: 'tl-search-term',
+            displayMenu: 'overlay',
+            showNoOptionsFound: false,
+            minLength: 3,
+            source: getSuggestions,
+            placeholder: "Enter a postcode or town",
+            onConfirm: onConfirm,
+            confirmOnBlur: false,
+            autoselect: true
+        });
     });
 </script>
