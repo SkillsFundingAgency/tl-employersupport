@@ -20,17 +20,112 @@
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
             <h1 class="govuk-heading-xl">Contact us</h1>
-            <p class="govuk-body">Use this form to contact us about industry placements. You can usually expect a reply within 2 working days.</p>
-            <p class="govuk-body">Alternatively, you can call us on <strong>08000 150 600</strong> (choose option 4). Phone lines are open 8am to 8pm, Monday to Friday.</p>
+            <p class="govuk-body">
+                Use this form to contact us about industry placements or sign up for tailored support sessions. You can usually expect a reply within 2 working days.
+            </p>
+            <p class="govuk-body">Alternatively, you can call us on <strong>08000 150 600</strong> (choose option 4). Phone lines are open 8am to 8pm, Monday to Friday. <a href="https://www.gov.uk/call-charges" class="govuk-link">Find out about call charges</a></p>
+            
+            <h2 class="govuk-heading-s">
+                These articles might help with your query:
+            </h2>
+
+            <ul class="govuk-list govuk-list--bullet">
+                <li><a href="/hc/en-gb/articles/{{settings.contact_link_1}}" class="govuk-link">Find a T Level school or college</a></li>
+                <li><a href="/hc/en-gb/articles/{{settings.contact_link_2}}" class="govuk-link">What are T Levels?</a></li>
+                <li><a href="/hc/en-gb/articles/{{settings.contact_link_3}}" class="govuk-link">How industry placements work</a></li>
+                <li><a href="/hc/en-gb/categories/{{settings.contact_link_4}}" class="govuk-link">Business benefits of an industry placement</a></li>
+            </ul>
+            
+            
+            
             <div class="tl-ticket--form">
                 {{request_form}}
+
+                <div class="govuk-form-group govuk-!-margin-top-9" id="tl-reason">
+                    <fieldset class="govuk-fieldset">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                            <h1 class="govuk-fieldset__heading govuk-!-margin-bottom-3">
+                                What would you like to talk to us about?
+                            </h1>
+                        </legend>
+                        <div class="govuk-radios" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="contact-reason" name="contact-reason" type="radio" value="More information about T Levels or industry placements" aria-describedby="contact-reason-hint">
+                                <label class="govuk-label govuk-radios__label" for="contact-reason">
+                                    More information about T Levels or industry placements
+                                </label>
+                                <div id="contact-reason-hint" class="govuk-hint govuk-radios__hint">
+                                    Questions about the courses, skill areas or placements.
+                                </div>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="contact-reason-2" name="contact-reason" type="radio" value="Offering placements at more than one location" aria-describedby="contact-reason-2-hint">
+                                <label class="govuk-label govuk-radios__label" for="contact-reason-2">
+                                    Offering placements at more than one location
+                                </label>
+                                <div id="contact-reason-2-hint" class="govuk-hint govuk-radios__hint">
+                                    If you have multiple business locations and want to offer industry placements.
+                                </div>
+                            </div>
+
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="contact-reason-3" name="contact-reason" type="radio" value="Help finding a school or college" aria-describedby="contact-reason-3-hint">
+                                <label class="govuk-label govuk-radios__label" for="contact-reason-3">
+                                    Help finding a school or college
+                                </label>
+                                <div id="contact-reason-3-hint" class="govuk-hint govuk-radios__hint">
+                                    If you need help finding a T Level school or college to partner with.
+                                </div>
+                            </div>
+
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="contact-reason-4" name="contact-reason" type="radio" value="Workshops and webinars" aria-describedby="contact-reason-4-hint">
+                                <label class="govuk-label govuk-radios__label" for="contact-reason-4">
+                                    Workshops and webinars
+                                </label>
+                                <div id="contact-reason-4-hint" class="govuk-hint govuk-radios__hint">
+                                    Questions about industry placement workshops and webinars.
+                                </div>
+                            </div>
+
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="contact-reason-5" name="contact-reason" type="radio" value="Request tailored support: one-to-one phone call" aria-describedby="contact-reason-5-hint">
+                                <label class="govuk-label govuk-radios__label" for="contact-reason-5">
+                                    Request <a href="/hc/en-gb/articles/{{settings.ttas_home}}" class="govuk-link">tailored support</a>: one-to-one phone call
+                                </label>
+                                <div id="contact-reason-5-hint" class="govuk-hint govuk-radios__hint">
+                                    A call with one of our specialists to chat through a specific issue.
+                                </div>
+                            </div>
+
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="contact-reason-6" name="contact-reason" type="radio" value="Request tailored support: online group session" aria-describedby="contact-reason-6-hint">
+                                <label class="govuk-label govuk-radios__label" for="contact-reason-6">
+                                    Request <a href="/hc/en-gb/articles/{{settings.ttas_home}}" class="govuk-link">tailored support</a>: online group session
+                                </label>
+                                <div id="contact-reason-6-hint" class="govuk-hint govuk-radios__hint">
+                                    If you have several colleagues or partner organisations who need help understanding, planning or delivering industry placements.
+                                </div>
+                            </div>
+
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="contact-reason-7" name="contact-reason" type="radio" value="Something else" aria-describedby="contact-reason-7-hint">
+                                <label class="govuk-label govuk-radios__label" for="contact-reason-7">
+                                    Something else
+                                </label>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </div>
+
 
                 <div class="govuk-form-group govuk-!-margin-top-5" id="tl-consent">
                     <div class="govuk-checkboxes govuk-checkboxes--small">
                         <div class="govuk-checkboxes__item">
                             <input class="govuk-checkboxes__input" id="tl-consent-check" name="consent" type="checkbox" value="agree">
                             <label class="govuk-label govuk-checkboxes__label" for="tl-consent-check">
-                                By checking this box you confirm that you consent to the Department for Education processing and storing your data for the purposes described in the <a href="https://www.gov.uk/government/publications/esfa-privacy-notice" class="govuk-link">privacy notice</a>.
+                                By selecting this box you confirm that you consent to the Department for Education or our contracted partner organisations processing and storing your data for the purposes described in the <a href="https://www.gov.uk/government/publications/esfa-privacy-notice" class="govuk-link">privacy notice</a>.
                             </label>
                         </div>
                     </div>
@@ -39,7 +134,6 @@
         </div>
     </div>
 </div>
-</main>
 
 <script>
 
@@ -47,47 +141,63 @@
     const form_subject_field_id = {{ settings.field_id_company }}
     const form_about_field_id = {{ settings.field_id_about }}
     const form_telephone_field_id = {{ settings.field_id_telephone }}
+    const form_organisation_field_id = {{ settings.field_id_company }}
 
 
-    $(function () {
-        $("input[type='submit']").click(function () {
-            event.preventDefault;
-            var subjectselect = "T Levels and industry placement support for employers - Online query";
-            $("#request_subject").val(subjectselect);
-        });
-    });
+
+
+
 
     $(document).ready(function () {
-        $('.form-field.request_custom_fields_' + form_name_field_id).prepend('<h2 class="govuk-heading-m govuk-!-margin-top-7">Your details</h2>');
-        $('.form-field.request_custom_fields_' + form_subject_field_id).prepend('<h2 class="govuk-heading-m govuk-!-margin-top-7">Employer details</h2>');
-        $('.form-field.request_description').prepend('<h2 class="govuk-heading-m govuk-!-margin-top-7">Your message</h2>');
-        $('#request_custom_fields_' + form_telephone_field_id).attr('type', 'tel');;
 
-
-        $("input[type='submit']").attr('value', 'Send').prop("disabled");
-
-
+        /* Form Styling */
+        $('.form-field.request_custom_fields_' + form_name_field_id).prepend('<h2 class="govuk-heading-l govuk-!-margin-top-7 govuk-!-margin-bottom-3">Your details</h2>');
+        $('.request_custom_fields_' + form_telephone_field_id).attr('type', 'tel');
+        $("#request_description_label").html('Enter your message - be as detailed as you can');
+        $('label[for="request_anonymous_requester_email"]').text("Work email");
+        $('label[for="request-attachments"]').parent(".form-field").addClass('tl-js-hidden');
         var NameField = $('input#request_custom_fields_' + form_name_field_id).parent();
         NameField.insertBefore($('input#request_anonymous_requester_email').parent());
 
+        /* Validation Message Changes */
         $(".notification-error").each(function () {
             $(this).parent('.form-field').find("label").after(this);
             if (!$(this).parent('.form-field').find('#upload-error').length) {
                 $(this).parent('.form-field').addClass("govuk-form-group--error");
             }
-
         });
 
-        $('label[for="request_anonymous_requester_email"]').text("Email address");
-        $('label[for="request-attachments"]').parent(".form-field").addClass('tl-js-hidden');
 
+        $("div[id$='_error']").each(function () {
+            var text = $(this).text();
+            $(this).text(text.replace('Name: cannot be blank', 'Enter your name').replace('Requester: Email:  cannot be blank', 'Enter your email address').replace('Requester: Email: cannot be blank', 'Enter your email address').replace('Phone number: cannot be blank', 'Enter your telephone number').replace('Organisation name: cannot be blank', 'Enter your organisation’s name').replace('Description: cannot be blank', 'Enter your message').replace('Subject: cannot be blank', 'Choose a subject'));
+        });
+        $("#request_anonymous_requester_email_error:contains('is not properly formatted')").text("Enter an email address in the correct format, like name@example.com");
+
+        /* Contact Reason Radio Buttons */
+        $('#tl-reason').insertAfter($('#request_subject_label'));
+        $('#request_subject').addClass('tl-reason');
+        $('#request_subject').insertAfter($('#tl-reason h1'));
+        $('#request_subject_error').insertAfter($('#tl-reason h1'));
+
+
+        $('#tl-reason input[type=radio]').change(function () {
+            var reasonlabel = $(this).val()
+            $("#request_subject").val(reasonlabel);
+        });
+
+        var currentsubject = $("#request_subject").val()
+
+        $('#tl-reason input[value="' + currentsubject +'"]').prop('checked', true);
+
+
+
+        /* Constent Checkbox */
+        $("input[type='submit']").attr('value', 'Send message').prop("disabled");
+        $("#tl-consent").insertBefore($(".request-form input[type='submit']"));
         $('#tl-consent-check').change(function () {
             $(".request-form input[type='submit']").prop("disabled", !this.checked);
         }).change()
-
-        $("#tl-consent").insertBefore($(".request-form input[type='submit']"));
-
-        $("#request_description_label").html('What would you like to talk to us about?');
 
 
     });
