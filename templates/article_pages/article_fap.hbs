@@ -1,62 +1,83 @@
 <!-- Main content -->
  
 
-	<div class="govuk-width-container govuk-main-wrapper govuk-!-padding-top-0">
+<div class="govuk-width-container govuk-main-wrapper govuk-!-padding-top-0">
 
-		<!-- Search Box -->
-		<div class="govuk-grid-row">
-			<div class="govuk-grid-column-full">
-				<div class="tl-card">
-					<h1 class="govuk-heading-xl govuk-!-margin-top-2 govuk-!-margin-bottom-7">{{article.title}}</h1>
-					<div class="tl-article--content">{{article.body}}</div>
-					<form role="search" class="tl-fap-search-providers-form">
-                        <h3>Enter a postcode or town</h3>
+    <!-- Search Box -->
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+            <h1 class="govuk-heading-xl govuk-!-margin-top-9 govuk-!-margin-bottom-7">{{article.title}}</h1>
+            <div class="tl-article--content">{{article.body}}</div>
+        </div>
+    </div>
+    <div class="govuk-grid-row">
+
+        <form role="search" class="tl-fap-search-providers-form">
+
+            <div class="govuk-grid-column-one-third govuk-!-margin-top-7">
+
+
+
+
+
+
+
+                <div class="tl-search--filter">
+
+                    <h3>Enter a postcode or town</h3>
+                    <div class="tl-search--filter--content govuk-!-margin-top-2">
                         <span class="govuk-error-message tl-hidden" id="tl-search-term-error">Enter a postcode or town</span>
                         <label class="govuk-visually-hidden" for="tl-search-term">Enter a postcode or town</label>
-                        <p>For example, S1 2JF, S1 or Sheffield</p>
+                        <p class="govuk-body">For example, S1 2JF, S1 or Sheffield</p>
                         <input class="govuk-input govuk-input--width-10 govuk-body-s" id="tl-search-term" name="tl-search-term" type="text" placeholder="Enter a postcode or town">
                         <button class="govuk-button tl-button--blue" id="tl-search-providers" data-module="govuk-button">
                             Search
                         </button>
+                    </div>
+                </div>
+                <div class="tl-search--filter">
+                    <h3>Filter by skill area</h3>
 
-                        <h3>Filter by skill area</h3>
+                    <div class="tl-search--filter--content">
                         <!-- TODO: Add an example of styled checkboxes -->
-                        <div class="govuk-form-group govuk-!-margin-bottom-4 tl-pane-expandable__content" style="background-color: white; padding: 10px">
+                        <div class="govuk-form-group govuk-!-margin-bottom-2 tl-pane-expandable__content" style="background-color: white; padding: 10px">
                             <div class="govuk-checkboxes govuk-checkboxes--small" id="tl-skill-area-filter">
                             </div>
                         </div>
+                    </div>
+                </div>
+                <button class="govuk-button tl-button--green" id="tl-update-search-providers" data-module="govuk-button">
+                    Update results
+                </button>
 
-                        <button class="govuk-button tl-button--green" id="tl-update-search-providers" data-module="govuk-button">
-                            Update results
-                        </button>						
-					</form>
-				</div>
-			</div>
-		</div>
+                </div>
 
-		<div class="govuk-grid-row tl-hidden" id="tl-error">
-			<div class="govuk-grid-column-two-thirds govuk-!-margin-top-7">
-				<h1 class="govuk-heading-l" id="tl-error-header"></h1>
-				<p class="govuk-body" id="tl-error-detail"></p>
-			</div>
-		</div>
+            <div class="govuk-grid-row tl-hidden" id="tl-error">
+                <div class="govuk-grid-column-two-thirds govuk-!-margin-top-7">
+                    <h1 class="govuk-heading-l" id="tl-error-header"></h1>
+                    <p class="govuk-body" id="tl-error-detail"></p>
+                </div>
+            </div>
+        </form>
 
-		<!-- Search Results -->
-		<div class="govuk-grid-row">
-			<div class="govuk-grid-column-two-thirds govuk-!-margin-top-7">
-		        <div id="tl-fap--results">
-					<div class="tl-fap--noresult tl-hidden">
-						<h2 class="govuk-heading-l">0 results</h2>
-						<p class="govuk-body">Enter a postcode or town name to see the nearest T Level schools and colleges.</p>
-					</div>
-					<div class="tl-fap--result">
-					</div>
-				</div>
-				<p class="govuk-body"><a class="govuk-link tl-hidden" id="tl-next-results-link" href="more-results">Show more results</a></p>
-			</div>
-		</div>
-	</div>
-</main>
+        <!-- Search Results -->
+        <div class="govuk-grid-column-two-thirds govuk-!-margin-top-7">
+            <div id="tl-fap--results">
+                <div class="tl-fap--noresult tl-hidden">
+                    <h2 class="govuk-heading-l">0 results</h2>
+                    <p class="govuk-body">Enter a postcode or town name to see the nearest T Level schools and colleges.</p>
+                </div>
+                <div class="tl-fap--result">
+                </div>
+            </div>
+            <p class="govuk-body"><a class="govuk-link tl-hidden" id="tl-next-results-link" href="more-results">Show more results</a></p>
+        </div>
+
+    </div>
+
+
+
+</div>
 
 <script type="text/javascript">
     $(document).ready(function() {
@@ -283,7 +304,7 @@
                             if(contactDetails) contactDetails += ' | ';
                             contactDetails += 'Email: <a href="mailto:' + providerLocation.email + '" class="govuk-link govuk-!-margin-right-4 tl-fap--result-email">' + providerLocation.email +'</a>';
                         }
-                        searchResult += '<p>' + contactDetails + '</p>';
+                        searchResult += '<p class="govuk-body">' + contactDetails + '</p>';
                     }
 
                     const locationDeliveryYears = [];
@@ -402,5 +423,44 @@
 
             return null;
         }
+
+        //Autocomplete
+        const $keywordsInput = $('#tl-search-term');
+        if ($keywordsInput.length > 0) {
+            $keywordsInput.wrap('<div id="autocomplete-container" class="tl-autocomplete-wrap"></div>');
+            var container = document.querySelector('#autocomplete-container');
+            $(container).empty();
+        }
+
+        function getSuggestions(query, populateResults) {
+            console.log('running getSuggestions');
+            var results = [];
+            const uri = findProvidersApiUrl + "locations/search?searchTerm=" + encodeURIComponent(query);
+            $.ajax({
+                url: uri,
+                type: "get",
+                dataType: 'json'
+            }).done(function (data) {
+                results = data.map(function (r) {
+                    return r.name;
+                });
+                populateResults(results);
+            });
+        }
+        function onConfirm(confirmed) {
+        }
+        accessibleAutocomplete({
+            element: container,
+            id: 'tl-search-term',
+            name: 'tl-search-term',
+            displayMenu: 'overlay',
+            showNoOptionsFound: false,
+            minLength: 3,
+            source: getSuggestions,
+            placeholder: "Enter a postcode or town",
+            onConfirm: onConfirm,
+            confirmOnBlur: false,
+            autoselect: true
+        });
     });
 </script>
