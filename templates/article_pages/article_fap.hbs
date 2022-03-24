@@ -1,61 +1,78 @@
 <!-- Main content -->
  
 
-	<div class="govuk-width-container govuk-main-wrapper govuk-!-padding-top-0">
+<div class="govuk-width-container govuk-main-wrapper govuk-!-padding-top-0">
 
-		<!-- Search Box -->
-		<div class="govuk-grid-row">
-			<div class="govuk-grid-column-full">
-				<div class="tl-card">
-					<h1 class="govuk-heading-xl govuk-!-margin-top-2 govuk-!-margin-bottom-7">{{article.title}}</h1>
-					<div class="tl-article--content">{{article.body}}</div>
-					<form role="search" class="tl-fap-search-providers-form">
-                        <h3>Enter a postcode or town</h3>
-                        <span class="govuk-error-message tl-hidden" id="tl-search-term-error">Enter a postcode or town</span>
-                        <label class="govuk-visually-hidden" for="tl-search-term">Enter a postcode or town</label>
-                        <p>For example, S1 2JF, S1 or Sheffield</p>
-                        <input class="govuk-input govuk-input--width-10 govuk-body-s" id="tl-search-term" name="tl-search-term" type="text" placeholder="Enter a postcode or town">
-                        <button class="govuk-button tl-button--blue" id="tl-search-providers" data-module="govuk-button">
-                            Search
-                        </button>
+    <!-- Search Box -->
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+            <h1 class="govuk-heading-xl govuk-!-margin-top-2 govuk-!-margin-bottom-7">{{article.title}}</h1>
+            <div class="tl-article--content">{{article.body}}</div>
+        </div>
+    </div>
+    <div class="govuk-grid-row">
 
-                        <h3>Filter by skill area</h3>
-                        <!-- TODO: Add an example of styled checkboxes -->
-                        <div class="govuk-form-group govuk-!-margin-bottom-4 tl-pane-expandable__content" style="background-color: white; padding: 10px">
-                            <div class="govuk-checkboxes govuk-checkboxes--small" id="tl-skill-area-filter">
-                            </div>
+        <form role="search" class="tl-fap-search-providers-form">
+
+            <div class="govuk-grid-column-one-third">
+
+
+
+
+
+
+
+                <div class="tl-card">
+
+                    <h3>Enter a postcode or town</h3>
+                    <span class="govuk-error-message tl-hidden" id="tl-search-term-error">Enter a postcode or town</span>
+                    <label class="govuk-visually-hidden" for="tl-search-term">Enter a postcode or town</label>
+                    <p>For example, S1 2JF, S1 or Sheffield</p>
+                    <input class="govuk-input govuk-input--width-10 govuk-body-s" id="tl-search-term" name="tl-search-term" type="text" placeholder="Enter a postcode or town">
+                    <button class="govuk-button tl-button--blue" id="tl-search-providers" data-module="govuk-button">
+                        Search
+                    </button>
+
+                    <h3>Filter by skill area</h3>
+                    <!-- TODO: Add an example of styled checkboxes -->
+                    <div class="govuk-form-group govuk-!-margin-bottom-4 tl-pane-expandable__content" style="background-color: white; padding: 10px">
+                        <div class="govuk-checkboxes govuk-checkboxes--small" id="tl-skill-area-filter">
                         </div>
+                    </div>
 
-                        <button class="govuk-button tl-button--green" id="tl-update-search-providers" data-module="govuk-button">
-                            Update results
-                        </button>						
-					</form>
-				</div>
-			</div>
-		</div>
+                    <button class="govuk-button tl-button--green" id="tl-update-search-providers" data-module="govuk-button">
+                        Update results
+                    </button>
+                </div>
+            </div>
 
-		<div class="govuk-grid-row tl-hidden" id="tl-error">
-			<div class="govuk-grid-column-two-thirds govuk-!-margin-top-7">
-				<h1 class="govuk-heading-l" id="tl-error-header"></h1>
-				<p class="govuk-body" id="tl-error-detail"></p>
-			</div>
-		</div>
+            <div class="govuk-grid-row tl-hidden" id="tl-error">
+                <div class="govuk-grid-column-two-thirds govuk-!-margin-top-7">
+                    <h1 class="govuk-heading-l" id="tl-error-header"></h1>
+                    <p class="govuk-body" id="tl-error-detail"></p>
+                </div>
+            </div>
+        </form>
 
-		<!-- Search Results -->
-		<div class="govuk-grid-row">
-			<div class="govuk-grid-column-two-thirds govuk-!-margin-top-7">
-		        <div id="tl-fap--results">
-					<div class="tl-fap--noresult tl-hidden">
-						<h2 class="govuk-heading-l">0 results</h2>
-						<p class="govuk-body">Enter a postcode or town name to see the nearest T Level schools and colleges.</p>
-					</div>
-					<div class="tl-fap--result">
-					</div>
-				</div>
-				<p class="govuk-body"><a class="govuk-link tl-hidden" id="tl-next-results-link" href="more-results">Show more results</a></p>
-			</div>
-		</div>
-	</div>
+        <!-- Search Results -->
+        <div class="govuk-grid-column-two-thirds govuk-!-margin-top-7">
+            <div id="tl-fap--results">
+                <div class="tl-fap--noresult tl-hidden">
+                    <h2 class="govuk-heading-l">0 results</h2>
+                    <p class="govuk-body">Enter a postcode or town name to see the nearest T Level schools and colleges.</p>
+                </div>
+                <div class="tl-fap--result">
+                </div>
+            </div>
+            <p class="govuk-body"><a class="govuk-link tl-hidden" id="tl-next-results-link" href="more-results">Show more results</a></p>
+        </div>
+
+    </div>
+
+
+
+</div>
+        </div>
 </main>
 
 <script type="text/javascript">
