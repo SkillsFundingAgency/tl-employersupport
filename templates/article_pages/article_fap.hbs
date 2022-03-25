@@ -187,6 +187,8 @@
         }
 
         function providerSearch(searchTerm, skillAreaIds, page) {
+            clearProviderSearchResults();
+
             if (searchTerm === "") {
                 event.stopPropagation();
                 showSearchTermError("Enter a postcode or town");
@@ -199,7 +201,6 @@
                 return false;
             }
 
-            clearProviderSearchResults();
             callProviderSearchApi(searchTerm, skillAreaIds, page);
 
             return true;
@@ -384,6 +385,7 @@
             $("#tl-search-term-error").text(message);
             $('#tl-search-term-error').removeClass("tl-hidden");
             $('#tl-error').addClass("tl-hidden");
+            $('.tl-fap--noresult').removeClass("tl-hidden");
         }
 
         function addHmacAuthHeader(xhr, uri) {
@@ -433,13 +435,12 @@
         }
 
         function getSuggestions(query, populateResults) {
-            console.log('running getSuggestions');
             var results = [];
-            const uri = findProvidersApiUrl + "locations/search?searchTerm=" + encodeURIComponent(query);
             $.ajax({
-                url: uri,
+                url: findProvidersApiUrl + "locations",
                 type: "get",
-                dataType: 'json'
+                dataType: 'json',
+                data: { searchTerm: query }
             }).done(function (data) {
                 results = data.map(function (r) {
                     return r.name;
@@ -447,8 +448,10 @@
                 populateResults(results);
             });
         }
+
         function onConfirm(confirmed) {
         }
+
         accessibleAutocomplete({
             element: container,
             id: 'tl-search-term',
