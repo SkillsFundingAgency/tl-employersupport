@@ -7927,9 +7927,6 @@ ul.govuk-radios label .gem-radios__input {
 .tl-ticket--form textarea {
   min-height: 140px;
 }
-.tl-ticket--form .request_subject {
-  display: none;
-}
 .tl-ticket--form #request_description_hint {
   display: none;
 }
@@ -7944,6 +7941,14 @@ ul.govuk-radios label .gem-radios__input {
 .tl-ticket--form span.optional {
   display: inline-block;
   margin-left: 5px;
+}
+
+.tl-reason label[id^=request_custom_fields], .tl-reason input[id^=request_custom_fields], .tl-reason .nesty-input {
+  display: none;
+}
+
+#request_subject_label, #request_subject {
+  display: none;
 }
 
 .tl-newsletter--list li:nth-child(n+5) {
