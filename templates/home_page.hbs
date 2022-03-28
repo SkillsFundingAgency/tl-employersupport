@@ -172,7 +172,7 @@
                 showSearchTermError("Enter a postcode or town");
                 return false;
             }
-
+alert(searchTerm);
             $(location).attr('href', '/hc/en-gb/articles/{{settings.article_id_find_provider}}?searchTerm=' + encodeURIComponent(searchTerm));
 
             return true;
