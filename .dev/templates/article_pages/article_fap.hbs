@@ -84,7 +84,8 @@
         let searchTerm = getUrlParameter("searchTerm");
         if (searchTerm) {
             searchTerm = urlDecode(searchTerm).toUpperCase();
-            providerSearch(searchTerm);
+            $("#tl-search-term").val(searchTerm);
+            $("#tl-search-providers").click();
 
             //Remove query string from url
             const urlSplit = (window.location.href).split("?");
