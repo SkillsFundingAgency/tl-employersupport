@@ -83,7 +83,8 @@
         //Check for search query param with postcode
         let searchTerm = getUrlParameter("searchTerm");
         if (searchTerm) {
-            searchTerm = urlDecode(searchTerm).toUpperCase();
+            console.log('found search term ' + searchTerm);
+            searchTerm = urlDecode(searchTerm);
             //Remove query string from url
             const urlSplit = (window.location.href).split("?");
             const obj = { Title: document.title, Url: urlSplit[0] };
@@ -405,7 +406,7 @@
             if (!url) {
                 url = window.location.search.substring(1);
             }
-
+console.log('url=' + url);
             const urlVars = url.split('&');
             for (let i = 0; i < urlVars.length; i++) {
                 const parameter = urlVars[i].split('=');
