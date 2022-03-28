@@ -89,15 +89,12 @@
             //Remove query string from url
             const urlSplit = (window.location.href).split("?");
             const obj = { Title: document.title, Url: urlSplit[0] };
-alert('pushing history');
             history.pushState(obj, obj.Title, obj.Url);
-alert('pushed history');
             console.log('setting search term to ' + searchTerm);
             $("#tl-search-term").val(searchTerm);
-            console.log('clicking search providers button');
-            $("#tl-search-providers").click();            
+            //$("#tl-search-providers").click();
+            providerSearch($("#tl-search-term").val().trim());
         } else {
-            console.log('no search query on page load');
             $('.tl-fap--noresult').removeClass("tl-hidden");
         }
 
