@@ -48,4 +48,8 @@
         @extend .govuk-body-s;
         @include govuk-responsive-margin(2, "bottom");
     }
+
+    span {
+        display: none;
+    }
 }

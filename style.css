@@ -8253,6 +8253,9 @@ ul.govuk-radios label .gem-radios__input {
     margin-bottom: 10px;
   }
 }
+#autocomplete-container span {
+  display: none;
+}
 
 .HeaderView-* {
   background-color: red !important;
