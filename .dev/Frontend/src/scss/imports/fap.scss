@@ -40,3 +40,12 @@
         max-width: unset;
     }
 }
+
+#autocomplete-container {
+    input {
+        @extend .govuk-input;
+        @extend .govuk-input--width-10;
+        @extend .govuk-body-s;
+        @include govuk-responsive-margin(2, "bottom");
+    }
+}
