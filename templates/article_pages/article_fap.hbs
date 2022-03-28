@@ -84,7 +84,6 @@
         let searchTerm = getUrlParameter("searchTerm");
         if (searchTerm) {
             searchTerm = urlDecode(searchTerm).toUpperCase();
-            $("#tl-search-term").val(searchTerm);
             providerSearch(searchTerm);
 
             //Remove query string from url
