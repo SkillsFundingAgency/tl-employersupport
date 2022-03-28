@@ -8231,8 +8231,7 @@ ul.govuk-radios label .gem-radios__input {
 }
 
 .autocomplete__hint {
-  color: #BFC1C3;
-  position: absolute;
+  display: none;
 }
 
 .autocomplete__input--default {
