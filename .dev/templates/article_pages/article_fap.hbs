@@ -64,11 +64,7 @@
             </div>
             <p class="govuk-body"><a class="govuk-link tl-hidden" id="tl-next-results-link" href="more-results">Show more results</a></p>
         </div>
-
     </div>
-
-
-
 </div>
 
 <script type="text/javascript">
@@ -85,11 +81,11 @@
         const qualificationArticleMap = loadQualificationMap();
 
         //Check for search query param with postcode
-        let postcode = getUrlParameter("search");
-        if (postcode) {
-            postcode = urlDecode(postcode).toUpperCase();
-            $("#tl-search-term").val(postcode);
-            providerSearch(postcode);
+        let searchTerm = getUrlParameter("searchTerm");
+        if (searchTerm) {
+            searchTerm = urlDecode(searchTerm).toUpperCase();
+            $("#tl-search-term").val(searchTerm);
+            providerSearch(searchTerm);
 
             //Remove query string from url
             const urlSplit = (window.location.href).split("?");

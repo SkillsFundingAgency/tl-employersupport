@@ -35,7 +35,7 @@
     <div class="tl-home--categories">
 
         {{#each categories}}
-        {{#isnt name "Find your nearest T Level Provider"}}
+        {{#isnt name "Find a T Level school or college"}}
         {{#isnt name "How this site works"}}
         {{#isnt name "Workshops and webinars"}}
         {{#isnt name "Tailored support sessions"}}
@@ -70,12 +70,12 @@
     <div class="govuk-grid-row govuk-!-margin-top-7 tl-fap-home--container">
         <div class="govuk-grid-column-two-thirds">
             <div class="tl-card--grey">
-                <h1 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-7">Find your nearest T Level provider</h1>
-                <p class="govuk-body">Search for schools and colleges to offer industry placements to.</p>
+                <h1 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-7">Find a T Level school or college</h1>
+                <p class="govuk-body">Offer a placement or find out more about their T Level programme.</p>
                 <form role="search" class="tl-fap-search-providers-form">
-                    <span class="govuk-error-message tl-hidden" id="tl-postcode-error">You must enter a postcode</span>
-                    <label class="govuk-visually-hidden" for="tl-postcode">Enter a postcode</label>
-                    <input class="govuk-input govuk-input--width-10 tl-fap-home--input" id="tl-postcode" name="tl-postcode" type="text" placeholder="Enter a postcode">
+                    <span class="govuk-error-message tl-hidden" id="tl-search-term-error">You must enter a postcode or town</span>
+                    <label class="govuk-visually-hidden" for="tl-search-term">Enter a postcode or town</label>
+                    <input class="govuk-input govuk-input--width-10 tl-fap-home--input" id="tl-search-term" name="tl-search-term" type="text" placeholder="Enter a postcode or town">
                     <button class="govuk-button tl-button--blue tl-fap-home--submit" id="tl-search-providers" data-module="govuk-button">
                         Search
                     </button>
@@ -155,9 +155,9 @@
     });
 
     $(document).ready(function() {
-        $('#tl-postcode').val("");
+        $('#tl-search-term').val("");
 
-        $('#tl-postcode').keypress(function (e) {
+        $('#tl-search-term').keypress(function (e) {
             if (e.which === 13) {
                 $("#tl-search-providers").click();
                 return false;
@@ -165,15 +165,15 @@
         });
 
         $("#tl-search-providers").click(function() {
-            const postcode = $("#tl-postcode").val().trim();
+            const searchTerm = $("#tl-search-term").val().trim();
 
-            if (postcode === "") {
+            if (searchTerm === "") {
                 event.stopPropagation();
-                showPostcodeError("Enter a postcode");
+                showSearchTermError("Enter a postcode or town");
                 return false;
             }
 
-            $(location).attr('href', '/hc/en-gb/articles/{{settings.article_id_find_provider}}?search=' + encodeURIComponent(postcode));
+            $(location).attr('href', '/hc/en-gb/articles/{{settings.article_id_find_provider}}?searchTerm=' + encodeURIComponent(searchTerm));
 
             return true;
         });
@@ -182,20 +182,17 @@
 			event.preventDefault();
 		});
 
-        function showPostcodeError(message) {
-            $("#tl-postcode-error").text(message);
-            $('#tl-postcode-error').removeClass("tl-hidden");
+        function showSearchTermError(message) {
+            $("#tl-search-term-error").text(message);
+            $('#tl-search-term-error').removeClass("tl-hidden");
         }
     });
 
     $('#tl-home--answerbot').click(function () {
         openHelp();
         event.preventDefault();
-    });
-     
+    });     
 </script>
-
-
 
 <!-- Start of tlevelsemployertest Zendesk Widget script -->
 <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key={{settings.answerbot_key}}"></script>
