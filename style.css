@@ -6693,6 +6693,7 @@ x:-moz-any-link {
   padding: 10px;
   width: 100%;
   margin-bottom: 0;
+  box-sizing: border-box;
 }
 
 .tl-article--content img {
@@ -8214,6 +8215,13 @@ ul.govuk-radios label .gem-radios__input {
   margin-bottom: 0;
   /* BUG: Safari 10 on macOS seems to add an implicit margin. */
   width: 100%;
+  margin-bottom: 10px;
+}
+@media (min-width: 40.0625em) {
+  .autocomplete__hint,
+.autocomplete__input {
+    margin-bottom: 10px;
+  }
 }
 
 .autocomplete__input {
