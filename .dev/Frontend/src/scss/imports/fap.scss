@@ -42,7 +42,7 @@
 }
 
 #autocomplete-container {
-    input {
+    #tl-search-term {
         @extend .govuk-input;
         @extend .govuk-input--width-10;
         @extend .govuk-body-s;
