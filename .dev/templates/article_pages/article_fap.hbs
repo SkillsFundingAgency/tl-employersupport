@@ -84,14 +84,17 @@
         let searchTerm = getUrlParameter("searchTerm");
         if (searchTerm) {
             searchTerm = urlDecode(searchTerm).toUpperCase();
-            $("#tl-search-term").val(searchTerm);
-            $("#tl-search-providers").click();
-
             //Remove query string from url
             const urlSplit = (window.location.href).split("?");
             const obj = { Title: document.title, Url: urlSplit[0] };
             history.pushState(obj, obj.Title, obj.Url);
+
+            console.log('setting search term to ' + searchTerm);
+            $("#tl-search-term").val(searchTerm);
+            console.log('clicking search providers button');
+            $("#tl-search-providers").click();
         } else {
+            console.log('no search query on page load');
             $('.tl-fap--noresult').removeClass("tl-hidden");
         }
 
@@ -449,8 +452,8 @@
 
         function onConfirm(confirmed) {
             setTimeout(function() {
-                    $("#tl-search-providers").click();
-                }, 200);
+                $("#tl-search-providers").click();
+            }, 200);
         }
 
         accessibleAutocomplete({
