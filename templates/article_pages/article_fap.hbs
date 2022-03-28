@@ -80,20 +80,22 @@
         loadRoutes();
         const qualificationArticleMap = loadQualificationMap();
 
-        //Check for search query param with postcode
+        //Check for search term query parameter
         let searchTerm = getUrlParameter("searchTerm");
+        console.log("getUrlParameter returned " + searchTerm);
         if (searchTerm) {
             console.log('found search term ' + searchTerm);
             searchTerm = urlDecode(searchTerm);
             //Remove query string from url
             const urlSplit = (window.location.href).split("?");
             const obj = { Title: document.title, Url: urlSplit[0] };
+alert('pushing history');
             history.pushState(obj, obj.Title, obj.Url);
-
+alert('pushed history');
             console.log('setting search term to ' + searchTerm);
             $("#tl-search-term").val(searchTerm);
             console.log('clicking search providers button');
-            $("#tl-search-providers").click();
+            $("#tl-search-providers").click();            
         } else {
             console.log('no search query on page load');
             $('.tl-fap--noresult').removeClass("tl-hidden");
@@ -403,10 +405,11 @@
         }
 
         function getUrlParameter(key, url) {
+console.log('url=' + url);
             if (!url) {
                 url = window.location.search.substring(1);
             }
-console.log('url=' + url);
+console.log('url(2)=' + url);
             const urlVars = url.split('&');
             for (let i = 0; i < urlVars.length; i++) {
                 const parameter = urlVars[i].split('=');
