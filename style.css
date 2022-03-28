@@ -6677,7 +6677,6 @@ x:-moz-any-link {
 
 .tl-search--filter {
   border: 1px solid #b1b4b6;
-  overflow: hidden;
   margin-bottom: 15px;
 }
 @media (min-width: 40.0625em) {
@@ -8342,12 +8341,6 @@ ul.govuk-radios label .gem-radios__input {
     line-height: 1.31579;
   }
 }
-.autocomplete__wrapper .autocomplete__input {
-  background: url(../images/icons/search.svg) no-repeat 10px;
-  background-size: 0.9em 0.9em;
-  padding-left: 35px;
-}
-
 .HeaderView-* {
   background-color: red !important;
 }
