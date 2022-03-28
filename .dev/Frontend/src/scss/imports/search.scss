@@ -262,4 +262,8 @@
         margin-bottom: 0;
         box-sizing: border-box;
     }
+
+    .tl-search--filter--button {
+        @include govuk-responsive-margin(2, "top");
+    }
 }
