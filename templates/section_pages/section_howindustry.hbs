@@ -23,46 +23,26 @@
 
 
 
-            <section id="tl-howdindustry">
-                        {{#each section.articles}}
+        <section id="tl-howdindustry">
+            {{#each section.articles}}
 
-                        <h2 class="govuk-heading-l"><span></span>{{title}}</h2>
-
-
-
+            <h2 class="govuk-heading-l"><span></span>{{title}}</h2>
+            <div class="tl-article--content" id="articlebody{{id}}">{{excerpt body characters=600}}</div>
 
 
+            <script>
+                $.getJSON('/api/v2/help_center/articles/{{id}}', function (articlebody) {
 
+                    var bodycontent = articlebody.article.body;
+                    $('#articlebody{{id}}').html(bodycontent);
+                });
+            </script>
+            </li>
+            {{/each}}
 
-                            <div class="app-step-nav__panel js-panel js-hidden" id="step-panel-{{id}}">
-                                <div class="app-step-nav__paragraph tl-article--content" id="articlebody{{id}}">{{excerpt body characters=600}}</div>
-                            </div>
-
-                            <script>
-                            $.getJSON('/api/v2/help_center/articles/{{id}}', function (articlebody) {
-
-                                var bodycontent = articlebody.article.body;
-                                $('#articlebody{{id}}').html(bodycontent);
-                            });
-                            </script>
-                        </li>
-                        {{/each}}
-
-            </section>
+        </section>
         </div>
     </div>
 </div>
 
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        $(".app-step-nav__step:first-child").attr('data-show', '');
-        var $element = $('#step-by-step-navigation')
-        var stepByStepNavigation = new GOVUK.Modules.AppStepNav()
-        stepByStepNavigation.start($element);
-
-        $(".app-step-nav__circle--number").each(function (i) {
-            $(this).prepend(i + 1);
-        });
-    });
-</script>
