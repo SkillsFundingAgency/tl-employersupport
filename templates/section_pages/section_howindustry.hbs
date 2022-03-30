@@ -23,27 +23,16 @@
 
 
 
-            <section>
-                <div id="step-by-step-navigation" class="app-step-nav app-step-nav--large app-step-nav--active" data-show-text="Show" data-hide-text="Hide" data-show-all-text="Show all" data-hide-all-text="Hide all">
-                    <ol class="app-step-nav__steps">
-
+            <section id="tl-howdindustry">
                         {{#each section.articles}}
-                        <li class="app-step-nav__step js-step" id="{{id}}">
-                            <div class="app-step-nav__header js-toggle-panel" data-position="1">
-                                <h2 class="app-step-nav__title">
-                                    <span class="app-step-nav__circle app-step-nav__circle--number">
-                                        <span class="app-step-nav__circle-inner">
-                                            <span class="app-step-nav__circle-background">
-                                                <span class="govuk-visually-hidden">{{title}}</span>
-                                            </span>
-                                        </span>
-                                    </span>
 
-                                    <span class="js-step-title">
-                                        {{title}}
-                                    </span>
-                                </h2>
-                            </div>
+                        <h2 class="govuk-heading-l"><span></span>{{title}}</h2>
+
+
+
+
+
+
 
                             <div class="app-step-nav__panel js-panel js-hidden" id="step-panel-{{id}}">
                                 <div class="app-step-nav__paragraph tl-article--content" id="articlebody{{id}}">{{excerpt body characters=600}}</div>
@@ -58,8 +47,7 @@
                             </script>
                         </li>
                         {{/each}}
-                    </ol>
-                </div>
+
             </section>
         </div>
     </div>

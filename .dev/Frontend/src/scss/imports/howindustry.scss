@@ -1,0 +1,9 @@
+#tl-howindustry {
+    counter-reset: section;
+
+    h1:before {
+        counter-increment: section;
+        content: counter(section) " ";
+        font-weight: bold;
+    }
+}
