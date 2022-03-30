@@ -8139,6 +8139,11 @@ ul.govuk-radios label .gem-radios__input {
   background-color: #003078;
 }
 
+/* buttons as links */
+.tl-button--aslink {
+  color: white !important;
+}
+
 .tl-fap--distance {
   font-family: "GDS Transport", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -8351,4 +8356,13 @@ ul.govuk-radios label .gem-radios__input {
 }
 .HeaderView-* {
   background-color: red !important;
+}
+
+#tl-howindustry {
+  counter-reset: section;
+}
+#tl-howindustry h2:before {
+  counter-increment: section;
+  content: counter(section) ". ";
+  font-weight: bold;
 }
