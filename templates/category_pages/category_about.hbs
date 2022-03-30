@@ -1,7 +1,6 @@
 <!-- Main content -->
 
 
-
 <div class="govuk-width-container">
     <div id="tl-breadcrumbs--category">
         <div class="tl-breadcrumbs">
@@ -11,7 +10,9 @@
 </div>
 
 
-<!-- Article Content -->
+
+
+<!-- Category Content -->
 <div class="govuk-width-container govuk-main-wrapper">
 
     <div class="govuk-grid-row">
@@ -20,19 +21,34 @@
             {{#if category.description}}
             <p class="govuk-body-l">{{category.description}}</p>
             {{/if}}
-            <section>
+        <section>
 
-                {{#is sections.length 1}}
-                {{#each sections}}
-                <ul class="govuk-list">
+
+
+            {{#each sections}}
+
+
+
+                {{#is name "Introducing industry placements"}}
+                    <h2 class="govuk-heading-m">{{name}}</h2>
+
+
                     {{#if articles}}
+                    <ul class="govuk-list">
+                        {{#each articles}}
+                        <li>
+                            <a class="govuk-link tl-category--article" href="{{url}}">{{title}}</a>
+                        </li>
+                        {{/each}}
 
-                    {{#each articles}}
-                    <li>
-                        <a class="govuk-link govuk-!-margin-bottom-1" href="{{url}}">{{title}}</a>
-                    </li>
-                    {{/each}}
-
+                        {{#if more_articles}}
+                        <li class="govuk-!-margin-top-4">
+                            <a class="govuk-link govuk-body-s tl-category--more" href="{{url}}">
+                                {{t 'show_all_articles' count=article_count}}
+                            </a>
+                        </li>
+                        {{/if}}
+                    </ul>
                     {{else}}
                     <ul class="govuk-list">
                         <li>
@@ -40,62 +56,18 @@
                         </li>
                     </ul>
                     {{/if}}
-                </ul>
-                {{/each}}
+                    {{#isnt sections.length 1}}
+                    {{#unless @last}}
+                    <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-top-8 govuk-!-margin-bottom-7">
+                    {{/unless}}
+                    {{/isnt}}
+
                 {{else}}
-            <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default--{{category.id}}">
 
-                {{#each sections}}
-                {{#isnt name "How industry placements work"}}
+                    {{#isnt name "How industry placements work"}}
+                        <h2 class="govuk-heading-m">{{name}}</h2>
 
-                {{is name ""Introducing industry placements""}}
-                <div class="govuk-accordion__section ">
-                    <div class="govuk-accordion__section-header">
-                        <h2 class="govuk-accordion__section-heading">
-                            <span class="govuk-accordion__section-button" id="accordion-default-heading-{{id}}">
-                                {{name}}
-                            </span>
-                        </h2>
-                    </div>
-                    <div id="accordion-default-content-{{id}}" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-{{id}}">
-                        {{#if articles}}
-                        <ul class="govuk-list">
-                            {{#each articles}}
-                            <li>
-                                <a class="govuk-link tl-category--article" href="{{url}}">{{title}}</a>
-                            </li>
-                            {{/each}}
 
-                            {{#if more_articles}}
-                            <li class="govuk-!-margin-top-4">
-                                <a class="govuk-link govuk-body-s tl-category--more" href="{{url}}">
-                                    {{t 'show_all_articles' count=article_count}}
-                                </a>
-                            </li>
-                            {{/if}}
-                            <li>
-                                <a class="govuk-link tl-category--article" href="{{settings.section_id_how_industry}}">How industry placements work</a>
-                            </li>
-                        </ul>
-                        {{else}}
-                        <ul class="govuk-list">
-                            <li>
-                                <p class="govuk-body">There's nothing here at the moment</p>
-                            </li>
-                        </ul>
-                        {{/if}}
-                    </div>
-                </div>
-                {{else}}
-                <div class="govuk-accordion__section ">
-                    <div class="govuk-accordion__section-header">
-                        <h2 class="govuk-accordion__section-heading">
-                            <span class="govuk-accordion__section-button" id="accordion-default-heading-{{id}}">
-                                {{name}}
-                            </span>
-                        </h2>
-                    </div>
-                    <div id="accordion-default-content-{{id}}" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-{{id}}">
                         {{#if articles}}
                         <ul class="govuk-list">
                             {{#each articles}}
@@ -119,18 +91,19 @@
                             </li>
                         </ul>
                         {{/if}}
-                    </div>
-                </div>
-                {{/is}}
+                        {{#isnt sections.length 1}}
+                        {{#unless @last}}
+                        <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-top-8 govuk-!-margin-bottom-7">
+                        {{/unless}}
+                        {{/isnt}}
 
-                {{/isnt}}
-                {{/each}}
-            </div>
+                    {{/isnt}}
 
                 {{/is}}
-            </section>
+            {{/each}}
+
+        </section>
         </div>
     </div>
 </div>
-</main>
 
