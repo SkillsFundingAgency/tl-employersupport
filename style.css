@@ -8356,7 +8356,7 @@ ul.govuk-radios label .gem-radios__input {
 #tl-howindustry {
   counter-reset: section;
 }
-#tl-howindustry h1:before {
+#tl-howindustry h2:before {
   counter-increment: section;
   content: counter(section) " ";
   font-weight: bold;

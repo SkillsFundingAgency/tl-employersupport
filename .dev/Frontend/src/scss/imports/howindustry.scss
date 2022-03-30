@@ -1,7 +1,7 @@
 #tl-howindustry {
     counter-reset: section;
 
-    h1:before {
+    h2:before {
         counter-increment: section;
         content: counter(section) " ";
         font-weight: bold;
