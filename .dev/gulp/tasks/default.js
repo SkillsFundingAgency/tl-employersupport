@@ -49,6 +49,7 @@ gulp.task('customjs', () => {
         'node_modules//crypto-js/hmac.js',
         'node_modules//crypto-js/hmac-sha256.js',
         'node_modules/accessible-autocomplete/dist/accessible-autocomplete.min.js',
+        'Frontend/src/js/step-by-step.js',
     ])
         .pipe(concat('custom.js'))
         .pipe(gulp.dest(paths.dist.Assets));
