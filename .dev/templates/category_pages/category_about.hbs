@@ -28,44 +28,6 @@
             {{#each sections}}
 
 
-
-                {{#is name "Introducing industry placements"}}
-                    <h2 class="govuk-heading-m">{{name}}</h2>
-
-
-                    {{#if articles}}
-                    <ul class="govuk-list">
-                        {{#each articles}}
-                        <li>
-                            <a class="govuk-link tl-category--article" href="{{url}}">{{title}}</a>
-                        </li>
-                        {{/each}}
-                        <li>
-                            <a class="govuk-link tl-category--article" href="/sections/{{settings.section_id_how_industry}}">How industry placements work</a>
-                        </li>
-                        {{#if more_articles}}
-                        <li class="govuk-!-margin-top-4">
-                            <a class="govuk-link govuk-body-s tl-category--more" href="{{url}}">
-                                {{t 'show_all_articles' count=article_count}}
-                            </a>
-                        </li>
-                        {{/if}}
-                    </ul>
-                    {{else}}
-                    <ul class="govuk-list">
-                        <li>
-                            <p class="govuk-body">There's nothing here at the moment</p>
-                        </li>
-                    </ul>
-                    {{/if}}
-                    {{#isnt sections.length 1}}
-                    {{#unless @last}}
-                    <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-top-8 govuk-!-margin-bottom-7">
-                    {{/unless}}
-                    {{/isnt}}
-
-                {{else}}
-
                     {{#isnt name "How industry placements work"}}
                         <h2 class="govuk-heading-m">{{name}}</h2>
 
@@ -77,9 +39,6 @@
                                 <a class="govuk-link tl-category--article" href="{{url}}">{{title}}</a>
                             </li>
                             {{/each}}
-                            <li>
-                                <a class="govuk-link tl-category--article" href="/sections/{{settings.section_id_how_industry}}">How industry placements work</a>
-                            </li>
                             {{#if more_articles}}
                             <li class="govuk-!-margin-top-4">
                                 <a class="govuk-link govuk-body-s tl-category--more" href="{{url}}">
@@ -102,8 +61,6 @@
                         {{/isnt}}
 
                     {{/isnt}}
-
-                {{/is}}
             {{/each}}
 
         </section>
