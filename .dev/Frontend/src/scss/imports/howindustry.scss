@@ -3,7 +3,7 @@
 
     h2:before {
         counter-increment: section;
-        content: counter(section) " ";
+        content: counter(section) ". ";
         font-weight: bold;
     }
 }

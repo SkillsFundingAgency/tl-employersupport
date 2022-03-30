@@ -8358,6 +8358,6 @@ ul.govuk-radios label .gem-radios__input {
 }
 #tl-howindustry h2:before {
   counter-increment: section;
-  content: counter(section) " ";
+  content: counter(section) ". ";
   font-weight: bold;
 }
