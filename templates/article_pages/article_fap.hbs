@@ -426,7 +426,6 @@ console.log('url(2)=' + url);
             $(container).empty();
         }
 
-        let locationsSearchResult = null;
         function getSuggestions(query, populateResults) {
             //Abandon if query has numbers - probably a postcode or invalid input
             if (/\d/.test(query)) return;
@@ -437,7 +436,6 @@ console.log('url(2)=' + url);
                 dataType: 'json',
                 data: { searchTerm: query }
             }).done(function (data) {
-                locationsSearchResult = data;
                 results = data.map(function (r) {
                     return getLocationDisplayName(r);
                 });
@@ -447,8 +445,12 @@ console.log('url(2)=' + url);
 
         function getLocationDisplayName(item)
         {
-            return item.name + 
-                (item.county ? ', ' + item.county : item.la);
+            let displayName = item.name;
+            if (item.county)
+                displayName += ', ' + item.county;
+            else if (item.la)
+                displayName += ', ' + item.la;
+            return displayName;
         }
 
         function onConfirm(confirmed) {
