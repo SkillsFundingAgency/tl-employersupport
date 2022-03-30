@@ -8139,6 +8139,11 @@ ul.govuk-radios label .gem-radios__input {
   background-color: #003078;
 }
 
+/* buttons as links */
+.tl-button--aslink {
+  color: #ffffff;
+}
+
 .tl-fap--distance {
   font-family: "GDS Transport", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
