@@ -1,5 +1,5 @@
 {
-  "name": "GDS Style - Employer Support - FAP Enhancements",
+  "name": "GDS Style - Employer Support - How Industry Works",
   "author": "Ash Anderton",
   "version": "0.1.297",
   "api_version": 2,
@@ -172,6 +172,13 @@
           "description": "Find Provider",
           "label": "Find Provider",
           "value": "4416405115154"
+        },
+        {
+          "identifier": "section_id_how_industry",
+          "type": "text",
+          "description": "How industry placements work",
+          "label": "How industry placements work",
+          "value": "4507598340882"
         },
         {
           "identifier": "subdomain",

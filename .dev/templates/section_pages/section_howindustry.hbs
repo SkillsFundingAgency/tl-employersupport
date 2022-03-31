@@ -1,0 +1,49 @@
+﻿<!-- Main content -->
+
+
+<div class="govuk-width-container">
+    <div id="tl-breadcrumbs--article">
+        <div class="tl-breadcrumbs">
+            {{breadcrumbs}}
+        </div>
+    </div>
+</div>
+
+<!-- Article Content -->
+<div class="govuk-width-container govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-xl">{{section.name}}</h1>
+            {{#if section.description}}
+            <p class="govuk-body-l">{{section.description}}</p>
+            {{/if}}
+
+
+
+
+
+        <section id="tl-howindustry">
+            {{#each section.articles}}
+
+            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+            <h2 class="govuk-heading-m"><span></span>{{title}}</h2>
+            <div class="tl-article--content" id="articlebody{{id}}">{{excerpt body characters=600}}</div>
+
+
+            <script>
+                $.getJSON('/api/v2/help_center/articles/{{id}}', function (articlebody) {
+
+                    var bodycontent = articlebody.article.body;
+                    $('#articlebody{{id}}').html(bodycontent);
+                });
+            </script>
+            </li>
+            {{/each}}
+
+        </section>
+        </div>
+    </div>
+</div>
+
+
