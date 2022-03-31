@@ -1,8 +1,9 @@
 (function ($) {
     //Autocomplete for find provider search term
 
-    let findProvidersApiUrl = "{{ settings.find_provider_api_uri }}";
+    let findProvidersApiUrl = "{{ settings.find_provider_api_uri }}";    
     if (findProvidersApiUrl.substr(-1) !== '/') findProvidersApiUrl += '/';
+    console.log('autocomplete set ' + findProvidersApiUrl);
     
     const $keywordsInput = $('#tl-search-term');
     if ($keywordsInput.length > 0) {
