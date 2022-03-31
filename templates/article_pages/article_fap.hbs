@@ -71,9 +71,10 @@
 <script src="{{asset 'locationAutocomplete.js'}}"></script>
 <script type="text/javascript">
     $(document).ready(function() {
-        let findProvidersApiUrl = "{{ settings.find_provider_api_uri }}";
-        if (findProvidersApiUrl.substr(-1) !== '/') findProvidersApiUrl += '/';
-
+        //Remove this - it's already set in autocomplete
+        //let findProvidersApiUrl = "{{ settings.find_provider_api_uri }}";
+        //if (findProvidersApiUrl.substr(-1) !== '/') findProvidersApiUrl += '/';
+        console.log(findProvidersApiUrl);
         let currentPage = 0;
         let currentSearchTerm = null;
         let currentSkillAreaIds = [];
