@@ -147,9 +147,12 @@
         </div>
     </div>
 </div>
-<script src="{{asset 'accessible-autocomplete.min.js'}}"></script>
-<script src="{{asset 'locationAutocomplete.js'}}"></script>
+
 <script>
+    //Need this to be global scope for autocomplete
+    let findProvidersApiUrl = "{{ settings.find_provider_api_uri }}";    
+    if (findProvidersApiUrl.substr(-1) !== '/') findProvidersApiUrl += '/';
+
     document.addEventListener('DOMContentLoaded', function () {
         if (!isAgent()) {
             $("#tl-home--ticket").show();
@@ -195,6 +198,9 @@
         event.preventDefault();
     });     
 </script>
+
+<script src="{{asset 'accessible-autocomplete.min.js'}}"></script>
+<script src="{{asset 'locationAutocomplete.js'}}"></script>
 
 <!-- Start of tlevelsemployertest Zendesk Widget script -->
 <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key={{settings.answerbot_key}}"></script>
