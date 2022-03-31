@@ -67,16 +67,13 @@
     </div>
 </div>
 
-<script src="{{asset 'accessible-autocomplete.min.js'}}"></script>
-<script src="{{asset 'locationAutocomplete.js'}}"></script>
 <script type="text/javascript">
-    $(document).ready(function() {
-        //Remove this - it's already set in autocomplete
-        //let findProvidersApiUrl = "{{ settings.find_provider_api_uri }}";
-        //if (findProvidersApiUrl.substr(-1) !== '/') findProvidersApiUrl += '/';
-        let findProvidersApiUrl = "https://test.api.findatlevelprovider.education.gov.uk/api/v2/";
+    //Need this to be global scope for autocomplete
+    let findProvidersApiUrl = "{{ settings.find_provider_api_uri }}";    
+    if (findProvidersApiUrl.substr(-1) !== '/') findProvidersApiUrl += '/';
 
-        console.log(findProvidersApiUrl);
+    $(document).ready(function() {
+        console.log("find provider url in article_fap: " + findProvidersApiUrl);
         let currentPage = 0;
         let currentSearchTerm = null;
         let currentSkillAreaIds = [];
@@ -422,3 +419,5 @@
         }        
     });
 </script>
+<script src="{{asset 'accessible-autocomplete.min.js'}}"></script>
+<script src="{{asset 'locationAutocomplete.js'}}"></script>

@@ -1,10 +1,7 @@
 (function ($) {
     //Autocomplete for find provider search term
 
-    // let findProvidersApiUrl = "{{ settings.find_provider_api_uri }}";    
-    // if (findProvidersApiUrl.substr(-1) !== '/') findProvidersApiUrl += '/';
-    let findProvidersApiUrl = "https://test.api.findatlevelprovider.education.gov.uk/api/v2/";
-    console.log('autocomplete set ' + findProvidersApiUrl);
+    console.log('autocomplete in autocomplete ' + findProvidersApiUrl);
     
     const $keywordsInput = $('#tl-search-term');
     if ($keywordsInput.length > 0) {
@@ -51,7 +48,6 @@
         }, 200);
     }
 
-    console.log('creating autocomplete');
     accessibleAutocomplete({
         element: container,
         id: 'tl-search-term',
