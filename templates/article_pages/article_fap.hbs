@@ -73,7 +73,6 @@
     if (findProvidersApiUrl.substr(-1) !== '/') findProvidersApiUrl += '/';
 
     $(document).ready(function() {
-        console.log("find provider url in article_fap: " + findProvidersApiUrl);
         let currentPage = 0;
         let currentSearchTerm = null;
         let currentSkillAreaIds = [];
@@ -84,17 +83,13 @@
 
         //Check for search term query parameter
         let searchTerm = getUrlParameter("searchTerm");
-        console.log("getUrlParameter returned " + searchTerm);
         if (searchTerm) {
-            console.log('found search term ' + searchTerm);
             searchTerm = urlDecode(searchTerm);
             //Remove query string from url
             const urlSplit = (window.location.href).split("?");
             const obj = { Title: document.title, Url: urlSplit[0] };
             history.pushState(obj, obj.Title, obj.Url);
-            console.log('setting search term to ' + searchTerm);
             $("#tl-search-term").val(searchTerm);
-            //$("#tl-search-providers").click();
             providerSearch($("#tl-search-term").val().trim());
         } else {
             $('.tl-fap--noresult').removeClass("tl-hidden");
