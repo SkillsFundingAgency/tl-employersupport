@@ -9,7 +9,8 @@
     }
 
     function getSuggestions(query, populateResults) {
-        if (isSearchInProgress || /\d/.test(query)) {
+        if ((typeof isSearchInProgress !== 'undefined' && isSearchInProgress)
+            || /\d/.test(query)) {
             return;
         }
         var results = [];
