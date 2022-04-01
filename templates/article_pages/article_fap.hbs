@@ -71,12 +71,12 @@
     //Need this to be global scope for autocomplete
     let findProvidersApiUrl = "{{ settings.find_provider_api_uri }}";    
     if (findProvidersApiUrl.substr(-1) !== '/') findProvidersApiUrl += '/';
+    let isSearchInProgress = false;
 
     $(document).ready(function() {
         let currentPage = 0;
         let currentSearchTerm = null;
         let currentSkillAreaIds = [];
-        let isSearchInProgress = false;
 
         loadRoutes();
         const qualificationArticleMap = loadQualificationMap();
@@ -89,8 +89,7 @@
             const urlSplit = (window.location.href).split("?");
             const obj = { Title: document.title, Url: urlSplit[0] };
             history.pushState(obj, obj.Title, obj.Url);
-            $("#tl-search-term").val(searchTerm);
-            providerSearch($("#tl-search-term").val().trim());
+            providerSearch(searchTerm);
         } else {
             $('.tl-fap--noresult').removeClass("tl-hidden");
         }
@@ -177,6 +176,7 @@
         function providerSearch(searchTerm, skillAreaIds, page) {
             clearProviderSearchResults();
 
+            searchTerm = searchTerm ? searchTerm.trim() : "";
             if (searchTerm === "") {
                 if(event) event.stopPropagation();
                 showSearchTermError("Enter a postcode or town");
@@ -226,7 +226,10 @@
                     currentSkillAreaIds = skillAreaIds;
                     populateProviderSearchResults(response);
                 }
-                isSearchInProgress = false;
+                setTimeout(function () {
+                        //delay to avaoid autocomplete suggestions loading
+                        isSearchInProgress = false;
+                    }, 200);                
             }).fail(function(jqxhr) {
                 showError(jqxhr.status, jqxhr.responseText);
                 isSearchInProgress = false;
@@ -266,7 +269,7 @@
         }
 
         function populateProviderSearchResults(data) {
-            if (data.searchTerm) {
+            if (data.searchTerm && data.searchTerm !== $("#tl-search-term").val()) {
                 $("#tl-search-term").val(data.searchTerm);
             }
 

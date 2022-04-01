@@ -9,9 +9,9 @@
     }
 
     function getSuggestions(query, populateResults) {
-        if (/\d/.test(query)) {
+        if (isSearchInProgress || /\d/.test(query)) {
             return;
-        }        
+        }
         var results = [];
         $.ajax({
             url: findProvidersApiUrl + "locations",
@@ -33,9 +33,6 @@
     }
 
     function onConfirm(confirmed) {
-        setTimeout(function () {
-            $("#tl-search-providers").click();
-        }, 200);
     }
 
     accessibleAutocomplete({

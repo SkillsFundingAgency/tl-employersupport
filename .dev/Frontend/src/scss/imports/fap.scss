@@ -42,6 +42,10 @@
 }
 
 /*AUTOCOMPELTE*/
+.tl-autocomplete-wrap {
+    display: inline-block;
+}
+
 
 .autocomplete__wrapper {
     position: relative;
@@ -57,10 +61,10 @@
     -webkit-box-sizing: border-box;
     margin-bottom: 0; /* BUG: Safari 10 on macOS seems to add an implicit margin. */
     width: 100%;
+    background: white;
 }
 
 .autocomplete__input {
-    background-color: transparent;
     position: relative;
 }
 
