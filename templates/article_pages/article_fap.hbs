@@ -183,7 +183,7 @@
                 return false;
             }
 
-            if (!searchTerm.match(/^[0-9a-zA-Z,\.\s]+$/)) {
+            if (!searchTerm.match(/^[0-9a-zA-Z,\.\-!&\(|\)\s]+$/)) {
                 if(event) event.stopPropagation();
                 showSearchTermError("Enter a valid postcode or town");
                 return false;
