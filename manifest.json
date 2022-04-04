@@ -1,7 +1,7 @@
 {
   "name": "GDS Style - Employer Support - How Industry Works",
   "author": "Ash Anderton",
-  "version": "0.1.308",
+  "version": "0.1.309",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [
@@ -347,7 +347,7 @@
           "type": "text",
           "description": "Qualification article for id 40",
           "label": "Qualification article for id 40",
-          "value": "4416409823506-About-Construction-industry-placements#design-surveying-and-planning"
+          "value": "4416409743762-About-Digital-and-IT-industry-placements#digital-support"
         },
         {
           "identifier": "qualification_article_41",
