@@ -201,7 +201,8 @@
             page = (page === undefined ? 0 : page);
             pageSize = (pageSize === undefined ? 5 : pageSize);
 
-            let uri = findProvidersApiUrl + "providers?searchTerm=" + encodeURIComponent(searchTerm) + '&page=' + page + '&pageSize=' + pageSize;
+            const encodedSearchTerm = encodeURIComponent(searchTerm).replace(/'/g, '%27');
+            let uri = findProvidersApiUrl + "providers?searchTerm=" + encodedSearchTerm + '&page=' + page + '&pageSize=' + pageSize;
 
             if (skillAreaIds && skillAreaIds.length > 0) {
                 skillAreaIds.forEach(function(skillAreaId) {
