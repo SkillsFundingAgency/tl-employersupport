@@ -12,9 +12,9 @@
 
 .tl-text-capitalize {
         text-transform: lowercase;
+        display: inline-block;
 
-    &::first-letter,
-    &::first-line {
+    &::first-letter {
         text-transform: uppercase;
     }
 }

@@ -7882,8 +7882,9 @@ ul.govuk-radios label .gem-radios__input {
 
 .tl-text-capitalize {
   text-transform: lowercase;
+  display: inline-block;
 }
-.tl-text-capitalize::first-letter, .tl-text-capitalize::first-line {
+.tl-text-capitalize::first-letter {
   text-transform: uppercase;
 }
 
