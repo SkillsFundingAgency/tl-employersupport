@@ -13,8 +13,8 @@
 .tl-text-capitalize {
         text-transform: lowercase;
 
-    &:first-letter,
-    &:first-line {
+    &::first-letter,
+    &::first-line {
         text-transform: uppercase;
     }
 }
