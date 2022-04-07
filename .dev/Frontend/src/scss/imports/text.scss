@@ -9,3 +9,12 @@
 .tl-text-headercase {
     text-transform: capitalize;
 }
+
+.tl-text-capitalize {
+        text-transform: lowercase;
+
+    &:first-letter,
+    &:first-line {
+        text-transform: uppercase;
+    }
+}
