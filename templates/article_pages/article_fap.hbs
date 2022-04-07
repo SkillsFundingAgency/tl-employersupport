@@ -284,7 +284,7 @@
                     let searchResult =
                         '<div class="tl-fap--result"> \
                              <h3 class="govuk-heading-m">' + providerLocation.providerName + ' <span class="tl-fap--distance">' + providerLocation.distance.toFixed(0) + ' miles</span></h3> \
-                             <p class="govuk-body"><span class="tl-text-capitalize">' + providerLocation.town + '</span> | ' + providerLocation.postcode + '</p>';
+                             <p class="govuk-body"><span>' + providerLocation.town + '</span> | ' + providerLocation.postcode + '</p>';
 
                     if (providerLocation.telephone || providerLocation.website || providerLocation.email) {
                         let contactDetails = null;
