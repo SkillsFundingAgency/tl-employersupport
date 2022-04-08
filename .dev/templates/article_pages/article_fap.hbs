@@ -1,259 +1,361 @@
 ﻿<!-- Main content -->
  
 
-	<div class="govuk-width-container govuk-main-wrapper govuk-!-padding-top-0">
+<div class="govuk-width-container govuk-main-wrapper govuk-!-padding-top-0">
 
-		<!-- Search Box -->
-		<div class="govuk-grid-row">
-			<div class="govuk-grid-column-full">
-				<div class="tl-card">
-					<h1 class="govuk-heading-xl govuk-!-margin-top-2 govuk-!-margin-bottom-7">{{article.title}}</h1>
-					<div class="tl-article--content">{{article.body}}</div>
-					<form role="search" class="tl-fap-search-providers-form">
-						<span class="govuk-error-message tl-hidden" id="tl-postcode-error">Enter a postcode</span>
-						<label class="govuk-visually-hidden" for="tl-postcode">Enter a postcode</label>
-						<input class="govuk-input govuk-input--width-10 govuk-body-s" id="tl-postcode" name="tl-postcode" type="text" placeholder="Enter a postcode">
-						<button class="govuk-button tl-button--blue" id="tl-search-providers" data-module="govuk-button">
-							Search
-						</button>
-					</form>
-				</div>
-			</div>
-		</div>
+    <!-- Search Box -->
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+            <h1 class="govuk-heading-xl govuk-!-margin-top-9 govuk-!-margin-bottom-7">{{article.title}}</h1>
+            <div class="tl-article--content">{{article.body}}</div>
+        </div>
+    </div>
+    <div class="govuk-grid-row">
 
-		<div class="govuk-grid-row tl-hidden" id="tl-error">
-			<div class="govuk-grid-column-two-thirds govuk-!-margin-top-7">
-				<h1 class="govuk-heading-l" id="tl-error-header"></h1>
-				<p class="govuk-body" id="tl-error-detail"></p>
-			</div>
-		</div>
+        <form role="search" class="tl-fap-search-providers-form">
 
-		<!-- Search Results -->
-		<div class="govuk-grid-row">
-			<div class="govuk-grid-column-two-thirds govuk-!-margin-top-7">
-		        <div id="tl-fap--results">
-					<div class="tl-fap--noresult tl-hidden">
-						<h2 class="govuk-heading-l">0 results</h2>
-						<p class="govuk-body">Enter a postcode to search for providers offering T Levels.</p>
-					</div>
-					<div class="tl-fap--result">
-					</div>
-				</div>
-				<p class="govuk-body"><a class="govuk-link tl-hidden" id="tl-next-results-link" href="more-results">Show 5 more results</a></p>
-			</div>
-		</div>
-	</div>
-</main>
+            <div class="govuk-grid-column-one-third govuk-!-margin-top-7">
+                <div class="tl-search--filter">
+                    <h3>Enter a postcode or town</h3>
+                    <div class="tl-search--filter--content govuk-!-margin-top-2">
+                        <span class="govuk-error-message tl-hidden" id="tl-search-term-error">Enter a postcode or town</span>
+                        <label class="govuk-visually-hidden" for="tl-search-term">Enter a postcode or town</label>
+                        <p class="govuk-body govuk-!-margin-bottom-2">For example, S1 2JF, S1 or Sheffield</p>
+                        <input class="govuk-input govuk-input--width-10 govuk-body-s govuk-!-margin-bottom-2" id="tl-search-term" name="tl-search-term" type="text" placeholder="Enter a postcode or town">
+                        <button class="govuk-button tl-button--blue tl-search--filter--button" id="tl-search-providers" data-module="govuk-button">
+                            Search
+                        </button>
+                    </div>
+                </div>
+                <div class="tl-search--filter">
+                    <h3>Filter by skill area</h3>
+
+                    <div class="tl-search--filter--content">
+                        <!-- TODO: Add an example of styled checkboxes -->
+                        <div class="govuk-form-group govuk-!-margin-bottom-2 tl-pane-expandable__content" style="background-color: white; padding: 10px">
+                            <div class="govuk-checkboxes govuk-checkboxes--small" id="tl-skill-area-filter">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="govuk-button tl-button--green" id="tl-update-search-providers" data-module="govuk-button">
+                    Update results
+                </button>
+
+                </div>
+
+            <div class="govuk-grid-row tl-hidden" id="tl-error">
+                <div class="govuk-grid-column-two-thirds govuk-!-margin-top-7">
+                    <h1 class="govuk-heading-l" id="tl-error-header"></h1>
+                    <p class="govuk-body" id="tl-error-detail"></p>
+                </div>
+            </div>
+        </form>
+
+        <!-- Search Results -->
+        <div class="govuk-grid-column-two-thirds govuk-!-margin-top-7">
+            <div id="tl-fap--results">
+                <div class="tl-fap--noresult tl-hidden">
+                    <h2 class="govuk-heading-l">0 results</h2>
+                    <p class="govuk-body">Enter a postcode or town name to see the nearest T Level schools and colleges.</p>
+                </div>
+                <div class="tl-fap--result">
+                </div>
+            </div>
+            <p class="govuk-body"><a class="govuk-link tl-hidden" id="tl-next-results-link" href="more-results">Show more results</a></p>
+        </div>
+    </div>
+</div>
 
 <script type="text/javascript">
+    //Need this to be global scope for autocomplete
+    let findProvidersApiUrl = "{{ settings.find_provider_api_uri }}";    
+    if (findProvidersApiUrl.substr(-1) !== '/') findProvidersApiUrl += '/';
+    let isSearchInProgress = false;
 
-	$(document).ready(function() {
-        let findProvidersApiUrl = "{{ settings.find_provider_api_uri }}";
-		if (findProvidersApiUrl.substr(-1) !== '/') findProvidersApiUrl += '/';
+    $(document).ready(function() {
+        let currentPage = 0;
+        let currentSearchTerm = null;
+        let currentSkillAreaIds = [];
 
-		let currentPage = 0;
-		let currentPostcode = null;
-		let isSearchInProgress = false;
+        loadRoutes();
+        const qualificationArticleMap = loadQualificationMap();
 
-		const qualificationArticleMap = loadQualificationMap();
+        //Check for search term query parameter
+        let searchTerm = getUrlParameter("searchTerm");
+        if (searchTerm) {
+            searchTerm = urlDecode(searchTerm);
+            //Remove query string from url
+            const urlSplit = (window.location.href).split("?");
+            const obj = { Title: document.title, Url: urlSplit[0] };
+            history.pushState(obj, obj.Title, obj.Url);
+            providerSearch(searchTerm);
+        } else {
+            $('.tl-fap--noresult').removeClass("tl-hidden");
+        }
 
-		//Check for search query param with postcode
-		let postcode = getUrlParameter("search");
-		if (postcode) {
-			postcode = urlDecode(postcode).toUpperCase();
-			$("#tl-postcode").val(postcode);
-			providerSearch(postcode);
+        $('#tl-search-term').keypress(function(e) {
+            if (e.which === 13) {
+                $("#tl-search-providers").click();
+                return false;
+            }
+        });
 
-			//Remove query string from url
-			const urlSplit = (window.location.href).split("?");
-			const obj = { Title: document.title, Url: urlSplit[0] };
-			history.pushState(obj, obj.Title, obj.Url);
-		} else {
-			$('.tl-fap--noresult').removeClass("tl-hidden");
-		}
+        $("#tl-search-providers").click(function() {
+            return providerSearch($("#tl-search-term").val().trim(), getSkillAreaIds());
+        });
 
-		$('#tl-postcode').keypress(function(e) {
-			if (e.which === 13) {
-				$("#tl-search-providers").click();
-				return false;
-			}
-		});
+        $("#tl-update-search-providers").click(function() {
+            return providerSearch($("#tl-search-term").val().trim(), getSkillAreaIds());
+        });
 
-		$("#tl-search-providers").click(function() {
-			return providerSearch($("#tl-postcode").val().trim(), 0, 5);
-		});
+        $(".tl-fap-search-providers-form").submit(function() {
+            event.preventDefault();
+        });
 
-		$(".tl-fap-search-providers-form").submit(function() {
-			event.preventDefault();
-		});
-		
-		$("#tl-next-results-link").click(function() {
-				event.stopPropagation();
-				event.preventDefault();
-				callProviderSearchApi(currentPostcode, currentPage + 1);
-				return false;
-			});
+        $("#tl-next-results-link").click(function() {
+            event.stopPropagation();
+            event.preventDefault();
+            callProviderSearchApi(currentSearchTerm, currentSkillAreaIds, currentPage + 1);
+            return false;
+        });
 
-		function providerSearch(postcode, page) {
-			if (postcode === "") {
-				event.stopPropagation();
-				showPostcodeError("Enter a postcode");
-				return false;
-			}
+        function getSkillAreaIds() {
+            const skillAreaIds = [];
+            $('#tl-skill-area-filter .tl-checkbox:checked').each(
+                function(_, item) {
+                    skillAreaIds.push(item.value);
+                });
 
-			if (!postcode.match(/^[0-9a-zA-Z\s]+$/)) {
-                event.stopPropagation();
-                showPostcodeError("Enter a valid postcode");
+            return skillAreaIds;
+        }
+
+        function loadRoutes() {
+            const uri = findProvidersApiUrl + "routes";
+            $.ajax({
+                type: "GET",
+                url: uri,
+                contentType: "application/json",
+                beforeSend: function(xhr) {
+                    addHmacAuthHeader(xhr, uri);
+                }
+            }).done(function(response) {
+                populateRoutes(response);
+            }).fail(function(error) {
+                console.log('Call to get routes failed. ' + error);
+            });
+        }
+
+        function populateRoutes(data) {
+            const skillAreasList = $("#tl-skill-area-filter");
+            skillAreasList.empty();
+
+            $.each(data,
+                function(_, item) {
+                    if (item.numberOfQualificationsOffered) {
+                        skillAreasList.append(
+                            $(document.createElement('div')).prop({
+                                class: 'govuk-checkboxes__item'
+                            }).append(
+                                $(document.createElement('input')).prop({
+                                    id: 'tl_skill_area_' + item.id,
+                                    name: 'tl_skill_area_' + item.id,
+                                    value: item.id,
+                                    type: 'checkbox',
+                                    class: 'tl-checkbox govuk-checkboxes__input'
+                                })).append(
+                                $(document.createElement('label')).prop({
+                                    for: 'tl_skill_area_' + item.id,
+                                    class: 'govuk-body-s govuk-checkboxes__label'})
+                                .html(item.name)
+                            ));
+                    }
+                });
+        }
+
+        function providerSearch(searchTerm, skillAreaIds, page) {
+            clearProviderSearchResults();
+
+            searchTerm = searchTerm ? searchTerm.trim() : "";
+            if (searchTerm === "") {
+                if(event) event.stopPropagation();
+                showSearchTermError("Enter a postcode or town");
                 return false;
             }
 
-			clearProviderSearchResults();
-			callProviderSearchApi(postcode, page);
+            if (!searchTerm.match(/^[0-9a-zA-Z,\.'\-!&\(\)/\s]+$/)) {
+                if(event) event.stopPropagation();
+                showSearchTermError("Enter a valid postcode or town");
+                return false;
+            }
 
-			return true;
-		}
+            callProviderSearchApi(searchTerm, skillAreaIds, page);
 
-		function callProviderSearchApi(postcode, page, pageSize) {
-			if (isSearchInProgress) return false;
+            return true;
+        }
+
+        function callProviderSearchApi(searchTerm, skillAreaIds, page, pageSize) {
+            if (isSearchInProgress) return false;
             isSearchInProgress = true;
 
-	        page = (page === undefined ? 0 : page);
-	        pageSize = (pageSize === undefined ? 5 : pageSize);
+            page = (page === undefined ? 0 : page);
+            pageSize = (pageSize === undefined ? 5 : pageSize);
 
-			const uri = findProvidersApiUrl + "providers?postcode=" + encodeURIComponent(postcode) + '&page=' + page + '&pageSize=' + pageSize;
+            const encodedSearchTerm = encodeURIComponent(searchTerm).replace(/'/g, '%27');
+            let uri = findProvidersApiUrl + "providers?searchTerm=" + encodedSearchTerm + '&page=' + page + '&pageSize=' + pageSize;
 
-			$.ajax({
-				type: "GET",
-				url: uri,
-				contentType: "application/json",
-				beforeSend: function(xhr) {
-					addHmacAuthHeader(xhr, uri);
-				}
-			}).done(function(response) {
+            if (skillAreaIds && skillAreaIds.length > 0) {
+                skillAreaIds.forEach(function(skillAreaId) {
+                    uri += "&routeId=" + skillAreaId;
+                });
+            }
+
+            $.ajax({
+                type: "GET",
+                url: uri,
+                contentType: "application/json",
+                beforeSend: function(xhr) {
+                    addHmacAuthHeader(xhr, uri);
+                }
+            }).done(function(response) {
                 if (response.error) {
-                    console.log("Invalid postcode response received - " + response.error);
-                    showPostcodeError("Enter a valid postcode");
+                    console.log("Invalid providers search response received - " + response.error);
+                    showSearchTermError("Enter a valid postcode or town");
                 } else {
                     currentPage = page;
-                    currentPostcode = postcode;
+                    currentSearchTerm = searchTerm;
+                    currentSkillAreaIds = skillAreaIds;
                     populateProviderSearchResults(response);
                 }
+                setTimeout(function () {
+                        //delay to avaoid autocomplete suggestions loading
+                        isSearchInProgress = false;
+                    }, 200);                
+            }).fail(function(jqxhr) {
+                showError(jqxhr.status, jqxhr.responseText);
                 isSearchInProgress = false;
-			}).fail(function(jqxhr) {
-				showError(jqxhr.status, jqxhr.responseText);
-                isSearchInProgress = false;
-			});
+            });
 
-			return true;
-		}
-		
-		function loadQualificationMap() {
-			const map = {};
-			map[36] = "{{ settings.qualification_article_36 }}";
-			map[37] = "{{ settings.qualification_article_37 }}";
-			map[38] = "{{ settings.qualification_article_38 }}";
-			map[39] = "{{ settings.qualification_article_39 }}";
-			map[40] = "{{ settings.qualification_article_40 }}";
-			map[41] = "{{ settings.qualification_article_41 }}";
-			map[42] = "{{ settings.qualification_article_42 }}";
-			map[43] = "{{ settings.qualification_article_43 }}";
-			map[44] = "{{ settings.qualification_article_44 }}";
-			map[45] = "{{ settings.qualification_article_45 }}";
-			map[46] = "{{ settings.qualification_article_46 }}";
-			map[47] = "{{ settings.qualification_article_47 }}";
-			map[48] = "{{ settings.qualification_article_48 }}";
-			map[49] = "{{ settings.qualification_article_49 }}";
-			map[50] = "{{ settings.qualification_article_50 }}";
-			map[51] = "{{ settings.qualification_article_51 }}";
-			return map;
-		}
+            return true;
+        }
 
-		function clearProviderSearchResults() {
-			$('#tl-error').addClass("tl-hidden");
-		    $('#tl-postcode-error').addClass("tl-hidden");
-		    $('.tl-fap--noresult').addClass("tl-hidden");
-		    $("#tl-next-results-link").addClass("tl-hidden");
-		    $("#tl-fap--results").find(".tl-fap--result").remove();
-		    currentPage = 0;
-	    }
+        function loadQualificationMap() {
+            const map = {};
+            map[36] = "{{ settings.qualification_article_36 }}";
+            map[37] = "{{ settings.qualification_article_37 }}";
+            map[38] = "{{ settings.qualification_article_38 }}";
+            map[39] = "{{ settings.qualification_article_39 }}";
+            map[40] = "{{ settings.qualification_article_40 }}";
+            map[41] = "{{ settings.qualification_article_41 }}";
+            map[42] = "{{ settings.qualification_article_42 }}";
+            map[43] = "{{ settings.qualification_article_43 }}";
+            map[44] = "{{ settings.qualification_article_44 }}";
+            map[45] = "{{ settings.qualification_article_45 }}";
+            map[46] = "{{ settings.qualification_article_46 }}";
+            map[47] = "{{ settings.qualification_article_47 }}";
+            map[48] = "{{ settings.qualification_article_48 }}";
+            map[49] = "{{ settings.qualification_article_49 }}";
+            map[50] = "{{ settings.qualification_article_50 }}";
+            map[51] = "{{ settings.qualification_article_51 }}";
+            return map;
+        }
 
-	    function populateProviderSearchResults(data) {
-		    if (data.postcode) {
-			    $("#tl-postcode").val(data.postcode);
-		    }
+        function clearProviderSearchResults() {
+            $('#tl-error').addClass("tl-hidden");
+            $('#tl-search-term-error').addClass("tl-hidden");
+            $('.tl-fap--noresult').addClass("tl-hidden");
+            $("#tl-next-results-link").addClass("tl-hidden");
+            $("#tl-fap--results").find(".tl-fap--result").remove();
+            currentPage = 0;
+        }
+
+        function populateProviderSearchResults(data) {
+            if (data.searchTerm && data.searchTerm !== $("#tl-search-term").val()) {
+                $("#tl-search-term").val(data.searchTerm);
+            }
 
             if (!data.searchResults || data.searchResults.length === 0) {
-			    $('.tl-fap--noresult').removeClass("tl-hidden");
-			    return;
-		    }
+                $('.tl-fap--noresult').removeClass("tl-hidden");
+                return;
+            }
 
-		    $.each(data.searchResults,
-			    function(_, providerLocation) {
-				    let searchResult =
-					    '<div class="tl-fap--result"> \
-					     <h3 class="govuk-heading-m">' + providerLocation.providerName + ' <span class="tl-fap--distance">' + providerLocation.distance.toFixed(0) + ' miles</span></h3> \
-					     <p class="govuk-body">' + providerLocation.town + ' | ' + providerLocation.postcode;
-							 
-                    if (providerLocation.telephone) searchResult += ' | ' + providerLocation.telephone;
-                    if (providerLocation.website) searchResult += ' | <a target="_blank" href="' + providerLocation.website +'" class="govuk-link tl-fap--result-website">Visit <span class="govuk-visually-hidden">' + providerLocation.providerName + '</span> website</a>';
-                    if (providerLocation.email) searchResult += ' | <a href="mailto:' + providerLocation.email + '" class="govuk-link govuk-!-margin-right-4 tl-fap--result-email">' + providerLocation.email +'</a>';
+            $.each(data.searchResults,
+                function(_, providerLocation) {
+                    let searchResult =
+                        '<div class="tl-fap--result"> \
+                             <h3 class="govuk-heading-m">' + providerLocation.providerName + ' <span class="tl-fap--distance">' + providerLocation.distance.toFixed(0) + ' miles</span></h3> \
+                             <p class="govuk-body"><span>' + providerLocation.town + '</span> | ' + providerLocation.postcode + '</p>';
 
-				    const locationDeliveryYears = [];
-				    let availableNow = null;
-				    $.each(providerLocation.deliveryYears,
-					    function(_, deliveryYear) {
-						    if (deliveryYear.isAvailableNow) {
-							    if (availableNow) {
-								    for (let i = 0; i < deliveryYear.qualifications.length; i++) {
-									    if (availableNow.qualifications.filter(function(q) { return q.name === deliveryYear.qualifications[i].name; }).length === 0)
-										    availableNow.qualifications.push(deliveryYear.qualifications[i]);
-								    }
-							    } else {
-								    availableNow = deliveryYear;
-								    locationDeliveryYears.push(availableNow);
-							    }
-						    } else {
-							    locationDeliveryYears.push(deliveryYear);
-						    }
-					    });
+                    if (providerLocation.telephone || providerLocation.website || providerLocation.email) {
+                        let contactDetails = null;
+                        if (providerLocation.telephone) contactDetails = 'Telephone: <strong>' + providerLocation.telephone + '</strong>';
+                        if (providerLocation.website) {
+                            if(contactDetails) contactDetails += ' | ';
+                            contactDetails += '<a target="_blank" href="' + providerLocation.website +'" class="govuk-link tl-fap--result-website">Visit <span class="govuk-visually-hidden">' + providerLocation.providerName + '</span> website</a>';
+                        }
+                        if (providerLocation.email) {
+                            if(contactDetails) contactDetails += ' | ';
+                            contactDetails += 'Email: <a href="mailto:' + providerLocation.email + '" class="govuk-link govuk-!-margin-right-4 tl-fap--result-email">' + providerLocation.email +'</a>';
+                        }
+                        searchResult += '<p class="govuk-body">' + contactDetails + '</p>';
+                    }
 
-				    if (availableNow) {
-					    availableNow.qualifications.sort(function(x, y) { return (x.name < y.name) ? -1 : ((x.name > y.name) ? 1 : 0) });
-				    }
+                    const locationDeliveryYears = [];
+                    let availableNow = null;
+                    $.each(providerLocation.deliveryYears,
+                        function(_, deliveryYear) {
+                            if (deliveryYear.isAvailableNow) {
+                                if (availableNow) {
+                                    for (let i = 0; i < deliveryYear.qualifications.length; i++) {
+                                        if (availableNow.qualifications.filter(function(q) { return q.name === deliveryYear.qualifications[i].name; }).length === 0)
+                                            availableNow.qualifications.push(deliveryYear.qualifications[i]);
+                                    }
+                                } else {
+                                    availableNow = deliveryYear;
+                                    locationDeliveryYears.push(availableNow);
+                                }
+                            } else {
+                                locationDeliveryYears.push(deliveryYear);
+                            }
+                        });
 
-				    searchResult += '</p><div class="tl-fap--courses">';
+                    if (availableNow) {
+                        availableNow.qualifications.sort(function(x, y) { return (x.name < y.name) ? -1 : ((x.name > y.name) ? 1 : 0) });
+                    }
 
-				    $.each(locationDeliveryYears,
-					    function(_, deliveryYear) {
-						    const availability = deliveryYear.isAvailableNow
-							    ? 'Available now'
-							    : 'From September ' + deliveryYear.year + ' onwards';
+                    searchResult += '</p><div class="tl-fap--courses">';
 
-						    searchResult += '<p class="govuk-body govuk-!-font-weight-bold">' + availability + ':</p> \
-							    <ul class="govuk-list govuk-list--bullet">';
+                    $.each(locationDeliveryYears,
+                        function(_, deliveryYear) {
+                            const availability = deliveryYear.isAvailableNow
+                                ? 'Available now'
+                                : 'From September ' + deliveryYear.year + ' onwards';
 
-						    $.each(deliveryYear.qualifications,
-							    function(_, qualification) {
+                            searchResult += '<p class="govuk-body govuk-!-font-weight-bold">' + availability + ':</p> \
+                                    <ul class="govuk-list govuk-list--bullet">';
+
+                            $.each(deliveryYear.qualifications,
+                                function(_, qualification) {
                                     const articleLink = qualificationArticleMap[qualification.id];
-                                    if (articleLink) {										
+                                    if (articleLink) {
                                         searchResult += '<li><a target="_blank" class="govuk-link tl-fap--result-course" href="' + articleLink + '">' + qualification.name + '</a></li>';
                                     } else {
                                         searchResult += '<li>' + qualification.name + '</li>';
                                     }
-							    });
+                                });
 
-						    searchResult += '</ul>';
-					    });
+                            searchResult += '</ul>';
+                        });
 
                     searchResult += '</div> \
-                                <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible"> \
-                              </div>';
+                                    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible"> \
+                                  </div>';
 
-				    $("#tl-fap--results").append(searchResult);
-			    });
+                    $("#tl-fap--results").append(searchResult);
+                });
 
-			$('#tl-next-results-link').removeClass("tl-hidden");
-	    }
+            $('#tl-next-results-link').removeClass("tl-hidden");
+        }
 
         function showError(status, errorText) {
             console.log("Error status " + status + " was encountered. " + errorText);
@@ -266,20 +368,21 @@
                 $("#tl-error-header").text('Sorry, there is a problem with the service.');
                 $("#tl-error-detail").html('Try again later or <a class="govuk-link tl-error--contact" href="https://test.employers.tlevels.gov.uk/hc/en-gb/requests/new">contact us</a> quoting error code ' + status);
             }
-			
-			clearProviderSearchResults();
-			$('#tl-error').removeClass("tl-hidden");
+
+            clearProviderSearchResults();
+            $('#tl-error').removeClass("tl-hidden");
         }
 
-	    function showPostcodeError(message) {
-		    $("#tl-postcode-error").text(message);
-		    $('#tl-postcode-error').removeClass("tl-hidden");
-			$('#tl-error').addClass("tl-hidden");
-	    }
+        function showSearchTermError(message) {
+            $("#tl-search-term-error").text(message);
+            $('#tl-search-term-error').removeClass("tl-hidden");
+            $('#tl-error').addClass("tl-hidden");
+            $('.tl-fap--noresult').removeClass("tl-hidden");
+        }
 
-		function addHmacAuthHeader(xhr, uri) {
+        function addHmacAuthHeader(xhr, uri) {
             const appId = "{{ settings.find_provider_api_app_id }}";
-            const apiKey = "{{ settings.find_provider_api_key }}";
+            const apiKey = "{{ settings.find_provider_api_key }}";            
             const ts = Math.round((new Date()).getTime() / 1000);
             const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,
                 function(c) {
@@ -291,28 +394,29 @@
 
             const hash = CryptoJS.HmacSHA256(data, apiKey);
             const hashInBase64 = CryptoJS.enc.Base64.stringify(hash);
-			
+
             xhr.setRequestHeader("Authorization", "amx " + appId + ":" + hashInBase64 + ":" + nonce + ":" + ts);
         }
 
-	    function urlDecode(str) {
-		    return decodeURIComponent((str + '').replace(/\+/g, '%20'));
-	    }
+        function urlDecode(str) {
+            return decodeURIComponent((str + '').replace(/\+/g, '%20'));
+        }
 
-	    function getUrlParameter(key, url) {
-		    if (!url) {
-			    url = window.location.search.substring(1);
-		    }
+        function getUrlParameter(key, url) {
+            if (!url) {
+                url = window.location.search.substring(1);
+            }
+            const urlVars = url.split('&');
+            for (let i = 0; i < urlVars.length; i++) {
+                const parameter = urlVars[i].split('=');
+                if (parameter[0] === key) {
+                    return parameter[1];
+                }
+            }
 
-		    const urlVars = url.split('&');
-		    for (let i = 0; i < urlVars.length; i++) {
-			    const parameter = urlVars[i].split('=');
-			    if (parameter[0] === key) {
-				    return parameter[1];
-			    }
-		    }
-
-		    return null;
-	    }
-	});
+            return null;
+        }        
+    });
 </script>
+<script src="{{asset 'accessible-autocomplete.min.js'}}"></script>
+<script src="{{asset 'locationAutocomplete.js'}}"></script>

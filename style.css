@@ -303,7 +303,7 @@
   }
 }
 
-.govuk-heading-s, .tl-dropdown label, .tl-community--post--content h4, .tl-article--content--casestudy h3, .tl-article--content h4 {
+.govuk-heading-s, .tl-dropdown label, .tl-community--post--content h4, .tl-article--content--casestudy h3, .tl-article--content h4, .tl-search--filter h3 {
   color: #0b0c0c;
   font-family: "GDS Transport", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -317,30 +317,30 @@
   margin-bottom: 15px;
 }
 @media print {
-  .govuk-heading-s, .tl-dropdown label, .tl-community--post--content h4, .tl-article--content--casestudy h3, .tl-article--content h4 {
+  .govuk-heading-s, .tl-dropdown label, .tl-community--post--content h4, .tl-article--content--casestudy h3, .tl-article--content h4, .tl-search--filter h3 {
     color: #000000;
   }
 }
 @media print {
-  .govuk-heading-s, .tl-dropdown label, .tl-community--post--content h4, .tl-article--content--casestudy h3, .tl-article--content h4 {
+  .govuk-heading-s, .tl-dropdown label, .tl-community--post--content h4, .tl-article--content--casestudy h3, .tl-article--content h4, .tl-search--filter h3 {
     font-family: sans-serif;
   }
 }
 @media (min-width: 40.0625em) {
-  .govuk-heading-s, .tl-dropdown label, .tl-community--post--content h4, .tl-article--content--casestudy h3, .tl-article--content h4 {
+  .govuk-heading-s, .tl-dropdown label, .tl-community--post--content h4, .tl-article--content--casestudy h3, .tl-article--content h4, .tl-search--filter h3 {
     font-size: 19px;
     font-size: 1.1875rem;
     line-height: 1.3157894737;
   }
 }
 @media print {
-  .govuk-heading-s, .tl-dropdown label, .tl-community--post--content h4, .tl-article--content--casestudy h3, .tl-article--content h4 {
+  .govuk-heading-s, .tl-dropdown label, .tl-community--post--content h4, .tl-article--content--casestudy h3, .tl-article--content h4, .tl-search--filter h3 {
     font-size: 14pt;
     line-height: 1.15;
   }
 }
 @media (min-width: 40.0625em) {
-  .govuk-heading-s, .tl-dropdown label, .tl-community--post--content h4, .tl-article--content--casestudy h3, .tl-article--content h4 {
+  .govuk-heading-s, .tl-dropdown label, .tl-community--post--content h4, .tl-article--content--casestudy h3, .tl-article--content h4, .tl-search--filter h3 {
     margin-bottom: 20px;
   }
 }
@@ -734,11 +734,13 @@
 .tl-article--content .tl-article--content--casestudy p + h3,
 .tl-article--content--casestudy .tl-article--content p + h3,
 .tl-article--content p + h4,
+.tl-article--content .tl-search--filter p + h3,
 .govuk-body-m + .govuk-heading-s,
 .tl-dropdown .govuk-body-m + label,
 .tl-community--post--content .govuk-body-m + h4,
 .tl-article--content--casestudy .govuk-body-m + h3,
 .tl-article--content .govuk-body-m + h4,
+.tl-search--filter .govuk-body-m + h3,
 .govuk-body + .govuk-heading-s,
 .tl-ticket--form #upload-dropzone span + .govuk-heading-s,
 .tl-ticket--form p + .govuk-heading-s,
@@ -775,6 +777,14 @@
 .tl-article--content .tl-community--post--content p + h4,
 .tl-community--post--content .tl-article--content p + h4,
 .tl-article--content .tl-community-table-post--description + h4,
+.tl-search--filter .govuk-body + h3,
+.tl-search--filter .tl-ticket--form #upload-dropzone span + h3,
+.tl-ticket--form #upload-dropzone .tl-search--filter span + h3,
+.tl-search--filter .tl-ticket--form p + h3,
+.tl-ticket--form .tl-search--filter p + h3,
+.tl-search--filter .tl-community--post--content p + h3,
+.tl-community--post--content .tl-search--filter p + h3,
+.tl-search--filter .tl-community-table-post--description + h3,
 .tl-search--filters .tl-search--filter--radio + .govuk-heading-s,
 .tl-search--filters .tl-dropdown .tl-search--filter--radio + label,
 .tl-dropdown .tl-search--filters .tl-search--filter--radio + label,
@@ -784,6 +794,8 @@
 .tl-article--content--casestudy .tl-search--filters .tl-search--filter--radio + h3,
 .tl-search--filters .tl-article--content .tl-search--filter--radio + h4,
 .tl-article--content .tl-search--filters .tl-search--filter--radio + h4,
+.tl-search--filters .tl-search--filter .tl-search--filter--radio + h3,
+.tl-search--filter .tl-search--filters .tl-search--filter--radio + h3,
 .govuk-body-s + .govuk-heading-s,
 .tl-dropdown .govuk-body-s + label,
 .tl-community--comment--actions + .govuk-heading-s,
@@ -808,6 +820,11 @@
 .tl-article--content--casestudy .tl-article--sidebar a + h3,
 .tl-article--sidebar .tl-article--content a + h4,
 .tl-article--content .tl-article--sidebar a + h4,
+.tl-search--filter .govuk-body-s + h3,
+.tl-search--filter .tl-community--comment--actions + h3,
+.tl-search--filter .tl-community--post--actions + h3,
+.tl-search--filter .tl-article--sidebar a + h3,
+.tl-article--sidebar .tl-search--filter a + h3,
 .govuk-list + .govuk-heading-s,
 .tl-dropdown .govuk-list + label,
 .tl-community--post--content ul + .govuk-heading-s,
@@ -844,7 +861,14 @@
 .tl-community--post--content .tl-article--sidebar ul + h4,
 .tl-article--sidebar .tl-article--content--casestudy ul + h3,
 .tl-article--content--casestudy .tl-article--sidebar ul + h3,
-.tl-article--content .tl-article--sidebar ul + h4 {
+.tl-article--content .tl-article--sidebar ul + h4,
+.tl-search--filter .govuk-list + h3,
+.tl-search--filter .tl-community--post--content ul + h3,
+.tl-community--post--content .tl-search--filter ul + h3,
+.tl-article--content .tl-search--filter ol + h3,
+.tl-article--content .tl-search--filter ul + h3,
+.tl-search--filter .tl-article--sidebar ul + h3,
+.tl-article--sidebar .tl-search--filter ul + h3 {
   padding-top: 5px;
 }
 @media (min-width: 40.0625em) {
@@ -904,11 +928,13 @@
 .tl-article--content .tl-article--content--casestudy p + h3,
 .tl-article--content--casestudy .tl-article--content p + h3,
 .tl-article--content p + h4,
+.tl-article--content .tl-search--filter p + h3,
 .govuk-body-m + .govuk-heading-s,
 .tl-dropdown .govuk-body-m + label,
 .tl-community--post--content .govuk-body-m + h4,
 .tl-article--content--casestudy .govuk-body-m + h3,
 .tl-article--content .govuk-body-m + h4,
+.tl-search--filter .govuk-body-m + h3,
 .govuk-body + .govuk-heading-s,
 .tl-ticket--form #upload-dropzone span + .govuk-heading-s,
 .tl-ticket--form p + .govuk-heading-s,
@@ -945,6 +971,14 @@
 .tl-article--content .tl-community--post--content p + h4,
 .tl-community--post--content .tl-article--content p + h4,
 .tl-article--content .tl-community-table-post--description + h4,
+.tl-search--filter .govuk-body + h3,
+.tl-search--filter .tl-ticket--form #upload-dropzone span + h3,
+.tl-ticket--form #upload-dropzone .tl-search--filter span + h3,
+.tl-search--filter .tl-ticket--form p + h3,
+.tl-ticket--form .tl-search--filter p + h3,
+.tl-search--filter .tl-community--post--content p + h3,
+.tl-community--post--content .tl-search--filter p + h3,
+.tl-search--filter .tl-community-table-post--description + h3,
 .tl-search--filters .tl-search--filter--radio + .govuk-heading-s,
 .tl-search--filters .tl-dropdown .tl-search--filter--radio + label,
 .tl-dropdown .tl-search--filters .tl-search--filter--radio + label,
@@ -954,6 +988,8 @@
 .tl-article--content--casestudy .tl-search--filters .tl-search--filter--radio + h3,
 .tl-search--filters .tl-article--content .tl-search--filter--radio + h4,
 .tl-article--content .tl-search--filters .tl-search--filter--radio + h4,
+.tl-search--filters .tl-search--filter .tl-search--filter--radio + h3,
+.tl-search--filter .tl-search--filters .tl-search--filter--radio + h3,
 .govuk-body-s + .govuk-heading-s,
 .tl-dropdown .govuk-body-s + label,
 .tl-community--comment--actions + .govuk-heading-s,
@@ -978,6 +1014,11 @@
 .tl-article--content--casestudy .tl-article--sidebar a + h3,
 .tl-article--sidebar .tl-article--content a + h4,
 .tl-article--content .tl-article--sidebar a + h4,
+.tl-search--filter .govuk-body-s + h3,
+.tl-search--filter .tl-community--comment--actions + h3,
+.tl-search--filter .tl-community--post--actions + h3,
+.tl-search--filter .tl-article--sidebar a + h3,
+.tl-article--sidebar .tl-search--filter a + h3,
 .govuk-list + .govuk-heading-s,
 .tl-dropdown .govuk-list + label,
 .tl-community--post--content ul + .govuk-heading-s,
@@ -1014,7 +1055,14 @@
 .tl-community--post--content .tl-article--sidebar ul + h4,
 .tl-article--sidebar .tl-article--content--casestudy ul + h3,
 .tl-article--content--casestudy .tl-article--sidebar ul + h3,
-.tl-article--content .tl-article--sidebar ul + h4 {
+.tl-article--content .tl-article--sidebar ul + h4,
+.tl-search--filter .govuk-list + h3,
+.tl-search--filter .tl-community--post--content ul + h3,
+.tl-community--post--content .tl-search--filter ul + h3,
+.tl-article--content .tl-search--filter ol + h3,
+.tl-article--content .tl-search--filter ul + h3,
+.tl-search--filter .tl-article--sidebar ul + h3,
+.tl-article--sidebar .tl-search--filter ul + h3 {
     padding-top: 10px;
   }
 }
@@ -6627,6 +6675,35 @@ x:-moz-any-link {
   margin: 4px auto;
 }
 
+.tl-search--filter {
+  border: 1px solid #b1b4b6;
+  margin-bottom: 15px;
+}
+@media (min-width: 40.0625em) {
+  .tl-search--filter {
+    margin-bottom: 15px;
+  }
+}
+.tl-search--filter--content {
+  padding: 0 15px;
+}
+.tl-search--filter h3 {
+  display: inline-block;
+  background-color: #f3f2f1;
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 0;
+  box-sizing: border-box;
+}
+.tl-search--filter .tl-search--filter--button {
+  margin-top: 10px;
+}
+@media (min-width: 40.0625em) {
+  .tl-search--filter .tl-search--filter--button {
+    margin-top: 10px;
+  }
+}
+
 .tl-article--content img {
   max-width: 100%;
 }
@@ -7803,6 +7880,14 @@ ul.govuk-radios label .gem-radios__input {
   text-transform: capitalize;
 }
 
+.tl-text-capitalize {
+  text-transform: lowercase;
+  display: inline-block;
+}
+.tl-text-capitalize::first-letter {
+  text-transform: uppercase;
+}
+
 .tl-dropdown label {
   display: block;
 }
@@ -8062,6 +8147,11 @@ ul.govuk-radios label .gem-radios__input {
   background-color: #003078;
 }
 
+/* buttons as links */
+.tl-button--aslink {
+  color: white !important;
+}
+
 .tl-fap--distance {
   font-family: "GDS Transport", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -8129,6 +8219,162 @@ ul.govuk-radios label .gem-radios__input {
   }
 }
 
+/*AUTOCOMPELTE*/
+.tl-autocomplete-wrap {
+  display: inline-block;
+}
+
+.autocomplete__wrapper {
+  position: relative;
+}
+
+.autocomplete__hint,
+.autocomplete__input {
+  -webkit-appearance: none;
+  border: 2px solid;
+  border-radius: 0;
+  /* Safari 10 on iOS adds implicit border rounding. */
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin-bottom: 0;
+  /* BUG: Safari 10 on macOS seems to add an implicit margin. */
+  width: 100%;
+  background: white;
+}
+
+.autocomplete__input {
+  position: relative;
+}
+
+.autocomplete__hint {
+  display: none;
+}
+
+.autocomplete__input--default {
+  padding: 6px 5px 5px;
+}
+
+.autocomplete__input--focused {
+  outline-offset: 0;
+  outline: 3px solid #ffbf47;
+}
+
+.autocomplete__input--show-all-values {
+  padding: 4px 34px 4px 4px;
+  cursor: pointer;
+}
+
+.autocomplete__dropdown-arrow-down {
+  z-index: -1;
+  display: inline-block;
+  position: absolute;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  top: 10px;
+}
+
+.autocomplete__menu {
+  background-color: #fff;
+  border: 2px solid #0B0C0C;
+  border-top: 0;
+  color: #34384B;
+  margin: 0;
+  max-height: 342px;
+  overflow-x: hidden;
+  padding: 0;
+  width: 100%;
+  width: calc(100% - 4px);
+}
+
+.autocomplete__menu--visible {
+  display: block;
+}
+
+.autocomplete__menu--hidden {
+  display: none;
+}
+
+.autocomplete__menu--overlay {
+  box-shadow: rgba(0, 0, 0, 0.256863) 0px 2px 6px;
+  left: 0;
+  position: absolute;
+  top: 100%;
+  z-index: 100;
+}
+
+.autocomplete__menu--inline {
+  position: relative;
+}
+
+.autocomplete__option {
+  border-bottom: solid #BFC1C3;
+  border-width: 1px 0;
+  cursor: pointer;
+  display: block;
+  position: relative;
+}
+
+.autocomplete__option > * {
+  pointer-events: none;
+}
+
+.autocomplete__option:first-of-type {
+  border-top-width: 0;
+}
+
+.autocomplete__option:last-of-type {
+  border-bottom-width: 0;
+}
+
+.autocomplete__option--odd {
+  background-color: #FAFAFA;
+}
+
+.autocomplete__option--focused,
+.autocomplete__option:hover {
+  background-color: #005EA5;
+  border-color: #005EA5;
+  color: white;
+  outline: none;
+}
+
+.autocomplete__option--no-results {
+  background-color: #FAFAFA;
+  color: #646b6f;
+  cursor: not-allowed;
+}
+
+.autocomplete__hint,
+.autocomplete__input,
+.autocomplete__option {
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.autocomplete__hint,
+.autocomplete__option {
+  padding: 4px;
+}
+
+@media (min-width: 641px) {
+  .autocomplete__hint,
+.autocomplete__input,
+.autocomplete__option {
+    font-size: 19px;
+    line-height: 1.31579;
+  }
+}
 .HeaderView-* {
   background-color: red !important;
+}
+
+#tl-howindustry {
+  counter-reset: section;
+}
+#tl-howindustry h2:before {
+  counter-increment: section;
+  content: counter(section) ". ";
+  font-weight: bold;
 }
