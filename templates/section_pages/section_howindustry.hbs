@@ -1,0 +1,195 @@
+<!-- Main content -->
+
+
+<div class="govuk-width-container">
+    <div id="tl-breadcrumbs--article">
+        <div class="tl-breadcrumbs">
+            {{breadcrumbs}}
+        </div>
+    </div>
+</div>
+
+<!-- Article Content -->
+<div class="govuk-width-container govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-xl">{{section.name}}</h1>
+            {{#if section.description}}
+            <p class="govuk-body-l">{{section.description}}</p>
+            {{/if}}
+
+
+
+
+
+            <section id="tl-howindustry">
+                {{#each section.articles}}
+
+                <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+                <h2 class="govuk-heading-m"><span></span>{{title}}</h2>
+                <div class="tl-article--content" id="articlebody{{id}}">{{excerpt body characters=600}}</div>
+
+
+                <script>
+                $.getJSON('/api/v2/help_center/articles/{{id}}', function (articlebody) {
+
+                    var bodycontent = articlebody.article.body;
+                    $('#articlebody{{id}}').html(bodycontent);
+                });
+                </script>
+                </li>
+                {{/each}}
+
+            </section>
+        </div>
+    </div>
+</div>
+
+
+<div class="tl-article--vote">
+    <div class="tl-article--vote--container">
+        <div class="govuk-grid-row">
+            <div id="feedbackbuttonyes" class="govuk-grid-column-full">
+                <p class="govuk-body govuk-!-margin-0 vote-prompt" id="voteQuestion">
+                    <span id="isPageUseful" class="tl-article--vote--question">Was this page helpful?</span>
+                    <a class="tl-article--vote--button" href="#" id="tl-article--vote--yes" vote="yes">Yes <span class="govuk-visually-hidden">this article was useful</span></a>
+                    <a class="tl-article--vote--button" href="#" id="tl-article--vote--no" vote="no">No <span class="govuk-visually-hidden">this article wasn't useful</span></a>
+                </p>
+                <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-0 vote-prompt tl-article--vote--response" id="voteResponse" style="display: none;">Thank you for your feedback</p>
+            </div>
+        </div>
+        <div class="govuk-grid-row">
+            <div id="commentform" class="govuk-grid-column-two-thirds govuk-!-margin-top-3">
+                <form id="formoid" action="/api/v2/requests.json" title="articlefeedback" method="post" class="tl-article--vote--form">
+                    <div class="govuk-character-count">
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="Comment">Is there anything we could do to further improve this page? (optional)</label>
+                            <textarea maxlength="500" class="govuk-textarea govuk-js-character-count" id="Comment" name="Comment" rows="5" aria-describedby="Comment-info"></textarea>
+                        </div>
+                        <div id="Comment-info" class="tl-article--vote--form--count" aria-live="polite">You have <span id="chars">500</span> characters remaining</div>
+                    </div>
+                    <div class="govuk-!-margin-top-3">
+                        <input class="govuk-button articlefeedbackbutton" type="submit" id="submitButton" name="submitButton" value="Submit">
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(".govuk-tabs").attr("data-module", "govuk-tabs");
+
+
+                var maxLength = 500;
+            $('#Comment').keyup(function() {
+            	var length = $(this).val().length;
+            	var length = maxLength-length;
+            	$('#chars').text(length);
+
+              if (length < 0) {
+      					$('#submitButton').attr('disabled', true);
+							} else {
+                $('#submitButton').removeAttr('disabled');
+              }
+            });
+
+            $("#tl-article--vote--yes").click(function() {
+							$('#isPageUseful').text('Thank you for your feedback').addClass('govuk-!-font-weight-bold');
+              $('#articlefeedbacklabel').html('Is there anything we could do to further improve this page? (optional)');
+            });
+
+            $(".vote-confirm").click(function() {
+             		$('#isPageUseful').text('Is this page useful?');
+            });
+
+            $("#tl-article--vote--no").click(function() {
+             		$('#isPageUseful').text('Thank you for your feedback').addClass('govuk-!-font-weight-bold');
+                $('#articlefeedbacklabel').html('Why is this page not useful? (optional)');
+            });
+
+
+
+            $('#commentform').hide();
+
+            $('#tl-article--vote--no').click(function(){
+            	$('#commentform').toggle();
+              $('#feedbackbuttonyes a').toggle();
+            });
+
+            $('#tl-article--vote--yes').click(function () {
+                $('#feedbackbuttonyes a').toggle();
+            });
+
+            function getCSRFToken(callback,comment) {
+                $.ajax({
+                    url: "/api/v2/users/me.json",
+                    type: 'GET',
+                    contentType: "application/json",
+                    dataType: 'json',
+                    success: function(result){
+                        var csrfToken = result.user.authenticity_token;
+                        callback(csrfToken,comment);
+                    }
+                });
+            }
+
+            function updateRequest(csrfToken,comment) {
+
+                var request = { "requester": { "name": "Article Feedback" }, "subject": "T Levels Employers Article Feedback - {{section.name}}", "comment": {"body": comment}}
+
+                $.ajax({
+                    url: "https://" + "{{settings.subdomain}}" + ".zendesk.com/api/v2/requests.json",
+                    type: 'POST',
+                    data: JSON.stringify({request: request}),
+                    contentType: "application/json",
+                    headers: {"X-CSRF-Token": csrfToken},
+                    success: function(data, textStatus, jqXHR) {
+
+                    },
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+
+                    }
+                });
+            }
+
+            $("#formoid").submit(function(e){
+                e.preventDefault();
+                var comment = $("#Comment").val();
+                getCSRFToken(updateRequest,comment);
+                $('#commentform').hide();
+              	$('#voteQuestion').hide();
+              	$('#voteResponse').show();
+            });
+
+</script>
+
+<!-- Start of tlevelsemployertest Zendesk Widget script -->
+<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key={{settings.answerbot_key}}"></script>
+
+<script type="text/javascript">
+    window.zESettings = {
+        webWidget: {
+            answerBot: {
+                avatar: {
+                    url: "{{settings.answerbot_icon}}",
+                    name: {
+                        "*": '{{settings.answerbot_name}}'
+                    }
+                },
+                title: {
+                    "en-gb": "T Levels Employer Support"
+                },
+                search: {
+                    labels:
+                        ['answerbot']
+                },
+                contactOnlyAfterQuery: true
+            }
+        }
+    };
+</script>
+<!-- End of tlevelsemployertest Zendesk Widget script -->

@@ -47,7 +47,7 @@ gulp.task('customjs', () => {
         'node_modules//crypto-js/enc-base64.js',
         'node_modules//crypto-js/sha256.js',
         'node_modules//crypto-js/hmac.js',
-        'node_modules//crypto-js/hmac-sha256.js',        
+        'node_modules//crypto-js/hmac-sha256.js',
     ])
         .pipe(concat('custom.js'))
         .pipe(gulp.dest(paths.dist.Assets));
@@ -57,6 +57,7 @@ gulp.task('jsfiles', () => {
     return src([
         'Frontend/src/js/*.js',
         '!Frontend/src/js/custom.js',
+        'node_modules/accessible-autocomplete/dist/accessible-autocomplete.min.js',
     ])
         .pipe(gulp.dest(paths.dist.Assets));
 });
