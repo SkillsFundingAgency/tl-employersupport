@@ -8246,12 +8246,6 @@ ul.govuk-radios label .gem-radios__input {
 
 .autocomplete__input {
   position: relative;
-  margin-bottom: 10px;
-}
-@media (min-width: 40.0625em) {
-  .autocomplete__input {
-    margin-bottom: 10px;
-  }
 }
 
 .autocomplete__hint {

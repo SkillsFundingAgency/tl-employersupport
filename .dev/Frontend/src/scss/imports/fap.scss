@@ -67,7 +67,6 @@
 
 .autocomplete__input {
     position: relative;
-    @include govuk-responsive-margin(2, "bottom");
 }
 
 .autocomplete__hint {
