@@ -22,9 +22,9 @@
 
 
             <section id="tl-skillarea-body">
-                {{#each section}}
+                {{#each section.sections}}
                 {{#is name "About"}}
-                {{#each articles}}
+                {{#each section.articles}}
                 <div class="tl-article--content" id="articlebody{{id}}">{{excerpt body characters=600}}</div>
                 <script>
                 $.getJSON('/api/v2/help_center/articles/{{id}}', function (articlebody) {
@@ -68,9 +68,9 @@
         </div>
         <div class="govuk-grid-column-one-third">
             <h3 class="govuk-heading-s">Related content</h3>
-            {{#each section}}
+            {{#each section.sections}}
             {{#is name "Related"}}
-            {{#each articles}}
+            {{#each section.articles}}
             <div class="tl-article--content" id="articlebody{{id}}">{{excerpt body characters=600}}</div>
             <script>
                 $.getJSON('/api/v2/help_center/articles/{{id}}', function (articlebody) {
