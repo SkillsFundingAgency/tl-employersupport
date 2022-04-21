@@ -1,0 +1,289 @@
+<!-- Main content -->
+
+
+<div class="govuk-width-container">
+    <div id="tl-breadcrumbs--article">
+        <div class="tl-breadcrumbs">
+            {{breadcrumbs}}
+        </div>
+    </div>
+</div>
+
+<!-- Article Content -->
+<div class="govuk-width-container govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-xl">{{section.name}}</h1>
+
+
+
+
+
+
+            <section id="tl-skillarea-body">
+                {{#each section}}
+                {{#is name "About"}}
+                {{#each section.articles}}
+                <div class="tl-article--content" id="articlebody{{id}}">{{excerpt body characters=600}}</div>
+                <script>
+                $.getJSON('/api/v2/help_center/articles/{{id}}', function (articlebody) {
+
+                    var bodycontent = articlebody.article.body;
+                    $('#articlebody{{id}}').html(bodycontent);
+                });
+                </script>
+                {{/each}}
+                {{/is}}
+                {{/each}}
+
+            </section>
+
+            <section id="tl-skillarea-fap">
+                {{#if settings.fap_enabled}}
+                <div class="govuk-grid-row govuk-!-margin-top-7 tl-fap-home--container">
+                    <div class="govuk-grid-column-two-thirds">
+                        <div class="tl-card--grey">
+                            <h1 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-7">Partner with a T Level school or college</h1>
+                            <p class="govuk-body">Offer a placement or find out more about their T Level programme.</p>
+                            <form role="search" class="tl-fap-search-providers-form">
+                                <span class="govuk-error-message tl-hidden" id="tl-search-term-error">You must enter a postcode or town</span>
+                                <label class="govuk-visually-hidden" for="tl-search-term">Enter a postcode or town</label>
+                                <input class="govuk-input govuk-input--width-10 tl-fap-home--input" id="tl-search-term" name="tl-search-term" type="text" placeholder="Enter a postcode or town">
+                                <button class="govuk-button tl-button--blue tl-fap-home--submit" id="tl-search-providers" data-module="govuk-button">
+                                    Search
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                {{/if}}
+            </section>
+
+            <section id="tl-skillarea-links">
+                {{#each section.articles}}
+                    <a class="govuk-link govuk-!-margin-bottom-1 tl-category--article" href="{{url}}">{{title}}</a>
+                {{/each}}
+            </section>
+        </div>
+        <div class="govuk-grid-column-one-third">
+            <h3 class="govuk-heading-s">Related content</h3>
+            {{#each section}}
+            {{#is name "Related"}}
+            {{#each section.articles}}
+            <div class="tl-article--content" id="articlebody{{id}}">{{excerpt body characters=600}}</div>
+            <script>
+                $.getJSON('/api/v2/help_center/articles/{{id}}', function (articlebody) {
+
+                    var bodycontent = articlebody.article.body;
+                    $('#articlebody{{id}}').html(bodycontent);
+                });
+            </script>
+            {{/each}}
+            {{/is}}
+            {{/each}}
+        </div>
+    </div>
+</div>
+
+
+<div class="tl-article--vote">
+    <div class="tl-article--vote--container">
+        <div class="govuk-grid-row">
+            <div id="feedbackbuttonyes" class="govuk-grid-column-full">
+                <p class="govuk-body govuk-!-margin-0 vote-prompt" id="voteQuestion">
+                    <span id="isPageUseful" class="tl-article--vote--question">Was this page helpful?</span>
+                    <a class="tl-article--vote--button" href="#" id="tl-article--vote--yes" vote="yes">Yes <span class="govuk-visually-hidden">this article was useful</span></a>
+                    <a class="tl-article--vote--button" href="#" id="tl-article--vote--no" vote="no">No <span class="govuk-visually-hidden">this article wasn't useful</span></a>
+                </p>
+                <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-0 vote-prompt tl-article--vote--response" id="voteResponse" style="display: none;">Thank you for your feedback</p>
+            </div>
+        </div>
+        <div class="govuk-grid-row">
+            <div id="commentform" class="govuk-grid-column-two-thirds govuk-!-margin-top-3">
+                <form id="formoid" action="/api/v2/requests.json" title="articlefeedback" method="post" class="tl-article--vote--form">
+                    <div class="govuk-character-count">
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="Comment">Is there anything we could do to further improve this page? (optional)</label>
+                            <textarea maxlength="500" class="govuk-textarea govuk-js-character-count" id="Comment" name="Comment" rows="5" aria-describedby="Comment-info"></textarea>
+                        </div>
+                        <div id="Comment-info" class="tl-article--vote--form--count" aria-live="polite">You have <span id="chars">500</span> characters remaining</div>
+                    </div>
+                    <div class="govuk-!-margin-top-3">
+                        <input class="govuk-button articlefeedbackbutton" type="submit" id="submitButton" name="submitButton" value="Submit">
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(".govuk-tabs").attr("data-module", "govuk-tabs");
+
+
+                var maxLength = 500;
+            $('#Comment').keyup(function() {
+            	var length = $(this).val().length;
+            	var length = maxLength-length;
+            	$('#chars').text(length);
+
+              if (length < 0) {
+      					$('#submitButton').attr('disabled', true);
+							} else {
+                $('#submitButton').removeAttr('disabled');
+              }
+            });
+
+            $("#tl-article--vote--yes").click(function() {
+							$('#isPageUseful').text('Thank you for your feedback').addClass('govuk-!-font-weight-bold');
+              $('#articlefeedbacklabel').html('Is there anything we could do to further improve this page? (optional)');
+            });
+
+            $(".vote-confirm").click(function() {
+             		$('#isPageUseful').text('Is this page useful?');
+            });
+
+            $("#tl-article--vote--no").click(function() {
+             		$('#isPageUseful').text('Thank you for your feedback').addClass('govuk-!-font-weight-bold');
+                $('#articlefeedbacklabel').html('Why is this page not useful? (optional)');
+            });
+
+
+
+            $('#commentform').hide();
+
+            $('#tl-article--vote--no').click(function(){
+            	$('#commentform').toggle();
+              $('#feedbackbuttonyes a').toggle();
+            });
+
+            $('#tl-article--vote--yes').click(function () {
+                $('#feedbackbuttonyes a').toggle();
+            });
+
+            function getCSRFToken(callback,comment) {
+                $.ajax({
+                    url: "/api/v2/users/me.json",
+                    type: 'GET',
+                    contentType: "application/json",
+                    dataType: 'json',
+                    success: function(result){
+                        var csrfToken = result.user.authenticity_token;
+                        callback(csrfToken,comment);
+                    }
+                });
+            }
+
+            function updateRequest(csrfToken,comment) {
+
+                var request = { "requester": { "name": "Article Feedback" }, "subject": "T Levels Employers Article Feedback - {{section.name}}", "comment": {"body": comment}}
+
+                $.ajax({
+                    url: "https://" + "{{settings.subdomain}}" + ".zendesk.com/api/v2/requests.json",
+                    type: 'POST',
+                    data: JSON.stringify({request: request}),
+                    contentType: "application/json",
+                    headers: {"X-CSRF-Token": csrfToken},
+                    success: function(data, textStatus, jqXHR) {
+
+                    },
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+
+                    }
+                });
+            }
+
+            $("#formoid").submit(function(e){
+                e.preventDefault();
+                var comment = $("#Comment").val();
+                getCSRFToken(updateRequest,comment);
+                $('#commentform').hide();
+              	$('#voteQuestion').hide();
+              	$('#voteResponse').show();
+            });
+
+</script>
+
+<!-- Start of tlevelsemployertest Zendesk Widget script -->
+<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key={{settings.answerbot_key}}"></script>
+
+<script type="text/javascript">
+    window.zESettings = {
+        webWidget: {
+            answerBot: {
+                avatar: {
+                    url: "{{settings.answerbot_icon}}",
+                    name: {
+                        "*": '{{settings.answerbot_name}}'
+                    }
+                },
+                title: {
+                    "en-gb": "T Levels Employer Support"
+                },
+                search: {
+                    labels:
+                        ['answerbot']
+                },
+                contactOnlyAfterQuery: true
+            }
+        }
+    };
+</script>
+<!-- End of tlevelsemployertest Zendesk Widget script -->
+<!-- FAP -->
+<script>
+    //Need this to be global scope for autocomplete
+    let findProvidersApiUrl = "{{ settings.find_provider_api_uri }}";
+    if (findProvidersApiUrl.substr(-1) !== '/') findProvidersApiUrl += '/';
+
+    document.addEventListener('DOMContentLoaded', function () {
+        if (!isAgent()) {
+            $("#tl-home--ticket").show();
+        }
+    });
+
+    $(document).ready(function() {
+        $('#tl-search-term').val("");
+
+        $('#tl-search-term').keypress(function (e) {
+            if (e.which === 13) {
+                $("#tl-search-providers").click();
+                return false;
+            }
+        });
+
+        $("#tl-search-providers").click(function() {
+            const searchTerm = $("#tl-search-term").val().trim();
+
+            if (searchTerm === "") {
+                event.stopPropagation();
+                showSearchTermError("Enter a postcode or town");
+                return false;
+            }
+
+            $(location).attr('href', '/hc/en-gb/articles/{{settings.article_id_find_provider}}?searchTerm=' + encodeURIComponent(searchTerm));
+
+            return true;
+        });
+
+		$(".tl-fap-search-providers-form").submit(function() {
+			event.preventDefault();
+		});
+
+        function showSearchTermError(message) {
+            $("#tl-search-term-error").text(message);
+            $('#tl-search-term-error').removeClass("tl-hidden");
+        }
+    });
+
+    $('#tl-home--answerbot').click(function () {
+        openHelp();
+        event.preventDefault();
+    });
+</script>
+
+<script src="{{asset 'accessible-autocomplete.min.js'}}"></script>
+<script src="{{asset 'locationAutocomplete.js'}}"></script>
