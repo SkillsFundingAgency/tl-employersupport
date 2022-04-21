@@ -42,7 +42,7 @@
             <section id="tl-skillarea-fap">
                 {{#if settings.fap_enabled}}
                 <div class="govuk-grid-row govuk-!-margin-top-7 tl-fap-home--container">
-                    <div class="govuk-grid-column-two-thirds">
+                    <div class="govuk-grid-column-full">
                         <div class="tl-card--grey">
                             <h1 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-7">Partner with a T Level school or college</h1>
                             <p class="govuk-body">Offer a placement or find out more about their T Level programme.</p>
@@ -61,9 +61,17 @@
             </section>
 
             <section id="tl-skillarea-links">
-                {{#each section.articles}}
-                    <a class="govuk-link govuk-!-margin-bottom-1 tl-category--article" href="{{url}}">{{title}}</a>
-                {{/each}}
+                <div class="govuk-grid-row govuk-!-margin-top-7">
+                    {{#each section.articles}}
+
+                    <div class="govuk-grid-column-one-half">
+                        <div class="tl-card--grey">
+                            <a class="govuk-link govuk-!-margin-bottom-1 tl-category--article" href="{{url}}">{{title}}</a>
+                        </div>
+                    </div>
+                    {{/each}}
+
+                </div>
             </section>
         </div>
         <div class="govuk-grid-column-one-third">
