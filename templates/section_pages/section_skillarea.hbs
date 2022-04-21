@@ -32,6 +32,19 @@
                     var bodycontent = articlebody.article.body;
                     $('#articlebody{{id}}').html(bodycontent);
                 });
+
+
+                    $(".govuk-tabs").attr("data-module", "govuk-tabs");
+
+                    $(".tl-article--content .govuk-details").attr("data-module", "govuk-details");
+                    $(".tl-article--content .govuk-details__summary").click(function () {
+                        if (this.closest(".govuk-details").hasAttribute("open")) {
+                            $(this).closest(".govuk-details").removeAttr('open');
+                        }
+                        else {
+                            $(this).closest(".govuk-details").attr('open', true);
+                        }
+                    });
                 </script>
                 {{/each}}
                 {{/is}}
@@ -293,3 +306,4 @@
 
 <script src="{{asset 'accessible-autocomplete.min.js'}}"></script>
 <script src="{{asset 'locationAutocomplete.js'}}"></script>
+
