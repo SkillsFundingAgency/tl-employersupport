@@ -27,11 +27,26 @@
                 {{#each articles}}
                 <div class="tl-article--content" id="articlebody{{id}}">{{excerpt body characters=600}}</div>
                 <script>
-                $.getJSON('/api/v2/help_center/articles/{{id}}', function (articlebody) {
+                $.getJSON('/api/v2/help_center/articles/{{id}}', function (articlebody, articlejs) {
 
                     var bodycontent = articlebody.article.body;
                     $('#articlebody{{id}}').html(bodycontent);
+                    articlejs();
                 });
+
+                    function articlejs() {
+                        $(".govuk-tabs").attr("data-module", "govuk-tabs");
+
+                        $(".tl-article--content .govuk-details").attr("data-module", "govuk-details");
+                        $(".tl-article--content .govuk-details__summary").click(function () {
+                            if (this.closest(".govuk-details").hasAttribute("open")) {
+                                $(this).closest(".govuk-details").removeAttr('open');
+                            }
+                            else {
+                                $(this).closest(".govuk-details").attr('open', true);
+                            }
+                        });
+                    }
                 </script>
                 {{/each}}
                 {{/is}}
@@ -127,22 +142,6 @@
 
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        $(".govuk-tabs").attr("data-module", "govuk-tabs");
-
-        $(".tl-article--content .govuk-details").attr("data-module", "govuk-details");
-        $(".tl-article--content .govuk-details__summary").click(function () {
-            if (this.closest(".govuk-details").hasAttribute("open")) {
-                $(this).closest(".govuk-details").removeAttr('open');
-            }
-            else {
-                $(this).closest(".govuk-details").attr('open', true);
-            }
-        });
-    });
-
-
-
                 var maxLength = 500;
             $('#Comment').keyup(function() {
             	var length = $(this).val().length;
