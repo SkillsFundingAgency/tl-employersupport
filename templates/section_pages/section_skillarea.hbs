@@ -32,19 +32,6 @@
                     var bodycontent = articlebody.article.body;
                     $('#articlebody{{id}}').html(bodycontent);
                 });
-
-
-                    $(".govuk-tabs").attr("data-module", "govuk-tabs");
-
-                    $(".tl-article--content .govuk-details").attr("data-module", "govuk-details");
-                    $(".tl-article--content .govuk-details__summary").click(function () {
-                        if (this.closest(".govuk-details").hasAttribute("open")) {
-                            $(this).closest(".govuk-details").removeAttr('open');
-                        }
-                        else {
-                            $(this).closest(".govuk-details").attr('open', true);
-                        }
-                    });
                 </script>
                 {{/each}}
                 {{/is}}
@@ -140,7 +127,20 @@
 
 
 <script type="text/javascript">
-    $(".govuk-tabs").attr("data-module", "govuk-tabs");
+    $(document).ready(function () {
+        $(".govuk-tabs").attr("data-module", "govuk-tabs");
+
+        $(".tl-article--content .govuk-details").attr("data-module", "govuk-details");
+        $(".tl-article--content .govuk-details__summary").click(function () {
+            if (this.closest(".govuk-details").hasAttribute("open")) {
+                $(this).closest(".govuk-details").removeAttr('open');
+            }
+            else {
+                $(this).closest(".govuk-details").attr('open', true);
+            }
+        });
+    });
+
 
 
                 var maxLength = 500;
