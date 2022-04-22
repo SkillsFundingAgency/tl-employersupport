@@ -7081,6 +7081,9 @@ x:-moz-any-link {
   flex: 1;
   width: 50%;
 }
+.tl-home--banner--card {
+  height: 100%;
+}
 
 .tl-home--categories {
   display: flex;
@@ -7368,12 +7371,12 @@ x:-moz-any-link {
     padding: 20px;
   }
 }
-.tl-card--grey {
+.tl-card--grey, .tl-home--banner--card {
   background-color: #f3f2f1;
   padding: 30px;
 }
 @media (max-width: 40.0525em) {
-  .tl-card--grey {
+  .tl-card--grey, .tl-home--banner--card {
     padding: 20px;
   }
 }

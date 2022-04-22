@@ -15,6 +15,11 @@
         flex: 1;
         width: 50%;
     }
+
+    &--card {
+        @extend .tl-card--grey;
+        height: 100%;
+    }
 }
 
 
