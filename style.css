@@ -7057,6 +7057,24 @@ x:-moz-any-link {
   margin-top: 5px;
 }
 
+.tl-home--banner {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+@media (max-width: 48.0525em) {
+  .tl-home--banner {
+    flex-direction: column;
+  }
+}
+.tl-home--banner--column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+
 .tl-home--categories {
   display: flex;
   flex-direction: row;

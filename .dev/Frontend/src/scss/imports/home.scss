@@ -1,3 +1,24 @@
+.tl-home--banner {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+
+    @include govuk-media-query($until: desktop) {
+        flex-direction: column;
+    }
+
+    &--column {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 100%;
+        flex: 1;
+    }
+}
+
+
+
+
 .tl-home--categories {
     display: flex;
     flex-direction: row;
