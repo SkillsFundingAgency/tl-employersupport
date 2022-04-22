@@ -6337,6 +6337,12 @@ x:-moz-any-link {
   order: -1;
 }
 
+.tl-image--cover {
+  object-fit: cover;
+  min-width: 100%;
+  min-height: 100%;
+}
+
 .tl-search {
   display: flex;
 }
