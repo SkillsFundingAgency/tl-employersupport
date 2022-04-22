@@ -7085,6 +7085,10 @@ x:-moz-any-link {
   height: 100%;
 }
 
+.tl-home--benefit {
+  border-bottom: 2px solid #4c2c92;
+}
+
 .tl-home--categories {
   display: flex;
   flex-direction: row;
