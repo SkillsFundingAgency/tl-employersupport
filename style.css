@@ -7073,6 +7073,7 @@ x:-moz-any-link {
   flex-direction: column;
   flex-basis: 100%;
   flex: 1;
+  width: 50%;
 }
 
 .tl-home--categories {
