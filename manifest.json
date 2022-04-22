@@ -59,6 +59,13 @@
           "type": "file",
           "description": "Home Page Banner Image",
           "label": "Banner Image"
+        },
+        {
+          "identifier": "homepage_benefits_intro",
+          "type": "text",
+          "description": "Home page benefits section intro",
+          "label": "Home page benefits section intro",
+          "value": "An industry placement is at the heart of each T Level course:"
         }
       ]
     },
