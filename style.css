@@ -7087,6 +7087,18 @@ x:-moz-any-link {
 
 .tl-home--benefit {
   border-bottom: 2px solid #4c2c92;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+@media (min-width: 40.0625em) {
+  .tl-home--benefit {
+    padding-top: 25px;
+  }
+}
+@media (min-width: 40.0625em) {
+  .tl-home--benefit {
+    padding-bottom: 25px;
+  }
 }
 
 .tl-home--categories {
