@@ -1,7 +1,7 @@
 {
-  "name": "GDS Style - Employer Support - How Industry Works",
+  "name": "GDS Style - Employer Support - Home Page Redesign",
   "author": "Ash Anderton",
-  "version": "0.1.321",
+  "version": "0.1.322",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [
@@ -20,6 +20,39 @@
           "type": "file",
           "description": "favicon_description",
           "label": "favicon_label"
+        }
+      ]
+    },
+    {
+      "label": "Home Page Settings",
+      "variables": [
+        {
+          "identifier": "homepage_banner_title",
+          "type": "text",
+          "description": "Home page banner title",
+          "label": "Home page banner title",
+          "value": "Discover your future workforce"
+        },
+        {
+          "identifier": "homepage_banner_text",
+          "type": "text",
+          "description": "Home page banner text",
+          "label": "Home page banner text",
+          "value": "T Levels: a new quaification developed in collaboration with employers."
+        },
+        {
+          "identifier": "homepage_banner_button",
+          "type": "text",
+          "description": "Home page banner text",
+          "label": "Home page banner text",
+          "value": "Find out more about T Levels"
+        },
+        {
+          "identifier": "homepage_banner_button_article",
+          "type": "text",
+          "description": "Home page banner article ID",
+          "label": "Home page banner article ID",
+          "value": "4416409762194"
         }
       ]
     },

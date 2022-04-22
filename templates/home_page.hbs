@@ -4,15 +4,22 @@
     }
 </script>
 
-<script>
-    zESettings = {
-        webWidget: {
-            answerBot: {
-                
-            }
-        }
-    }
-</script>
+
+<!-- Main content -->
+<section class="tl-home--banner">
+    <div class="govuk-width-container">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-half">
+                <h1 class="govuk-heading-xl govuk-!-margin-bottom-5 govuk-!-margin-top-3">{{settings.homepage_banner_title}}</h1>
+                <p class="govuk-body-l">{{settings.homepage_banner_text}}</p>
+                <a href="/hc/en-gb/articles/{{settings.homepage_banner_button_article}}">{{homepage_banner_button}}</a>
+            </div>
+            <div class="govuk-grid-column-one-half">
+                <img src="{{settings.home_image_2}}" />
+            </div>
+        </div>
+    </div>
+</section>
 
 
 <!-- Main content -->
@@ -150,7 +157,7 @@
 
 <script>
     //Need this to be global scope for autocomplete
-    let findProvidersApiUrl = "{{ settings.find_provider_api_uri }}";    
+    let findProvidersApiUrl = "{{ settings.find_provider_api_uri }}";
     if (findProvidersApiUrl.substr(-1) !== '/') findProvidersApiUrl += '/';
 
     document.addEventListener('DOMContentLoaded', function () {
@@ -196,7 +203,7 @@
     $('#tl-home--answerbot').click(function () {
         openHelp();
         event.preventDefault();
-    });     
+    });
 </script>
 
 <script src="{{asset 'accessible-autocomplete.min.js'}}"></script>
