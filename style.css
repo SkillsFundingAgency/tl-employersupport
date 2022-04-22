@@ -7089,6 +7089,7 @@ x:-moz-any-link {
   border-bottom: 2px solid #4c2c92;
   padding-top: 15px;
   padding-bottom: 15px;
+  line-height: 0.8 !important;
 }
 @media (min-width: 40.0625em) {
   .tl-home--benefit {

@@ -26,6 +26,7 @@
     border-bottom: 2px solid $govuk-link-visited-colour;
     @include govuk-responsive-padding(5, "top");
     @include govuk-responsive-padding(5, "bottom");
+    line-height: 0.8 !important;
 }
 
 
