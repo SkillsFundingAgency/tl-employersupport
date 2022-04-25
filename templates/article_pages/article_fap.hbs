@@ -31,7 +31,6 @@
                     <h3>Filter by skill area</h3>
 
                     <div class="tl-search--filter--content">
-                        <!-- TODO: Add an example of styled checkboxes -->
                         <div class="govuk-form-group govuk-!-margin-bottom-2 tl-pane-expandable__content" style="background-color: white; padding: 10px">
                             <div class="govuk-checkboxes govuk-checkboxes--small" id="tl-skill-area-filter">
                             </div>
@@ -41,16 +40,13 @@
                 <button class="govuk-button tl-button--green" id="tl-update-search-providers" data-module="govuk-button">
                     Update results
                 </button>
-
-                </div>
-
-            <div class="govuk-grid-row tl-hidden" id="tl-error">
-                <div class="govuk-grid-column-two-thirds govuk-!-margin-top-7">
-                    <h1 class="govuk-heading-l" id="tl-error-header"></h1>
-                    <p class="govuk-body" id="tl-error-detail"></p>
-                </div>
             </div>
         </form>
+
+        <div class="govuk-grid-column-two-thirds tl-hidden govuk-!-margin-top-7" id="tl-error">
+            <h2 class="govuk-heading-l" id="tl-error-header"></h2>
+            <p class="govuk-body" id="tl-error-detail"></p>
+        </div>
 
         <!-- Search Results -->
         <div class="govuk-grid-column-two-thirds govuk-!-margin-top-7">
@@ -63,7 +59,7 @@
                 </div>
             </div>
             <p class="govuk-body"><a class="govuk-link tl-hidden" id="tl-next-results-link" href="more-results">Show more results</a></p>
-        </div>
+        </div>        
     </div>
 </div>
 
@@ -175,6 +171,12 @@
 
         function providerSearch(searchTerm, skillAreaIds, page) {
             clearProviderSearchResults();
+
+            //TODO: Remove this
+            if (searchTerm === "ERROR") {                
+                showError("haha", "just joking");
+                return false;
+            }
 
             searchTerm = searchTerm ? searchTerm.trim() : "";
             if (searchTerm === "") {
