@@ -68,7 +68,7 @@
     @include govuk-responsive-margin(3, "bottom");
 
     @include govuk-media-query($from: desktop) {
-        width: calc(33.333% - 30px);
+        width: calc(25% - 30px);
     }
 
     &--image {
