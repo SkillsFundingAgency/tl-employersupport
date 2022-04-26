@@ -7,6 +7,25 @@
 
 .tl-card--fap {
     @extend .tl-card--grey;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+
+    &--left, &--right {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 100%;
+        flex: 1;
+    }
+
+    &--right {
+        width: 60%;
+    }
+
+    &--left {
+        width: 40%;
+    }
 }
 
 
