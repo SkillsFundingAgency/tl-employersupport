@@ -7076,6 +7076,11 @@ x:-moz-any-link {
   flex: 1;
   width: 50%;
 }
+@media (max-width: 40.0525em) {
+  .tl-home--banner--column:first-child {
+    order: 2;
+  }
+}
 .tl-home--banner--card {
   height: 100%;
 }

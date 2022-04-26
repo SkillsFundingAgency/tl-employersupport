@@ -11,6 +11,12 @@
         flex-basis: 100%;
         flex: 1;
         width: 50%;
+
+        &:first-child {
+            @include govuk-media-query($until: tablet) {
+                order: 2;
+            }
+        }
     }
 
     &--card {
