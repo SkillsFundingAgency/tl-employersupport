@@ -7094,6 +7094,7 @@ x:-moz-any-link {
   padding-bottom: 15px;
   line-height: 0.8 !important;
   width: 100%;
+  box-sizing: border-box;
 }
 @media (min-width: 40.0625em) {
   .tl-home--benefit {
@@ -7105,19 +7106,19 @@ x:-moz-any-link {
     padding-bottom: 25px;
   }
 }
-@media (max-width: 48.0525em) {
+@media (max-width: 40.0525em) {
   .tl-home--benefit {
     padding-left: 10px;
     padding-right: 10px;
     background-color: #f3f2f1;
   }
 }
-@media (max-width: 48.0525em) and (min-width: 40.0625em) {
+@media (max-width: 40.0525em) and (min-width: 40.0625em) {
   .tl-home--benefit {
     padding-left: 10px;
   }
 }
-@media (max-width: 48.0525em) and (min-width: 40.0625em) {
+@media (max-width: 40.0525em) and (min-width: 40.0625em) {
   .tl-home--benefit {
     padding-right: 10px;
   }
