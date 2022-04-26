@@ -7073,6 +7073,9 @@ x:-moz-any-link {
   .tl-home--banner {
     flex-direction: column;
   }
+  .tl-home--banner--column {
+    width: 100%;
+  }
 }
 .tl-home--banner--column {
   display: flex;

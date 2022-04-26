@@ -6,6 +6,10 @@
 
     @include govuk-media-query($until: desktop) {
         flex-direction: column;
+
+        &--column {
+            width: 100%;
+        }
     }
 
     &--column {
