@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    // Find Provider tile
+
     if (!$('#tl-search-term').length) return;
 
     let findProviderRedirectUrl =
@@ -13,10 +15,7 @@ $(document).ready(function () {
     }
 
     if (findProvidersApiUrl !== null && findProvidersApiUrl.substr(-1) !== '/') findProvidersApiUrl += '/';
-
-    console.log("findProviderRedirectUrl = " + findProviderRedirectUrl);
-    console.log("findProvidersApiUrl = " + findProvidersApiUrl);
-
+    
     $('#tl-search-term').val("");
 
     $('#tl-search-term').keypress(function(e) {

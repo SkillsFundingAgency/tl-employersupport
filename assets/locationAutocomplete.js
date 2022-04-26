@@ -12,7 +12,6 @@
     }
 
     if (findProvidersApiUrl !== null && findProvidersApiUrl.substr(-1) !== '/') findProvidersApiUrl += '/';
-    console.log('findProvidersApiUrl in autocomplete = ' + findProvidersApiUrl);
 
     $keywordsInput.wrap('<div id="autocomplete-container" class="tl-autocomplete-wrap"></div>');
     const container = document.querySelector('#autocomplete-container');

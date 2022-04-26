@@ -1,6 +1,4 @@
-/* Find Provider */
-console.log('in the find provider js file');
-
+// Find Provider 
 let isFapSearchInProgress = false;
 
 $(document).ready(function () {
@@ -20,10 +18,6 @@ $(document).ready(function () {
     }
 
     if (findProvidersApiUrl !== null && findProvidersApiUrl.substr(-1) !== '/') findProvidersApiUrl += '/';
-
-    console.log("findProvidersApiUrl = " + findProvidersApiUrl);
-    console.log("findProvidersAppId = " + findProvidersAppId);
-    console.log("findProvidersApiKey = " + findProvidersApiKey);
 
     let currentPage = 0;
     let currentSearchTerm = null;
@@ -215,9 +209,6 @@ if (searchTerm === "ERROR") {
         map[49] = $('script[data-qualificationMap_49][data-qualificationMap_49!=null]').attr('data-qualificationMap_49');
         map[50] = $('script[data-qualificationMap_50][data-qualificationMap_50!=null]').attr('data-qualificationMap_50');
         map[51] = $('script[data-qualificationMap_51][data-qualificationMap_51!=null]').attr('data-qualificationMap_51');
-        console.log("Qualification map:");
-        console.log(map);
-        console.log(JSON.stringify(map));
         return map;
     }
 
