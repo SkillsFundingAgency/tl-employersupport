@@ -43,13 +43,33 @@ gulp.task('customjs', () => {
     return src([
         'Frontend/src/js/custom.js',
         'node_modules/moment/moment.js',
+    ])
+        .pipe(concat('custom.js'))
+        .pipe(gulp.dest(paths.dist.Assets));
+});
+
+gulp.task('findProviderjs', () => {
+    return src([
         'node_modules/crypto-js/core.js',
         'node_modules//crypto-js/enc-base64.js',
         'node_modules//crypto-js/sha256.js',
         'node_modules//crypto-js/hmac.js',
         'node_modules//crypto-js/hmac-sha256.js',
+        'node_modules/accessible-autocomplete/dist/accessible-autocomplete.min.js',
+        'Frontend/src/js/findProvider.js',
+        'Frontend/src/js/locationAutocomplete.js'
+])
+        .pipe(concat('findProvider.js'))
+        .pipe(gulp.dest(paths.dist.Assets));
+});
+
+gulp.task('findProviderTilejs', () => {
+    return src([
+        'node_modules/accessible-autocomplete/dist/accessible-autocomplete.min.js',
+        'Frontend/src/js/findProviderTile.js',
+        'Frontend/src/js/locationAutocomplete.js'
     ])
-        .pipe(concat('custom.js'))
+        .pipe(concat('findProviderTile.js'))
         .pipe(gulp.dest(paths.dist.Assets));
 });
 
@@ -57,6 +77,8 @@ gulp.task('jsfiles', () => {
     return src([
         'Frontend/src/js/*.js',
         '!Frontend/src/js/custom.js',
+        '!Frontend/src/js/findProvider.js',
+        '!Frontend/src/js/findProviderTile.js',
         'node_modules/accessible-autocomplete/dist/accessible-autocomplete.min.js',
     ])
         .pipe(gulp.dest(paths.dist.Assets));

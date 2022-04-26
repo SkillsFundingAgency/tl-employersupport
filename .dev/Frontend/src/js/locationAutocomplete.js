@@ -1,15 +1,25 @@
 (function ($) {
     //Autocomplete for find provider search term
-
     const $keywordsInput = $('#tl-search-term');
-    if ($keywordsInput.length > 0) {
-        $keywordsInput.wrap('<div id="autocomplete-container" class="tl-autocomplete-wrap"></div>');
-        var container = document.querySelector('#autocomplete-container');
-        $(container).empty();
+    if (!$keywordsInput.length) return;
+
+    let findProvidersApiUrl =
+        $('script[data-findProviderApiUri][data-findProviderApiUri!=null]').attr('data-findProviderApiUri');
+
+    if (typeof findProvidersApiUrl === 'undefined') {
+        console.log('autocomplete script requires data-findProviderApiUri to be passed via the script tag');
+        return;
     }
 
+    if (findProvidersApiUrl !== null && findProvidersApiUrl.substr(-1) !== '/') findProvidersApiUrl += '/';
+    console.log('findProvidersApiUrl in autocomplete = ' + findProvidersApiUrl);
+
+    $keywordsInput.wrap('<div id="autocomplete-container" class="tl-autocomplete-wrap"></div>');
+    const container = document.querySelector('#autocomplete-container');
+    $(container).empty();
+
     function getSuggestions(query, populateResults) {
-        if ((typeof isSearchInProgress !== 'undefined' && isSearchInProgress)
+        if ((typeof isFapSearchInProgress !== 'undefined' && isFapSearchInProgress)
             || /\d/.test(query)) {
             return;
         }
@@ -49,4 +59,5 @@
         confirmOnBlur: false,
         autoselect: true
     });
+
 })(jQuery);

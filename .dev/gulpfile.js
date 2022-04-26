@@ -4,7 +4,7 @@ var gulp = require('gulp');
 
 require('./gulp/tasks/default');
 
-gulp.task('default', gulp.series('assets', 'sass', 'js', 'customjs', 'jsfiles', 'templates', 'settings', 
+gulp.task('default', gulp.series('assets', 'sass', 'js', 'customjs', 'findProviderjs', 'findProviderTilejs', 'jsfiles', 'templates', 'settings', 
     (done) => {
         done();
     }));
