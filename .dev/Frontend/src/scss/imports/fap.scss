@@ -19,12 +19,22 @@
         flex: 1;
     }
 
-    &--right {
-        width: 60%;
+    @include govuk-media-query($until: tablet) {
+        flex-direction: column;
+
+        &--left, &--right {
+            width: 100%;
+        }
     }
 
-    &--left {
-        width: 40%;
+    @include govuk-media-query ($from: tablet) {
+        &--right {
+            flex: 1 1 40%;
+        }
+
+        &--left {
+            flex: 1 1 60%;
+        }
     }
 }
 
