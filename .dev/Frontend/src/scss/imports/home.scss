@@ -4,13 +4,6 @@
     flex-wrap: wrap;
     width: 100%;
 
-    @include govuk-media-query($until: desktop) {
-        flex-direction: column;
-
-        &--column {
-            width: 100%;
-        }
-    }
 
     &--column {
         display: flex;
@@ -23,6 +16,15 @@
     &--card {
         @extend .tl-card--grey;
         height: 100%;
+    }
+
+
+    @include govuk-media-query($until: desktop) {
+        flex-direction: column;
+
+        &--column {
+            width: 100%;
+        }
     }
 }
 

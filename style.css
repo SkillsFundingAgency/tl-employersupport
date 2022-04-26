@@ -7069,14 +7069,6 @@ x:-moz-any-link {
   flex-wrap: wrap;
   width: 100%;
 }
-@media (max-width: 48.0525em) {
-  .tl-home--banner {
-    flex-direction: column;
-  }
-  .tl-home--banner--column {
-    width: 100%;
-  }
-}
 .tl-home--banner--column {
   display: flex;
   flex-direction: column;
@@ -7086,6 +7078,14 @@ x:-moz-any-link {
 }
 .tl-home--banner--card {
   height: 100%;
+}
+@media (max-width: 48.0525em) {
+  .tl-home--banner {
+    flex-direction: column;
+  }
+  .tl-home--banner--column {
+    width: 100%;
+  }
 }
 
 .tl-home--benefit {
