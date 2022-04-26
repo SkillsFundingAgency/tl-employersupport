@@ -8346,9 +8346,6 @@ ul.govuk-radios label .gem-radios__input {
     display: flex;
     align-items: stretch;
   }
-  .tl-fap-home--container div[class*=govuk-grid-column], .tl-fap-home--container div[class^=govuk-grid-column] {
-    padding: 0;
-  }
 }
 
 .tl-fap-home--submit {

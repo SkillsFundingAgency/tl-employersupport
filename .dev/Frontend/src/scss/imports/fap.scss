@@ -70,10 +70,6 @@
     @include govuk-media-query ($from: tablet) {
         display: flex;
         align-items: stretch;
-
-        div[class*='govuk-grid-column'], div[class^='govuk-grid-column'] {
-            padding: 0;
-        }
     }
 }
 
