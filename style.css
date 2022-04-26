@@ -8262,12 +8262,25 @@ ul.govuk-radios label .gem-radios__input {
   flex-wrap: wrap;
   width: 100%;
   align-items: center;
+  box-sizing: border-box;
+  padding: 0;
+}
+@media (min-width: 40.0625em) {
+  .tl-card--fap {
+    padding: 0;
+  }
 }
 .tl-card--fap--left, .tl-card--fap--right {
   display: flex;
   flex-direction: column;
   flex-basis: 100%;
   flex: 1;
+  padding: 0;
+}
+@media (min-width: 40.0625em) {
+  .tl-card--fap--left, .tl-card--fap--right {
+    padding: 0;
+  }
 }
 @media (max-width: 40.0525em) {
   .tl-card--fap {
