@@ -8261,6 +8261,7 @@ ul.govuk-radios label .gem-radios__input {
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
+  align-items: center;
 }
 .tl-card--fap--left, .tl-card--fap--right {
   display: flex;
