@@ -43,7 +43,7 @@
     box-sizing: border-box;
 
     @include govuk-media-query($until: tablet) {
-        border-bottom: 3px;
+        border-bottom: 3px solid $govuk-link-visited-colour;
         @include govuk-responsive-padding(2, "left");
         @include govuk-responsive-padding(2, "right");
         background-color: govuk-colour("light-grey");

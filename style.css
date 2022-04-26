@@ -7113,7 +7113,7 @@ x:-moz-any-link {
 }
 @media (max-width: 40.0525em) {
   .tl-home--benefit {
-    border-bottom: 3px;
+    border-bottom: 3px solid #4c2c92;
     padding-left: 10px;
     padding-right: 10px;
     background-color: #f3f2f1;
