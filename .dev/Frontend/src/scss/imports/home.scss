@@ -34,6 +34,12 @@
     @include govuk-responsive-padding(5, "bottom");
     line-height: 0.8 !important;
     width: 100%;
+
+    @include govuk-media-query($until: desktop) {
+        @include govuk-responsive-padding(2, "left");
+        @include govuk-responsive-padding(2, "right");
+        background-color: govuk-colour("light-grey");
+    }
 }
 
 
