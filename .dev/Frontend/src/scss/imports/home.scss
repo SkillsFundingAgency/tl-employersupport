@@ -33,6 +33,7 @@
     @include govuk-responsive-padding(5, "top");
     @include govuk-responsive-padding(5, "bottom");
     line-height: 0.8 !important;
+    width: 100%;
 }
 
 

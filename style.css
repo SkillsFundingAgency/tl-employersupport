@@ -6198,7 +6198,7 @@ x:-moz-any-link {
   display: none;
 }
 
-.tl-image-100 {
+.tl-image-100, .tl-width-100 {
   width: 100%;
 }
 
@@ -7093,6 +7093,7 @@ x:-moz-any-link {
   padding-top: 15px;
   padding-bottom: 15px;
   line-height: 0.8 !important;
+  width: 100%;
 }
 @media (min-width: 40.0625em) {
   .tl-home--benefit {
