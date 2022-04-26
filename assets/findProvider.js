@@ -1502,26 +1502,26 @@ if (searchTerm === "ERROR") {
         return true;
     }
 
-    function loadQualificationMap() {
-        const map = {};
-        map[36] = "{{ settings.qualification_article_36 }}";
-        map[37] = "{{ settings.qualification_article_37 }}";
-        map[38] = "{{ settings.qualification_article_38 }}";
-        map[39] = "{{ settings.qualification_article_39 }}";
-        map[40] = "{{ settings.qualification_article_40 }}";
-        map[41] = "{{ settings.qualification_article_41 }}";
-        map[42] = "{{ settings.qualification_article_42 }}";
-        map[43] = "{{ settings.qualification_article_43 }}";
-        map[44] = "{{ settings.qualification_article_44 }}";
-        map[45] = "{{ settings.qualification_article_45 }}";
-        map[46] = "{{ settings.qualification_article_46 }}";
-        map[47] = "{{ settings.qualification_article_47 }}";
-        map[48] = "{{ settings.qualification_article_48 }}";
-        map[49] = "{{ settings.qualification_article_49 }}";
-        map[50] = "{{ settings.qualification_article_50 }}";
-        map[51] = "{{ settings.qualification_article_51 }}";
-        return map;
-    }
+    // function loadQualificationMap() {
+    //     const map = {};
+    //     map[36] = "{{ settings.qualification_article_36 }}";
+    //     map[37] = "{{ settings.qualification_article_37 }}";
+    //     map[38] = "{{ settings.qualification_article_38 }}";
+    //     map[39] = "{{ settings.qualification_article_39 }}";
+    //     map[40] = "{{ settings.qualification_article_40 }}";
+    //     map[41] = "{{ settings.qualification_article_41 }}";
+    //     map[42] = "{{ settings.qualification_article_42 }}";
+    //     map[43] = "{{ settings.qualification_article_43 }}";
+    //     map[44] = "{{ settings.qualification_article_44 }}";
+    //     map[45] = "{{ settings.qualification_article_45 }}";
+    //     map[46] = "{{ settings.qualification_article_46 }}";
+    //     map[47] = "{{ settings.qualification_article_47 }}";
+    //     map[48] = "{{ settings.qualification_article_48 }}";
+    //     map[49] = "{{ settings.qualification_article_49 }}";
+    //     map[50] = "{{ settings.qualification_article_50 }}";
+    //     map[51] = "{{ settings.qualification_article_51 }}";
+    //     return map;
+    // }
 
     function clearProviderSearchResults() {
         $('#tl-error').addClass("tl-hidden");

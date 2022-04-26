@@ -186,47 +186,9 @@
 </div>
 
 <script>
-    //Need this to be global scope for autocomplete
-    let findProvidersApiUrl = "{{ settings.find_provider_api_uri }}";
-    if (findProvidersApiUrl.substr(-1) !== '/') findProvidersApiUrl += '/';
-
     document.addEventListener('DOMContentLoaded', function () {
         if (!isAgent()) {
             $("#tl-home--ticket").show();
-        }
-    });
-
-    $(document).ready(function() {
-        $('#tl-search-term').val("");
-
-        $('#tl-search-term').keypress(function (e) {
-            if (e.which === 13) {
-                $("#tl-search-providers").click();
-                return false;
-            }
-        });
-
-        $("#tl-search-providers").click(function() {
-            const searchTerm = $("#tl-search-term").val().trim();
-
-            if (searchTerm === "") {
-                event.stopPropagation();
-                showSearchTermError("Enter a postcode or town");
-                return false;
-            }
-
-            $(location).attr('href', '/hc/en-gb/articles/{{settings.article_id_find_provider}}?searchTerm=' + encodeURIComponent(searchTerm));
-
-            return true;
-        });
-
-		$(".tl-fap-search-providers-form").submit(function() {
-			event.preventDefault();
-		});
-
-        function showSearchTermError(message) {
-            $("#tl-search-term-error").text(message);
-            $('#tl-search-term-error').removeClass("tl-hidden");
         }
     });
 
@@ -236,8 +198,11 @@
     });
 </script>
 
-<script src="{{asset 'accessible-autocomplete.min.js'}}"></script>
-<script src="{{asset 'locationAutocomplete.js'}}"></script>
+<script src="{{asset 'findProviderTile.js'}}"
+        data-findProviderRedirectUrl="/hc/en-gb/articles/{{settings.article_id_find_provider}}"
+        data-findProviderApiUri="{{ settings.find_provider_api_uri }}"
+        asp-append-version="true">
+</script>
 
 <!-- Start of tlevelsemployertest Zendesk Widget script -->
 <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key={{settings.answerbot_key}}"></script>
