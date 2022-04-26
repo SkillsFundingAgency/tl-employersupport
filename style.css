@@ -8275,20 +8275,20 @@ ul.govuk-radios label .gem-radios__input {
   flex-direction: column;
   flex-basis: 100%;
   flex: 1;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 25px;
+  padding-right: 25px;
   padding-top: 30px;
   padding-bottom: 30px;
   box-sizing: border-box;
 }
 @media (min-width: 40.0625em) {
   .tl-card--fap--left, .tl-card--fap--right {
-    padding-left: 25px;
+    padding-left: 40px;
   }
 }
 @media (min-width: 40.0625em) {
   .tl-card--fap--left, .tl-card--fap--right {
-    padding-right: 25px;
+    padding-right: 40px;
   }
 }
 @media (min-width: 40.0625em) {

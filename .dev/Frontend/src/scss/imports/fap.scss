@@ -21,8 +21,8 @@
         flex-direction: column;
         flex-basis: 100%;
         flex: 1;
-        @include govuk-responsive-padding(5, "left");
-        @include govuk-responsive-padding(5, "right");
+        @include govuk-responsive-padding(7, "left");
+        @include govuk-responsive-padding(7, "right");
         @include govuk-responsive-padding(8, "top");
         @include govuk-responsive-padding(8, "bottom");
         box-sizing: border-box;
