@@ -21,7 +21,7 @@
         flex-direction: column;
         flex-basis: 100%;
         flex: 1;
-        @include govuk-responsive-padding(0, "all");
+        @include govuk-responsive-padding(5, "all");
     }
 
     @include govuk-media-query($until: tablet) {
