@@ -197,26 +197,29 @@ if (searchTerm === "ERROR") {
         return true;
     }
 
-    // function loadQualificationMap() {
-    //     const map = {};
-    //     map[36] = "{{ settings.qualification_article_36 }}";
-    //     map[37] = "{{ settings.qualification_article_37 }}";
-    //     map[38] = "{{ settings.qualification_article_38 }}";
-    //     map[39] = "{{ settings.qualification_article_39 }}";
-    //     map[40] = "{{ settings.qualification_article_40 }}";
-    //     map[41] = "{{ settings.qualification_article_41 }}";
-    //     map[42] = "{{ settings.qualification_article_42 }}";
-    //     map[43] = "{{ settings.qualification_article_43 }}";
-    //     map[44] = "{{ settings.qualification_article_44 }}";
-    //     map[45] = "{{ settings.qualification_article_45 }}";
-    //     map[46] = "{{ settings.qualification_article_46 }}";
-    //     map[47] = "{{ settings.qualification_article_47 }}";
-    //     map[48] = "{{ settings.qualification_article_48 }}";
-    //     map[49] = "{{ settings.qualification_article_49 }}";
-    //     map[50] = "{{ settings.qualification_article_50 }}";
-    //     map[51] = "{{ settings.qualification_article_51 }}";
-    //     return map;
-    // }
+    function loadQualificationMap() {
+        const map = {};
+        map[36] = $('script[data-qualificationMap_36][data-qualificationMap_36!=null]').attr('data-qualificationMap_36');
+        map[37] = $('script[data-qualificationMap_37][data-qualificationMap_37!=null]').attr('data-qualificationMap_37');
+        map[38] = $('script[data-qualificationMap_38][data-qualificationMap_38!=null]').attr('data-qualificationMap_38');
+        map[39] = $('script[data-qualificationMap_39][data-qualificationMap_39!=null]').attr('data-qualificationMap_39');
+        map[40] = $('script[data-qualificationMap_40][data-qualificationMap_40!=null]').attr('data-qualificationMap_40');
+        map[41] = $('script[data-qualificationMap_41][data-qualificationMap_41!=null]').attr('data-qualificationMap_41');
+        map[42] = $('script[data-qualificationMap_42][data-qualificationMap_42!=null]').attr('data-qualificationMap_42');
+        map[43] = $('script[data-qualificationMap_43][data-qualificationMap_43!=null]').attr('data-qualificationMap_43');
+        map[44] = $('script[data-qualificationMap_44][data-qualificationMap_44!=null]').attr('data-qualificationMap_44');
+        map[45] = $('script[data-qualificationMap_45][data-qualificationMap_45!=null]').attr('data-qualificationMap_45');
+        map[46] = $('script[data-qualificationMap_46][data-qualificationMap_46!=null]').attr('data-qualificationMap_46');
+        map[47] = $('script[data-qualificationMap_47][data-qualificationMap_47!=null]').attr('data-qualificationMap_47');
+        map[48] = $('script[data-qualificationMap_48][data-qualificationMap_48!=null]').attr('data-qualificationMap_48');
+        map[49] = $('script[data-qualificationMap_49][data-qualificationMap_49!=null]').attr('data-qualificationMap_49');
+        map[50] = $('script[data-qualificationMap_50][data-qualificationMap_50!=null]').attr('data-qualificationMap_50');
+        map[51] = $('script[data-qualificationMap_51][data-qualificationMap_51!=null]').attr('data-qualificationMap_51');
+        console.log("Qualification map:");
+        console.log(map);
+        console.log(JSON.stringify(map));
+        return map;
+    }
 
     function clearProviderSearchResults() {
         $('#tl-error').addClass("tl-hidden");
