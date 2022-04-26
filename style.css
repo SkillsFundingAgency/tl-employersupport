@@ -8263,11 +8263,29 @@ ul.govuk-radios label .gem-radios__input {
   width: 100%;
   align-items: center;
   box-sizing: border-box;
-  padding: 0;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 @media (min-width: 40.0625em) {
   .tl-card--fap {
-    padding: 0;
+    padding-left: 15px;
+  }
+}
+@media (min-width: 40.0625em) {
+  .tl-card--fap {
+    padding-right: 15px;
+  }
+}
+@media (min-width: 40.0625em) {
+  .tl-card--fap {
+    padding-top: 50px;
+  }
+}
+@media (min-width: 40.0625em) {
+  .tl-card--fap {
+    padding-bottom: 50px;
   }
 }
 .tl-card--fap--left, .tl-card--fap--right {
@@ -8275,30 +8293,18 @@ ul.govuk-radios label .gem-radios__input {
   flex-direction: column;
   flex-basis: 100%;
   flex: 1;
-  padding-left: 25px;
-  padding-right: 25px;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
   box-sizing: border-box;
 }
 @media (min-width: 40.0625em) {
   .tl-card--fap--left, .tl-card--fap--right {
-    padding-left: 40px;
+    padding-left: 15px;
   }
 }
 @media (min-width: 40.0625em) {
   .tl-card--fap--left, .tl-card--fap--right {
-    padding-right: 40px;
-  }
-}
-@media (min-width: 40.0625em) {
-  .tl-card--fap--left, .tl-card--fap--right {
-    padding-top: 50px;
-  }
-}
-@media (min-width: 40.0625em) {
-  .tl-card--fap--left, .tl-card--fap--right {
-    padding-bottom: 50px;
+    padding-right: 15px;
   }
 }
 @media (max-width: 40.0525em) {
