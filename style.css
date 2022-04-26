@@ -7416,12 +7416,12 @@ x:-moz-any-link {
     padding: 20px;
   }
 }
-.tl-card--grey, .tl-home--banner--card {
+.tl-card--grey, .tl-card--fap, .tl-home--banner--card {
   background-color: #f3f2f1;
   padding: 30px;
 }
 @media (max-width: 40.0525em) {
-  .tl-card--grey, .tl-home--banner--card {
+  .tl-card--grey, .tl-card--fap, .tl-home--banner--card {
     padding: 20px;
   }
 }

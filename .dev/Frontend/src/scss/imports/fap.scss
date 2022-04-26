@@ -5,6 +5,10 @@
     float: right;
 }
 
+.tl-card--fap {
+    @extend .tl-card--grey;
+}
+
 
 .tl-fap-home--image {
     width: 100%;
