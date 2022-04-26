@@ -25,7 +25,7 @@
     }
 
 
-    @include govuk-media-query($until: desktop) {
+    @include govuk-media-query($until: tablet) {
         flex-direction: column;
 
         &--column {
