@@ -7097,7 +7097,7 @@ x:-moz-any-link {
   border-bottom: 4px solid #4c2c92;
   padding-top: 15px;
   padding-bottom: 15px;
-  line-height: 0.8 !important;
+  line-height: 1 !important;
   width: 100%;
   box-sizing: border-box;
 }
@@ -7110,6 +7110,10 @@ x:-moz-any-link {
   .tl-home--benefit {
     padding-bottom: 25px;
   }
+}
+.tl-home--benefit .govuk-body, .tl-home--benefit .tl-ticket--form #upload-dropzone span, .tl-ticket--form #upload-dropzone .tl-home--benefit span, .tl-home--benefit .tl-ticket--form p, .tl-ticket--form .tl-home--benefit p, .tl-home--benefit .tl-community--post--content p, .tl-community--post--content .tl-home--benefit p, .tl-home--benefit .tl-community-table-post--description, .tl-home--benefit .tl-search--filters .tl-search--filter--radio, .tl-search--filters .tl-home--benefit .tl-search--filter--radio, .tl-home--benefit .tl-article--content p, .tl-article--content .tl-home--benefit p {
+  position: relative;
+  top: -5px;
 }
 @media (max-width: 40.0525em) {
   .tl-home--benefit {
@@ -7175,7 +7179,7 @@ x:-moz-any-link {
     width: 100%;
     float: unset;
     margin: 0 0 20px 0;
-    min-height: 200px;
+    min-height: 140px;
   }
 }
 @media (max-width: 420px) {

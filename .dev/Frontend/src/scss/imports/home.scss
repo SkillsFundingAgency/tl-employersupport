@@ -38,9 +38,14 @@
     border-bottom: 4px solid $govuk-link-visited-colour;
     @include govuk-responsive-padding(5, "top");
     @include govuk-responsive-padding(5, "bottom");
-    line-height: 0.8 !important;
+    line-height: 1 !important;
     width: 100%;
     box-sizing: border-box;
+
+    .govuk-body {
+        position: relative;
+        top: -5px;
+    }
 
     @include govuk-media-query($until: tablet) {
         border-bottom: 3px solid $govuk-link-visited-colour;
@@ -88,7 +93,7 @@
             width: 100%;
             float: unset;
             margin: 0 0 20px 0;
-            min-height: 200px;
+            min-height: 140px;
         }
 
         @media(max-width: 420px) {
