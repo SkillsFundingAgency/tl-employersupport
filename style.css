@@ -8271,7 +8271,6 @@ ul.govuk-radios label .gem-radios__input {
   padding-right: 15px;
   padding-top: 30px;
   padding-bottom: 30px;
-  background-image: url($assets-map-png);
 }
 @media (min-width: 40.0625em) {
   .tl-card--fap {
@@ -8291,6 +8290,14 @@ ul.govuk-radios label .gem-radios__input {
 @media (min-width: 40.0625em) {
   .tl-card--fap {
     padding-bottom: 50px;
+  }
+}
+@media (min-width: 40.0625em) {
+  .tl-card--fap {
+    background-image: url($assets-map-png);
+    background-size: 713px auto;
+    background-repeat: no-repeat;
+    background-position: bottom -40px right -160px;
   }
 }
 .tl-card--fap--left, .tl-card--fap--right {
