@@ -70,7 +70,7 @@
       ]
     },
     {
-      "label": "Home Page Images",
+      "label": "Home Page IA Images",
       "variables": [
         {
           "identifier": "home_image_1",
@@ -113,6 +113,12 @@
           "type": "file",
           "description": "Home page image 7",
           "label": "Image 7"
+        },
+        {
+          "identifier": "home_image_lower",
+          "type": "file",
+          "description": "Home page lower section image",
+          "label": "Home page lower section image"
         }
       ]
     },

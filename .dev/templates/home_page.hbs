@@ -114,25 +114,34 @@
     <div class="govuk-width-container govuk-main-wrapper">
         <div class="govuk-grid-row govuk-!-margin-top-5">
             <div class="govuk-grid-column-two-thirds">
-                {{#each categories}}
-                {{#is name "Skill areas and courses"}}
-                <div class="tl-card--grey">
-                    <h3 class="govuk-heading-m">{{name}}</h3>
-                    {{#each sections}}
-                    {{#is name "Digital and IT"}}
+                <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-one-half">
+                        {{#each categories}}
+                        {{#is name "Skill areas and courses"}}
+                        <div class="tl-card--grey">
+                            <h3 class="govuk-heading-m">{{name}}</h3>
+                            {{#each sections}}
+                            {{#is name "Digital and IT"}}
 
-                    <h4 class="govuk-heading-s"><a href="{{url}}" class="govuk-link" GTMname="{{name}}">{{name}}</a></h4>
-                    <p class="govuk-body">{{excerpt description}}</p>
-                    {{/is}}
-                    {{/each}}
-                    <p class="govuk-body"><a href="{{url}}" class="govuk-link" GTMname="{{name}}">All skill areas</a></p>
+                            <h4 class="govuk-heading-s"><a href="{{url}}" class="govuk-link" GTMname="{{name}}">{{name}}</a></h4>
+                            <p class="govuk-body">{{excerpt description}}</p>
+                            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                            {{/is}}
+                            {{/each}}
+                            <p class="govuk-body"><a href="{{url}}" class="govuk-link" GTMname="{{name}}">All skill areas</a></p>
+                        </div>
+                        {{/is}}
+                        {{/each}}
+                    </div>
+                    <div class="govuk-grid-column-one-half">
+                        <img src="{{settings.home_image_lower}}"
+                    </div>
                 </div>
-                {{/is}}
-                {{/each}}
+
+                </div>
+                <div class="govuk-grid-column-one-third">
+                </div>
             </div>
-            <div class="govuk-grid-column-one-third">
-            </div>
-        </div>
     </div>
 </section>
 
