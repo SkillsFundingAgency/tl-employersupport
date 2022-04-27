@@ -1,7 +1,7 @@
 {
   "name": "GDS Style - Employer Support - Home Page Redesign",
   "author": "Ash Anderton",
-  "version": "0.1.392",
+  "version": "0.1.394",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [
@@ -38,7 +38,7 @@
           "type": "text",
           "description": "Home page banner text",
           "label": "Home page banner text",
-          "value": "T Levels: a new quaification developed in collaboration with employers."
+          "value": "T Levels: a new qualification developed in collaboration with employers."
         },
         {
           "identifier": "homepage_banner_button",

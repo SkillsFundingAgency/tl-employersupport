@@ -76,6 +76,10 @@
         width: calc(25% - 30px);
     }
 
+    h3 {
+        min-height: 50px;
+    }
+
     &--image {
         max-width: 100%;
         background-image: url("$home_image_1");
