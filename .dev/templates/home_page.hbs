@@ -92,13 +92,13 @@
             {{#each categories}}
             {{#isnt name "Find a T Level school or college"}}
             {{#isnt name "How this site works"}}
-            {{#isnt name "Workshops and webinars"}}
+            {{#isnt name "T Level workshops and webinars"}}
             {{#isnt name "Tailored support sessions"}}
             {{#isnt name "Skill areas and courses"}}
             <div class="tl-home--category">
                 <span class="tl-home--category--image"></span>
                 <h3 class="govuk-heading-s"><a href="{{url}}" class="govuk-link" GTMname="{{name}}">{{name}}</a></h3>
-                <p class="govuk-body">{{excerpt description}}</p>
+                <p class="govuk-body">{{excerpt description characters=200}}</p>
             </div>
             {{/isnt}}
             {{/isnt}}
@@ -111,9 +111,9 @@
         </div>
     </div>
 
-    <div class="govuk-width-container govuk-main-wrapper">
-        <div class="govuk-grid-row govuk-!-margin-top-5">
-            <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-width-container">
+        <div class="govuk-grid-row tl-row-fill">
+            <div class="govuk-grid-column-two-thirds tl-row-fill">
                 <div class="tl-card--grey">
                     {{#each categories}}
                     {{#is name "Skill areas and courses"}}
@@ -126,99 +126,99 @@
                             {{#is name "Digital and IT"}}
 
                             <h4 class="govuk-heading-s"><a href="{{url}}" class="govuk-link" GTMname="{{name}}">{{name}}</a></h4>
-                            <p class="govuk-body">{{excerpt description}}</p>
-                            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                            <p class="govuk-body">{{excerpt description characters=200}}</p>
                             {{/is}}
                             {{/each}}
-                            <p class="govuk-body"><a href="{{url}}" class="govuk-link" GTMname="{{name}}">All skill areas</a></p>
 
                         </div>
                         <div class="govuk-grid-column-one-half">
-                            <img class="tl-image-100" src="{{settings.home_image_lower}}" />
+                            <img class="tl-image-100" id="tl-home-lower--image" src="" />
                         </div>
 
                     </div>
+                    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+                    <p class="govuk-body"><a href="{{url}}" class="govuk-link" GTMname="{{name}}">All skill areas</a></p>
+
                     {{/is}}
                     {{/each}}
                 </div>
 
             </div>
-                <div class="govuk-grid-column-one-third">
+            <div class="govuk-grid-column-one-third tl-row-fill">
+                <div class="tl-card--grey">
+
+                    {{#each categories}}
+                    {{#is name "T Level workshops and webinars"}}
+                    <h3 class="govuk-heading-m">{{name}}</h3>
+
+                    {{#each sections}}
+                    {{#each articles}}
+                    {{#if @first}}
+                    <h4 class="govuk-heading-s govuk-!-margin-bottom-1"><a id="tl-home-waw--article" class="govuk-link" href="{{url}}">{{title}}</a></h4>
+                    <span class="govuk-body-s tl-text-headercase" id="tl-article--date--{{id}}"></span>
+                    <script>
+                            $.getJSON('/api/v2/help_center/articles/{{id}}', function (articlelabels) {
+
+                                if (articlelabels.article.label_names && articlelabels.article.label_names.length) {
+                                    articlelabels.article.label_names.forEach(function (labelname) {
+
+                                        if (labelname.indexOf("date") != -1) {
+                                            var date = labelname.split('/')[1];
+                                            $("#tl-article--date--{{id}}").text(date);
+                                        }
+                                    });
+                                }
+                            });
+
+                    </script>
+
+                    {{/if}}
+                    {{/each}}
+                    {{/each}}
+                    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+                    <p class="govuk-body"><a href="{{url}}" class="govuk-link" GTMname="{{name}}">All workshops and webinars</a></p>
+
+                    {{/is}}
+                    {{/each}}
                 </div>
+
             </div>
+        </div>
     </div>
 </section>
 
-{{#each categories}}
-{{#is name "Workshops and webinars"}}
-{{#each sections}}
-<div class="tl-home--category">
-    <span class="tl-home--category--image"></span>
-    <h3 class="govuk-heading-m"><a href="{{url}}" class="govuk-link" GTMname="{{name}}">{{name}}</a></h3>
-    <p class="govuk-body">{{excerpt description}}</p>
-</div>
-{{/each}}
-{{/is}}
-{{/each}}
+<!-- Lower Boxes -->
+<section id="tl-home--lower">
+    <div class="govuk-width-container govuk-!-margin-top-5 govuk-!-margin-bottom-5">
 
+        <div id="tl-home--contact" class="tl-js-visible">
+            <div class="govuk-grid-row tl-row-fill">
+                <div class="govuk-grid-column-one-half tl-row-fill">
+                    <div class="tl-card--purple" id="tl-home--question">
+                        <h3 class="govuk-heading-m">Have a T Levels question?</h3>
+                        <p class="govuk-body">If you need more information or can't find what you're looking for, our T Levels Support Bot is here to help. </p>
+                        <p class="govuk-body"><a href="#" id="tl-home--answerbot" class="govuk-link">Ask a question</a></p>
+                    </div>
+                </div>
 
-<div class="govuk-grid-row govuk-!-margin-top-9">
-    <div class="govuk-grid-column-one-half">
-        <h2 class="govuk-heading-l">About T Levels</h2>
-        <p class="govuk-body">
-            <a href="https://www.tlevels.gov.uk/" class="govuk-link" id="tl-home--tlevels">T Levels</a> are a new qualification for students aged 16-19 who've finished GCSEs. They sit alongside A Levels and apprenticeships to give young people the technical and practical skills needed to be an asset in the workplace.
-        </p>
-        <p class="govuk-body">T Levels combine classroom learning with a substantial industry placement.</p>
-    </div>
-
-    <div class="govuk-grid-column-one-half">
-        <iframe class="tl-home--video" id="tl-home--video" width="560" height="315" src="https://www.youtube-nocookie.com/embed/KBGVopFzq5M?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <details class="govuk-details govuk-!-margin-top-2 govuk-!-margin-bottom-0" data-module="govuk-details">
-            <summary class="govuk-details__summary">
-                <span class="govuk-details__summary-text">
-                    Video transcript
-                </span>
-            </summary>
-            <div class="govuk-details__text">
-                <p class="govuk-body">Welcome to the next level - T Levels. The post-GCSE qualification that combines in-class  learning and work experience. It's the best of both worlds, where theory meets practice. It's the know-how.</p>
-
-                <p class="govuk-body">T Levels are designed with 250 leading employers, so students can focus on the knowledge and skills businesses really need today and tomorrow. The subject list is growing year on year, with 24 courses available by 2023. Each one opening doors to work placements,  industry contacts and career paths.</p>
-
-                <p class="govuk-body">One T Level is worth three A Levels. From here students can go anywhere: onto university, take on a higher apprenticeship, or launch your career and get straight into work. This is more than a qualification. Designed with employers, we're creating young people who are work ready. Full of fresh ideas and practical skills ready to shake up the industry and take businesses to the next level.</p>
-
-                <p class="govuk-body">So what are you waiting for? Get clued up, skilled up and levelled up. Opportunities  are there for the taking.</p>
-
-                <p class="govuk-body">Get ahead.</p>
-
-                <p class="govuk-body">T Levels, the next level qualification.</p>
-            </div>
-        </details>
-
-    </div>
-</div>
-<div id="tl-home--contact" class="govuk-!-margin-top-8 tl-js-visible">
-    <div class="govuk-grid-row tl-row-fill">
-        <div class="govuk-grid-column-one-half tl-row-fill">
-            <div class="tl-card" id="tl-home--question">
-                <h3 class="govuk-heading-m">Have a T Levels question?</h3>
-                <p class="govuk-body">If you need more information or can't find what you're looking for, our T Levels Support Bot is here to help. </p>
-                <p class="govuk-body"><a href="#" id="tl-home--answerbot" class="govuk-link">Ask a question</a></p>
-            </div>
-        </div>
-
-        <div class="govuk-grid-column-one-half tl-row-fill">
-            <div class="tl-card tl-js-hidden" id="tl-home--ticket">
-                <h3 class="govuk-heading-m">Contact us</h3>
-                <p class="govuk-body">If you'd like to speak to someone about T Levels or industry placements, contact us:</p>
-                <ul class="govuk-list govuk-list--bullet">
-                    <li>{{#link 'new_request' class='govuk-link tl-home--contact'}}online{{/link}}</li>
-                    <li>on 0800 150 600 (choose option 4), between 8am to 8pm, Monday to Friday. <a href="https://www.gov.uk/call-charges" id="tl-home--charges" class="govuk-link" target="_blank">Find out about call charges</a>.</li>
-                </ul>
+                <div class="govuk-grid-column-one-half tl-row-fill">
+                    <div class="tl-card--purple tl-js-hidden" id="tl-home--ticket">
+                        <h3 class="govuk-heading-m">Contact us</h3>
+                        <p class="govuk-body">If you'd like to speak to someone about T Levels or industry placements, contact us:</p>
+                        <ul class="govuk-list govuk-list--bullet">
+                            <li>{{#link 'new_request' class='govuk-link tl-home--contact'}}online{{/link}}</li>
+                            <li>on 0800 150 600 (choose option 4), between 8am to 8pm, Monday to Friday. <a href="https://www.gov.uk/call-charges" id="tl-home--charges" class="govuk-link" target="_blank">Find out about call charges</a>.</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-    </div>
+</section>
+
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -231,6 +231,11 @@
         openHelp();
         event.preventDefault();
     });
+
+    $("#tl-home-lower--image").attr("src", "{{settings.home_image_lower}}");
+
+
+    
 </script>
 
 <script src="{{asset 'findProviderTile.js'}}"

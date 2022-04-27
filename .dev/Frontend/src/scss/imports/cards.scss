@@ -16,4 +16,16 @@
             padding: 20px;
         }
     }
+
+    &--purple {
+        background-color: govuk-colour("light-grey");
+        padding: 30px;
+        margin: 20px 0;
+        border-bottom: 5px solid $govuk-link-visited-colour;
+
+
+        @include govuk-media-query ($until: tablet) {
+            padding: 20px;
+        }
+    }
 }

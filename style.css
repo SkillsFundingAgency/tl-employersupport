@@ -7429,6 +7429,17 @@ x:-moz-any-link {
     padding: 20px;
   }
 }
+.tl-card--purple {
+  background-color: #f3f2f1;
+  padding: 30px;
+  margin: 20px 0;
+  border-bottom: 5px solid #4c2c92;
+}
+@media (max-width: 40.0525em) {
+  .tl-card--purple {
+    padding: 20px;
+  }
+}
 
 /*** cookie msg starts ***/
 .gem-c-cookie-banner__wrapper.govuk-width-container, .tl-article--vote .gem-c-cookie-banner__wrapper.tl-article--vote--container, .tl-article--resources .gem-c-cookie-banner__wrapper.tl-article--resources--container {
