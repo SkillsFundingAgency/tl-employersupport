@@ -1308,25 +1308,28 @@ let isFapSearchInProgress = false;
 
 $(document).ready(function () {
 
-    let findProvidersApiUrl =
+    let findProvidersApiUri =
         $('script[data-findProviderApiUri][data-findProviderApiUri!=null]').attr('data-findProviderApiUri');
     let findProvidersAppId =
         $('script[data-findProviderAppId][data-findProviderAppId!=null]').attr('data-findProviderAppId');
     let findProvidersApiKey =
         $('script[data-findProviderApiKey][data-findProviderApiKey!=null]').attr('data-findProviderApiKey');
 
-    if (typeof findProvidersApiUrl === "undefined" ||
+    if (typeof findProvidersApiUri === "undefined" ||
         typeof findProvidersAppId === "undefined" ||
         typeof findProvidersApiKey === "undefined") {
         console.log('findProvider script requires data-findProviderApiUri, data-findProviderAppId and data-findProviderApiKey to be passed via the script tag');
         return;
     }
 
-    if (findProvidersApiUrl !== null && findProvidersApiUrl.substr(-1) !== '/') findProvidersApiUrl += '/';
+    if (findProvidersApiUri !== null && findProvidersApiUri.substr(-1) !== '/') findProvidersApiUri += '/';
 
     let currentPage = 0;
     let currentSearchTerm = null;
     let currentSkillAreaIds = [];
+
+    //initialize autocomplete
+    new LocationAutocomplete(findProvidersApiUri);
 
     if ($("#tl-skill-area-filter").length) loadRoutes();
 
@@ -1382,7 +1385,7 @@ $(document).ready(function () {
     }
 
     function loadRoutes() {
-        const uri = findProvidersApiUrl + "routes";
+        const uri = findProvidersApiUri + "routes";
         $.ajax({
             type: "GET",
             url: uri,
@@ -1459,7 +1462,7 @@ if (searchTerm === "ERROR") {
         pageSize = (pageSize === undefined ? 5 : pageSize);
 
         const encodedSearchTerm = encodeURIComponent(searchTerm).replace(/'/g, '%27');
-        let uri = findProvidersApiUrl + "providers?searchTerm=" + encodedSearchTerm + '&page=' + page + '&pageSize=' + pageSize;
+        let uri = findProvidersApiUri + "providers?searchTerm=" + encodedSearchTerm + '&page=' + page + '&pageSize=' + pageSize;
 
         if (skillAreaIds && skillAreaIds.length > 0) {
             skillAreaIds.forEach(function (skillAreaId) {
@@ -1675,20 +1678,13 @@ if (searchTerm === "ERROR") {
 
 });
 
-(function ($) {
-    //Autocomplete for find provider search term
+function LocationAutocomplete(findProvidersApiUri) {
+    var that = this;
+    this.findProvidersApiUri = findProvidersApiUri;
+
     const $keywordsInput = $('#tl-search-term');
-    if (!$keywordsInput.length) return;
 
-    let findProvidersApiUrl =
-        $('script[data-findProviderApiUri][data-findProviderApiUri!=null]').attr('data-findProviderApiUri');
-
-    if (typeof findProvidersApiUrl === 'undefined') {
-        console.log('autocomplete script requires data-findProviderApiUri to be passed via the script tag');
-        return;
-    }
-
-    if (findProvidersApiUrl !== null && findProvidersApiUrl.substr(-1) !== '/') findProvidersApiUrl += '/';
+    if (!$keywordsInput.length) console.log('autocomplete #tl-search-term not found');
 
     $keywordsInput.wrap('<div id="autocomplete-container" class="tl-autocomplete-wrap"></div>');
     const container = document.querySelector('#autocomplete-container');
@@ -1701,7 +1697,7 @@ if (searchTerm === "ERROR") {
         }
         var results = [];
         $.ajax({
-            url: findProvidersApiUrl + "locations",
+            url: that.findProvidersApiUri + "locations",
             type: "get",
             dataType: 'json',
             data: { searchTerm: query }
@@ -1725,7 +1721,7 @@ if (searchTerm === "ERROR") {
     accessibleAutocomplete({
         element: container,
         id: 'tl-search-term',
-        name: 'tl-search-term',
+        name: 'tl-search-term', 
         displayMenu: 'overlay',
         showNoOptionsFound: false,
         minLength: 3,
@@ -1735,5 +1731,4 @@ if (searchTerm === "ERROR") {
         confirmOnBlur: false,
         autoselect: true
     });
-
-})(jQuery);
+};
