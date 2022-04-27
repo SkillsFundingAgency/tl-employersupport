@@ -7,16 +7,16 @@ $(document).ready(function () {
 
     let findProviderRedirectUrl =
         $('script[data-findProviderRedirectUrl][data-findProviderRedirectUrl!=null]').attr('data-findProviderRedirectUrl');
-    let findProvidersApiUrl = 
+    let findProvidersApiUri = 
         $('script[data-findProviderApiUri][data-findProviderApiUri!=null]').attr('data-findProviderApiUri');
     
     if (typeof findProviderRedirectUrl === "undefined" ||
-        typeof findProvidersApiUrl === "undefined") {
+        typeof findProvidersApiUri === "undefined") {
         console.log('findProviderTile script requires data-findProviderApiUri and data-findProviderRedirectUrl to be passed via the script tag');
         return;
     }
 
-    if (findProvidersApiUrl !== null && findProvidersApiUrl.substr(-1) !== '/') findProvidersApiUrl += '/';
+    if (findProvidersApiUri !== null && findProvidersApiUri.substr(-1) !== '/') findProvidersApiUri += '/';
     
     //Only works on first fap tile - we are assuming there is only one
     fapTileContainer.empty();
