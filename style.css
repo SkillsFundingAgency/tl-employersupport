@@ -8371,6 +8371,15 @@ ul.govuk-radios label .gem-radios__input {
   }
 }
 
+.tl-fap-home--submit {
+  margin-top: 5px;
+}
+@media (min-width: 40.0625em) {
+  .tl-fap-home--submit {
+    margin-top: 5px;
+  }
+}
+
 /*AUTOCOMPELTE*/
 .tl-autocomplete-wrap {
   display: inline-block;
@@ -8379,12 +8388,6 @@ ul.govuk-radios label .gem-radios__input {
 @media (max-width: 40.0525em) {
   .tl-autocomplete-wrap {
     width: 100%;
-    margin-bottom: 5px;
-  }
-}
-@media (max-width: 40.0525em) and (min-width: 40.0625em) {
-  .tl-autocomplete-wrap {
-    margin-bottom: 5px;
   }
 }
 
@@ -8405,6 +8408,13 @@ ul.govuk-radios label .gem-radios__input {
   /* BUG: Safari 10 on macOS seems to add an implicit margin. */
   width: 100%;
   background: white;
+  margin-top: 5px;
+}
+@media (min-width: 40.0625em) {
+  .autocomplete__hint,
+.autocomplete__input {
+    margin-top: 5px;
+  }
 }
 
 .autocomplete__input {

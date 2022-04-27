@@ -81,6 +81,10 @@
     }
 }
 
+.tl-fap-home--submit {
+    @include govuk-responsive-margin(1, "top");
+}
+
 
 
 /*AUTOCOMPELTE*/
@@ -90,7 +94,6 @@
 
     @include govuk-media-query ($until: tablet) {
         width: 100%;
-        @include govuk-responsive-margin(1, "bottom");
     }
 }
 
@@ -110,6 +113,7 @@
     margin-bottom: 0; /* BUG: Safari 10 on macOS seems to add an implicit margin. */
     width: 100%;
     background: white;
+    @include govuk-responsive-margin(1, "top");
 }
 
 .autocomplete__input {
