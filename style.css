@@ -7162,8 +7162,6 @@ x:-moz-any-link {
   .tl-home--category {
     width: calc(25% - 30px);
   }
-}
-@media (min-width: 40.0625em) {
   .tl-home--category h3 {
     min-height: 50px;
   }

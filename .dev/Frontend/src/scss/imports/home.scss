@@ -74,9 +74,7 @@
 
     @include govuk-media-query($from: desktop) {
         width: calc(25% - 30px);
-    }
 
-    @include govuk-media-query($from: tablet) {
         h3 {
             min-height: 50px;
         }
