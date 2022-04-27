@@ -110,6 +110,30 @@
 
         </div>
     </div>
+
+    <div class="govuk-width-container govuk-main-wrapper">
+        <div class="govuk-grid-row govuk-!-margin-top-5">
+            <div class="govuk-grid-column-two-thirds">
+                {{#each categories}}
+                {{#is name "Skill areas and courses"}}
+                <div class="tl-card--gray">
+                    <h3 class="govuk-heading-l">{{name}}</h3>
+                    {{#each sections}}
+                    {{#is name "Digital and IT"}}
+
+                    <h4 class="govuk-heading-m"><a href="{{url}}" class="govuk-link" GTMname="{{name}}">{{name}}</a></h4>
+                    <p class="govuk-body">{{excerpt description}}</p>
+                    {{/is}}
+                    {{/each}}
+                    <p class="govuk-body"><a href="{{url}}" class="govuk-link" GTMname="{{name}}">All skill areas</a></p>
+                </div>
+                {{/is}}
+                {{/each}}
+            </div>
+            <div class="govuk-grid-column-one-third">
+            </div>
+        </div>
+    </div>
 </section>
 
 {{#each categories}}
