@@ -2,8 +2,8 @@
 //# sourceMappingURL=accessible-autocomplete.min.js.map
 $(document).ready(function () {
     // Find Provider tile
-
-    if (!$('#tl-search-term').length) return;
+    const fapTileContainer = $(".tl-fap-tile").first();
+    if (!fapTileContainer.length) return;
 
     let findProviderRedirectUrl =
         $('script[data-findProviderRedirectUrl][data-findProviderRedirectUrl!=null]').attr('data-findProviderRedirectUrl');
@@ -18,6 +18,33 @@ $(document).ready(function () {
 
     if (findProvidersApiUrl !== null && findProvidersApiUrl.substr(-1) !== '/') findProvidersApiUrl += '/';
     
+    //Only works on first fap tile - we are assuming there is only one
+    fapTileContainer.empty();
+    fapTileContainer.append(
+        '<div class="govuk-grid-row govuk-!-margin-top-7 tl-fap-home--container"> \
+            <div class="govuk-grid-column-full"> \
+                <div class="tl-card--fap"> \
+                    <div class="tl-card--fap--left"> \
+                        <h1 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-4">Partner with a school or college</h1> \
+                        <p class="govuk-body">Offer a placement or find out more about their T Level programme.</p> \
+                    </div> \
+                    <div class="tl-card--fap--right"> \
+                        <form role="search" class="tl-fap-search-providers-form"> \
+                            <span class="govuk-error-message tl-hidden" id="tl-search-term-error">You must enter a postcode or town</span> \
+                            <label class="govuk-visually-hidden" for="tl-search-term">Enter postcode or town</label> \
+                            <input class="govuk-input govuk-input--width-10 tl-fap-home--input" id="tl-search-term" name="tl-search-term" type="text" placeholder="Enter postcode or town"> \
+                            <button class="govuk-button tl-button--blue tl-fap-home--submit govuk-!-margin-bottom-0" id="tl-search-providers" data-module="govuk-button"> \
+                                Search \
+                            </button> \
+                        </form> \
+                    </div> \
+                </div> \
+            </div> \
+        </div>');
+
+    //initialize autocomplete
+    new LocationAutocomplete(findProvidersApiUri);
+
     $('#tl-search-term').val("");
 
     $('#tl-search-term').keypress(function(e) {
@@ -52,20 +79,13 @@ $(document).ready(function () {
     }
 });
 
-(function ($) {
-    //Autocomplete for find provider search term
+function LocationAutocomplete(findProvidersApiUri) {
+    var that = this;
+    this.findProvidersApiUri = findProvidersApiUri;
+
     const $keywordsInput = $('#tl-search-term');
-    if (!$keywordsInput.length) return;
 
-    let findProvidersApiUrl =
-        $('script[data-findProviderApiUri][data-findProviderApiUri!=null]').attr('data-findProviderApiUri');
-
-    if (typeof findProvidersApiUrl === 'undefined') {
-        console.log('autocomplete script requires data-findProviderApiUri to be passed via the script tag');
-        return;
-    }
-
-    if (findProvidersApiUrl !== null && findProvidersApiUrl.substr(-1) !== '/') findProvidersApiUrl += '/';
+    if (!$keywordsInput.length) console.log('autocomplete #tl-search-term not found');
 
     $keywordsInput.wrap('<div id="autocomplete-container" class="tl-autocomplete-wrap"></div>');
     const container = document.querySelector('#autocomplete-container');
@@ -78,7 +98,7 @@ $(document).ready(function () {
         }
         var results = [];
         $.ajax({
-            url: findProvidersApiUrl + "locations",
+            url: that.findProvidersApiUri + "locations",
             type: "get",
             dataType: 'json',
             data: { searchTerm: query }
@@ -102,7 +122,7 @@ $(document).ready(function () {
     accessibleAutocomplete({
         element: container,
         id: 'tl-search-term',
-        name: 'tl-search-term',
+        name: 'tl-search-term', 
         displayMenu: 'overlay',
         showNoOptionsFound: false,
         minLength: 3,
@@ -112,5 +132,4 @@ $(document).ready(function () {
         confirmOnBlur: false,
         autoselect: true
     });
-
-})(jQuery);
+};
