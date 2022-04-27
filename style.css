@@ -8271,6 +8271,7 @@ ul.govuk-radios label .gem-radios__input {
   padding-right: 15px;
   padding-top: 30px;
   padding-bottom: 30px;
+  background-image: url($assets-map-png);
 }
 @media (min-width: 40.0625em) {
   .tl-card--fap {

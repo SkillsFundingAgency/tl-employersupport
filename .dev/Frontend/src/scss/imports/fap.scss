@@ -17,6 +17,7 @@
     @include govuk-responsive-padding(3, "right");
     @include govuk-responsive-padding(8, "top");
     @include govuk-responsive-padding(8, "bottom");
+    background-image: govuk-image-url("map.png");
 
 
 
