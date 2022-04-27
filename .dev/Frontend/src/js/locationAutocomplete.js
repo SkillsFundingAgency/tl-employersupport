@@ -53,7 +53,7 @@
         showNoOptionsFound: false,
         minLength: 3,
         source: getSuggestions,
-        placeholder: "Enter a postcode or town",
+        placeholder: "Enter postcode or town",
         onConfirm: onConfirm,
         confirmOnBlur: false,
         autoselect: true

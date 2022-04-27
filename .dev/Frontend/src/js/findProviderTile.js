@@ -30,7 +30,7 @@ $(document).ready(function () {
 
         if (searchTerm === "") {
             event.stopPropagation();
-            showSearchTermError("Enter a postcode or town");
+            showSearchTermError("Enter postcode or town");
             return false;
         }
 

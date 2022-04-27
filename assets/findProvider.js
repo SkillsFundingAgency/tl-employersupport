@@ -1436,7 +1436,7 @@ if (searchTerm === "ERROR") {
         searchTerm = searchTerm ? searchTerm.trim() : "";
         if (searchTerm === "") {
             if (event) event.stopPropagation();
-            showSearchTermError("Enter a postcode or town");
+            showSearchTermError("Enter postcode or town");
             return false;
         }
 
@@ -1730,7 +1730,7 @@ if (searchTerm === "ERROR") {
         showNoOptionsFound: false,
         minLength: 3,
         source: getSuggestions,
-        placeholder: "Enter a postcode or town",
+        placeholder: "Enter postcode or town",
         onConfirm: onConfirm,
         confirmOnBlur: false,
         autoselect: true

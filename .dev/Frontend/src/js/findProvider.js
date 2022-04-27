@@ -131,7 +131,7 @@ if (searchTerm === "ERROR") {
         searchTerm = searchTerm ? searchTerm.trim() : "";
         if (searchTerm === "") {
             if (event) event.stopPropagation();
-            showSearchTermError("Enter a postcode or town");
+            showSearchTermError("Enter postcode or town");
             return false;
         }
 
