@@ -115,13 +115,13 @@
         <div class="govuk-grid-row govuk-!-margin-top-5">
             <div class="govuk-grid-column-two-thirds">
                 <div class="tl-card--grey">
-
+                    {{#each categories}}
+                    {{#is name "Skill areas and courses"}}
+                    <h3 class="govuk-heading-m">{{name}}</h3>
                     <div class="govuk-grid-row">
                         <div class="govuk-grid-column-one-half">
 
-                            {{#each categories}}
-                            {{#is name "Skill areas and courses"}}
-                            <h3 class="govuk-heading-m">{{name}}</h3>
+
                             {{#each sections}}
                             {{#is name "Digital and IT"}}
 
@@ -131,14 +131,15 @@
                             {{/is}}
                             {{/each}}
                             <p class="govuk-body"><a href="{{url}}" class="govuk-link" GTMname="{{name}}">All skill areas</a></p>
-                            {{/is}}
-                            {{/each}}
+
                         </div>
                         <div class="govuk-grid-column-one-half">
-                            <img src="{{settings.home_image_lower}}"
+                            <img class="tl-image-100" src="{{settings.home_image_lower}}"
                         </div>
 
                     </div>
+                    {{/is}}
+                    {{/each}}
                 </div>
 
             </div>
