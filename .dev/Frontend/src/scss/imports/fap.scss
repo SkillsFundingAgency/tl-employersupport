@@ -81,18 +81,17 @@
     }
 }
 
-.tl-fap-home--submit {
-    max-width: 100px;
 
-    @include govuk-media-query ($from: tablet) {
-        max-width: unset;
-    }
-}
 
 /*AUTOCOMPELTE*/
 .tl-autocomplete-wrap {
     display: inline-block;
     font-family: $govuk-font-family;
+
+    @include govuk-media-query ($until: tablet) {
+        width: 100%;
+        @include govuk-responsive-margin(1, "bottom");
+    }
 }
 
 
