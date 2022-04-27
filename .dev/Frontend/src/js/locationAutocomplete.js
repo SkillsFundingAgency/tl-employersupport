@@ -1,17 +1,10 @@
-(function ($) {
-    //Autocomplete for find provider search term
+function LocationAutocomplete(findProvidersApiUri) {
+    var that = this;
+    this.findProvidersApiUri = findProvidersApiUri;
+
     const $keywordsInput = $('#tl-search-term');
-    if (!$keywordsInput.length) return;
 
-    let findProvidersApiUrl =
-        $('script[data-findProviderApiUri][data-findProviderApiUri!=null]').attr('data-findProviderApiUri');
-
-    if (typeof findProvidersApiUrl === 'undefined') {
-        console.log('autocomplete script requires data-findProviderApiUri to be passed via the script tag');
-        return;
-    }
-
-    if (findProvidersApiUrl !== null && findProvidersApiUrl.substr(-1) !== '/') findProvidersApiUrl += '/';
+    if (!$keywordsInput.length) console.log('autocomplete #tl-search-term not found');
 
     $keywordsInput.wrap('<div id="autocomplete-container" class="tl-autocomplete-wrap"></div>');
     const container = document.querySelector('#autocomplete-container');
@@ -24,7 +17,7 @@
         }
         var results = [];
         $.ajax({
-            url: findProvidersApiUrl + "locations",
+            url: that.findProvidersApiUri + "locations",
             type: "get",
             dataType: 'json',
             data: { searchTerm: query }
@@ -48,7 +41,7 @@
     accessibleAutocomplete({
         element: container,
         id: 'tl-search-term',
-        name: 'tl-search-term',
+        name: 'tl-search-term', 
         displayMenu: 'overlay',
         showNoOptionsFound: false,
         minLength: 3,
@@ -58,5 +51,4 @@
         confirmOnBlur: false,
         autoselect: true
     });
-
-})(jQuery);
+};

@@ -16,6 +16,9 @@ $(document).ready(function () {
 
     if (findProvidersApiUrl !== null && findProvidersApiUrl.substr(-1) !== '/') findProvidersApiUrl += '/';
     
+    //initialize autocomplete
+    new LocationAutocomplete(findProvidersApiUri);
+
     $('#tl-search-term').val("");
 
     $('#tl-search-term').keypress(function(e) {
