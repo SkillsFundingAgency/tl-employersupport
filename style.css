@@ -7163,8 +7163,10 @@ x:-moz-any-link {
     width: calc(25% - 30px);
   }
 }
-.tl-home--category h3 {
-  min-height: 50px;
+@media (min-width: 40.0625em) {
+  .tl-home--category h3 {
+    min-height: 50px;
+  }
 }
 .tl-home--category--image {
   max-width: 100%;

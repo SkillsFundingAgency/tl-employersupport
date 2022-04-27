@@ -76,9 +76,13 @@
         width: calc(25% - 30px);
     }
 
-    h3 {
-        min-height: 50px;
+    @include govuk-media-query($from: tablet) {
+        h3 {
+            min-height: 50px;
+        }
     }
+
+
 
     &--image {
         max-width: 100%;
@@ -87,7 +91,6 @@
         min-height: 160px;
         display: block;
         background-repeat: no-repeat;
-
         width: 50%;
         float: left;
         margin: 0 20px 20px 0;
