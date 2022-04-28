@@ -6,7 +6,7 @@
     display: none;
 }
 
-.tl-image-100 {
+.tl-image-100, .tl-width-100 {
     width: 100%;
 }
 
@@ -139,4 +139,11 @@
         order: -1
     }
 
+}
+
+
+.tl-image--cover {
+    object-fit: cover;
+    min-width: 100%;
+    min-height: 100%
 }
