@@ -70,8 +70,8 @@
         {
           "identifier": "homepage_skillarea",
           "type": "text",
-          "description": "Home page skill area box - enter the skill area name",
-          "label": "Home page skill area box - enter the skill area name",
+          "description": "Home page skill area box",
+          "label": "Home page skill area box ",
           "value": "Digital and IT"
         }
       ]
