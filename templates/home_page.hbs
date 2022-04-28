@@ -16,7 +16,7 @@
                         <div class="tl-home--banner--card govuk-!-padding-8">
                             <h1 class="govuk-heading-xl govuk-!-margin-bottom-5 govuk-!-margin-top-0">{{settings.homepage_banner_title}}</h1>
                             <p class="govuk-body-l">{{settings.homepage_banner_text}}</p>
-                            <p class="govuk-body govuk-!-margin-bottom-0"><a class="govuk-button govuk-!-margin-bottom-0" href="/hc/en-gb/articles/{{settings.homepage_banner_button_article}}">{{settings.homepage_banner_button}}</a></p>
+                            <p class="govuk-body govuk-!-margin-bottom-0"><a class="govuk-button govuk-!-margin-bottom-0" id="tl-home-banner--cta" href="/hc/en-gb/articles/{{settings.homepage_banner_button_article}}">{{settings.homepage_banner_button}}</a></p>
                         </div>
                     </div>
                     <div class="tl-home--banner--column">
@@ -47,7 +47,7 @@
                 <h2 class="govuk-heading-l tl-home--benefit"><span class="govuk-!-font-weight-regular">Shape the </span> future<br /><span class="govuk-body">of your industry </span></h2>
             </div>
             <div class="govuk-grid-column-one-third tl-row-fill">
-                <h2 class="govuk-heading-l tl-home--benefit"><span class="govuk-!-font-weight-regular">5</span> simple <span class="govuk-!-font-weight-regular">steps</span><br /><span class="govuk-body-s"><a href="/hc/en-gb/sections/{{settings.section_id_how_industry}}" class="govuk-link">Find out how industry placements work</a></span></h2>
+                <h2 class="govuk-heading-l tl-home--benefit"><span class="govuk-!-font-weight-regular">5</span> simple <span class="govuk-!-font-weight-regular">steps</span><br /><span class="govuk-body-s"><a href="/hc/en-gb/sections/{{settings.section_id_how_industry}}" class="govuk-link" id="tl-home-banner--industryplacements">Find out how industry placements work</a></span></h2>
             </div>
         </div>
     </div>
@@ -104,8 +104,7 @@
 
                             {{#each sections}}
                             {{#is name "Digital and IT"}}
-
-                            <h4 class="govuk-heading-s"><a href="{{url}}" class="govuk-link" GTMname="{{name}}">{{name}}</a></h4>
+                            <h4 class="govuk-heading-s"><a href="{{url}}" class="govuk-link" id="tl-home-skillareas--digital">{{name}}</a></h4>
                             <p class="govuk-body">{{excerpt description characters=200}}</p>
                             {{/is}}
                             {{/each}}
@@ -118,7 +117,7 @@
                     </div>
                     <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
-                    <p class="govuk-body"><a href="{{url}}" class="govuk-link" GTMname="{{name}}">All skill areas</a></p>
+                    <p class="govuk-body"><a href="{{url}}" class="govuk-link" id="tl-home-skillareas--all">All skill areas</a></p>
 
                     {{/is}}
                     {{/each}}
@@ -158,7 +157,7 @@
                     {{/each}}
                     <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
                     {{#each sections}}
-                    <p class="govuk-body"><a href="{{url}}" class="govuk-link" GTMname="{{name}}">All workshops and webinars</a></p>
+                    <p class="govuk-body"><a href="{{url}}" class="govuk-link" id="tl-home-waw--all">All workshops and webinars</a></p>
                     {{/each}}
                     {{/is}}
                     {{/each}}
