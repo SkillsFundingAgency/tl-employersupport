@@ -1528,7 +1528,7 @@ $(document).ready(function () {
             $("#tl-search-term").val(data.searchTerm);
         }
 
-        if (!data.searchResults || data.searchResults.length === 0) {
+        if ((!data.searchResults || data.searchResults.length === 0) && currentPage === 0) {
             $('.tl-fap--noresult').removeClass("tl-hidden");
             return;
         }
