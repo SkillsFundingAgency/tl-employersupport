@@ -1,7 +1,7 @@
 {
   "name": "GDS Style - Employer Support - Home Page Redesign",
   "author": "Ash Anderton",
-  "version": "0.1.407",
+  "version": "0.1.408",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [
@@ -66,6 +66,13 @@
           "description": "Home page benefits section intro",
           "label": "Home page benefits section intro",
           "value": "An industry placement is at the heart of each T Level course:"
+        },
+        {
+          "identifier": "homepage_skillarea",
+          "type": "text",
+          "description": "Home page skill area box - enter the skill area name",
+          "label": "Home page skill area box - enter the skill area name",
+          "value": "Digital and IT"
         }
       ]
     },
