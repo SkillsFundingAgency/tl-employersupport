@@ -125,12 +125,6 @@ $(document).ready(function () {
 
     function providerSearch(searchTerm, skillAreaIds, page) {
         clearProviderSearchResults();
-
-//TODO: Remove this
-if (searchTerm === "ERROR") {                
-    showError("haha", "just joking");
-    return false;
-}        
         searchTerm = searchTerm ? searchTerm.trim() : "";
         if (searchTerm === "") {
             if (event) event.stopPropagation();
