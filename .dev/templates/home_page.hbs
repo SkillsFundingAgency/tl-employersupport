@@ -103,14 +103,14 @@
 
 
                             {{#each sections}}
-                            {{#is name settings.homepage_skillarea}}
+                            {{#is name "Digital and IT"}}
                             <h4 class="govuk-heading-s">
                                 {{#each articles}}
                                 {{#if @first}}
                                 <a href="{{url}}" class="govuk-link" id="tl-home-skillareas--digital">
-                                {{/if}}
-                                {{/each}}
-                                {{name}}
+                                    {{/if}}
+                                    {{/each}}
+                                    {{name}}
                                 </a>
                             </h4>
                             <p class="govuk-body">{{excerpt description characters=200}}</p>
