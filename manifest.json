@@ -1,7 +1,7 @@
 {
-  "name": "GDS Style - Employer Support - How Industry Works",
+  "name": "GDS Style - Employer Support - Home Page Redesign",
   "author": "Ash Anderton",
-  "version": "0.1.321",
+  "version": "0.1.415",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [
@@ -24,7 +24,53 @@
       ]
     },
     {
-      "label": "Home Page Images",
+      "label": "Home Page Settings",
+      "variables": [
+        {
+          "identifier": "homepage_banner_title",
+          "type": "text",
+          "description": "Home page banner title",
+          "label": "Home page banner title",
+          "value": "Discover your future workforce"
+        },
+        {
+          "identifier": "homepage_banner_text",
+          "type": "text",
+          "description": "Home page banner text",
+          "label": "Home page banner text",
+          "value": "T Levels: a new qualification developed in collaboration with employers."
+        },
+        {
+          "identifier": "homepage_banner_button",
+          "type": "text",
+          "description": "Home page banner text",
+          "label": "Home page banner text",
+          "value": "Find out more about T Levels"
+        },
+        {
+          "identifier": "homepage_banner_button_article",
+          "type": "text",
+          "description": "Home page banner article ID",
+          "label": "Home page banner article ID",
+          "value": "4416409762194"
+        },
+        {
+          "identifier": "homepage_banner_image",
+          "type": "file",
+          "description": "Home Page Banner Image",
+          "label": "Banner Image"
+        },
+        {
+          "identifier": "homepage_benefits_intro",
+          "type": "text",
+          "description": "Home page benefits section intro",
+          "label": "Home page benefits section intro",
+          "value": "An industry placement is at the heart of each T Level course:"
+        }
+      ]
+    },
+    {
+      "label": "Home Page IA Images",
       "variables": [
         {
           "identifier": "home_image_1",
@@ -67,6 +113,12 @@
           "type": "file",
           "description": "Home page image 7",
           "label": "Image 7"
+        },
+        {
+          "identifier": "home_image_lower",
+          "type": "file",
+          "description": "Home page lower section image",
+          "label": "Home page lower section image"
         }
       ]
     },

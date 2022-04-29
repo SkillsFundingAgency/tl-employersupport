@@ -1,3 +1,63 @@
+.tl-home--banner {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+
+
+    &--column {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 100%;
+        flex: 1;
+        width: 50%;
+
+        &:first-child {
+            @include govuk-media-query($until: tablet) {
+                order: 2;
+            }
+        }
+    }
+
+    &--card {
+        @extend .tl-card--grey;
+        height: 100%;
+    }
+
+
+    @include govuk-media-query($until: tablet) {
+        flex-direction: column;
+
+        &--column {
+            width: 100%;
+        }
+    }
+}
+
+.tl-home--benefit {
+    border-bottom: 4px solid $govuk-link-visited-colour;
+    @include govuk-responsive-padding(5, "top");
+    @include govuk-responsive-padding(5, "bottom");
+    line-height: 1 !important;
+    width: 100%;
+    box-sizing: border-box;
+
+    .govuk-body {
+        position: relative;
+        top: -5px;
+    }
+
+    @include govuk-media-query($until: tablet) {
+        border-bottom: 3px solid $govuk-link-visited-colour;
+        @include govuk-responsive-padding(2, "left");
+        @include govuk-responsive-padding(2, "right");
+        background-color: govuk-colour("light-grey");
+    }
+}
+
+
+
+
 .tl-home--categories {
     display: flex;
     flex-direction: row;
@@ -13,8 +73,14 @@
     @include govuk-responsive-margin(3, "bottom");
 
     @include govuk-media-query($from: desktop) {
-        width: calc(33.333% - 30px);
+        width: calc(25% - 30px);
+
+        h3 {
+            min-height: 50px;
+        }
     }
+
+
 
     &--image {
         max-width: 100%;
@@ -23,7 +89,6 @@
         min-height: 160px;
         display: block;
         background-repeat: no-repeat;
-
         width: 50%;
         float: left;
         margin: 0 20px 20px 0;
@@ -33,7 +98,7 @@
             width: 100%;
             float: unset;
             margin: 0 0 20px 0;
-            min-height: 200px;
+            min-height: 140px;
         }
 
         @media(max-width: 420px) {
