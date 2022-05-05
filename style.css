@@ -9153,13 +9153,15 @@ ul.govuk-radios label .gem-radios__input {
 
 .tl-boxlinks {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
+  gap: 20px;
 }
 .tl-boxlinks--card {
-  flex: 50%;
+  flex-basis: calc(50% - 10px);
   background-color: #f3f2f1;
   padding: 30px;
+  box-sizing: border-box;
   margin-top: 15px;
 }
 @media (min-width: 40.0625em) {
@@ -9169,7 +9171,7 @@ ul.govuk-radios label .gem-radios__input {
 }
 @media (max-width: 40.0525em) {
   .tl-boxlinks--card {
-    flex: 100%;
+    flex-basis: 100% !important;
     background-color: unset;
     padding: 0px;
     margin-top: 10px;
