@@ -16,20 +16,22 @@
                 <h1 class="govuk-heading-xl govuk-!-margin-bottom-7">{{category.name}}</h1>
 
                 {{#if promoted_articles}}
-                {{#each promoted_articles}}
+
                 <div class="tl-hero">
                     <div class="tl-hero--column">
+                        {{#each promoted_articles}}
                         <div class="tl-hero--card">
                             <h2 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-0">{{title}}</h2>
                             <p class="govuk-body">{{excerpt characters=200}}...</p>
                             <p class="govuk-body govuk-!-margin-bottom-0"><a class="govuk-button govuk-!-margin-bottom-0" href="{{url}}">Find out more</a></p>
                         </div>
+                        {{/each}}
                     </div>
                     <div class="tl-hero--column">
                         <img class="tl-image--cover" src="{{settings.benefits_image}}" />
                     </div>
                 </div>
-                {{/each}}
+
                 {{/if}}
             </div>
         </div>
