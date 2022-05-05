@@ -48,6 +48,8 @@
                 <h3 class="govuk-heading-m govuk-!-margin-top-7">{{name}}</h3>
 
                 <div class="tl-boxlinks govuk-!-margin-top-2">
+                    {{#if promoted_articles}}
+                    {{else}}
                     {{#each articles}}
                     <div class="tl-boxlinks--card">
                         <p class="govuk-body-l">
@@ -55,6 +57,7 @@
                         </p>
                     </div>
                     {{/each}}
+                    {{/if}}
                 </div>
                 {{else}}
                 <h3 class="govuk-heading-m govuk-!-margin-top-7">{{name}}</h3>
