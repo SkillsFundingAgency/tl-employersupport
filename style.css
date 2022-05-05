@@ -8365,10 +8365,10 @@ ul.govuk-radios label .gem-radios__input {
   }
 }
 @media (min-width: 40.0625em) {
-  #tl-home--fap--right {
+  #tl-home--fap .tl-card--fap--right {
     flex: 1 1 40%;
   }
-  #tl-home--fap--left {
+  #tl-home--fap .tl-card--fap--left {
     flex: 1 1 60%;
   }
 }

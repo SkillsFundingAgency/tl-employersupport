@@ -61,15 +61,15 @@
     .tl-card--fap {
         @include govuk-responsive-padding(8, "top");
         @include govuk-responsive-padding(8, "bottom");
-    }
 
-    @include govuk-media-query ($from: tablet) {
-        &--right {
-            flex: 1 1 40%;
-        }
+        @include govuk-media-query ($from: tablet) {
+            &--right {
+                flex: 1 1 40%;
+            }
 
-        &--left {
-            flex: 1 1 60%;
+            &--left {
+                flex: 1 1 60%;
+            }
         }
     }
 }
