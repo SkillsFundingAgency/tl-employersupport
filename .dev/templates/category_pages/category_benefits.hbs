@@ -50,14 +50,14 @@
                 <div class="tl-boxlinks govuk-!-margin-top-2">
 
                     {{#each articles}}
-                    {{#isnt promoted}}
+                    {{#if promoted}}
+                    {{else}}
                     <div class="tl-boxlinks--card">
                         <p class="govuk-body-l">
                             <a class="govuk-link govuk-!-margin-bottom-1 tl-category--section--article" href="{{url}}">{{title}}</a>
                         </p>
                     </div>
-
-                    {{/isnt}}
+                    {{/if}}
                     {{/each}}
 
                 </div>
