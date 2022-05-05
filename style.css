@@ -8006,7 +8006,7 @@ x:-moz-any-link {
 }
 @media (max-width: 40.0525em) {
   .tl-card--boxlinks {
-    background-color: none;
+    background-color: unset;
     padding: 0px;
     margin-top: 10px;
   }
