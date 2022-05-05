@@ -9157,6 +9157,17 @@ ul.govuk-radios label .gem-radios__input {
   flex-wrap: wrap;
   gap: 20px;
 }
+@media (max-width: 40.0525em) {
+  .tl-boxlinks {
+    gap: 0px;
+    margin-bottom: 40px;
+  }
+}
+@media (max-width: 40.0525em) and (min-width: 40.0625em) {
+  .tl-boxlinks {
+    margin-bottom: 60px;
+  }
+}
 .tl-boxlinks--card {
   flex-basis: calc(50% - 10px);
   background-color: #f3f2f1;

@@ -4,6 +4,10 @@
     flex-wrap: wrap;
     gap: 20px;
 
+    @include govuk-media-query ($until: tablet) {
+        gap: 0px;
+        @include govuk-responsive-margin(9, "bottom");
+    }
 
     &--card {
         flex-basis: calc(50% - 10px);
