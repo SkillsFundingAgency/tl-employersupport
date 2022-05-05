@@ -9150,3 +9150,33 @@ ul.govuk-radios label .gem-radios__input {
   content: counter(section) ". ";
   font-weight: bold;
 }
+
+.tl-boxlinks {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.tl-boxlinks--card {
+  flex: 50%;
+  background-color: #f3f2f1;
+  padding: 30px;
+  margin-top: 15px;
+}
+@media (min-width: 40.0625em) {
+  .tl-boxlinks--card {
+    margin-top: 20px;
+  }
+}
+@media (max-width: 40.0525em) {
+  .tl-boxlinks--card {
+    flex: 100%;
+    background-color: unset;
+    padding: 0px;
+    margin-top: 10px;
+  }
+}
+@media (max-width: 40.0525em) and (min-width: 40.0625em) {
+  .tl-boxlinks--card {
+    margin-top: 10px;
+  }
+}

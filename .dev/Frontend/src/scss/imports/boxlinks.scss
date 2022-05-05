@@ -5,7 +5,7 @@
 
 
     &--card {
-        flex: 50%
+        flex: 50%;
         background-color: govuk-colour("light-grey");
         padding: 30px;
         @include govuk-responsive-margin(4, "top");
