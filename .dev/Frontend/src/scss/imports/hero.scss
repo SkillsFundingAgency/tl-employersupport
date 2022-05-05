@@ -12,7 +12,7 @@
         flex: 1;
 
         &:first-child {
-            width: 66.6666%;
+            flex-basis: 66.6666%;
 
             @include govuk-media-query($until: tablet) {
                 order: 2;
@@ -20,7 +20,7 @@
         }
 
         &:last-child {
-            width: 33.3333%;
+            flex-basis: 33.3333%;
         }
     }
 

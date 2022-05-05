@@ -9146,7 +9146,7 @@ ul.govuk-radios label .gem-radios__input {
   flex: 1;
 }
 .tl-hero--column:first-child {
-  width: 66.6666%;
+  flex-basis: 66.6666%;
 }
 @media (max-width: 40.0525em) {
   .tl-hero--column:first-child {
@@ -9154,7 +9154,7 @@ ul.govuk-radios label .gem-radios__input {
   }
 }
 .tl-hero--column:last-child {
-  width: 33.3333%;
+  flex-basis: 33.3333%;
 }
 .tl-hero--card {
   height: 100%;
