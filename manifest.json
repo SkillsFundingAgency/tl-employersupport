@@ -1,7 +1,7 @@
 {
   "name": "GDS Style - Employer Support - Skill Area Redesign",
   "author": "Ash Anderton",
-  "version": "0.1.459",
+  "version": "0.1.460",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [
@@ -137,6 +137,20 @@
           "type": "file",
           "description": "Skill Areas category image",
           "label": "Skill Areas category image"
+        },
+        {
+          "identifier": "benefits_header",
+          "type": "text",
+          "description": "Benefits category header",
+          "label": "Benefits category header",
+          "value": "Why offer an industry placement?"
+        },
+        {
+          "identifier": "benefits_content",
+          "type": "text",
+          "description": "Benefits category content",
+          "label": "Benefits category content",
+          "value": "Discover the benefits of hosting an industry placement at your company."
         },
         {
           "identifier": "benefits_image",
