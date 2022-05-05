@@ -33,11 +33,14 @@
         <section id="tl-category--content">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-full">
-                    {{#each sections}}
-                    <div class="tl-boxlinks--card">
-                        <a class="govuk-link govuk-!-margin-bottom-1 tl-category--section" href="{{url}}">{{name}}</a>
+                    <div class="tl-boxlinks">
+
+                        {{#each sections}}
+                        <div class="tl-boxlinks--card">
+                            <a class="govuk-link govuk-!-margin-bottom-1 tl-category--section" href="{{url}}">{{name}}</a>
+                        </div>
+                        {{/each}}
                     </div>
-                    {{/each}}
                 </div>
             </div>
         </section>
