@@ -19,14 +19,15 @@
 
                 <div class="tl-hero">
                     <div class="tl-hero--column">
-                        {{#each promoted_articles}}
+                        
                         <div class="tl-hero--card">
                             <h2 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-0">{{settings.benefits_header}}</h2>
                             <p class="govuk-body">{{settings.benefits_content}}</p>
-            
+                            {{#each promoted_articles}}
                             <p class="govuk-body govuk-!-margin-bottom-0"><a class="govuk-button govuk-!-margin-bottom-0" href="{{url}}">Find out more</a></p>
+                            {{/each}}
                         </div>
-                        {{/each}}
+                        
                     </div>
                     <div class="tl-hero--column">
                         <img class="tl-image--cover" src="{{settings.benefits_image}}" />
