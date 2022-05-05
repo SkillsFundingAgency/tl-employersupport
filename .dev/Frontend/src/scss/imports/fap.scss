@@ -25,6 +25,10 @@
         background-position: bottom -40px right -160px;
     }
 
+    h2 {
+        @extend .govuk-heading-m
+    }
+
 
 
 
@@ -70,6 +74,10 @@
             &--left {
                 flex: 1 1 60%;
             }
+        }
+
+        h2 {
+            @extend .govuk-heading-l
         }
     }
 }
