@@ -7994,6 +7994,28 @@ x:-moz-any-link {
     padding: 20px;
   }
 }
+.tl-card--boxlinks {
+  background-color: #f3f2f1;
+  padding: 30px;
+  margin-top: 15px;
+}
+@media (min-width: 40.0625em) {
+  .tl-card--boxlinks {
+    margin-top: 20px;
+  }
+}
+@media (max-width: 40.0525em) {
+  .tl-card--boxlinks {
+    background-color: none;
+    padding: 0px;
+    margin-top: 10px;
+  }
+}
+@media (max-width: 40.0525em) and (min-width: 40.0625em) {
+  .tl-card--boxlinks {
+    margin-top: 10px;
+  }
+}
 
 /*** cookie msg starts ***/
 .gem-c-cookie-banner__wrapper.govuk-width-container, .tl-article--vote .gem-c-cookie-banner__wrapper.tl-article--vote--container, .tl-article--resources .gem-c-cookie-banner__wrapper.tl-article--resources--container {
