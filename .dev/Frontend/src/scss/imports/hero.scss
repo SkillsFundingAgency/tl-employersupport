@@ -35,8 +35,8 @@
         @include govuk-responsive-padding(8, "all");
 
         @include govuk-media-query($until: tablet) {
-            @include govuk-responsive-padding(2, "all");
-            @include govuk-responsive-padding(5, "top");
+            @include govuk-responsive-padding(0, "all");
+            @include govuk-responsive-padding(7, "top");
         }
     }
 
