@@ -147,3 +147,30 @@
     min-width: 100%;
     min-height: 100%
 }
+
+
+$borderpositions:
+    top,
+    left,
+    right,
+    bottom;
+
+$bordercolours: 
+    blue $govuk-link-colour,
+    purple $govuk-link-visited-colour,
+    grey govuk-colour("mid-grey"),
+    black  $govuk-text-colour;
+
+
+
+.tl-border {
+    @each $borderposition in $borderpositions {
+        @each $bordercolour, $bordercolourcode in $bordercolours {
+            @for $i from 1 through 10 {
+                &-#{$borderposition}-#{$bordercolour}--#{$i} {
+                    border-#{$borderposition}: $i + px $bordercolourcode
+                }
+            }
+        }
+    }
+}

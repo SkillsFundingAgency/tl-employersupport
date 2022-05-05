@@ -6399,6 +6399,487 @@ x:-moz-any-link {
   min-height: 100%;
 }
 
+.tl-border-top-blue--1 {
+  border-top: 1px #1d70b8;
+}
+.tl-border-top-blue--2 {
+  border-top: 2px #1d70b8;
+}
+.tl-border-top-blue--3 {
+  border-top: 3px #1d70b8;
+}
+.tl-border-top-blue--4 {
+  border-top: 4px #1d70b8;
+}
+.tl-border-top-blue--5 {
+  border-top: 5px #1d70b8;
+}
+.tl-border-top-blue--6 {
+  border-top: 6px #1d70b8;
+}
+.tl-border-top-blue--7 {
+  border-top: 7px #1d70b8;
+}
+.tl-border-top-blue--8 {
+  border-top: 8px #1d70b8;
+}
+.tl-border-top-blue--9 {
+  border-top: 9px #1d70b8;
+}
+.tl-border-top-blue--10 {
+  border-top: 10px #1d70b8;
+}
+.tl-border-top-purple--1 {
+  border-top: 1px #4c2c92;
+}
+.tl-border-top-purple--2 {
+  border-top: 2px #4c2c92;
+}
+.tl-border-top-purple--3 {
+  border-top: 3px #4c2c92;
+}
+.tl-border-top-purple--4 {
+  border-top: 4px #4c2c92;
+}
+.tl-border-top-purple--5 {
+  border-top: 5px #4c2c92;
+}
+.tl-border-top-purple--6 {
+  border-top: 6px #4c2c92;
+}
+.tl-border-top-purple--7 {
+  border-top: 7px #4c2c92;
+}
+.tl-border-top-purple--8 {
+  border-top: 8px #4c2c92;
+}
+.tl-border-top-purple--9 {
+  border-top: 9px #4c2c92;
+}
+.tl-border-top-purple--10 {
+  border-top: 10px #4c2c92;
+}
+.tl-border-top-grey--1 {
+  border-top: 1px #b1b4b6;
+}
+.tl-border-top-grey--2 {
+  border-top: 2px #b1b4b6;
+}
+.tl-border-top-grey--3 {
+  border-top: 3px #b1b4b6;
+}
+.tl-border-top-grey--4 {
+  border-top: 4px #b1b4b6;
+}
+.tl-border-top-grey--5 {
+  border-top: 5px #b1b4b6;
+}
+.tl-border-top-grey--6 {
+  border-top: 6px #b1b4b6;
+}
+.tl-border-top-grey--7 {
+  border-top: 7px #b1b4b6;
+}
+.tl-border-top-grey--8 {
+  border-top: 8px #b1b4b6;
+}
+.tl-border-top-grey--9 {
+  border-top: 9px #b1b4b6;
+}
+.tl-border-top-grey--10 {
+  border-top: 10px #b1b4b6;
+}
+.tl-border-top-black--1 {
+  border-top: 1px #0b0c0c;
+}
+.tl-border-top-black--2 {
+  border-top: 2px #0b0c0c;
+}
+.tl-border-top-black--3 {
+  border-top: 3px #0b0c0c;
+}
+.tl-border-top-black--4 {
+  border-top: 4px #0b0c0c;
+}
+.tl-border-top-black--5 {
+  border-top: 5px #0b0c0c;
+}
+.tl-border-top-black--6 {
+  border-top: 6px #0b0c0c;
+}
+.tl-border-top-black--7 {
+  border-top: 7px #0b0c0c;
+}
+.tl-border-top-black--8 {
+  border-top: 8px #0b0c0c;
+}
+.tl-border-top-black--9 {
+  border-top: 9px #0b0c0c;
+}
+.tl-border-top-black--10 {
+  border-top: 10px #0b0c0c;
+}
+.tl-border-left-blue--1 {
+  border-left: 1px #1d70b8;
+}
+.tl-border-left-blue--2 {
+  border-left: 2px #1d70b8;
+}
+.tl-border-left-blue--3 {
+  border-left: 3px #1d70b8;
+}
+.tl-border-left-blue--4 {
+  border-left: 4px #1d70b8;
+}
+.tl-border-left-blue--5 {
+  border-left: 5px #1d70b8;
+}
+.tl-border-left-blue--6 {
+  border-left: 6px #1d70b8;
+}
+.tl-border-left-blue--7 {
+  border-left: 7px #1d70b8;
+}
+.tl-border-left-blue--8 {
+  border-left: 8px #1d70b8;
+}
+.tl-border-left-blue--9 {
+  border-left: 9px #1d70b8;
+}
+.tl-border-left-blue--10 {
+  border-left: 10px #1d70b8;
+}
+.tl-border-left-purple--1 {
+  border-left: 1px #4c2c92;
+}
+.tl-border-left-purple--2 {
+  border-left: 2px #4c2c92;
+}
+.tl-border-left-purple--3 {
+  border-left: 3px #4c2c92;
+}
+.tl-border-left-purple--4 {
+  border-left: 4px #4c2c92;
+}
+.tl-border-left-purple--5 {
+  border-left: 5px #4c2c92;
+}
+.tl-border-left-purple--6 {
+  border-left: 6px #4c2c92;
+}
+.tl-border-left-purple--7 {
+  border-left: 7px #4c2c92;
+}
+.tl-border-left-purple--8 {
+  border-left: 8px #4c2c92;
+}
+.tl-border-left-purple--9 {
+  border-left: 9px #4c2c92;
+}
+.tl-border-left-purple--10 {
+  border-left: 10px #4c2c92;
+}
+.tl-border-left-grey--1 {
+  border-left: 1px #b1b4b6;
+}
+.tl-border-left-grey--2 {
+  border-left: 2px #b1b4b6;
+}
+.tl-border-left-grey--3 {
+  border-left: 3px #b1b4b6;
+}
+.tl-border-left-grey--4 {
+  border-left: 4px #b1b4b6;
+}
+.tl-border-left-grey--5 {
+  border-left: 5px #b1b4b6;
+}
+.tl-border-left-grey--6 {
+  border-left: 6px #b1b4b6;
+}
+.tl-border-left-grey--7 {
+  border-left: 7px #b1b4b6;
+}
+.tl-border-left-grey--8 {
+  border-left: 8px #b1b4b6;
+}
+.tl-border-left-grey--9 {
+  border-left: 9px #b1b4b6;
+}
+.tl-border-left-grey--10 {
+  border-left: 10px #b1b4b6;
+}
+.tl-border-left-black--1 {
+  border-left: 1px #0b0c0c;
+}
+.tl-border-left-black--2 {
+  border-left: 2px #0b0c0c;
+}
+.tl-border-left-black--3 {
+  border-left: 3px #0b0c0c;
+}
+.tl-border-left-black--4 {
+  border-left: 4px #0b0c0c;
+}
+.tl-border-left-black--5 {
+  border-left: 5px #0b0c0c;
+}
+.tl-border-left-black--6 {
+  border-left: 6px #0b0c0c;
+}
+.tl-border-left-black--7 {
+  border-left: 7px #0b0c0c;
+}
+.tl-border-left-black--8 {
+  border-left: 8px #0b0c0c;
+}
+.tl-border-left-black--9 {
+  border-left: 9px #0b0c0c;
+}
+.tl-border-left-black--10 {
+  border-left: 10px #0b0c0c;
+}
+.tl-border-right-blue--1 {
+  border-right: 1px #1d70b8;
+}
+.tl-border-right-blue--2 {
+  border-right: 2px #1d70b8;
+}
+.tl-border-right-blue--3 {
+  border-right: 3px #1d70b8;
+}
+.tl-border-right-blue--4 {
+  border-right: 4px #1d70b8;
+}
+.tl-border-right-blue--5 {
+  border-right: 5px #1d70b8;
+}
+.tl-border-right-blue--6 {
+  border-right: 6px #1d70b8;
+}
+.tl-border-right-blue--7 {
+  border-right: 7px #1d70b8;
+}
+.tl-border-right-blue--8 {
+  border-right: 8px #1d70b8;
+}
+.tl-border-right-blue--9 {
+  border-right: 9px #1d70b8;
+}
+.tl-border-right-blue--10 {
+  border-right: 10px #1d70b8;
+}
+.tl-border-right-purple--1 {
+  border-right: 1px #4c2c92;
+}
+.tl-border-right-purple--2 {
+  border-right: 2px #4c2c92;
+}
+.tl-border-right-purple--3 {
+  border-right: 3px #4c2c92;
+}
+.tl-border-right-purple--4 {
+  border-right: 4px #4c2c92;
+}
+.tl-border-right-purple--5 {
+  border-right: 5px #4c2c92;
+}
+.tl-border-right-purple--6 {
+  border-right: 6px #4c2c92;
+}
+.tl-border-right-purple--7 {
+  border-right: 7px #4c2c92;
+}
+.tl-border-right-purple--8 {
+  border-right: 8px #4c2c92;
+}
+.tl-border-right-purple--9 {
+  border-right: 9px #4c2c92;
+}
+.tl-border-right-purple--10 {
+  border-right: 10px #4c2c92;
+}
+.tl-border-right-grey--1 {
+  border-right: 1px #b1b4b6;
+}
+.tl-border-right-grey--2 {
+  border-right: 2px #b1b4b6;
+}
+.tl-border-right-grey--3 {
+  border-right: 3px #b1b4b6;
+}
+.tl-border-right-grey--4 {
+  border-right: 4px #b1b4b6;
+}
+.tl-border-right-grey--5 {
+  border-right: 5px #b1b4b6;
+}
+.tl-border-right-grey--6 {
+  border-right: 6px #b1b4b6;
+}
+.tl-border-right-grey--7 {
+  border-right: 7px #b1b4b6;
+}
+.tl-border-right-grey--8 {
+  border-right: 8px #b1b4b6;
+}
+.tl-border-right-grey--9 {
+  border-right: 9px #b1b4b6;
+}
+.tl-border-right-grey--10 {
+  border-right: 10px #b1b4b6;
+}
+.tl-border-right-black--1 {
+  border-right: 1px #0b0c0c;
+}
+.tl-border-right-black--2 {
+  border-right: 2px #0b0c0c;
+}
+.tl-border-right-black--3 {
+  border-right: 3px #0b0c0c;
+}
+.tl-border-right-black--4 {
+  border-right: 4px #0b0c0c;
+}
+.tl-border-right-black--5 {
+  border-right: 5px #0b0c0c;
+}
+.tl-border-right-black--6 {
+  border-right: 6px #0b0c0c;
+}
+.tl-border-right-black--7 {
+  border-right: 7px #0b0c0c;
+}
+.tl-border-right-black--8 {
+  border-right: 8px #0b0c0c;
+}
+.tl-border-right-black--9 {
+  border-right: 9px #0b0c0c;
+}
+.tl-border-right-black--10 {
+  border-right: 10px #0b0c0c;
+}
+.tl-border-bottom-blue--1 {
+  border-bottom: 1px #1d70b8;
+}
+.tl-border-bottom-blue--2 {
+  border-bottom: 2px #1d70b8;
+}
+.tl-border-bottom-blue--3 {
+  border-bottom: 3px #1d70b8;
+}
+.tl-border-bottom-blue--4 {
+  border-bottom: 4px #1d70b8;
+}
+.tl-border-bottom-blue--5 {
+  border-bottom: 5px #1d70b8;
+}
+.tl-border-bottom-blue--6 {
+  border-bottom: 6px #1d70b8;
+}
+.tl-border-bottom-blue--7 {
+  border-bottom: 7px #1d70b8;
+}
+.tl-border-bottom-blue--8 {
+  border-bottom: 8px #1d70b8;
+}
+.tl-border-bottom-blue--9 {
+  border-bottom: 9px #1d70b8;
+}
+.tl-border-bottom-blue--10 {
+  border-bottom: 10px #1d70b8;
+}
+.tl-border-bottom-purple--1 {
+  border-bottom: 1px #4c2c92;
+}
+.tl-border-bottom-purple--2 {
+  border-bottom: 2px #4c2c92;
+}
+.tl-border-bottom-purple--3 {
+  border-bottom: 3px #4c2c92;
+}
+.tl-border-bottom-purple--4 {
+  border-bottom: 4px #4c2c92;
+}
+.tl-border-bottom-purple--5 {
+  border-bottom: 5px #4c2c92;
+}
+.tl-border-bottom-purple--6 {
+  border-bottom: 6px #4c2c92;
+}
+.tl-border-bottom-purple--7 {
+  border-bottom: 7px #4c2c92;
+}
+.tl-border-bottom-purple--8 {
+  border-bottom: 8px #4c2c92;
+}
+.tl-border-bottom-purple--9 {
+  border-bottom: 9px #4c2c92;
+}
+.tl-border-bottom-purple--10 {
+  border-bottom: 10px #4c2c92;
+}
+.tl-border-bottom-grey--1 {
+  border-bottom: 1px #b1b4b6;
+}
+.tl-border-bottom-grey--2 {
+  border-bottom: 2px #b1b4b6;
+}
+.tl-border-bottom-grey--3 {
+  border-bottom: 3px #b1b4b6;
+}
+.tl-border-bottom-grey--4 {
+  border-bottom: 4px #b1b4b6;
+}
+.tl-border-bottom-grey--5 {
+  border-bottom: 5px #b1b4b6;
+}
+.tl-border-bottom-grey--6 {
+  border-bottom: 6px #b1b4b6;
+}
+.tl-border-bottom-grey--7 {
+  border-bottom: 7px #b1b4b6;
+}
+.tl-border-bottom-grey--8 {
+  border-bottom: 8px #b1b4b6;
+}
+.tl-border-bottom-grey--9 {
+  border-bottom: 9px #b1b4b6;
+}
+.tl-border-bottom-grey--10 {
+  border-bottom: 10px #b1b4b6;
+}
+.tl-border-bottom-black--1 {
+  border-bottom: 1px #0b0c0c;
+}
+.tl-border-bottom-black--2 {
+  border-bottom: 2px #0b0c0c;
+}
+.tl-border-bottom-black--3 {
+  border-bottom: 3px #0b0c0c;
+}
+.tl-border-bottom-black--4 {
+  border-bottom: 4px #0b0c0c;
+}
+.tl-border-bottom-black--5 {
+  border-bottom: 5px #0b0c0c;
+}
+.tl-border-bottom-black--6 {
+  border-bottom: 6px #0b0c0c;
+}
+.tl-border-bottom-black--7 {
+  border-bottom: 7px #0b0c0c;
+}
+.tl-border-bottom-black--8 {
+  border-bottom: 8px #0b0c0c;
+}
+.tl-border-bottom-black--9 {
+  border-bottom: 9px #0b0c0c;
+}
+.tl-border-bottom-black--10 {
+  border-bottom: 10px #0b0c0c;
+}
+
 .tl-search {
   display: flex;
 }
