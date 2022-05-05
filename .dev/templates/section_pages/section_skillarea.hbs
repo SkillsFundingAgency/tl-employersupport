@@ -14,15 +14,19 @@
 
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
-            <h1 class="govuk-heading-xl">{{section.name}}</h1>
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+                    <h1 class="govuk-heading-xl">{{section.name}}</h1>
+                </div>
+            </div>
         </div>
-        <div class="govuk-grid-column-two-thirds">
-            <section id="tl-skillarea-body">
-                {{#each section.sections}}
-                {{#is name "About"}}
-                {{#each articles}}
-                <div class="tl-article--content" id="articlebody{{id}}">{{excerpt body characters=600}}</div>
-                <script>
+            <div class="govuk-grid-column-two-thirds">
+                <section id="tl-skillarea-body">
+                    {{#each section.sections}}
+                    {{#is name "About"}}
+                    {{#each articles}}
+                    <div class="tl-article--content" id="articlebody{{id}}">{{excerpt body characters=600}}</div>
+                    <script>
 
                     function1 = function () {
                         var def = new jQuery.Deferred();
@@ -55,55 +59,55 @@
                         }
                     });
 
-                </script>
-                {{/each}}
-                {{/is}}
-                {{/each}}
+                    </script>
+                    {{/each}}
+                    {{/is}}
+                    {{/each}}
 
-            </section>
+                </section>
 
-            {{#if settings.fap_enabled}}
-            <section id="tl-skillarea-fap" class="govuk-!-margin-top-8">
+                {{#if settings.fap_enabled}}
+                <section id="tl-skillarea-fap" class="govuk-!-margin-top-8">
                     <div class="tl-fap-tile"></div>
-            </section>
-            {{/if}}
+                </section>
+                {{/if}}
 
-            <section id="tl-skillarea-links">
-                <div class="govuk-!-margin-top-9">
-                    <h3 class="govuk-heading-m tl-text-capitalize">More about {{section.name}}</h3>
+                <section id="tl-skillarea-links">
+                    <div class="govuk-!-margin-top-9">
+                        <h3 class="govuk-heading-m tl-text-capitalize">More about {{section.name}}</h3>
 
-                    <div class="tl-boxlinks">
+                        <div class="tl-boxlinks">
 
-                        {{#each section.articles}}
+                            {{#each section.articles}}
 
-                        <div class="tl-boxlinks--card">
-                            <a class="govuk-link govuk-!-margin-bottom-1 tl-category--article" href="{{url}}">{{title}}</a>
+                            <div class="tl-boxlinks--card">
+                                <a class="govuk-link govuk-!-margin-bottom-1 tl-category--article" href="{{url}}">{{title}}</a>
+                            </div>
+                            {{/each}}
                         </div>
-                        {{/each}}
                     </div>
-                </div>
-            </section>
-        </div>
-        <div class="govuk-grid-column-one-third">
-            <section id="tl-skillarea-related" class="tl-border-top-blue--3">
-                <h3 class="govuk-heading-s govuk-!-margin-top-3">Related content</h3>
-                {{#each section.sections}}
-                {{#is name "Related"}}
-                {{#each articles}}
-                <div class="tl-article--content" id="articlebody{{id}}">{{excerpt body characters=600}}</div>
-                <script>
+                </section>
+            </div>
+            <div class="govuk-grid-column-one-third">
+                <section id="tl-skillarea-related" class="tl-border-top-blue--3">
+                    <h3 class="govuk-heading-s govuk-!-margin-top-3">Related content</h3>
+                    {{#each section.sections}}
+                    {{#is name "Related"}}
+                    {{#each articles}}
+                    <div class="tl-article--content" id="articlebody{{id}}">{{excerpt body characters=600}}</div>
+                    <script>
                 $.getJSON('/api/v2/help_center/articles/{{id}}', function (articlebody) {
 
                     var bodycontent = articlebody.article.body;
                     $('#articlebody{{id}}').html(bodycontent);
                 });
-                </script>
-                {{/each}}
-                {{/is}}
-                {{/each}}
-            </section>
+                    </script>
+                    {{/each}}
+                    {{/is}}
+                    {{/each}}
+                </section>
+            </div>
         </div>
-    </div>
 </div>
 
 
