@@ -9154,7 +9154,7 @@ ul.govuk-radios label .gem-radios__input {
   }
 }
 .tl-hero--column:last-child {
-  flex-basis: 33.3333%;
+  width: 33.3333%;
 }
 .tl-hero--card {
   height: 100%;
