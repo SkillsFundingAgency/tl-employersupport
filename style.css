@@ -9156,6 +9156,11 @@ ul.govuk-radios label .gem-radios__input {
 .tl-hero--column:last-child {
   width: 33.3333%;
 }
+@media (max-width: 40.0525em) {
+  .tl-hero--column:last-child {
+    width: 100%;
+  }
+}
 .tl-hero--card {
   height: 100%;
 }
