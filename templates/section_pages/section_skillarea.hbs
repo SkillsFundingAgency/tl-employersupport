@@ -74,18 +74,16 @@
 
             <section id="tl-skillarea-links">
                 <div class="govuk-grid-row govuk-!-margin-top-9">
-                    <div class="govuk-grid-column-full">
+                    <div class="govuk-grid-column-full tl-boxlinks">
                         <h3 class="govuk-heading-m tl-text-capitalize">More about {{section.name}}</h3>
-                    </div>
-                    {{#each section.articles}}
 
-                    <div class="govuk-grid-column-one-half">
-                        <div class="tl-card--boxlinks">
+                        {{#each section.articles}}
+
+                        <div class="tl-boxlinks--card">
                             <a class="govuk-link govuk-!-margin-bottom-1 tl-category--article" href="{{url}}">{{title}}</a>
                         </div>
+                        {{/each}}
                     </div>
-                    {{/each}}
-
                 </div>
             </section>
         </div>

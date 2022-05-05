@@ -1,0 +1,20 @@
+.tl-boxlinks {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+
+    &--card {
+        flex: 50%
+        background-color: govuk-colour("light-grey");
+        padding: 30px;
+        @include govuk-responsive-margin(4, "top");
+
+        @include govuk-media-query ($until: tablet) {
+            flex: 100%;
+            background-color: unset;
+            padding: 0px;
+            @include govuk-responsive-margin(2, "top");
+        }
+    }
+}
