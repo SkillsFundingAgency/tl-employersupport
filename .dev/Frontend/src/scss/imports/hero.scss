@@ -1,0 +1,40 @@
+.tl-hero {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+
+
+    &--column {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 100%;
+        flex: 1;
+
+        &:first-child {
+            width: 66.6666%;
+
+            @include govuk-media-query($until: tablet) {
+                order: 2;
+            }
+        }
+
+        &:last-child {
+            width: 33.3333%;
+        }
+    }
+
+    &--card {
+        @extend .tl-card--grey;
+        height: 100%;
+    }
+
+
+    @include govuk-media-query($until: tablet) {
+        flex-direction: column;
+
+        &--column {
+            width: 100%;
+        }
+    }
+}

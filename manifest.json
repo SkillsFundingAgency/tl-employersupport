@@ -1,7 +1,7 @@
 {
   "name": "GDS Style - Employer Support - Skill Area Redesign",
   "author": "Ash Anderton",
-  "version": "0.1.439",
+  "version": "0.1.440",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [
@@ -119,6 +119,24 @@
           "type": "file",
           "description": "Home page lower section image",
           "label": "Home page lower section image"
+        }
+      ]
+    },
+    {
+      "label": "Category Page Settings",
+      "variables": [
+        {
+          "identifier": "skillareas_header",
+          "type": "text",
+          "description": "Skill Areas category header",
+          "label": "Skill Areas category header",
+          "value": "The skills your business needs"
+        },
+        {
+          "identifier": "skillareas_image",
+          "type": "file",
+          "description": "Skill Areas category Image",
+          "label": "Skill Areas category Image"
         }
       ]
     },
