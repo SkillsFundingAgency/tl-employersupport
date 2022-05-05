@@ -135,8 +135,14 @@
         {
           "identifier": "skillareas_image",
           "type": "file",
-          "description": "Skill Areas category Image",
-          "label": "Skill Areas category Image"
+          "description": "Skill Areas category image",
+          "label": "Skill Areas category image"
+        },
+        {
+          "identifier": "benefits_image",
+          "type": "file",
+          "description": "Benefits category image",
+          "label": "Benefits category image"
         }
       ]
     },
