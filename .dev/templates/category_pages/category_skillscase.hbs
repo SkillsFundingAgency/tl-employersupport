@@ -30,14 +30,16 @@
                 </div>
             </div>
         </section>
-        <section id="tl-category--content">
+        <section id="tl-category--content" class="govuk-!-margin-top-7">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-full">
-                    <div class="tl-boxlinks">
-
+                    <h3 class="govuk-heading-m">T Level skill areas</h3>
+                    <div class="tl-boxlinks govuk-!-margin-top-2">
                         {{#each sections}}
                         <div class="tl-boxlinks--card">
-                            <a class="govuk-link govuk-!-margin-bottom-1 tl-category--section" href="{{url}}">{{name}}</a>
+                            <p class="govuk-body-l">
+                                <a class="govuk-link govuk-!-margin-bottom-1 tl-category--section" href="{{url}}">{{name}}</a>
+                            </p>
                         </div>
                         {{/each}}
                     </div>
