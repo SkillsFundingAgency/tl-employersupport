@@ -8283,8 +8283,8 @@ ul.govuk-radios label .gem-radios__input {
   box-sizing: border-box;
   padding-left: 15px;
   padding-right: 15px;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 @media (min-width: 40.0625em) {
   .tl-card--fap {
@@ -8298,12 +8298,12 @@ ul.govuk-radios label .gem-radios__input {
 }
 @media (min-width: 40.0625em) {
   .tl-card--fap {
-    padding-top: 50px;
+    padding-top: 25px;
   }
 }
 @media (min-width: 40.0625em) {
   .tl-card--fap {
-    padding-bottom: 50px;
+    padding-bottom: 25px;
   }
 }
 @media (min-width: 40.0625em) {
@@ -8343,9 +8343,32 @@ ul.govuk-radios label .gem-radios__input {
 }
 @media (min-width: 40.0625em) {
   .tl-card--fap--right {
-    flex: 1 1 40%;
+    flex: 1 1 100%;
   }
   .tl-card--fap--left {
+    flex: 1 1 100%;
+  }
+}
+
+#tl-home--fap .tl-card--fap {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+@media (min-width: 40.0625em) {
+  #tl-home--fap .tl-card--fap {
+    padding-top: 50px;
+  }
+}
+@media (min-width: 40.0625em) {
+  #tl-home--fap .tl-card--fap {
+    padding-bottom: 50px;
+  }
+}
+@media (min-width: 40.0625em) {
+  #tl-home--fap--right {
+    flex: 1 1 40%;
+  }
+  #tl-home--fap--left {
     flex: 1 1 60%;
   }
 }
