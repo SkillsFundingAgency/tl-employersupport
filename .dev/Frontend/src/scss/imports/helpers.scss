@@ -168,7 +168,7 @@ $bordercolours:
         @each $bordercolour, $bordercolourcode in $bordercolours {
             @for $i from 1 through 10 {
                 &-#{$borderposition}-#{$bordercolour}--#{$i} {
-                    border-#{$borderposition}: $i + px $bordercolourcode
+                    border-#{$borderposition}: $i + px $bordercolourcode solid
                 }
             }
         }
