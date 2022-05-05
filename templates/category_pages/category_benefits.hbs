@@ -15,22 +15,26 @@
             <div class="govuk-grid-column-full">
                 <h1 class="govuk-heading-xl govuk-!-margin-bottom-7">{{category.name}}</h1>
 
-
+                {{#if promoted_articles}}
+                {{#each promoted_articles}}
                 <div class="tl-hero">
                     <div class="tl-hero--column">
                         <div class="tl-hero--card">
-                            <h2 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-0">{{settings.skillareas_header}}</h2>
-                            <p class="govuk-body">{{category.description}}</p>
+                            <h2 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-0">{{title}}</h2>
+                            <p class="govuk-body">{{excerpt article.body characters=200}}...</p>
+                            <p class="govuk-body govuk-!-margin-bottom-0"><a class="govuk-button govuk-!-margin-bottom-0" href="{{url}}">Find out more</a></p>
                         </div>
                     </div>
                     <div class="tl-hero--column">
-                        <img class="tl-image--cover" src="{{settings.skillareas_image}}" />
+                        <img class="tl-image--cover" src="{{settings.benefits_image}}" />
                     </div>
                 </div>
+                {{/each}}
+                {{/if}}
             </div>
         </div>
     </section>
-    <section id="tl-category--content" class="govuk-!-margin-top-7">
+    <section id="tl-category--content">
         {{#each sections}}
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-full">
