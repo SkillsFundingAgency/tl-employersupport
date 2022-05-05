@@ -9164,6 +9164,22 @@ ul.govuk-radios label .gem-radios__input {
 }
 .tl-hero--card {
   height: 100%;
+  padding: 30px;
+}
+@media (min-width: 40.0625em) {
+  .tl-hero--card {
+    padding: 50px;
+  }
+}
+@media (max-width: 40.0525em) {
+  .tl-hero--card {
+    padding: 10px;
+  }
+}
+@media (max-width: 40.0525em) and (min-width: 40.0625em) {
+  .tl-hero--card {
+    padding: 10px;
+  }
 }
 @media (max-width: 40.0525em) {
   .tl-hero {

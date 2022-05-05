@@ -32,6 +32,11 @@
     &--card {
         @extend .tl-card--grey;
         height: 100%;
+        @include govuk-responsive-padding(8, "all");
+
+        @include govuk-media-query($until: tablet) {
+            @include govuk-responsive-padding(2, "all");
+        }
     }
 
 
