@@ -5,7 +5,7 @@
     gap: 20px;
 
     @include govuk-media-query ($until: tablet) {
-        gap: 0px;
+        gap: 10px;
         @include govuk-responsive-margin(9, "bottom");
     }
 
@@ -14,13 +14,11 @@
         background-color: govuk-colour("light-grey");
         padding: 30px;
         box-sizing: border-box;
-        @include govuk-responsive-margin(4, "top");
 
         @include govuk-media-query ($until: tablet) {
             flex-basis: 100% !important;
             background-color: unset;
             padding: 0px;
-            @include govuk-responsive-margin(2, "top");
         }
     }
 }

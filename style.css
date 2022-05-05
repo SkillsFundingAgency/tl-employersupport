@@ -9159,7 +9159,7 @@ ul.govuk-radios label .gem-radios__input {
 }
 @media (max-width: 40.0525em) {
   .tl-boxlinks {
-    gap: 0px;
+    gap: 10px;
     margin-bottom: 40px;
   }
 }
@@ -9173,23 +9173,11 @@ ul.govuk-radios label .gem-radios__input {
   background-color: #f3f2f1;
   padding: 30px;
   box-sizing: border-box;
-  margin-top: 15px;
-}
-@media (min-width: 40.0625em) {
-  .tl-boxlinks--card {
-    margin-top: 20px;
-  }
 }
 @media (max-width: 40.0525em) {
   .tl-boxlinks--card {
     flex-basis: 100% !important;
     background-color: unset;
     padding: 0px;
-    margin-top: 10px;
-  }
-}
-@media (max-width: 40.0525em) and (min-width: 40.0625em) {
-  .tl-boxlinks--card {
-    margin-top: 10px;
   }
 }
