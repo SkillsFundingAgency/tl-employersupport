@@ -9167,6 +9167,8 @@ ul.govuk-radios label .gem-radios__input {
 @media (max-width: 40.0525em) {
   .tl-hero {
     flex-direction: column;
+    margin: 0 -15px 0 -15px;
+    width: calc(100% + 30px);
   }
   .tl-hero--column {
     width: 100%;

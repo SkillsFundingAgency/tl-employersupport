@@ -36,6 +36,8 @@
 
     @include govuk-media-query($until: tablet) {
         flex-direction: column;
+        margin: 0 -15px 0 -15px;
+        width: calc(100% + 30px);
 
         &--column {
             width: 100%;
