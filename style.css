@@ -9131,6 +9131,14 @@ ul.govuk-radios label .gem-radios__input {
     background-color: unset;
     padding: 0px;
   }
+  .tl-boxlinks--card h3 {
+    margin-top: 15px;
+  }
+}
+@media (max-width: 40.0525em) and (min-width: 40.0625em) {
+  .tl-boxlinks--card h3 {
+    margin-top: 25px;
+  }
 }
 
 .tl-hero {
