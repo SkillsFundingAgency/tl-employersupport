@@ -15,31 +15,37 @@
             <div class="govuk-grid-column-full">
                 <h1 class="govuk-heading-xl govuk-!-margin-bottom-7">{{category.name}}</h1>
 
-                {{#if promoted_articles}}
 
                 <div class="tl-hero">
                     <div class="tl-hero--column">
-
+                        
                         <div class="tl-hero--card">
                             <h2 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-0">{{settings.plan_header}}</h2>
                             <p class="govuk-body">{{settings.plan_content}}</p>
-                            {{#each promoted_articles}}
+                            {{#each sections}}
+                            {{#if articles}}
+                            {{#each articles}}
+                            {{#if promoted}}
                             <p class="govuk-body govuk-!-margin-bottom-0"><a class="govuk-button govuk-!-margin-bottom-0" href="{{url}}">Find out more</a></p>
+                            {{/if}}
+                            {{/each}}
+                            {{/if}}
                             {{/each}}
                         </div>
-
+                        
                     </div>
                     <div class="tl-hero--column">
                         <img class="tl-image--cover" src="{{settings.plan_image}}" />
                     </div>
                 </div>
 
-                {{/if}}
             </div>
         </div>
     </section>
     <section id="tl-category--content">
         {{#each sections}}
+
+        {{#isnt name "How industry placements work"}}
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-full">
 
@@ -52,7 +58,7 @@
                     {{#if promoted}}
                     {{else}}
                     <div class="tl-boxlinks--card">
-                        <p class="govuk-body-l">
+                        <p class="govuk-body-l govuk-!-margin-bottom-2">
                             <a class="govuk-link govuk-!-margin-bottom-1 tl-category--section--article" href="{{url}}">{{title}}</a>
                         </p>
                     </div>
@@ -62,6 +68,7 @@
                 </div>
             </div>
         </div>
+        {{/isnt}}
         {{/each}}
     </section>
 </div>
