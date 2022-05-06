@@ -113,6 +113,7 @@
     .tl-autocomplete-wrap {
         display: inline-block;
         font-family: $govuk-font-family;
+        margin-right: -6px;
 
         @include govuk-media-query ($until: tablet) {
             width: 100%;

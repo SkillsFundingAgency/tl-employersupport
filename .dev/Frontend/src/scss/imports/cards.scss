@@ -11,9 +11,15 @@
     &--grey {
         background-color: govuk-colour("light-grey");
         padding: 30px;
+        position: relative;
 
         @include govuk-media-query ($until: tablet) {
             padding: 20px;
+        }
+
+        &--lower {
+            position: absolute;
+            bottom: 20px;
         }
     }
 

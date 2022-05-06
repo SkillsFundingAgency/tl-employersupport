@@ -123,15 +123,17 @@
                         </div>
 
                     </div>
-                    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                    <div class="tl-card--grey--lower">
 
-                    <p class="govuk-body"><a href="{{url}}" class="govuk-link" id="tl-home-skillareas--all">All skill areas</a></p>
+                        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
-                    {{/is}}
-                    {{/each}}
+                        <p class="govuk-body"><a href="{{url}}" class="govuk-link" id="tl-home-skillareas--all">All skill areas</a></p>
+                    </div>
+                        {{/is}}
+                        {{/each}}
+                    </div>
+
                 </div>
-
-            </div>
             <div class="govuk-grid-column-one-third tl-row-fill govuk-!-margin-bottom-5">
                 <div class="tl-card--grey">
 
@@ -163,10 +165,12 @@
                     {{/if}}
                     {{/each}}
                     {{/each}}
+                <div class="tl-card--grey--lower">
                     <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
                     {{#each sections}}
                     <p class="govuk-body"><a href="{{url}}" class="govuk-link" id="tl-home-waw--all">All workshops and webinars</a></p>
                     {{/each}}
+                </div>
                     {{/is}}
                     {{/each}}
                 </div>

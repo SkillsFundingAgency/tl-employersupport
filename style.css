@@ -7928,11 +7928,16 @@ x:-moz-any-link {
 .tl-card--grey, .tl-hero--card, .tl-card--fap, .tl-home--banner--card {
   background-color: #f3f2f1;
   padding: 30px;
+  position: relative;
 }
 @media (max-width: 40.0525em) {
   .tl-card--grey, .tl-hero--card, .tl-card--fap, .tl-home--banner--card {
     padding: 20px;
   }
+}
+.tl-card--grey--lower {
+  position: absolute;
+  bottom: 20px;
 }
 .tl-card--purple {
   background-color: #f3f2f1;
@@ -8933,6 +8938,7 @@ ul.govuk-radios label .gem-radios__input {
 .tl-autocomplete-wrap {
   display: inline-block;
   font-family: "GDS Transport", Arial, sans-serif;
+  margin-right: -6px;
 }
 @media (max-width: 40.0525em) {
   .tl-autocomplete-wrap {
