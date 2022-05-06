@@ -1,7 +1,7 @@
 {
   "name": "GDS Style - Employer Support - Skill Area Redesign",
   "author": "Ash Anderton",
-  "version": "0.1.467",
+  "version": "0.1.468",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [
@@ -157,6 +157,26 @@
           "type": "file",
           "description": "Benefits category image",
           "label": "Benefits category image"
+        },
+        {
+          "identifier": "plan_header",
+          "type": "text",
+          "description": "Plan IPs  category header",
+          "label": "Plan IPs  category header",
+          "value": "How industry placements work"
+        },
+        {
+          "identifier": "plan_content",
+          "type": "text",
+          "description": "Plan IPs category content",
+          "label": "Plan IPs  category content",
+          "value": "5 steps from finding a college or school through to writing and end of placement review."
+        },
+        {
+          "identifier": "plan_image",
+          "type": "file",
+          "description": "Plan IPs  category image",
+          "label": "Plan IPs  category image"
         }
       ]
     },

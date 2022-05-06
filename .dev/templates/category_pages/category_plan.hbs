@@ -1,0 +1,71 @@
+﻿<!-- Main content -->
+<div class="govuk-width-container">
+    <div id="tl-breadcrumbs--category">
+        <div class="tl-breadcrumbs">
+            {{breadcrumbs}}
+        </div>
+    </div>
+</div>
+
+
+<!-- Article Content -->
+<div class="govuk-width-container govuk-main-wrapper">
+    <section id="tl-category--header">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+                <h1 class="govuk-heading-xl govuk-!-margin-bottom-7">{{category.name}}</h1>
+
+                {{#if promoted_articles}}
+
+                <div class="tl-hero">
+                    <div class="tl-hero--column">
+
+                        <div class="tl-hero--card">
+                            <h2 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-0">{{settings.plan_header}}</h2>
+                            <p class="govuk-body">{{settings.plan_content}}</p>
+                            {{#each promoted_articles}}
+                            <p class="govuk-body govuk-!-margin-bottom-0"><a class="govuk-button govuk-!-margin-bottom-0" href="{{url}}">Find out more</a></p>
+                            {{/each}}
+                        </div>
+
+                    </div>
+                    <div class="tl-hero--column">
+                        <img class="tl-image--cover" src="{{settings.plan_image}}" />
+                    </div>
+                </div>
+
+                {{/if}}
+            </div>
+        </div>
+    </section>
+    <section id="tl-category--content">
+        {{#each sections}}
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+
+
+                <h3 class="govuk-heading-m govuk-!-margin-top-7">{{name}}</h3>
+
+                <div class="tl-boxlinks govuk-!-margin-top-2">
+
+                    {{#each articles}}
+                    {{#if promoted}}
+                    {{else}}
+                    <div class="tl-boxlinks--card">
+                        <p class="govuk-body-l">
+                            <a class="govuk-link govuk-!-margin-bottom-1 tl-category--section--article" href="{{url}}">{{title}}</a>
+                        </p>
+                    </div>
+                    {{/if}}
+                    {{/each}}
+
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </section>
+</div>
+
+
+
+
