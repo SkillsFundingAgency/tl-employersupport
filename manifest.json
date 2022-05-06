@@ -1,7 +1,7 @@
 {
   "name": "GDS Style - Employer Support - Skill Area Redesign",
   "author": "Ash Anderton",
-  "version": "0.1.469",
+  "version": "0.1.470",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [
@@ -175,8 +175,48 @@
         {
           "identifier": "plan_image",
           "type": "file",
-          "description": "Plan IPs  category image",
+          "description": "Plan IPs category image",
           "label": "Plan IPs  category image"
+        },
+        {
+          "identifier": "during_header",
+          "type": "text",
+          "description": "During IPs category header",
+          "label": "During IPs  category header",
+          "value": "Effective mentoring for students"
+        },
+        {
+          "identifier": "during_content",
+          "type": "text",
+          "description": "During IPs category content",
+          "label": "During IPs  category content",
+          "value": "A good mentor can make a huge difference to a student''s experience. Discover our tips for industry placement mentors. "
+        },
+        {
+          "identifier": "during_image",
+          "type": "file",
+          "description": "During IPs category image",
+          "label": "During IPs  category image"
+        },
+        {
+          "identifier": "about_header",
+          "type": "text",
+          "description": "About T Levels category header",
+          "label": "About T Levels category header",
+          "value": "What are T Levels?"
+        },
+        {
+          "identifier": "about_content",
+          "type": "text",
+          "description": "About T Levels category content",
+          "label": "About T Levels category content",
+          "value": "T Levels are a new qualification for students aged 16 to 19 in England who''ve finished GCSEs."
+        },
+        {
+          "identifier": "about_image",
+          "type": "file",
+          "description": "About T Levels category image",
+          "label": "About T Levels category image"
         }
       ]
     },
