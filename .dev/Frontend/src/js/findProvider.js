@@ -304,11 +304,9 @@ $(document).ready(function () {
                 $("#tl-fap--results").append(searchResult);
             });
 
-        console.log('Checking next results link for page  ' + page + ', size ' + pageSize + ', max visible ' + ((page + 1) * pageSize) + ', totalResults = ' + data.totalResults);
         if (typeof data.totalResults !== "undefined" &&
             data.totalResults !== null &&
             data.totalResults <= ((page + 1) * pageSize)) {
-            console.log('hiding next results link');
             $('#tl-next-results-link').addClass("tl-hidden");
         } else {
             $('#tl-next-results-link').removeClass("tl-hidden");
