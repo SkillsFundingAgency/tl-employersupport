@@ -7936,8 +7936,11 @@ x:-moz-any-link {
   }
 }
 .tl-card--grey--lower {
-  position: absolute;
-  bottom: 20px;
+  margin-top: auto;
+}
+.tl-card--flex {
+  display: flex;
+  flex-direction: column;
 }
 .tl-card--purple {
   background-color: #f3f2f1;
