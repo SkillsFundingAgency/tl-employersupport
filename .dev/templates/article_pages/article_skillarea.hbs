@@ -1,12 +1,3 @@
 <script>
-    $.getJSON('/api/v2/help_center/articles/{{article.id}}', function (articlesection) {
-        var sectionid = articlesection.article.section_id
-    });
-
-    $.getJSON('/api/v2/help_center/sections/' + sectionid, function (sectioncategory) {
-        var categoryid = sectioncategory.section.category_id
-    });
-
-    window.location.href = "/hc/en-gb/sections/" + categoryid;
+window.location.href = "{{#each article.path_steps}}{{#is @index 1}}{{url}}{{/is}}{{/each}}";
 </script>
-
