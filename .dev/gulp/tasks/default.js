@@ -79,7 +79,7 @@ gulp.task('jsfiles', () => {
         '!Frontend/src/js/custom.js',
         '!Frontend/src/js/findProvider.js',
         '!Frontend/src/js/findProviderTile.js',
-        'node_modules/accessible-autocomplete/dist/accessible-autocomplete.min.js',
+        'node_modules/accessible-autocomplete/dist/accessible-autocomplete.min.js.map'
     ])
         .pipe(gulp.dest(paths.dist.Assets));
 });
