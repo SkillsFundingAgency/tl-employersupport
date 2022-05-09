@@ -3,6 +3,7 @@
 var gulp = require('gulp'),
     concat = require('gulp-concat'),
     minify = require('gulp-minify'),
+    rmLines = require('gulp-rm-lines'),
     sass = require('gulp-sass')(require('sass'));
     wait = require('gulp-wait'),
     watch = require('gulp-watch');
@@ -58,7 +59,12 @@ gulp.task('findProviderjs', () => {
         'node_modules/accessible-autocomplete/dist/accessible-autocomplete.min.js',
         'Frontend/src/js/findProvider.js',
         'Frontend/src/js/locationAutocomplete.js'
-])
+    ])
+    .pipe(rmLines({
+        'filters': [
+            /^\/\/# sourceMappingURL=/g,
+        ]
+    }))
         .pipe(concat('findProvider.js'))
         .pipe(gulp.dest(paths.dist.Assets));
 });
@@ -69,6 +75,11 @@ gulp.task('findProviderTilejs', () => {
         'Frontend/src/js/findProviderTile.js',
         'Frontend/src/js/locationAutocomplete.js'
     ])
+    .pipe(rmLines({
+        'filters': [
+            /^\/\/# sourceMappingURL=/g,
+        ]
+      }))
         .pipe(concat('findProviderTile.js'))
         .pipe(gulp.dest(paths.dist.Assets));
 });
