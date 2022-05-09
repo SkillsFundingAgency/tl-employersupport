@@ -6397,6 +6397,7 @@ x:-moz-any-link {
   object-fit: cover;
   min-width: 100%;
   min-height: 100%;
+  object-position: right bottom;
 }
 
 .tl-border-top-blue--1 {
