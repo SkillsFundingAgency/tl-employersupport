@@ -95,10 +95,11 @@
                 </section>
             </div>
             <div class="govuk-grid-column-one-third">
+                {{#each section.sections}}
+                {{#is name "Related"}}
                 <section id="tl-skillarea-related" class="tl-border-top-blue--3">
                     <h3 class="govuk-heading-s govuk-!-margin-top-3">Related content</h3>
-                    {{#each section.sections}}
-                    {{#is name "Related"}}
+
                     {{#each articles}}
                     <div class="tl-article--content" id="articlebody{{id}}">{{excerpt body characters=600}}</div>
                     <script>
@@ -109,9 +110,10 @@
                 });
                     </script>
                     {{/each}}
-                    {{/is}}
-                    {{/each}}
+
                 </section>
+                {{/is}}
+                {{/each}}
             </div>
         </div>
 </div>
