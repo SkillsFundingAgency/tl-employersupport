@@ -8817,7 +8817,7 @@ ul.govuk-radios label .gem-radios__input {
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 15px;
-  padding-bottom: 15px;
+  padding-bottom: 30px;
 }
 @media (min-width: 40.0625em) {
   .tl-card--fap {
@@ -8836,7 +8836,7 @@ ul.govuk-radios label .gem-radios__input {
 }
 @media (min-width: 40.0625em) {
   .tl-card--fap {
-    padding-bottom: 25px;
+    padding-bottom: 50px;
   }
 }
 @media (min-width: 40.0625em) {
