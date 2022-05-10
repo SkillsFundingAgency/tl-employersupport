@@ -8852,16 +8852,20 @@ ul.govuk-radios label .gem-radios__input {
   flex-direction: column;
   flex-basis: 100%;
   flex: 1;
-  padding-left: 15px;
-  padding-right: 15px;
   box-sizing: border-box;
 }
 @media (min-width: 40.0625em) {
   .tl-card--fap--left, .tl-card--fap--right {
     padding-left: 15px;
+    padding-right: 15px;
   }
 }
-@media (min-width: 40.0625em) {
+@media (min-width: 40.0625em) and (min-width: 40.0625em) {
+  .tl-card--fap--left, .tl-card--fap--right {
+    padding-left: 15px;
+  }
+}
+@media (min-width: 40.0625em) and (min-width: 40.0625em) {
   .tl-card--fap--left, .tl-card--fap--right {
     padding-right: 15px;
   }
