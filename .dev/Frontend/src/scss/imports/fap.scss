@@ -37,12 +37,15 @@
         flex-direction: column;
         flex-basis: 100%;
         flex: 1;
-        box-sizing: border-box;
+        @include govuk-responsive-padding(3, "left");
+        @include govuk-responsive-padding(3, "right");
 
-        @include govuk-media-query($from: tablet) {
-            @include govuk-responsive-padding(3, "left");
-            @include govuk-responsive-padding(3, "right");
+        @include govuk-media-query($until: tablet) {
+            @include govuk-responsive-padding(2, "left");
+            @include govuk-responsive-padding(2, "right");
         }
+
+        box-sizing: border-box;
     }
 
     @include govuk-media-query($until: tablet) {
