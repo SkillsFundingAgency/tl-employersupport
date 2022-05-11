@@ -1,4 +1,4 @@
-function FindProviderTile(findProvidersApiUri) {
+function FindProviderTile() {
     // Find Provider tile
     const fapTileContainer = $(".tl-fap-tile").first();
     if (!fapTileContainer.length) return;
