@@ -1,4 +1,4 @@
-$(document).ready(function () {
+function FindProviderTile(findProvidersApiUri) {
     // Find Provider tile
     const fapTileContainer = $(".tl-fap-tile").first();
     if (!fapTileContainer.length) return;
@@ -75,4 +75,4 @@ $(document).ready(function () {
         $("#tl-search-term-error").text(message);
         $('#tl-search-term-error').removeClass("tl-hidden");
     }
-});
+};
