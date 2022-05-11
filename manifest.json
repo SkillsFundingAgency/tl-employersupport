@@ -1,7 +1,7 @@
 {
   "name": "GDS Style - Employer Support - Skill Area Redesign",
   "author": "Ash Anderton",
-  "version": "0.1.494",
+  "version": "0.1.495",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [
@@ -170,7 +170,7 @@
           "type": "text",
           "description": "Plan IPs category content",
           "label": "Plan IPs  category content",
-          "value": "5 steps from finding a college or school through to writing and end of placement review."
+          "value": "5 steps from finding a college or school through to writing an end of placement review."
         },
         {
           "identifier": "plan_image",
