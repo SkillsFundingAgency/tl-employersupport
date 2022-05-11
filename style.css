@@ -8845,12 +8845,12 @@ ul.govuk-radios label .gem-radios__input {
     background-size: 713px auto;
     background-repeat: no-repeat;
     background-position: bottom -40px right -160px;
-    padding-bottom: 15px;
+    padding-bottom: 25px;
   }
 }
 @media (min-width: 40.0625em) and (min-width: 40.0625em) {
   .tl-card--fap {
-    padding-bottom: 25px;
+    padding-bottom: 40px;
   }
 }
 .tl-card--fap--left, .tl-card--fap--right {

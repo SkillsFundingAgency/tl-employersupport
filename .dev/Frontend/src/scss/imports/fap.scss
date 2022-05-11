@@ -23,7 +23,7 @@
         background-size: 713px auto;
         background-repeat: no-repeat;
         background-position: bottom -40px right -160px;
-        @include govuk-responsive-padding(5, "bottom");
+        @include govuk-responsive-padding(7, "bottom");
     }
 
     h2 {
