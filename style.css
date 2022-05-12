@@ -6886,6 +6886,7 @@ x:-moz-any-link {
   padding-bottom: 56.25%;
   /* 16:9 */
   height: 0;
+  margin-bottom: 10px;
 }
 .tl-youtube iframe {
   position: absolute;
@@ -9041,6 +9042,7 @@ ul.govuk-radios label .gem-radios__input {
   padding: 0;
   width: 100%;
   width: calc(100% - 4px);
+  padding-left: 0px !important;
 }
 
 .autocomplete__menu--visible {
