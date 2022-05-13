@@ -174,7 +174,7 @@ $(document).ready(function () {
                 currentPage = page;
                 currentSearchTerm = searchTerm;
                 currentSkillAreaIds = skillAreaIds;
-                populateProviderSearchResults(response);
+                populateProviderSearchResults(response, page, pageSize);
             }
             setTimeout(function () {
                 //delay to avoid autocomplete suggestions loading
@@ -218,7 +218,7 @@ $(document).ready(function () {
         currentPage = 0;
     }
 
-    function populateProviderSearchResults(data) {
+    function populateProviderSearchResults(data, page, pageSize) {
         if (data.searchTerm && data.searchTerm !== $("#tl-search-term").val()) {
             $("#tl-search-term").val(data.searchTerm);
         }
@@ -304,7 +304,13 @@ $(document).ready(function () {
                 $("#tl-fap--results").append(searchResult);
             });
 
-        $('#tl-next-results-link').removeClass("tl-hidden");
+        if (typeof data.totalResults !== "undefined" &&
+            data.totalResults !== null &&
+            data.totalResults <= ((page + 1) * pageSize)) {
+            $('#tl-next-results-link').addClass("tl-hidden");
+        } else {
+            $('#tl-next-results-link').removeClass("tl-hidden");
+        }
     }
 
     function showError(status, errorText) {
@@ -364,5 +370,4 @@ $(document).ready(function () {
 
         return null;
     }
-
 });

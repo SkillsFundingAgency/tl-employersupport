@@ -11,10 +11,20 @@
     &--grey {
         background-color: govuk-colour("light-grey");
         padding: 30px;
+        position: relative;
 
         @include govuk-media-query ($until: tablet) {
             padding: 20px;
         }
+
+        &--lower {
+            margin-top: auto;
+        }
+    }
+
+    &--flex {
+        display: flex;
+        flex-direction: column;
     }
 
     &--purple {
@@ -26,6 +36,18 @@
 
         @include govuk-media-query ($until: tablet) {
             padding: 20px;
+        }
+    }
+
+    &--boxlinks {
+        background-color: govuk-colour("light-grey");
+        padding: 30px;
+        @include govuk-responsive-margin(4, "top");
+
+        @include govuk-media-query ($until: tablet) {
+            background-color: unset;
+            padding: 0px;
+            @include govuk-responsive-margin(2, "top");
         }
     }
 }

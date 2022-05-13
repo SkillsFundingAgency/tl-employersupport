@@ -1,3 +1,4 @@
+<!-- Main content -->
 
 
 <div class="govuk-width-container">
@@ -8,57 +9,111 @@
     </div>
 </div>
 
-
-
-
-
 <!-- Article Content -->
 <div class="govuk-width-container govuk-main-wrapper">
 
     <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-            <h1 class="govuk-heading-xl">{{article.title}}</h1>
-            <div class="tl-article--content">{{article.body}}</div>
-
-            <section class="tl-attachments">
-                {{#each attachments}}
-                <div class="tl-attachment">
-                    <div class="tl-attachment--thumbnail">
-                        <a href="{{url}}" class="govuk-link">
-                            <svg class="gem-c-attachment__thumbnail-image" version="1.1" viewBox="0 0 99 140" width="99" height="140" aria-hidden="true" alt="Download article attachment">
-                                <path d="M12 12h75v27H12zM12 59h9v9h-9zM12 77h9v9h-9zM12 95h9v9h-9zM12 113h9v9h-9zM30 59h57v9H30zM30 77h39v9H30zM30 95h57v9H30zM30 113h48v9H30z" stroke-width="0"></path>
-                            </svg>
-                            <span class="govuk-visually-hidden">Download {{name}}</span>
-                        </a>
-                    </div>
-                    <div class="tl-attachment--details">
-                        <h2 class="tl-attachment--title">
-                            <a class="govuk-link tl-attachment--link" target="_self" href="{{url}}" download>{{name}}</a>
-                        </h2>
-                        <p class="tl-attachment--metadata govuk-body-s">File size: <span class="tl-attachment--attribute">{{size}}</span></p>
-                    </div>
+        <div class="govuk-grid-column-full">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+                    <h1 class="govuk-heading-xl">{{section.name}}</h1>
                 </div>
-                {{/each}}
-            </section>
-
-            <p class="govuk-body-s tl-article--date">
-                {{#is article.created_at article.edited_at}}
-                Created: {{date article.created_at format='medium'}}
-                {{else}}
-                Last updated: {{date article.edited_at format='medium'}}
-                {{/is}}
-            </p>
-
-
-
+            </div>
         </div>
-    </div>
+            <div class="govuk-grid-column-two-thirds">
+                <section id="tl-skillarea-body">
+                    {{#each section.sections}}
+                    {{#is name "About"}}
+                    {{#each articles}}
+                    <div class="tl-article--content" id="articlebody{{id}}">{{excerpt body characters=600}}</div>
+                    <script>
+
+                    function1 = function () {
+                        var def = new jQuery.Deferred();
+
+                        $.getJSON('/api/v2/help_center/articles/{{id}}', function (articlebody) {
+                            var bodycontent = articlebody.article.body;
+                            $('#articlebody{{id}}').html(bodycontent);
+                            def.resolve(arguments);
+                        });
+
+                        return def.promise();
+                    }
+
+                    function2 = function () {
+                        $(".govuk-tabs").attr("data-module", "govuk-tabs");
+                        $(".tl-article--content .govuk-details").attr("data-module", "govuk-details");
+                        $(".tl-article--content .govuk-details__summary").click(function () {
+                            if (this.closest(".govuk-details").hasAttribute("open")) {
+                                $(this).closest(".govuk-details").removeAttr('open');
+                            }
+                            else {
+                                $(this).closest(".govuk-details").attr('open', true);
+                            }
+                        });
+                        window.GOVUKFrontend.initAll()
+                        new FindProviderTile();
+                    }
+
+                    function1().done(function2);
+
+                    $(".tl-article--content .govuk-details__summary").click(function () {
+                        if (this.closest(".govuk-details").hasAttribute("open")) {
+                            $(this).closest(".govuk-details").removeAttr('open');
+                        }
+                        else {
+                            $(this).closest(".govuk-details").attr('open', true);
+                        }
+                    });
+
+                    </script>
+                    {{/each}}
+                    {{/is}}
+                    {{/each}}
+
+                </section>
 
 
+                <section id="tl-skillarea-links">
+                    <div class="govuk-!-margin-top-9">
+                        <h3 class="govuk-heading-m">More about {{section.name}}</h3>
 
+                        <div class="tl-boxlinks">
+
+                            {{#each section.articles}}
+
+                            <div class="tl-boxlinks--card">
+                                <a class="govuk-link govuk-!-margin-bottom-1" href="{{url}}">{{title}}</a>
+                            </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="govuk-grid-column-one-third">
+                {{#each section.sections}}
+                {{#is name "Related"}}
+                <section id="tl-skillarea-related" class="tl-border-top-blue--3">
+                    <h3 class="govuk-heading-s govuk-!-margin-top-3">Related content</h3>
+
+                    {{#each articles}}
+                    <div class="tl-article--content" id="articlebody{{id}}">{{excerpt body characters=600}}</div>
+                    <script>
+                $.getJSON('/api/v2/help_center/articles/{{id}}', function (articlebody) {
+
+                    var bodycontent = articlebody.article.body;
+                    $('#articlebody{{id}}').html(bodycontent);
+                });
+                    </script>
+                    {{/each}}
+
+                </section>
+                {{/is}}
+                {{/each}}
+            </div>
+        </div>
 </div>
 
-{{#with article}}
 
 <div class="tl-article--vote">
     <div class="tl-article--vote--container">
@@ -92,14 +147,8 @@
     </div>
 </div>
 
-{{/with}}
-
-
 
 <script type="text/javascript">
-    $(".govuk-tabs").attr("data-module", "govuk-tabs");
-
-
                 var maxLength = 500;
             $('#Comment').keyup(function() {
             	var length = $(this).val().length;
@@ -155,7 +204,7 @@
 
             function updateRequest(csrfToken,comment) {
 
-                var request = { "requester": { "name": "Article Feedback" }, "subject": "T Levels Employers Article Feedback - {{article.title}}", "comment": {"body": comment}}
+                var request = { "requester": { "name": "Article Feedback" }, "subject": "T Levels Employers Article Feedback - {{section.name}}", "comment": {"body": comment}}
 
                 $.ajax({
                     url: "https://" + "{{settings.subdomain}}" + ".zendesk.com/api/v2/requests.json",
@@ -185,5 +234,30 @@
 
 <!-- Start of tlevelsemployertest Zendesk Widget script -->
 <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key={{settings.answerbot_key}}"></script>
-<!-- End of tlevelsemployertest Zendesk Widget script -->
 
+<script type="text/javascript">
+    window.zESettings = {
+        webWidget: {
+            answerBot: {
+                avatar: {
+                    url: "{{settings.answerbot_icon}}",
+                    name: {
+                        "*": '{{settings.answerbot_name}}'
+                    }
+                },
+                title: {
+                    "en-gb": "T Levels Employer Support"
+                },
+                search: {
+                    labels:
+                        ['answerbot']
+                },
+                contactOnlyAfterQuery: true
+            }
+        }
+    };
+</script>
+<!-- End of tlevelsemployertest Zendesk Widget script -->
+<script src="{{asset 'findProviderTile.js'}}"
+        data-findProviderRedirectUrl="/hc/en-gb/articles/{{settings.article_id_find_provider}}"
+        data-findProviderApiUri="{{settings.find_provider_api_uri}}"></script>

@@ -18,10 +18,10 @@
 
                 <div class="tl-hero">
                     <div class="tl-hero--column">
-
+                        
                         <div class="tl-hero--card">
-                            <h2 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-0">{{settings.about_header}}</h2>
-                            <p class="govuk-body">{{settings.about_content}}</p>
+                            <h2 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-0">{{settings.plan_header}}</h2>
+                            <p class="govuk-body">{{settings.plan_content}}</p>
                             {{#each sections}}
                             {{#if articles}}
                             {{#each articles}}
@@ -32,10 +32,10 @@
                             {{/if}}
                             {{/each}}
                         </div>
-
+                        
                     </div>
                     <div class="tl-hero--column">
-                        <img class="tl-image--cover" src="{{settings.about_image}}" />
+                        <img class="tl-image--cover" src="{{settings.plan_image}}" />
                     </div>
                 </div>
 
@@ -45,10 +45,15 @@
     <section id="tl-category--content">
         {{#each sections}}
 
+        {{#isnt name "How industry placements work"}}
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-full">
+
+
                 <h3 class="govuk-heading-m govuk-!-margin-top-7">{{name}}</h3>
+
                 <div class="tl-boxlinks govuk-!-margin-top-2">
+
                     {{#each articles}}
                     {{#if promoted}}
                     {{else}}
@@ -59,9 +64,11 @@
                     </div>
                     {{/if}}
                     {{/each}}
+
                 </div>
             </div>
         </div>
+        {{/isnt}}
         {{/each}}
     </section>
 </div>

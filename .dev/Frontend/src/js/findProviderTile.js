@@ -1,4 +1,4 @@
-$(document).ready(function () {
+function FindProviderTile() {
     // Find Provider tile
     const fapTileContainer = $(".tl-fap-tile").first();
     if (!fapTileContainer.length) return;
@@ -23,7 +23,7 @@ $(document).ready(function () {
             <div class="govuk-grid-column-full"> \
                 <div class="tl-card--fap"> \
                     <div class="tl-card--fap--left"> \
-                        <h1 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-4">Partner with a school or college</h1> \
+                        <h2 class="govuk-!-margin-top-2 govuk-!-margin-bottom-4">Partner with a school or college</h2> \
                         <p class="govuk-body">Offer a placement or find out more about their T Level programme.</p> \
                     </div> \
                     <div class="tl-card--fap--right"> \
@@ -75,4 +75,4 @@ $(document).ready(function () {
         $("#tl-search-term-error").text(message);
         $('#tl-search-term-error').removeClass("tl-hidden");
     }
-});
+};

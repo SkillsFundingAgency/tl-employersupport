@@ -1,0 +1,28 @@
+.tl-boxlinks {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    @include govuk-media-query ($until: tablet) {
+        gap: 10px;
+        @include govuk-responsive-margin(9, "bottom");
+    }
+
+    &--card {
+        flex-basis: calc(50% - 10px);
+        background-color: govuk-colour("light-grey");
+        padding: 30px;
+        box-sizing: border-box;
+
+        @include govuk-media-query ($until: tablet) {
+            flex-basis: 100% !important;
+            background-color: unset;
+            padding: 0px;
+
+            h3 {
+                @include govuk-responsive-margin(5, "top");
+            }
+        }
+    }
+}
