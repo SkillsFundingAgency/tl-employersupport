@@ -94,7 +94,7 @@
     <div class="govuk-width-container">
         <div class="govuk-grid-row tl-row-fill">
             <div class="govuk-grid-column-two-thirds tl-row-fill govuk-!-margin-bottom-5">
-                <div class="tl-card--grey">
+                <div class="tl-card--grey tl-card--flex">
                     {{#each categories}}
                     {{#is name "Skill areas and courses"}}
                     <h3 class="govuk-heading-m">{{name}}</h3>
@@ -105,13 +105,7 @@
                             {{#each sections}}
                             {{#is name "Digital and IT"}}
                             <h4 class="govuk-heading-s">
-                                {{#each articles}}
-                                {{#if @first}}
-                                <a href="{{url}}" class="govuk-link" id="tl-home-skillareas--digital">
-                                    {{/if}}
-                                    {{/each}}
-                                    {{name}}
-                                </a>
+                                <a href="{{url}}" class="govuk-link" id="tl-home-skillareas--digital">{{name}}</a>
                             </h4>
                             <p class="govuk-body">{{excerpt description characters=200}}</p>
                             {{/is}}
@@ -123,17 +117,19 @@
                         </div>
 
                     </div>
-                    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                    <div class="tl-card--grey--lower">
 
-                    <p class="govuk-body"><a href="{{url}}" class="govuk-link" id="tl-home-skillareas--all">All skill areas</a></p>
+                        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
-                    {{/is}}
-                    {{/each}}
+                        <p class="govuk-body govuk-!-margin-bottom-0"><a href="{{url}}" class="govuk-link" id="tl-home-skillareas--all">All skill areas</a></p>
+                    </div>
+                        {{/is}}
+                        {{/each}}
+                    </div>
+
                 </div>
-
-            </div>
             <div class="govuk-grid-column-one-third tl-row-fill govuk-!-margin-bottom-5">
-                <div class="tl-card--grey">
+                <div class="tl-card--grey tl-card--flex">
 
                     {{#each categories}}
                     {{#is name "T Level workshops and webinars"}}
@@ -163,10 +159,12 @@
                     {{/if}}
                     {{/each}}
                     {{/each}}
+                <div class="tl-card--grey--lower">
                     <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
                     {{#each sections}}
-                    <p class="govuk-body"><a href="{{url}}" class="govuk-link" id="tl-home-waw--all">All workshops and webinars</a></p>
+                    <p class="govuk-body govuk-!-margin-bottom-0"><a href="{{url}}" class="govuk-link" id="tl-home-waw--all">All workshops and webinars</a></p>
                     {{/each}}
+                </div>
                     {{/is}}
                     {{/each}}
                 </div>
@@ -224,8 +222,9 @@
 
 <script src="{{asset 'findProviderTile.js'}}"
         data-findProviderRedirectUrl="/hc/en-gb/articles/{{settings.article_id_find_provider}}"
-        data-findProviderApiUri="{{settings.find_provider_api_uri}}"
-        asp-append-version="true">
+        data-findProviderApiUri="{{settings.find_provider_api_uri}}"></script>
+<script>
+    new FindProviderTile();
 </script>
 
 <!-- Start of tlevelsemployertest Zendesk Widget script -->

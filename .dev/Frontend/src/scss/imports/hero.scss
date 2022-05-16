@@ -1,0 +1,55 @@
+.tl-hero {
+    background-color: govuk-colour("light-grey");
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+
+
+    &--column {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 100%;
+        flex: 1;
+
+        &:first-child {
+            flex-basis: 66.6666%;
+
+            @include govuk-media-query($until: tablet) {
+                order: 2;
+            }
+        }
+
+        &:last-child {
+            width: 33.3333%;
+
+            @include govuk-media-query($until: tablet) {
+                width: 100%;
+            }
+        }
+    }
+
+    &--card {
+        @extend .tl-card--grey;
+        height: 100%;
+        @include govuk-responsive-padding(8, "all");
+
+        @include govuk-media-query($until: tablet) {
+            @include govuk-responsive-padding(0, "all");
+            @include govuk-responsive-padding(7, "top");
+        }
+    }
+
+
+    @include govuk-media-query($until: tablet) {
+        flex-direction: column;
+        margin: 0 -15px 0 -15px;
+        width: calc(100% + 30px);
+        padding: 15px;
+        box-sizing: border-box;
+
+        &--column {
+            width: 100%;
+        }
+    }
+}

@@ -15,13 +15,14 @@
             <div class="govuk-grid-column-full">
                 <h1 class="govuk-heading-xl govuk-!-margin-bottom-7">{{category.name}}</h1>
 
+                {{#if promoted_articles}}
 
                 <div class="tl-hero">
                     <div class="tl-hero--column">
 
                         <div class="tl-hero--card">
-                            <h2 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-0">{{settings.about_header}}</h2>
-                            <p class="govuk-body">{{settings.about_content}}</p>
+                            <h2 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-0">{{settings.benefits_header}}</h2>
+                            <p class="govuk-body">{{settings.benefits_content}}</p>
                             {{#each sections}}
                             {{#if articles}}
                             {{#each articles}}
@@ -35,20 +36,25 @@
 
                     </div>
                     <div class="tl-hero--column">
-                        <img class="tl-image--cover" src="{{settings.about_image}}" />
+                        <img class="tl-image--cover" src="{{settings.benefits_image}}" />
                     </div>
                 </div>
 
+                {{/if}}
             </div>
         </div>
     </section>
     <section id="tl-category--content">
         {{#each sections}}
-
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-full">
+
+
+                {{#is name "Benefits"}}
                 <h3 class="govuk-heading-m govuk-!-margin-top-7">{{name}}</h3>
+
                 <div class="tl-boxlinks govuk-!-margin-top-2">
+
                     {{#each articles}}
                     {{#if promoted}}
                     {{else}}
@@ -59,7 +65,30 @@
                     </div>
                     {{/if}}
                     {{/each}}
+
                 </div>
+                {{else}}
+                <h3 class="govuk-heading-m govuk-!-margin-top-7">{{name}}</h3>
+                <div class="tl-boxlinks govuk-!-margin-top-2">
+
+                    {{#each sections}}
+
+                    <div class="tl-boxlinks--card">
+                        <h3 class="govuk-body-l">{{name}}</h3>
+                        <ul class="govuk-list">
+                            {{#each articles}}
+                            <li>
+                                <a class="govuk-link tl-category--section--article" href="{{url}}">{{title}}</a>
+                            </li>
+                            {{/each}}
+                        </ul>
+
+
+                    </div>
+                    {{/each}}
+                </div>
+
+                {{/is}}
             </div>
         </div>
         {{/each}}

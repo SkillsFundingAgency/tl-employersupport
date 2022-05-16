@@ -1,7 +1,7 @@
 {
-  "name": "GDS Style - Employer Support - Home Page Redesign",
+  "name": "GDS Style - Employer Support - Skill Area Redesign",
   "author": "Ash Anderton",
-  "version": "0.1.415",
+  "version": "0.1.503",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [
@@ -119,6 +119,104 @@
           "type": "file",
           "description": "Home page lower section image",
           "label": "Home page lower section image"
+        }
+      ]
+    },
+    {
+      "label": "Category Page Settings",
+      "variables": [
+        {
+          "identifier": "skillareas_header",
+          "type": "text",
+          "description": "Skill Areas category header",
+          "label": "Skill Areas category header",
+          "value": "The skills your business needs"
+        },
+        {
+          "identifier": "skillareas_image",
+          "type": "file",
+          "description": "Skill Areas category image",
+          "label": "Skill Areas category image"
+        },
+        {
+          "identifier": "benefits_header",
+          "type": "text",
+          "description": "Benefits category header",
+          "label": "Benefits category header",
+          "value": "Why offer an industry placement?"
+        },
+        {
+          "identifier": "benefits_content",
+          "type": "text",
+          "description": "Benefits category content",
+          "label": "Benefits category content",
+          "value": "Discover the benefits of hosting an industry placement at your company."
+        },
+        {
+          "identifier": "benefits_image",
+          "type": "file",
+          "description": "Benefits category image",
+          "label": "Benefits category image"
+        },
+        {
+          "identifier": "plan_header",
+          "type": "text",
+          "description": "Plan IPs  category header",
+          "label": "Plan IPs  category header",
+          "value": "How industry placements work"
+        },
+        {
+          "identifier": "plan_content",
+          "type": "text",
+          "description": "Plan IPs category content",
+          "label": "Plan IPs  category content",
+          "value": "5 steps from finding a college or school through to writing an end of placement review."
+        },
+        {
+          "identifier": "plan_image",
+          "type": "file",
+          "description": "Plan IPs category image",
+          "label": "Plan IPs  category image"
+        },
+        {
+          "identifier": "during_header",
+          "type": "text",
+          "description": "During IPs category header",
+          "label": "During IPs  category header",
+          "value": "Effective mentoring for students"
+        },
+        {
+          "identifier": "during_content",
+          "type": "text",
+          "description": "During IPs category content",
+          "label": "During IPs  category content",
+          "value": "A good mentor can make a huge difference to a student's experience. Discover our tips for industry placement mentors. "
+        },
+        {
+          "identifier": "during_image",
+          "type": "file",
+          "description": "During IPs category image",
+          "label": "During IPs  category image"
+        },
+        {
+          "identifier": "about_header",
+          "type": "text",
+          "description": "About T Levels category header",
+          "label": "About T Levels category header",
+          "value": "What are T Levels?"
+        },
+        {
+          "identifier": "about_content",
+          "type": "text",
+          "description": "About T Levels category content",
+          "label": "About T Levels category content",
+          "value": "T Levels are a new qualification for students aged 16 to 19 in England who've finished GCSEs."
+        },
+        {
+          "identifier": "about_image",
+          "type": "file",
+          "description": "About T Levels category image",
+          "label": "About T Levels category image"
         }
       ]
     },

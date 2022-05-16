@@ -15,7 +15,7 @@
     box-sizing: border-box;
     @include govuk-responsive-padding(3, "left");
     @include govuk-responsive-padding(3, "right");
-    @include govuk-responsive-padding(8, "top");
+    @include govuk-responsive-padding(5, "top");
     @include govuk-responsive-padding(8, "bottom");
 
     @include govuk-media-query ($from: tablet) {
@@ -23,6 +23,11 @@
         background-size: 713px auto;
         background-repeat: no-repeat;
         background-position: bottom -40px right -160px;
+        @include govuk-responsive-padding(7, "bottom");
+    }
+
+    h2 {
+        @extend .govuk-heading-m
     }
 
 
@@ -35,6 +40,12 @@
         flex: 1;
         @include govuk-responsive-padding(3, "left");
         @include govuk-responsive-padding(3, "right");
+
+        @include govuk-media-query($until: tablet) {
+            @include govuk-responsive-padding(2, "left");
+            @include govuk-responsive-padding(2, "right");
+        }
+
         box-sizing: border-box;
     }
 
@@ -48,194 +59,214 @@
 
     @include govuk-media-query ($from: tablet) {
         &--right {
-            flex: 1 1 40%;
+            flex: 1 1 100%;
         }
 
         &--left {
-            flex: 1 1 60%;
+            flex: 1 1 100%;
+        }
+    }
+}
+
+#tl-home--fap {
+    .tl-card--fap {
+        @include govuk-responsive-padding(8, "top");
+        @include govuk-responsive-padding(8, "bottom");
+
+        @include govuk-media-query ($from: tablet) {
+            &--right {
+                flex: 1 1 40%;
+            }
+
+            &--left {
+                flex: 1 1 60%;
+            }
+        }
+
+        h2 {
+            @extend .govuk-heading-l
         }
     }
 }
 
 
-.tl-fap-home--image {
-    width: 100%;
-    height: 100%;
-    display: none;
-    background-image: url("$home_image_7");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    min-height: 250px;
+    .tl-fap-home--image {
+        width: 100%;
+        height: 100%;
+        display: none;
+        background-image: url("$home_image_7");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        min-height: 250px;
 
-    @include govuk-media-query ($from: tablet) {
-        min-height: unset;
+        @include govuk-media-query ($from: tablet) {
+            min-height: unset;
+            display: block;
+        }
+    }
+
+    .tl-fap-home--container {
+        @include govuk-media-query ($from: tablet) {
+            display: flex;
+            align-items: stretch;
+        }
+    }
+
+    .tl-fap-home--submit {
+        @include govuk-responsive-margin(1, "top");
+    }
+    /*AUTOCOMPELTE*/
+    .tl-autocomplete-wrap {
+        display: inline-block;
+        font-family: $govuk-font-family;
+        margin-right: -6px;
+
+        @include govuk-media-query ($until: tablet) {
+            width: 100%;
+        }
+    }
+
+
+    .autocomplete__wrapper {
+        position: relative;
+    }
+
+    .autocomplete__hint,
+    .autocomplete__input {
+        -webkit-appearance: none;
+        border: 2px solid;
+        border-radius: 0; /* Safari 10 on iOS adds implicit border rounding. */
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        margin-bottom: 0; /* BUG: Safari 10 on macOS seems to add an implicit margin. */
+        width: 100%;
+        background: white;
+        @include govuk-responsive-margin(1, "top");
+    }
+
+    .autocomplete__input {
+        position: relative;
+    }
+
+    .autocomplete__hint {
+        display: none;
+    }
+
+    .autocomplete__input--default {
+        padding: 6px 5px 5px;
+    }
+
+    .autocomplete__input--focused {
+        outline-offset: 0;
+        outline: 3px solid #ffbf47;
+    }
+
+    .autocomplete__input--show-all-values {
+        padding: 4px 34px 4px 4px;
+        cursor: pointer;
+    }
+
+    .autocomplete__dropdown-arrow-down {
+        z-index: -1;
+        display: inline-block;
+        position: absolute;
+        right: 8px;
+        width: 24px;
+        height: 24px;
+        top: 10px;
+    }
+
+    .autocomplete__menu {
+        background-color: #fff;
+        border: 2px solid #0B0C0C;
+        border-top: 0;
+        color: #34384B;
+        margin: 0;
+        max-height: 342px;
+        overflow-x: hidden;
+        padding: 0;
+        width: 100%;
+        width: calc(100% - 4px);
+        padding-left: 0px !important;
+    }
+
+    .autocomplete__menu--visible {
         display: block;
     }
-}
 
-.tl-fap-home--container {
-    @include govuk-media-query ($from: tablet) {
-        display: flex;
-        align-items: stretch;
+    .autocomplete__menu--hidden {
+        display: none;
     }
-}
 
-.tl-fap-home--submit {
-    @include govuk-responsive-margin(1, "top");
-}
-
-
-
-/*AUTOCOMPELTE*/
-.tl-autocomplete-wrap {
-    display: inline-block;
-    font-family: $govuk-font-family;
-
-    @include govuk-media-query ($until: tablet) {
-        width: 100%;
+    .autocomplete__menu--overlay {
+        box-shadow: rgba(0, 0, 0, 0.256863) 0px 2px 6px;
+        left: 0;
+        position: absolute;
+        top: 100%;
+        z-index: 100;
     }
-}
 
+    .autocomplete__menu--inline {
+        position: relative;
+    }
 
-.autocomplete__wrapper {
-    position: relative;
-}
+    .autocomplete__option {
+        border-bottom: solid #BFC1C3;
+        border-width: 1px 0;
+        cursor: pointer;
+        display: block;
+        position: relative;
+    }
 
-.autocomplete__hint,
-.autocomplete__input {
-    -webkit-appearance: none;
-    border: 2px solid;
-    border-radius: 0; /* Safari 10 on iOS adds implicit border rounding. */
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    margin-bottom: 0; /* BUG: Safari 10 on macOS seems to add an implicit margin. */
-    width: 100%;
-    background: white;
-    @include govuk-responsive-margin(1, "top");
-}
+    .autocomplete__option > * {
+        pointer-events: none;
+    }
 
-.autocomplete__input {
-    position: relative;
-}
+    .autocomplete__option:first-of-type {
+        border-top-width: 0;
+    }
 
-.autocomplete__hint {
-    display: none;
-}
+    .autocomplete__option:last-of-type {
+        border-bottom-width: 0;
+    }
 
-.autocomplete__input--default {
-    padding: 6px 5px 5px;
-}
+    .autocomplete__option--odd {
+        background-color: #FAFAFA;
+    }
 
-.autocomplete__input--focused {
-    outline-offset: 0;
-    outline: 3px solid #ffbf47;
-}
+    .autocomplete__option--focused,
+    .autocomplete__option:hover {
+        background-color: #005EA5;
+        border-color: #005EA5;
+        color: white;
+        outline: none;
+    }
 
-.autocomplete__input--show-all-values {
-    padding: 4px 34px 4px 4px;
-    cursor: pointer;
-}
+    .autocomplete__option--no-results {
+        background-color: #FAFAFA;
+        color: #646b6f;
+        cursor: not-allowed;
+    }
 
-.autocomplete__dropdown-arrow-down {
-    z-index: -1;
-    display: inline-block;
-    position: absolute;
-    right: 8px;
-    width: 24px;
-    height: 24px;
-    top: 10px;
-}
-
-.autocomplete__menu {
-    background-color: #fff;
-    border: 2px solid #0B0C0C;
-    border-top: 0;
-    color: #34384B;
-    margin: 0;
-    max-height: 342px;
-    overflow-x: hidden;
-    padding: 0;
-    width: 100%;
-    width: calc(100% - 4px);
-}
-
-.autocomplete__menu--visible {
-    display: block;
-}
-
-.autocomplete__menu--hidden {
-    display: none;
-}
-
-.autocomplete__menu--overlay {
-    box-shadow: rgba(0, 0, 0, 0.256863) 0px 2px 6px;
-    left: 0;
-    position: absolute;
-    top: 100%;
-    z-index: 100;
-}
-
-.autocomplete__menu--inline {
-    position: relative;
-}
-
-.autocomplete__option {
-    border-bottom: solid #BFC1C3;
-    border-width: 1px 0;
-    cursor: pointer;
-    display: block;
-    position: relative;
-}
-
-.autocomplete__option > * {
-    pointer-events: none;
-}
-
-.autocomplete__option:first-of-type {
-    border-top-width: 0;
-}
-
-.autocomplete__option:last-of-type {
-    border-bottom-width: 0;
-}
-
-.autocomplete__option--odd {
-    background-color: #FAFAFA;
-}
-
-.autocomplete__option--focused,
-.autocomplete__option:hover {
-    background-color: #005EA5;
-    border-color: #005EA5;
-    color: white;
-    outline: none;
-}
-
-.autocomplete__option--no-results {
-    background-color: #FAFAFA;
-    color: #646b6f;
-    cursor: not-allowed;
-}
-
-.autocomplete__hint,
-.autocomplete__input,
-.autocomplete__option {
-    font-size: 16px;
-    line-height: 1.25;
-}
-
-.autocomplete__hint,
-.autocomplete__option {
-    padding: 4px;
-}
-
-@media (min-width: 641px) {
     .autocomplete__hint,
     .autocomplete__input,
     .autocomplete__option {
-        font-size: 19px;
-        line-height: 1.31579;
+        font-size: 16px;
+        line-height: 1.25;
     }
-}
+
+    .autocomplete__hint,
+    .autocomplete__option {
+        padding: 4px;
+    }
+
+    @media (min-width: 641px) {
+        .autocomplete__hint,
+        .autocomplete__input,
+        .autocomplete__option {
+            font-size: 19px;
+            line-height: 1.31579;
+        }
+    }

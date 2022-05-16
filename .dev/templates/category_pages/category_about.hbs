@@ -1,6 +1,4 @@
 ﻿<!-- Main content -->
-
-
 <div class="govuk-width-container">
     <div id="tl-breadcrumbs--category">
         <div class="tl-breadcrumbs">
@@ -10,61 +8,64 @@
 </div>
 
 
-
-
-<!-- Category Content -->
+<!-- Article Content -->
 <div class="govuk-width-container govuk-main-wrapper">
-
-    <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-            <h1 class="govuk-heading-xl">{{category.name}}</h1>
-            {{#if category.description}}
-            <p class="govuk-body-l">{{category.description}}</p>
-            {{/if}}
-        <section>
+    <section id="tl-category--header">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+                <h1 class="govuk-heading-xl govuk-!-margin-bottom-7">{{category.name}}</h1>
 
 
+                <div class="tl-hero">
+                    <div class="tl-hero--column">
 
-            {{#each sections}}
-
-
-                    {{#isnt name "How industry placements work"}}
-                        <h2 class="govuk-heading-m">{{name}}</h2>
-
-
-                        {{#if articles}}
-                        <ul class="govuk-list">
+                        <div class="tl-hero--card">
+                            <h2 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-0">{{settings.about_header}}</h2>
+                            <p class="govuk-body">{{settings.about_content}}</p>
+                            {{#each sections}}
+                            {{#if articles}}
                             {{#each articles}}
-                            <li>
-                                <a class="govuk-link tl-category--article" href="{{url}}">{{title}}</a>
-                            </li>
-                            {{/each}}
-                            {{#if more_articles}}
-                            <li class="govuk-!-margin-top-4">
-                                <a class="govuk-link govuk-body-s tl-category--more" href="{{url}}">
-                                    {{t 'show_all_articles' count=article_count}}
-                                </a>
-                            </li>
+                            {{#if promoted}}
+                            <p class="govuk-body govuk-!-margin-bottom-0"><a class="govuk-button govuk-!-margin-bottom-0" id="tl-category-hero-link" href="{{url}}">Find out more</a></p>
                             {{/if}}
-                        </ul>
-                        {{else}}
-                        <ul class="govuk-list">
-                            <li>
-                                <p class="govuk-body">There's nothing here at the moment</p>
-                            </li>
-                        </ul>
-                        {{/if}}
-                        {{#isnt sections.length 1}}
-                        {{#unless @last}}
-                        <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-top-8 govuk-!-margin-bottom-7">
-                        {{/unless}}
-                        {{/isnt}}
+                            {{/each}}
+                            {{/if}}
+                            {{/each}}
+                        </div>
 
-                    {{/isnt}}
-            {{/each}}
+                    </div>
+                    <div class="tl-hero--column">
+                        <img class="tl-image--cover" src="{{settings.about_image}}" />
+                    </div>
+                </div>
 
-        </section>
+            </div>
         </div>
-    </div>
+    </section>
+    <section id="tl-category--content">
+        {{#each sections}}
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+                <h3 class="govuk-heading-m govuk-!-margin-top-7">{{name}}</h3>
+                <div class="tl-boxlinks govuk-!-margin-top-2">
+                    {{#each articles}}
+                    {{#if promoted}}
+                    {{else}}
+                    <div class="tl-boxlinks--card">
+                        <p class="govuk-body-l govuk-!-margin-bottom-2">
+                            <a class="govuk-link govuk-!-margin-bottom-1 tl-category--section--article" href="{{url}}">{{title}}</a>
+                        </p>
+                    </div>
+                    {{/if}}
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </section>
 </div>
+
+
+
 

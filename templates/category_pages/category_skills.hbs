@@ -1,0 +1,50 @@
+<!-- Main content -->
+    <div class="govuk-width-container">
+        <div id="tl-breadcrumbs--category">
+            <div class="tl-breadcrumbs">
+                {{breadcrumbs}}
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Article Content -->
+    <div class="govuk-width-container govuk-main-wrapper">
+        <section id="tl-category--header">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-full">
+                    <h1 class="govuk-heading-xl govuk-!-margin-bottom-7">{{category.name}}</h1>
+
+
+                    <div class="tl-hero">
+                        <div class="tl-hero--column">
+                            <div class="tl-hero--card">
+                                <h2 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-0">{{settings.skillareas_header}}</h2>
+                                <p class="govuk-body">{{category.description}}</p>
+                            </div>
+                        </div>
+                        <div class="tl-hero--column">
+                            <img class="tl-image--cover" src="{{settings.skillareas_image}}" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="tl-category--content" class="govuk-!-margin-top-7">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-full">
+                    <h3 class="govuk-heading-m">T Level skill areas</h3>
+                    <div class="tl-boxlinks govuk-!-margin-top-2">
+                        {{#each sections}}
+                        <div class="tl-boxlinks--card">
+                            <p class="govuk-body-l govuk-!-margin-bottom-2">
+                                <a class="govuk-link govuk-!-margin-bottom-1 tl-category--section" href="{{url}}">{{name}}</a>
+                            </p>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
