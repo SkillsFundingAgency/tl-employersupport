@@ -6,7 +6,7 @@ function FindProviderTile(findProviderRedirectUrl, findProvidersApiUri) {
     
     if (typeof findProviderRedirectUrl === "undefined" ||
         typeof findProvidersApiUri === "undefined") {
-        console.log('findProviderTile script requires data-findProviderApiUri and data-findProviderRedirectUrl to be passed via the script tag');
+        console.log('findProviderTile script requires findProviderApiUri and findProviderRedirectUrl parameters');
         return;
     }
 

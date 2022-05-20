@@ -10,7 +10,7 @@ function FindProvider(
     if (typeof findProvidersApiUri === "undefined" ||
         typeof findProvidersAppId === "undefined" ||
         typeof findProvidersApiKey === "undefined") {
-        console.log('findProvider script requires data-findProviderApiUri, data-findProviderAppId and data-findProviderApiKey to be passed via the script tag');
+        console.log('findProvider script requires findProviderApiUri, findProviderAppId and findProviderApiKey parameters');
         return;
     }
 
