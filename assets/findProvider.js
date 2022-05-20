@@ -1649,7 +1649,7 @@ function FindProvider(
 
         return null;
     }
-});
+};
 
 function LocationAutocomplete(findProvidersApiUri) {
     var that = this;

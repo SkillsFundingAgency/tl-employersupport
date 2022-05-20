@@ -345,4 +345,4 @@ function FindProvider(
 
         return null;
     }
-});
+};
