@@ -1,7 +1,7 @@
 {
-  "name": "GDS Style - Employer Support - Skill Area Redesign",
+  "name": "GDS Style - Employer Support - Find Provider Refactoring",
   "author": "Ash Anderton",
-  "version": "0.1.503",
+  "version": "0.1.504",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [

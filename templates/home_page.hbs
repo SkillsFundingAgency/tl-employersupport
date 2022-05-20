@@ -220,11 +220,9 @@
 
 </script>
 
-<script src="{{asset 'findProviderTile.js'}}"
-        data-findProviderRedirectUrl="/hc/en-gb/articles/{{settings.article_id_find_provider}}"
-        data-findProviderApiUri="{{settings.find_provider_api_uri}}"></script>
+<script src="{{asset 'findProviderTile.js'}}"></script>
 <script>
-    new FindProviderTile();
+    new FindProviderTile("/hc/en-gb/articles/{{settings.article_id_find_provider}}", "{{settings.find_provider_api_uri}}");
 </script>
 
 <!-- Start of tlevelsemployertest Zendesk Widget script -->

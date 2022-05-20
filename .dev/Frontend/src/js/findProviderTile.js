@@ -1,12 +1,7 @@
-function FindProviderTile() {
+function FindProviderTile(findProviderRedirectUrl, findProvidersApiUri) {
     // Find Provider tile
     const fapTileContainer = $(".tl-fap-tile").first();
     if (!fapTileContainer.length) return;
-
-    let findProviderRedirectUrl =
-        $('script[data-findProviderRedirectUrl][data-findProviderRedirectUrl!=null]').attr('data-findProviderRedirectUrl');
-    let findProvidersApiUri = 
-        $('script[data-findProviderApiUri][data-findProviderApiUri!=null]').attr('data-findProviderApiUri');
     
     if (typeof findProviderRedirectUrl === "undefined" ||
         typeof findProvidersApiUri === "undefined") {
