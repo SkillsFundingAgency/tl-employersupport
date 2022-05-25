@@ -8943,6 +8943,9 @@ ul.govuk-radios label .gem-radios__input {
   border-left: 5px solid #1d70b8;
   padding: 10px 10px 10px 30px;
 }
+.tl-fap--courses--box--now {
+  border-left: 5px solid #00703c;
+}
 
 .tl-fap-home--image {
   width: 100%;
