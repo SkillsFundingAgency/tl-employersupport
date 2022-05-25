@@ -91,7 +91,7 @@
 
 
 .tl-fap--result, .tl-fap--result2 {
-    @include govuk-responsive-padding(8, "all");
+    @include govuk-responsive-padding(4, "all");
     border: 1px solid govuk-colour("light-grey");
 }
 
