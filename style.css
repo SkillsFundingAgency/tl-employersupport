@@ -8928,12 +8928,12 @@ ul.govuk-radios label .gem-radios__input {
     flex: 1 1 60%;
   }
 }
-.tl-fap--result {
+.tl-fap--result, .tl-fap--result2 {
   padding: 30px;
   border: 1px solid #f3f2f1;
 }
 @media (min-width: 40.0625em) {
-  .tl-fap--result {
+  .tl-fap--result, .tl-fap--result2 {
     padding: 50px;
   }
 }
