@@ -95,6 +95,16 @@
     border: 1px solid govuk-colour("light-grey");
 }
 
+.tl-fap--courses--box {
+    border: 1px solid govuk-colour("light-grey");
+    border-left: 5px solid $govuk-link-colour;
+    padding: 10px 10px 10px 30px;
+
+    &--now {
+        border-left: 5px solid $govuk-success-colour;
+    }
+}
+
 
 
 .tl-fap-home--image {
