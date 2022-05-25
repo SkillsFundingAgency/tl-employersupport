@@ -8942,11 +8942,11 @@ ul.govuk-radios label .gem-radios__input {
   border: 1px solid #f3f2f1;
   border-left: 5px solid #1d70b8;
   padding: 10px 10px 10px 30px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 @media (min-width: 40.0625em) {
   .tl-fap--courses--box {
-    margin-bottom: 50px;
+    margin-bottom: 10px;
   }
 }
 .tl-fap--courses--box--now {

@@ -99,7 +99,7 @@
     border: 1px solid govuk-colour("light-grey");
     border-left: 5px solid $govuk-link-colour;
     padding: 10px 10px 10px 30px;
-    @include govuk-responsive-margin(8, "bottom");
+    @include govuk-responsive-margin(2, "bottom");
 
 
     &--now {
