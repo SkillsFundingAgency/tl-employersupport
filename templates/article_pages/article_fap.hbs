@@ -48,27 +48,65 @@
                     </h3>
 
                     <div class="tl-fap--filter--content">
-                        <h4 class="govuk-heading-s govuk-!-margin-top-2">
-                            Business and Administration<br />
-                            <span class="govuk-body-s tl-text--grey">(0 of 1 selected)</span>
-                        </h4>
-                        <details class="tl-fap--filter--details">
-                            <summary>
-                                <span class="govuk-link">
-                                    Show T Levels
-                                </span>
-                            </summary>
-                            <div>
-                                <div class="govuk-checkboxes govuk-checkboxes--small">
-                                    <div class="govuk-checkboxes__item">
-                                        <input id="tl_skill_area_2" name="tl_skill_area_2" type="checkbox" value="2" class="tl-checkbox govuk-checkboxes__input">
-                                        <label for="tl_skill_area_2" class="govuk-body-s govuk-checkboxes__label">Management and Administration</label>
+                        <div id="tl-fap--filter--1">
+                            <h4 class="govuk-heading-s govuk-!-margin-top-2">
+                                Business and Administration<br />
+                                <span class="govuk-body-s tl-text--grey" id="tl-fap--filter--checkstatus"></span>
+                                <script>
+                                    var numberOfChecked = $('#tl-fap--filter--1 input:checkbox:checked').length;
+                                    var totalCheckboxes = $('#tl-fap--filter--1 input:checkbox').length;
+                                    $('#tl-fap--filter--1 #tl-fap--filter--checkstatus').html("(" + numberOfChecked + " of " + totalCheckboxes + " selected)")
+                                </script>
+                            </h4>
+                            <details class="tl-fap--filter--details">
+                                <summary>
+                                    <span class="govuk-link">
+                                        Show T Levels
+                                    </span>
+                                </summary>
+                                <div>
+                                    <div class="govuk-checkboxes govuk-checkboxes--small">
+                                        <div class="govuk-checkboxes__item">
+                                            <input id="tl_skill_area_1" name="tl_skill_area_1" type="checkbox" value="1" class="tl-checkbox govuk-checkboxes__input">
+                                            <label for="tl_skill_area_1" class="govuk-body-s govuk-checkboxes__label">Management and Administration</label>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </details>
-                        <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-4 govuk-!-margin-top-2">
+                            </details>
+                            <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-4 govuk-!-margin-top-2">
+                        </div>
 
+                        <div id="tl-fap--filter--2">
+                            <h4 class="govuk-heading-s govuk-!-margin-top-2">
+                                Business and Administration<br />
+                                <span class="govuk-body-s tl-text--grey" id="tl-fap--filter--checkstatus"></span>
+                                <script>
+                                    var numberOfChecked = $('#tl-fap--filter--2 input:checkbox:checked').length;
+                                    var totalCheckboxes = $('#tl-fap--filter--2 input:checkbox').length;
+                                    $('#tl-fap--filter--2 #tl-fap--filter--checkstatus').html("(" + numberOfChecked + " of " + totalCheckboxes + " selected)")
+                                </script>
+                            </h4>
+                            <details class="tl-fap--filter--details">
+                                <summary>
+                                    <span class="govuk-link">
+                                        Show T Levels
+                                    </span>
+                                </summary>
+                                <div>
+                                    <div class="govuk-checkboxes govuk-checkboxes--small">
+                                        <div class="govuk-checkboxes__item">
+                                            <input id="tl_skill_area_1" name="tl_skill_area_1" type="checkbox" value="1" class="tl-checkbox govuk-checkboxes__input">
+                                            <label for="tl_skill_area_1" class="govuk-body-s govuk-checkboxes__label">Management and Administration</label>
+                                        </div>
+                                        <div class="govuk-checkboxes__item">
+                                            <input id="tl_skill_area_2" name="tl_skill_area_2" type="checkbox" value="2" class="tl-checkbox govuk-checkboxes__input">
+                                            <label for="tl_skill_area_2" class="govuk-body-s govuk-checkboxes__label">Management and Administration 2</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </details>
+                            <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-4 govuk-!-margin-top-2">
+                        </div>
                     </div>
                 </div>
                 <button class="govuk-button tl-button--green" id="tl-update-search-providers" data-module="govuk-button">
