@@ -54,7 +54,6 @@
                                 <span class="govuk-body-s tl-text--grey" id="tl-fap--filter--checkstatus"></span>
                                 <script>
                                     $(document).ready(function () {
-
                                         function checkbox_change() {
                                             var numberOfChecked = $(this).parent('[id^=tl-fap--filter--]').children('input:checkbox:checked').length;
                                             var totalCheckboxes = $(this).parent('[id^=tl-fap--filter--]').children('input:checkbox').length;
@@ -62,7 +61,7 @@
                                             $(this).parent('[id^=tl-fap--filter--]').children('#tl-fap--filter--checkstatus').html("(" + numberOfChecked + " of " + totalCheckboxes + " selected)")
                                         }
 
-                                        $('#tl-fap--filter--* input:checkbox').change(function () {
+                                        $('[id^=tl-fap--filter--] input:checkbox').change(function () {
                                             checkbox_change()
                                         });
                                     });
