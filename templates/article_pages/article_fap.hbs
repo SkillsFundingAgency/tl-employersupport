@@ -80,12 +80,12 @@
                             </h4>
                             <details class="tl-fap--filter--details">
                                 <summary data-open="Hide T Levels" data-close="Show T Levels" class="govuk-!-margin-bottom-1"></summary>
-                                    <div class="govuk-checkboxes govuk-checkboxes--small">
-                                        <div class="govuk-checkboxes__item">
-                                            <input id="tl_subject_3" name="tl_subject_3" type="checkbox" value="3" class="tl-checkbox govuk-checkboxes__input">
-                                            <label for="tl_subject_3" class="govuk-body-s govuk-checkboxes__label">Management and Administration 3</label>
-                                        </div>
+                                <div class="govuk-checkboxes govuk-checkboxes--small">
+                                    <div class="govuk-checkboxes__item">
+                                        <input id="tl_subject_3" name="tl_subject_3" type="checkbox" value="3" class="tl-checkbox govuk-checkboxes__input">
+                                        <label for="tl_subject_3" class="govuk-body-s govuk-checkboxes__label">Management and Administration 3</label>
                                     </div>
+                                </div>
                             </details>
                             <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-4 govuk-!-margin-top-2">
                         </div>
@@ -102,6 +102,22 @@
                             $(".tl-fap--filter--section .govuk-checkboxes").each(checkchange);
                         });
                     </script>
+
+
+
+                    <div class="tl-search--filter">
+                        <h3>Filter by skill area</h3>
+
+                        <div class="tl-search--filter--content">
+                            <div class="govuk-form-group govuk-!-margin-bottom-2 tl-pane-expandable__content" style="background-color: white; padding: 10px">
+                                <div class="govuk-checkboxes govuk-checkboxes--small" id="tl-skill-area-filter">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="govuk-button tl-button--green" id="tl-update-search-providers" data-module="govuk-button">
+                        Update results
+                    </button>
                 </div>
             </div>
         </form>
