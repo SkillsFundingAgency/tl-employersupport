@@ -53,9 +53,19 @@
                                 Business and Administration<br />
                                 <span class="govuk-body-s tl-text--grey" id="tl-fap--filter--checkstatus"></span>
                                 <script>
-                                    var numberOfChecked = $('#tl-fap--filter--1 input:checkbox:checked').length;
-                                    var totalCheckboxes = $('#tl-fap--filter--1 input:checkbox').length;
-                                    $('#tl-fap--filter--1 #tl-fap--filter--checkstatus').html("(" + numberOfChecked + " of " + totalCheckboxes + " selected)")
+                                    $(document).ready(function () {
+
+                                        function checkbox_change() {
+                                            var numberOfChecked = $(this).parent('[id^=tl-fap--filter--]').children('input:checkbox:checked').length;
+                                            var totalCheckboxes = $(this).parent('[id^=tl-fap--filter--]').children('input:checkbox').length;
+
+                                            $(this).parent('[id^=tl-fap--filter--]').children('#tl-fap--filter--checkstatus').html("(" + numberOfChecked + " of " + totalCheckboxes + " selected)")
+                                        }
+
+                                        $('#tl-fap--filter--* input:checkbox').change(function () {
+                                            checkbox_change()
+                                        });
+                                    });
                                 </script>
                             </h4>
                             <details class="tl-fap--filter--details">
@@ -80,11 +90,6 @@
                             <h4 class="govuk-heading-s govuk-!-margin-top-2">
                                 Business and Administration<br />
                                 <span class="govuk-body-s tl-text--grey" id="tl-fap--filter--checkstatus"></span>
-                                <script>
-                                    var numberOfChecked = $('#tl-fap--filter--2 input:checkbox:checked').length;
-                                    var totalCheckboxes = $('#tl-fap--filter--2 input:checkbox').length;
-                                    $('#tl-fap--filter--2 #tl-fap--filter--checkstatus').html("(" + numberOfChecked + " of " + totalCheckboxes + " selected)")
-                                </script>
                             </h4>
                             <details class="tl-fap--filter--details">
                                 <summary>
