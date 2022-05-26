@@ -9045,7 +9045,7 @@ ul.govuk-radios label .gem-radios__input {
   display: inline-block;
 }
 .tl-fap--filter--details--link {
-  colour: #1d70b8 !important;
+  color: #1d70b8;
 }
 
 .tl-fap-home--image {

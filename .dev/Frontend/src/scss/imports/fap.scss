@@ -132,7 +132,7 @@
 
         &--link {
             @extend .govuk-link;
-            colour: $govuk-link-colour !important;
+            color: $govuk-link-colour;
         }
     }
 }
