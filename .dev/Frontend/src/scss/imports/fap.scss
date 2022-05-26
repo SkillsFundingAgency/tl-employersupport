@@ -130,6 +130,14 @@
     &--details {
         display: inline-block;
 
+        summary::marker {
+            color: $govuk-link-colour;
+        }
+
+        summary::-webkit-details-marker {
+            color: $govuk-link-colour;
+        }
+
         &--link {
             @extend .govuk-link;
             color: $govuk-link-colour;

@@ -9044,6 +9044,12 @@ ul.govuk-radios label .gem-radios__input {
 .tl-fap--filter--details {
   display: inline-block;
 }
+.tl-fap--filter--details summary::marker {
+  color: #1d70b8;
+}
+.tl-fap--filter--details summary::-webkit-details-marker {
+  color: #1d70b8;
+}
 .tl-fap--filter--details--link {
   color: #1d70b8;
 }
