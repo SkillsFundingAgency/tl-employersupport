@@ -130,6 +130,14 @@
     &--details {
         display: inline-block;
 
+        &[open] summary::after {
+            content: attr(data-open);
+        }
+
+        &:not([open]) summary::after {
+            content: attr(data-close);
+        }
+
         summary::marker {
             color: $govuk-link-colour;
         }
@@ -137,6 +145,8 @@
         summary::-webkit-details-marker {
             color: $govuk-link-colour;
         }
+
+
 
         &--link {
             @extend .govuk-link;
