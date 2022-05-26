@@ -6896,6 +6896,10 @@ x:-moz-any-link {
   height: 100%;
 }
 
+details summary {
+  cursor: pointer;
+}
+
 .tl-search {
   display: flex;
 }
