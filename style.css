@@ -1,5 +1,5 @@
 @charset "UTF-8";
-.govuk-link, .tl-fap--filter--details--link, .tl-waw--pagination ul li a, .tl-community--comment--actions button, .tl-community--post--actions button, .tl-community--post--content a, .tl-article--backtotop, .tl-article--content a, .tl-article--vote .tl-article--vote--button, .tl-article--sidebar a, .tl-search--pagination ul li a, .tl-community--pagination ul li a {
+.govuk-link, .tl-fap--filter--details--link::after, .tl-waw--pagination ul li a, .tl-community--comment--actions button, .tl-community--post--actions button, .tl-community--post--content a, .tl-article--backtotop, .tl-article--content a, .tl-article--vote .tl-article--vote--button, .tl-article--sidebar a, .tl-search--pagination ul li a, .tl-community--pagination ul li a {
   font-family: "GDS Transport", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -20,30 +20,30 @@
   font-display: fallback;
 }
 @media print {
-  .govuk-link, .tl-fap--filter--details--link, .tl-waw--pagination ul li a, .tl-community--comment--actions button, .tl-community--post--actions button, .tl-community--post--content a, .tl-article--backtotop, .tl-article--content a, .tl-article--vote .tl-article--vote--button, .tl-article--sidebar a, .tl-search--pagination ul li a, .tl-community--pagination ul li a {
+  .govuk-link, .tl-fap--filter--details--link::after, .tl-waw--pagination ul li a, .tl-community--comment--actions button, .tl-community--post--actions button, .tl-community--post--content a, .tl-article--backtotop, .tl-article--content a, .tl-article--vote .tl-article--vote--button, .tl-article--sidebar a, .tl-search--pagination ul li a, .tl-community--pagination ul li a {
     font-family: sans-serif;
   }
 }
-.govuk-link:focus, .tl-fap--filter--details--link:focus, .tl-waw--pagination ul li a:focus, .tl-community--comment--actions button:focus, .tl-community--post--actions button:focus, .tl-community--post--content a:focus, .tl-article--backtotop:focus, .tl-article--content a:focus, .tl-article--vote .tl-article--vote--button:focus, .tl-article--sidebar a:focus, .tl-search--pagination ul li a:focus, .tl-community--pagination ul li a:focus {
+.govuk-link:focus, .tl-fap--filter--details--link:focus::after, .tl-waw--pagination ul li a:focus, .tl-community--comment--actions button:focus, .tl-community--post--actions button:focus, .tl-community--post--content a:focus, .tl-article--backtotop:focus, .tl-article--content a:focus, .tl-article--vote .tl-article--vote--button:focus, .tl-article--sidebar a:focus, .tl-search--pagination ul li a:focus, .tl-community--pagination ul li a:focus {
   outline: 3px solid transparent;
   color: #0b0c0c;
   background-color: #ffdd00;
   box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
   text-decoration: none;
 }
-.govuk-link:link, .tl-fap--filter--details--link:link, .tl-waw--pagination ul li a:link, .tl-community--comment--actions button:link, .tl-community--post--actions button:link, .tl-community--post--content a:link, .tl-article--backtotop:link, .tl-article--content a:link, .tl-article--vote .tl-article--vote--button:link, .tl-article--sidebar a:link, .tl-search--pagination ul li a:link, .tl-community--pagination ul li a:link {
+.govuk-link:link, .tl-fap--filter--details--link:link::after, .tl-waw--pagination ul li a:link, .tl-community--comment--actions button:link, .tl-community--post--actions button:link, .tl-community--post--content a:link, .tl-article--backtotop:link, .tl-article--content a:link, .tl-article--vote .tl-article--vote--button:link, .tl-article--sidebar a:link, .tl-search--pagination ul li a:link, .tl-community--pagination ul li a:link {
   color: #1d70b8;
 }
-.govuk-link:visited, .tl-fap--filter--details--link:visited, .tl-waw--pagination ul li a:visited, .tl-community--comment--actions button:visited, .tl-community--post--actions button:visited, .tl-community--post--content a:visited, .tl-article--backtotop:visited, .tl-article--content a:visited, .tl-article--vote .tl-article--vote--button:visited, .tl-article--sidebar a:visited, .tl-search--pagination ul li a:visited, .tl-community--pagination ul li a:visited {
+.govuk-link:visited, .tl-fap--filter--details--link:visited::after, .tl-waw--pagination ul li a:visited, .tl-community--comment--actions button:visited, .tl-community--post--actions button:visited, .tl-community--post--content a:visited, .tl-article--backtotop:visited, .tl-article--content a:visited, .tl-article--vote .tl-article--vote--button:visited, .tl-article--sidebar a:visited, .tl-search--pagination ul li a:visited, .tl-community--pagination ul li a:visited {
   color: #4c2c92;
 }
-.govuk-link:hover, .tl-fap--filter--details--link:hover, .tl-waw--pagination ul li a:hover, .tl-community--comment--actions button:hover, .tl-community--post--actions button:hover, .tl-community--post--content a:hover, .tl-article--backtotop:hover, .tl-article--content a:hover, .tl-article--vote .tl-article--vote--button:hover, .tl-article--sidebar a:hover, .tl-search--pagination ul li a:hover, .tl-community--pagination ul li a:hover {
+.govuk-link:hover, .tl-fap--filter--details--link:hover::after, .tl-waw--pagination ul li a:hover, .tl-community--comment--actions button:hover, .tl-community--post--actions button:hover, .tl-community--post--content a:hover, .tl-article--backtotop:hover, .tl-article--content a:hover, .tl-article--vote .tl-article--vote--button:hover, .tl-article--sidebar a:hover, .tl-search--pagination ul li a:hover, .tl-community--pagination ul li a:hover {
   color: #003078;
 }
-.govuk-link:active, .tl-fap--filter--details--link:active, .tl-waw--pagination ul li a:active, .tl-community--comment--actions button:active, .tl-community--post--actions button:active, .tl-community--post--content a:active, .tl-article--backtotop:active, .tl-article--content a:active, .tl-article--vote .tl-article--vote--button:active, .tl-article--sidebar a:active, .tl-search--pagination ul li a:active, .tl-community--pagination ul li a:active {
+.govuk-link:active, .tl-fap--filter--details--link:active::after, .tl-waw--pagination ul li a:active, .tl-community--comment--actions button:active, .tl-community--post--actions button:active, .tl-community--post--content a:active, .tl-article--backtotop:active, .tl-article--content a:active, .tl-article--vote .tl-article--vote--button:active, .tl-article--sidebar a:active, .tl-search--pagination ul li a:active, .tl-community--pagination ul li a:active {
   color: #0b0c0c;
 }
-.govuk-link:focus, .tl-fap--filter--details--link:focus, .tl-waw--pagination ul li a:focus, .tl-community--comment--actions button:focus, .tl-community--post--actions button:focus, .tl-community--post--content a:focus, .tl-article--backtotop:focus, .tl-article--content a:focus, .tl-article--vote .tl-article--vote--button:focus, .tl-article--sidebar a:focus, .tl-search--pagination ul li a:focus, .tl-community--pagination ul li a:focus {
+.govuk-link:focus, .tl-fap--filter--details--link:focus::after, .tl-waw--pagination ul li a:focus, .tl-community--comment--actions button:focus, .tl-community--post--actions button:focus, .tl-community--post--content a:focus, .tl-article--backtotop:focus, .tl-article--content a:focus, .tl-article--vote .tl-article--vote--button:focus, .tl-article--sidebar a:focus, .tl-search--pagination ul li a:focus, .tl-community--pagination ul li a:focus {
   color: #0b0c0c;
 }
 @media print {
@@ -7599,7 +7599,7 @@ details summary {
 .tl-article--resources {
   background-color: #003A69;
 }
-.tl-article--resources .govuk-link, .tl-article--resources .tl-fap--filter--details--link, .tl-article--resources .tl-waw--pagination ul li a, .tl-waw--pagination ul li .tl-article--resources a, .tl-article--resources .tl-community--comment--actions button, .tl-community--comment--actions .tl-article--resources button, .tl-article--resources .tl-community--post--actions button, .tl-community--post--actions .tl-article--resources button, .tl-article--resources .tl-community--post--content a, .tl-community--post--content .tl-article--resources a, .tl-article--resources .tl-article--backtotop, .tl-article--resources .tl-article--content a, .tl-article--content .tl-article--resources a, .tl-article--resources .tl-search--pagination ul li a, .tl-article--resources .tl-community--pagination ul li a, .tl-search--pagination ul li .tl-article--resources a, .tl-community--pagination ul li .tl-article--resources a, .tl-article--resources .tl-article--sidebar a, .tl-article--sidebar .tl-article--resources a, .tl-article--resources .tl-article--vote .tl-article--vote--button, .tl-article--vote .tl-article--resources .tl-article--vote--button {
+.tl-article--resources .govuk-link, .tl-article--resources .tl-fap--filter--details--link::after, .tl-article--resources .tl-waw--pagination ul li a, .tl-waw--pagination ul li .tl-article--resources a, .tl-article--resources .tl-community--comment--actions button, .tl-community--comment--actions .tl-article--resources button, .tl-article--resources .tl-community--post--actions button, .tl-community--post--actions .tl-article--resources button, .tl-article--resources .tl-community--post--content a, .tl-community--post--content .tl-article--resources a, .tl-article--resources .tl-article--backtotop, .tl-article--resources .tl-article--content a, .tl-article--content .tl-article--resources a, .tl-article--resources .tl-search--pagination ul li a, .tl-article--resources .tl-community--pagination ul li a, .tl-search--pagination ul li .tl-article--resources a, .tl-community--pagination ul li .tl-article--resources a, .tl-article--resources .tl-article--sidebar a, .tl-article--sidebar .tl-article--resources a, .tl-article--resources .tl-article--vote .tl-article--vote--button, .tl-article--vote .tl-article--resources .tl-article--vote--button {
   color: #ffffff;
 }
 .tl-article--resources .tl-article--resources--header {
@@ -9056,7 +9056,7 @@ ul.govuk-radios label .gem-radios__input {
 .tl-fap--filter--details summary::-webkit-details-marker {
   color: #1d70b8;
 }
-.tl-fap--filter--details--link {
+.tl-fap--filter--details--link::after {
   color: #1d70b8;
 }
 
