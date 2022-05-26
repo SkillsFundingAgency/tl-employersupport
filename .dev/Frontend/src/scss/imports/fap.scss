@@ -148,7 +148,7 @@
 
 
 
-        &--link::after {
+        summary::after {
             @extend .govuk-link;
             color: $govuk-link-colour;
         }
