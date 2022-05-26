@@ -48,44 +48,7 @@
                     </h3>
 
                     <div class="tl-fap--filter--content">
-                        <div id="tl-fap--filter--1">
-                            <h4 class="govuk-heading-s govuk-!-margin-top-2">
-                                Business and Administration<br />
-                                <span class="govuk-body-s tl-text--grey" id="tl-fap--filter--checkstatus"></span>
-                                <script>
-                                    $(document).ready(function () {
-                                        function checkbox_change() {
-                                            var numberOfChecked = $(this).parent('[id^=tl-fap--filter--]').children('input:checkbox:checked').length;
-                                            var totalCheckboxes = $(this).parent('[id^=tl-fap--filter--]').children('input:checkbox').length;
-
-                                            $(this).parent('[id^=tl-fap--filter--]').children('#tl-fap--filter--checkstatus').html("(" + numberOfChecked + " of " + totalCheckboxes + " selected)")
-                                        }
-
-                                        $('.tl-fap--filter--content input:checkbox').change(function () {
-                                            checkbox_change()
-                                        });
-                                    });
-                                </script>
-                            </h4>
-                            <details class="tl-fap--filter--details">
-                                <summary>
-                                    <span class="govuk-link">
-                                        Show T Levels
-                                    </span>
-                                </summary>
-                                <div>
-                                    <div class="govuk-checkboxes govuk-checkboxes--small">
-                                        <div class="govuk-checkboxes__item">
-                                            <input id="tl_skill_area_1" name="tl_skill_area_1" type="checkbox" value="1" class="tl-checkbox govuk-checkboxes__input">
-                                            <label for="tl_skill_area_1" class="govuk-body-s govuk-checkboxes__label">Management and Administration</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </details>
-                            <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-4 govuk-!-margin-top-2">
-                        </div>
-
-                        <div id="tl-fap--filter--2">
+                        <div class="tl-fap--filter--section">
                             <h4 class="govuk-heading-s govuk-!-margin-top-2">
                                 Business and Administration<br />
                                 <span class="govuk-body-s tl-text--grey" id="tl-fap--filter--checkstatus"></span>
@@ -99,12 +62,12 @@
                                 <div>
                                     <div class="govuk-checkboxes govuk-checkboxes--small">
                                         <div class="govuk-checkboxes__item">
-                                            <input id="tl_skill_area_1" name="tl_skill_area_1" type="checkbox" value="1" class="tl-checkbox govuk-checkboxes__input">
-                                            <label for="tl_skill_area_1" class="govuk-body-s govuk-checkboxes__label">Management and Administration</label>
+                                            <input id="tl_subject_1" name="tl_subject_1" type="checkbox" value="1" class="tl-checkbox govuk-checkboxes__input">
+                                            <label for="tl_subject_1" class="govuk-body-s govuk-checkboxes__label">Management and Administration</label>
                                         </div>
                                         <div class="govuk-checkboxes__item">
-                                            <input id="tl_skill_area_2" name="tl_skill_area_2" type="checkbox" value="2" class="tl-checkbox govuk-checkboxes__input">
-                                            <label for="tl_skill_area_2" class="govuk-body-s govuk-checkboxes__label">Management and Administration 2</label>
+                                            <input id="tl_subject_2" name="tl_subject_2" type="checkbox" value="2" class="tl-checkbox govuk-checkboxes__input">
+                                            <label for="tl_subject_2" class="govuk-body-s govuk-checkboxes__label">Management and Administration 2</label>
                                         </div>
                                     </div>
                                 </div>
@@ -112,10 +75,44 @@
                             <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-4 govuk-!-margin-top-2">
                         </div>
                     </div>
+
+                    <div class="tl-fap--filter--content">
+                        <div class="tl-fap--filter--section">
+                            <h4 class="govuk-heading-s govuk-!-margin-top-2">
+                                Business and Administration<br />
+                                <span class="govuk-body-s tl-text--grey" id="tl-fap--filter--checkstatus"></span>
+                            </h4>
+                            <details class="tl-fap--filter--details">
+                                <summary>
+                                    <span class="tl-fap--filter--details--link">
+                                        Show T Levels
+                                    </span>
+                                </summary>
+                                <div>
+                                    <div class="govuk-checkboxes govuk-checkboxes--small">
+                                        <div class="govuk-checkboxes__item">
+                                            <input id="tl_subject_3" name="tl_subject_3" type="checkbox" value="3" class="tl-checkbox govuk-checkboxes__input">
+                                            <label for="tl_subject_3" class="govuk-body-s govuk-checkboxes__label">Management and Administration 3</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </details>
+                            <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-4 govuk-!-margin-top-2">
+                        </div>
+                    </div>
+                    <script>
+                        function checkchange() {
+                            var numberOfChecked = $(this).parents('.tl-fap--filter--section').find('input[type=checkbox]:checked').length;
+                            var totalCheckboxes = $(this).parents('.tl-fap--filter--section').find('input[type=checkbox]').length;
+                            $(this).parents('.tl-fap--filter--section').find('#tl-fap--filter--checkstatus').html("(" + numberOfChecked + " of " + totalCheckboxes + " selected)")
+
+                        }
+                        $(document).ready(function () {
+                            $('.tl-fap--filter--content input[type=checkbox]').change(checkchange);
+                            $(".tl-fap--filter--section .govuk-checkboxes").each(checkchange);
+                        });
+                    </script>
                 </div>
-                <button class="govuk-button tl-button--green" id="tl-update-search-providers" data-module="govuk-button">
-                    Update results
-                </button>
             </div>
         </form>
 

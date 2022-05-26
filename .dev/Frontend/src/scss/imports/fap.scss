@@ -129,6 +129,11 @@
 
     &--details {
         display: inline-block;
+
+        &--link {
+            @extend .govuk-link;
+            colour: $govuk-link-colour;
+        }
     }
 }
 
