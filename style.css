@@ -9049,15 +9049,25 @@ ul.govuk-radios label .gem-radios__input {
   }
 }
 .tl-fap--filter--showall:not([open])::before {
-  content: url($assets-arrowdown-png);
+  content: "";
+  background-image: url($assets-arrowupdown-png);
+  background-position: 2px 50%;
 }
 .tl-fap--filter--showall[open]::before {
-  content: url($assets-arrowup-png);
+  content: "";
+  background-image: url($assets-arrowupdown-png);
+  background-position: 2px 100%;
 }
 .tl-fap--filter--showall::before {
   margin: 0 5px 0 0;
   position: relative;
   top: 4px;
+  cursor: pointer;
+  text-indent: -5000px;
+  overflow: hidden;
+  height: 19px;
+  width: 18px;
+  background-repeat: no-repeat;
 }
 .tl-fap--filter h3 {
   display: inline-block;
@@ -9074,13 +9084,17 @@ ul.govuk-radios label .gem-radios__input {
   content: attr(data-open);
 }
 .tl-fap--filter--details[open] summary::before {
-  content: url($assets-arrowup-png);
+  content: "";
+  background-image: url($assets-arrowupdown-png);
+  background-position: 2px 100%;
 }
 .tl-fap--filter--details:not([open]) summary::after {
   content: attr(data-close);
 }
 .tl-fap--filter--details:not([open]) summary::before {
-  content: url($assets-arrowdown-png);
+  content: "";
+  background-image: url($assets-arrowupdown-png);
+  background-position: 2px 50%;
 }
 .tl-fap--filter--details summary {
   list-style: none;
@@ -9089,6 +9103,12 @@ ul.govuk-radios label .gem-radios__input {
   margin: 0 5px 0 0;
   position: relative;
   top: 4px;
+  cursor: pointer;
+  text-indent: -5000px;
+  overflow: hidden;
+  height: 19px;
+  width: 18px;
+  background-repeat: no-repeat;
 }
 .tl-fap--filter--details summary::after {
   color: #1d70b8;

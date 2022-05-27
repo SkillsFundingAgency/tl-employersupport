@@ -126,14 +126,18 @@
 
         &:not([open]) {
             &::before {
-                content: govuk-image-url("arrowdown.png");
+                content: "";
+                background-image: govuk-image-url("arrowupdown.png");
+                background-position: 2px 50%;
             }
         }
 
         &[open] {
 
             &::before {
-                content: govuk-image-url("arrowup.png");
+                content: "";
+                background-image: govuk-image-url("arrowupdown.png");
+                background-position: 2px 100%;
             }
         }
 
@@ -141,6 +145,12 @@
             margin: 0 5px 0 0;
             position: relative;
             top: 4px;
+            cursor: pointer;
+            text-indent: -5000px;
+            overflow: hidden;
+            height: 19px;
+            width: 18px;
+            background-repeat: no-repeat;
         }
     }
 
@@ -164,7 +174,9 @@
             }
 
             summary::before {
-                content: govuk-image-url("arrowup.png");
+                content: "";
+                background-image: govuk-image-url("arrowupdown.png");
+                background-position: 2px 100%;
             }
         }
 
@@ -175,7 +187,9 @@
             }
 
             summary::before {
-                content: govuk-image-url("arrowdown.png");
+                content: "";
+                background-image: govuk-image-url("arrowupdown.png");
+                background-position: 2px 50%;
             }
         }
 
@@ -187,6 +201,12 @@
             margin: 0 5px 0 0;
             position: relative;
             top: 4px;
+            cursor: pointer;
+            text-indent: -5000px;
+            overflow: hidden;
+            height: 19px;
+            width: 18px;
+            background-repeat: no-repeat;
         }
 
         summary::after {
