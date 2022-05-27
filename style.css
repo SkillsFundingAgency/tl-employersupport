@@ -9096,6 +9096,12 @@ ul.govuk-radios label .gem-radios__input {
   display: inline-block;
   box-sizing: border-box;
   position: relative;
+  margin-bottom: 5px;
+}
+@media (min-width: 40.0625em) {
+  .tl-fap--filter--selected span {
+    margin-bottom: 5px;
+  }
 }
 .tl-fap--filter--selected span::after {
   content: "×";
@@ -9103,6 +9109,7 @@ ul.govuk-radios label .gem-radios__input {
   right: 5px;
   font-size: 20px;
   top: 0px;
+  cursor: pointer;
 }
 .tl-fap--filter--content {
   padding: 0 15px;

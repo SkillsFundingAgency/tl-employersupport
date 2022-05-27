@@ -123,6 +123,8 @@
             display: inline-block;
             box-sizing: border-box;
             position: relative;
+            @include govuk-responsive-margin(1, "bottom");
+
 
 
             &::after {
@@ -131,6 +133,7 @@
                 right: 5px;
                 font-size: 20px;
                 top: 0px;
+                cursor: pointer;
             }
         }
     }
