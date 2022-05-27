@@ -121,7 +121,7 @@
         color: $govuk-link-colour;
 
         &::before {
-            content: ">"
+            content: govuk-image-url("arrowdown.png");
         }
     }
 
@@ -146,16 +146,12 @@
             content: attr(data-close);
         }
 
-        summary::marker {
-            list-style: none;
-        }
-
-        summary::-webkit-details-marker {
+        summary {
             list-style: none;
         }
 
         summary::before {
-            content: ">"
+            content: govuk-image-url("arrowdown.png");
         }
 
 
