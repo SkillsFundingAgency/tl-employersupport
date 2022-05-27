@@ -9033,6 +9033,12 @@ ul.govuk-radios label .gem-radios__input {
 .tl-fap--filter--content {
   padding: 0 15px;
 }
+.tl-fap--filter--showall {
+  color: #1d70b8;
+}
+.tl-fap--filter--showall::before {
+  content: ">";
+}
 .tl-fap--filter h3 {
   display: inline-block;
   background-color: #f3f2f1;
@@ -9051,10 +9057,13 @@ ul.govuk-radios label .gem-radios__input {
   content: attr(data-close);
 }
 .tl-fap--filter--details summary::marker {
-  color: #1d70b8;
+  list-style: none;
 }
 .tl-fap--filter--details summary::-webkit-details-marker {
-  color: #1d70b8;
+  list-style: none;
+}
+.tl-fap--filter--details summary::before {
+  content: ">";
 }
 .tl-fap--filter--details summary::after {
   color: #1d70b8;

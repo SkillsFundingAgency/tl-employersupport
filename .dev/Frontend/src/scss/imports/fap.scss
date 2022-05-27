@@ -117,6 +117,14 @@
         padding: 0 15px;
     }
 
+    &--showall {
+        color: $govuk-link-colour;
+
+        &::before {
+            content: ">"
+        }
+    }
+
     h3 {
         display: inline-block;
         background-color: govuk-colour("light-grey");
@@ -139,11 +147,15 @@
         }
 
         summary::marker {
-            color: $govuk-link-colour;
+            list-style: none;
         }
 
         summary::-webkit-details-marker {
-            color: $govuk-link-colour;
+            list-style: none;
+        }
+
+        summary::before {
+            content: ">"
         }
 
 
