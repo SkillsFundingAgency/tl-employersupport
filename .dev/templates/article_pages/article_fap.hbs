@@ -108,10 +108,11 @@
 
 
                         var details = $(".tl-fap--filter--details");
+                        var detailsattr = $(this).attr('open');
 
                         function checkdetails() {
                             details.each(function () {
-                                if ($(this).hasAttr("open")) {
+                                if (typeof attr !== 'undefined' && attr !== false) {
                                     $(".tl-fap--filter--showall").attr("open");
                                 }
 
