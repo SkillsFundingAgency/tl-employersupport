@@ -113,6 +113,16 @@
     @include govuk-responsive-margin(3, "bottom");
 
     &--selected {
+
+        span {
+            background-colour: govuk-colour("white");
+            border: 1px solid $govuk-text-colour;
+
+            &::after {
+                content: "x";
+                position: relative;
+            }
+        }
     }
 
 

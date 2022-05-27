@@ -9030,6 +9030,14 @@ ul.govuk-radios label .gem-radios__input {
     margin-bottom: 15px;
   }
 }
+.tl-fap--filter--selected span {
+  background-colour: #ffffff;
+  border: 1px solid #0b0c0c;
+}
+.tl-fap--filter--selected span::after {
+  content: "x";
+  position: relative;
+}
 .tl-fap--filter--content {
   padding: 0 15px;
 }
