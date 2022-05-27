@@ -44,7 +44,7 @@
                 <div class="tl-fap--filter">
                     <h3>
                         Filter by skill area or T Level<br />
-                        <span class="govuk-body-s">No filters selected</span>
+                        <div class="tl-fap--filter--selected"><span class="govuk-body-s">No filters selected</span></div>
                     </h3>
 
                     <div class="tl-fap--filter--content">
@@ -99,6 +99,8 @@
                             var totalCheckboxes = $(this).parents('.tl-fap--filter--section').find('input[type=checkbox]').length;
                             $(this).parents('.tl-fap--filter--section').find('#tl-fap--filter--checkstatus').html("(" + numberOfChecked + " of " + totalCheckboxes + " selected)")
 
+                            /// Get checked items and display at top
+
                         };
 
                         $(document).ready(function () {
@@ -108,23 +110,48 @@
 
 
                         var details = $(".tl-fap--filter--details");
-                        var detailsattr = $(this).attr('open');
+                        var showall = $(".tl-fap--filter--showall");
 
-                        function checkdetails() {
+                        function checkdetailschange() {
                             details.each(function () {
-                                if (typeof attr !== 'undefined' && attr !== false) {
-                                    $(".tl-fap--filter--showall").attr("open");
+                                if ($(this).is("[open]")) {
+                                    showallopen()
+                                    return false;
                                 }
 
                                 else {
-                                    $(".tl-fap--filter--showall").removeAttr("open");
+                                    showallclose()
                                 }
                             })
                         };
 
-                        details.toggle(function () {
-                            checkdetails()
+                        function showallclose() {
+                            showall.removeAttr("open");
+                            showall.text("Show all")
+                        }
+
+                        function showallopen() {
+                            showall.attr('open', '');
+                            showall.text("Hide all")
+                        }
+
+                        details.on('toggle', function () {
+                            checkdetailschange()
                         });
+
+                        showall.click(function () {
+                            if ($(this).is("[open]")) {
+                                details.removeAttr("open");
+                                showallclose()
+                            }
+
+                            else {
+                                details.attr('open', '');
+                                showallopen()
+                            }
+                        })
+
+
 
 
                     </script>
