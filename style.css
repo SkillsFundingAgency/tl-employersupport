@@ -9037,6 +9037,7 @@ ul.govuk-radios label .gem-radios__input {
   color: #1d70b8;
   margin-bottom: 10px;
   margin-top: 10px;
+  cursor: pointer;
 }
 @media (min-width: 40.0625em) {
   .tl-fap--filter--showall {

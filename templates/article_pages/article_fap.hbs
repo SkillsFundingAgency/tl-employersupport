@@ -99,11 +99,33 @@
                             var totalCheckboxes = $(this).parents('.tl-fap--filter--section').find('input[type=checkbox]').length;
                             $(this).parents('.tl-fap--filter--section').find('#tl-fap--filter--checkstatus').html("(" + numberOfChecked + " of " + totalCheckboxes + " selected)")
 
-                        }
+                        };
+
                         $(document).ready(function () {
                             $('.tl-fap--filter--content input[type=checkbox]').change(checkchange);
                             $(".tl-fap--filter--section .govuk-checkboxes").each(checkchange);
                         });
+
+
+                        var details = $(".tl-fap--filter--details");
+
+                        function checkdetails {
+                            details.each(function () {
+                                if ($(this).hasAttr("open")) {
+                                    $(".tl-fap--filter--showall").attr("open");
+                                }
+
+                                else {
+                                    $(".tl-fap--filter--showall").removeAttr("open");
+                                }
+                            })
+                        };
+
+                        details.toggle(function () {
+                            checkdetails()
+                        });
+
+
                     </script>
 
 
