@@ -118,12 +118,19 @@
             background-color: govuk-colour("white");
             border: 1px solid $govuk-text-colour;
             @extend .govuk-body-s;
-            padding: 2px 10px 2px 2px;
+            padding: 3px 10px 3px 5px;
+            width: 100%;
+            display: inline-block;
+            box-sizing: border-box;
+            position: relative;
 
 
             &::after {
-                content: "x";
-                position: relative;
+                content: "\00d7";
+                position: absolute;
+                top: 5px;
+                font-size: 20px;
+                top: 0px;
             }
         }
     }
