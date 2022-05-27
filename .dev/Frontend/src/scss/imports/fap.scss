@@ -117,11 +117,13 @@
         span {
             background-color: govuk-colour("white");
             border: 1px solid $govuk-text-colour;
+            @extend .govuk-body-s;
+            padding: 2px 10px 2px 2px;
+
 
             &::after {
                 content: "x";
                 position: relative;
-                @extend .govuk-body-s;
             }
         }
     }
