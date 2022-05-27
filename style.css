@@ -9051,12 +9051,12 @@ ul.govuk-radios label .gem-radios__input {
 .tl-fap--filter--showall:not([open])::before {
   content: "";
   background-image: url($assets-arrowupdown-png);
-  background-position: 2px 50%;
+  background-position: 0px;
 }
 .tl-fap--filter--showall[open]::before {
   content: "";
   background-image: url($assets-arrowupdown-png);
-  background-position: 2px 100%;
+  background-position: 100% 0;
 }
 .tl-fap--filter--showall::before {
   margin: 0 5px 0 0;
@@ -9068,6 +9068,7 @@ ul.govuk-radios label .gem-radios__input {
   height: 19px;
   width: 18px;
   background-repeat: no-repeat;
+  display: inline-block;
 }
 .tl-fap--filter h3 {
   display: inline-block;
@@ -9086,7 +9087,7 @@ ul.govuk-radios label .gem-radios__input {
 .tl-fap--filter--details[open] summary::before {
   content: "";
   background-image: url($assets-arrowupdown-png);
-  background-position: 2px 100%;
+  background-position: 100% 0;
 }
 .tl-fap--filter--details:not([open]) summary::after {
   content: attr(data-close);
@@ -9094,7 +9095,7 @@ ul.govuk-radios label .gem-radios__input {
 .tl-fap--filter--details:not([open]) summary::before {
   content: "";
   background-image: url($assets-arrowupdown-png);
-  background-position: 2px 50%;
+  background-position: 0px;
 }
 .tl-fap--filter--details summary {
   list-style: none;
@@ -9109,6 +9110,7 @@ ul.govuk-radios label .gem-radios__input {
   height: 19px;
   width: 18px;
   background-repeat: no-repeat;
+  display: inline-block;
 }
 .tl-fap--filter--details summary::after {
   color: #1d70b8;

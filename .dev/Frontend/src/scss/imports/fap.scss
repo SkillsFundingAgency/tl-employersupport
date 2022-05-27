@@ -128,7 +128,7 @@
             &::before {
                 content: "";
                 background-image: govuk-image-url("arrowupdown.png");
-                background-position: 2px 50%;
+                background-position: 0px;
             }
         }
 
@@ -137,7 +137,7 @@
             &::before {
                 content: "";
                 background-image: govuk-image-url("arrowupdown.png");
-                background-position: 2px 100%;
+                background-position: 100% 0;
             }
         }
 
@@ -151,6 +151,7 @@
             height: 19px;
             width: 18px;
             background-repeat: no-repeat;
+            display: inline-block;
         }
     }
 
@@ -176,7 +177,7 @@
             summary::before {
                 content: "";
                 background-image: govuk-image-url("arrowupdown.png");
-                background-position: 2px 100%;
+                background-position: 100% 0;
             }
         }
 
@@ -189,7 +190,7 @@
             summary::before {
                 content: "";
                 background-image: govuk-image-url("arrowupdown.png");
-                background-position: 2px 50%;
+                background-position: 0px;
             }
         }
 
@@ -207,6 +208,7 @@
             height: 19px;
             width: 18px;
             background-repeat: no-repeat;
+            display: inline-block;
         }
 
         summary::after {
