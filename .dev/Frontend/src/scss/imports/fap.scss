@@ -121,7 +121,9 @@
         color: $govuk-link-colour;
 
         &:not([open]) {
-            content: govuk-image-url("arrowdown.png");
+            &::before {
+                content: govuk-image-url("arrowdown.png");
+            }
         }
 
         &[open] {

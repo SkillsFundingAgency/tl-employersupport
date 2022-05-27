@@ -9036,7 +9036,7 @@ ul.govuk-radios label .gem-radios__input {
 .tl-fap--filter--showall {
   color: #1d70b8;
 }
-.tl-fap--filter--showall:not([open]) {
+.tl-fap--filter--showall:not([open])::before {
   content: url($assets-arrowdown-png);
 }
 .tl-fap--filter--showall[open]::before {
