@@ -115,12 +115,13 @@
     &--selected {
 
         span {
-            background-colour: govuk-colour("white");
+            background-color: govuk-colour("white");
             border: 1px solid $govuk-text-colour;
 
             &::after {
                 content: "x";
                 position: relative;
+                @extend .govuk-body-s;
             }
         }
     }
