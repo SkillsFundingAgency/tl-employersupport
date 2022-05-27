@@ -119,6 +119,10 @@
 
     &--showall {
         color: $govuk-link-colour;
+        @include govuk-responsive-margin(2, "bottom");
+        @include govuk-responsive-margin(2, "top");
+
+
 
         &:not([open]) {
             &::before {

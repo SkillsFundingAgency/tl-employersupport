@@ -9035,6 +9035,18 @@ ul.govuk-radios label .gem-radios__input {
 }
 .tl-fap--filter--showall {
   color: #1d70b8;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+@media (min-width: 40.0625em) {
+  .tl-fap--filter--showall {
+    margin-bottom: 10px;
+  }
+}
+@media (min-width: 40.0625em) {
+  .tl-fap--filter--showall {
+    margin-top: 10px;
+  }
 }
 .tl-fap--filter--showall:not([open])::before {
   content: url($assets-arrowdown-png);
