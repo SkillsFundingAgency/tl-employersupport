@@ -9097,6 +9097,7 @@ ul.govuk-radios label .gem-radios__input {
   box-sizing: border-box;
   position: relative;
   margin-bottom: 5px;
+  cursor: pointer;
 }
 @media (min-width: 40.0625em) {
   .tl-fap--filter--selected span {
@@ -9106,6 +9107,7 @@ ul.govuk-radios label .gem-radios__input {
 .tl-fap--filter--selected span:hover {
   color: #ffffff;
   background-color: #0b0c0c;
+  cursor: pointer;
 }
 .tl-fap--filter--selected span:focus {
   background-color: #ffdd00;
