@@ -9091,7 +9091,7 @@ ul.govuk-radios label .gem-radios__input {
 .tl-fap--filter--selected span {
   background-color: #ffffff;
   border: 1px solid #0b0c0c;
-  padding: 3px 10px 3px 5px;
+  padding: 3px 30px 3px 5px;
   width: 100%;
   display: inline-block;
   box-sizing: border-box;
@@ -9100,7 +9100,7 @@ ul.govuk-radios label .gem-radios__input {
 .tl-fap--filter--selected span::after {
   content: "×";
   position: absolute;
-  top: 5px;
+  right: 5px;
   font-size: 20px;
   top: 0px;
 }
