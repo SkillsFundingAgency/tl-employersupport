@@ -113,8 +113,6 @@
     @include govuk-responsive-margin(3, "bottom");
 
     &--selected {
-        @include govuk-responsive-margin(2, "bottom");
-        @include govuk-responsive-margin(1, "top");
     }
 
 
