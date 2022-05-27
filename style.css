@@ -9103,6 +9103,13 @@ ul.govuk-radios label .gem-radios__input {
     margin-bottom: 5px;
   }
 }
+.tl-fap--filter--selected span:hover {
+  color: #ffffff;
+  background-color: #0b0c0c;
+}
+.tl-fap--filter--selected span:focus {
+  background-color: #ffdd00;
+}
 .tl-fap--filter--selected span::after {
   content: "×";
   position: absolute;

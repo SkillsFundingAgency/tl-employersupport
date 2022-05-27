@@ -125,6 +125,15 @@
             position: relative;
             @include govuk-responsive-margin(1, "bottom");
 
+            &:hover {
+                color: govuk-colour("white");
+                background-color: govuk-colour("black");
+            }
+
+            &:focus {
+                background-color: $govuk-focus-colour;
+            }
+
 
 
             &::after {
