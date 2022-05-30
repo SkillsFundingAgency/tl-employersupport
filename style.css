@@ -9112,7 +9112,23 @@ ul.govuk-radios label .gem-radios__input {
 .tl-fap--filter--selected span:focus {
   background-color: #ffdd00;
 }
-.tl-fap--filter--selected span::after {
+.tl-fap--filter--selected h5 {
+  margin-bottom: 5px;
+  margin-top: 15px;
+  font-weight: normal;
+  color: #626a6e;
+}
+@media (min-width: 40.0625em) {
+  .tl-fap--filter--selected h5 {
+    margin-bottom: 5px;
+  }
+}
+@media (min-width: 40.0625em) {
+  .tl-fap--filter--selected h5 {
+    margin-top: 15px;
+  }
+}
+.tl-fap--filter--selected::after {
   content: "×";
   position: absolute;
   right: 5px;
