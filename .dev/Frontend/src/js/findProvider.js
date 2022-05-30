@@ -233,13 +233,16 @@ function FindProvider(
                 if (availableNow && !typeof availableNow.routes !== "undefined" && availableNow.routes) {
                     availableNow.routes.sort(function (x, y) { return (x.name < y.name) ? -1 : ((x.name > y.name) ? 1 : 0) });
                 }
+                //Obsolete v2 code
+                if (availableNow && !typeof availableNow.qualifications !== "undefined" && availableNow.qualifications) {
+                    availableNow.qualifications.sort(function (x, y) { return (x.name < y.name) ? -1 : ((x.name > y.name) ? 1 : 0) });
+                }
+                /////
 
                 searchResult += '</p><div class="tl-fap--courses">';
 
                 $.each(locationDeliveryYears,
                     function (_, deliveryYear) {
-                        if (!typeof deliveryYear.routes === "undefined") return;
-
                         if (deliveryYear.isAvailableNow) {
                             searchResult += '<div class="tl-fap--courses--box tl-fap--courses--box--now"> \
                                         <h4 class="govuk-body govuk-!-font-weight-bold">T Levels available now:</h4>';
@@ -248,6 +251,27 @@ function FindProvider(
                                         <h4 class="govuk-body govuk-!-font-weight-bold">T Levels starting September  ' + deliveryYear.year + '</h4>';
                         }
 
+                        //Obsolete v2 code
+                        if ((!typeof deliveryYear.routes === "undefined" || deliveryYear.routes === null) &&
+                        (typeof deliveryYear.qualifications !== "undefined" || deliveryYear.qualifications !== null)) {
+                            console.log('using v2 qualifications');
+                            $.each(deliveryYear.qualifications,
+                                function (_, qualification) {
+                                    const articleLink = typeof qualificationArticleMap !== "undefined" ?
+                                        qualificationArticleMap[qualification.id] : null;
+                                    if (articleLink) {
+                                        searchResult += '<li><a target="_blank" class="govuk-link tl-fap--result-course" href="' + articleLink + '">' + qualification.name + '</a></li>';
+                                            searchResult += '<li><a target="_blank" class="govuk-link tl-fap--result-course" href="' + articleLink + '">' + qualification.name + '</a></li>';
+                                    } else {
+                                        searchResult += '<li>' + qualification.name + '</li>';
+                                    }
+                                });    
+                            return;
+                        }
+                        /////
+
+                        if (!typeof deliveryYear.routes === "undefined" || deliveryYear.routes === null) return;
+                    
                         $.each(deliveryYear.routes,
                             function (_, route) {
                                 searchResult += '<p class="govuk-body govuk-!-margin-top-2 govuk-!-margin-bottom-1">' + route.name + '</p> \
