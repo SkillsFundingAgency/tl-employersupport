@@ -9048,18 +9048,18 @@ ul.govuk-radios label .gem-radios__input {
     flex: 1 1 60%;
   }
 }
-.tl-fap--result, .tl-fap--result2 {
+.tl-fap--result {
   padding: 15px;
   margin-bottom: 15px;
   border: 1px solid #f3f2f1;
 }
 @media (min-width: 40.0625em) {
-  .tl-fap--result, .tl-fap--result2 {
+  .tl-fap--result {
     padding: 20px;
   }
 }
 @media (min-width: 40.0625em) {
-  .tl-fap--result, .tl-fap--result2 {
+  .tl-fap--result {
     margin-bottom: 20px;
   }
 }
