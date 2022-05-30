@@ -43,9 +43,6 @@
                 </div>
 
 
-                <div class="tl-fap--filter--button">
-                    <button class="tl-button tl-button--grey tl-width-100">Show filter</button>
-                </div>
                 <div class="tl-fap--filter">
                     <h3>
                         Filter by skill area or T Level
@@ -200,6 +197,25 @@
                         Update results
                     </button>
                 </div>
+                    <button class="tl-button tl-button--grey tl-width-100" id="tl-fap--filter--button">Show filter</button>
+
+                <script>
+                    $("#tl-fap--filter--button").click(function () {
+                        if ($(this).is("[open]")) {
+                            $(this).removeAttr("open");
+                            $(".tl-fap--filter").removeAttr("open");
+                            $(this).text("Show filter");
+
+                        }
+
+                        else {
+                            $(this).attr('open', '');;
+                            $(".tl-fap--filter").attr('open', '');;
+                            $(this).text("Hide filter");
+
+                        }
+                    });
+                </script>
             </div>
         </form>
 

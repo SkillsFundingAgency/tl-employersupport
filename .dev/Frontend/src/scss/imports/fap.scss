@@ -108,9 +108,27 @@
     }
 }
 
+#tl-fap--filter--button {
+    display: inline-block;
+
+    @include govuk-media-query ($from: tablet) {
+        display: none;
+    }
+}
+
+
 .tl-fap--filter {
     border: 1px solid $govuk-border-colour;
     @include govuk-responsive-margin(3, "bottom");
+    display: none;
+
+    &[open] {
+        display: inline-block;
+    }
+
+    @include govuk-media-query ($from: tablet) {
+        display: inline-block;
+    }
 
     &--selected {
 
