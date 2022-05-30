@@ -94,6 +94,7 @@
                     </div>
                     <script>
                         function checkchange() {
+                            var totalnumberOfChecked = $(this).parents('.tl-fap--filter--content').find('input[type=checkbox]:checked');
                             var numberOfChecked = $(this).parents('.tl-fap--filter--section').find('input[type=checkbox]:checked');
                             var totalCheckboxes = $(this).parents('.tl-fap--filter--section').find('input[type=checkbox]');
                             $(this).parents('.tl-fap--filter--section').find('#tl-fap--filter--checkstatus').html("(" + numberOfChecked.length + " of " + totalCheckboxes.length + " selected)")
@@ -102,7 +103,7 @@
                             var checkedSection = $(this).parents('.tl-fap--filter--content').find('input[type=checkbox]:checked').parents('.tl-fap--filter--section');
 
 
-                            if (numberOfChecked.length !== 0) {
+                            if (totalnumberOfChecked.length !== 0) {
                                 $(".tl-fap--filter--selected").html('')
 
                                 checkedSection.each(function () {
