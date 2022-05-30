@@ -8892,12 +8892,12 @@ ul.govuk-radios label .gem-radios__input {
   background-color: #003078;
 }
 .tl-button--grey {
-  background-color: #b1b4b6;
+  background-color: #f3f2f1;
   color: #0b0c0c;
-  box-shadow: 0 2px 0 #626a6e;
+  box-shadow: 0 2px 0 #b1b4b6;
 }
 .tl-button--grey:hover {
-  background-color: #626a6e;
+  background-color: #b1b4b6;
 }
 
 /* buttons as links */

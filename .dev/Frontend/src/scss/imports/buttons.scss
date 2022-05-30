@@ -12,12 +12,12 @@
     }
 
     &--grey {
-        background-color: $govuk-border-colour;
+        background-color: govuk-colour("light-grey");
         color: $govuk-text-colour;
-        box-shadow: 0 2px 0 $govuk-secondary-text-colour;
+        box-shadow: 0 2px 0 govuk-colour("mid-grey");
 
         &:hover {
-            background-color: $govuk-secondary-text-colour;
+            background-color: govuk-colour("mid-grey");
         }
     }
 }
