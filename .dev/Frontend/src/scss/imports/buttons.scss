@@ -10,6 +10,16 @@
             background-color: $govuk-link-hover-colour;
         }
     }
+
+    &--grey {
+        background-color: $govuk-border-colour;
+        color: $govuk-text-colour;
+        box-shadow: 0 2px 0 $govuk-secondary-text-colour;
+
+        &:hover {
+            background-color: $govuk-secondary-text-colour;
+        }
+    }
 }
 
 
