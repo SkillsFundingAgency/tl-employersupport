@@ -109,8 +109,10 @@
                         };
 
                         $(document).ready(function () {
-                            $('.tl-fap--filter--content input[type=checkbox]').change(checkchange);
                             $(".tl-fap--filter--section .govuk-checkboxes").each(checkchange);
+                            $('.tl-fap--filter--content input[type=checkbox]').change(function () {
+                                checkchange();
+                            });
                         });
 
                         var details = $(".tl-fap--filter--details");
