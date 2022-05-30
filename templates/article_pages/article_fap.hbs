@@ -97,12 +97,12 @@
                             var totalnumberOfChecked = $(this).parents('.tl-fap--filter--content').find('input[type=checkbox]:checked');
                             var numberOfChecked = $(this).parents('.tl-fap--filter--section').find('input[type=checkbox]:checked');
                             var totalCheckboxes = $(this).parents('.tl-fap--filter--section').find('input[type=checkbox]');
+
+                            /// Display number of checked items in each section
                             $(this).parents('.tl-fap--filter--section').find('#tl-fap--filter--checkstatus').html("(" + numberOfChecked.length + " of " + totalCheckboxes.length + " selected)")
 
                             /// Get checked items and display at top
                             var checkedSection = $(this).parents('.tl-fap--filter--content').find('input[type=checkbox]:checked').parents('.tl-fap--filter--section');
-
-
                             if (totalnumberOfChecked.length !== 0) {
                                 $(".tl-fap--filter--selected").html('')
 
@@ -125,19 +125,20 @@
                             }
                         };
 
+                        /// Allow checkboxes to be unchecked by clicking summary items at top
                         function checkremove() {
                             var clickvalue = $(this).attr("data-check");
                             $('.tl-fap--filter--section').find('input[id=' + clickvalue + ']:checked').trigger("click");
                         };
-
                         $(document).on("click", ".tl-fap--filter--selected span", checkremove);
 
-
+                        /// Run checkbox change function on page load and on checkbox change
                         $(document).ready(function () {
                             $('.tl-fap--filter--content input[type=checkbox]').change(checkchange);
                             $(".tl-fap--filter--section .govuk-checkboxes").each(checkchange);
                         });
 
+                        /// Show hide sections / all sections
                         var details = $(".tl-fap--filter--details");
                         var showall = $(".tl-fap--filter--showall");
 
