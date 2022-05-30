@@ -1559,6 +1559,7 @@ function FindProvider(
                         if ((!typeof deliveryYear.routes === "undefined" || deliveryYear.routes === null) &&
                         (typeof deliveryYear.qualifications !== "undefined" || deliveryYear.qualifications !== null)) {
                             console.log('using v2 qualifications');
+                            searchResult += '<ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-1">';
                             $.each(deliveryYear.qualifications,
                                 function (_, qualification) {
                                     const articleLink = typeof qualificationArticleMap !== "undefined" ?
