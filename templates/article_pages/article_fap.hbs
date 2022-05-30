@@ -111,7 +111,8 @@
                                         $(".tl-fap--filter--selected").append('<h5>' + $(this).find("h4").clone().children().remove().end().text() + '</h5>')
 
                                         checkedSectionBoxes.each(function () {
-                                            $(".tl-fap--filter--selected").append('<span tabindex="0">' + $(this).next("label").text() + '</span>')
+                                            var checkedSectionValue = $(this).attr("id")
+                                            $(".tl-fap--filter--selected").append('<span tabindex="0" data-check="' + checkedSectionValue + '">' + $(this).next("label").text() + '</span>')
                                         });
                                     }
                                 });
@@ -122,6 +123,16 @@
 
                             }
                         };
+
+                        function checkremove() {
+                            var clickvalue = $(this).attr("data-check");
+                            console.log(clickvalue);
+
+                            $('.tl-fap--filter--section').find('input[id=' + clickvalue + ']:checked').trigger("click");
+                        };
+
+                        $(document).on("click", ".tl-fap--filter--selected span", checkremove);
+
 
                         $(document).ready(function () {
                             $('.tl-fap--filter--content input[type=checkbox]').change(checkchange);

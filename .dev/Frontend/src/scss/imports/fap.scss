@@ -135,6 +135,15 @@
             &:focus {
                 background-color: $govuk-focus-colour;
             }
+
+            &::after {
+                content: "\00d7";
+                position: absolute;
+                right: 5px;
+                font-size: 20px;
+                top: 0px;
+                cursor: pointer;
+            }
         }
 
         h5 {
@@ -142,15 +151,6 @@
             @include govuk-responsive-margin(3, "top");
             font-weight: normal;
             color: $govuk-secondary-text-colour;
-        }
-
-        &::after {
-            content: "\00d7";
-            position: absolute;
-            right: 5px;
-            font-size: 20px;
-            top: 0px;
-            cursor: pointer;
         }
     }
 
