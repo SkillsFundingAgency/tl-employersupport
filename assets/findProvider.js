@@ -1534,7 +1534,7 @@ function FindProvider(
                         }
                     });
 
-                if (availableNow && !typeof availableNow.routes !== "undefined") {
+                if (availableNow && !typeof availableNow.routes !== "undefined" && availableNow.routes) {
                     availableNow.routes.sort(function (x, y) { return (x.name < y.name) ? -1 : ((x.name > y.name) ? 1 : 0) });
                 }
 
