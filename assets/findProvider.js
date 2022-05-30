@@ -1566,7 +1566,6 @@ function FindProvider(
                                         qualificationArticleMap[qualification.id] : null;
                                     if (articleLink) {
                                         searchResult += '<li><a target="_blank" class="govuk-link tl-fap--result-course" href="' + articleLink + '">' + qualification.name + '</a></li>';
-                                            searchResult += '<li><a target="_blank" class="govuk-link tl-fap--result-course" href="' + articleLink + '">' + qualification.name + '</a></li>';
                                     } else {
                                         searchResult += '<li>' + qualification.name + '</li>';
                                     }
