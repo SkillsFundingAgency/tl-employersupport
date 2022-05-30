@@ -9100,6 +9100,7 @@ ul.govuk-radios label .gem-radios__input {
   border: 1px solid #b1b4b6;
   margin-bottom: 15px;
   display: none;
+  width: 100%;
 }
 @media (min-width: 40.0625em) {
   .tl-fap--filter {

@@ -121,6 +121,7 @@
     border: 1px solid $govuk-border-colour;
     @include govuk-responsive-margin(3, "bottom");
     display: none;
+    width: 100%;
 
     &[open] {
         display: inline-block;
