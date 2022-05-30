@@ -206,8 +206,70 @@ function FindProvider(
             function (_, providerLocation) {
                 let searchResult =
                     '<div class="tl-fap--result"> \
-                             <h3 class="govuk-heading-m">' + providerLocation.providerName + ' <span class="tl-fap--distance">' + providerLocation.distance.toFixed(0) + ' miles</span></h3> \
+                             <h3 class="govuk-heading-m govuk-!-margin-bottom-1">' + providerLocation.providerName + ' <span class="tl-fap--distance">' + providerLocation.distance.toFixed(0) + ' miles</span></h3> \
                              <p class="govuk-body"><span>' + providerLocation.town + '</span> | ' + providerLocation.postcode + '</p>';
+
+                const locationDeliveryYears = [];
+                let availableNow = null;
+                $.each(providerLocation.deliveryYears,
+                    function (_, deliveryYear) {
+                        if (typeof deliveryYear.routes === "undefined") return;
+
+                        if (deliveryYear.isAvailableNow) {
+                            if (availableNow) {
+                                for (let i = 0; i < deliveryYear.routes.length; i++) {
+                                    if (availableNow.routes.filter(function (r) { return r.name === deliveryYear.routes[i].name; }).length === 0)
+                                        availableNow.routes.push(deliveryYear.routes[i]);
+                                }
+                            } else {
+                                availableNow = deliveryYear;
+                                locationDeliveryYears.push(availableNow);
+                            }
+                        } else {
+                            locationDeliveryYears.push(deliveryYear);
+                        }
+                    });
+
+                if (availableNow && !typeof availableNow.routes !== "undefined") {
+                    availableNow.routes.sort(function (x, y) { return (x.name < y.name) ? -1 : ((x.name > y.name) ? 1 : 0) });
+                }
+
+                searchResult += '</p><div class="tl-fap--courses">';
+
+                $.each(locationDeliveryYears,
+                    function (_, deliveryYear) {
+                        if (!typeof deliveryYear.routes === "undefined") return;
+
+                        if (deliveryYear.isAvailableNow) {
+                            searchResult += '<div class="tl-fap--courses--box tl-fap--courses--box--now"> \
+                                        <h4 class="govuk-body govuk-!-font-weight-bold">T Levels available now:</h4>';
+                        } else {
+                            searchResult += '<div class="tl-fap--courses--box"> \
+                                        <h4 class="govuk-body govuk-!-font-weight-bold">T Levels starting September  ' + deliveryYear.year + '</h4>';
+                        }
+
+                        $.each(deliveryYear.routes,
+                            function (_, route) {
+                                searchResult += '<p class="govuk-body govuk-!-margin-top-2 govuk-!-margin-bottom-1">' + route.name + '</p> \
+                                <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-1">';
+                                
+                                $.each(route.qualifications,
+                                    function (_, qualification) {
+                                        const articleLink = typeof qualificationArticleMap !== "undefined" ?
+                                            qualificationArticleMap[qualification.id] : null;
+                                        if (articleLink) {
+                                            searchResult += '<li><a target="_blank" class="govuk-link tl-fap--result-course" href="' + articleLink + '">' + qualification.name + '</a></li>';
+                                        } else {
+                                            searchResult += '<li>' + qualification.name + '</li>';
+                                        }
+                                    });
+
+                                searchResult += '</ul>';
+                            });
+
+                        searchResult += '</div>';
+                    });
+                searchResult += '</div>';
 
                 if (providerLocation.telephone || providerLocation.website || providerLocation.email) {
                     let contactDetails = providerLocation.telephone
@@ -221,60 +283,10 @@ function FindProvider(
                         if (contactDetails) contactDetails += ' | ';
                         contactDetails += 'Email: <a href="mailto:' + providerLocation.email + '" class="govuk-link govuk-!-margin-right-4 tl-fap--result-email">' + providerLocation.email + '</a>';
                     }
-                    searchResult += '<p class="govuk-body">' + contactDetails + '</p>';
+                    
+                    searchResult += '<h4 class="govuk-body govuk-!-font-weight-bold govuk-!-margin-top-5 govuk-!-margin-bottom-2">Get in touch</h4> \
+                        <p class="govuk-body">' + contactDetails + '</p>';
                 }
-
-                const locationDeliveryYears = [];
-                let availableNow = null;
-                $.each(providerLocation.deliveryYears,
-                    function (_, deliveryYear) {
-                        if (deliveryYear.isAvailableNow) {
-                            if (availableNow) {
-                                for (let i = 0; i < deliveryYear.qualifications.length; i++) {
-                                    if (availableNow.qualifications.filter(function (q) { return q.name === deliveryYear.qualifications[i].name; }).length === 0)
-                                        availableNow.qualifications.push(deliveryYear.qualifications[i]);
-                                }
-                            } else {
-                                availableNow = deliveryYear;
-                                locationDeliveryYears.push(availableNow);
-                            }
-                        } else {
-                            locationDeliveryYears.push(deliveryYear);
-                        }
-                    });
-
-                if (availableNow) {
-                    availableNow.qualifications.sort(function (x, y) { return (x.name < y.name) ? -1 : ((x.name > y.name) ? 1 : 0) });
-                }
-
-                searchResult += '</p><div class="tl-fap--courses">';
-
-                $.each(locationDeliveryYears,
-                    function (_, deliveryYear) {
-                        const availability = deliveryYear.isAvailableNow
-                            ? 'Available now'
-                            : 'From September ' + deliveryYear.year + ' onwards';
-
-                        searchResult += '<p class="govuk-body govuk-!-font-weight-bold">' + availability + ':</p> \
-                                    <ul class="govuk-list govuk-list--bullet">';
-
-                        $.each(deliveryYear.qualifications,
-                            function (_, qualification) {
-                                const articleLink = typeof qualificationArticleMap !== "undefined" ?
-                                    qualificationArticleMap[qualification.id] : null;
-                                if (articleLink) {
-                                    searchResult += '<li><a target="_blank" class="govuk-link tl-fap--result-course" href="' + articleLink + '">' + qualification.name + '</a></li>';
-                                } else {
-                                    searchResult += '<li>' + qualification.name + '</li>';
-                                }
-                            });
-
-                        searchResult += '</ul>';
-                    });
-
-                searchResult += '</div> \
-                                    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible"> \
-                                  </div>';
 
                 $("#tl-fap--results").append(searchResult);
             });

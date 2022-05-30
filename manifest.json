@@ -1,7 +1,7 @@
 {
   "name": "GDS Style - Employer Support - FaP Filtering",
   "author": "Ash Anderton",
-  "version": "0.1.560",
+  "version": "0.1.561",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [
@@ -448,7 +448,7 @@
           "type": "text",
           "description": "Find a Provider API URL",
           "label": "Find a Provider API URL",
-          "value": "https://test.api.findatlevelprovider.education.gov.uk/api/v2/"
+          "value": "https://test.api.findatlevelprovider.education.gov.uk/api/v3/"
         },
         {
           "identifier": "find_provider_api_app_id",
