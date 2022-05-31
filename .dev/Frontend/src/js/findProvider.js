@@ -18,7 +18,7 @@ function FindProvider(
 
     let currentPage = 0;
     let currentSearchTerm = null;
-    let currentSkillAreaIds = [];
+    let currentQualificationIds = [];
 
     //initialize autocomplete
     new LocationAutocomplete(findProvidersApiUri);
@@ -46,11 +46,11 @@ function FindProvider(
     });
 
     $("#tl-search-providers").click(function () {
-        return providerSearch($("#tl-search-term").val().trim(), getSkillAreaIds());
+        return providerSearch($("#tl-search-term").val().trim(), getQualificationIds());
     });
 
     $("#tl-update-search-providers").click(function () {
-        return providerSearch($("#tl-search-term").val().trim(), getSkillAreaIds());
+        return providerSearch($("#tl-search-term").val().trim(), getQualificationIds());
     });
 
     $(".tl-fap-search-providers-form").submit(function () {
@@ -60,18 +60,18 @@ function FindProvider(
     $("#tl-next-results-link").click(function () {
         event.stopPropagation();
         event.preventDefault();
-        callProviderSearchApi(currentSearchTerm, currentSkillAreaIds, currentPage + 1);
+        callProviderSearchApi(currentSearchTerm, currentQualificationIds, currentPage + 1);
         return false;
     });
 
-    function getSkillAreaIds() {
-        const skillAreaIds = [];
+    function getQualificationIds() {
+        const qualificationIds = [];
         $('#tl-skill-area-filter .tl-checkbox:checked').each(
             function (_, item) {
-                skillAreaIds.push(item.value);
+                qualificationIds.push(item.value);
             });
 
-        return skillAreaIds;
+        return qualificationIds;
     }
 
     function loadRoutes() {
@@ -92,33 +92,49 @@ function FindProvider(
 
     function populateRoutes(data) {
         const skillAreasList = $("#tl-skill-area-filter");
-        skillAreasList.empty();
+        //TODO: Put back ermove and get rid of sample skill areas
+        //skillAreasList.find(".tl-fap--filter--section").remove();
 
         $.each(data,
             function (_, item) {
-                if (item.numberOfQualificationsOffered) {
-                    skillAreasList.append(
-                        $(document.createElement('div')).prop({
-                            class: 'govuk-checkboxes__item'
-                        }).append(
-                            $(document.createElement('input')).prop({
-                                id: 'tl_skill_area_' + item.id,
-                                name: 'tl_skill_area_' + item.id,
-                                value: item.id,
-                                type: 'checkbox',
-                                class: 'tl-checkbox govuk-checkboxes__input'
-                            })).append(
-                                $(document.createElement('label')).prop({
-                                    for: 'tl_skill_area_' + item.id,
-                                    class: 'govuk-body-s govuk-checkboxes__label'
-                                })
-                                    .html(item.name)
-                            ));
-                }
-            });
-    }
+                if (!item.numberOfQualificationsOffered) return;
 
-    function providerSearch(searchTerm, skillAreaIds, page) {
+                let skillArea = '<div class="tl-fap--filter--section"> \
+                                   <h4 class="govuk-heading-s govuk-!-margin-top-2">' +
+                                     item.name + 'BRO<br /> \
+                                     <span class="govuk-body-s tl-text--grey" id="tl-fap--filter--checkstatus"></span> \
+                                    </h4> \
+                                    <details class="tl-fap--filter--details"> \
+                                    <summary data-open="Hide T Levels" data-close="Show T Levels" class="govuk-!-margin-bottom-1"></summary> \
+                                    <div>';
+
+                $.each(item.qualifications,
+                    function (_, qualification) {
+                        console.log(qualification);
+                        const qualificationId = 'tl_subject_' + qualification.id;
+                        skillArea += '<div class="govuk-checkboxes govuk-checkboxes--small"> \
+                                                    <div class="govuk-checkboxes__item"> \
+                                                        <input id="' + qualificationId +
+                            '" name="' + qualificationId +
+                            '" type="checkbox" ' +
+                            'value="' + qualification.id +
+                            '" class="tl-checkbox govuk-checkboxes__input"> \
+                                                        <label for="' + qualificationId +
+                            '" class="govuk-body-s govuk-checkboxes__label">' + qualification.name + '</label> \
+                                                    </div> \
+                                                </div>';
+                    });
+
+                skillArea += '        </div> \
+                                            </details> \
+                                            <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-4 govuk-!-margin-top-2"> \
+                                        </div>';
+
+                skillAreasList.append(skillArea);
+            });
+    };
+    
+    function providerSearch(searchTerm, qualificationIds, page) {
         clearProviderSearchResults();
         searchTerm = searchTerm ? searchTerm.trim() : "";
         if (searchTerm === "") {
@@ -133,12 +149,12 @@ function FindProvider(
             return false;
         }
 
-        callProviderSearchApi(searchTerm, skillAreaIds, page);
+        callProviderSearchApi(searchTerm, qualificationIds, page);
 
         return true;
     }
 
-    function callProviderSearchApi(searchTerm, skillAreaIds, page, pageSize) {
+    function callProviderSearchApi(searchTerm, qualificationIds, page, pageSize) {
         if (isFapSearchInProgress) return false;
         isFapSearchInProgress = true;
 
@@ -148,9 +164,9 @@ function FindProvider(
         const encodedSearchTerm = encodeURIComponent(searchTerm).replace(/'/g, '%27');
         let uri = findProvidersApiUri + "providers?searchTerm=" + encodedSearchTerm + '&page=' + page + '&pageSize=' + pageSize;
 
-        if (skillAreaIds && skillAreaIds.length > 0) {
-            skillAreaIds.forEach(function (skillAreaId) {
-                uri += "&routeId=" + skillAreaId;
+        if (qualificationIds && qualificationIds.length > 0) {
+            qualificationIds.forEach(function (id) {
+                uri += "&qualificationId=" + id;
             });
         }
 
@@ -168,7 +184,7 @@ function FindProvider(
             } else {
                 currentPage = page;
                 currentSearchTerm = searchTerm;
-                currentSkillAreaIds = skillAreaIds;
+                currentQualificationIds = qualificationIds;
                 populateProviderSearchResults(response, page, pageSize);
             }
             setTimeout(function () {
@@ -253,7 +269,7 @@ function FindProvider(
 
                         //Obsolete v2 code
                         if ((!typeof deliveryYear.routes === "undefined" || deliveryYear.routes === null) &&
-                        (typeof deliveryYear.qualifications !== "undefined" || deliveryYear.qualifications !== null)) {
+                            (typeof deliveryYear.qualifications !== "undefined" || deliveryYear.qualifications !== null)) {
                             console.log('using v2 qualifications');
                             searchResult += '<ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-1">';
                             $.each(deliveryYear.qualifications,
@@ -265,18 +281,18 @@ function FindProvider(
                                     } else {
                                         searchResult += '<li>' + qualification.name + '</li>';
                                     }
-                                });    
+                                });
                             return;
                         }
                         /////
 
                         if (!typeof deliveryYear.routes === "undefined" || deliveryYear.routes === null) return;
-                    
+
                         $.each(deliveryYear.routes,
                             function (_, route) {
                                 searchResult += '<p class="govuk-body govuk-!-margin-top-2 govuk-!-margin-bottom-1">' + route.name + '</p> \
                                 <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-1">';
-                                
+
                                 $.each(route.qualifications,
                                     function (_, qualification) {
                                         const articleLink = typeof qualificationArticleMap !== "undefined" ?
@@ -307,7 +323,7 @@ function FindProvider(
                         if (contactDetails) contactDetails += ' | ';
                         contactDetails += 'Email: <a href="mailto:' + providerLocation.email + '" class="govuk-link govuk-!-margin-right-4 tl-fap--result-email">' + providerLocation.email + '</a>';
                     }
-                    
+
                     searchResult += '<h4 class="govuk-body govuk-!-font-weight-bold govuk-!-margin-top-5 govuk-!-margin-bottom-2">Get in touch</h4> \
                         <p class="govuk-body">' + contactDetails + '</p>';
                 }
