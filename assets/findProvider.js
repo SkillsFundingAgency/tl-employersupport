@@ -1396,8 +1396,7 @@ function FindProvider(
 
     function populateRoutes(data) {
         const skillAreasList = $("#tl-skill-area-filter");
-        //TODO: Put back ermove and get rid of sample skill areas
-        //skillAreasList.find(".tl-fap--filter--section").remove();
+        skillAreasList.find(".tl-fap--filter--section").remove();
 
         $.each(data,
             function (_, item) {
@@ -1405,7 +1404,7 @@ function FindProvider(
 
                 let skillArea = '<div class="tl-fap--filter--section"> \
                                    <h4 class="govuk-heading-s govuk-!-margin-top-2">' +
-                                     item.name + 'BRO<br /> \
+                                     item.name + '<br /> \
                                      <span class="govuk-body-s tl-text--grey" id="tl-fap--filter--checkstatus"></span> \
                                     </h4> \
                                     <details class="tl-fap--filter--details"> \
