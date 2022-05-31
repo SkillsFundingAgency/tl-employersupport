@@ -125,6 +125,8 @@
 
     &--section {
         &:last-child {
+            @include govuk-responsive-padding(4, "bottom");
+
             hr {
                 display: none;
             }

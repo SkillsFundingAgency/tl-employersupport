@@ -9107,6 +9107,14 @@ ul.govuk-radios label .gem-radios__input {
     margin-bottom: 15px;
   }
 }
+.tl-fap--filter--section:last-child {
+  padding-bottom: 15px;
+}
+@media (min-width: 40.0625em) {
+  .tl-fap--filter--section:last-child {
+    padding-bottom: 20px;
+  }
+}
 .tl-fap--filter--section:last-child hr {
   display: none;
 }
