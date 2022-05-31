@@ -90,6 +90,9 @@ function FindProvider(
         });
     }
 
+    let details = null;
+    let showall = null;
+
     function populateRoutes(data) {
         const skillAreasList = $("#tl-skill-area-filter");
         skillAreasList.find(".tl-fap--filter--section").remove();
@@ -100,7 +103,7 @@ function FindProvider(
 
                 let skillArea = '<div class="tl-fap--filter--section"> \
                                    <h4 class="govuk-heading-s govuk-!-margin-top-2">' +
-                                     item.name + '<br /> \
+                    item.name + '<br /> \
                                      <span class="govuk-body-s tl-text--grey" id="tl-fap--filter--checkstatus"></span> \
                                     </h4> \
                                     <details class="tl-fap--filter--details"> \
@@ -109,7 +112,6 @@ function FindProvider(
 
                 $.each(item.qualifications,
                     function (_, qualification) {
-                        console.log(qualification);
                         const qualificationId = 'tl_subject_' + qualification.id;
                         skillArea += '<div class="govuk-checkboxes govuk-checkboxes--small"> \
                                                     <div class="govuk-checkboxes__item"> \
@@ -131,8 +133,10 @@ function FindProvider(
 
                 skillAreasList.append(skillArea);
             });
+
+        addCheckboxHandlers();
     };
-    
+
     function providerSearch(searchTerm, qualificationIds, page) {
         clearProviderSearchResults();
         searchTerm = searchTerm ? searchTerm.trim() : "";
@@ -396,4 +400,102 @@ function FindProvider(
 
         return null;
     }
+
+
+    //filter list javascript
+    function checkchange() {
+        var totalNumberOfChecked = $(this).parents('.tl-fap--filter--content').find('input[type=checkbox]:checked');
+        var numberOfChecked = $(this).parents('.tl-fap--filter--section').find('input[type=checkbox]:checked');
+        var totalCheckboxes = $(this).parents('.tl-fap--filter--section').find('input[type=checkbox]');
+
+        /// Display number of checked items in each section
+        $(this).parents('.tl-fap--filter--section').find('#tl-fap--filter--checkstatus').html("(" + numberOfChecked.length + " of " + totalCheckboxes.length + " selected)");
+
+        /// Get checked items and display at top
+        var checkedSection = $(this).parents('.tl-fap--filter--content').find('input[type=checkbox]:checked').parents('.tl-fap--filter--section');
+        if (totalNumberOfChecked.length !== 0) {
+            $(".tl-fap--filter--selected").html('');
+
+            checkedSection.each(function () {
+                var checkedSectionBoxes = $(this).find('input[type=checkbox]:checked');
+                if (checkedSectionBoxes.length !== 0) {
+                    $(".tl-fap--filter--selected").append('<h5>' + $(this).find("h4").clone().children().remove().end().text() + '</h5>');
+
+                    checkedSectionBoxes.each(function () {
+                        var checkedSectionValue = $(this).attr("id");
+                        $(".tl-fap--filter--selected").append('<span tabindex="0" data-check="' + checkedSectionValue + '">' + $(this).next("label").text() + '</span>');
+                    });
+                }
+            });
+        }
+        else {
+            $(".tl-fap--filter--selected").html('<p class="govuk-body-s govuk-!-margin-bottom-1">No filters selected</p>');
+        }
+    };
+
+    /// Allow checkboxes to be unchecked by clicking summary items at top
+    function checkremove() {
+        var clickvalue = $(this).attr("data-check");
+        $('.tl-fap--filter--section').find('input[id=' + clickvalue + ']:checked').trigger("click");
+    };
+    $(document).on("click", ".tl-fap--filter--selected span", checkremove);
+
+    function checkdetailschange() {
+        details.each(function () {
+            if ($(this).is("[open]")) {
+                showallopen();
+                return false;
+            } else {
+                showallclose();
+            }
+        });
+    };
+
+    function showallclose() {
+        showall.removeAttr("open");
+        showall.text("Show all");
+    }
+
+    function showallopen() {
+        showall.attr('open', '');
+        showall.text("Hide all");
+    }
+
+    function addCheckboxHandlers() {
+        /// Run checkbox change function on page load and on checkbox change
+        $('.tl-fap--filter--content input[type=checkbox]').change(checkchange);
+        $(".tl-fap--filter--section .govuk-checkboxes").each(checkchange);
+
+        /// Show hide sections / all sections
+        details = $(".tl-fap--filter--details");
+        showall = $(".tl-fap--filter--showall");
+
+        details.on('toggle',
+            function () {
+                checkdetailschange();
+            });
+
+        showall.click(function () {
+            if ($(this).is("[open]")) {
+                details.removeAttr("open");
+                showallclose();
+            } else {
+                details.attr('open', '');
+                showallopen();
+            }
+        });
+    }
+
+    $("#tl-fap--filter--button").click(function () {
+        if ($(this).is("[open]")) {
+            $(this).removeAttr("open");
+            $(".tl-fap--filter").removeAttr("open");
+            $(this).text("Show filter");
+        }
+        else {
+            $(this).attr('open', '');;
+            $(".tl-fap--filter").attr('open', '');;
+            $(this).text("Hide filter");
+        }
+    });
 };
