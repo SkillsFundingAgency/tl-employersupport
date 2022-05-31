@@ -9107,6 +9107,9 @@ ul.govuk-radios label .gem-radios__input {
     margin-bottom: 15px;
   }
 }
+.tl-fap--filter--section:last-child hr {
+  display: none;
+}
 .tl-fap--filter[open] {
   display: inline-block;
 }

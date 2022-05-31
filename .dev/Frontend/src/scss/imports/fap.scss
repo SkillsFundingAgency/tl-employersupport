@@ -123,6 +123,14 @@
     display: none;
     width: 100%;
 
+    &--section {
+        &:last-child {
+            hr {
+                display: none;
+            }
+        }
+    }
+
     &[open] {
         display: inline-block;
     }
