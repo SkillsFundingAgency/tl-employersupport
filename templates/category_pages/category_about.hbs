@@ -58,6 +58,14 @@
                         </p>
                     </div>
                     {{/if}}
+                    {{#if more_articles}}
+                    <div class="tl-boxlinks--card">
+                        <p class="govuk-body-l govuk-!-margin-bottom-2">
+                            <a class="govuk-link govuk-!-margin-bottom-1 tl-category--section--article" href="{{url}}">{{t 'show_all_articles' count=article_count}}</a>
+                        </p>
+                    </div>
+                    {{/if}}
+
                     {{/each}}
                 </div>
             </div>
