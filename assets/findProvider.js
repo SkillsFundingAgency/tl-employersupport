@@ -1782,6 +1782,7 @@ function FindProvider(
         /// Run checkbox change function on page load and on checkbox change
         $('.tl-fap--filter--content input[type=checkbox]').change(checkChange);
         $(".tl-fap--filter--section .govuk-checkboxes").each(checkChange);
+        $('.tl-fap--filter--content input[type=checkbox]').change(qualificationSelectionChanged);
 
         /// Show hide sections / all sections
         details = $(".tl-fap--filter--details");
