@@ -49,9 +49,12 @@ function FindProvider(
         return providerSearch($("#tl-search-term").val().trim(), getQualificationIds());
     });
 
-    $("#tl-update-search-providers").click(function () {
+    function qualificationSelectionChanged() {
+        if (!$("#tl-search-term").val().trim()) return false;
+
+        console.log('checkboxes changed- calling search');
         return providerSearch($("#tl-search-term").val().trim(), getQualificationIds());
-    });
+    }
 
     $(".tl-fap-search-providers-form").submit(function () {
         event.preventDefault();
@@ -91,7 +94,7 @@ function FindProvider(
     }
 
     let details = null;
-    let showall = null;
+    let showAll = null;
 
     function populateRoutes(data) {
         const skillAreasList = $("#tl-skill-area-filter");
@@ -157,8 +160,10 @@ function FindProvider(
         return true;
     }
 
+    var activeSearchQuery = null;
+
     function callProviderSearchApi(searchTerm, qualificationIds, page, pageSize) {
-        if (isFapSearchInProgress) return false;
+        //if (isFapSearchInProgress) return false;
         isFapSearchInProgress = true;
 
         page = (page === undefined ? 0 : page);
@@ -184,7 +189,13 @@ function FindProvider(
             if (response.error) {
                 console.log("Invalid providers search response received - " + response.error);
                 showSearchTermError("Enter a valid postcode or town");
+            } else if (activeSearchQuery !== uri) {
+                console.log('ignoring results because current query does not match active query:');
+                console.log('uri = ' + uri);
+                console.log('active query = ' + activeSearchQuery);
+                return;
             } else {
+                console.log('search results ok for ' + uri);
                 currentPage = page;
                 currentSearchTerm = searchTerm;
                 currentQualificationIds = qualificationIds;
@@ -401,18 +412,17 @@ function FindProvider(
         return null;
     }
 
-
     //filter list javascript
-    function checkchange() {
-        var totalNumberOfChecked = $(this).parents('.tl-fap--filter--content').find('input[type=checkbox]:checked');
-        var numberOfChecked = $(this).parents('.tl-fap--filter--section').find('input[type=checkbox]:checked');
-        var totalCheckboxes = $(this).parents('.tl-fap--filter--section').find('input[type=checkbox]');
+    function checkChange() {
+        const totalNumberOfChecked = $(this).parents('.tl-fap--filter--content').find('input[type=checkbox]:checked');
+        const numberOfChecked = $(this).parents('.tl-fap--filter--section').find('input[type=checkbox]:checked');
+        const totalCheckboxes = $(this).parents('.tl-fap--filter--section').find('input[type=checkbox]');
 
         /// Display number of checked items in each section
         $(this).parents('.tl-fap--filter--section').find('#tl-fap--filter--checkstatus').html("(" + numberOfChecked.length + " of " + totalCheckboxes.length + " selected)");
 
         /// Get checked items and display at top
-        var checkedSection = $(this).parents('.tl-fap--filter--content').find('input[type=checkbox]:checked').parents('.tl-fap--filter--section');
+        const checkedSection = $(this).parents('.tl-fap--filter--content').find('input[type=checkbox]:checked').parents('.tl-fap--filter--section');
         if (totalNumberOfChecked.length !== 0) {
             $(".tl-fap--filter--selected").html('');
 
@@ -434,55 +444,55 @@ function FindProvider(
     };
 
     /// Allow checkboxes to be unchecked by clicking summary items at top
-    function checkremove() {
-        var clickvalue = $(this).attr("data-check");
+    function checkRemove() {
+        const clickvalue = $(this).attr("data-check");
         $('.tl-fap--filter--section').find('input[id=' + clickvalue + ']:checked').trigger("click");
     };
-    $(document).on("click", ".tl-fap--filter--selected span", checkremove);
+    $(document).on("click", ".tl-fap--filter--selected span", checkRemove);
 
-    function checkdetailschange() {
+    function checkDetailsChange() {
         details.each(function () {
             if ($(this).is("[open]")) {
-                showallopen();
+                showAllOpen();
                 return false;
             } else {
-                showallclose();
+                showAllClose();
             }
         });
     };
 
-    function showallclose() {
-        showall.removeAttr("open");
-        showall.text("Show all");
+    function showAllClose() {
+        showAll.removeAttr("open");
+        showAll.text("Show all");
     }
 
-    function showallopen() {
-        showall.attr('open', '');
-        showall.text("Hide all");
+    function showAllOpen() {
+        showAll.attr('open', '');
+        showAll.text("Hide all");
     }
 
     function addCheckboxHandlers() {
         /// Run checkbox change function on page load and on checkbox change
-        $('.tl-fap--filter--content input[type=checkbox]').change(checkchange);
-        $(".tl-fap--filter--section .govuk-checkboxes").each(checkchange);
+        $('.tl-fap--filter--content input[type=checkbox]').change(checkChange);
+        $(".tl-fap--filter--section .govuk-checkboxes").each(checkChange);
 
         /// Show hide sections / all sections
         details = $(".tl-fap--filter--details");
-        showall = $(".tl-fap--filter--showall");
+        showAll = $(".tl-fap--filter--showall");
 
         details.on('toggle',
             function () {
-                checkdetailschange();
+                checkDetailsChange();
             });
 
-        showall.click(function () {
-            if ($(this).is("[open]")) {
-                details.removeAttr("open");
-                showallclose();
-            } else {
-                details.attr('open', '');
-                showallopen();
-            }
+            showAll.click(function () {
+                if ($(this).is("[open]")) {
+                    details.removeAttr("open");
+                    showAllClose();
+                } else {
+                    details.attr('open', '');
+                    showAllOpen();
+                }
         });
     }
 
