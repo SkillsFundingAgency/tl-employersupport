@@ -178,6 +178,9 @@ function FindProvider(
             });
         }
 
+        //Assign uri to global level variable, then check when query returns to see if it's changed
+        activeSearchQuery = uri;
+
         $.ajax({
             type: "GET",
             url: uri,
