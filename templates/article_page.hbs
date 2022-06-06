@@ -210,3 +210,19 @@
     };
 </script>
 <!-- End of tlevelsemployertest Zendesk Widget script -->
+
+<!--Start of FAP script -->
+<script src="{{asset 'findProviderTile.js'}}"
+        data-findProviderRedirectUrl="/hc/en-gb/articles/{{settings.article_id_find_provider}}"
+        data-findProviderApiUri="{{settings.find_provider_api_uri}}"></script>
+<script>
+    new FindProviderTile();
+</script>
+<!--TODO: Replace on new branch with script 
+<script src="{{asset 'findProviderTile.js'}}"></script>
+<script>
+    new FindProviderTile("/hc/en-gb/articles/{{settings.article_id_find_provider}}", "{{settings.find_provider_api_uri}}");
+</script> 
+-->
+
+<!--End of FAP script -->
