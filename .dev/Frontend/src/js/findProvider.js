@@ -428,6 +428,10 @@ function FindProvider(
         if (totalNumberOfChecked.length !== 0) {
             $(".tl-fap--filter--selected").html('');
 
+            checkedSection.sort(function(x, y) {
+                return ($(x).text() < $(y).text()) ? -1 : (($(x).text() > $(y).text()) ? 1 : 0);
+            });
+
             checkedSection.each(function () {
                 var checkedSectionBoxes = $(this).find('input[type=checkbox]:checked');
                 if (checkedSectionBoxes.length !== 0) {
