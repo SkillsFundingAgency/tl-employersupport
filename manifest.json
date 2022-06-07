@@ -1,7 +1,7 @@
 {
   "name": "GDS Style - Employer Support - FaP Filtering",
   "author": "Ash Anderton",
-  "version": "0.1.591",
+  "version": "0.1.592",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [
@@ -469,112 +469,112 @@
           "type": "text",
           "description": "Qualification article for id 36",
           "label": "Qualification article for id 36",
-          "value": "4416409823506-About-Construction-industry-placements#design-surveying-and-planning"
+          "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/4416396532370-Construction-and-the-Built-Environment#design-surveying-and-planning"
         },
         {
           "identifier": "qualification_article_37",
           "type": "text",
           "description": "Qualification article for id 37",
           "label": "Qualification article for id 37",
-          "value": "4416409743762-About-Digital-and-IT-industry-placements#digital-production"
+          "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/4416396532882-Digital-and-IT#digital-production"
         },
         {
           "identifier": "qualification_article_38",
           "type": "text",
           "description": "Qualification article for id 38",
           "label": "Qualification article for id 38",
-          "value": "4416405157394-About-Education-and-Childcare-industry-placements"
+          "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/4416396533010-Education-and-Childcare"
         },
         {
           "identifier": "qualification_article_39",
           "type": "text",
           "description": "Qualification article for id 39",
           "label": "Qualification article for id 39",
-          "value": "4416409743762-About-Digital-and-IT-industry-placements#digital-business-services"
+          "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/4416396532882-Digital-and-IT#digital-business-services"
         },
         {
           "identifier": "qualification_article_40",
           "type": "text",
           "description": "Qualification article for id 40",
           "label": "Qualification article for id 40",
-          "value": "4416409743762-About-Digital-and-IT-industry-placements#digital-support"
+          "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/4416396532882-Digital-and-IT#digital-support"
         },
         {
           "identifier": "qualification_article_41",
           "type": "text",
           "description": "Qualification article for id 41",
           "label": "Qualification article for id 41",
-          "value": "4416565841298-About-Health-and-Science-industry-placements#health"
+          "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/4416565606418-Health-and-Science#health"
         },
         {
           "identifier": "qualification_article_42",
           "type": "text",
           "description": "Qualification article for id 42",
           "label": "Qualification article for id 42",
-          "value": "4416565841298-About-Health-and-Science-industry-placements#healthcare-science"
+          "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/4416565606418-Health-and-Science#healthcare-science"
         },
         {
           "identifier": "qualification_article_43",
           "type": "text",
           "description": "Qualification article for id 43",
           "label": "Qualification article for id 43",
-          "value": "4416565841298-About-Health-and-Science-industry-placements#science"
+          "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/4416565606418-Health-and-Science#science"
         },
         {
           "identifier": "qualification_article_44",
           "type": "text",
           "description": "Qualification article for id 44",
           "label": "Qualification article for id 44",
-          "value": "4416409823506-About-Construction-industry-placements#onsite-construction"
+          "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/4416396532370-Construction-and-the-Built-Environment#onsite-construction"
         },
         {
           "identifier": "qualification_article_45",
           "type": "text",
           "description": "Qualification article for id 45",
           "label": "Qualification article for id 45",
-          "value": "4416409823506-About-Construction-industry-placements#building-services-engineering"
+          "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/4416396532370-Construction-and-the-Built-Environment#building-services-engineering"
         },
         {
           "identifier": "qualification_article_46",
           "type": "text",
           "description": "Qualification article for id 46",
           "label": "Qualification article for id 46",
-          "value": "4416559604370-About-Legal-Finance-and-Accounting-industry-placements#finance"
+          "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/4416577262866-Legal-Finance-and-Accounting#finance"
         },
         {
           "identifier": "qualification_article_47",
           "type": "text",
           "description": "Qualification article for id 47",
           "label": "Qualification article for id 47",
-          "value": "4416559604370-About-Legal-Finance-and-Accounting-industry-placements#accounting"
+          "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/4416577262866-Legal-Finance-and-Accounting#accounting"
         },
         {
           "identifier": "qualification_article_48",
           "type": "text",
           "description": "Qualification article for id 48",
           "label": "Qualification article for id 48",
-          "value": "4416396618770-About-Engineering-and-Manufacturing-industry-placements#design-and-development"
+          "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/4416409675410-Engineering-and-Manufacturing#design-and-development"
         },
         {
           "identifier": "qualification_article_49",
           "type": "text",
           "description": "Qualification article for id 49",
           "label": "Qualification article for id 49",
-          "value": "4416396618770-About-Engineering-and-Manufacturing-industry-placements#maintenance"
+          "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/4416409675410-Engineering-and-Manufacturing#maintenance"
         },
         {
           "identifier": "qualification_article_50",
           "type": "text",
           "description": "Qualification article for id 50",
           "label": "Qualification article for id 50",
-          "value": "4416396618770-About-Engineering-and-Manufacturing-industry-placements#engineering"
+          "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/4416409675410-Engineering-and-Manufacturing#engineering"
         },
         {
           "identifier": "qualification_article_51",
           "type": "text",
           "description": "Qualification article for id 51",
           "label": "Qualification article for id 51",
-          "value": "4416396581778-About-Business-and-Administration-industry-placements"
+          "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/4416409672466-Business-and-Administration"
         }
       ]
     }
