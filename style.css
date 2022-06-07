@@ -9060,15 +9060,15 @@ ul.govuk-radios label .gem-radios__input {
   padding: 15px;
   margin-bottom: 15px;
   border: 1px solid #f3f2f1;
-  -webkit-animation: fadein 0.5s;
+  -webkit-animation: fadein 0.8s;
   /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadein 0.5s;
+  -moz-animation: fadein 0.8s;
   /* Firefox < 16 */
-  -ms-animation: fadein 0.5s;
+  -ms-animation: fadein 0.8s;
   /* Internet Explorer */
-  -o-animation: fadein 0.5s;
+  -o-animation: fadein 0.8s;
   /* Opera < 12.1 */
-  animation: fadein 0.5s;
+  animation: fadein 0.8s;
   /* Firefox < 16 */
   /* Safari, Chrome and Opera > 12.1 */
   /* Internet Explorer */
