@@ -16,6 +16,7 @@ function FindProvider(
 
     if (findProvidersApiUri !== null && findProvidersApiUri.substr(-1) !== '/') findProvidersApiUri += '/';
 
+    let activeSearchQuery = null;
     let currentPage = 0;
     let currentSearchTerm = null;
     let currentQualificationIds = [];
@@ -159,8 +160,6 @@ function FindProvider(
 
         return true;
     }
-
-    var activeSearchQuery = null;
 
     function callProviderSearchApi(searchTerm, qualificationIds, page, pageSize) {
         //if (isFapSearchInProgress) return false;
