@@ -1341,6 +1341,7 @@ function FindProvider(
         providerSearch(searchTerm);
     } else {
         $('.tl-fap--noresult').removeClass("tl-hidden");
+        $('.tl-fap--results').addClass("tl-hidden");
     }
 
     $('#tl-search-term').keypress(function (e) {
