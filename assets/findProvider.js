@@ -1341,7 +1341,7 @@ function FindProvider(
         providerSearch(searchTerm);
     } else {
         $('.tl-fap--noresult').removeClass("tl-hidden");
-        $('.tl-fap--results').addClass("tl-hidden");
+        $('.tl-fap--result').addClass("tl-hidden");
     }
 
     $('#tl-search-term').keypress(function (e) {
@@ -1536,7 +1536,7 @@ function FindProvider(
 
         if ((!data.searchResults || data.searchResults.length === 0) && currentPage === 0) {
             $('.tl-fap--noresult').removeClass("tl-hidden");
-            $('.tl-fap--results').addClass("tl-hidden");
+            $('.tl-fap--result').addClass("tl-hidden");
 
             return;
         }
