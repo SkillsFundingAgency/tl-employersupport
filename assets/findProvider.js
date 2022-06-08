@@ -1584,7 +1584,7 @@ function FindProvider(
                                         <h4 class="govuk-body govuk-!-font-weight-bold">T Levels available now:</h4>';
                         } else {
                             searchResult += '<div class="tl-fap--courses--box"> \
-                                        <h4 class="govuk-body govuk-!-font-weight-bold">T Levels starting September  ' + deliveryYear.year + '</h4>';
+                                        <h4 class="govuk-body govuk-!-font-weight-bold">T Levels available from September  ' + deliveryYear.year + '</h4>';
                         }
 
                         //Obsolete v2 code
