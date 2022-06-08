@@ -231,6 +231,8 @@ function FindProvider(
 
         if ((!data.searchResults || data.searchResults.length === 0) && currentPage === 0) {
             $('.tl-fap--noresult').removeClass("tl-hidden");
+            $('.tl-fap--results').addClass("tl-hidden");
+
             return;
         }
 
@@ -340,7 +342,7 @@ function FindProvider(
                         contactDetails += 'Email: <a href="mailto:' + providerLocation.email + '" class="govuk-link govuk-!-margin-right-4 tl-fap--result-email">' + providerLocation.email + '</a>';
                     }
 
-                    searchResult += '<h4 class="govuk-body govuk-!-font-weight-bold govuk-!-margin-top-5 govuk-!-margin-bottom-2">Get in touch</h4> \
+                    searchResult += '<h4 class="govuk-body govuk-!-font-weight-bold govuk-!-margin-top-5 govuk-!-margin-bottom-2">Get in touch:</h4> \
                         <p class="govuk-body">' + contactDetails + '</p>';
                 }
 
