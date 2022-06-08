@@ -9197,6 +9197,19 @@ ul.govuk-radios label .gem-radios__input {
 .tl-fap--filter--clearall {
   display: inline-block;
   float: right;
+  color: #1d70b8;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-thickness: max(1px, 0.0625rem);
+  text-underline-offset: 0.1em;
+}
+.tl-fap--filter--clearall:hover {
+  color: #003078;
+  text-decoration-thickness: max(3px, 0.1875rem, 0.12em);
+  text-decoration-skip-ink: none;
+}
+.tl-fap--filter--clearall:visited {
+  color: #4c2c92;
 }
 .tl-fap--filter[open] {
   display: inline-block;

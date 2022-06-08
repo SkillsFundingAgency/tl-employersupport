@@ -184,6 +184,22 @@
         float: right;
         @extend .govuk-body-s;
         @extend .govuk-link;
+        color: $govuk-link-colour;
+        cursor: pointer;
+        text-decoration: underline;
+        text-decoration-thickness: max(1px, 0.0625rem);
+        text-underline-offset: 0.1em;
+
+
+    &:hover {
+        color: $govuk-link-hover-colour;
+        text-decoration-thickness: max(3px, 0.1875rem, 0.12em);
+        text-decoration-skip-ink: none;
+    }
+
+    &:visited {
+        color: $govuk-link-visited-colour;
+    }
     }
 
     &[open] {
