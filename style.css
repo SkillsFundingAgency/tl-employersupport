@@ -483,7 +483,7 @@
   }
 }
 
-.tl-article--content p, .govuk-body, .tl-fap--filter--clearall, .tl-ticket--form #upload-dropzone span, .tl-ticket--form p, .tl-community--post--content p, .tl-community-table-post--description, .tl-search--filters .tl-search--filter--radio, .govuk-body-m {
+.tl-article--content p, .govuk-body, .tl-ticket--form #upload-dropzone span, .tl-ticket--form p, .tl-community--post--content p, .tl-community-table-post--description, .tl-search--filters .tl-search--filter--radio, .govuk-body-m {
   color: #0b0c0c;
   font-family: "GDS Transport", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -496,35 +496,35 @@
   margin-bottom: 15px;
 }
 @media print {
-  .tl-article--content p, .govuk-body, .tl-fap--filter--clearall, .tl-ticket--form #upload-dropzone span, .tl-ticket--form p, .tl-community--post--content p, .tl-community-table-post--description, .tl-search--filters .tl-search--filter--radio, .govuk-body-m {
+  .tl-article--content p, .govuk-body, .tl-ticket--form #upload-dropzone span, .tl-ticket--form p, .tl-community--post--content p, .tl-community-table-post--description, .tl-search--filters .tl-search--filter--radio, .govuk-body-m {
     color: #000000;
   }
 }
 @media print {
-  .tl-article--content p, .govuk-body, .tl-fap--filter--clearall, .tl-ticket--form #upload-dropzone span, .tl-ticket--form p, .tl-community--post--content p, .tl-community-table-post--description, .tl-search--filters .tl-search--filter--radio, .govuk-body-m {
+  .tl-article--content p, .govuk-body, .tl-ticket--form #upload-dropzone span, .tl-ticket--form p, .tl-community--post--content p, .tl-community-table-post--description, .tl-search--filters .tl-search--filter--radio, .govuk-body-m {
     font-family: sans-serif;
   }
 }
 @media (min-width: 40.0625em) {
-  .tl-article--content p, .govuk-body, .tl-fap--filter--clearall, .tl-ticket--form #upload-dropzone span, .tl-ticket--form p, .tl-community--post--content p, .tl-community-table-post--description, .tl-search--filters .tl-search--filter--radio, .govuk-body-m {
+  .tl-article--content p, .govuk-body, .tl-ticket--form #upload-dropzone span, .tl-ticket--form p, .tl-community--post--content p, .tl-community-table-post--description, .tl-search--filters .tl-search--filter--radio, .govuk-body-m {
     font-size: 19px;
     font-size: 1.1875rem;
     line-height: 1.3157894737;
   }
 }
 @media print {
-  .tl-article--content p, .govuk-body, .tl-fap--filter--clearall, .tl-ticket--form #upload-dropzone span, .tl-ticket--form p, .tl-community--post--content p, .tl-community-table-post--description, .tl-search--filters .tl-search--filter--radio, .govuk-body-m {
+  .tl-article--content p, .govuk-body, .tl-ticket--form #upload-dropzone span, .tl-ticket--form p, .tl-community--post--content p, .tl-community-table-post--description, .tl-search--filters .tl-search--filter--radio, .govuk-body-m {
     font-size: 14pt;
     line-height: 1.15;
   }
 }
 @media (min-width: 40.0625em) {
-  .tl-article--content p, .govuk-body, .tl-fap--filter--clearall, .tl-ticket--form #upload-dropzone span, .tl-ticket--form p, .tl-community--post--content p, .tl-community-table-post--description, .tl-search--filters .tl-search--filter--radio, .govuk-body-m {
+  .tl-article--content p, .govuk-body, .tl-ticket--form #upload-dropzone span, .tl-ticket--form p, .tl-community--post--content p, .tl-community-table-post--description, .tl-search--filters .tl-search--filter--radio, .govuk-body-m {
     margin-bottom: 20px;
   }
 }
 
-.govuk-body-s, .tl-fap--filter--selected span, .tl-community--comment--actions, .tl-community--post--actions, .tl-article--sidebar a {
+.govuk-body-s, .tl-fap--filter--selected span, .tl-fap--filter--clearall, .tl-community--comment--actions, .tl-community--post--actions, .tl-article--sidebar a {
   color: #0b0c0c;
   font-family: "GDS Transport", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -537,30 +537,30 @@
   margin-bottom: 15px;
 }
 @media print {
-  .govuk-body-s, .tl-fap--filter--selected span, .tl-community--comment--actions, .tl-community--post--actions, .tl-article--sidebar a {
+  .govuk-body-s, .tl-fap--filter--selected span, .tl-fap--filter--clearall, .tl-community--comment--actions, .tl-community--post--actions, .tl-article--sidebar a {
     color: #000000;
   }
 }
 @media print {
-  .govuk-body-s, .tl-fap--filter--selected span, .tl-community--comment--actions, .tl-community--post--actions, .tl-article--sidebar a {
+  .govuk-body-s, .tl-fap--filter--selected span, .tl-fap--filter--clearall, .tl-community--comment--actions, .tl-community--post--actions, .tl-article--sidebar a {
     font-family: sans-serif;
   }
 }
 @media (min-width: 40.0625em) {
-  .govuk-body-s, .tl-fap--filter--selected span, .tl-community--comment--actions, .tl-community--post--actions, .tl-article--sidebar a {
+  .govuk-body-s, .tl-fap--filter--selected span, .tl-fap--filter--clearall, .tl-community--comment--actions, .tl-community--post--actions, .tl-article--sidebar a {
     font-size: 16px;
     font-size: 1rem;
     line-height: 1.25;
   }
 }
 @media print {
-  .govuk-body-s, .tl-fap--filter--selected span, .tl-community--comment--actions, .tl-community--post--actions, .tl-article--sidebar a {
+  .govuk-body-s, .tl-fap--filter--selected span, .tl-fap--filter--clearall, .tl-community--comment--actions, .tl-community--post--actions, .tl-article--sidebar a {
     font-size: 14pt;
     line-height: 1.2;
   }
 }
 @media (min-width: 40.0625em) {
-  .govuk-body-s, .tl-fap--filter--selected span, .tl-community--comment--actions, .tl-community--post--actions, .tl-article--sidebar a {
+  .govuk-body-s, .tl-fap--filter--selected span, .tl-fap--filter--clearall, .tl-community--comment--actions, .tl-community--post--actions, .tl-article--sidebar a {
     margin-bottom: 20px;
   }
 }
@@ -615,12 +615,14 @@
   }
 }
 
-.tl-article--content p + .govuk-heading-l, .tl-article--content #tl-home--fap .tl-card--fap p + h2, #tl-home--fap .tl-card--fap .tl-article--content p + h2, .tl-article--content p + h2, .govuk-body-m + .govuk-heading-l, #tl-home--fap .tl-card--fap .govuk-body-m + h2, .tl-community--post--content .govuk-body-m + h2, .tl-article--content .govuk-body-m + h2, .govuk-body + .govuk-heading-l, .tl-fap--filter--clearall + .govuk-heading-l, #tl-home--fap .tl-card--fap .govuk-body + h2, #tl-home--fap .tl-card--fap .tl-fap--filter--clearall + h2, .tl-ticket--form #upload-dropzone span + .govuk-heading-l, .tl-ticket--form #upload-dropzone #tl-home--fap .tl-card--fap span + h2, #tl-home--fap .tl-card--fap .tl-ticket--form #upload-dropzone span + h2, .tl-ticket--form p + .govuk-heading-l, .tl-ticket--form #tl-home--fap .tl-card--fap p + h2, #tl-home--fap .tl-card--fap .tl-ticket--form p + h2, .tl-community--post--content p + .govuk-heading-l, .tl-community--post--content #tl-home--fap .tl-card--fap p + h2, #tl-home--fap .tl-card--fap .tl-community--post--content p + h2, .tl-community--post--content .govuk-body + h2, .tl-community--post--content .tl-fap--filter--clearall + h2, .tl-community--post--content .tl-ticket--form #upload-dropzone span + h2, .tl-ticket--form #upload-dropzone .tl-community--post--content span + h2, .tl-community--post--content .tl-ticket--form p + h2, .tl-ticket--form .tl-community--post--content p + h2, .tl-community--post--content p + h2, .tl-community-table-post--description + .govuk-heading-l, #tl-home--fap .tl-card--fap .tl-community-table-post--description + h2, .tl-community--post--content .tl-community-table-post--description + h2, .tl-article--content .govuk-body + h2, .tl-article--content .tl-fap--filter--clearall + h2, .tl-article--content .tl-ticket--form #upload-dropzone span + h2, .tl-ticket--form #upload-dropzone .tl-article--content span + h2, .tl-article--content .tl-ticket--form p + h2, .tl-ticket--form .tl-article--content p + h2, .tl-article--content .tl-community-table-post--description + h2, .tl-search--filters .tl-search--filter--radio + .govuk-heading-l, .tl-search--filters #tl-home--fap .tl-card--fap .tl-search--filter--radio + h2, #tl-home--fap .tl-card--fap .tl-search--filters .tl-search--filter--radio + h2, .tl-search--filters .tl-community--post--content .tl-search--filter--radio + h2, .tl-community--post--content .tl-search--filters .tl-search--filter--radio + h2, .tl-search--filters .tl-article--content .tl-search--filter--radio + h2, .tl-article--content .tl-search--filters .tl-search--filter--radio + h2,
+.tl-article--content p + .govuk-heading-l, .tl-article--content #tl-home--fap .tl-card--fap p + h2, #tl-home--fap .tl-card--fap .tl-article--content p + h2, .tl-article--content p + h2, .govuk-body-m + .govuk-heading-l, #tl-home--fap .tl-card--fap .govuk-body-m + h2, .tl-community--post--content .govuk-body-m + h2, .tl-article--content .govuk-body-m + h2, .govuk-body + .govuk-heading-l, #tl-home--fap .tl-card--fap .govuk-body + h2, .tl-ticket--form #upload-dropzone span + .govuk-heading-l, .tl-ticket--form #upload-dropzone #tl-home--fap .tl-card--fap span + h2, #tl-home--fap .tl-card--fap .tl-ticket--form #upload-dropzone span + h2, .tl-ticket--form p + .govuk-heading-l, .tl-ticket--form #tl-home--fap .tl-card--fap p + h2, #tl-home--fap .tl-card--fap .tl-ticket--form p + h2, .tl-community--post--content p + .govuk-heading-l, .tl-community--post--content #tl-home--fap .tl-card--fap p + h2, #tl-home--fap .tl-card--fap .tl-community--post--content p + h2, .tl-community--post--content .govuk-body + h2, .tl-community--post--content .tl-ticket--form #upload-dropzone span + h2, .tl-ticket--form #upload-dropzone .tl-community--post--content span + h2, .tl-community--post--content .tl-ticket--form p + h2, .tl-ticket--form .tl-community--post--content p + h2, .tl-community--post--content p + h2, .tl-community-table-post--description + .govuk-heading-l, #tl-home--fap .tl-card--fap .tl-community-table-post--description + h2, .tl-community--post--content .tl-community-table-post--description + h2, .tl-article--content .govuk-body + h2, .tl-article--content .tl-ticket--form #upload-dropzone span + h2, .tl-ticket--form #upload-dropzone .tl-article--content span + h2, .tl-article--content .tl-ticket--form p + h2, .tl-ticket--form .tl-article--content p + h2, .tl-article--content .tl-community-table-post--description + h2, .tl-search--filters .tl-search--filter--radio + .govuk-heading-l, .tl-search--filters #tl-home--fap .tl-card--fap .tl-search--filter--radio + h2, #tl-home--fap .tl-card--fap .tl-search--filters .tl-search--filter--radio + h2, .tl-search--filters .tl-community--post--content .tl-search--filter--radio + h2, .tl-community--post--content .tl-search--filters .tl-search--filter--radio + h2, .tl-search--filters .tl-article--content .tl-search--filter--radio + h2, .tl-article--content .tl-search--filters .tl-search--filter--radio + h2,
 .govuk-body-s + .govuk-heading-l,
 .tl-fap--filter--selected span + .govuk-heading-l,
+.tl-fap--filter--clearall + .govuk-heading-l,
 #tl-home--fap .tl-card--fap .govuk-body-s + h2,
 #tl-home--fap .tl-card--fap .tl-fap--filter--selected span + h2,
 .tl-fap--filter--selected #tl-home--fap .tl-card--fap span + h2,
+#tl-home--fap .tl-card--fap .tl-fap--filter--clearall + h2,
 .tl-community--comment--actions + .govuk-heading-l,
 #tl-home--fap .tl-card--fap .tl-community--comment--actions + h2,
 .tl-community--post--actions + .govuk-heading-l,
@@ -628,11 +630,13 @@
 .tl-community--post--content .govuk-body-s + h2,
 .tl-community--post--content .tl-fap--filter--selected span + h2,
 .tl-fap--filter--selected .tl-community--post--content span + h2,
+.tl-community--post--content .tl-fap--filter--clearall + h2,
 .tl-community--post--content .tl-community--comment--actions + h2,
 .tl-community--post--content .tl-community--post--actions + h2,
 .tl-article--content .govuk-body-s + h2,
 .tl-article--content .tl-fap--filter--selected span + h2,
 .tl-fap--filter--selected .tl-article--content span + h2,
+.tl-article--content .tl-fap--filter--clearall + h2,
 .tl-article--content .tl-community--comment--actions + h2,
 .tl-article--content .tl-community--post--actions + h2,
 .tl-article--sidebar a + .govuk-heading-l,
@@ -667,12 +671,14 @@
   padding-top: 15px;
 }
 @media (min-width: 40.0625em) {
-  .tl-article--content p + .govuk-heading-l, .tl-article--content #tl-home--fap .tl-card--fap p + h2, #tl-home--fap .tl-card--fap .tl-article--content p + h2, .tl-article--content p + h2, .govuk-body-m + .govuk-heading-l, #tl-home--fap .tl-card--fap .govuk-body-m + h2, .tl-community--post--content .govuk-body-m + h2, .tl-article--content .govuk-body-m + h2, .govuk-body + .govuk-heading-l, .tl-fap--filter--clearall + .govuk-heading-l, #tl-home--fap .tl-card--fap .govuk-body + h2, #tl-home--fap .tl-card--fap .tl-fap--filter--clearall + h2, .tl-ticket--form #upload-dropzone span + .govuk-heading-l, .tl-ticket--form #upload-dropzone #tl-home--fap .tl-card--fap span + h2, #tl-home--fap .tl-card--fap .tl-ticket--form #upload-dropzone span + h2, .tl-ticket--form p + .govuk-heading-l, .tl-ticket--form #tl-home--fap .tl-card--fap p + h2, #tl-home--fap .tl-card--fap .tl-ticket--form p + h2, .tl-community--post--content p + .govuk-heading-l, .tl-community--post--content #tl-home--fap .tl-card--fap p + h2, #tl-home--fap .tl-card--fap .tl-community--post--content p + h2, .tl-community--post--content .govuk-body + h2, .tl-community--post--content .tl-fap--filter--clearall + h2, .tl-community--post--content .tl-ticket--form #upload-dropzone span + h2, .tl-ticket--form #upload-dropzone .tl-community--post--content span + h2, .tl-community--post--content .tl-ticket--form p + h2, .tl-ticket--form .tl-community--post--content p + h2, .tl-community--post--content p + h2, .tl-community-table-post--description + .govuk-heading-l, #tl-home--fap .tl-card--fap .tl-community-table-post--description + h2, .tl-community--post--content .tl-community-table-post--description + h2, .tl-article--content .govuk-body + h2, .tl-article--content .tl-fap--filter--clearall + h2, .tl-article--content .tl-ticket--form #upload-dropzone span + h2, .tl-ticket--form #upload-dropzone .tl-article--content span + h2, .tl-article--content .tl-ticket--form p + h2, .tl-ticket--form .tl-article--content p + h2, .tl-article--content .tl-community-table-post--description + h2, .tl-search--filters .tl-search--filter--radio + .govuk-heading-l, .tl-search--filters #tl-home--fap .tl-card--fap .tl-search--filter--radio + h2, #tl-home--fap .tl-card--fap .tl-search--filters .tl-search--filter--radio + h2, .tl-search--filters .tl-community--post--content .tl-search--filter--radio + h2, .tl-community--post--content .tl-search--filters .tl-search--filter--radio + h2, .tl-search--filters .tl-article--content .tl-search--filter--radio + h2, .tl-article--content .tl-search--filters .tl-search--filter--radio + h2,
+  .tl-article--content p + .govuk-heading-l, .tl-article--content #tl-home--fap .tl-card--fap p + h2, #tl-home--fap .tl-card--fap .tl-article--content p + h2, .tl-article--content p + h2, .govuk-body-m + .govuk-heading-l, #tl-home--fap .tl-card--fap .govuk-body-m + h2, .tl-community--post--content .govuk-body-m + h2, .tl-article--content .govuk-body-m + h2, .govuk-body + .govuk-heading-l, #tl-home--fap .tl-card--fap .govuk-body + h2, .tl-ticket--form #upload-dropzone span + .govuk-heading-l, .tl-ticket--form #upload-dropzone #tl-home--fap .tl-card--fap span + h2, #tl-home--fap .tl-card--fap .tl-ticket--form #upload-dropzone span + h2, .tl-ticket--form p + .govuk-heading-l, .tl-ticket--form #tl-home--fap .tl-card--fap p + h2, #tl-home--fap .tl-card--fap .tl-ticket--form p + h2, .tl-community--post--content p + .govuk-heading-l, .tl-community--post--content #tl-home--fap .tl-card--fap p + h2, #tl-home--fap .tl-card--fap .tl-community--post--content p + h2, .tl-community--post--content .govuk-body + h2, .tl-community--post--content .tl-ticket--form #upload-dropzone span + h2, .tl-ticket--form #upload-dropzone .tl-community--post--content span + h2, .tl-community--post--content .tl-ticket--form p + h2, .tl-ticket--form .tl-community--post--content p + h2, .tl-community--post--content p + h2, .tl-community-table-post--description + .govuk-heading-l, #tl-home--fap .tl-card--fap .tl-community-table-post--description + h2, .tl-community--post--content .tl-community-table-post--description + h2, .tl-article--content .govuk-body + h2, .tl-article--content .tl-ticket--form #upload-dropzone span + h2, .tl-ticket--form #upload-dropzone .tl-article--content span + h2, .tl-article--content .tl-ticket--form p + h2, .tl-ticket--form .tl-article--content p + h2, .tl-article--content .tl-community-table-post--description + h2, .tl-search--filters .tl-search--filter--radio + .govuk-heading-l, .tl-search--filters #tl-home--fap .tl-card--fap .tl-search--filter--radio + h2, #tl-home--fap .tl-card--fap .tl-search--filters .tl-search--filter--radio + h2, .tl-search--filters .tl-community--post--content .tl-search--filter--radio + h2, .tl-community--post--content .tl-search--filters .tl-search--filter--radio + h2, .tl-search--filters .tl-article--content .tl-search--filter--radio + h2, .tl-article--content .tl-search--filters .tl-search--filter--radio + h2,
 .govuk-body-s + .govuk-heading-l,
 .tl-fap--filter--selected span + .govuk-heading-l,
+.tl-fap--filter--clearall + .govuk-heading-l,
 #tl-home--fap .tl-card--fap .govuk-body-s + h2,
 #tl-home--fap .tl-card--fap .tl-fap--filter--selected span + h2,
 .tl-fap--filter--selected #tl-home--fap .tl-card--fap span + h2,
+#tl-home--fap .tl-card--fap .tl-fap--filter--clearall + h2,
 .tl-community--comment--actions + .govuk-heading-l,
 #tl-home--fap .tl-card--fap .tl-community--comment--actions + h2,
 .tl-community--post--actions + .govuk-heading-l,
@@ -680,11 +686,13 @@
 .tl-community--post--content .govuk-body-s + h2,
 .tl-community--post--content .tl-fap--filter--selected span + h2,
 .tl-fap--filter--selected .tl-community--post--content span + h2,
+.tl-community--post--content .tl-fap--filter--clearall + h2,
 .tl-community--post--content .tl-community--comment--actions + h2,
 .tl-community--post--content .tl-community--post--actions + h2,
 .tl-article--content .govuk-body-s + h2,
 .tl-article--content .tl-fap--filter--selected span + h2,
 .tl-fap--filter--selected .tl-article--content span + h2,
+.tl-article--content .tl-fap--filter--clearall + h2,
 .tl-article--content .tl-community--comment--actions + h2,
 .tl-article--content .tl-community--post--actions + h2,
 .tl-article--sidebar a + .govuk-heading-l,
@@ -720,12 +728,14 @@
   }
 }
 
-.tl-article--content p + .govuk-heading-m, .tl-article--content .tl-card--fap p + h2, .tl-card--fap .tl-article--content p + h2, .tl-article--content .tl-community--post--content p + h3, .tl-community--post--content .tl-article--content p + h3, .tl-article--content .tl-article--content--casestudy p + h2, .tl-article--content--casestudy .tl-article--content p + h2, .tl-article--content p + h3, .govuk-body-m + .govuk-heading-m, .tl-card--fap .govuk-body-m + h2, .tl-community--post--content .govuk-body-m + h3, .tl-article--content--casestudy .govuk-body-m + h2, .tl-article--content .govuk-body-m + h3, .govuk-body + .govuk-heading-m, .tl-fap--filter--clearall + .govuk-heading-m, .tl-card--fap .govuk-body + h2, .tl-card--fap .tl-fap--filter--clearall + h2, .tl-ticket--form #upload-dropzone span + .govuk-heading-m, .tl-ticket--form #upload-dropzone .tl-card--fap span + h2, .tl-card--fap .tl-ticket--form #upload-dropzone span + h2, .tl-ticket--form p + .govuk-heading-m, .tl-ticket--form .tl-card--fap p + h2, .tl-card--fap .tl-ticket--form p + h2, .tl-community--post--content p + .govuk-heading-m, .tl-community--post--content .tl-card--fap p + h2, .tl-card--fap .tl-community--post--content p + h2, .tl-community--post--content .govuk-body + h3, .tl-community--post--content .tl-fap--filter--clearall + h3, .tl-community--post--content .tl-ticket--form #upload-dropzone span + h3, .tl-ticket--form #upload-dropzone .tl-community--post--content span + h3, .tl-community--post--content .tl-ticket--form p + h3, .tl-ticket--form .tl-community--post--content p + h3, .tl-community--post--content p + h3, .tl-community-table-post--description + .govuk-heading-m, .tl-card--fap .tl-community-table-post--description + h2, .tl-community--post--content .tl-community-table-post--description + h3, .tl-article--content--casestudy .govuk-body + h2, .tl-article--content--casestudy .tl-fap--filter--clearall + h2, .tl-article--content--casestudy .tl-ticket--form #upload-dropzone span + h2, .tl-ticket--form #upload-dropzone .tl-article--content--casestudy span + h2, .tl-article--content--casestudy .tl-ticket--form p + h2, .tl-ticket--form .tl-article--content--casestudy p + h2, .tl-article--content--casestudy .tl-community--post--content p + h2, .tl-community--post--content .tl-article--content--casestudy p + h2, .tl-article--content--casestudy .tl-community-table-post--description + h2, .tl-article--content .govuk-body + h3, .tl-article--content .tl-fap--filter--clearall + h3, .tl-article--content .tl-ticket--form #upload-dropzone span + h3, .tl-ticket--form #upload-dropzone .tl-article--content span + h3, .tl-article--content .tl-ticket--form p + h3, .tl-ticket--form .tl-article--content p + h3, .tl-article--content .tl-community--post--content p + h3, .tl-community--post--content .tl-article--content p + h3, .tl-article--content .tl-community-table-post--description + h3, .tl-search--filters .tl-search--filter--radio + .govuk-heading-m, .tl-search--filters .tl-card--fap .tl-search--filter--radio + h2, .tl-card--fap .tl-search--filters .tl-search--filter--radio + h2, .tl-search--filters .tl-community--post--content .tl-search--filter--radio + h3, .tl-community--post--content .tl-search--filters .tl-search--filter--radio + h3, .tl-search--filters .tl-article--content--casestudy .tl-search--filter--radio + h2, .tl-article--content--casestudy .tl-search--filters .tl-search--filter--radio + h2, .tl-search--filters .tl-article--content .tl-search--filter--radio + h3, .tl-article--content .tl-search--filters .tl-search--filter--radio + h3,
+.tl-article--content p + .govuk-heading-m, .tl-article--content .tl-card--fap p + h2, .tl-card--fap .tl-article--content p + h2, .tl-article--content .tl-community--post--content p + h3, .tl-community--post--content .tl-article--content p + h3, .tl-article--content .tl-article--content--casestudy p + h2, .tl-article--content--casestudy .tl-article--content p + h2, .tl-article--content p + h3, .govuk-body-m + .govuk-heading-m, .tl-card--fap .govuk-body-m + h2, .tl-community--post--content .govuk-body-m + h3, .tl-article--content--casestudy .govuk-body-m + h2, .tl-article--content .govuk-body-m + h3, .govuk-body + .govuk-heading-m, .tl-card--fap .govuk-body + h2, .tl-ticket--form #upload-dropzone span + .govuk-heading-m, .tl-ticket--form #upload-dropzone .tl-card--fap span + h2, .tl-card--fap .tl-ticket--form #upload-dropzone span + h2, .tl-ticket--form p + .govuk-heading-m, .tl-ticket--form .tl-card--fap p + h2, .tl-card--fap .tl-ticket--form p + h2, .tl-community--post--content p + .govuk-heading-m, .tl-community--post--content .tl-card--fap p + h2, .tl-card--fap .tl-community--post--content p + h2, .tl-community--post--content .govuk-body + h3, .tl-community--post--content .tl-ticket--form #upload-dropzone span + h3, .tl-ticket--form #upload-dropzone .tl-community--post--content span + h3, .tl-community--post--content .tl-ticket--form p + h3, .tl-ticket--form .tl-community--post--content p + h3, .tl-community--post--content p + h3, .tl-community-table-post--description + .govuk-heading-m, .tl-card--fap .tl-community-table-post--description + h2, .tl-community--post--content .tl-community-table-post--description + h3, .tl-article--content--casestudy .govuk-body + h2, .tl-article--content--casestudy .tl-ticket--form #upload-dropzone span + h2, .tl-ticket--form #upload-dropzone .tl-article--content--casestudy span + h2, .tl-article--content--casestudy .tl-ticket--form p + h2, .tl-ticket--form .tl-article--content--casestudy p + h2, .tl-article--content--casestudy .tl-community--post--content p + h2, .tl-community--post--content .tl-article--content--casestudy p + h2, .tl-article--content--casestudy .tl-community-table-post--description + h2, .tl-article--content .govuk-body + h3, .tl-article--content .tl-ticket--form #upload-dropzone span + h3, .tl-ticket--form #upload-dropzone .tl-article--content span + h3, .tl-article--content .tl-ticket--form p + h3, .tl-ticket--form .tl-article--content p + h3, .tl-article--content .tl-community--post--content p + h3, .tl-community--post--content .tl-article--content p + h3, .tl-article--content .tl-community-table-post--description + h3, .tl-search--filters .tl-search--filter--radio + .govuk-heading-m, .tl-search--filters .tl-card--fap .tl-search--filter--radio + h2, .tl-card--fap .tl-search--filters .tl-search--filter--radio + h2, .tl-search--filters .tl-community--post--content .tl-search--filter--radio + h3, .tl-community--post--content .tl-search--filters .tl-search--filter--radio + h3, .tl-search--filters .tl-article--content--casestudy .tl-search--filter--radio + h2, .tl-article--content--casestudy .tl-search--filters .tl-search--filter--radio + h2, .tl-search--filters .tl-article--content .tl-search--filter--radio + h3, .tl-article--content .tl-search--filters .tl-search--filter--radio + h3,
 .govuk-body-s + .govuk-heading-m,
 .tl-fap--filter--selected span + .govuk-heading-m,
+.tl-fap--filter--clearall + .govuk-heading-m,
 .tl-card--fap .govuk-body-s + h2,
 .tl-card--fap .tl-fap--filter--selected span + h2,
 .tl-fap--filter--selected .tl-card--fap span + h2,
+.tl-card--fap .tl-fap--filter--clearall + h2,
 .tl-community--comment--actions + .govuk-heading-m,
 .tl-card--fap .tl-community--comment--actions + h2,
 .tl-community--post--actions + .govuk-heading-m,
@@ -733,16 +743,19 @@
 .tl-community--post--content .govuk-body-s + h3,
 .tl-community--post--content .tl-fap--filter--selected span + h3,
 .tl-fap--filter--selected .tl-community--post--content span + h3,
+.tl-community--post--content .tl-fap--filter--clearall + h3,
 .tl-community--post--content .tl-community--comment--actions + h3,
 .tl-community--post--content .tl-community--post--actions + h3,
 .tl-article--content--casestudy .govuk-body-s + h2,
 .tl-article--content--casestudy .tl-fap--filter--selected span + h2,
 .tl-fap--filter--selected .tl-article--content--casestudy span + h2,
+.tl-article--content--casestudy .tl-fap--filter--clearall + h2,
 .tl-article--content--casestudy .tl-community--comment--actions + h2,
 .tl-article--content--casestudy .tl-community--post--actions + h2,
 .tl-article--content .govuk-body-s + h3,
 .tl-article--content .tl-fap--filter--selected span + h3,
 .tl-fap--filter--selected .tl-article--content span + h3,
+.tl-article--content .tl-fap--filter--clearall + h3,
 .tl-article--content .tl-community--comment--actions + h3,
 .tl-article--content .tl-community--post--actions + h3,
 .tl-article--sidebar a + .govuk-heading-m,
@@ -811,8 +824,6 @@
 .tl-search--filter .govuk-body-m + h3,
 .govuk-body + .govuk-heading-s,
 .tl-fap--filter .govuk-body + h3,
-.tl-fap--filter--clearall + .govuk-heading-s,
-.tl-fap--filter .tl-fap--filter--clearall + h3,
 .tl-ticket--form #upload-dropzone span + .govuk-heading-s,
 .tl-ticket--form #upload-dropzone .tl-fap--filter span + h3,
 .tl-fap--filter .tl-ticket--form #upload-dropzone span + h3,
@@ -820,7 +831,6 @@
 .tl-ticket--form .tl-fap--filter p + h3,
 .tl-fap--filter .tl-ticket--form p + h3,
 .tl-dropdown .govuk-body + label,
-.tl-dropdown .tl-fap--filter--clearall + label,
 .tl-dropdown .tl-ticket--form #upload-dropzone span + label,
 .tl-ticket--form #upload-dropzone .tl-dropdown span + label,
 .tl-dropdown .tl-ticket--form p + label,
@@ -831,7 +841,6 @@
 .tl-community--post--content .tl-dropdown p + label,
 .tl-dropdown .tl-community--post--content p + label,
 .tl-community--post--content .govuk-body + h4,
-.tl-community--post--content .tl-fap--filter--clearall + h4,
 .tl-community--post--content .tl-ticket--form #upload-dropzone span + h4,
 .tl-ticket--form #upload-dropzone .tl-community--post--content span + h4,
 .tl-community--post--content .tl-ticket--form p + h4,
@@ -842,7 +851,6 @@
 .tl-dropdown .tl-community-table-post--description + label,
 .tl-community--post--content .tl-community-table-post--description + h4,
 .tl-article--content--casestudy .govuk-body + h3,
-.tl-article--content--casestudy .tl-fap--filter--clearall + h3,
 .tl-article--content--casestudy .tl-ticket--form #upload-dropzone span + h3,
 .tl-ticket--form #upload-dropzone .tl-article--content--casestudy span + h3,
 .tl-article--content--casestudy .tl-ticket--form p + h3,
@@ -851,7 +859,6 @@
 .tl-community--post--content .tl-article--content--casestudy p + h3,
 .tl-article--content--casestudy .tl-community-table-post--description + h3,
 .tl-article--content .govuk-body + h4,
-.tl-article--content .tl-fap--filter--clearall + h4,
 .tl-article--content .tl-ticket--form #upload-dropzone span + h4,
 .tl-ticket--form #upload-dropzone .tl-article--content span + h4,
 .tl-article--content .tl-ticket--form p + h4,
@@ -860,7 +867,6 @@
 .tl-community--post--content .tl-article--content p + h4,
 .tl-article--content .tl-community-table-post--description + h4,
 .tl-search--filter .govuk-body + h3,
-.tl-search--filter .tl-fap--filter--clearall + h3,
 .tl-search--filter .tl-ticket--form #upload-dropzone span + h3,
 .tl-ticket--form #upload-dropzone .tl-search--filter span + h3,
 .tl-search--filter .tl-ticket--form p + h3,
@@ -886,9 +892,12 @@
 .tl-fap--filter--selected span + .govuk-heading-s,
 .tl-fap--filter--selected .tl-fap--filter span + h3,
 .tl-fap--filter .tl-fap--filter--selected span + h3,
+.tl-fap--filter--clearall + .govuk-heading-s,
+.tl-fap--filter .tl-fap--filter--clearall + h3,
 .tl-dropdown .govuk-body-s + label,
 .tl-dropdown .tl-fap--filter--selected span + label,
 .tl-fap--filter--selected .tl-dropdown span + label,
+.tl-dropdown .tl-fap--filter--clearall + label,
 .tl-community--comment--actions + .govuk-heading-s,
 .tl-fap--filter .tl-community--comment--actions + h3,
 .tl-dropdown .tl-community--comment--actions + label,
@@ -898,16 +907,19 @@
 .tl-community--post--content .govuk-body-s + h4,
 .tl-community--post--content .tl-fap--filter--selected span + h4,
 .tl-fap--filter--selected .tl-community--post--content span + h4,
+.tl-community--post--content .tl-fap--filter--clearall + h4,
 .tl-community--post--content .tl-community--comment--actions + h4,
 .tl-community--post--content .tl-community--post--actions + h4,
 .tl-article--content--casestudy .govuk-body-s + h3,
 .tl-article--content--casestudy .tl-fap--filter--selected span + h3,
 .tl-fap--filter--selected .tl-article--content--casestudy span + h3,
+.tl-article--content--casestudy .tl-fap--filter--clearall + h3,
 .tl-article--content--casestudy .tl-community--comment--actions + h3,
 .tl-article--content--casestudy .tl-community--post--actions + h3,
 .tl-article--content .govuk-body-s + h4,
 .tl-article--content .tl-fap--filter--selected span + h4,
 .tl-fap--filter--selected .tl-article--content span + h4,
+.tl-article--content .tl-fap--filter--clearall + h4,
 .tl-article--content .tl-community--comment--actions + h4,
 .tl-article--content .tl-community--post--actions + h4,
 .tl-article--sidebar a + .govuk-heading-s,
@@ -924,6 +936,7 @@
 .tl-search--filter .govuk-body-s + h3,
 .tl-search--filter .tl-fap--filter--selected span + h3,
 .tl-fap--filter--selected .tl-search--filter span + h3,
+.tl-search--filter .tl-fap--filter--clearall + h3,
 .tl-search--filter .tl-community--comment--actions + h3,
 .tl-search--filter .tl-community--post--actions + h3,
 .tl-search--filter .tl-article--sidebar a + h3,
@@ -984,12 +997,14 @@
   padding-top: 5px;
 }
 @media (min-width: 40.0625em) {
-  .tl-article--content p + .govuk-heading-m, .tl-article--content .tl-card--fap p + h2, .tl-card--fap .tl-article--content p + h2, .tl-article--content .tl-community--post--content p + h3, .tl-community--post--content .tl-article--content p + h3, .tl-article--content .tl-article--content--casestudy p + h2, .tl-article--content--casestudy .tl-article--content p + h2, .tl-article--content p + h3, .govuk-body-m + .govuk-heading-m, .tl-card--fap .govuk-body-m + h2, .tl-community--post--content .govuk-body-m + h3, .tl-article--content--casestudy .govuk-body-m + h2, .tl-article--content .govuk-body-m + h3, .govuk-body + .govuk-heading-m, .tl-fap--filter--clearall + .govuk-heading-m, .tl-card--fap .govuk-body + h2, .tl-card--fap .tl-fap--filter--clearall + h2, .tl-ticket--form #upload-dropzone span + .govuk-heading-m, .tl-ticket--form #upload-dropzone .tl-card--fap span + h2, .tl-card--fap .tl-ticket--form #upload-dropzone span + h2, .tl-ticket--form p + .govuk-heading-m, .tl-ticket--form .tl-card--fap p + h2, .tl-card--fap .tl-ticket--form p + h2, .tl-community--post--content p + .govuk-heading-m, .tl-community--post--content .tl-card--fap p + h2, .tl-card--fap .tl-community--post--content p + h2, .tl-community--post--content .govuk-body + h3, .tl-community--post--content .tl-fap--filter--clearall + h3, .tl-community--post--content .tl-ticket--form #upload-dropzone span + h3, .tl-ticket--form #upload-dropzone .tl-community--post--content span + h3, .tl-community--post--content .tl-ticket--form p + h3, .tl-ticket--form .tl-community--post--content p + h3, .tl-community--post--content p + h3, .tl-community-table-post--description + .govuk-heading-m, .tl-card--fap .tl-community-table-post--description + h2, .tl-community--post--content .tl-community-table-post--description + h3, .tl-article--content--casestudy .govuk-body + h2, .tl-article--content--casestudy .tl-fap--filter--clearall + h2, .tl-article--content--casestudy .tl-ticket--form #upload-dropzone span + h2, .tl-ticket--form #upload-dropzone .tl-article--content--casestudy span + h2, .tl-article--content--casestudy .tl-ticket--form p + h2, .tl-ticket--form .tl-article--content--casestudy p + h2, .tl-article--content--casestudy .tl-community--post--content p + h2, .tl-community--post--content .tl-article--content--casestudy p + h2, .tl-article--content--casestudy .tl-community-table-post--description + h2, .tl-article--content .govuk-body + h3, .tl-article--content .tl-fap--filter--clearall + h3, .tl-article--content .tl-ticket--form #upload-dropzone span + h3, .tl-ticket--form #upload-dropzone .tl-article--content span + h3, .tl-article--content .tl-ticket--form p + h3, .tl-ticket--form .tl-article--content p + h3, .tl-article--content .tl-community--post--content p + h3, .tl-community--post--content .tl-article--content p + h3, .tl-article--content .tl-community-table-post--description + h3, .tl-search--filters .tl-search--filter--radio + .govuk-heading-m, .tl-search--filters .tl-card--fap .tl-search--filter--radio + h2, .tl-card--fap .tl-search--filters .tl-search--filter--radio + h2, .tl-search--filters .tl-community--post--content .tl-search--filter--radio + h3, .tl-community--post--content .tl-search--filters .tl-search--filter--radio + h3, .tl-search--filters .tl-article--content--casestudy .tl-search--filter--radio + h2, .tl-article--content--casestudy .tl-search--filters .tl-search--filter--radio + h2, .tl-search--filters .tl-article--content .tl-search--filter--radio + h3, .tl-article--content .tl-search--filters .tl-search--filter--radio + h3,
+  .tl-article--content p + .govuk-heading-m, .tl-article--content .tl-card--fap p + h2, .tl-card--fap .tl-article--content p + h2, .tl-article--content .tl-community--post--content p + h3, .tl-community--post--content .tl-article--content p + h3, .tl-article--content .tl-article--content--casestudy p + h2, .tl-article--content--casestudy .tl-article--content p + h2, .tl-article--content p + h3, .govuk-body-m + .govuk-heading-m, .tl-card--fap .govuk-body-m + h2, .tl-community--post--content .govuk-body-m + h3, .tl-article--content--casestudy .govuk-body-m + h2, .tl-article--content .govuk-body-m + h3, .govuk-body + .govuk-heading-m, .tl-card--fap .govuk-body + h2, .tl-ticket--form #upload-dropzone span + .govuk-heading-m, .tl-ticket--form #upload-dropzone .tl-card--fap span + h2, .tl-card--fap .tl-ticket--form #upload-dropzone span + h2, .tl-ticket--form p + .govuk-heading-m, .tl-ticket--form .tl-card--fap p + h2, .tl-card--fap .tl-ticket--form p + h2, .tl-community--post--content p + .govuk-heading-m, .tl-community--post--content .tl-card--fap p + h2, .tl-card--fap .tl-community--post--content p + h2, .tl-community--post--content .govuk-body + h3, .tl-community--post--content .tl-ticket--form #upload-dropzone span + h3, .tl-ticket--form #upload-dropzone .tl-community--post--content span + h3, .tl-community--post--content .tl-ticket--form p + h3, .tl-ticket--form .tl-community--post--content p + h3, .tl-community--post--content p + h3, .tl-community-table-post--description + .govuk-heading-m, .tl-card--fap .tl-community-table-post--description + h2, .tl-community--post--content .tl-community-table-post--description + h3, .tl-article--content--casestudy .govuk-body + h2, .tl-article--content--casestudy .tl-ticket--form #upload-dropzone span + h2, .tl-ticket--form #upload-dropzone .tl-article--content--casestudy span + h2, .tl-article--content--casestudy .tl-ticket--form p + h2, .tl-ticket--form .tl-article--content--casestudy p + h2, .tl-article--content--casestudy .tl-community--post--content p + h2, .tl-community--post--content .tl-article--content--casestudy p + h2, .tl-article--content--casestudy .tl-community-table-post--description + h2, .tl-article--content .govuk-body + h3, .tl-article--content .tl-ticket--form #upload-dropzone span + h3, .tl-ticket--form #upload-dropzone .tl-article--content span + h3, .tl-article--content .tl-ticket--form p + h3, .tl-ticket--form .tl-article--content p + h3, .tl-article--content .tl-community--post--content p + h3, .tl-community--post--content .tl-article--content p + h3, .tl-article--content .tl-community-table-post--description + h3, .tl-search--filters .tl-search--filter--radio + .govuk-heading-m, .tl-search--filters .tl-card--fap .tl-search--filter--radio + h2, .tl-card--fap .tl-search--filters .tl-search--filter--radio + h2, .tl-search--filters .tl-community--post--content .tl-search--filter--radio + h3, .tl-community--post--content .tl-search--filters .tl-search--filter--radio + h3, .tl-search--filters .tl-article--content--casestudy .tl-search--filter--radio + h2, .tl-article--content--casestudy .tl-search--filters .tl-search--filter--radio + h2, .tl-search--filters .tl-article--content .tl-search--filter--radio + h3, .tl-article--content .tl-search--filters .tl-search--filter--radio + h3,
 .govuk-body-s + .govuk-heading-m,
 .tl-fap--filter--selected span + .govuk-heading-m,
+.tl-fap--filter--clearall + .govuk-heading-m,
 .tl-card--fap .govuk-body-s + h2,
 .tl-card--fap .tl-fap--filter--selected span + h2,
 .tl-fap--filter--selected .tl-card--fap span + h2,
+.tl-card--fap .tl-fap--filter--clearall + h2,
 .tl-community--comment--actions + .govuk-heading-m,
 .tl-card--fap .tl-community--comment--actions + h2,
 .tl-community--post--actions + .govuk-heading-m,
@@ -997,16 +1012,19 @@
 .tl-community--post--content .govuk-body-s + h3,
 .tl-community--post--content .tl-fap--filter--selected span + h3,
 .tl-fap--filter--selected .tl-community--post--content span + h3,
+.tl-community--post--content .tl-fap--filter--clearall + h3,
 .tl-community--post--content .tl-community--comment--actions + h3,
 .tl-community--post--content .tl-community--post--actions + h3,
 .tl-article--content--casestudy .govuk-body-s + h2,
 .tl-article--content--casestudy .tl-fap--filter--selected span + h2,
 .tl-fap--filter--selected .tl-article--content--casestudy span + h2,
+.tl-article--content--casestudy .tl-fap--filter--clearall + h2,
 .tl-article--content--casestudy .tl-community--comment--actions + h2,
 .tl-article--content--casestudy .tl-community--post--actions + h2,
 .tl-article--content .govuk-body-s + h3,
 .tl-article--content .tl-fap--filter--selected span + h3,
 .tl-fap--filter--selected .tl-article--content span + h3,
+.tl-article--content .tl-fap--filter--clearall + h3,
 .tl-article--content .tl-community--comment--actions + h3,
 .tl-article--content .tl-community--post--actions + h3,
 .tl-article--sidebar a + .govuk-heading-m,
@@ -1075,8 +1093,6 @@
 .tl-search--filter .govuk-body-m + h3,
 .govuk-body + .govuk-heading-s,
 .tl-fap--filter .govuk-body + h3,
-.tl-fap--filter--clearall + .govuk-heading-s,
-.tl-fap--filter .tl-fap--filter--clearall + h3,
 .tl-ticket--form #upload-dropzone span + .govuk-heading-s,
 .tl-ticket--form #upload-dropzone .tl-fap--filter span + h3,
 .tl-fap--filter .tl-ticket--form #upload-dropzone span + h3,
@@ -1084,7 +1100,6 @@
 .tl-ticket--form .tl-fap--filter p + h3,
 .tl-fap--filter .tl-ticket--form p + h3,
 .tl-dropdown .govuk-body + label,
-.tl-dropdown .tl-fap--filter--clearall + label,
 .tl-dropdown .tl-ticket--form #upload-dropzone span + label,
 .tl-ticket--form #upload-dropzone .tl-dropdown span + label,
 .tl-dropdown .tl-ticket--form p + label,
@@ -1095,7 +1110,6 @@
 .tl-community--post--content .tl-dropdown p + label,
 .tl-dropdown .tl-community--post--content p + label,
 .tl-community--post--content .govuk-body + h4,
-.tl-community--post--content .tl-fap--filter--clearall + h4,
 .tl-community--post--content .tl-ticket--form #upload-dropzone span + h4,
 .tl-ticket--form #upload-dropzone .tl-community--post--content span + h4,
 .tl-community--post--content .tl-ticket--form p + h4,
@@ -1106,7 +1120,6 @@
 .tl-dropdown .tl-community-table-post--description + label,
 .tl-community--post--content .tl-community-table-post--description + h4,
 .tl-article--content--casestudy .govuk-body + h3,
-.tl-article--content--casestudy .tl-fap--filter--clearall + h3,
 .tl-article--content--casestudy .tl-ticket--form #upload-dropzone span + h3,
 .tl-ticket--form #upload-dropzone .tl-article--content--casestudy span + h3,
 .tl-article--content--casestudy .tl-ticket--form p + h3,
@@ -1115,7 +1128,6 @@
 .tl-community--post--content .tl-article--content--casestudy p + h3,
 .tl-article--content--casestudy .tl-community-table-post--description + h3,
 .tl-article--content .govuk-body + h4,
-.tl-article--content .tl-fap--filter--clearall + h4,
 .tl-article--content .tl-ticket--form #upload-dropzone span + h4,
 .tl-ticket--form #upload-dropzone .tl-article--content span + h4,
 .tl-article--content .tl-ticket--form p + h4,
@@ -1124,7 +1136,6 @@
 .tl-community--post--content .tl-article--content p + h4,
 .tl-article--content .tl-community-table-post--description + h4,
 .tl-search--filter .govuk-body + h3,
-.tl-search--filter .tl-fap--filter--clearall + h3,
 .tl-search--filter .tl-ticket--form #upload-dropzone span + h3,
 .tl-ticket--form #upload-dropzone .tl-search--filter span + h3,
 .tl-search--filter .tl-ticket--form p + h3,
@@ -1150,9 +1161,12 @@
 .tl-fap--filter--selected span + .govuk-heading-s,
 .tl-fap--filter--selected .tl-fap--filter span + h3,
 .tl-fap--filter .tl-fap--filter--selected span + h3,
+.tl-fap--filter--clearall + .govuk-heading-s,
+.tl-fap--filter .tl-fap--filter--clearall + h3,
 .tl-dropdown .govuk-body-s + label,
 .tl-dropdown .tl-fap--filter--selected span + label,
 .tl-fap--filter--selected .tl-dropdown span + label,
+.tl-dropdown .tl-fap--filter--clearall + label,
 .tl-community--comment--actions + .govuk-heading-s,
 .tl-fap--filter .tl-community--comment--actions + h3,
 .tl-dropdown .tl-community--comment--actions + label,
@@ -1162,16 +1176,19 @@
 .tl-community--post--content .govuk-body-s + h4,
 .tl-community--post--content .tl-fap--filter--selected span + h4,
 .tl-fap--filter--selected .tl-community--post--content span + h4,
+.tl-community--post--content .tl-fap--filter--clearall + h4,
 .tl-community--post--content .tl-community--comment--actions + h4,
 .tl-community--post--content .tl-community--post--actions + h4,
 .tl-article--content--casestudy .govuk-body-s + h3,
 .tl-article--content--casestudy .tl-fap--filter--selected span + h3,
 .tl-fap--filter--selected .tl-article--content--casestudy span + h3,
+.tl-article--content--casestudy .tl-fap--filter--clearall + h3,
 .tl-article--content--casestudy .tl-community--comment--actions + h3,
 .tl-article--content--casestudy .tl-community--post--actions + h3,
 .tl-article--content .govuk-body-s + h4,
 .tl-article--content .tl-fap--filter--selected span + h4,
 .tl-fap--filter--selected .tl-article--content span + h4,
+.tl-article--content .tl-fap--filter--clearall + h4,
 .tl-article--content .tl-community--comment--actions + h4,
 .tl-article--content .tl-community--post--actions + h4,
 .tl-article--sidebar a + .govuk-heading-s,
@@ -1188,6 +1205,7 @@
 .tl-search--filter .govuk-body-s + h3,
 .tl-search--filter .tl-fap--filter--selected span + h3,
 .tl-fap--filter--selected .tl-search--filter span + h3,
+.tl-search--filter .tl-fap--filter--clearall + h3,
 .tl-search--filter .tl-community--comment--actions + h3,
 .tl-search--filter .tl-community--post--actions + h3,
 .tl-search--filter .tl-article--sidebar a + h3,
@@ -7794,7 +7812,7 @@ details summary {
     padding-bottom: 25px;
   }
 }
-.tl-home--benefit .govuk-body, .tl-home--benefit .tl-fap--filter--clearall, .tl-home--benefit .tl-ticket--form #upload-dropzone span, .tl-ticket--form #upload-dropzone .tl-home--benefit span, .tl-home--benefit .tl-ticket--form p, .tl-ticket--form .tl-home--benefit p, .tl-home--benefit .tl-community--post--content p, .tl-community--post--content .tl-home--benefit p, .tl-home--benefit .tl-community-table-post--description, .tl-home--benefit .tl-search--filters .tl-search--filter--radio, .tl-search--filters .tl-home--benefit .tl-search--filter--radio, .tl-home--benefit .tl-article--content p, .tl-article--content .tl-home--benefit p {
+.tl-home--benefit .govuk-body, .tl-home--benefit .tl-ticket--form #upload-dropzone span, .tl-ticket--form #upload-dropzone .tl-home--benefit span, .tl-home--benefit .tl-ticket--form p, .tl-ticket--form .tl-home--benefit p, .tl-home--benefit .tl-community--post--content p, .tl-community--post--content .tl-home--benefit p, .tl-home--benefit .tl-community-table-post--description, .tl-home--benefit .tl-search--filters .tl-search--filter--radio, .tl-search--filters .tl-home--benefit .tl-search--filter--radio, .tl-home--benefit .tl-article--content p, .tl-article--content .tl-home--benefit p {
   position: relative;
   top: -5px;
 }
