@@ -179,6 +179,13 @@
         }
     }
 
+    &--clearall {
+        display: inline-block;
+        float: right;
+        @extend .govuk-body;
+        @extend .govuk-link;
+    }
+
     &[open] {
         display: inline-block;
     }
