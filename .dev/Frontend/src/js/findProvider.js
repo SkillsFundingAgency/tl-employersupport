@@ -491,10 +491,6 @@ function FindProvider(
         showAll = $(".tl-fap--filter--showall");
         clearAll = $(".tl-fap--filter--clearall");
 
-        clearAll.on('click', function () {
-            console.log('clearall clicked');
-        });
-    
         details.on('toggle',
             function () {
                 checkDetailsChange();
@@ -509,6 +505,22 @@ function FindProvider(
                 showAllOpen();
             }
         });
+
+        clearAll.on('click', function () {
+            console.log('clearall clicked');
+            if ($('#tl-skill-area-filter .tl-checkbox:checked').length > 0) {
+                $('#tl-skill-area-filter .tl-checkbox:checked').prop('checked', false);
+                console.log('clearing...');
+                checkchange();
+    
+                if ($("#tl-search-term").val().trim()) {
+                    console.log('searching...');
+                    return providerSearch($("#tl-search-term").val().trim(), getQualificationIds());
+                }
+            }
+            console.log('ignoring...');
+            return false;
+        });
     }
 
     $("#tl-fap--filter--button").click(function () {
@@ -522,22 +534,6 @@ function FindProvider(
             $(".tl-fap--filter").attr('open', '');;
             $(this).text("Hide filter");
         }
-        return false;
-    });
-
-    $(".tl-fap--filter--clearall").click(function () {
-        console.log('clear clicked');
-        if ($('#tl-skill-area-filter .tl-checkbox:checked').length > 0) {
-            $('#tl-skill-area-filter .tl-checkbox:checked').prop('checked', false);
-            console.log('clearing...');
-            checkchange();
-
-            if ($("#tl-search-term").val().trim()) {
-                console.log('searching...');
-                return providerSearch($("#tl-search-term").val().trim(), getQualificationIds());
-            }
-        }
-        console.log('ignoring...');
         return false;
     });
 };
