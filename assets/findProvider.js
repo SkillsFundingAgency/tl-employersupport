@@ -1821,6 +1821,21 @@ function FindProvider(
             $(".tl-fap--filter").attr('open', '');;
             $(this).text("Hide filter");
         }
+        return false;
+    });
+
+    $(".tl-fap--filter--clearall").click(function () {
+        if ($('#tl-skill-area-filter .tl-checkbox:checked').length > 0) {
+
+            $('#tl-skill-area-filter .tl-checkbox:checked')
+                .prop('checked', false);
+            checkchange();
+
+            if ($("#tl-search-term").val().trim()) {
+                return providerSearch($("#tl-search-term").val().trim(), getQualificationIds());
+            }
+        }
+        return false;
     });
 };
 
