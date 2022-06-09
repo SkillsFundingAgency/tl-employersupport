@@ -1811,18 +1811,14 @@ function FindProvider(
         });
 
         clearAll.on('click', function () {
-            console.log('clearall clicked');
             if ($('#tl-skill-area-filter .tl-checkbox:checked').length > 0) {
                 $('#tl-skill-area-filter .tl-checkbox:checked').prop('checked', false);
-                console.log('clearing...');
-                checkchange();
+                checkChange();
     
                 if ($("#tl-search-term").val().trim()) {
-                    console.log('searching...');
                     return providerSearch($("#tl-search-term").val().trim(), getQualificationIds());
                 }
             }
-            console.log('ignoring...');
             return false;
         });
     }
