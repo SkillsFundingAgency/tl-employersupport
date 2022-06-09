@@ -1357,8 +1357,6 @@ function FindProvider(
 
     function qualificationSelectionChanged() {
         if (!$("#tl-search-term").val().trim()) return false;
-
-        console.log('checkboxes changed- calling search');
         return providerSearch($("#tl-search-term").val().trim(), getQualificationIds());
     }
 
@@ -1750,9 +1748,11 @@ function FindProvider(
                     });
                 }
             });
+            $(".tl-fap--filter--clearall").removeClass("tl-hidden");
         }
         else {
             $(".tl-fap--filter--selected").html('<p class="govuk-body-s govuk-!-margin-bottom-1">No filters selected</p>');
+            $(".tl-fap--filter--clearall").addClass("tl-hidden");
         }
     };
 
@@ -1793,20 +1793,33 @@ function FindProvider(
         /// Show hide sections / all sections
         details = $(".tl-fap--filter--details");
         showAll = $(".tl-fap--filter--showall");
+        clearAll = $(".tl-fap--filter--clearall");
 
         details.on('toggle',
             function () {
                 checkDetailsChange();
             });
 
-            showAll.click(function () {
-                if ($(this).is("[open]")) {
-                    details.removeAttr("open");
-                    showAllClose();
-                } else {
-                    details.attr('open', '');
-                    showAllOpen();
+        showAll.click(function () {
+            if ($(this).is("[open]")) {
+                details.removeAttr("open");
+                showAllClose();
+            } else {
+                details.attr('open', '');
+                showAllOpen();
+            }
+        });
+
+        clearAll.on('click', function () {
+            if ($('#tl-skill-area-filter .tl-checkbox:checked').length > 0) {
+                $('#tl-skill-area-filter .tl-checkbox:checked').prop('checked', false);
+                checkChange();
+    
+                if ($("#tl-search-term").val().trim()) {
+                    return providerSearch($("#tl-search-term").val().trim(), getQualificationIds());
                 }
+            }
+            return false;
         });
     }
 
@@ -1821,6 +1834,7 @@ function FindProvider(
             $(".tl-fap--filter").attr('open', '');;
             $(this).text("Hide filter");
         }
+        return false;
     });
 };
 
