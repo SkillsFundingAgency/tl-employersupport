@@ -507,20 +507,14 @@ function FindProvider(
         });
 
         clearAll.on('click', function () {
-            console.log('handling clearAll click');
-            console.log($('#tl-skill-area-filter .tl-checkbox:checked').length);
             if ($('#tl-skill-area-filter .tl-checkbox:checked').length > 0) {
                 $('#tl-skill-area-filter .tl-checkbox:checked').prop('checked', false);
                 checkChange();
-                console.log('back from checkChange...');
     
                 if ($("#tl-search-term").val().trim()) {
-                    console.log('searching...');
                     return providerSearch($("#tl-search-term").val().trim(), getQualificationIds());
                 }
-                console.log('not searching');
             }
-            console.log('returning false');
             return false;
         });
     }
