@@ -1357,8 +1357,6 @@ function FindProvider(
 
     function qualificationSelectionChanged() {
         if (!$("#tl-search-term").val().trim()) return false;
-
-        console.log('checkboxes changed- calling search');
         return providerSearch($("#tl-search-term").val().trim(), getQualificationIds());
     }
 
@@ -1828,15 +1826,16 @@ function FindProvider(
 
     $(".tl-fap--filter--clearall").click(function () {
         if ($('#tl-skill-area-filter .tl-checkbox:checked').length > 0) {
-
-            $('#tl-skill-area-filter .tl-checkbox:checked')
-                .prop('checked', false);
+            $('#tl-skill-area-filter .tl-checkbox:checked').prop('checked', false);
+            console.log('clearing...');
             checkchange();
 
             if ($("#tl-search-term").val().trim()) {
+                console.log('searching...');
                 return providerSearch($("#tl-search-term").val().trim(), getQualificationIds());
             }
         }
+        console.log('ignoring...');
         return false;
     });
 };
