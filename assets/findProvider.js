@@ -1793,20 +1793,25 @@ function FindProvider(
         /// Show hide sections / all sections
         details = $(".tl-fap--filter--details");
         showAll = $(".tl-fap--filter--showall");
+        clearAll = $(".tl-fap--filter--clearall");
 
+        clearAll.on('click', function () {
+            console.log('clearall clicked');
+        });
+    
         details.on('toggle',
             function () {
                 checkDetailsChange();
             });
 
-            showAll.click(function () {
-                if ($(this).is("[open]")) {
-                    details.removeAttr("open");
-                    showAllClose();
-                } else {
-                    details.attr('open', '');
-                    showAllOpen();
-                }
+        showAll.click(function () {
+            if ($(this).is("[open]")) {
+                details.removeAttr("open");
+                showAllClose();
+            } else {
+                details.attr('open', '');
+                showAllOpen();
+            }
         });
     }
 
@@ -1825,6 +1830,7 @@ function FindProvider(
     });
 
     $(".tl-fap--filter--clearall").click(function () {
+        console.log('clear clicked');
         if ($('#tl-skill-area-filter .tl-checkbox:checked').length > 0) {
             $('#tl-skill-area-filter .tl-checkbox:checked').prop('checked', false);
             console.log('clearing...');
