@@ -9197,7 +9197,10 @@ ul.govuk-radios label .gem-radios__input {
 }
 @media (min-width: 40.0625em) {
   .tl-fap--filter {
-    display: inline-block;
+    display: inline-block !important;
+  }
+  .tl-fap--filter .tl-fap--filter--content {
+    display: inline-block !important;
   }
 }
 .tl-fap--filter--section:last-child {

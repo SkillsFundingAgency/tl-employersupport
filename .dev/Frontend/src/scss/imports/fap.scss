@@ -186,7 +186,11 @@
     }
 
     @include govuk-media-query ($from: tablet) {
-        display: inline-block;
+        display: inline-block !important;
+
+        .tl-fap--filter--content {
+            display: inline-block !important;
+        }
     }
 
     &--section {
