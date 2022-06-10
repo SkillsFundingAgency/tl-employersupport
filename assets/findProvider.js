@@ -1813,7 +1813,7 @@ function FindProvider(
         });
         /// Clear all checkboxes
         clearAll.click(function () {
-            $('.tl-fap--filter').find('input[id=' + clickvalue + ']:checked').each(function () {
+            $('.tl-fap--filter').find('input[type=checkbox]:checked').each(function () {
                 $(this).trigger("click")
             });
         });
