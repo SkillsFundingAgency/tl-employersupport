@@ -1818,21 +1818,6 @@ function FindProvider(
             });
         });
 
-
-        //clearAll.on('click', function () {
-        //    console.log('clear all clicked');
-        //    if ($('#tl-skill-area-filter .tl-checkbox:checked').length > 0) {
-        //        console.log('unchecking');
-        //        $('#tl-skill-area-filter .tl-checkbox:checked').prop('checked', false);
-        //        checkChange();
-    
-        //        if ($("#tl-search-term").val().trim()) {
-        //            return providerSearch($("#tl-search-term").val().trim(), getQualificationIds());
-        //        }
-        //    }
-        //    console.log('nothing to uncheck');
-        //    return false;
-        //});
     }
 
     $("#tl-fap--filter--button").click(function () {
