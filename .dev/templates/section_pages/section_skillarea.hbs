@@ -270,7 +270,6 @@
 
     function scrollToRequestedTab() {
         const loc = location.hash.slice(1);
-        console.log('url hash location to scroll to is ' + loc);
         if (loc) {
             const el = $('a[href="#' + loc + '"]');
             if(el.length > 0) el[0].scrollIntoView();
