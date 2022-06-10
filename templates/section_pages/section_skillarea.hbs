@@ -53,6 +53,7 @@
                         });
                         window.GOVUKFrontend.initAll()
                         createFindProviderTile();
+                        scrollToRequestedTab();
                     }
 
                     function1().done(function2);
@@ -266,4 +267,14 @@
             "/hc/en-gb/articles/{{settings.article_id_find_provider}}", 
             "{{settings.find_provider_api_uri}}");
     }
+
+    function scrollToRequestedTab() {
+        const loc = location.hash.slice(1);
+        console.log('url hash location to scroll to is ' + loc);
+        if (loc) {
+            const el = $('a[href="#' + loc + '"]');
+            if(el.length > 0) el[0].scrollIntoView();
+        }
+    }
+
 </script>
