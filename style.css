@@ -9183,6 +9183,23 @@ ul.govuk-radios label .gem-radios__input {
     margin-bottom: 15px;
   }
 }
+.tl-fap--filter[active] {
+  display: inline-block;
+}
+.tl-fap--filter[active] .tl-fap--filter--content {
+  display: none;
+}
+.tl-fap--filter[open] {
+  display: inline-block;
+}
+.tl-fap--filter[open] .tl-fap--filter--content {
+  display: inline-block !important;
+}
+@media (min-width: 40.0625em) {
+  .tl-fap--filter {
+    display: inline-block;
+  }
+}
 .tl-fap--filter--section:last-child {
   padding-bottom: 15px;
 }
@@ -9210,14 +9227,6 @@ ul.govuk-radios label .gem-radios__input {
 }
 .tl-fap--filter--clearall:visited {
   color: #4c2c92;
-}
-.tl-fap--filter[open] {
-  display: inline-block;
-}
-@media (min-width: 40.0625em) {
-  .tl-fap--filter {
-    display: inline-block;
-  }
 }
 .tl-fap--filter--selected span {
   background-color: #ffffff;
