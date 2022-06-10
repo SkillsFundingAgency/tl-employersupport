@@ -1749,12 +1749,12 @@ function FindProvider(
                 }
             });
             $(".tl-fap--filter--clearall").removeClass("tl-hidden");
-            $(".tl-fap--filter").data("active", true);
+            $(".tl-fap--filter").data("active", "true");
         }
         else {
             $(".tl-fap--filter--selected").html('<p class="govuk-body-s govuk-!-margin-bottom-1">No filters selected</p>');
             $(".tl-fap--filter--clearall").addClass("tl-hidden");
-            $(".tl-fap--filter").data("removeData");            
+            $(".tl-fap--filter").removeData("active");
         }
     };
 
