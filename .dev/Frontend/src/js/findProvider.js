@@ -95,6 +95,7 @@ function FindProvider(
 
     let details = null;
     let showAll = null;
+    let clearAll = null;
 
     function populateRoutes(data) {
         const skillAreasList = $("#tl-skill-area-filter");
@@ -483,6 +484,7 @@ function FindProvider(
     }
 
     function addCheckboxHandlers() {
+        console.log('adding checkbox handlers');
         /// Run checkbox change function on page load and on checkbox change
         $('.tl-fap--filter--content input[type=checkbox]').change(checkChange);
         $(".tl-fap--filter--section .govuk-checkboxes").each(checkChange);
@@ -508,6 +510,7 @@ function FindProvider(
             }
         });
 
+        console.log('adding clearAll click handler');
         clearAll.on('click', function () {
             console.log('clear all clicked');
             if ($('#tl-skill-area-filter .tl-checkbox:checked').length > 0) {
