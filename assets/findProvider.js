@@ -1749,10 +1749,12 @@ function FindProvider(
                 }
             });
             $(".tl-fap--filter--clearall").removeClass("tl-hidden");
+            $(".tl-fap--filter").data("active", true);
         }
         else {
             $(".tl-fap--filter--selected").html('<p class="govuk-body-s govuk-!-margin-bottom-1">No filters selected</p>');
             $(".tl-fap--filter--clearall").addClass("tl-hidden");
+            $(".tl-fap--filter").data("removeData");            
         }
     };
 
@@ -1811,7 +1813,9 @@ function FindProvider(
         });
 
         clearAll.on('click', function () {
+            console.log('clear all clicked');
             if ($('#tl-skill-area-filter .tl-checkbox:checked').length > 0) {
+                console.log('unchecking');
                 $('#tl-skill-area-filter .tl-checkbox:checked').prop('checked', false);
                 checkChange();
     
@@ -1819,6 +1823,7 @@ function FindProvider(
                     return providerSearch($("#tl-search-term").val().trim(), getQualificationIds());
                 }
             }
+            console.log('nothing to uncheck');
             return false;
         });
     }
