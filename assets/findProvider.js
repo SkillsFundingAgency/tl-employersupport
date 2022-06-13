@@ -1811,13 +1811,17 @@ function FindProvider(
                 showAllOpen();
             }
         });
+
         /// Clear all checkboxes
+
+        console.log('adding clearAll click');
+        console.log(clearAll);
         clearAll.click(function () {
+            console.log('clearAll clicked');
             $('.tl-fap--filter').find('input[type=checkbox]:checked').each(function () {
-                $(this).trigger("click")
+                $(this).trigger("click");
             });
         });
-
     }
 
     $("#tl-fap--filter--button").click(function () {
