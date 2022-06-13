@@ -52,7 +52,12 @@ function FindProvider(
     });
 
     function qualificationSelectionChanged() {
-        if (!$("#tl-search-term").val().trim()) return false;
+        console.log('in qualificationSelectionChanged - "' + $("#tl-search-term").val() + '"');
+        if (!$("#tl-search-term").val().trim()) { 
+            console.log('no search term');
+            return false;
+        }
+        console.log('qualificationSelectionChanged calling providerSearch');
         return providerSearch($("#tl-search-term").val().trim(), getQualificationIds());
     }
 
@@ -519,7 +524,6 @@ function FindProvider(
         });
 
         /// Clear all checkboxes
-
         console.log('adding clearAll click');
         console.log(clearAll);
         clearAll.click(function () {
