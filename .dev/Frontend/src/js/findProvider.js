@@ -520,12 +520,8 @@ function FindProvider(
             }
         });
 
-
+        // Clear all checkboxes button
         $(document).ready(function () {
-            $(".tl-fap--filter--clearall2").click(function () {
-                console.log('clearAll2 clicked');
-            });
-
             $(".tl-fap--filter--clearall").click(function () {
                 console.log('clearAll1 clicked');
                 clearCheckboxes();
