@@ -9183,11 +9183,17 @@ ul.govuk-radios label .gem-radios__input {
     margin-bottom: 15px;
   }
 }
+.tl-fap--filter .tl-fap--filter--clearall {
+  display: none;
+}
 .tl-fap--filter[active] {
   display: inline-block;
 }
 .tl-fap--filter[active] .tl-fap--filter--content {
   display: none;
+}
+.tl-fap--filter[active] .tl-fap--filter--clearall {
+  display: inline-block;
 }
 .tl-fap--filter[open] {
   display: inline-block;
