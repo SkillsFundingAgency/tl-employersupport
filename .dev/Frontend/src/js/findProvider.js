@@ -498,6 +498,16 @@ function FindProvider(
                 checkDetailsChange();
             });
 
+        showAll.keypress(function (e) {
+            var key = e.which;
+            if (key == 13)  // the enter key code
+            {
+                showAll.click();
+                return false;
+            }
+        });   
+
+
         showAll.click(function () {
             if ($(this).is("[open]")) {
                 details.removeAttr("open");
