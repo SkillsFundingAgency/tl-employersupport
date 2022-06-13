@@ -9183,7 +9183,7 @@ ul.govuk-radios label .gem-radios__input {
     margin-bottom: 15px;
   }
 }
-.tl-fap--filter .tl-fap--filter--clearall {
+.tl-fap--filter .tl-fap--filter--clearall, .tl-fap--filter .tl-fap--filter--clearall2 {
   display: none;
 }
 .tl-fap--filter[active] {
@@ -9192,7 +9192,7 @@ ul.govuk-radios label .gem-radios__input {
 .tl-fap--filter[active] .tl-fap--filter--content {
   display: none;
 }
-.tl-fap--filter[active] .tl-fap--filter--clearall {
+.tl-fap--filter[active] .tl-fap--filter--clearall, .tl-fap--filter[active] .tl-fap--filter--clearall2 {
   display: inline-block;
 }
 .tl-fap--filter[open] {

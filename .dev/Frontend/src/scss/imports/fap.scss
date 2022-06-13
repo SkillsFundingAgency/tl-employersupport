@@ -169,7 +169,7 @@
     display: none;
     width: 100%;
 
-    .tl-fap--filter--clearall {
+    .tl-fap--filter--clearall, .tl-fap--filter--clearall2 {
         display: none;
     }
 
@@ -180,7 +180,7 @@
             display: none;
         }
 
-        .tl-fap--filter--clearall {
+        .tl-fap--filter--clearall, .tl-fap--filter--clearall2 {
             display: inline-block;
         }
     }
