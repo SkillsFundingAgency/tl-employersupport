@@ -114,3 +114,18 @@
                 "{{settings.find_provider_api_key}}",
                 qualificationArticleMap);
 </script>
+
+<script>
+
+    /// Clear all checkboxes
+    clearAll = $(".tl-fap--filter--clearall");
+
+    console.log('adding clearAll click');
+    console.log(clearAll);
+    clearAll.click(function () {
+        console.log('clearAll clicked');
+        $('.tl-fap--filter').find('input[type=checkbox]:checked').each(function () {
+            $(this).trigger("click");
+        });
+    });
+</script>

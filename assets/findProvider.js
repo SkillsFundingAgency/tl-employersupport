@@ -1795,7 +1795,6 @@ function FindProvider(
         /// Show hide sections / all sections
         details = $(".tl-fap--filter--details");
         showAll = $(".tl-fap--filter--showall");
-        clearAll = $(".tl-fap--filter--clearall");
 
         details.on('toggle',
             function () {
@@ -1822,16 +1821,6 @@ function FindProvider(
             }
         });
 
-        /// Clear all checkboxes
-
-        console.log('adding clearAll click');
-        console.log(clearAll);
-        clearAll.click(function () {
-            console.log('clearAll clicked');
-            $('.tl-fap--filter').find('input[type=checkbox]:checked').each(function () {
-                $(this).trigger("click");
-            });
-        });
     }
 
     $("#tl-fap--filter--button").click(function () {
