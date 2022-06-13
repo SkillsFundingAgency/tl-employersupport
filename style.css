@@ -9331,6 +9331,13 @@ ul.govuk-radios label .gem-radios__input {
 .tl-fap--filter--details {
   display: inline-block;
 }
+.tl-fap--filter--details:focus {
+  outline: 3px solid transparent;
+  color: #0b0c0c;
+  background-color: #ffdd00;
+  box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
+  text-decoration: none;
+}
 .tl-fap--filter--details[open] summary::after {
   content: attr(data-open);
 }
