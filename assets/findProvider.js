@@ -1404,7 +1404,8 @@ function FindProvider(
 
     let details = null;
     let showAll = null;
-
+    let clearAll = null;
+    
     function populateRoutes(data) {
         const skillAreasList = $("#tl-skill-area-filter");
         skillAreasList.find(".tl-fap--filter--section").remove();
