@@ -1356,12 +1356,7 @@ function FindProvider(
     });
 
     function qualificationSelectionChanged() {
-        console.log('in qualificationSelectionChanged - "' + $("#tl-search-term").val() + '"');
-        if (!$("#tl-search-term").val().trim()) { 
-            console.log('no search term');
-            return false;
-        }
-        console.log('qualificationSelectionChanged calling providerSearch');
+        if (!$("#tl-search-term").val().trim()) return false;
         return providerSearch($("#tl-search-term").val().trim(), getQualificationIds());
     }
 
@@ -1501,12 +1496,8 @@ function FindProvider(
                 console.log("Invalid providers search response received - " + response.error);
                 showSearchTermError("Enter a valid postcode or town");
             } else if (activeSearchQuery !== uri) {
-                console.log('ignoring results because current query does not match active query:');
-                console.log('uri = ' + uri);
-                console.log('active query = ' + activeSearchQuery);
                 return;
             } else {
-                console.log('search results ok for ' + uri);
                 currentPage = page;
                 currentSearchTerm = searchTerm;
                 currentQualificationIds = qualificationIds;
@@ -1827,13 +1818,11 @@ function FindProvider(
         // Clear all checkboxes button
         $(document).ready(function () {
             $(".tl-fap--filter--clearall").click(function () {
-                console.log('clearAll1 clicked');
                 clearCheckboxes();
                 return false;
             });
 
             $(".tl-fap--filter--clearall").keypress(function (e) {
-                console.log('clearAll keypress');
                 if (e.which === 13) {
                     clearCheckboxes();
                     return false;
@@ -1843,7 +1832,6 @@ function FindProvider(
 
 
         function clearCheckboxes() {
-            console.log('clearing all ...');
             $('.tl-fap--filter').find('input[type=checkbox]:checked').each(function () {            
                 $(this).trigger("click");
             });
