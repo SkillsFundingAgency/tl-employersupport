@@ -1801,7 +1801,6 @@ function FindProvider(
         // Show hide sections / all sections
         details = $(".tl-fap--filter--details");
         showAll = $(".tl-fap--filter--showall");
-        clearAll = $(".tl-fap--filter--clearall");
 
         details.on('toggle',
             function () {
@@ -1827,22 +1826,6 @@ function FindProvider(
             }
         });
 
-        // Clear all checkboxes
-        console.log('adding clearAll click');
-        console.log(clearAll);
-        clearAll.click(function () {
-            console.log('clearAll clicked');
-            clearCheckboxes();
-            return false;
-        });
-
-        clearAll.keypress(function (e) {
-            console.log('clearAll keypress');
-            if (e.which === 13) {
-                clearCheckboxes();
-                return false;
-            }
-        });
 
         function clearCheckboxes() {
             console.log('clearing all ...');
