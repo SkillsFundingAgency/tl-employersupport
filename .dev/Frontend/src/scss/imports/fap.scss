@@ -283,6 +283,14 @@
         cursor: pointer;
 
 
+        &:focus {
+            outline: 3px solid transparent;
+            color: $govuk-link-active-colour;
+            background-color: $govuk-focus-colour;
+            box-shadow: 0 -2px $govuk-focus-colour, 0 4px $govuk-link-active-colour;
+            text-decoration: none;
+        }
+
 
         &:not([open]) {
             &::before {
@@ -327,14 +335,6 @@
 
     &--details {
         display: inline-block;
-
-        &:focus {
-            outline: 3px solid transparent;
-            color: $govuk-link-active-colour;
-            background-color: $govuk-focus-colour;
-            box-shadow: 0 -2px $govuk-focus-colour, 0 4px $govuk-link-active-colour;
-            text-decoration: none;
-        }
 
         &[open] {
 
