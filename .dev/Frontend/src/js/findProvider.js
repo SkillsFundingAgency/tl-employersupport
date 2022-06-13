@@ -523,6 +523,27 @@ function FindProvider(
         });
 
 
+        $(document).ready(function () {
+            $(".tl-fap--filter--clearall2").click(function () {
+                console.log('clearAll2 clicked');
+            });
+
+            $(".tl-fap--filter--clearall").click(function () {
+                console.log('clearAll1 clicked');
+                clearCheckboxes();
+                return false;
+            });
+
+            $(".tl-fap--filter--clearall").keypress(function (e) {
+                console.log('clearAll keypress');
+                if (e.which === 13) {
+                    clearCheckboxes();
+                    return false;
+                }
+            });
+        });
+
+
         function clearCheckboxes() {
             console.log('clearing all ...');
             $('.tl-fap--filter').find('input[type=checkbox]:checked').each(function () {            
