@@ -33,7 +33,7 @@ function FindProvider(
         //Remove query string from url
         const urlSplit = (window.location.href).split("?");
         const obj = { Title: document.title, Url: urlSplit[0] };
-        //history.pushState(obj, obj.Title, obj.Url);
+        history.pushState(obj, obj.Title, obj.Url);
         providerSearch(searchTerm);
     } else {
         $('.tl-fap--noresult').removeClass("tl-hidden");
