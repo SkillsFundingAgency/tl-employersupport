@@ -1754,12 +1754,10 @@ function FindProvider(
                     });
                 }
             });
-            //$(".tl-fap--filter--clearall").removeClass("tl-hidden");
             $(".tl-fap--filter").attr("active", "true");
         }
         else {
             $(".tl-fap--filter--selected").html('<p class="govuk-body-s govuk-!-margin-bottom-1">No filters selected</p>');
-            //$(".tl-fap--filter--clearall").addClass("tl-hidden");
             $(".tl-fap--filter").removeAttr("active");
         }
     };
@@ -1769,7 +1767,7 @@ function FindProvider(
         const clickvalue = $(this).attr("data-check");
         $('.tl-fap--filter--section').find('input[id=' + clickvalue + ']:checked').trigger("click");
     };
-    //$(document).on("click", ".tl-fap--filter--selected span", checkRemove);
+    $(document).on("click", ".tl-fap--filter--selected span", checkRemove);
 
     function checkDetailsChange() {
         details.each(function () {
