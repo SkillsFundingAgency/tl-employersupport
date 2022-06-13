@@ -48,6 +48,16 @@
                         <span class="tl-fap--filter--clearall" tabindex="0">
                             clear filters
                         </span>
+                        <span class="tl-fap--filter--clearall2" tabindex="0">
+                            clear filters
+                        </span>
+                        <script>
+                            $(document).ready(function () {
+                                $(".tl-fap--filter--clearall2").click(function () {
+                                    console.log('clearAll clicked');
+                                });
+                            });
+                        </script>
                         <div class="tl-fap--filter--selected">
                         </div>
                     </h3>
@@ -115,10 +125,4 @@
                 qualificationArticleMap);
 </script>
 
-<script>
-    $(document).ready(function () {
-        $(".tl-fap--filter--clearall").click(function () {
-            console.log('clearAll clicked');
-        });
-    });
-</script>
+
