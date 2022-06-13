@@ -33,7 +33,7 @@ function FindProvider(
         //Remove query string from url
         const urlSplit = (window.location.href).split("?");
         const obj = { Title: document.title, Url: urlSplit[0] };
-        history.pushState(obj, obj.Title, obj.Url);
+        //history.pushState(obj, obj.Title, obj.Url);
         providerSearch(searchTerm);
     } else {
         $('.tl-fap--noresult').removeClass("tl-hidden");
@@ -52,7 +52,12 @@ function FindProvider(
     });
 
     function qualificationSelectionChanged() {
-        if (!$("#tl-search-term").val().trim()) return false;
+        console.log('in qualificationSelectionChanged - "' + $("#tl-search-term").val() + '"');
+        if (!$("#tl-search-term").val().trim()) { 
+            console.log('no search term');
+            return false;
+        }
+        console.log('qualificationSelectionChanged calling providerSearch');
         return providerSearch($("#tl-search-term").val().trim(), getQualificationIds());
     }
 
@@ -95,6 +100,7 @@ function FindProvider(
 
     let details = null;
     let showAll = null;
+    let clearAll = null;
 
     function populateRoutes(data) {
         const skillAreasList = $("#tl-skill-area-filter");
@@ -421,10 +427,10 @@ function FindProvider(
         const numberOfChecked = $(this).parents('.tl-fap--filter--section').find('input[type=checkbox]:checked');
         const totalCheckboxes = $(this).parents('.tl-fap--filter--section').find('input[type=checkbox]');
 
-        /// Display number of checked items in each section
+        // Display number of checked items in each section
         $(this).parents('.tl-fap--filter--section').find('#tl-fap--filter--checkstatus').html("(" + numberOfChecked.length + " of " + totalCheckboxes.length + " selected)");
 
-        /// Get checked items and display at top
+        // Get checked items and display at top
         const checkedSection = $(this).parents('.tl-fap--filter--content').find('input[type=checkbox]:checked').parents('.tl-fap--filter--section');
         if (totalNumberOfChecked.length !== 0) {
             $(".tl-fap--filter--selected").html('');
@@ -454,7 +460,7 @@ function FindProvider(
         }
     };
 
-    /// Allow checkboxes to be unchecked by clicking summary items at top
+    // Allow checkboxes to be unchecked by clicking summary items at top
     function checkRemove() {
         const clickvalue = $(this).attr("data-check");
         $('.tl-fap--filter--section').find('input[id=' + clickvalue + ']:checked').trigger("click");
@@ -483,14 +489,15 @@ function FindProvider(
     }
 
     function addCheckboxHandlers() {
-        /// Run checkbox change function on page load and on checkbox change
+        // Run checkbox change function on page load and on checkbox change
         $('.tl-fap--filter--content input[type=checkbox]').change(checkChange);
         $(".tl-fap--filter--section .govuk-checkboxes").each(checkChange);
         $('.tl-fap--filter--content input[type=checkbox]').change(qualificationSelectionChanged);
 
-        /// Show hide sections / all sections
+        // Show hide sections / all sections
         details = $(".tl-fap--filter--details");
         showAll = $(".tl-fap--filter--showall");
+        clearAll = $(".tl-fap--filter--clearall");
 
         details.on('toggle',
             function () {
@@ -499,13 +506,12 @@ function FindProvider(
 
         showAll.keypress(function (e) {
             var key = e.which;
-            if (key == 13)  // the enter key code
+            if (key === 13)  // the enter key code
             {
                 showAll.click();
                 return false;
             }
-        });   
-
+        });
 
         showAll.click(function () {
             if ($(this).is("[open]")) {
@@ -517,6 +523,29 @@ function FindProvider(
             }
         });
 
+        // Clear all checkboxes
+        console.log('adding clearAll click');
+        console.log(clearAll);
+        clearAll.click(function () {
+            console.log('clearAll clicked');
+            clearCheckboxes();
+            return false;
+        });
+
+        clearAll.keypress(function (e) {
+            console.log('clearAll keypress');
+            if (e.which === 13) {
+                clearCheckboxes();
+                return false;
+            }
+        });
+
+        function clearCheckboxes() {
+            console.log('clearing all ...');
+            $('.tl-fap--filter').find('input[type=checkbox]:checked').each(function () {            
+                $(this).trigger("click");
+            });
+        }
     }
 
     $("#tl-fap--filter--button").click(function () {
