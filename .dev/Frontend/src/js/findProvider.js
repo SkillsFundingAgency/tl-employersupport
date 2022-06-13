@@ -528,9 +528,7 @@ function FindProvider(
         console.log(clearAll);
         clearAll.click(function () {
             console.log('clearAll clicked');
-            $('.tl-fap--filter').find('input[type=checkbox]:checked').each(function () {
-                $(this).trigger("click");
-            });
+            clearCheckboxes();
             return false;
         });
 
