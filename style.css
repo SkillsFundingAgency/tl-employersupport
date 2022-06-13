@@ -9281,16 +9281,19 @@ ul.govuk-radios label .gem-radios__input {
 }
 .tl-fap--filter--content {
   padding: 0 15px;
+  min-width: 100%;
+  box-sizing: border-box;
 }
 .tl-fap--filter--showall {
   color: #1d70b8;
-  margin-bottom: 10px;
+  margin-bottom: 0;
   margin-top: 10px;
   cursor: pointer;
+  display: inline-block;
 }
 @media (min-width: 40.0625em) {
   .tl-fap--filter--showall {
-    margin-bottom: 10px;
+    margin-bottom: 0;
   }
 }
 @media (min-width: 40.0625em) {

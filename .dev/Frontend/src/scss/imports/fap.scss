@@ -274,13 +274,16 @@
 
     &--content {
         padding: 0 15px;
+        min-width: 100%;
+        box-sizing: border-box;
     }
 
     &--showall {
         color: $govuk-link-colour;
-        @include govuk-responsive-margin(2, "bottom");
+        @include govuk-responsive-margin(0, "bottom");
         @include govuk-responsive-margin(2, "top");
         cursor: pointer;
+        display: inline-block;
 
 
         &:focus {
