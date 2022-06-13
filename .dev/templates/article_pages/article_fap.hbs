@@ -116,25 +116,26 @@
 </script>
 
 <script>
+    $(document).ready(function () {
+        /// Clear all checkboxes
+        clearAll = $(".tl-fap--filter--clearall");
 
-    /// Clear all checkboxes
-    clearAll = $(".tl-fap--filter--clearall");
-
-    // Clear all checkboxes
-    console.log('adding clearAll click');
-    console.log(clearAll);
-    clearAll.click(function () {
-        console.log('clearAll clicked');
-        clearCheckboxes();
-        return false;
-    });
-
-    clearAll.keypress(function (e) {
-        console.log('clearAll keypress');
-        if (e.which === 13) {
+        /// Clear all checkboxes
+        console.log('adding clearAll click');
+        console.log(clearAll);
+        clearAll.click(function () {
+            console.log('clearAll clicked');
             clearCheckboxes();
             return false;
-        }
+        });
+
+        clearAll.keypress(function (e) {
+            console.log('clearAll keypress');
+            if (e.which === 13) {
+                clearCheckboxes();
+                return false;
+            }
+        });
     });
 
 </script>
