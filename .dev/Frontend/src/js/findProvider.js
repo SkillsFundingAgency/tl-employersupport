@@ -461,7 +461,7 @@ function FindProvider(
         if (key === 13)  // the enter key code
         {
             console.log("item keypress")
-            checkRemove();
+            $(this).click();
             return false;
         }
 
