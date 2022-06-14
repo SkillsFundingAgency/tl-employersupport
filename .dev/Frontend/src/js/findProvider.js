@@ -456,6 +456,15 @@ function FindProvider(
     };
     $(document).on("click", ".tl-fap--filter--selected span", checkRemove);
 
+    $(".tl-fap--filter--selected span").keypress(function (e) {
+        var key = e.which;
+        if (key === 13)  // the enter key code
+        {
+            $(this).click();
+            return false;
+        }
+    });
+
     function checkDetailsChange() {
         details.each(function () {
             if ($(this).is("[open]")) {
