@@ -52,7 +52,8 @@
                             }
                         });
                         window.GOVUKFrontend.initAll()
-                        new FindProviderTile();
+                        createFindProviderTile();
+                        scrollToRequestedTab();
                     }
 
                     function1().done(function2);
@@ -85,6 +86,7 @@
                             <div class="tl-boxlinks--card">
                                 <a class="govuk-link govuk-!-margin-bottom-1" href="{{url}}">{{title}}</a>
                             </div>
+
                             {{/each}}
                         </div>
                     </div>
@@ -258,6 +260,20 @@
     };
 </script>
 <!-- End of tlevelsemployertest Zendesk Widget script -->
-<script src="{{asset 'findProviderTile.js'}}"
-        data-findProviderRedirectUrl="/hc/en-gb/articles/{{settings.article_id_find_provider}}"
-        data-findProviderApiUri="{{settings.find_provider_api_uri}}"></script>
+<script src="{{asset 'findProviderTile.js'}}"></script>
+<script>
+    function createFindProviderTile() {
+        return new FindProviderTile(
+            "/hc/en-gb/articles/{{settings.article_id_find_provider}}", 
+            "{{settings.find_provider_api_uri}}");
+    }
+
+    function scrollToRequestedTab() {
+        const loc = location.hash.slice(1);
+        if (loc) {
+            const el = $('a[href="#' + loc + '"]');
+            if(el.length > 0) el[0].scrollIntoView();
+        }
+    }
+
+</script>
