@@ -1760,9 +1760,7 @@ function FindProvider(
     };
 
     $(document).on("click", ".tl-fap--filter--selected span", checkRemove);
-
-
-    $(".tl-fap--filter--selected span").keypress(function (e) {
+    $(document).on("keypress", ".tl-fap--filter--selected span", function (e) {
         var key = e.which;
         if (key === 13)  // the enter key code
         {
@@ -1771,8 +1769,6 @@ function FindProvider(
             return false;
         }
     });
-
-
 
 
     function checkDetailsChange() {
