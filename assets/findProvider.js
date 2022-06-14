@@ -1762,6 +1762,7 @@ function FindProvider(
     filterSummaryitem = $(".tl-fap--filter--selected span");
 
     filterSummaryitem.click(function () {
+        console.log("item click")
         checkRemove();
     });
 
@@ -1769,6 +1770,7 @@ function FindProvider(
         var key = e.which;
         if (key === 13)  // the enter key code
         {
+            console.log("item keypress")
             checkRemove();
             return false;
         }
