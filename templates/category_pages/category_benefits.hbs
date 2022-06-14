@@ -64,8 +64,13 @@
                         </p>
                     </div>
                     {{/if}}
-                    {{/each}}
 
+                    {{/each}}
+                    {{#if more_articles}}
+                    <p class="govuk-body-l govuk-!-margin-top-2 govuk-!-margin-bottom-4">
+                        <a class="govuk-link govuk-!-margin-bottom-1 tl-category--section--article" href="{{url}}">{{t 'show_all_articles' count=article_count}}</a>
+                    </p>
+                    {{/if}}
                 </div>
                 {{else}}
                 <h3 class="govuk-heading-m govuk-!-margin-top-7">{{name}}</h3>
@@ -81,6 +86,11 @@
                                 <a class="govuk-link tl-category--section--article" href="{{url}}">{{title}}</a>
                             </li>
                             {{/each}}
+                            {{#if more_articles}}
+                            <li>
+                                <a class="govuk-link tl-category--section--article" href="{{url}}">{{t 'show_all_articles' count=article_count}}</a>
+                            </li>
+                            {{/if}}
                         </ul>
 
 

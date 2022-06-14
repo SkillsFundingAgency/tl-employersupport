@@ -190,3 +190,7 @@ $bordercolours:
         height: 100%;
     }
 }
+
+details summary {
+    cursor: pointer;
+}

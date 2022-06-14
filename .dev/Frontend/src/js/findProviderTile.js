@@ -1,16 +1,11 @@
-function FindProviderTile() {
+function FindProviderTile(findProviderRedirectUrl, findProvidersApiUri) {
     // Find Provider tile
     const fapTileContainer = $(".tl-fap-tile").first();
     if (!fapTileContainer.length) return;
-
-    let findProviderRedirectUrl =
-        $('script[data-findProviderRedirectUrl][data-findProviderRedirectUrl!=null]').attr('data-findProviderRedirectUrl');
-    let findProvidersApiUri = 
-        $('script[data-findProviderApiUri][data-findProviderApiUri!=null]').attr('data-findProviderApiUri');
     
     if (typeof findProviderRedirectUrl === "undefined" ||
         typeof findProvidersApiUri === "undefined") {
-        console.log('findProviderTile script requires data-findProviderApiUri and data-findProviderRedirectUrl to be passed via the script tag');
+        console.log('findProviderTile script requires findProviderApiUri and findProviderRedirectUrl parameters');
         return;
     }
 

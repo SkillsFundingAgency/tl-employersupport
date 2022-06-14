@@ -6,6 +6,9 @@
     color: govuk-colour("red");
 }
 
+.tl-text--blue {
+    color: $govuk-link-colour;
+}
 .tl-text-headercase {
     text-transform: capitalize;
 }
