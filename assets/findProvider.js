@@ -1758,7 +1758,19 @@ function FindProvider(
         const clickvalue = $(this).attr("data-check");
         $('.tl-fap--filter--section').find('input[id=' + clickvalue + ']:checked').trigger("click");
     };
+
     $(document).on("click", ".tl-fap--filter--selected span", checkRemove);
+    $(document).on("keypress", ".tl-fap--filter--selected span", function (e) {
+        var key = e.which;
+        if (key === 13)  // the enter key code
+        {
+            console.log("item keypress")
+            $(this).click();
+            return false;
+        }
+
+    });
+
 
     function checkDetailsChange() {
         details.each(function () {
