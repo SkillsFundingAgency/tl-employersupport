@@ -1759,14 +1759,10 @@ function FindProvider(
         $('.tl-fap--filter--section').find('input[id=' + clickvalue + ']:checked').trigger("click");
     };
 
-    filterSummaryitem = $(".tl-fap--filter--selected span");
+    $(document).on("click", ".tl-fap--filter--selected span", checkRemove);
 
-    filterSummaryitem.click(function () {
-        console.log("item click")
-        checkRemove();
-    });
 
-    filterSummaryitem.keypress(function (e) {
+    $(".tl-fap--filter--selected span").keypress(function (e) {
         var key = e.which;
         if (key === 13)  // the enter key code
         {
@@ -1776,7 +1772,6 @@ function FindProvider(
         }
     });
 
-    //$(document).on("click", ".tl-fap--filter--selected span", checkRemove);
 
 
 
