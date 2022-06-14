@@ -16,9 +16,10 @@ function FindProvider(
 
     if (findProvidersApiUri !== null && findProvidersApiUri.substr(-1) !== '/') findProvidersApiUri += '/';
 
+    let activeSearchQuery = null;
     let currentPage = 0;
     let currentSearchTerm = null;
-    let currentSkillAreaIds = [];
+    let currentQualificationIds = [];
 
     //initialize autocomplete
     new LocationAutocomplete(findProvidersApiUri);
@@ -36,6 +37,7 @@ function FindProvider(
         providerSearch(searchTerm);
     } else {
         $('.tl-fap--noresult').removeClass("tl-hidden");
+        $('.tl-fap--result').addClass("tl-hidden");
     }
 
     $('#tl-search-term').keypress(function (e) {
@@ -46,12 +48,13 @@ function FindProvider(
     });
 
     $("#tl-search-providers").click(function () {
-        return providerSearch($("#tl-search-term").val().trim(), getSkillAreaIds());
+        return providerSearch($("#tl-search-term").val().trim(), getQualificationIds());
     });
 
-    $("#tl-update-search-providers").click(function () {
-        return providerSearch($("#tl-search-term").val().trim(), getSkillAreaIds());
-    });
+    function qualificationSelectionChanged() {
+        if (!$("#tl-search-term").val().trim()) return false;
+        return providerSearch($("#tl-search-term").val().trim(), getQualificationIds());
+    }
 
     $(".tl-fap-search-providers-form").submit(function () {
         event.preventDefault();
@@ -60,18 +63,18 @@ function FindProvider(
     $("#tl-next-results-link").click(function () {
         event.stopPropagation();
         event.preventDefault();
-        callProviderSearchApi(currentSearchTerm, currentSkillAreaIds, currentPage + 1);
+        callProviderSearchApi(currentSearchTerm, currentQualificationIds, currentPage + 1);
         return false;
     });
 
-    function getSkillAreaIds() {
-        const skillAreaIds = [];
+    function getQualificationIds() {
+        const qualificationIds = [];
         $('#tl-skill-area-filter .tl-checkbox:checked').each(
             function (_, item) {
-                skillAreaIds.push(item.value);
+                qualificationIds.push(item.value);
             });
 
-        return skillAreaIds;
+        return qualificationIds;
     }
 
     function loadRoutes() {
@@ -90,35 +93,55 @@ function FindProvider(
         });
     }
 
+    let details = null;
+    let showAll = null;
+    let clearAll = null;
+
     function populateRoutes(data) {
         const skillAreasList = $("#tl-skill-area-filter");
-        skillAreasList.empty();
+        skillAreasList.find(".tl-fap--filter--section").remove();
 
         $.each(data,
             function (_, item) {
-                if (item.numberOfQualificationsOffered) {
-                    skillAreasList.append(
-                        $(document.createElement('div')).prop({
-                            class: 'govuk-checkboxes__item'
-                        }).append(
-                            $(document.createElement('input')).prop({
-                                id: 'tl_skill_area_' + item.id,
-                                name: 'tl_skill_area_' + item.id,
-                                value: item.id,
-                                type: 'checkbox',
-                                class: 'tl-checkbox govuk-checkboxes__input'
-                            })).append(
-                                $(document.createElement('label')).prop({
-                                    for: 'tl_skill_area_' + item.id,
-                                    class: 'govuk-body-s govuk-checkboxes__label'
-                                })
-                                    .html(item.name)
-                            ));
-                }
-            });
-    }
+                if (!item.numberOfQualificationsOffered) return;
 
-    function providerSearch(searchTerm, skillAreaIds, page) {
+                let skillArea = '<div class="tl-fap--filter--section"> \
+                                   <h4 class="govuk-heading-s govuk-!-margin-top-2">' +
+                    item.name + '<br /> \
+                                     <span class="govuk-body-s tl-text--grey" id="tl-fap--filter--checkstatus"></span> \
+                                    </h4> \
+                                    <details class="tl-fap--filter--details"> \
+                                    <summary data-open="Hide T Levels" data-close="Show T Levels" class="govuk-!-margin-bottom-1"></summary> \
+                                    <div>';
+
+                $.each(item.qualifications,
+                    function (_, qualification) {
+                        const qualificationId = 'tl_subject_' + qualification.id;
+                        skillArea += '<div class="govuk-checkboxes govuk-checkboxes--small"> \
+                                                    <div class="govuk-checkboxes__item"> \
+                                                        <input id="' + qualificationId +
+                            '" name="' + qualificationId +
+                            '" type="checkbox" ' +
+                            'value="' + qualification.id +
+                            '" class="tl-checkbox govuk-checkboxes__input"> \
+                                                        <label for="' + qualificationId +
+                            '" class="govuk-body-s govuk-checkboxes__label">' + qualification.name + '</label> \
+                                                    </div> \
+                                                </div>';
+                    });
+
+                skillArea += '        </div> \
+                                            </details> \
+                                            <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-4 govuk-!-margin-top-2"> \
+                                        </div>';
+
+                skillAreasList.append(skillArea);
+            });
+
+        addCheckboxHandlers();
+    };
+
+    function providerSearch(searchTerm, qualificationIds, page) {
         clearProviderSearchResults();
         searchTerm = searchTerm ? searchTerm.trim() : "";
         if (searchTerm === "") {
@@ -133,13 +156,13 @@ function FindProvider(
             return false;
         }
 
-        callProviderSearchApi(searchTerm, skillAreaIds, page);
+        callProviderSearchApi(searchTerm, qualificationIds, page);
 
         return true;
     }
 
-    function callProviderSearchApi(searchTerm, skillAreaIds, page, pageSize) {
-        if (isFapSearchInProgress) return false;
+    function callProviderSearchApi(searchTerm, qualificationIds, page, pageSize) {
+        //if (isFapSearchInProgress) return false;
         isFapSearchInProgress = true;
 
         page = (page === undefined ? 0 : page);
@@ -148,11 +171,14 @@ function FindProvider(
         const encodedSearchTerm = encodeURIComponent(searchTerm).replace(/'/g, '%27');
         let uri = findProvidersApiUri + "providers?searchTerm=" + encodedSearchTerm + '&page=' + page + '&pageSize=' + pageSize;
 
-        if (skillAreaIds && skillAreaIds.length > 0) {
-            skillAreaIds.forEach(function (skillAreaId) {
-                uri += "&routeId=" + skillAreaId;
+        if (qualificationIds && qualificationIds.length > 0) {
+            qualificationIds.forEach(function (id) {
+                uri += "&qualificationId=" + id;
             });
         }
+
+        //Assign uri to global level variable, then check when query returns to see if it's changed
+        activeSearchQuery = uri;
 
         $.ajax({
             type: "GET",
@@ -165,10 +191,12 @@ function FindProvider(
             if (response.error) {
                 console.log("Invalid providers search response received - " + response.error);
                 showSearchTermError("Enter a valid postcode or town");
+            } else if (activeSearchQuery !== uri) {
+                return;
             } else {
                 currentPage = page;
                 currentSearchTerm = searchTerm;
-                currentSkillAreaIds = skillAreaIds;
+                currentQualificationIds = qualificationIds;
                 populateProviderSearchResults(response, page, pageSize);
             }
             setTimeout(function () {
@@ -199,6 +227,8 @@ function FindProvider(
 
         if ((!data.searchResults || data.searchResults.length === 0) && currentPage === 0) {
             $('.tl-fap--noresult').removeClass("tl-hidden");
+            $('.tl-fap--result').addClass("tl-hidden");
+
             return;
         }
 
@@ -206,8 +236,94 @@ function FindProvider(
             function (_, providerLocation) {
                 let searchResult =
                     '<div class="tl-fap--result"> \
-                             <h3 class="govuk-heading-m">' + providerLocation.providerName + ' <span class="tl-fap--distance">' + providerLocation.distance.toFixed(0) + ' miles</span></h3> \
+                             <h3 class="govuk-heading-m govuk-!-margin-bottom-1">' + providerLocation.providerName + ' <span class="tl-fap--distance">' + providerLocation.distance.toFixed(0) + ' miles</span></h3> \
                              <p class="govuk-body"><span>' + providerLocation.town + '</span> | ' + providerLocation.postcode + '</p>';
+
+                const locationDeliveryYears = [];
+                let availableNow = null;
+                $.each(providerLocation.deliveryYears,
+                    function (_, deliveryYear) {
+                        if (typeof deliveryYear.routes === "undefined") return;
+
+                        if (deliveryYear.isAvailableNow) {
+                            if (availableNow) {
+                                for (let i = 0; i < deliveryYear.routes.length; i++) {
+                                    if (availableNow.routes.filter(function (r) { return r.name === deliveryYear.routes[i].name; }).length === 0)
+                                        availableNow.routes.push(deliveryYear.routes[i]);
+                                }
+                            } else {
+                                availableNow = deliveryYear;
+                                locationDeliveryYears.push(availableNow);
+                            }
+                        } else {
+                            locationDeliveryYears.push(deliveryYear);
+                        }
+                    });
+
+                if (availableNow && !typeof availableNow.routes !== "undefined" && availableNow.routes) {
+                    availableNow.routes.sort(function (x, y) { return (x.name < y.name) ? -1 : ((x.name > y.name) ? 1 : 0) });
+                }
+                //Obsolete v2 code
+                if (availableNow && !typeof availableNow.qualifications !== "undefined" && availableNow.qualifications) {
+                    availableNow.qualifications.sort(function (x, y) { return (x.name < y.name) ? -1 : ((x.name > y.name) ? 1 : 0) });
+                }
+                /////
+
+                searchResult += '</p><div class="tl-fap--courses">';
+
+                $.each(locationDeliveryYears,
+                    function (_, deliveryYear) {
+                        if (deliveryYear.isAvailableNow) {
+                            searchResult += '<div class="tl-fap--courses--box tl-fap--courses--box--now"> \
+                                        <h4 class="govuk-body govuk-!-font-weight-bold">T Levels available now:</h4>';
+                        } else {
+                            searchResult += '<div class="tl-fap--courses--box"> \
+                                        <h4 class="govuk-body govuk-!-font-weight-bold">T Levels available from September  ' + deliveryYear.year + ':</h4>';
+                        }
+
+                        //Obsolete v2 code
+                        if ((!typeof deliveryYear.routes === "undefined" || deliveryYear.routes === null) &&
+                            (typeof deliveryYear.qualifications !== "undefined" || deliveryYear.qualifications !== null)) {
+                            console.log('using v2 qualifications');
+                            searchResult += '<ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-1">';
+                            $.each(deliveryYear.qualifications,
+                                function (_, qualification) {
+                                    const articleLink = typeof qualificationArticleMap !== "undefined" ?
+                                        qualificationArticleMap[qualification.id] : null;
+                                    if (articleLink) {
+                                        searchResult += '<li><a target="_blank" class="govuk-link tl-fap--result-course" href="' + articleLink + '">' + qualification.name + '</a></li>';
+                                    } else {
+                                        searchResult += '<li>' + qualification.name + '</li>';
+                                    }
+                                });
+                            return;
+                        }
+                        /////
+
+                        if (!typeof deliveryYear.routes === "undefined" || deliveryYear.routes === null) return;
+
+                        $.each(deliveryYear.routes,
+                            function (_, route) {
+                                searchResult += '<p class="govuk-body govuk-!-margin-top-2 govuk-!-margin-bottom-1">' + route.name + '</p> \
+                                <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-1">';
+
+                                $.each(route.qualifications,
+                                    function (_, qualification) {
+                                        const articleLink = typeof qualificationArticleMap !== "undefined" ?
+                                            qualificationArticleMap[qualification.id] : null;
+                                        if (articleLink) {
+                                            searchResult += '<li><a target="_blank" class="govuk-link tl-fap--result-course" href="' + articleLink + '">' + qualification.name + '</a></li>';
+                                        } else {
+                                            searchResult += '<li>' + qualification.name + '</li>';
+                                        }
+                                    });
+
+                                searchResult += '</ul>';
+                            });
+
+                        searchResult += '</div>';
+                    });
+                searchResult += '</div>';
 
                 if (providerLocation.telephone || providerLocation.website || providerLocation.email) {
                     let contactDetails = providerLocation.telephone
@@ -221,60 +337,10 @@ function FindProvider(
                         if (contactDetails) contactDetails += ' | ';
                         contactDetails += 'Email: <a href="mailto:' + providerLocation.email + '" class="govuk-link govuk-!-margin-right-4 tl-fap--result-email">' + providerLocation.email + '</a>';
                     }
-                    searchResult += '<p class="govuk-body">' + contactDetails + '</p>';
+
+                    searchResult += '<h4 class="govuk-body govuk-!-font-weight-bold govuk-!-margin-top-5 govuk-!-margin-bottom-2">Get in touch:</h4> \
+                        <p class="govuk-body">' + contactDetails + '</p>';
                 }
-
-                const locationDeliveryYears = [];
-                let availableNow = null;
-                $.each(providerLocation.deliveryYears,
-                    function (_, deliveryYear) {
-                        if (deliveryYear.isAvailableNow) {
-                            if (availableNow) {
-                                for (let i = 0; i < deliveryYear.qualifications.length; i++) {
-                                    if (availableNow.qualifications.filter(function (q) { return q.name === deliveryYear.qualifications[i].name; }).length === 0)
-                                        availableNow.qualifications.push(deliveryYear.qualifications[i]);
-                                }
-                            } else {
-                                availableNow = deliveryYear;
-                                locationDeliveryYears.push(availableNow);
-                            }
-                        } else {
-                            locationDeliveryYears.push(deliveryYear);
-                        }
-                    });
-
-                if (availableNow) {
-                    availableNow.qualifications.sort(function (x, y) { return (x.name < y.name) ? -1 : ((x.name > y.name) ? 1 : 0) });
-                }
-
-                searchResult += '</p><div class="tl-fap--courses">';
-
-                $.each(locationDeliveryYears,
-                    function (_, deliveryYear) {
-                        const availability = deliveryYear.isAvailableNow
-                            ? 'Available now'
-                            : 'From September ' + deliveryYear.year + ' onwards';
-
-                        searchResult += '<p class="govuk-body govuk-!-font-weight-bold">' + availability + ':</p> \
-                                    <ul class="govuk-list govuk-list--bullet">';
-
-                        $.each(deliveryYear.qualifications,
-                            function (_, qualification) {
-                                const articleLink = typeof qualificationArticleMap !== "undefined" ?
-                                    qualificationArticleMap[qualification.id] : null;
-                                if (articleLink) {
-                                    searchResult += '<li><a target="_blank" class="govuk-link tl-fap--result-course" href="' + articleLink + '">' + qualification.name + '</a></li>';
-                                } else {
-                                    searchResult += '<li>' + qualification.name + '</li>';
-                                }
-                            });
-
-                        searchResult += '</ul>';
-                    });
-
-                searchResult += '</div> \
-                                    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible"> \
-                                  </div>';
 
                 $("#tl-fap--results").append(searchResult);
             });
@@ -345,4 +411,140 @@ function FindProvider(
 
         return null;
     }
+
+    //filter list javascript
+    function checkChange() {
+        const totalNumberOfChecked = $(this).parents('.tl-fap--filter--content').find('input[type=checkbox]:checked');
+        const numberOfChecked = $(this).parents('.tl-fap--filter--section').find('input[type=checkbox]:checked');
+        const totalCheckboxes = $(this).parents('.tl-fap--filter--section').find('input[type=checkbox]');
+
+        // Display number of checked items in each section
+        $(this).parents('.tl-fap--filter--section').find('#tl-fap--filter--checkstatus').html("(" + numberOfChecked.length + " of " + totalCheckboxes.length + " selected)");
+
+        // Get checked items and display at top
+        const checkedSection = $(this).parents('.tl-fap--filter--content').find('input[type=checkbox]:checked').parents('.tl-fap--filter--section');
+        if (totalNumberOfChecked.length !== 0) {
+            $(".tl-fap--filter--selected").html('');
+
+            checkedSection.sort(function(x, y) {
+                return ($(x).text() < $(y).text()) ? -1 : (($(x).text() > $(y).text()) ? 1 : 0);
+            });
+
+            checkedSection.each(function () {
+                var checkedSectionBoxes = $(this).find('input[type=checkbox]:checked');
+                if (checkedSectionBoxes.length !== 0) {
+                    $(".tl-fap--filter--selected").append('<h5>' + $(this).find("h4").clone().children().remove().end().text() + '</h5>');
+
+                    checkedSectionBoxes.each(function () {
+                        var checkedSectionValue = $(this).attr("id");
+                        $(".tl-fap--filter--selected").append('<span tabindex="0" data-check="' + checkedSectionValue + '">' + $(this).next("label").text() + '</span>');
+                    });
+                }
+            });
+            $(".tl-fap--filter").attr("active", "true");
+        }
+        else {
+            $(".tl-fap--filter--selected").html('<p class="govuk-body-s govuk-!-margin-bottom-1">No filters selected</p>');
+            $(".tl-fap--filter").removeAttr("active");
+        }
+    };
+
+    // Allow checkboxes to be unchecked by clicking summary items at top
+    function checkRemove() {
+        const clickvalue = $(this).attr("data-check");
+        $('.tl-fap--filter--section').find('input[id=' + clickvalue + ']:checked').trigger("click");
+    };
+    $(document).on("click", ".tl-fap--filter--selected span", checkRemove);
+
+    function checkDetailsChange() {
+        details.each(function () {
+            if ($(this).is("[open]")) {
+                showAllOpen();
+                return false;
+            } else {
+                showAllClose();
+            }
+        });
+    };
+
+    function showAllClose() {
+        showAll.removeAttr("open");
+        showAll.text("Show all");
+    }
+
+    function showAllOpen() {
+        showAll.attr('open', '');
+        showAll.text("Hide all");
+    }
+
+    function addCheckboxHandlers() {
+        // Run checkbox change function on page load and on checkbox change
+        $('.tl-fap--filter--content input[type=checkbox]').change(checkChange);
+        $(".tl-fap--filter--section .govuk-checkboxes").each(checkChange);
+        $('.tl-fap--filter--content input[type=checkbox]').change(qualificationSelectionChanged);
+
+        // Show hide sections / all sections
+        details = $(".tl-fap--filter--details");
+        showAll = $(".tl-fap--filter--showall");
+
+        details.on('toggle',
+            function () {
+                checkDetailsChange();
+            });
+
+        showAll.keypress(function (e) {
+            var key = e.which;
+            if (key === 13)  // the enter key code
+            {
+                showAll.click();
+                return false;
+            }
+        });
+
+        showAll.click(function () {
+            if ($(this).is("[open]")) {
+                details.removeAttr("open");
+                showAllClose();
+            } else {
+                details.attr('open', '');
+                showAllOpen();
+            }
+        });
+
+        // Clear all checkboxes button
+        $(document).ready(function () {
+            $(".tl-fap--filter--clearall").click(function () {
+                clearCheckboxes();
+                return false;
+            });
+
+            $(".tl-fap--filter--clearall").keypress(function (e) {
+                if (e.which === 13) {
+                    clearCheckboxes();
+                    return false;
+                }
+            });
+        });
+
+
+        function clearCheckboxes() {
+            $('.tl-fap--filter').find('input[type=checkbox]:checked').each(function () {            
+                $(this).trigger("click");
+            });
+        }
+    }
+
+    $("#tl-fap--filter--button").click(function () {
+        if ($(this).is("[open]")) {
+            $(this).removeAttr("open");
+            $(".tl-fap--filter").removeAttr("open");
+            $(this).text("Show filter");
+        }
+        else {
+            $(this).attr('open', '');;
+            $(".tl-fap--filter").attr('open', '');;
+            $(this).text("Hide filter");
+        }
+        return false;
+    });
 };

@@ -41,19 +41,22 @@
                         </button>
                     </div>
                 </div>
-                <div class="tl-search--filter">
-                    <h3>Filter by skill area</h3>
-
-                    <div class="tl-search--filter--content">
-                        <div class="govuk-form-group govuk-!-margin-bottom-2 tl-pane-expandable__content" style="background-color: white; padding: 10px">
-                            <div class="govuk-checkboxes govuk-checkboxes--small" id="tl-skill-area-filter">
-                            </div>
+                <button class="tl-button tl-button--grey tl-width-100" id="tl-fap--filter--button">Show filter</button>
+                <div class="tl-fap--filter">
+                    <h3>
+                        Filter by course
+                        <span class="tl-fap--filter--clearall" tabindex="0">
+                            clear filters
+                        </span>
+                        <div class="tl-fap--filter--selected">
                         </div>
+                    </h3>
+
+                    <div class="tl-fap--filter--content" id="tl-skill-area-filter">
+                        <p class="govuk-body-s tl-fap--filter--showall" tabindex="0">Show all</p>
+                        <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-4 govuk-!-margin-top-2">
                     </div>
                 </div>
-                <button class="govuk-button tl-button--green" id="tl-update-search-providers" data-module="govuk-button">
-                    Update results
-                </button>
             </div>
         </form>
 
@@ -71,13 +74,16 @@
                 </div>
                 <div class="tl-fap--result">
                 </div>
+
             </div>
-            <p class="govuk-body"><a class="govuk-link tl-hidden" id="tl-next-results-link" href="more-results">Show more results</a></p>
+            <p class="govuk-body">
+                <a class="govuk-link tl-hidden" id="tl-next-results-link" href="more-results">Show more results</a>
+            </p>
         </div>
     </div>
 </div>
 
-<script src="{{asset 'findProvider.js'}}"></script>    
+<script src="{{asset 'findProvider.js'}}"></script>
 <script>
     const qualificationArticleMap = {
         36: "{{settings.qualification_article_36}}",
@@ -108,3 +114,5 @@
                 "{{settings.find_provider_api_key}}",
                 qualificationArticleMap);
 </script>
+
+
