@@ -7772,7 +7772,6 @@ details summary {
 }
 .tl-home--banner--column {
   display: flex;
-  flex-direction: column;
   flex-basis: 100%;
   flex: 1;
   width: 50%;
@@ -7781,9 +7780,6 @@ details summary {
   .tl-home--banner--column:first-child {
     order: 2;
   }
-}
-.tl-home--banner--card {
-  height: 100%;
 }
 @media (max-width: 40.0525em) {
   .tl-home--banner {
