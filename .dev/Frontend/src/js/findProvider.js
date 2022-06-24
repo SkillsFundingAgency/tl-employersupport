@@ -20,6 +20,7 @@ function FindProvider(
     let currentPage = 0;
     let currentSearchTerm = null;
     let currentQualificationIds = [];
+    let isClearAllInProgress = false;
 
     //initialize autocomplete
     new LocationAutocomplete(findProvidersApiUri);
@@ -52,6 +53,7 @@ function FindProvider(
     });
 
     function qualificationSelectionChanged() {
+        if (isClearAllInProgress) return false;
         if (!$("#tl-search-term").val().trim()) return false;
         return providerSearch($("#tl-search-term").val().trim(), getQualificationIds());
     }
@@ -513,11 +515,14 @@ function FindProvider(
             });
         });
 
-
         function clearCheckboxes() {
-            $('.tl-fap--filter').find('input[type=checkbox]:checked').each(function () {            
-                $(this).trigger("click");
-            });
+            const checkedBoxes = $('.tl-fap--filter').find('input[type=checkbox]:checked');
+            isClearAllInProgress = true;
+            for (let i = 0; i < checkedBoxes.length - 1; i++) {
+                $(checkedBoxes[i]).trigger("click");
+            }
+            isClearAllInProgress = false;
+            $(checkedBoxes[checkedBoxes.length - 1]).trigger("click");
         }
     }
 
