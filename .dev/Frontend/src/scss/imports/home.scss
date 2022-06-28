@@ -12,7 +12,7 @@
         width: 50%;
 
         &:first-child {
-            @include govuk-media-query($until: tablet) {
+            @include govuk-media-query($until: desktop) {
                 order: 2;
             }
         }
@@ -23,7 +23,7 @@
     }
 
 
-    @include govuk-media-query($until: tablet) {
+    @include govuk-media-query($until: desktop) {
         flex-direction: column;
 
         &--column {
