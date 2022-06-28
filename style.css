@@ -7776,12 +7776,12 @@ details summary {
   flex: 1;
   width: 50%;
 }
-@media (max-width: 40.0525em) {
+@media (max-width: 48.0525em) {
   .tl-home--banner--column:first-child {
     order: 2;
   }
 }
-@media (max-width: 40.0525em) {
+@media (max-width: 48.0525em) {
   .tl-home--banner {
     flex-direction: column;
   }
