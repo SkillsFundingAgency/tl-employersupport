@@ -6542,6 +6542,8 @@ x:-moz-any-link {
   max-width: 100%;
   max-height: 100%;
   object-position: right bottom;
+  height: 100%;
+  width: 100%;
 }
 
 .tl-border-top-blue--1 {
