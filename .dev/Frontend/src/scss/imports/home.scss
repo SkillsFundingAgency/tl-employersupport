@@ -11,10 +11,6 @@
         flex: 1;
         width: 50%;
 
-        &--image {
-            max-height: 1vw;
-        }
-
         &:first-child {
             @include govuk-media-query($until: desktop) {
                 order: 2;

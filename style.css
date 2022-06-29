@@ -6539,8 +6539,8 @@ x:-moz-any-link {
 
 .tl-image--cover {
   object-fit: cover;
-  min-width: 100%;
-  min-height: 100%;
+  max-width: 100%;
+  max-height: 100%;
   object-position: right bottom;
 }
 
@@ -7775,9 +7775,6 @@ details summary {
   flex-basis: 100%;
   flex: 1;
   width: 50%;
-}
-.tl-home--banner--column--image {
-  max-height: 1vw;
 }
 @media (max-width: 48.0525em) {
   .tl-home--banner--column:first-child {
