@@ -7776,6 +7776,9 @@ details summary {
   flex: 1;
   width: 50%;
 }
+.tl-home--banner--column--image {
+  max-height: 1vw;
+}
 @media (max-width: 48.0525em) {
   .tl-home--banner--column:first-child {
     order: 2;
@@ -7787,6 +7790,9 @@ details summary {
   }
   .tl-home--banner--column {
     width: 100%;
+  }
+  .tl-home--banner--column--image {
+    max-height: 73vw;
   }
 }
 
