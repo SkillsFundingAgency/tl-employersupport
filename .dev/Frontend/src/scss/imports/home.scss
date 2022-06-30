@@ -7,13 +7,12 @@
 
     &--column {
         display: flex;
-        flex-direction: column;
         flex-basis: 100%;
         flex: 1;
         width: 50%;
 
         &:first-child {
-            @include govuk-media-query($until: tablet) {
+            @include govuk-media-query($until: desktop) {
                 order: 2;
             }
         }
@@ -21,15 +20,18 @@
 
     &--card {
         @extend .tl-card--grey;
-        height: 100%;
     }
 
 
-    @include govuk-media-query($until: tablet) {
+    @include govuk-media-query($until: desktop) {
         flex-direction: column;
 
         &--column {
             width: 100%;
+
+            &--image {
+                max-height: 73vw;
+            }
         }
     }
 }

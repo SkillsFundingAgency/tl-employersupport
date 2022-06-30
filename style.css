@@ -6539,9 +6539,11 @@ x:-moz-any-link {
 
 .tl-image--cover {
   object-fit: cover;
-  min-width: 100%;
-  min-height: 100%;
+  max-width: 100%;
+  max-height: 100%;
   object-position: right bottom;
+  height: 100%;
+  width: 100%;
 }
 
 .tl-border-top-blue--1 {
@@ -7772,25 +7774,24 @@ details summary {
 }
 .tl-home--banner--column {
   display: flex;
-  flex-direction: column;
   flex-basis: 100%;
   flex: 1;
   width: 50%;
 }
-@media (max-width: 40.0525em) {
+@media (max-width: 48.0525em) {
   .tl-home--banner--column:first-child {
     order: 2;
   }
 }
-.tl-home--banner--card {
-  height: 100%;
-}
-@media (max-width: 40.0525em) {
+@media (max-width: 48.0525em) {
   .tl-home--banner {
     flex-direction: column;
   }
   .tl-home--banner--column {
     width: 100%;
+  }
+  .tl-home--banner--column--image {
+    max-height: 73vw;
   }
 }
 
