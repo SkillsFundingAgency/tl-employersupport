@@ -22,6 +22,7 @@
 
         &:last-child {
             width: 33.3333%;
+            min-width: 33.3333%;
 
             @include govuk-media-query($until: tablet) {
                 width: 100%;
