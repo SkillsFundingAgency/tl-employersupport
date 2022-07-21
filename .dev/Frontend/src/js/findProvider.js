@@ -105,8 +105,6 @@ function FindProvider(
 
         $.each(data,
             function (_, item) {
-                if (!item.numberOfQualificationsOffered) return;
-
                 let skillArea = '<div class="tl-fap--filter--section"> \
                                    <h4 class="govuk-heading-s govuk-!-margin-top-2">' +
                     item.name + '<br /> \
