@@ -441,7 +441,7 @@
           "type": "checkbox",
           "description": "Enable Find a Provider",
           "label": "Show the find a provider search on home",
-          "value": false
+          "value": true
         },
         {
           "identifier": "find_provider_api_uri",
