@@ -1643,7 +1643,7 @@ function FindProvider(
                 break;
             default:
                 $("#tl-error-header").text('Sorry, there is a problem with the service.');
-                $("#tl-error-detail").html('Try again later or <a class="govuk-link tl-error--contact" href="https://test.employers.tlevels.gov.uk/hc/en-gb/requests/new">contact us</a> quoting error code ' + status);
+                $("#tl-error-detail").html('Try again later or <a class="govuk-link tl-error--contact" href="/hc/en-gb/requests/new">contact us</a> quoting error code ' + status);
         }
 
         clearProviderSearchResults();
