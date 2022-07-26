@@ -1427,6 +1427,7 @@ function FindProvider(
                             '" name="' + qualificationId +
                             '" type="checkbox" ' +
                             'value="' + qualification.id +
+                            '" data-offerings="' + item.numberOfQualificationsOffered +
                             '" class="tl-checkbox govuk-checkboxes__input"> \
                                                         <label for="' + qualificationId +
                             '" class="govuk-body-s govuk-checkboxes__label">' + qualification.name + '</label> \
@@ -1519,6 +1520,7 @@ function FindProvider(
         $('#tl-error').addClass("tl-hidden");
         $('#tl-search-term-error').addClass("tl-hidden");
         $('.tl-fap--noresult').addClass("tl-hidden");
+        $('.tl-fap--info-panel').addClass("tl-hidden");
         $("#tl-next-results-link").addClass("tl-hidden");
         $("#tl-fap--results").find(".tl-fap--result").remove();
         currentPage = 0;
@@ -1529,10 +1531,10 @@ function FindProvider(
             $("#tl-search-term").val(data.searchTerm);
         }
 
-        if ((!data.searchResults || data.searchResults.length === 0) && currentPage === 0) {
-            $('.tl-fap--noresult').removeClass("tl-hidden");
-            $('.tl-fap--result').addClass("tl-hidden");
+        showSearchResultsInfoPanel(data.searchResults);
 
+        if ((!data.searchResults || data.searchResults.length === 0) && currentPage === 0) {
+            $('.tl-fap--result').addClass("tl-hidden");
             return;
         }
 
@@ -1632,6 +1634,71 @@ function FindProvider(
         } else {
             $('#tl-next-results-link').removeClass("tl-hidden");
         }
+    }
+
+    function showSearchResultsInfoPanel(searchResults) {
+        $("div.tl-fap--info-panel--detail").empty();
+
+        const overMinDistance =
+            (searchResults && searchResults.length > 0 && searchResults[0].distance > 15);
+
+        const qualificationNames = [];
+        $('#tl-skill-area-filter .tl-checkbox:checked').each(
+            function (_, item) {
+                const qualificationsOffered = parseInt($(item).attr("data-offerings"));
+                if (qualificationsOffered === 0) {
+                    qualificationNames.push($(item).next('label').text());
+                }
+            });
+        qualificationNames.sort();
+
+        if (qualificationNames.length === 0 && overMinDistance) {
+            $(".tl-fap--info-panel--heading").text("There are currently no T Level schools or colleges within 15 miles of your location.");
+            $(".tl-fap--info-panel--detail").append(
+                '<p class="govuk-body">Please ' +
+                '<a class="govuk-link tl-fap--no-course-contact" href="/hc/en-gb/requests/new">contact us</a> ' +
+                'and we can help you with your search.</p>');
+        }
+        else if (qualificationNames.length > 0 && overMinDistance) {
+            $(".tl-fap--info-panel--heading").text("Contact us for help with your search");
+            $(".tl-fap--info-panel--detail").append(
+                '<p class="govuk-body">There are currently no T Level schools or colleges within 15 miles of your location.</p>' +
+                '<p class="govuk-body">The following T Levels start in September 2023 — we don’t have details of the schools and colleges offering them yet:</p>');
+            $(".tl-fap--info-panel--detail").append(buildQualificationList(qualificationNames));
+            $(".tl-fap--info-panel--detail").append(
+                '<p class="govuk-body">We don’t have details of the schools and colleges offering these T Levels yet, but if you’re interested in offering an industry placement in these areas, ' +
+                '<a class="govuk-link tl-fap--no-course-contact" href="/hc/en-gb/requests/new">contact us</a>.</p>');
+        }
+        else if (qualificationNames.length === 1) {
+            $(".tl-fap--info-panel--heading").text("The " + qualificationNames[0] + " T Level starts in September 2023");
+            $(".tl-fap--info-panel--detail").append(
+                '<p class="govuk-body">We don’t have details of the schools and colleges offering this T Level yet, but if you’re interested in offering an industry placement in this skill area, ' +
+                '<a class="govuk-link tl-fap--no-course-contact" href="/hc/en-gb/requests/new">contact us</a>.</p>');
+        }
+        else if (qualificationNames.length > 1) {
+            $(".tl-fap--info-panel--heading").text("The following T Levels start in September 2023:");
+            $(".tl-fap--info-panel--detail").append(buildQualificationList(qualificationNames));
+            $(".tl-fap--info-panel--detail").append(
+                '<p class="govuk-body">We don’t have details of the schools and colleges offering these T Levels yet, but if you’re interested in offering an industry placement in these areas, ' +
+                '<a class="govuk-link tl-fap--no-course-contact" href="/hc/en-gb/requests/new">contact us</a>.</p>');
+        }
+
+        if (qualificationNames.length > 0 || overMinDistance) {
+            $('.tl-fap--info-panel').removeClass("tl-hidden");
+            $('.tl-fap--noresult').addClass("tl-hidden");
+        } else {
+            $('.tl-fap--noresult').removeClass("tl-hidden");
+        }
+    }
+
+    function buildQualificationList(qualificationNames) {
+        let list = "<ul>";
+        $.each(qualificationNames,
+            function (_, qualificationName) {
+                list += '<li>' + qualificationName + '</li>';
+            });
+        list += "</ul>";     
+        return list;
     }
 
     function showError(status, errorText) {
