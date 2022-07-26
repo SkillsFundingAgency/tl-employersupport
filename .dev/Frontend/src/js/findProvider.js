@@ -388,7 +388,7 @@ function FindProvider(
     }
 
     function buildQualificationList(qualificationNames) {
-        let list = "<ul>";
+        let list = '<ul class"govuk-list">';
         $.each(qualificationNames,
             function (_, qualificationName) {
                 list += '<li>' + qualificationName + '</li>';
