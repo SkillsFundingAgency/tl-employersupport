@@ -1686,7 +1686,7 @@ function FindProvider(
         if (qualificationNames.length > 0 || overMinDistance) {
             $('.tl-fap--info-panel').removeClass("tl-hidden");
             $('.tl-fap--noresult').addClass("tl-hidden");
-        } else {
+        } else if ((!searchResults || searchResults.length === 0) && currentPage === 0) {
             $('.tl-fap--noresult').removeClass("tl-hidden");
         }
     }
