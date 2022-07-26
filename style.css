@@ -9578,6 +9578,16 @@ ul.govuk-radios label .gem-radios__input {
     line-height: 1.31579;
   }
 }
+.tl-fap--info-panel {
+  padding: 15px;
+  border: 3px solid #1d70b8;
+}
+@media (min-width: 40.0625em) {
+  .tl-fap--info-panel {
+    padding: 15px;
+  }
+}
+
 .HeaderView-* {
   background-color: red !important;
 }
