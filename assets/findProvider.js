@@ -1666,8 +1666,9 @@ function FindProvider(
                 '<p class="govuk-body">The following T Levels start in September 2023 — we don’t have details of the schools and colleges offering them yet:</p>');
             $(".tl-fap--info-panel--detail").append(buildQualificationList(qualificationNames));
             $(".tl-fap--info-panel--detail").append(
-                '<p class="govuk-body">We don’t have details of the schools and colleges offering these T Levels yet, but if you’re interested in offering an industry placement in these areas, ' +
-                '<a class="govuk-link tl-fap--no-course-contact" href="/hc/en-gb/requests/new">contact us</a>.</p>');
+                '<p class="govuk-body">Please ' +
+                '<a class="govuk-link tl-fap--no-course-contact" href="/hc/en-gb/requests/new">contact us</a> ' +
+                'and we can help you with your search.</p>');
         }
         else if (qualificationNames.length === 1) {
             $(".tl-fap--info-panel--heading").text("The " + qualificationNames[0] + " T Level starts in September 2023");
