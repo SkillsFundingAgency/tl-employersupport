@@ -336,7 +336,7 @@ function FindProvider(
         $("div.tl-fap--info-panel--detail").empty();
 
         const overMinDistance =
-            (searchResults && searchResults.length > 0 && searchResults[0].distance > 15);
+            (searchResults && searchResults.length > 0 && searchResults[0].distance >= 15);
 
         const qualificationNames = [];
         $('#tl-skill-area-filter .tl-checkbox:checked').each(
