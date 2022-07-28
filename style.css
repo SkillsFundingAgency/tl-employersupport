@@ -9582,6 +9582,7 @@ ul.govuk-radios label .gem-radios__input {
   padding: 15px;
   padding-bottom: 5px;
   border: 3px solid #1d70b8;
+  margin-bottom: 15px;
 }
 @media (min-width: 40.0625em) {
   .tl-fap--info-panel {
@@ -9591,6 +9592,11 @@ ul.govuk-radios label .gem-radios__input {
 @media (min-width: 40.0625em) {
   .tl-fap--info-panel {
     padding-bottom: 5px;
+  }
+}
+@media (min-width: 40.0625em) {
+  .tl-fap--info-panel {
+    margin-bottom: 20px;
   }
 }
 
