@@ -1401,7 +1401,6 @@ function FindProvider(
 
     let details = null;
     let showAll = null;
-    let clearAll = null;
 
     function populateRoutes(data) {
         const skillAreasList = $("#tl-skill-area-filter");
@@ -1425,11 +1424,12 @@ function FindProvider(
                                                     <div class="govuk-checkboxes__item"> \
                                                         <input id="' + qualificationId +
                             '" name="' + qualificationId +
-                            '" type="checkbox" ' +
-                            'value="' + qualification.id +
+                            '" type="checkbox"' +
+                            ' value="' + qualification.id +
                             '" data-offerings="' + qualification.numberOfQualificationsOffered +
-                            '" class="tl-checkbox govuk-checkboxes__input"> \
-                                                        <label for="' + qualificationId +
+                            '" class="tl-checkbox govuk-checkboxes__input" \
+                               autocomplete="off"> \
+                               <label for="' + qualificationId +
                             '" class="govuk-body-s govuk-checkboxes__label">' + qualification.name + '</label> \
                                                     </div> \
                                                 </div>';
@@ -1808,12 +1808,10 @@ function FindProvider(
         var key = e.which;
         if (key === 13)  // the enter key code
         {
-            console.log("item keypress")
             $(this).click();
             return false;
         }
     });
-
 
     function checkDetailsChange() {
         details.each(function () {
