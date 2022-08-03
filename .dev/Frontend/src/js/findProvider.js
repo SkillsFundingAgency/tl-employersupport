@@ -54,7 +54,6 @@ function FindProvider(
 
     function qualificationSelectionChanged() {
         if (isClearAllInProgress) return false;
-        if (!$("#tl-search-term").val().trim()) return false;
         return providerSearch($("#tl-search-term").val().trim(), getQualificationIds());
     }
 
