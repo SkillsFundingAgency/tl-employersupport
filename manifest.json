@@ -1,7 +1,7 @@
 {
-  "name": "GDS Style - Employer Support - FAP Tile",
+  "name": "GDS Style - Employer Support - FAP enhancements",
   "author": "Ash Anderton",
-  "version": "0.1.673",
+  "version": "0.1.690",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [
@@ -441,7 +441,7 @@
           "type": "checkbox",
           "description": "Enable Find a Provider",
           "label": "Show the find a provider search on home",
-          "value": false
+          "value": true
         },
         {
           "identifier": "find_provider_api_uri",
