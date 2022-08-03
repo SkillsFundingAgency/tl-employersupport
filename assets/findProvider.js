@@ -1426,8 +1426,7 @@ function FindProvider(
                             '" type="checkbox"' +
                             ' value="' + qualification.id +
                             '" data-offerings="' + qualification.numberOfQualificationsOffered +
-                            '" class="tl-checkbox govuk-checkboxes__input" \
-                               autocomplete="off"> \
+                            '" class="tl-checkbox govuk-checkboxes__input"> \
                                <label for="' + qualificationId +
                             '" class="govuk-body-s govuk-checkboxes__label">' + qualification.name + '</label> \
                                                     </div> \
