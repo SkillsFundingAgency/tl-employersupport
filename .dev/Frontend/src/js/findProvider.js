@@ -605,8 +605,12 @@ function FindProvider(
     });
 
     //Provider file download
-    $('.tl-provider-csv').click(function () {
-        downloadFile();
+    $(document).ready(function () {
+        loadCsvFileDetails();
+
+        $('.tl-provider-csv').click(function () {
+            downloadFile();
+        });
     });
 
     function loadCsvFileDetails() {
@@ -619,8 +623,6 @@ function FindProvider(
                 addHmacAuthHeader(xhr, uri, findProvidersAppId, findProvidersApiKey);
             }
         }).done(function (response) {
-            console.log(response);
-            console.log('fileSize: ' + response.fileSize);
             $('.tl-provider-csv-size').text(bytesToSize(response.fileSize));
             $('.tl-provider-csv-size').removeClass("tl-hidden");
             $('.tl-provider-csv-date').text(response.formattedFileDate);
@@ -639,22 +641,13 @@ function FindProvider(
                 addHmacAuthHeader(xhr, uri, findProvidersAppId, findProvidersApiKey);
             }
         }).done(function (response, status, jqXHR) {
-            console.log('got download file - status: ' + status);
-            console.log(response);
-            const contentDisposition =
-                jqXHR.getResponseHeader('Content-Disposition');
-
-            let fileName = getFileName(contentDisposition);
-
-            console.log('filename: ' + fileName);
-
+            const contentDisposition = jqXHR.getResponseHeader('Content-Disposition');
             let blob = new Blob([response], {
                 type: "application/octetstream"
             });
-
-            var link = document.createElement('a');
+            const link = document.createElement('a');
             link.href = window.URL.createObjectURL(blob);
-            link.download = fileName;
+            link.download = getFileName(contentDisposition);
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
