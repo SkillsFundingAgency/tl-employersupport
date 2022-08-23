@@ -64,7 +64,7 @@
                                     Offering placements at more than one location
                                 </label>
                                 <div id="contact-reason-2-hint" class="govuk-hint govuk-radios__hint">
-                                    If you have multiple business locations and want to offer industry placements.
+                                    If you have multiple business locations. You can <a href="#" class="govuk-link tl-provider-csv">download a full list of T Level providers</a> (CSV file, <span class="tl-provider-csv-size tl-hidden"></span>) to help with your search.
                                 </div>
                             </div>
 
@@ -136,20 +136,13 @@
 </div>
 
 <script>
-
     const form_name_field_id = {{ settings.field_id_name }}
     const form_subject_field_id = {{ settings.field_id_company }}
     const form_about_field_id = {{ settings.field_id_about }}
     const form_telephone_field_id = {{ settings.field_id_telephone }}
     const form_organisation_field_id = {{ settings.field_id_company }}
 
-
-
-
-
-
     $(document).ready(function () {
-
         /* Form Styling */
         $('.form-field.request_custom_fields_' + form_name_field_id).prepend('<h2 class="govuk-heading-l govuk-!-margin-top-7 govuk-!-margin-bottom-3">Your details</h2>');
         $('.request_custom_fields_' + form_telephone_field_id).attr('type', 'tel');
@@ -167,7 +160,6 @@
             }
         });
 
-
         $("div[id$='_error']").each(function () {
             var text = $(this).text();
             $(this).text(text.replace('Name: cannot be blank', 'Enter your name').replace('Requester: Email:  cannot be blank', 'Enter your email address').replace('Requester: Email: cannot be blank', 'Enter your email address').replace('Phone number: cannot be blank', 'Enter your telephone number').replace('Organisation name: cannot be blank', 'Enter your organisation’s name').replace('Description: cannot be blank', 'Enter your message').replace('Subject: cannot be blank', 'Choose a subject'));
@@ -180,7 +172,6 @@
         $('#request_subject').insertAfter($('#tl-reason h1'));
         $('#request_subject_error').insertAfter($('#tl-reason h1'));
 
-
         $('#tl-reason input[type=radio]').change(function () {
             var reasonlabel = $(this).val()
             $("#request_subject").val(reasonlabel);
@@ -191,19 +182,21 @@
         $('#tl-reason input[value="' + currentsubject +'"]').prop('checked', true);
 
 
-
-        /* Constent Checkbox */
+        /* Consent Checkbox */
         $("input[type='submit']").attr('value', 'Send message').prop("disabled");
         $("#tl-consent").insertBefore($(".request-form input[type='submit']"));
         $('#tl-consent-check').change(function () {
             $(".request-form input[type='submit']").prop("disabled", !this.checked);
         }).change()
-
-
     });
-
 </script>
 
+<script src="{{asset 'findProvider.js'}}"></script>
+<script>    
+    new FindProvider("{{settings.find_provider_api_uri}}",
+                "{{settings.find_provider_api_app_id}}",
+                "{{settings.find_provider_api_key}}");
+</script>
 
 <!-- Start of tlevelsemployertest Zendesk Widget script -->
 <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key={{settings.answerbot_key}}"></script>
