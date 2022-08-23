@@ -1326,11 +1326,11 @@ function FindProvider(
     let currentQualificationIds = [];
     let isClearAllInProgress = false;
 
-    if($("#tl-search-term").length [
+    if($("#tl-search-term").length) [
         //initialize autocomplete
         new LocationAutocomplete(findProvidersApiUri);
     }
-    
+
     if ($("#tl-skill-area-filter").length) loadRoutes();
 
     //Check for search term query parameter
