@@ -20,6 +20,19 @@ function FindProviderTile(findProviderRedirectUrl, findProvidersApiUri) {
                     <div class="tl-card--fap--left"> \
                         <h2 class="govuk-!-margin-top-2 govuk-!-margin-bottom-4">Partner with a school or college</h2> \
                         <p class="govuk-body">Offer a placement or find out more about their T Level programme.</p> \
+                        <details class="govuk-details" data-module="govuk-details"> \
+                            <summary class="govuk-details__summary"> \
+                                <span class="govuk-details__summary-text"> \
+                                    Looking for providers in more than one location? \
+                                </span> \
+                            </summary> \
+                            <div class="govuk-details__text"> \
+                                <p class="govuk-body">You can download a list of all T Level providers if you need to see schools and colleges in multiple locations.</p> \
+                                <p class="govuk-body"><a href="#" class="govuk-link tl-provider-csv">T Level providers <span class="tl-provider-csv-date"></span></a> \
+                                    <br />CSV, <span class="tl-provider-csv-size tl-hidden"></span></p> \
+                                <p class="govuk-body"><strong>Note:</strong> This file contains publicly available data provided by the schools and colleges listed.</p> \
+                            </div> \
+                        </details> \
                     </div> \
                     <div class="tl-card--fap--right"> \
                         <form role="search" class="tl-fap-search-providers-form"> \
