@@ -72,10 +72,6 @@
         @include govuk-responsive-padding(8, "top");
         @include govuk-responsive-padding(8, "bottom");
 
-        .tl-fap-search-providers-form {
-            padding-top: 50px;
-        }
-
         @include govuk-media-query($from: tablet) {
             .tl-fap-search-providers-form {
                 padding-top: 50px;
