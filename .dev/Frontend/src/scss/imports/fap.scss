@@ -75,7 +75,13 @@
         .tl-fap-search-providers-form {
             padding-top: 50px;
         }
-        
+
+        @include govuk-media-query($until: tablet) {
+            .tl-fap-search-providers-form {
+                padding-top: 50px;
+            }
+        }
+
         @include govuk-media-query ($from: tablet) {
             &--right {
                 flex: 1 1 40%;
