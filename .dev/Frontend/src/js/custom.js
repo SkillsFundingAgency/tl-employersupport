@@ -78,17 +78,13 @@ $(document).ready(function () {
 /* Make tabs and details work in articles */
 
 $(".govuk-tabs").attr("data-module", "govuk-tabs");
-console.log('Make tabs and details work in articles');
 
 $(".tl-article--content .govuk-details").attr("data-module", "govuk-details");
 $(".tl-article--content .govuk-details__summary").click(function () {
-    console.log('clicked summary');
     if (this.closest(".govuk-details").hasAttribute("open")) {
-        console.log('closing');
         $(this).closest(".govuk-details").removeAttr('open');
     }
     else {
-        console.log('opening');
         $(this).closest(".govuk-details").attr('open', true);
     }
 });
