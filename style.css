@@ -8974,7 +8974,6 @@ ul.govuk-radios label .gem-radios__input {
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
-  align-items: center;
   box-sizing: border-box;
   padding-left: 15px;
   padding-right: 15px;
@@ -9080,6 +9079,9 @@ ul.govuk-radios label .gem-radios__input {
   #tl-home--fap .tl-card--fap {
     padding-bottom: 50px;
   }
+}
+#tl-home--fap .tl-card--fap .tl-fap-search-providers-form {
+  padding-top: 50px;
 }
 @media (min-width: 40.0625em) {
   #tl-home--fap .tl-card--fap--right {

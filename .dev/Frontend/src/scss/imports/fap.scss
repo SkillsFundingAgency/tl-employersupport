@@ -11,7 +11,6 @@
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
-    align-items: center;
     box-sizing: border-box;
     @include govuk-responsive-padding(3, "left");
     @include govuk-responsive-padding(3, "right");
@@ -73,6 +72,10 @@
         @include govuk-responsive-padding(8, "top");
         @include govuk-responsive-padding(8, "bottom");
 
+        .tl-fap-search-providers-form {
+            padding-top: 50px;
+        }
+        
         @include govuk-media-query ($from: tablet) {
             &--right {
                 flex: 1 1 40%;
