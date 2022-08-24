@@ -76,7 +76,7 @@
             padding-top: 50px;
         }
 
-        @include govuk-media-query($until: tablet) {
+        @include govuk-media-query($from: tablet) {
             .tl-fap-search-providers-form {
                 padding-top: 50px;
             }

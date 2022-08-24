@@ -9083,7 +9083,7 @@ ul.govuk-radios label .gem-radios__input {
 #tl-home--fap .tl-card--fap .tl-fap-search-providers-form {
   padding-top: 50px;
 }
-@media (max-width: 40.0525em) {
+@media (min-width: 40.0625em) {
   #tl-home--fap .tl-card--fap .tl-fap-search-providers-form {
     padding-top: 50px;
   }
