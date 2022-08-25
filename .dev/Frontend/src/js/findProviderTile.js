@@ -78,6 +78,14 @@ function FindProviderTile(findProviderRedirectUrl, findProvidersApiUri) {
         event.preventDefault();
     });
 
+    $(document).ready(function () {
+        loadCsvFileDetails(findProvidersApiUri, findProvidersAppId, findProvidersApiKey);
+
+        $('.tl-provider-csv').click(function () {
+            downloadFile(findProvidersApiUri, findProvidersAppId, findProvidersApiKey);
+        });
+    });
+
     function showSearchTermError(message) {
         if (!$("#tl-search-term-error").length) return;
         $("#tl-search-term-error").text(message);

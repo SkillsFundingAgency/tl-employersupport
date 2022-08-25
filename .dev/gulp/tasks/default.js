@@ -71,8 +71,15 @@ gulp.task('findProviderjs', () => {
 
 gulp.task('findProviderTilejs', () => {
     return src([
+        'node_modules/crypto-js/core.js',
+        'node_modules//crypto-js/enc-base64.js',
+        'node_modules//crypto-js/sha256.js',
+        'node_modules//crypto-js/hmac.js',
+        'node_modules//crypto-js/hmac-sha256.js',
         'node_modules/accessible-autocomplete/dist/accessible-autocomplete.min.js',
+        'Frontend/src/js/hmacHelpers.js',
         'Frontend/src/js/findProviderTile.js',
+        'Frontend/src/js/findProviderDownload.js',
         'Frontend/src/js/locationAutocomplete.js'
     ])
     .pipe(rmLines({
@@ -89,7 +96,9 @@ gulp.task('jsfiles', () => {
         'Frontend/src/js/*.js',
         '!Frontend/src/js/custom.js',
         '!Frontend/src/js/findProvider.js',
-        '!Frontend/src/js/findProviderTile.js'
+        '!Frontend/src/js/findProviderDownload.js',
+        '!Frontend/src/js/findProviderTile.js',
+        '!Frontend/src/js/hmacHelpers.js',
     ])
         .pipe(gulp.dest(paths.dist.Assets));
 });
