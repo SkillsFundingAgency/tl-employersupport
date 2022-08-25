@@ -1318,20 +1318,20 @@ function addHmacAuthHeader(xhr, uri, appId, apiKey) {
     xhr.setRequestHeader("Authorization", "amx " + appId + ":" + hashInBase64 + ":" + nonce + ":" + ts);
 }
 
-function FindProviderTile(findProviderRedirectUrl, findProvidersApiUri, findProvidersAppId, findProvidersApiKey) {
+function FindProviderTile(findProviderRedirectUrl, findProviderApiUri, findProviderAppId, findProviderApiKey) {
     // Find Provider tile
     const fapTileContainer = $(".tl-fap-tile").first();
     if (!fapTileContainer.length) return;
     
     if (typeof findProviderRedirectUrl === "undefined" ||
-        typeof findProvidersApiUri === "undefined"||
-        typeof findProvidersAppId === "undefined" ||
-        typeof findProvidersApiKey === "undefined") {
-        console.log('findProviderTile script requires findProviderApiUri, findProviderApiUri, findProviderAppId, findProviderApiKey and findProviderRedirectUrl parameters');
+        typeof findProviderApiUri === "undefined"||
+        typeof findProviderAppId === "undefined" ||
+        typeof findProviderApiKey === "undefined") {
+        console.log('findProviderTile script requires findProviderApiUri, findProviderAppId, findProviderApiKey and findProvidersRedirectUrl parameters');
         return;
     }
 
-    if (findProvidersApiUri !== null && findProvidersApiUri.substr(-1) !== '/') findProvidersApiUri += '/';
+    if (findProviderApiUri !== null && findProviderApiUri.substr(-1) !== '/') findProviderApiUri += '/';
     
     //Only works on first fap tile - we are assuming there is only one
     fapTileContainer.empty();
@@ -1371,7 +1371,7 @@ function FindProviderTile(findProviderRedirectUrl, findProvidersApiUri, findProv
         </div>');
 
     //initialize autocomplete
-    new LocationAutocomplete(findProvidersApiUri);
+    new LocationAutocomplete(findProviderApiUri);
 
     $('#tl-search-term').val("");
 
@@ -1401,10 +1401,10 @@ function FindProviderTile(findProviderRedirectUrl, findProvidersApiUri, findProv
     });
 
     $(document).ready(function () {
-        loadCsvFileDetails(findProvidersApiUri, findProvidersAppId, findProvidersApiKey);
+        loadCsvFileDetails(findProviderApiUri, findProviderAppId, findProviderApiKey);
 
         $('.tl-provider-csv').click(function () {
-            downloadFile(findProvidersApiUri, findProvidersAppId, findProvidersApiKey);
+            downloadFile(findProviderApiUri, findProviderAppId, findProviderApiKey);
         });
     });
 
@@ -1415,24 +1415,23 @@ function FindProviderTile(findProviderRedirectUrl, findProvidersApiUri, findProv
     }
 };
 
-
-function FindProviderDownload(findProviderRedirectUrl, findProvidersApiUri, findProvidersAppId, findProvidersApiKey) {
+function FindProviderDownload(findProviderApiUri, findProviderAppId, findProviderApiKey) {
     if(!$(".tl-provider-csv").length) return;
     
-    if (typeof findProvidersApiUri === "undefined"||
-        typeof findProvidersAppId === "undefined" ||
-        typeof findProvidersApiKey === "undefined") {
-        console.log('FindProviderDownload script requires findProviderApiUri, findProviderApiUri, findProviderAppId and findProviderApiKey parameters');
+    if (typeof findProviderApiUri === "undefined"||
+        typeof findProviderAppId === "undefined" ||
+        typeof findProviderApiKey === "undefined") {
+        console.log('FindProviderDownload script requires findProviderApiUri, findProviderAppId and findProviderApiKey parameters');
         return;
     }
 
-    if (findProvidersApiUri !== null && findProvidersApiUri.substr(-1) !== '/') findProvidersApiUri += '/';
+    if (findProviderApiUri !== null && findProviderApiUri.substr(-1) !== '/') findProviderApiUri += '/';
 
     $(document).ready(function () {
-        loadCsvFileDetails(findProvidersApiUri, findProvidersAppId, findProvidersApiKey);
+        loadCsvFileDetails(findProviderApiUri, findProviderAppId, findProviderApiKey);
 
         $('.tl-provider-csv').click(function () {
-            downloadFile(findProvidersApiUri, findProvidersAppId, findProvidersApiKey);
+            downloadFile(findProviderApiUri, findProviderAppId, findProviderApiKey);
         });
     });
 };

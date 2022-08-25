@@ -1321,16 +1321,16 @@ function addHmacAuthHeader(xhr, uri, appId, apiKey) {
 // Find Provider 
 let isFapSearchInProgress = false;
 
-function FindProvider(findProvidersApiUri, findProvidersAppId, findProvidersApiKey, qualificationArticleMap) {
+function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey, qualificationArticleMap) {
 
-    if (typeof findProvidersApiUri === "undefined" ||
-        typeof findProvidersAppId === "undefined" ||
-        typeof findProvidersApiKey === "undefined") {
+    if (typeof findProviderApiUri === "undefined" ||
+        typeof findProviderAppId === "undefined" ||
+        typeof findProviderApiKey === "undefined") {
         console.log('findProvider script requires findProviderApiUri, findProviderAppId and findProviderApiKey parameters');
         return;
     }
 
-    if (findProvidersApiUri !== null && findProvidersApiUri.substr(-1) !== '/') findProvidersApiUri += '/';
+    if (findProviderApiUri !== null && findProviderApiUri.substr(-1) !== '/') findProviderApiUri += '/';
 
     let activeSearchQuery = null;
     let currentPage = 0;
@@ -1340,7 +1340,7 @@ function FindProvider(findProvidersApiUri, findProvidersAppId, findProvidersApiK
 
     if($("#tl-search-term").length) {
         //initialize autocomplete
-        new LocationAutocomplete(findProvidersApiUri);
+        new LocationAutocomplete(findProviderApiUri);
     }
 
     if ($("#tl-skill-area-filter").length) loadRoutes();
@@ -1397,13 +1397,13 @@ function FindProvider(findProvidersApiUri, findProvidersAppId, findProvidersApiK
     }
 
     function loadRoutes() {
-        const uri = findProvidersApiUri + "routes";
+        const uri = findProviderApiUri + "routes";
         $.ajax({
             type: "GET",
             url: uri,
             contentType: "application/json",
             beforeSend: function (xhr) {
-                addHmacAuthHeader(xhr, uri, findProvidersAppId, findProvidersApiKey);
+                addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey);
             }
         }).done(function (response) {
             populateRoutes(response);
@@ -1486,7 +1486,7 @@ function FindProvider(findProvidersApiUri, findProvidersAppId, findProvidersApiK
         pageSize = (pageSize === undefined ? 5 : pageSize);
 
         const encodedSearchTerm = encodeURIComponent(searchTerm).replace(/'/g, '%27');
-        let uri = findProvidersApiUri + "providers?searchTerm=" + encodedSearchTerm + '&page=' + page + '&pageSize=' + pageSize;
+        let uri = findProviderApiUri + "providers?searchTerm=" + encodedSearchTerm + '&page=' + page + '&pageSize=' + pageSize;
 
         if (qualificationIds && qualificationIds.length > 0) {
             qualificationIds.forEach(function (id) {
@@ -1502,7 +1502,7 @@ function FindProvider(findProvidersApiUri, findProvidersAppId, findProvidersApiK
             url: uri,
             contentType: "application/json",
             beforeSend: function (xhr) {
-                addHmacAuthHeader(xhr, uri, findProvidersAppId, findProvidersApiKey);
+                addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey);
             }
         }).done(function (response) {
             if (response.error) {
@@ -1914,13 +1914,13 @@ function FindProvider(findProvidersApiUri, findProvidersAppId, findProvidersApiK
     });
 
     function loadCsvFileDetails() {
-        const uri = findProvidersApiUri + "providers/download/info";
+        const uri = findProviderApiUri + "providers/download/info";
         $.ajax({
             type: "GET",
             url: uri,
             contentType: "application/json",
             beforeSend: function (xhr) {
-                addHmacAuthHeader(xhr, uri, findProvidersAppId, findProvidersApiKey);
+                addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey);
             }
         }).done(function (response) {
             $('.tl-provider-csv-size').text(bytesToSize(response.fileSize));
@@ -1932,13 +1932,13 @@ function FindProvider(findProvidersApiUri, findProvidersAppId, findProvidersApiK
     }
 
     function downloadFile() {
-        const uri = findProvidersApiUri + "providers/download/";
+        const uri = findProviderApiUri + "providers/download/";
         $.ajax({
             type: "GET",
             url: uri,
             dataType: "text",
             beforeSend: function (xhr) {
-                addHmacAuthHeader(xhr, uri, findProvidersAppId, findProvidersApiKey);
+                addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey);
             }
         }).done(function (response, status, jqXHR) {
             const contentDisposition = jqXHR.getResponseHeader('Content-Disposition');
