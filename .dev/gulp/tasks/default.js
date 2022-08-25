@@ -57,6 +57,7 @@ gulp.task('findProviderjs', () => {
         'node_modules//crypto-js/hmac.js',
         'node_modules//crypto-js/hmac-sha256.js',
         'node_modules/accessible-autocomplete/dist/accessible-autocomplete.min.js',
+        'Frontend/src/js/hmac.js',
         'Frontend/src/js/findProvider.js',
         'Frontend/src/js/locationAutocomplete.js'
     ])
@@ -77,7 +78,7 @@ gulp.task('findProviderTilejs', () => {
         'node_modules//crypto-js/hmac.js',
         'node_modules//crypto-js/hmac-sha256.js',
         'node_modules/accessible-autocomplete/dist/accessible-autocomplete.min.js',
-        'Frontend/src/js/hmacHelpers.js',
+        'Frontend/src/js/hmac.js',
         'Frontend/src/js/findProviderTile.js',
         'Frontend/src/js/findProviderDownload.js',
         'Frontend/src/js/locationAutocomplete.js'
@@ -91,6 +92,26 @@ gulp.task('findProviderTilejs', () => {
         .pipe(gulp.dest(paths.dist.Assets));
 });
 
+gulp.task('findProviderDownloadjs', () => {
+    return src([
+        'node_modules/crypto-js/core.js',
+        'node_modules//crypto-js/enc-base64.js',
+        'node_modules//crypto-js/sha256.js',
+        'node_modules//crypto-js/hmac.js',
+        'node_modules//crypto-js/hmac-sha256.js',
+        'node_modules/accessible-autocomplete/dist/accessible-autocomplete.min.js',
+        'Frontend/src/js/hmac.js',
+        'Frontend/src/js/findProviderDownload.js'
+    ])
+    .pipe(rmLines({
+        'filters': [
+            /^\/\/# sourceMappingURL=/g,
+        ]
+      }))
+        .pipe(concat('findProviderDownload.js'))
+        .pipe(gulp.dest(paths.dist.Assets));
+});
+
 gulp.task('jsfiles', () => {
     return src([
         'Frontend/src/js/*.js',
@@ -98,7 +119,7 @@ gulp.task('jsfiles', () => {
         '!Frontend/src/js/findProvider.js',
         '!Frontend/src/js/findProviderDownload.js',
         '!Frontend/src/js/findProviderTile.js',
-        '!Frontend/src/js/hmacHelpers.js',
+        '!Frontend/src/js/hmac.js',
     ])
         .pipe(gulp.dest(paths.dist.Assets));
 });

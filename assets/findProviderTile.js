@@ -1415,6 +1415,29 @@ function FindProviderTile(findProviderRedirectUrl, findProvidersApiUri, findProv
     }
 };
 
+
+function FindProviderTileDownload(findProviderRedirectUrl, findProvidersApiUri, findProvidersAppId, findProvidersApiKey) {
+    if(!$(".tl-provider-csv").length) return;
+    
+    if (typeof findProviderRedirectUrl === "undefined" ||
+        typeof findProvidersApiUri === "undefined"||
+        typeof findProvidersAppId === "undefined" ||
+        typeof findProvidersApiKey === "undefined") {
+        console.log('findProviderTile script requires findProviderApiUri, findProviderApiUri, findProviderAppId, findProviderApiKey and findProviderRedirectUrl parameters');
+        return;        
+    }
+
+    if (findProvidersApiUri !== null && findProvidersApiUri.substr(-1) !== '/') findProvidersApiUri += '/';
+
+    $(document).ready(function () {
+        loadCsvFileDetails(findProvidersApiUri, findProvidersAppId, findProvidersApiKey);
+
+        $('.tl-provider-csv').click(function () {
+            downloadFile(findProvidersApiUri, findProvidersAppId, findProvidersApiKey);
+        });
+    });
+};
+
 function loadCsvFileDetails(apiUri, appId, apiKey) {
     const uri = apiUri + "providers/download/info";
     $.ajax({
