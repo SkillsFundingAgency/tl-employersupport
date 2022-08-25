@@ -8,7 +8,7 @@ function FindProviderTile(findProviderRedirectUrl, findProvidersApiUri, findProv
         typeof findProvidersAppId === "undefined" ||
         typeof findProvidersApiKey === "undefined") {
         console.log('findProviderTile script requires findProviderApiUri, findProviderApiUri, findProviderAppId, findProviderApiKey and findProviderRedirectUrl parameters');
-        return;        
+        return;
     }
 
     if (findProvidersApiUri !== null && findProvidersApiUri.substr(-1) !== '/') findProvidersApiUri += '/';

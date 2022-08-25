@@ -6,8 +6,8 @@ function FindProviderDownload(findProviderRedirectUrl, findProvidersApiUri, find
         typeof findProvidersApiUri === "undefined"||
         typeof findProvidersAppId === "undefined" ||
         typeof findProvidersApiKey === "undefined") {
-        console.log('findProviderTile script requires findProviderApiUri, findProviderApiUri, findProviderAppId, findProviderApiKey and findProviderRedirectUrl parameters');
-        return;        
+        console.log('FindProviderDownload script requires findProviderApiUri, findProviderApiUri, findProviderAppId, findProviderApiKey and findProviderRedirectUrl parameters');
+        return;
     }
 
     if (findProvidersApiUri !== null && findProvidersApiUri.substr(-1) !== '/') findProvidersApiUri += '/';
