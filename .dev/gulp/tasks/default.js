@@ -34,7 +34,6 @@ gulp.task('js', () => {
         'node_modules/jquery/dist/jquery.min.js',
         'node_modules/govuk-frontend/govuk/all.js',
         'node_modules/jquery-ui-dist/jquery-ui.min.js',
-
     ])
         .pipe(concat('govuk.js'))
         .pipe(gulp.dest(paths.dist.JS));

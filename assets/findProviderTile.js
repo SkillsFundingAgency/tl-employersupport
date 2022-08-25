@@ -1416,7 +1416,7 @@ function FindProviderTile(findProviderRedirectUrl, findProvidersApiUri, findProv
 };
 
 
-function FindProviderTileDownload(findProviderRedirectUrl, findProvidersApiUri, findProvidersAppId, findProvidersApiKey) {
+function FindProviderDownload(findProviderRedirectUrl, findProvidersApiUri, findProvidersAppId, findProvidersApiKey) {
     if(!$(".tl-provider-csv").length) return;
     
     if (typeof findProviderRedirectUrl === "undefined" ||
