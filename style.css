@@ -9003,7 +9003,7 @@ ul.govuk-radios label .gem-radios__input {
 @media (min-width: 40.0625em) {
   .tl-card--fap {
     background-image: url($assets-map-png);
-    background-size: 713px auto;
+    background-size: 650px auto;
     background-repeat: no-repeat;
     background-position: bottom -40px right -160px;
     padding-bottom: 25px;

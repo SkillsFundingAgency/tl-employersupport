@@ -19,7 +19,7 @@
 
     @include govuk-media-query ($from: tablet) {
         background-image: govuk-image-url("map.png");
-        background-size: 713px auto;
+        background-size: 650px auto;
         background-repeat: no-repeat;
         background-position: bottom -40px right -160px;
         @include govuk-responsive-padding(7, "bottom");
