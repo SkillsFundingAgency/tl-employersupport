@@ -1370,8 +1370,9 @@ function FindProviderTile(findProviderRedirectUrl, findProviderApiUri, findProvi
             </div> \
         </div>');
 
-    //initialize autocomplete
+    //initialize autocomplete and file download
     new LocationAutocomplete(findProviderApiUri);
+    new FindProviderDownload(findProviderApiUri, findProviderAppId, findProviderApiKey);
 
     $('#tl-search-term').val("");
 
@@ -1399,15 +1400,6 @@ function FindProviderTile(findProviderRedirectUrl, findProviderApiUri, findProvi
     $(".tl-fap-search-providers-form").submit(function() {
         event.preventDefault();
     });
-
-    new FindProviderDownload(findProviderApiUri, findProviderAppId, findProviderApiKey);
-    // $(document).ready(function () {
-    //     loadCsvFileDetails(findProviderApiUri, findProviderAppId, findProviderApiKey);
-
-    //     $('.tl-provider-csv').click(function () {
-    //         downloadFile(findProviderApiUri, findProviderAppId, findProviderApiKey);
-    //     });
-    // });
 
     function showSearchTermError(message) {
         if (!$("#tl-search-term-error").length) return;

@@ -58,6 +58,7 @@ gulp.task('findProviderjs', () => {
         'node_modules/accessible-autocomplete/dist/accessible-autocomplete.min.js',
         'Frontend/src/js/hmac.js',
         'Frontend/src/js/findProvider.js',
+        'Frontend/src/js/findProviderDownload.js',
         'Frontend/src/js/locationAutocomplete.js'
     ])
     .pipe(rmLines({
