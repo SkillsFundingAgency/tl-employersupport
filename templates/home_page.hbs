@@ -200,8 +200,6 @@
     </div>
 </section>
 
-
-
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         if (!isAgent()) {
@@ -215,14 +213,14 @@
     });
 
     $("#tl-home-lower--image").attr("src", "{{settings.home_image_lower}}");
-
-
-
 </script>
 
 <script src="{{asset 'findProviderTile.js'}}"></script>
 <script>
-    new FindProviderTile("/hc/en-gb/articles/{{settings.article_id_find_provider}}", "{{settings.find_provider_api_uri}}");
+    new FindProviderTile("/hc/en-gb/articles/{{settings.article_id_find_provider}}", 
+                         "{{settings.find_provider_api_uri}}",
+                         "{{settings.find_provider_api_app_id}}",
+                         "{{settings.find_provider_api_key}}");
 </script>
 
 <!-- Start of tlevelsemployertest Zendesk Widget script -->

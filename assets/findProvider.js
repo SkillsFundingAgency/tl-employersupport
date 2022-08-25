@@ -1305,11 +1305,7 @@
 // Find Provider 
 let isFapSearchInProgress = false;
 
-function FindProvider(
-    findProvidersApiUri,
-    findProvidersAppId,
-    findProvidersApiKey,
-    qualificationArticleMap) {
+function FindProvider(findProvidersApiUri, findProvidersAppId, findProvidersApiKey, qualificationArticleMap) {
 
     if (typeof findProvidersApiUri === "undefined" ||
         typeof findProvidersAppId === "undefined" ||
