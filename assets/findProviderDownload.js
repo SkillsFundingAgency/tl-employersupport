@@ -1322,11 +1322,10 @@ function addHmacAuthHeader(xhr, uri, appId, apiKey) {
 function FindProviderDownload(findProviderRedirectUrl, findProvidersApiUri, findProvidersAppId, findProvidersApiKey) {
     if(!$(".tl-provider-csv").length) return;
     
-    if (typeof findProviderRedirectUrl === "undefined" ||
-        typeof findProvidersApiUri === "undefined"||
+    if (typeof findProvidersApiUri === "undefined"||
         typeof findProvidersAppId === "undefined" ||
         typeof findProvidersApiKey === "undefined") {
-        console.log('FindProviderDownload script requires findProviderApiUri, findProviderApiUri, findProviderAppId, findProviderApiKey and findProviderRedirectUrl parameters');
+        console.log('FindProviderDownload script requires findProviderApiUri, findProviderApiUri, findProviderAppId and findProviderApiKey parameters');
         return;
     }
 
