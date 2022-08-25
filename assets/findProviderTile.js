@@ -1400,13 +1400,14 @@ function FindProviderTile(findProviderRedirectUrl, findProviderApiUri, findProvi
         event.preventDefault();
     });
 
-    $(document).ready(function () {
-        loadCsvFileDetails(findProviderApiUri, findProviderAppId, findProviderApiKey);
+    new FindProviderDownload(findProviderApiUri, findProviderAppId, findProviderApiKey);
+    // $(document).ready(function () {
+    //     loadCsvFileDetails(findProviderApiUri, findProviderAppId, findProviderApiKey);
 
-        $('.tl-provider-csv').click(function () {
-            downloadFile(findProviderApiUri, findProviderAppId, findProviderApiKey);
-        });
-    });
+    //     $('.tl-provider-csv').click(function () {
+    //         downloadFile(findProviderApiUri, findProviderAppId, findProviderApiKey);
+    //     });
+    // });
 
     function showSearchTermError(message) {
         if (!$("#tl-search-term-error").length) return;
