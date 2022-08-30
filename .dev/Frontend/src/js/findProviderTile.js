@@ -30,7 +30,7 @@ function FindProviderTile(findProviderRedirectUrl, findProviderApiUri, findProvi
                             </summary> \
                             <div class="govuk-details__text"> \
                                 <p class="govuk-body">You can download a list of all T Level providers if you need to see schools and colleges in multiple locations.</p> \
-                                <p class="govuk-body"><a href="#" class="govuk-link tl-provider-csv">T Level providers <span class="tl-provider-csv-date"></span></a> \
+                                <p class="govuk-body"><a href="#" class="govuk-link tl-provider-csv">All T Level providers <span class="tl-provider-csv-date"></span></a> \
                                     <br />CSV, <span class="tl-provider-csv-size tl-hidden"></span></p> \
                                 <p class="govuk-body"><strong>Note:</strong> This file contains publicly available data provided by the schools and colleges listed.</p> \
                             </div> \
