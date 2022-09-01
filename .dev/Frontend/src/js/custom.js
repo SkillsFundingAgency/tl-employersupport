@@ -155,6 +155,9 @@ if (cookieConsent.length) {
     if ((cookieGoogle == 'false') || (cookieGoogle == null)) {
         $('#cookie-consent-Yes').prop("checked", false);
         $('#cookie-consent-No').prop("checked", true);
+        writeCookie('AnalyticsConsent', 'false', 365);
+        writeCookie('seen_cookie_message_help2', 'cookie_policy', 365);
+
     } else {//not false (unset or true)
         $('#cookie-consent-Yes').prop("checked", true);
         $('#cookie-consent-No').prop("checked", false);
@@ -185,6 +188,9 @@ if (cookieConsent.length) {
     if ((cookieMarketing == 'false') || (cookieMarketing == null)) {
         $('#cookie-consent-marketing-Yes').prop("checked", false);
         $('#cookie-consent-marketing-No').prop("checked", true);
+        writeCookie('MarketingConsent', 'false', 365);
+        writeCookie('seen_cookie_message_help2', 'cookie_policy', 365); 
+
     } else {//not false (unset or true)
         $('#cookie-consent-marketing-Yes').prop("checked", true);
         $('#cookie-consent-marketing-No').prop("checked", false);
