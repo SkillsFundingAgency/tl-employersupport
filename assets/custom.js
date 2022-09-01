@@ -130,6 +130,7 @@ if (href == url) {
 $cookieBanner.find('button.gem-c-button').click(function () {
     writeCookie('seen_cookie_message_help', 'cookie_policy', 365);
     writeCookie('AnalyticsConsent', 'true', 365);
+    writeCookie('MarketingConsent', 'true', 365);
 
     $cookieBanner.find('.gem-c-cookie-banner__wrapper').hide();
     var $cookieConfirm = $cookieBanner.find('.gem-c-cookie-banner__confirmation');
@@ -170,8 +171,36 @@ if (cookieConsent.length) {
         }
     });
 
-    /*$('#cookie-consent-Yes').change(function() { writeCookie('AnalyticsConsent','true',365); writeCookie('seen_cookie_message_help','cookie_policy',365); });
-    $('#cookie-consent-No').change(function() {writeCookie('AnalyticsConsent','false',365); writeCookie('seen_cookie_message_help','cookie_policy',365); });*/
+}
+
+var cookieConsentMarketing = $('#select-measure-marketing');
+
+if (cookieConsent.length) {
+    $('#select-measure-marketing-btn').append('<button id="saveMarketingChanges" class="govuk-button" data-module="govuk-button">Save changes</button>');
+
+    cookieConsentMarketing.append('<h3>Do you want us to use cookies that help with communication and marketing?</h3><div class="govuk-form-group"><fieldset class="govuk-fieldset"><div class="govuk-radios"><div class="govuk-radios__item"><input class="govuk-radios__input" id="cookie-consent-marketing-Yes" name="allow-marketing" type="radio"><label class="govuk-label govuk-radios__label" for="cookie-consent-marketing-Yes">Yes</label></div><div class="govuk-radios__item"><input class="govuk-radios__input" id="cookie-consent-marketing-No" name="allow-marketing" type="radio"><label class="govuk-label govuk-radios__label" for="cookie-consent-marketing-No">No</label></div></div></fieldset></div>');
+
+    var cookieMarketing = readCookie('MarketingConsent');
+
+    if ((cookieMarketing == 'false') || (cookieMarketing == null)) {
+        $('#cookie-consent-marketing-Yes').prop("checked", false);
+        $('#cookie-consent-marketing-No').prop("checked", true);
+    } else {//not false (unset or true)
+        $('#cookie-consent-marketing-Yes').prop("checked", true);
+        $('#cookie-consent-marketing-No').prop("checked", false);
+    }
+
+    $('#saveMarketingChanges').on('click', function () {
+        if ($('#cookie-consent-marketing-Yes').is(':checked')) {
+            writeCookie('MarketingConsent', 'true', 365);
+            writeCookie('seen_cookie_message_help', 'cookie_policy', 365); //also turn off cookie banner
+        }
+        if ($('#cookie-consent-marketing-No').is(':checked')) {
+            writeCookie('MarketingConsent', 'false', 365); //document.cookie = "AnalyticsConsent=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"; //delete cookie
+            writeCookie('seen_cookie_message_help', 'cookie_policy', 365); //also turn off cookie banner
+        }
+    });
+
 }
 /* Cookie Article, with consent ends */
 
