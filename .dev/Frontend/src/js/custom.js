@@ -92,7 +92,7 @@ $(".tl-article--content .govuk-details__summary").click(function () {
 
 /* cookie banner starts */
 //to delete cookie banner cookies ...
-//document.cookie = "seen_cookie_message_help=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+//document.cookie = "seen_cookie_message_help2=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 //document.cookie = "AnalyticsConsent=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 
 function writeCookie(key, value, days) {
@@ -114,7 +114,7 @@ function readCookie(name) {
 }
 
 var $cookieBanner = $('#global-cookie-message-help');
-var cookieHelp = readCookie('seen_cookie_message_help');
+var cookieHelp = readCookie('seen_cookie_message_help2');
 
 if (cookieHelp == null) {//cookie does not exist
     var href = $cookieBanner.find('.gem-c-cookie-banner__button-settings').find('.gem-c-button').attr('href');
@@ -128,7 +128,7 @@ if (href == url) {
 }
 
 $cookieBanner.find('button.gem-c-button').click(function () {
-    writeCookie('seen_cookie_message_help', 'cookie_policy', 365);
+    writeCookie('seen_cookie_message_help2', 'cookie_policy', 365);
     writeCookie('AnalyticsConsent', 'true', 365);
     writeCookie('MarketingConsent', 'true', 365);
 
@@ -163,11 +163,11 @@ if (cookieConsent.length) {
     $('#saveCookieChanges').on('click', function () {
         if ($('#cookie-consent-Yes').is(':checked')) {
             writeCookie('AnalyticsConsent', 'true', 365);
-            writeCookie('seen_cookie_message_help', 'cookie_policy', 365); //also turn off cookie banner
+            writeCookie('seen_cookie_message_help2', 'cookie_policy', 365); //also turn off cookie banner
         }
         if ($('#cookie-consent-No').is(':checked')) {
             writeCookie('AnalyticsConsent', 'false', 365); //document.cookie = "AnalyticsConsent=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"; //delete cookie
-            writeCookie('seen_cookie_message_help', 'cookie_policy', 365); //also turn off cookie banner
+            writeCookie('seen_cookie_message_help2', 'cookie_policy', 365); //also turn off cookie banner
         }
     });
 
@@ -193,11 +193,11 @@ if (cookieConsent.length) {
     $('#saveMarketingChanges').on('click', function () {
         if ($('#cookie-consent-marketing-Yes').is(':checked')) {
             writeCookie('MarketingConsent', 'true', 365);
-            writeCookie('seen_cookie_message_help', 'cookie_policy', 365); //also turn off cookie banner
+            writeCookie('seen_cookie_message_help2', 'cookie_policy', 365); //also turn off cookie banner
         }
         if ($('#cookie-consent-marketing-No').is(':checked')) {
             writeCookie('MarketingConsent', 'false', 365); //document.cookie = "AnalyticsConsent=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"; //delete cookie
-            writeCookie('seen_cookie_message_help', 'cookie_policy', 365); //also turn off cookie banner
+            writeCookie('seen_cookie_message_help2', 'cookie_policy', 365); //also turn off cookie banner
         }
     });
 
