@@ -30,7 +30,9 @@
     }
 
     &--linkcontainer {
-        @include govuk-responsive-margin(4, "top");
+        @include govuk-media-query ($until: tablet) {
+            @include govuk-responsive-margin(4, "top");
+        }
     }
 
 
