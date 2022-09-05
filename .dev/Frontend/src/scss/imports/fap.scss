@@ -29,6 +29,10 @@
         @extend .govuk-heading-m
     }
 
+    &--linkcontainer {
+        @include govuk-responsive-margin(4, "top");
+    }
+
 
 
 

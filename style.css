@@ -9014,6 +9014,14 @@ ul.govuk-radios label .gem-radios__input {
     padding-bottom: 40px;
   }
 }
+.tl-card--fap--linkcontainer {
+  margin-top: 15px;
+}
+@media (min-width: 40.0625em) {
+  .tl-card--fap--linkcontainer {
+    margin-top: 20px;
+  }
+}
 .tl-card--fap--left, .tl-card--fap--right {
   display: flex;
   flex-direction: column;

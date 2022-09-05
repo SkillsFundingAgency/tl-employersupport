@@ -22,7 +22,19 @@ function FindProviderTile(findProviderRedirectUrl, findProviderApiUri, findProvi
                     <div class="tl-card--fap--left"> \
                         <h2 class="govuk-!-margin-top-2 govuk-!-margin-bottom-4">Partner with a school or college</h2> \
                         <p class="govuk-body">Offer a placement or find out more about their T Level programme.</p> \
-                        <details class="govuk-details" data-module="govuk-details"> \
+                    </div> \
+                    <div class="tl-card--fap--right"> \
+                        <form role="search" class="tl-fap-search-providers-form"> \
+                            <span class="govuk-error-message tl-hidden" id="tl-search-term-error">You must enter a postcode or town</span> \
+                            <label class="govuk-visually-hidden" for="tl-search-term">Enter postcode or town</label> \
+                            <input class="govuk-input govuk-input--width-10 tl-fap-home--input" id="tl-search-term" name="tl-search-term" type="text" placeholder="Enter postcode or town"> \
+                            <button class="govuk-button tl-button--blue tl-fap-home--submit govuk-!-margin-bottom-0" id="tl-search-providers" data-module="govuk-button"> \
+                                Search \
+                            </button> \
+                        </form> \
+                    </div> \
+                    <div class="tl-card--fap--left tl-card--fap--linkcontainer"> \
+                                <details class="govuk-details" data-module="govuk-details"> \
                             <summary class="govuk-details__summary"> \
                                 <span class="govuk-details__summary-text"> \
                                     Looking for providers in more than one location? \
@@ -35,16 +47,6 @@ function FindProviderTile(findProviderRedirectUrl, findProviderApiUri, findProvi
                                 <p class="govuk-body"><strong>Note:</strong> This file contains publicly available data provided by the schools and colleges listed.</p> \
                             </div> \
                         </details> \
-                    </div> \
-                    <div class="tl-card--fap--right"> \
-                        <form role="search" class="tl-fap-search-providers-form"> \
-                            <span class="govuk-error-message tl-hidden" id="tl-search-term-error">You must enter a postcode or town</span> \
-                            <label class="govuk-visually-hidden" for="tl-search-term">Enter postcode or town</label> \
-                            <input class="govuk-input govuk-input--width-10 tl-fap-home--input" id="tl-search-term" name="tl-search-term" type="text" placeholder="Enter postcode or town"> \
-                            <button class="govuk-button tl-button--blue tl-fap-home--submit govuk-!-margin-bottom-0" id="tl-search-providers" data-module="govuk-button"> \
-                                Search \
-                            </button> \
-                        </form> \
                     </div> \
                 </div> \
             </div> \
