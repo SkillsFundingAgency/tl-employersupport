@@ -34,7 +34,6 @@ gulp.task('js', () => {
         'node_modules/jquery/dist/jquery.min.js',
         'node_modules/govuk-frontend/govuk/all.js',
         'node_modules/jquery-ui-dist/jquery-ui.min.js',
-
     ])
         .pipe(concat('govuk.js'))
         .pipe(gulp.dest(paths.dist.JS));
@@ -57,7 +56,9 @@ gulp.task('findProviderjs', () => {
         'node_modules//crypto-js/hmac.js',
         'node_modules//crypto-js/hmac-sha256.js',
         'node_modules/accessible-autocomplete/dist/accessible-autocomplete.min.js',
+        'Frontend/src/js/hmac.js',
         'Frontend/src/js/findProvider.js',
+        'Frontend/src/js/findProviderDownload.js',
         'Frontend/src/js/locationAutocomplete.js'
     ])
     .pipe(rmLines({
@@ -71,8 +72,15 @@ gulp.task('findProviderjs', () => {
 
 gulp.task('findProviderTilejs', () => {
     return src([
+        'node_modules/crypto-js/core.js',
+        'node_modules//crypto-js/enc-base64.js',
+        'node_modules//crypto-js/sha256.js',
+        'node_modules//crypto-js/hmac.js',
+        'node_modules//crypto-js/hmac-sha256.js',
         'node_modules/accessible-autocomplete/dist/accessible-autocomplete.min.js',
+        'Frontend/src/js/hmac.js',
         'Frontend/src/js/findProviderTile.js',
+        'Frontend/src/js/findProviderDownload.js',
         'Frontend/src/js/locationAutocomplete.js'
     ])
     .pipe(rmLines({
@@ -84,12 +92,34 @@ gulp.task('findProviderTilejs', () => {
         .pipe(gulp.dest(paths.dist.Assets));
 });
 
+gulp.task('findProviderDownloadjs', () => {
+    return src([
+        'node_modules/crypto-js/core.js',
+        'node_modules//crypto-js/enc-base64.js',
+        'node_modules//crypto-js/sha256.js',
+        'node_modules//crypto-js/hmac.js',
+        'node_modules//crypto-js/hmac-sha256.js',
+        'node_modules/accessible-autocomplete/dist/accessible-autocomplete.min.js',
+        'Frontend/src/js/hmac.js',
+        'Frontend/src/js/findProviderDownload.js'
+    ])
+    .pipe(rmLines({
+        'filters': [
+            /^\/\/# sourceMappingURL=/g,
+        ]
+      }))
+        .pipe(concat('findProviderDownload.js'))
+        .pipe(gulp.dest(paths.dist.Assets));
+});
+
 gulp.task('jsfiles', () => {
     return src([
         'Frontend/src/js/*.js',
         '!Frontend/src/js/custom.js',
         '!Frontend/src/js/findProvider.js',
-        '!Frontend/src/js/findProviderTile.js'
+        '!Frontend/src/js/findProviderDownload.js',
+        '!Frontend/src/js/findProviderTile.js',
+        '!Frontend/src/js/hmac.js',
     ])
         .pipe(gulp.dest(paths.dist.Assets));
 });
