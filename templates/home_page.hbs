@@ -123,24 +123,24 @@
 
                         <p class="govuk-body govuk-!-margin-bottom-0"><a href="{{url}}" class="govuk-link" id="tl-home-skillareas--all">All skill areas</a></p>
                     </div>
-                        {{/is}}
-                        {{/each}}
-                    </div>
-
+                    {{/is}}
+                    {{/each}}
                 </div>
+
+            </div>
             <div class="govuk-grid-column-one-third tl-row-fill govuk-!-margin-bottom-5">
                 <div class="tl-card--grey tl-card--flex">
 
                     {{#each categories}}
                     {{#is name "T Level workshops and webinars"}}
                     <h3 class="govuk-heading-m">{{name}}</h3>
-
-                    {{#each sections}}
-                    {{#each articles}}
-                    {{#if @first}}
-                    <h4 class="govuk-heading-s govuk-!-margin-bottom-1"><a id="tl-home-waw--article" class="govuk-link" href="{{url}}">{{title}}</a></h4>
-                    <span class="govuk-body-s tl-text-headercase" id="tl-article--date--{{id}}"></span>
-                    <script>
+                    <div id="tl-workshopsandwebinars">
+                        {{#each sections}}
+                        {{#each articles}}
+                        {{#if @first}}
+                        <h4 class="govuk-heading-s govuk-!-margin-bottom-1"><a id="tl-home-waw--article" class="govuk-link" href="{{url}}">{{title}}</a></h4>
+                        <span class="govuk-body-s tl-text-headercase" id="tl-article--date--{{id}}"></span>
+                        <script>
                             $.getJSON('/api/v2/help_center/articles/{{id}}', function (articlelabels) {
 
                                 if (articlelabels.article.label_names && articlelabels.article.label_names.length) {
@@ -154,17 +154,18 @@
                                 }
                             });
 
-                    </script>
+                        </script>
 
-                    {{/if}}
-                    {{/each}}
-                    {{/each}}
-                <div class="tl-card--grey--lower">
-                    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-                    {{#each sections}}
-                    <p class="govuk-body govuk-!-margin-bottom-0"><a href="{{url}}" class="govuk-link" id="tl-home-waw--all">All workshops and webinars</a></p>
-                    {{/each}}
-                </div>
+                        {{/if}}
+                        {{/each}}
+                        {{/each}}
+                    </div>
+                    <div class="tl-card--grey--lower" id="tl-workshopsandwebinars--all">
+                        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                        {{#each sections}}
+                        <p class="govuk-body govuk-!-margin-bottom-0"><a href="{{url}}" class="govuk-link" id="tl-home-waw--all">All workshops and webinars</a></p>
+                        {{/each}}
+                    </div>
                     {{/is}}
                     {{/each}}
                 </div>
@@ -217,7 +218,7 @@
 
 <script src="{{asset 'findProviderTile.js'}}"></script>
 <script>
-    new FindProviderTile("/hc/en-gb/articles/{{settings.article_id_find_provider}}", 
+    new FindProviderTile("/hc/en-gb/articles/{{settings.article_id_find_provider}}",
                          "{{settings.find_provider_api_uri}}",
                          "{{settings.find_provider_api_app_id}}",
                          "{{settings.find_provider_api_key}}");
@@ -249,3 +250,10 @@
     };
 </script>
 <!-- End of tlevelsemployertest Zendesk Widget script -->
+
+<script>
+    if ($('#tl-workshopsandwebinars').children().length == 0) {
+        $('#tl-workshopsandwebinars').html('<p class="There are currently no upcoming T Level events.</p>')
+        $('#tl-workshopsandwebinars--all').hide();
+    }
+</script>
