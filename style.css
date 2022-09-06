@@ -8974,7 +8974,6 @@ ul.govuk-radios label .gem-radios__input {
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
-  align-items: center;
   box-sizing: border-box;
   padding-left: 15px;
   padding-right: 15px;
@@ -9004,7 +9003,7 @@ ul.govuk-radios label .gem-radios__input {
 @media (min-width: 40.0625em) {
   .tl-card--fap {
     background-image: url($assets-map-png);
-    background-size: 713px auto;
+    background-size: 650px auto;
     background-repeat: no-repeat;
     background-position: bottom -40px right -160px;
     padding-bottom: 25px;
@@ -9013,6 +9012,16 @@ ul.govuk-radios label .gem-radios__input {
 @media (min-width: 40.0625em) and (min-width: 40.0625em) {
   .tl-card--fap {
     padding-bottom: 40px;
+  }
+}
+@media (max-width: 40.0525em) {
+  .tl-card--fap--linkcontainer {
+    margin-top: 15px;
+  }
+}
+@media (max-width: 40.0525em) and (min-width: 40.0625em) {
+  .tl-card--fap--linkcontainer {
+    margin-top: 20px;
   }
 }
 .tl-card--fap--left, .tl-card--fap--right {
@@ -9079,6 +9088,11 @@ ul.govuk-radios label .gem-radios__input {
 @media (min-width: 40.0625em) {
   #tl-home--fap .tl-card--fap {
     padding-bottom: 50px;
+  }
+}
+@media (min-width: 40.0625em) {
+  #tl-home--fap .tl-card--fap .tl-fap-search-providers-form {
+    padding-top: 50px;
   }
 }
 @media (min-width: 40.0625em) {

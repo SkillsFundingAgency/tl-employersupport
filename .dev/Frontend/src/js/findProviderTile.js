@@ -1,15 +1,17 @@
-function FindProviderTile(findProviderRedirectUrl, findProvidersApiUri) {
+function FindProviderTile(findProviderRedirectUrl, findProviderApiUri, findProviderAppId, findProviderApiKey) {
     // Find Provider tile
     const fapTileContainer = $(".tl-fap-tile").first();
     if (!fapTileContainer.length) return;
     
     if (typeof findProviderRedirectUrl === "undefined" ||
-        typeof findProvidersApiUri === "undefined") {
-        console.log('findProviderTile script requires findProviderApiUri and findProviderRedirectUrl parameters');
+        typeof findProviderApiUri === "undefined"||
+        typeof findProviderAppId === "undefined" ||
+        typeof findProviderApiKey === "undefined") {
+        console.log('findProviderTile script requires findProviderApiUri, findProviderAppId, findProviderApiKey and findProvidersRedirectUrl parameters');
         return;
     }
 
-    if (findProvidersApiUri !== null && findProvidersApiUri.substr(-1) !== '/') findProvidersApiUri += '/';
+    if (findProviderApiUri !== null && findProviderApiUri.substr(-1) !== '/') findProviderApiUri += '/';
     
     //Only works on first fap tile - we are assuming there is only one
     fapTileContainer.empty();
@@ -31,12 +33,28 @@ function FindProviderTile(findProviderRedirectUrl, findProvidersApiUri) {
                             </button> \
                         </form> \
                     </div> \
+                    <div class="tl-card--fap--left tl-card--fap--linkcontainer"> \
+                                <details class="govuk-details" data-module="govuk-details"> \
+                            <summary class="govuk-details__summary"> \
+                                <span class="govuk-details__summary-text"> \
+                                    Looking for providers in more than one location? \
+                                </span> \
+                            </summary> \
+                            <div class="govuk-details__text"> \
+                                <p class="govuk-body">You can download a list of all T Level providers if you need to see schools and colleges in multiple locations.</p> \
+                                <p class="govuk-body"><a href="#" class="govuk-link tl-provider-csv">All T Level providers <span class="tl-provider-csv-date"></span></a> \
+                                    <br />CSV, <span class="tl-provider-csv-size tl-hidden"></span></p> \
+                                <p class="govuk-body"><strong>Note:</strong> This file contains publicly available data provided by the schools and colleges listed.</p> \
+                            </div> \
+                        </details> \
+                    </div> \
                 </div> \
             </div> \
         </div>');
 
-    //initialize autocomplete
-    new LocationAutocomplete(findProvidersApiUri);
+    //initialize autocomplete and file download
+    new LocationAutocomplete(findProviderApiUri);
+    new FindProviderDownload(findProviderApiUri, findProviderAppId, findProviderApiKey);
 
     $('#tl-search-term').val("");
 
