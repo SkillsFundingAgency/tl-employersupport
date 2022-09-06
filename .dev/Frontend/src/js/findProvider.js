@@ -1,20 +1,16 @@
 // Find Provider 
 let isFapSearchInProgress = false;
 
-function FindProvider(
-    findProvidersApiUri,
-    findProvidersAppId,
-    findProvidersApiKey,
-    qualificationArticleMap) {
+function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey, qualificationArticleMap) {
 
-    if (typeof findProvidersApiUri === "undefined" ||
-        typeof findProvidersAppId === "undefined" ||
-        typeof findProvidersApiKey === "undefined") {
+    if (typeof findProviderApiUri === "undefined" ||
+        typeof findProviderAppId === "undefined" ||
+        typeof findProviderApiKey === "undefined") {
         console.log('findProvider script requires findProviderApiUri, findProviderAppId and findProviderApiKey parameters');
         return;
     }
 
-    if (findProvidersApiUri !== null && findProvidersApiUri.substr(-1) !== '/') findProvidersApiUri += '/';
+    if (findProviderApiUri !== null && findProviderApiUri.substr(-1) !== '/') findProviderApiUri += '/';
 
     let activeSearchQuery = null;
     let currentPage = 0;
@@ -22,8 +18,10 @@ function FindProvider(
     let currentQualificationIds = [];
     let isClearAllInProgress = false;
 
-    //initialize autocomplete
-    new LocationAutocomplete(findProvidersApiUri);
+    if($("#tl-search-term").length) {
+        //initialize autocomplete
+        new LocationAutocomplete(findProviderApiUri);
+    }
 
     if ($("#tl-skill-area-filter").length) loadRoutes();
 
@@ -79,13 +77,13 @@ function FindProvider(
     }
 
     function loadRoutes() {
-        const uri = findProvidersApiUri + "routes";
+        const uri = findProviderApiUri + "routes";
         $.ajax({
             type: "GET",
             url: uri,
             contentType: "application/json",
             beforeSend: function (xhr) {
-                addHmacAuthHeader(xhr, uri, findProvidersAppId, findProvidersApiKey);
+                addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey);
             }
         }).done(function (response) {
             populateRoutes(response);
@@ -168,7 +166,7 @@ function FindProvider(
         pageSize = (pageSize === undefined ? 5 : pageSize);
 
         const encodedSearchTerm = encodeURIComponent(searchTerm).replace(/'/g, '%27');
-        let uri = findProvidersApiUri + "providers?searchTerm=" + encodedSearchTerm + '&page=' + page + '&pageSize=' + pageSize;
+        let uri = findProviderApiUri + "providers?searchTerm=" + encodedSearchTerm + '&page=' + page + '&pageSize=' + pageSize;
 
         if (qualificationIds && qualificationIds.length > 0) {
             qualificationIds.forEach(function (id) {
@@ -184,7 +182,7 @@ function FindProvider(
             url: uri,
             contentType: "application/json",
             beforeSend: function (xhr) {
-                addHmacAuthHeader(xhr, uri, findProvidersAppId, findProvidersApiKey);
+                addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey);
             }
         }).done(function (response) {
             if (response.error) {
@@ -419,22 +417,6 @@ function FindProvider(
         $('.tl-fap--noresult').removeClass("tl-hidden");
     }
 
-    function addHmacAuthHeader(xhr, uri, appId, apiKey) {
-        const ts = Math.round((new Date()).getTime() / 1000);
-        const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,
-            function (c) {
-                var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-                return v.toString(16);
-            });
-        const nonce = CryptoJS.enc.Hex.parse(uuid);
-        const data = appId + "GET" + uri.toLowerCase() + ts + nonce;
-
-        const hash = CryptoJS.HmacSHA256(data, apiKey);
-        const hashInBase64 = CryptoJS.enc.Base64.stringify(hash);
-
-        xhr.setRequestHeader("Authorization", "amx " + appId + ":" + hashInBase64 + ":" + nonce + ":" + ts);
-    }
-
     function urlDecode(str) {
         return decodeURIComponent((str + '').replace(/\+/g, '%20'));
     }
@@ -601,4 +583,7 @@ function FindProvider(
         }
         return false;
     });
+
+    //Provider file download
+    new FindProviderDownload(findProviderApiUri, findProviderAppId, findProviderApiKey);
 };
