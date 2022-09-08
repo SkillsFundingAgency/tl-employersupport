@@ -130,11 +130,12 @@
             </div>
             <div class="govuk-grid-column-one-third tl-row-fill govuk-!-margin-bottom-5">
                 <div class="tl-card--grey tl-card--flex">
+                    <h3 class="govuk-heading-m">T Level workshops and webinars</h3>
 
-                    {{#each categories}}
-                    {{#is name "T Level workshops and webinars"}}
-                    <h3 class="govuk-heading-m">{{name}}</h3>
                     <div id="tl-workshopsandwebinars">
+                        {{#each categories}}
+                        {{#is name "T Level workshops and webinars"}}
+
                         {{#each sections}}
                         {{#each articles}}
                         {{#if @first}}
@@ -159,15 +160,16 @@
                         {{/if}}
                         {{/each}}
                         {{/each}}
-                    </div>
-                    <div class="tl-card--grey--lower" id="tl-workshopsandwebinars--all">
-                        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-                        {{#each sections}}
-                        <p class="govuk-body govuk-!-margin-bottom-0"><a href="{{url}}" class="govuk-link" id="tl-home-waw--all">All workshops and webinars</a></p>
+                        <div class="tl-card--grey--lower">
+                            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                            {{#each sections}}
+                            <p class="govuk-body govuk-!-margin-bottom-0"><a href="{{url}}" class="govuk-link" id="tl-home-waw--all">All workshops and webinars</a></p>
+                            {{/each}}
+                        </div>
+                        {{/is}}
                         {{/each}}
                     </div>
-                    {{/is}}
-                    {{/each}}
+
                 </div>
 
             </div>
@@ -254,6 +256,5 @@
 <script>
     if ($('#tl-workshopsandwebinars').children().length == 0) {
         $('#tl-workshopsandwebinars').html('<p class="govuk-body">There are currently no upcoming T Level events.</p>')
-        $('#tl-workshopsandwebinars--all').hide();
     }
 </script>
