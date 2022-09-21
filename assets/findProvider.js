@@ -1688,16 +1688,17 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
                 '<a class="govuk-link tl-fap--no-course-contact" href="/hc/en-gb/requests/new">contact us</a> ' +
                 'and we can help you with your search.</p>');
         }
-        else if (qualificationsNotAvailable.length === 1) {
+        else if (qualificationsNotAvailable.length === 1) {            
             $(".tl-fap--info-panel--heading").text("The " + qualificationsNotAvailable[0].name + " T Level starts in September " + qualificationsNotAvailable[0].year);
             $(".tl-fap--info-panel--detail").append(
                 '<p class="govuk-body">We don’t have details of the schools and colleges offering this T Level yet, but if you’re interested in offering an industry placement in this skill area, ' +
                 '<a class="govuk-link tl-fap--no-course-contact" href="/hc/en-gb/requests/new">contact us</a>.</p>');
         }
         else if (qualificationsNotAvailable.length > 1) {
+            console.log('multiple years');
             $(".tl-fap--info-panel--heading").text("The following T Levels start in September 2023:");
             $(".tl-fap--info-panel--detail").append(buildQualificationList(qualificationsNotAvailable, 2023));
-            $(".tl-fap--info-panel--heading").text("The following T Levels start in September 2024:");
+            $(".tl-fap--info-panel--detail").text("The following T Levels start in September 2024:");
             $(".tl-fap--info-panel--detail").append(buildQualificationList(qualificationsNotAvailable, 2024));
             $(".tl-fap--info-panel--detail").append(
                 '<p class="govuk-body">We don’t have details of the schools and colleges offering these T Levels yet, but if you’re interested in offering an industry placement in these areas, ' +
@@ -1713,10 +1714,12 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
     }
 
     function buildQualificationList(qualificationDetails, year) {
+        console.log('building list for year ' + year);
         let list = '<ul class="govuk-list govuk-list--bullet">';
         $.each(qualificationDetails,
             function (_, qualification) {
                 if(qualification.year === year || !year) {
+                    console.log('adding qualification.name');
                     list += '<li>' + qualification.name + '</li>';
                 }
             });
