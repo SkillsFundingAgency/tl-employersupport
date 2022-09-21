@@ -1667,7 +1667,7 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
                             year: item.value == 58 ? 2024 : 2023 //Animal Care is 2024
                         });
         }});
-        qualificationDetails.routes.sort(function (x, y) { return (x.name < y.name) ? -1 : ((x.name > y.name) ? 1 : 0) });
+        qualificationsNotAvailable.routes.sort(function (x, y) { return (x.name < y.name) ? -1 : ((x.name > y.name) ? 1 : 0) });
 
         if (qualificationsNotAvailable.length === 0 && overMinDistance) {
             $(".tl-fap--info-panel--heading").text("There are currently no T Level schools or colleges within 15 miles of your location.");
