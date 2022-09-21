@@ -378,7 +378,9 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
             console.log('multiple years');
             $(".tl-fap--info-panel--heading").text("The following T Levels start in September 2023:");
             $(".tl-fap--info-panel--detail").append(buildQualificationList(qualificationsNotAvailable, 2023));
-            $(".tl-fap--info-panel--detail").text("The following T Levels start in September 2024:");
+            //TODO: Need to append a list of paras here, like
+            //   The Animal Care T Level starts in September 2024.
+            $(".tl-fap--info-panel--detail").append('<p class="govuk-body">The following T Levels start in September 2024:</p>');
             $(".tl-fap--info-panel--detail").append(buildQualificationList(qualificationsNotAvailable, 2024));
             $(".tl-fap--info-panel--detail").append(
                 '<p class="govuk-body">We don’t have details of the schools and colleges offering these T Levels yet, but if you’re interested in offering an industry placement in these areas, ' +
