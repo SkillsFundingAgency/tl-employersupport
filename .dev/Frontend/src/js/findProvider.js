@@ -345,9 +345,9 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
                     console.log("found id " +  item.value);
                     qualificationDetails.push(
                         {
-                            id = item.value,
-                            name = $(item).next('label').text(),
-                            year = item.value == 53 ? 2023 : 2024
+                            id: item.value,
+                            name: $(item).next('label').text(),
+                            year: item.value == 53 ? 2023 : 2024
                         });
             });
         qualificationNames.sort();
