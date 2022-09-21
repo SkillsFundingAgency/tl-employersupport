@@ -1655,12 +1655,20 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
             (searchResults && searchResults.length > 0 && searchResults[0].distance >= 15);
 
         const qualificationNames = [];
+        const qualificationDetails = [];
         $('#tl-skill-area-filter .tl-checkbox:checked').each(
             function (_, item) {
                 const qualificationsOffered = parseInt($(item).attr("data-offerings"));
                 if (qualificationsOffered === 0) {
                     qualificationNames.push($(item).next('label').text());
-                }
+                    console.log("found item " +  $(item).next('label').text());
+                    console.log("found id " +  item.value);
+                    qualificationDetails.push(
+                        {
+                            id = item.value,
+                            name = $(item).next('label').text(),
+                            year = item.value == 53 ? 2023 : 2024
+                        });
             });
         qualificationNames.sort();
 
@@ -1683,7 +1691,7 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
                 'and we can help you with your search.</p>');
         }
         else if (qualificationNames.length === 1) {
-            $(".tl-fap--info-panel--heading").text("The " + qualificationNames[0] + " T Level starts in September 2023");
+            $(".tl-fap--info-panel--heading").text("The " + qualificationDetails[0].name + " T Level starts in September " + qualificationDetails[0].year);
             $(".tl-fap--info-panel--detail").append(
                 '<p class="govuk-body">We don’t have details of the schools and colleges offering this T Level yet, but if you’re interested in offering an industry placement in this skill area, ' +
                 '<a class="govuk-link tl-fap--no-course-contact" href="/hc/en-gb/requests/new">contact us</a>.</p>');
@@ -1709,6 +1717,16 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
         $.each(qualificationNames,
             function (_, qualificationName) {
                 list += '<li>' + qualificationName + '</li>';
+            });
+        list += "</ul>";     
+        return list;
+    }
+
+    function buildQualificationList_2(qualificationDetails) {
+        let list = '<ul class="govuk-list govuk-list--bullet">';
+        $.each(qualificationDetails,
+            function (_, qualification) {
+                list += '<li>' + qualification.name + '</li>';
             });
         list += "</ul>";     
         return list;
