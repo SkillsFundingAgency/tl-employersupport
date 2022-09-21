@@ -362,7 +362,8 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
             $(".tl-fap--info-panel--detail").append(
                 '<p class="govuk-body">There are currently no T Level schools or colleges within 15 miles of your location.</p>' +
                 '<p class="govuk-body">The following T Levels start in September 2023 — we don’t have details of the schools and colleges offering them yet:</p>');
-            $(".tl-fap--info-panel--detail").append(buildQualificationList(qualificationsNotAvailable));
+            $(".tl-fap--info-panel--detail").append(buildQualificationList(qualificationsNotAvailable, 2023));
+            $(".tl-fap--info-panel--detail").append(buildQualificationListAsParas(qualificationsNotAvailable, 2024));
             $(".tl-fap--info-panel--detail").append(
                 '<p class="govuk-body">Please ' +
                 '<a class="govuk-link tl-fap--no-course-contact" href="/hc/en-gb/requests/new">contact us</a> ' +
