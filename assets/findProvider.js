@@ -1695,13 +1695,9 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
                 '<a class="govuk-link tl-fap--no-course-contact" href="/hc/en-gb/requests/new">contact us</a>.</p>');
         }
         else if (qualificationsNotAvailable.length > 1) {
-            console.log('multiple years');
             $(".tl-fap--info-panel--heading").text("The following T Levels start in September 2023:");
             $(".tl-fap--info-panel--detail").append(buildQualificationList(qualificationsNotAvailable, 2023));
-            //TODO: Need to append a list of paras here, like
-            //   The Animal Care T Level starts in September 2024.
-            $(".tl-fap--info-panel--detail").append('<p class="govuk-body">The following T Levels start in September 2024:</p>');
-            $(".tl-fap--info-panel--detail").append(buildQualificationList(qualificationsNotAvailable, 2024));
+            $(".tl-fap--info-panel--detail").append(buildQualificationListAsParas(qualificationsNotAvailable, 2024));
             $(".tl-fap--info-panel--detail").append(
                 '<p class="govuk-body">We don’t have details of the schools and colleges offering these T Levels yet, but if you’re interested in offering an industry placement in these areas, ' +
                 '<a class="govuk-link tl-fap--no-course-contact" href="/hc/en-gb/requests/new">contact us</a>.</p>');
@@ -1729,6 +1725,21 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
         list += "</ul>";     
         return list;
     }
+
+    function buildQualificationListAsParas(qualificationDetails, year) {
+        console.log('building para list for year ' + year);
+        let list = '';
+        $.each(qualificationDetails,
+            function (_, qualification) {
+                console.log('...checking year ' + qualification.year + ' for id ' + qualification.id);
+                if(qualification.year === year || !year) {
+                    console.log('adding ' + qualification.name);
+                    list += '<p class="govuk-body"> The ' + qualification.name + ' T Level starts in September ' + qualification.year + '</p>';
+                }
+            });
+        return list;
+    }
+        
 
     function showError(status, errorText) {
         console.log("Error status " + status + " was encountered. " + errorText);
