@@ -1718,8 +1718,9 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
         let list = '<ul class="govuk-list govuk-list--bullet">';
         $.each(qualificationDetails,
             function (_, qualification) {
+                console.log('...checking year ' + qualification.year + ' for id ' + qualification.id);
                 if(qualification.year === year || !year) {
-                    console.log('adding qualification.name');
+                    console.log('adding ' + qualification.name);
                     list += '<li>' + qualification.name + '</li>';
                 }
             });
