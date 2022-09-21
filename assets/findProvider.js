@@ -1669,7 +1669,7 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
                             name: $(item).next('label').text(),
                             year: item.value == 53 ? 2023 : 2024
                         });
-            };
+        }});
         qualificationNames.sort();
 
         if (qualificationNames.length === 0 && overMinDistance) {
