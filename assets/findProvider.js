@@ -1716,9 +1716,9 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
         let list = '<ul class="govuk-list govuk-list--bullet">';
         $.each(qualificationDetails,
             function (_, qualification) {
-                if(qualification.year === year || !year) {}
+                if(qualification.year === year || !year) {
                     list += '<li>' + qualification.name + '</li>';
-            }
+                }
             });
         list += "</ul>";     
         return list;
