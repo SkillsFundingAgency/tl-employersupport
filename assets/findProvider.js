@@ -1685,7 +1685,7 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
                 $(".tl-fap--info-panel--detail").append(buildQualificationList(qualificationsNotAvailable, 2023));
             }
             $(".tl-fap--info-panel--detail").append(buildQualificationListAsParas(qualificationsNotAvailable, 2024, 
-                has2023Qualifications ?  "" : "— we don’t have details of the schools and colleges offering them yet"));
+                has2023Qualifications ?  "" : "— we don’t have details of the schools and colleges offering it yet"));
             $(".tl-fap--info-panel--detail").append(
                 '<p class="govuk-body">Please ' +
                 '<a class="govuk-link tl-fap--no-course-contact" href="/hc/en-gb/requests/new">contact us</a> ' +
