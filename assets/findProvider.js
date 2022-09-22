@@ -1676,14 +1676,16 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
                 'and we can help you with your search.</p>');
         }
         else if (qualificationsNotAvailable.length > 0 && overMinDistance) {
+            const has2023Qualifications = (qualificationsNotAvailable.filter(function(q) { return q.year === 2023; }).length > 0);
             $(".tl-fap--info-panel--heading").text("Contact us for help with your search");
             $(".tl-fap--info-panel--detail").append('<p class="govuk-body">There are currently no T Level schools or colleges within 15 miles of your location.</p>');
-                        if (qualificationsNotAvailable.filter(function(q) { return q.year === 2023; }).length > 0) {
+            if (has2023Qualifications) {
                 $(".tl-fap--info-panel--detail").append(
                     '<p class="govuk-body">The following T Levels start in September 2023 — we don’t have details of the schools and colleges offering them yet:</p>');
                 $(".tl-fap--info-panel--detail").append(buildQualificationList(qualificationsNotAvailable, 2023));
             }
-            $(".tl-fap--info-panel--detail").append(buildQualificationListAsParas(qualificationsNotAvailable, 2024));
+            $(".tl-fap--info-panel--detail").append(buildQualificationListAsParas(qualificationsNotAvailable, 2024, 
+                has2023Qualifications ?  "" : "— we don’t have details of the schools and colleges offering them yet"));
             $(".tl-fap--info-panel--detail").append(
                 '<p class="govuk-body">Please ' +
                 '<a class="govuk-link tl-fap--no-course-contact" href="/hc/en-gb/requests/new">contact us</a> ' +
@@ -1724,12 +1726,12 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
         return list;
     }
 
-    function buildQualificationListAsParas(qualificationDetails, year) {
+    function buildQualificationListAsParas(qualificationDetails, year, additionalText) {
         let list = '';
         $.each(qualificationDetails,
             function (_, qualification) {
                 if(qualification.year === year || !year) {
-                    list += '<p class="govuk-body"> The ' + qualification.name + ' T Level starts in September ' + qualification.year + '</p>';
+                    list += '<p class="govuk-body"> The ' + qualification.name + ' T Level starts in September ' + qualification.year + additionalText +  '.</p>';
                 }
             });
         return list;
