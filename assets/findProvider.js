@@ -1678,8 +1678,7 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
         else if (qualificationsNotAvailable.length > 0 && overMinDistance) {
             $(".tl-fap--info-panel--heading").text("Contact us for help with your search");
             $(".tl-fap--info-panel--detail").append('<p class="govuk-body">There are currently no T Level schools or colleges within 15 miles of your location.</p>');
-            //Need to add an if any 2023 courses
-            if (qualificationsNotAvailable.filter(function(q) { return q.year === 2023; }).length > 0)
+                        if (qualificationsNotAvailable.filter(function(q) { return q.year === 2023; }).length > 0) {
                 $(".tl-fap--info-panel--detail").append(
                     '<p class="govuk-body">The following T Levels start in September 2023 — we don’t have details of the schools and colleges offering them yet:</p>');
                 $(".tl-fap--info-panel--detail").append(buildQualificationList(qualificationsNotAvailable, 2023));
