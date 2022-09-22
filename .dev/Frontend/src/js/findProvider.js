@@ -398,7 +398,7 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
         let list = '<ul class="govuk-list govuk-list--bullet">';
         $.each(qualificationDetails,
             function (_, qualification) {
-                if(qualification.year === year || !year) {
+                if(qualification.year === year) {
                     list += '<li>' + qualification.name + '</li>';
                 }
             });
@@ -407,6 +407,7 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
     }
 
     function buildQualificationListAsParas(qualificationDetails, year, additionalText) {
+        additionalText = (additionalText === undefined ? '' : additionalText);
         let list = '';
         $.each(qualificationDetails,
             function (_, qualification) {
