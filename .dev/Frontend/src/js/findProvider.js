@@ -339,7 +339,6 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
             function (_, item) {
                 const qualificationsOffered = parseInt($(item).attr("data-offerings"));
                 if (qualificationsOffered === 0) {
-                    console.log("found item " + +  item.value + " - " + $(item).next('label').text());
                     qualificationsNotAvailable.push(
                         {
                             id: item.value,
@@ -347,7 +346,6 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
                             year: item.value == 58 ? 2024 : 2023 //Animal Care is 2024
                         });
         }});
-        console.log(qualificationsNotAvailable);
         qualificationsNotAvailable.sort(function (x, y) { return (x.name < y.name) ? -1 : ((x.name > y.name) ? 1 : 0) });
 
         if (qualificationsNotAvailable.length === 0 && overMinDistance) {
@@ -359,10 +357,13 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
         }
         else if (qualificationsNotAvailable.length > 0 && overMinDistance) {
             $(".tl-fap--info-panel--heading").text("Contact us for help with your search");
-            $(".tl-fap--info-panel--detail").append(
-                '<p class="govuk-body">There are currently no T Level schools or colleges within 15 miles of your location.</p>' +
-                '<p class="govuk-body">The following T Levels start in September 2023 — we don’t have details of the schools and colleges offering them yet:</p>');
-            $(".tl-fap--info-panel--detail").append(buildQualificationList(qualificationsNotAvailable, 2023));
+            $(".tl-fap--info-panel--detail").append('<p class="govuk-body">There are currently no T Level schools or colleges within 15 miles of your location.</p>');
+            //Need to add an if any 2023 courses
+            if (qualificationsNotAvailable.filter(function(q) { return q.year === 2023; }).length > 0)
+                $(".tl-fap--info-panel--detail").append(
+                    '<p class="govuk-body">The following T Levels start in September 2023 — we don’t have details of the schools and colleges offering them yet:</p>');
+                $(".tl-fap--info-panel--detail").append(buildQualificationList(qualificationsNotAvailable, 2023));
+            }
             $(".tl-fap--info-panel--detail").append(buildQualificationListAsParas(qualificationsNotAvailable, 2024));
             $(".tl-fap--info-panel--detail").append(
                 '<p class="govuk-body">Please ' +
@@ -393,13 +394,10 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
     }
 
     function buildQualificationList(qualificationDetails, year) {
-        console.log('building list for year ' + year);
         let list = '<ul class="govuk-list govuk-list--bullet">';
         $.each(qualificationDetails,
             function (_, qualification) {
-                console.log('...checking year ' + qualification.year + ' for id ' + qualification.id);
                 if(qualification.year === year || !year) {
-                    console.log('adding ' + qualification.name);
                     list += '<li>' + qualification.name + '</li>';
                 }
             });
@@ -408,19 +406,15 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
     }
 
     function buildQualificationListAsParas(qualificationDetails, year) {
-        console.log('building para list for year ' + year);
         let list = '';
         $.each(qualificationDetails,
             function (_, qualification) {
-                console.log('...checking year ' + qualification.year + ' for id ' + qualification.id);
                 if(qualification.year === year || !year) {
-                    console.log('adding ' + qualification.name);
                     list += '<p class="govuk-body"> The ' + qualification.name + ' T Level starts in September ' + qualification.year + '</p>';
                 }
             });
         return list;
     }
-        
 
     function showError(status, errorText) {
         console.log("Error status " + status + " was encountered. " + errorText);
