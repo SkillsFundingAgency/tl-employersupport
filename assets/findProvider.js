@@ -1663,7 +1663,7 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
                         {
                             id: item.value,
                             name: $(item).next('label').text(),
-                            year: item.value == 58 ? 2024 : 2023 //Animal Care is 2024
+                            year: (item.value == 58 || item.value == 1053) ? 2024 : 2023 //Animal Care is 2024
                         });
         }});
         qualificationsNotAvailable.sort(function (x, y) { return (x.name < y.name) ? -1 : ((x.name > y.name) ? 1 : 0) });
