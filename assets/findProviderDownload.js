@@ -1351,7 +1351,7 @@ function loadCsvFileDetails(apiUri, appId, apiKey) {
     }).done(function (response) {
         $('.tl-provider-csv-size').text(bytesToSize(response.fileSize));
         $('.tl-provider-csv-size').removeClass("tl-hidden");
-        $('.tl-provider-csv-date').text(response.formattedFileDate);
+        $('.tl-provider-csv-date').text("(updated" + response.formattedFileDate + ")");
     }).fail(function (error) {
         console.log('Call to get csv file size failed. ' + error);
     });
