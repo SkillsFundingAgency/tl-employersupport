@@ -1373,7 +1373,7 @@ function downloadFile(apiUri, appId, apiKey) {
         });
         const link = document.createElement('a');
         link.href = window.URL.createObjectURL(blob);
-        link.download = "myfile.csv";
+        link.download = "All T Level providers (updated " + response.formattedFileDate + ")" ;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
