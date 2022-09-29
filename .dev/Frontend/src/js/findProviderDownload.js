@@ -19,6 +19,8 @@ function FindProviderDownload(findProviderApiUri, findProviderAppId, findProvide
     });
 };
 
+var csvdate = null
+
 function loadCsvFileDetails(apiUri, appId, apiKey) {
     const uri = apiUri + "providers/download/info";
     $.ajax({
@@ -29,7 +31,7 @@ function loadCsvFileDetails(apiUri, appId, apiKey) {
             addHmacAuthHeader(xhr, uri, appId, apiKey);
         }
     }).done(function (response) {
-        var csvdate = "(updated " + response.formattedFileDate + ")"
+        csvdate = "(updated " + response.formattedFileDate + ")"
         $('.tl-provider-csv-size').text(bytesToSize(response.fileSize));
         $('.tl-provider-csv-size').removeClass("tl-hidden");
         $('.tl-provider-csv-date').text(csvdate);
