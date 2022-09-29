@@ -88,4 +88,13 @@ function FindProviderTile(findProviderRedirectUrl, findProviderApiUri, findProvi
         $("#tl-search-term-error").text(message);
         $('#tl-search-term-error').removeClass("tl-hidden");
     }
+
+    $(".tl-article--content .govuk-details__summary").click(function () {
+        if (this.closest(".govuk-details").hasAttribute("open")) {
+            $(this).closest(".govuk-details").removeAttr('open');
+        }
+        else {
+            $(this).closest(".govuk-details").attr('open', true);
+        }
+    });
 };
