@@ -1963,9 +1963,10 @@ function loadCsvFileDetails(apiUri, appId, apiKey) {
             addHmacAuthHeader(xhr, uri, appId, apiKey);
         }
     }).done(function (response) {
+        var csvdate = "(updated " + response.formattedFileDate + ")"
         $('.tl-provider-csv-size').text(bytesToSize(response.fileSize));
         $('.tl-provider-csv-size').removeClass("tl-hidden");
-        $('.tl-provider-csv-date').text("(updated " + response.formattedFileDate + ")");
+        $('.tl-provider-csv-date').text(csvdate);
     }).fail(function (error) {
         console.log('Call to get csv file size failed. ' + error);
     });
@@ -1987,7 +1988,7 @@ function downloadFile(apiUri, appId, apiKey) {
         });
         const link = document.createElement('a');
         link.href = window.URL.createObjectURL(blob);
-        link.download = "All T Level providers (updated " + response.formattedFileDate + ")" ;
+        link.download = "All T Level Providers" + csvdate ;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
