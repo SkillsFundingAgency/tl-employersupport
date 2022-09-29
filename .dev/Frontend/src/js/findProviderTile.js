@@ -23,7 +23,7 @@ function FindProviderTile(findProviderRedirectUrl, findProviderApiUri, findProvi
                         <h2 class="govuk-!-margin-top-2 govuk-!-margin-bottom-4">Partner with a school or college</h2> \
                         <p class="govuk-body">Offer a placement or find out more about their T Level programme.</p> \
                     </div> \
-                    <div class="tl-card--fap--right"> \
+                    <div class="tl-card--fap--right govuk-!-margin-bottom-4"> \
                         <form role="search" class="tl-fap-search-providers-form"> \
                             <span class="govuk-error-message tl-hidden" id="tl-search-term-error">You must enter a postcode or town</span> \
                             <label class="govuk-visually-hidden" for="tl-search-term">Enter postcode or town</label> \
@@ -34,7 +34,7 @@ function FindProviderTile(findProviderRedirectUrl, findProviderApiUri, findProvi
                         </form> \
                     </div> \
                     <div class="tl-card--fap--left tl-card--fap--linkcontainer"> \
-                                <details class="govuk-details" data-module="govuk-details"> \
+                                <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details"> \
                             <summary class="govuk-details__summary"> \
                                 <span class="govuk-details__summary-text"> \
                                     Looking for providers in more than one location? \
