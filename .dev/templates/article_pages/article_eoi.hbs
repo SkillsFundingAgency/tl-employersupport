@@ -61,19 +61,19 @@
                             </legend>
                             <div class="govuk-radios" data-module="govuk-radios">
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="contact-pref" name="email" type="radio" value="email">
+                                    <input class="govuk-radios__input" id="contact-pref" name="contact-pref" type="radio" value="email">
                                     <label class="govuk-label govuk-radios__label" for="contact-pref">
                                         Email
                                     </label>
                                 </div>
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="contact-pref-2" name="telephone" type="radio" value="telephone">
+                                    <input class="govuk-radios__input" id="contact-pref-2" name="contact-pref" type="radio" value="telephone">
                                     <label class="govuk-label govuk-radios__label" for="contact-pref-2">
                                         Telephone
                                     </label>
                                 </div>
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="contact-pref-3" name="no-preference" type="radio" value="I don't have a preference">
+                                    <input class="govuk-radios__input" id="contact-pref-3" name="contact-pref" type="radio" value="I don't have a preference">
                                     <label class="govuk-label govuk-radios__label" for="contact-pref-3">
                                         I don't have a preference
                                     </label>
@@ -344,7 +344,7 @@
 
                     <div class="govuk-form-group">
                         <label class="govuk-label govuk-label--m" for="information">
-                            Enter any additional information
+                            Enter any additional information (optional)
                         </label>
                         <textarea class="govuk-textarea" id="information" name="information" rows="5"></textarea>
                     </div>
@@ -357,6 +357,166 @@
             </div>
             <!-- Stage 3 Check Answers-->
             <div id="tl-eoi--3">
+                <span class="govuk-caption-xl">Step 3 of 3</span>
+                <h1 class="govuk-heading-xl">Check your answers before sending your details</h1>
+                <h2 class="govuk-heading-m">About you</h2>
+
+                <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Full name
+                        </dt>
+                        <dd class="govuk-summary-list__value" id="tl-eoi-check--full-name">
+                            XXXX
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                                Change<span class="govuk-visually-hidden"> full name</span>
+                            </a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Email address
+                        </dt>
+                        <dd class="govuk-summary-list__value" id="tl-eoi-check--email">
+                            XXXX
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                                Change<span class="govuk-visually-hidden"> email address</span>
+                            </a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Telephone number
+                        </dt>
+                        <dd class="govuk-summary-list__value" id="tl-eoi-check--telephone">
+                            XXXX
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                                Change<span class="govuk-visually-hidden"> telephone number</span>
+                            </a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Contact preference
+                        </dt>
+                        <dd class="govuk-summary-list__value" id="tl-eoi-check--contact-pref">
+                            XXXX
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                                Change<span class="govuk-visually-hidden"> contact preference</span>
+                            </a>
+                        </dd>
+                    </div>
+                </dl>
+
+
+
+                <h2 class="govuk-heading-m">About your organisation</h2>
+
+                <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Name
+                        </dt>
+                        <dd class="govuk-summary-list__value" id="tl-eoi-check--organisation-name">
+                            XXXX
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                                Change<span class="govuk-visually-hidden"> name</span>
+                            </a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Website
+                        </dt>
+                        <dd class="govuk-summary-list__value" id="tl-eoi-check--website">
+                            XXXX
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                                Change<span class="govuk-visually-hidden"> website</span>
+                            </a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Primary industry
+                        </dt>
+                        <dd class="govuk-summary-list__value" id="tl-eoi-check--industry">
+                            XXXX
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                                Change<span class="govuk-visually-hidden"> primary industryr</span>
+                            </a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Industry placement skill areas
+                        </dt>
+                        <dd class="govuk-summary-list__value" id="tl-eoi-check--skill-area">
+                            XXXX
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                                Change<span class="govuk-visually-hidden"> industry placement skill areas</span>
+                            </a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Postcode
+                        </dt>
+                        <dd class="govuk-summary-list__value" id="tl-eoi-check--postcode">
+                            XXXX
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                                Change<span class="govuk-visually-hidden"> postcode</span>
+                            </a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Additional information
+                        </dt>
+                        <dd class="govuk-summary-list__value" id="tl-eoi-check--information">
+                            XXXX
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                                Change<span class="govuk-visually-hidden"> additional information</span>
+                            </a>
+                        </dd>
+                    </div>
+                </dl>
+
+                <h2 class="govuk-heading-m">Now send your details</h2>
+                <p class="">By submitting this form you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+                <div class="govuk-form-group govuk-!-margin-top-5" id="tl-consent">
+                    <div class="govuk-checkboxes govuk-checkboxes--small">
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="tl-consent-check" name="consent" type="checkbox" value="agree">
+                            <label class="govuk-label govuk-checkboxes__label" for="tl-consent-check">
+                                By selecting this box you confirm that you consent to the Department for Education processing and storing your data for the purposes described in the <a href="https://www.gov.uk/government/publications/privacy-notice-for-key-stage-5-and-adult-education" class="govuk-link">privacy notice</a>.
+                                <br />
+                                <br />
+                                In doing so, we will comply with the General Data Protection Regulation (GDPR) and ensure that any personal data (as defined by GDPR) is protected, used only for the purposes for which it was obtained and disposed of accordingly.
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <!-- Confirmation -->
             <div id="tl-eoi--4">
