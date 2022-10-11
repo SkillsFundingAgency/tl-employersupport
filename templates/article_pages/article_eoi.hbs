@@ -28,7 +28,6 @@
 
     function setpage() {
         let step = getUrlParameter('step');
-        console.log(step);
 
         if (step === 1) {
             $("#tl-eoi--1").removeClass("tl-hidden");
@@ -53,7 +52,7 @@
     }
 
     $(document).ready(function () {
-        setpage
+        setpage();
     });
 </script>
 
