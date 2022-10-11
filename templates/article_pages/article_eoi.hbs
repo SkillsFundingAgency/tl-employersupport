@@ -88,8 +88,14 @@
                             </div>
                         </fieldset>
                     </div>
-                    <button class="govuk-button">Save and continue</button>
-
+                    <button class="govuk-button" id="tl-eoi-button--1">Save and continue</button>
+                    <script>
+                        $('#tl-eoi-button--1').click(function (e) {
+                            e.preventDefault;
+                            $("#tl-eoi--1").addClass("tl-hidden");
+                            $("#tl-eoi--2").removeClass("tl-hidden");
+                        });
+                    </script>
                 </form>
 
             </div>
@@ -356,7 +362,14 @@
                         <textarea class="govuk-textarea" id="information" name="information" rows="5"></textarea>
                     </div>
 
-                    <button class="govuk-button">Save and continue</button>
+                    <button class="govuk-button" id="tl-eoi-button--2">Save and continue</button>
+                    <script>
+                        $('#tl-eoi-button--2').click(function (e) {
+                            e.preventDefault;
+                            $("#tl-eoi--2").addClass("tl-hidden");
+                            $("#tl-eoi--3").removeClass("tl-hidden");
+                        });
+                    </script>
                 </form>
 
 
@@ -524,7 +537,14 @@
                             </div>
                         </div>
                     </div>
-                    <button class="govuk-button">Send</button>
+                    <button class="govuk-button" id="tl-eoi-button--3">Send</button>
+                    <script>
+                        $('#tl-eoi-button--3').click(function (e) {
+                            e.preventDefault;
+                            $("#tl-eoi--3").addClass("tl-hidden");
+                            $("#tl-eoi--4").removeClass("tl-hidden");
+                        });
+                    </script>
                 </form>
 
             </div>
