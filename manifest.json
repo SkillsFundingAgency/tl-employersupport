@@ -1,7 +1,7 @@
 {
-  "name": "GDS Style - CSV Date Wording",
+  "name": "GDS Style - EOI",
   "author": "Ash Anderton",
-  "version": "0.1.759",
+  "version": "0.1.760",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [
