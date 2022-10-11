@@ -18,21 +18,91 @@
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
             <!-- Start -->
-            <h1 class="govuk-heading-xl">{{article.title}}</h1>
-            <div class="tl-article--content">{{article.body}}</div>
-            <button class="govuk-button">Register an interest</button>
+            <div id="tl-eoi--start">
+                <h1 class="govuk-heading-xl">{{article.title}}</h1>
+                <div class="tl-article--content">{{article.body}}</div>
+                <button class="govuk-button">Register an interest</button>
+            </div>
             <!-- Stage 1 - About you -->
+            <div id="tl-eoi--1">
+                <span class="govuk-caption-xl">govuk-caption-xl</span>
+                <h1 class="govuk-heading-xl">About you</h1>
+                <p class="govuk-body">Enter your contact details so that T Level schools and colleges can get in touch with you to discuss your interest in T Levels and industry placements.</p>
+                <form novalidate>
+                    <div class="govuk-form-group">
+                        <label class="govuk-label govuk-label--m" for="full-name">
+                            Full name
+                        </label>
+                        <input class="govuk-input" id="full-name" name="full-name" type="text">
+                    </div>
+                    <div class="govuk-form-group">
+                        <label class="govuk-label govuk-label--m" for="email">
+                            Email address
+                        </label>
+                        <input class="govuk-input" id="email" name="email" type="email">
+                    </div>
+                    <div class="govuk-form-group">
+                        <label class="govuk-label govuk-label--m" for="telephone">
+                            Telephone number (optional)
+                        </label>
+                        <input class="govuk-input" id="telephone" name="telephone" type="tel">
+                    </div>
 
+                    <fieldset class="govuk-fieldset">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                            How would you prefer to be contacted?
+                        </legend>
+                        <div class="govuk-radios" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="contact-pref" name="pref-email" type="radio" value="email">
+                                <label class="govuk-label govuk-radios__label" for="contact-pref">
+                                    Email
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="contact-pref-2" name="interview-needs" type="radio" value="telephone">
+                                <label class="govuk-label govuk-radios__label" for="contact-pref-2">
+                                    Telephone
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="contact-pref-2" name="interview-needs" type="radio" value="I don't have a preference">
+                                <label class="govuk-label govuk-radios__label" for="contact-pref-2">
+                                    I don't have a preference
+                                </label>
+                            </div>
+                        </div>
+
+                    </fieldset>
+
+                    <button class="govuk-button">Save and continue</button>
+
+                </form>
+
+            </div>
             <!-- Stage 2 - About organisation -->
-
+            <div id="tl-eoi--2">
+                <h1 class="govuk-heading-xl">{{article.title}}</h1>
+                <div class="tl-article--content">{{article.body}}</div>
+                <button class="govuk-button">Register an interest</button>
+            </div>
             <!-- Stage 3 Check Answers-->
-
+            <div id="tl-eoi--3">
+                <h1 class="govuk-heading-xl">{{article.title}}</h1>
+                <div class="tl-article--content">{{article.body}}</div>
+                <button class="govuk-button">Register an interest</button>
+            </div>
             <!-- Confirmation -->
+            <div id="tl-eoi--4">
+                <h1 class="govuk-heading-xl">{{article.title}}</h1>
+                <div class="tl-article--content">{{article.body}}</div>
+                <button class="govuk-button">Register an interest</button>
+            </div>
         </div>
 
-        <div class="govuk-grid-column-one-third">
+        <div class="govuk-grid-column-one-third" id="tl-eoi--related">
             <hr class="govuk-section-break govuk-section-break--visible tl-section-break--blue">
-            <div class="tl-article--sidebar govuk-!-margin-top-6">
+            <div class="tl-article--sidebar govuk-!-margin-top-4">
                 <h2 class="govuk-heading-m">More about T Levels and industry placements</h2>
                 <ul>
                     <li><a href="/hc/en-gb/articles/{{settings.contact_link_2}}" class="govuk-link">What are T Levels?</a></li>
