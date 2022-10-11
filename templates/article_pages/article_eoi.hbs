@@ -28,20 +28,21 @@
 
     function setpage() {
         var step = getUrlParameter('step');
+        console.log(step);
 
-        if (step === 1) {
+        if (step == 1) {
             $("#tl-eoi--1").removeClass("tl-hidden");
         }
 
-        else if (step === 2) {
+        else if (step == 2) {
             $("#tl-eoi--2").removeClass("tl-hidden");
         }
 
-        else if (step === 3) {
+        else if (step == 3) {
             $("#tl-eoi--3").removeClass("tl-hidden");
         }
 
-        else if (step === 4) {
+        else if (step == 4) {
             $("#tl-eoi--4").removeClass("tl-hidden");
         }    
 
