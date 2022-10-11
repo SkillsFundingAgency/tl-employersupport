@@ -1,0 +1,165 @@
+﻿
+
+<div class="govuk-width-container">
+    <div id="tl-breadcrumbs--article">
+        <div class="tl-breadcrumbs">
+            {{breadcrumbs}}
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- Article Content -->
+<div class="govuk-width-container govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <!-- Start -->
+            <h1 class="govuk-heading-xl">{{article.title}}</h1>
+            <div class="tl-article--content">{{article.body}}</div>
+            <button class="govuk-button">Register an interest</button>
+            <!-- Stage 1 - About you -->
+
+            <!-- Stage 2 - About organisation -->
+
+            <!-- Stage 3 Check Answers-->
+
+            <!-- Confirmation -->
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+
+
+<script type="text/javascript">
+    $(".govuk-tabs").attr("data-module", "govuk-tabs");
+
+
+                var maxLength = 500;
+            $('#Comment').keyup(function() {
+            	var length = $(this).val().length;
+            	var length = maxLength-length;
+            	$('#chars').text(length);
+
+              if (length < 0) {
+      					$('#submitButton').attr('disabled', true);
+							} else {
+                $('#submitButton').removeAttr('disabled');
+              }
+            });
+
+            $("#tl-article--vote--yes").click(function() {
+							$('#isPageUseful').text('Thank you for your feedback').addClass('govuk-!-font-weight-bold');
+              $('#articlefeedbacklabel').html('Is there anything we could do to further improve this page? (optional)');
+            });
+
+            $(".vote-confirm").click(function() {
+             		$('#isPageUseful').text('Is this page useful?');
+            });
+
+            $("#tl-article--vote--no").click(function() {
+             		$('#isPageUseful').text('Thank you for your feedback').addClass('govuk-!-font-weight-bold');
+                $('#articlefeedbacklabel').html('Why is this page not useful? (optional)');
+            });
+
+
+
+            $('#commentform').hide();
+
+            $('#tl-article--vote--no').click(function(){
+            	$('#commentform').toggle();
+              $('#feedbackbuttonyes a').toggle();
+            });
+
+            $('#tl-article--vote--yes').click(function () {
+                $('#feedbackbuttonyes a').toggle();
+            });
+
+            function getCSRFToken(callback,comment) {
+                $.ajax({
+                    url: "/api/v2/users/me.json",
+                    type: 'GET',
+                    contentType: "application/json",
+                    dataType: 'json',
+                    success: function(result){
+                        var csrfToken = result.user.authenticity_token;
+                        callback(csrfToken,comment);
+                    }
+                });
+            }
+
+            function updateRequest(csrfToken,comment) {
+
+                var request = { "requester": { "name": "Article Feedback" }, "subject": "T Levels Employers Article Feedback - {{article.title}}", "comment": {"body": comment}}
+
+                $.ajax({
+                    url: "https://" + "{{settings.subdomain}}" + ".zendesk.com/api/v2/requests.json",
+                    type: 'POST',
+                    data: JSON.stringify({request: request}),
+                    contentType: "application/json",
+                    headers: {"X-CSRF-Token": csrfToken},
+                    success: function(data, textStatus, jqXHR) {
+
+                    },
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+
+                    }
+                });
+            }
+
+            $("#formoid").submit(function(e){
+                e.preventDefault();
+                var comment = $("#Comment").val();
+                getCSRFToken(updateRequest,comment);
+                $('#commentform').hide();
+              	$('#voteQuestion').hide();
+              	$('#voteResponse').show();
+            });
+
+</script>
+
+
+<!-- Start of tlevelsemployertest Zendesk Widget script -->
+<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key={{settings.answerbot_key}}"></script>
+
+<script type="text/javascript">
+    window.zESettings = {
+        webWidget: {
+            answerBot: {
+                avatar: {
+                    url: "{{settings.answerbot_icon}}",
+                    name: {
+                        "*": '{{settings.answerbot_name}}'
+                    }
+                },
+                title: {
+                    "en-gb": "T Levels Employer Support"
+                },
+                search: {
+                    labels:
+                        ['answerbot']
+                },
+                contactOnlyAfterQuery: true
+            }
+        }
+    };
+</script>
+<!-- End of tlevelsemployertest Zendesk Widget script -->
+
+<!--Start of FAP script -->
+<script src="{{asset 'findProviderTile.js'}}"></script>
+<script>
+    new FindProviderTile("/hc/en-gb/articles/{{settings.article_id_find_provider}}", 
+                         "{{settings.find_provider_api_uri}}",
+                         "{{settings.find_provider_api_app_id}}",
+                         "{{settings.find_provider_api_key}}");
+</script> 
+<!--End of FAP script -->
