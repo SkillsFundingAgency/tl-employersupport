@@ -19,6 +19,8 @@ function FindProviderDownload(findProviderApiUri, findProviderAppId, findProvide
     });
 };
 
+var csvdate = null
+
 function loadCsvFileDetails(apiUri, appId, apiKey) {
     const uri = apiUri + "providers/download/info";
     $.ajax({
@@ -29,9 +31,10 @@ function loadCsvFileDetails(apiUri, appId, apiKey) {
             addHmacAuthHeader(xhr, uri, appId, apiKey);
         }
     }).done(function (response) {
+        csvdate = " (updated " + response.formattedFileDate + ")"
         $('.tl-provider-csv-size').text(bytesToSize(response.fileSize));
         $('.tl-provider-csv-size').removeClass("tl-hidden");
-        $('.tl-provider-csv-date').text(response.formattedFileDate);
+        $('.tl-provider-csv-date').text(csvdate);
     }).fail(function (error) {
         console.log('Call to get csv file size failed. ' + error);
     });
@@ -53,7 +56,7 @@ function downloadFile(apiUri, appId, apiKey) {
         });
         const link = document.createElement('a');
         link.href = window.URL.createObjectURL(blob);
-        link.download = getFileName(contentDisposition);
+        link.download = "All T Level Providers" + csvdate + ".csv" ;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
