@@ -21,10 +21,17 @@
             <div id="tl-eoi--start">
                 <h1 class="govuk-heading-xl">{{article.title}}</h1>
                 <div class="tl-article--content">{{article.body}}</div>
-                <button class="govuk-button">Register an interest</button>
+                    <button class="govuk-button" id="tl-eoi-button--register">Register an interest</button>
+                    <script>
+                        $('#tl-eoi-button--register').click(function (e) {
+                            e.preventDefault;
+                            $("#tl-eoi--start").addClass("tl-hidden");
+                            $("#tl-eoi--1").removeClass("tl-hidden");
+                        });
+                    </script>
             </div>
             <!-- Stage 1 - About you -->
-            <div id="tl-eoi--1">
+            <div id="tl-eoi--1" class="tl-hidden">
                 <span class="govuk-caption-xl">Step 1 of 3</span>
                 <h1 class="govuk-heading-xl">About you</h1>
                 <p class="govuk-body">Enter your contact details so that T Level schools and colleges can get in touch with you to discuss your interest in T Levels and industry placements.</p>
@@ -87,7 +94,7 @@
 
             </div>
             <!-- Stage 2 - About organisation -->
-            <div id="tl-eoi--2">
+            <div id="tl-eoi--2" class="tl-hidden">
                 <span class="govuk-caption-xl">Step 2 of 3</span>
                 <h1 class="govuk-heading-xl">About your organisation</h1>
                 <form novalidate>
@@ -356,7 +363,7 @@
 
             </div>
             <!-- Stage 3 Check Answers-->
-            <div id="tl-eoi--3">
+            <div id="tl-eoi--3" class="tl-hidden">
                 <span class="govuk-caption-xl">Step 3 of 3</span>
                 <h1 class="govuk-heading-xl">Check your answers before sending your details</h1>
                 <h2 class="govuk-heading-m">About you</h2>
@@ -522,7 +529,7 @@
 
             </div>
             <!-- Confirmation -->
-            <div id="tl-eoi--4">
+            <div id="tl-eoi--4" class="tl-hidden">
             </div>
         </div>
 
