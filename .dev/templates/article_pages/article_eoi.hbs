@@ -25,7 +25,7 @@
             </div>
             <!-- Stage 1 - About you -->
             <div id="tl-eoi--1">
-                <span class="govuk-caption-xl">govuk-caption-xl</span>
+                <span class="govuk-caption-xl">Step 1 of 3</span>
                 <h1 class="govuk-heading-xl">About you</h1>
                 <p class="govuk-body">Enter your contact details so that T Level schools and colleges can get in touch with you to discuss your interest in T Levels and industry placements.</p>
                 <form novalidate>
@@ -47,34 +47,33 @@
                         </label>
                         <input class="govuk-input" id="telephone" name="telephone" type="tel">
                     </div>
-
-                    <fieldset class="govuk-fieldset">
-                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                            How would you prefer to be contacted?
-                        </legend>
-                        <div class="govuk-radios" data-module="govuk-radios">
-                            <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="contact-pref" name="pref-email" type="radio" value="email">
-                                <label class="govuk-label govuk-radios__label" for="contact-pref">
-                                    Email
-                                </label>
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset">
+                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                                How would you prefer to be contacted?
+                            </legend>
+                            <div class="govuk-radios" data-module="govuk-radios">
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="contact-pref" name="pref-email" type="radio" value="email">
+                                    <label class="govuk-label govuk-radios__label" for="contact-pref">
+                                        Email
+                                    </label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="contact-pref-2" name="interview-needs" type="radio" value="telephone">
+                                    <label class="govuk-label govuk-radios__label" for="contact-pref-2">
+                                        Telephone
+                                    </label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="contact-pref-2" name="interview-needs" type="radio" value="I don't have a preference">
+                                    <label class="govuk-label govuk-radios__label" for="contact-pref-2">
+                                        I don't have a preference
+                                    </label>
+                                </div>
                             </div>
-                            <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="contact-pref-2" name="interview-needs" type="radio" value="telephone">
-                                <label class="govuk-label govuk-radios__label" for="contact-pref-2">
-                                    Telephone
-                                </label>
-                            </div>
-                            <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="contact-pref-2" name="interview-needs" type="radio" value="I don't have a preference">
-                                <label class="govuk-label govuk-radios__label" for="contact-pref-2">
-                                    I don't have a preference
-                                </label>
-                            </div>
-                        </div>
-
-                    </fieldset>
-
+                        </fieldset>
+                    </div>
                     <button class="govuk-button">Save and continue</button>
 
                 </form>
