@@ -33,12 +33,11 @@
         <div class="govuk-grid-column-one-third">
             <hr class="govuk-section-break govuk-section-break--visible tl-section-break--blue">
             <div class="tl-article--sidebar govuk-!-margin-top-6">
-                <h2 class="govuk-heading-m">Related content</h2>
-                {{related_articles}}
+                <h2 class="govuk-heading-m">More about T Levels and industry placements</h2>
                 <ul>
-                    {{#each article.path_steps}}
-                    <li title="{{name}}"><a href="{{url}}" target="{{target}}">{{name}}</a></li>
-                    {{/each}}
+                    <li><a href="/hc/en-gb/articles/{{settings.contact_link_2}}" class="govuk-link">What are T Levels?</a></li>
+                    <li><a href="/hc/en-gb/categories/{{settings.contact_link_5}}" class="govuk-link">What are industry placements?</a></li>
+                    <li><a href="/hc/en-gb/articles/{{settings.contact_link_3}}" class="govuk-link">How industry placements work</a></li>
                 </ul>
             </div>
         </div>

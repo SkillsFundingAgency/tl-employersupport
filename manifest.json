@@ -1,7 +1,7 @@
 {
   "name": "GDS Style - EOI",
   "author": "Ash Anderton",
-  "version": "0.1.761",
+  "version": "0.1.762",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [
@@ -364,6 +364,13 @@
           "description": "Business benefits",
           "label": "Business benefits",
           "value": "4416409667218"
+        },
+        {
+          "identifier": "contact_link_5",
+          "type": "text",
+          "description": "What are industry placements?",
+          "label": "What are industry placements?",
+          "value": "4403442894610"
         }
       ]
     },
