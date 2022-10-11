@@ -29,6 +29,19 @@
 
             <!-- Confirmation -->
         </div>
+
+        <div class="govuk-grid-column-one-third">
+            <hr class="govuk-section-break govuk-section-break--visible tl-section-break--blue">
+            <div class="tl-article--sidebar govuk-!-margin-top-6">
+                <h2 class="govuk-heading-m">Related content</h2>
+                {{related_articles}}
+                <ul>
+                    {{#each article.path_steps}}
+                    <li title="{{name}}"><a href="{{url}}" target="{{target}}">{{name}}</a></li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
     </div>
 
 
