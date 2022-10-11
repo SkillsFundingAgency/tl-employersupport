@@ -47,6 +47,13 @@
                         </label>
                         <input class="govuk-input" id="telephone" name="telephone" type="tel">
                     </div>
+
+                    <script>
+                        $('input[name=telephone]').keyup(function () {
+                            var inputlength = $(this).val().length;
+                            $(".tl-eoi-contactpref").toggleClass('tl-hidden', inputlength==0);
+                        }
+                    </script>
                     <div class="govuk-form-group tl-hidden" id="tl-eoi-contactpref">
                         <fieldset class="govuk-fieldset">
                             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
