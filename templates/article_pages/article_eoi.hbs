@@ -51,8 +51,8 @@
                     <script>
                         $('input[name=telephone]').keyup(function () {
                             var inputlength = $(this).val().length;
-                            $(".tl-eoi-contactpref").toggleClass('tl-hidden', inputlength==0);
-                        }
+                            $("#tl-eoi-contactpref").toggleClass('tl-hidden', inputlength == 0);
+                        });
                     </script>
                     <div class="govuk-form-group tl-hidden" id="tl-eoi-contactpref">
                         <fieldset class="govuk-fieldset">
