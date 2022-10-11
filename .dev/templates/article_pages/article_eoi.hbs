@@ -502,20 +502,23 @@
                 </dl>
 
                 <h2 class="govuk-heading-m">Now send your details</h2>
-                <p class="">By submitting this form you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
-                <div class="govuk-form-group govuk-!-margin-top-5" id="tl-consent">
-                    <div class="govuk-checkboxes govuk-checkboxes--small">
-                        <div class="govuk-checkboxes__item">
-                            <input class="govuk-checkboxes__input" id="tl-consent-check" name="consent" type="checkbox" value="agree">
-                            <label class="govuk-label govuk-checkboxes__label" for="tl-consent-check">
-                                By selecting this box you confirm that you consent to the Department for Education processing and storing your data for the purposes described in the <a href="https://www.gov.uk/government/publications/privacy-notice-for-key-stage-5-and-adult-education" class="govuk-link">privacy notice</a>.
-                                <br />
-                                <br />
-                                In doing so, we will comply with the General Data Protection Regulation (GDPR) and ensure that any personal data (as defined by GDPR) is protected, used only for the purposes for which it was obtained and disposed of accordingly.
-                            </label>
+                <p class="govuk-body">By submitting this form you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+                <form novalidate>
+                    <div class="govuk-form-group govuk-!-margin-top-5" id="tl-consent">
+                        <div class="govuk-checkboxes govuk-checkboxes--small">
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="tl-consent-check" name="consent" type="checkbox" value="agree">
+                                <label class="govuk-label govuk-checkboxes__label" for="tl-consent-check">
+                                    By selecting this box you confirm that you consent to the Department for Education processing and storing your data for the purposes described in the <a href="https://www.gov.uk/government/publications/privacy-notice-for-key-stage-5-and-adult-education" class="govuk-link">privacy notice</a>.
+                                    <br />
+                                    <br />
+                                    In doing so, we will comply with the General Data Protection Regulation (GDPR) and ensure that any personal data (as defined by GDPR) is protected, used only for the purposes for which it was obtained and disposed of accordingly.
+                                </label>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    <button class="govuk-button">Send</button>
+                </form>
 
             </div>
             <!-- Confirmation -->
