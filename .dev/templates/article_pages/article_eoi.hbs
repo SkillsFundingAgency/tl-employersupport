@@ -8,7 +8,54 @@
     </div>
 </div>
 
+<script>
+    var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = window.location.search.substring(1),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
 
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+            }
+        }
+        return false;
+    };
+
+
+    function setpage() {
+        let step = getUrlParameter('step');
+        console.log(step);
+
+        if (step === 1) {
+            $("#tl-eoi--1").removeClass("tl-hidden");
+        }
+
+        else if (step === 2) {
+            $("#tl-eoi--2").removeClass("tl-hidden");
+        }
+
+        else if (step === 3) {
+            $("#tl-eoi--3").removeClass("tl-hidden");
+        }
+
+        else if (step === 4) {
+            $("#tl-eoi--4").removeClass("tl-hidden");
+        }    
+
+        else (step === null) {
+            $("#tl-eoi--start").removeClass("tl-hidden");
+            $("#tl-eoi--related").removeClass("tl-hidden");
+        }
+    }
+
+    $(document).ready(function () {
+        setpage
+    });
+</script>
 
 
 
@@ -18,18 +65,10 @@
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
             <!-- Start -->
-            <div id="tl-eoi--start">
+            <div id="tl-eoi--start" class="tl-hidden">
                 <h1 class="govuk-heading-xl">{{article.title}}</h1>
                 <div class="tl-article--content">{{article.body}}</div>
-                    <button type="button" class="govuk-button" id="tl-eoi-button--register">Register an interest</button>
-                    <script>
-                        $('#tl-eoi-button--register').click(function (e) {
-                            e.preventDefault;
-                            $("#tl-eoi--start").addClass("tl-hidden");
-                            $("#tl-eoi--related").addClass("tl-hidden");
-                            $("#tl-eoi--1").removeClass("tl-hidden");
-                        });
-                    </script>
+                    <a href="?step=1" type="button" class="govuk-button" id="tl-eoi-button--register">Register an interest</a>
             </div>
             <!-- Stage 1 - About you -->
             <div id="tl-eoi--1" class="tl-hidden">
@@ -564,7 +603,7 @@
 </div>
         </div>
 
-        <div class="govuk-grid-column-one-third" id="tl-eoi--related">
+        <div class="govuk-grid-column-one-third tl-hidden" id="tl-eoi--related">
             <hr class="govuk-section-break govuk-section-break--visible tl-section-break--blue">
             <div class="tl-article--sidebar govuk-!-margin-top-4">
                 <h2 class="govuk-heading-m">More about T Levels and industry placements</h2>
