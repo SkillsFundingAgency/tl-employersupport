@@ -61,20 +61,20 @@
                             </legend>
                             <div class="govuk-radios" data-module="govuk-radios">
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="contact-pref" name="pref-email" type="radio" value="email">
+                                    <input class="govuk-radios__input" id="contact-pref" name="email" type="radio" value="email">
                                     <label class="govuk-label govuk-radios__label" for="contact-pref">
                                         Email
                                     </label>
                                 </div>
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="contact-pref-2" name="interview-needs" type="radio" value="telephone">
+                                    <input class="govuk-radios__input" id="contact-pref-2" name="telephone" type="radio" value="telephone">
                                     <label class="govuk-label govuk-radios__label" for="contact-pref-2">
                                         Telephone
                                     </label>
                                 </div>
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="contact-pref-2" name="interview-needs" type="radio" value="I don't have a preference">
-                                    <label class="govuk-label govuk-radios__label" for="contact-pref-2">
+                                    <input class="govuk-radios__input" id="contact-pref-3" name="no-preference" type="radio" value="I don't have a preference">
+                                    <label class="govuk-label govuk-radios__label" for="contact-pref-3">
                                         I don't have a preference
                                     </label>
                                 </div>
@@ -88,21 +88,147 @@
             </div>
             <!-- Stage 2 - About organisation -->
             <div id="tl-eoi--2">
-                <h1 class="govuk-heading-xl">{{article.title}}</h1>
-                <div class="tl-article--content">{{article.body}}</div>
-                <button class="govuk-button">Register an interest</button>
+                <span class="govuk-caption-xl">Step 2 of 3</span>
+                <h1 class="govuk-heading-xl">About your organisation</h1>
+                <form novalidate>
+                    <div class="govuk-form-group">
+                        <label class="govuk-label govuk-label--m" for="organisation-name">
+                            Organisation name
+                        </label>
+                        <input class="govuk-input" id="organisation-name" name="organisation-name" type="text">
+                    </div>
+                    <div class="govuk-form-group">
+                        <label class="govuk-label govuk-label--m" for="website">
+                            Website (optional)
+                        </label>
+                        <input class="govuk-input" id="website" name="website" type="text">
+                    </div>
+
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset">
+                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                                What is your organisation’s primary industry?
+                            </legend>
+                            <div class="govuk-radios" data-module="govuk-radios">
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="industry" name="admin-and-business-support" type="radio" value="Admin and Business Support">
+                                    <label class="govuk-label govuk-radios__label" for="industry">
+                                        Admin and Business Support
+                                    </label>
+                                </div>
+
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="industry-2" name="agriculture" type="radio" value="Agriculture">
+                                    <label class="govuk-label govuk-radios__label" for="industry-2">
+                                        Agriculture
+                                    </label>
+                                </div>
+
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="industry-2" name="arts-entertainment-recreation" type="radio" value="Arts Entertainment and Recreation">
+                                    <label class="govuk-label govuk-radios__label" for="industry-2">
+                                        Arts, Entertainment and Recreation
+                                    </label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="industry-2" name="construction" type="radio" value="Construction">
+                                    <label class="govuk-label govuk-radios__label" for="industry-2">
+                                        Construction
+                                    </label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="industry-2" name="education-childcare" type="radio" value="Education and Childcare">
+                                    <label class="govuk-label govuk-radios__label" for="industry-2">
+                                        Education and Childcare
+                                    </label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="industry-2" name="financial-services" type="radio" value="Financial Services">
+                                    <label class="govuk-label govuk-radios__label" for="industry-2">
+                                        Financial Services
+                                    </label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="industry-2" name="health-social-care" type="radio" value="Health and Social Care">
+                                    <label class="govuk-label govuk-radios__label" for="industry-2">
+                                        Health and Social Care
+                                    </label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="industry-2" name="hospitality" type="radio" value="Hospitality">
+                                    <label class="govuk-label govuk-radios__label" for="industry-2">
+                                        Hospitality
+                                    </label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="industry-2" name="it-communications" type="radio" value="IT and Communications">
+                                    <label class="govuk-label govuk-radios__label" for="industry-2">
+                                        IT and Communications
+                                    </label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="industry-2" name="manufacturing-engineering" type="radio" value="Manufacturing and Engineering">
+                                    <label class="govuk-label govuk-radios__label" for="industry-2">
+                                        Manufacturing and Engineering
+                                    </label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="industry-2" name="public-sector" type="radio" value="Public Sector">
+                                    <label class="govuk-label govuk-radios__label" for="industry-2">
+                                        Public Sector
+                                    </label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="industry-2" name="retail-wholesale" type="radio" value="Retail and Wholesale">
+                                    <label class="govuk-label govuk-radios__label" for="industry-2">
+                                        Retail and Wholesale
+                                    </label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="industry-2" name="transport" type="radio" value="Transport">
+                                    <label class="govuk-label govuk-radios__label" for="industry-2">
+                                        Transport
+                                    </label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="industry-2" name="utilities" type="radio" value="Utilities">
+                                    <label class="govuk-label govuk-radios__label" for="industry-2">
+                                        Utilities
+                                    </label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="industry-2" name="other" type="radio" value="Other" data-aria-controls="other-industry">
+                                    <label class="govuk-label govuk-radios__label" for="industry-2">
+                                        Other
+                                    </label>
+                                </div>
+                                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="other-industry">
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label govuk-visually-hidden" for="other-industry-name">
+                                            Other industry
+                                        </label>
+                                        <input class="govuk-input govuk-!-width-one-third" id="other-industry-name" name="other-industry-name" type="text">
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </fieldset>
+                    </div>
+
+
+                    <button class="govuk-button">Save and continue</button>
+
+                </form>
+
+
+
             </div>
             <!-- Stage 3 Check Answers-->
             <div id="tl-eoi--3">
-                <h1 class="govuk-heading-xl">{{article.title}}</h1>
-                <div class="tl-article--content">{{article.body}}</div>
-                <button class="govuk-button">Register an interest</button>
             </div>
             <!-- Confirmation -->
             <div id="tl-eoi--4">
-                <h1 class="govuk-heading-xl">{{article.title}}</h1>
-                <div class="tl-article--content">{{article.body}}</div>
-                <button class="govuk-button">Register an interest</button>
             </div>
         </div>
 
