@@ -66,6 +66,7 @@
         $(".tl-eoi-button").click(function (e) {
             e.preventDefault();
             storeanswers();
+            window.location = $(this).attr("href");
         });
     });
 
@@ -78,7 +79,6 @@
             }
         });
     }
-
 </script>
 
 
