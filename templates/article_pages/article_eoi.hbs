@@ -63,9 +63,9 @@
     $(document).ready(function () {
         setpage();
 
-        $(".tl-eoi-button").click(function () {
+        $(".tl-eoi-button").click(function (e) {
             console.log("click")
-            event.preventDefault;
+            e.preventDefault;
             storeanswers();
         });
     });
