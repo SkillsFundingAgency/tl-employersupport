@@ -582,6 +582,55 @@
           "description": "Qualification article for id 51",
           "label": "Qualification article for id 51",
           "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/4416409672466-Business-and-Administration"
+        },
+        {
+          "identifier": "qualification_article_52",
+          "type": "text",
+          "description": "Qualification article for id 52",
+          "label": "Qualification article for id 52",
+          "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/4416577262866-Legal-Finance-and-Accounting#legal"
+        },
+        {
+          "identifier": "qualification_article_53",
+          "type": "text",
+          "description": "Qualification article for id 53",
+          "label": "Qualification article for id 53",
+          "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/4416405089170-Hair-and-Beauty"
+        },
+        {
+          "identifier": "qualification_article_54",
+          "type": "text",
+          "description": "Qualification article for id 54",
+          "label": "Qualification article for id 54",
+          "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/4416409674258-Creative-and-Design#craft-and-design"
+        },
+        {
+          "identifier": "qualification_article_55",
+          "type": "text",
+          "description": "Qualification article for id 55",
+          "label": "Qualification article for id 55",
+          "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/4416409674258-Creative-and-Design#media-broadcast-and-production"
+        },
+        {
+          "identifier": "qualification_article_56",
+          "type": "text",
+          "description": "Qualification article for id 56",
+          "label": "Qualification article for id 56",
+          "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/4416396531858-Catering"
+        },
+        {
+          "identifier": "qualification_article_57",
+          "type": "text",
+          "description": "Qualification article for id 57",
+          "label": "Qualification article for id 57",
+          "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/4416405086098-Agriculture-Environment-and-Animal-Care#agriculture-land-management-and-production"
+        },
+        {
+          "identifier": "qualification_article_58",
+          "type": "text",
+          "description": "Qualification article for id 58",
+          "label": "Qualification article for id 58",
+          "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/4416405086098-Agriculture-Environment-and-Animal-Care#animal-care-and-management"
         }
       ]
     }
