@@ -65,13 +65,19 @@
     });
 
     function storeanswers() {
-        $(".tl-eoi-form input[type='text'], tl-eoi-form input[type='email'], tl-eoi-form input[type='telephone'], tl-eoi-form input[type='radio']:checked, tl-eoi-form input[type='checkbox']:checked").each(function () {
+        $(".tl-eoi-form input[type='text'], .tl-eoi-form textarea, .tl-eoi-form input[type='email'], .tl-eoi-form input[type='telephone'], .tl-eoi-form input[type='radio']:checked, .tl-eoi-form input[type='checkbox']:checked").each(function () {
             var value = $(this).val();
-            console.log(value);
+            var name = $(this).attr("name");
+            if (value != "") {
+                sessionStorage.setItem(name, value)
+            }
         });
     }
-
-    storeanswers();
+    $(".tl-eoi-button").click(function (e) {
+        e.preventDefault;
+        storeanswers();
+        window.location = $(this).attr("href");
+    });
 </script>
 
 
@@ -145,7 +151,7 @@
                             </div>
                         </fieldset>
                     </div>
-                    <a href="?step=2" type="button" class="govuk-button" id="tl-eoi-button--1">Save and continue</a>
+                    <a href="?step=2" type="button" class="govuk-button tl-eoi-button" id="tl-eoi-button--1">Save and continue</a>
                 </form>
 
             </div>
@@ -412,7 +418,7 @@
                         <textarea class="govuk-textarea" id="information" name="information" rows="5"></textarea>
                     </div>
 
-                    <a href="?step=3" type="button" class="govuk-button" id="tl-eoi-button--2">Save and continue</a>
+                    <a href="?step=3" type="button" class="govuk-button tl-eoi-button" id="tl-eoi-button--2">Save and continue</a>
 
                 </form>
 
