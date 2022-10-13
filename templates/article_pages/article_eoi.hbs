@@ -71,6 +71,13 @@
             storeanswers();
             window.location = $(this).attr("href");
         });
+
+        $("#tl-eoi-button--register").click(function (e) {
+            e.preventDefault();
+            sessionStorage.clear();
+            window.location = $(this).attr("href");
+
+        })
     });
 
     function storeanswers() {
