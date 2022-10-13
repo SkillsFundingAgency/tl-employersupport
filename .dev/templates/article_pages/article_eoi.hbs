@@ -108,7 +108,9 @@
             var checkname = $(this).attr("data-name");
             var sessionval = sessionStorage.getItem(checkname)
             $(this).text(sessionval);
-            $(this).html().replace(/|/g, "<br />");
+            $('#tl-eoi-check--skill-area').html(function (index, html) {
+                return html.replace(/\|/g, "<br>");
+            });
         });
     };
 </script>
