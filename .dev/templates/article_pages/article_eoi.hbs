@@ -78,10 +78,13 @@
             var value = $(this).val();
             var name = $(this).attr("name");
             if (value != "") {
-                if (sessionStorage.getItem(name) != null || sessionStorage.getItem(name) != "undefined") {
+                if (sessionStorage.getItem(name) != null) {
                     var sessionval = sessionStorage.getItem(name)
+                    sessionStorage.setItem(name, sessionval + ", " + value)
                 }
-                sessionStorage.setItem(name, sessionval + ", " + value)
+                else {
+                sessionStorage.setItem(name, value)
+                }
             }
         });
     };
