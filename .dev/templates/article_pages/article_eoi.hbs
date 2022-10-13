@@ -62,6 +62,8 @@
 
     $(document).ready(function () {
         setpage();
+        populateanswers();
+
 
         $(".tl-eoi-button").click(function (e) {
             e.preventDefault();
@@ -82,12 +84,11 @@
 
     function populateanswers() {
         $(".tl-eoi-checkanswers .govuk-summary-list__value").each(function () {
-            var checkname = $(this).attr("data-name")
-            console.log(checkname);
+            var checkname = $(this).attr("data-name");
+            var sessionval = sessionStorage.getItem(checkname)
+            $(this).text(sessionval);
         });
     }
-
-    populateanswers();
 </script>
 
 
