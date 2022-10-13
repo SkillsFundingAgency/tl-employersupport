@@ -52,12 +52,13 @@
         else if (step == 4) {
             $("#tl-eoi--4").removeClass("tl-hidden");
             $("#tl-breadcrumbs").addClass("tl-hidden");
+            sessionStorage.clear();
+
         }    
 
         else {
             $("#tl-eoi--start").removeClass("tl-hidden");
             $("#tl-eoi--related").removeClass("tl-hidden");
-            sessionStorage.clear();
         }
     }
 
@@ -78,7 +79,14 @@
             var name = $(this).attr("name");
             if (value != "") {
                 var sessionval = sessionStorage.getItem(name)
-                sessionStorage.setItem(name, sessionval + "," + value)
+                if (sessionval = "null") {
+                    sessionStorage.setItem(name, value)
+
+                }
+
+                else {
+                    sessionStorage.setItem(name, sessionval + ", " + value)
+                }
             }
         });
     };

@@ -79,7 +79,14 @@
             var name = $(this).attr("name");
             if (value != "") {
                 var sessionval = sessionStorage.getItem(name)
-                sessionStorage.setItem(name, sessionval + "," + value)
+                if (sessionval = "null") {
+                    sessionStorage.setItem(name, value)
+
+                }
+
+                else {
+                    sessionStorage.setItem(name, sessionval + ", " + value)
+                }
             }
         });
     };
