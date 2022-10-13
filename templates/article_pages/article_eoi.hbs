@@ -76,7 +76,7 @@
     function storeanswers() {
         $(".tl-eoi-form input[type='text'], .tl-eoi-form textarea, .tl-eoi-form input[type='email'], .tl-eoi-form input[type='tel'], .tl-eoi-form input[type='radio']:checked, .tl-eoi-form input[type='checkbox']:checked").each(function () {
             var value = $(this).val();
-            var name = $(this).attr("name");
+            var name = $(this).attr("data-cya");
             if (value != "") {
                 if (sessionStorage.getItem(name) != null) {
                     var sessionval = sessionStorage.getItem(name)
@@ -90,7 +90,7 @@
         /*Store data value for each checkbox / radio option */
         $(".tl-eoi-form input[type='radio']:checked, .tl-eoi-form input[type='checkbox']:checked").each(function () {
             var datavalue = $(this).attr("data-id");
-            var name = $(this).attr("data-name");
+            var name = $(this).attr("name");
             if (datavalue != "") {
                 if (sessionStorage.getItem("data-" + name) != null) {
                     var sessionval = sessionStorage.getItem("data-" + name)
@@ -138,19 +138,19 @@
                         <label class="govuk-label govuk-label--m" for="full-name">
                             Full name
                         </label>
-                        <input class="govuk-input" id="full-name" name="full-name" type="text">
+                        <input class="govuk-input" id="full-name" name="full-name" data-cya="full-name" type="text">
                     </div>
                     <div class="govuk-form-group">
                         <label class="govuk-label govuk-label--m" for="email">
                             Email address
                         </label>
-                        <input class="govuk-input" id="email" name="email" type="email">
+                        <input class="govuk-input" id="email" name="email" data-cya="email" type="email">
                     </div>
                     <div class="govuk-form-group">
                         <label class="govuk-label govuk-label--m" for="telephone">
                             Telephone number (optional)
                         </label>
-                        <input class="govuk-input" id="telephone" name="telephone" type="tel">
+                        <input class="govuk-input" id="telephone" name="telephone" data-cya="telephone" type="tel">
                     </div>
 
                     <script>
@@ -166,19 +166,19 @@
                             </legend>
                             <div class="govuk-radios" data-module="govuk-radios">
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="contact-pref" name="contact-pref" type="radio" value="Email" data-id="1">
+                                    <input class="govuk-radios__input" id="contact-pref" name="contact-pref" data-cya="contact-pref" type="radio" value="Email" data-id="1">
                                     <label class="govuk-label govuk-radios__label" for="contact-pref">
                                         Email
                                     </label>
                                 </div>
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="contact-pref-2" name="contact-pref" type="radio" value="Telephone" data-id="2">
+                                    <input class="govuk-radios__input" id="contact-pref-2" name="contact-pref" data-cya="contact-pref" type="radio" value="Telephone" data-id="2">
                                     <label class="govuk-label govuk-radios__label" for="contact-pref-2">
                                         Telephone
                                     </label>
                                 </div>
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="contact-pref-3" name="contact-pref" type="radio" value="I don't have a preference" data-id="3">
+                                    <input class="govuk-radios__input" id="contact-pref-3" name="contact-pref" data-cya="contact-pref" type="radio" value="I don't have a preference" data-id="3">
                                     <label class="govuk-label govuk-radios__label" for="contact-pref-3">
                                         I don't have a preference
                                     </label>
@@ -215,93 +215,93 @@
                             </legend>
                             <div class="govuk-radios" data-module="govuk-radios">
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="industry" name="industry" type="radio" data-name="industry" value="Admin and Business Support" data-id="1">
+                                    <input class="govuk-radios__input" id="industry" name="industry" type="radio" data-cya="industry" value="Admin and Business Support" data-id="1">
                                     <label class="govuk-label govuk-radios__label" for="industry">
                                         Admin and Business Support
                                     </label>
                                 </div>
 
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="industry-2" name="industry" type="radio" data-name="industry" value="Agriculture" data-id="2">
+                                    <input class="govuk-radios__input" id="industry-2" name="industry" type="radio" data-cya="industry" value="Agriculture" data-id="2">
                                     <label class="govuk-label govuk-radios__label" for="industry-2">
                                         Agriculture
                                     </label>
                                 </div>
 
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="industry-2" name="industry" type="radio" data-name="industry" value="Arts Entertainment and Recreation" data-id="3">
+                                    <input class="govuk-radios__input" id="industry-2" name="industry" type="radio" data-cya="industry" value="Arts Entertainment and Recreation" data-id="3">
                                     <label class="govuk-label govuk-radios__label" for="industry-2">
                                         Arts, Entertainment and Recreation
                                     </label>
                                 </div>
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="industry-2" name="industry" type="radio" data-name="industry" value="Construction" data-id="4">
+                                    <input class="govuk-radios__input" id="industry-2" name="industry" type="radio" data-cya="industry" value="Construction" data-id="4">
                                     <label class="govuk-label govuk-radios__label" for="industry-2">
                                         Construction
                                     </label>
                                 </div>
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="industry-2" name="industry" type="radio" data-name="industry" value="Education and Childcare" data-id="5">
+                                    <input class="govuk-radios__input" id="industry-2" name="industry" type="radio" data-cya="industry" value="Education and Childcare" data-id="5">
                                     <label class="govuk-label govuk-radios__label" for="industry-2">
                                         Education and Childcare
                                     </label>
                                 </div>
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="industry-2" name="industry" type="radio" data-name="industry" value="Financial Services" data-id="6">
+                                    <input class="govuk-radios__input" id="industry-2" name="industry" type="radio" data-cya="industry" value="Financial Services" data-id="6">
                                     <label class="govuk-label govuk-radios__label" for="industry-2">
                                         Financial Services
                                     </label>
                                 </div>
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="industry-2" name="industry" type="radio" data-name="industry" value="Health and Social Care" data-id="7">
+                                    <input class="govuk-radios__input" id="industry-2" name="industry" type="radio" data-cya="industry" value="Health and Social Care" data-id="7">
                                     <label class="govuk-label govuk-radios__label" for="industry-2">
                                         Health and Social Care
                                     </label>
                                 </div>
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="industry-2" name="industry" type="radio" data-name="industry" value="Hospitality" data-id="8">
+                                    <input class="govuk-radios__input" id="industry-2" name="industry" type="radio" data-cya="industry" value="Hospitality" data-id="8">
                                     <label class="govuk-label govuk-radios__label" for="industry-2">
                                         Hospitality
                                     </label>
                                 </div>
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="industry-2" name="industry" type="radio" data-name="industry" value="IT and Communications" data-id="9">
+                                    <input class="govuk-radios__input" id="industry-2" name="industry" type="radio" data-cya="industry" value="IT and Communications" data-id="9">
                                     <label class="govuk-label govuk-radios__label" for="industry-2">
                                         IT and Communications
                                     </label>
                                 </div>
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="industry-2" name="industry" type="radio" data-name="industry" value="Manufacturing and Engineering" data-id="10">
+                                    <input class="govuk-radios__input" id="industry-2" name="industry" type="radio" data-cya="industry" value="Manufacturing and Engineering" data-id="10">
                                     <label class="govuk-label govuk-radios__label" for="industry-2">
                                         Manufacturing and Engineering
                                     </label>
                                 </div>
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="industry-2" name="industry" type="radio" data-name="industry" value="Public Sector" data-id="11">
+                                    <input class="govuk-radios__input" id="industry-2" name="industry" type="radio" data-cya="industry" value="Public Sector" data-id="11">
                                     <label class="govuk-label govuk-radios__label" for="industry-2">
                                         Public Sector
                                     </label>
                                 </div>
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="industry-2" name="industry" type="radio" data-name="industry" value="Retail and Wholesale" data-id="12">
+                                    <input class="govuk-radios__input" id="industry-2" name="industry" type="radio" data-cya="industry" value="Retail and Wholesale" data-id="12">
                                     <label class="govuk-label govuk-radios__label" for="industry-2">
                                         Retail and Wholesale
                                     </label>
                                 </div>
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="industry-2" name="industry" type="radio" data-name="industry" value="Transport" data-id="13">
+                                    <input class="govuk-radios__input" id="industry-2" name="industry" type="radio" data-cya="industry" value="Transport" data-id="13">
                                     <label class="govuk-label govuk-radios__label" for="industry-2">
                                         Transport
                                     </label>
                                 </div>
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="industry-2" name="industry" type="radio" data-name="industry" value="Utilities" data-id="14">
+                                    <input class="govuk-radios__input" id="industry-2" name="industry" type="radio" data-cya="industry" value="Utilities" data-id="14">
                                     <label class="govuk-label govuk-radios__label" for="industry-2">
                                         Utilities
                                     </label>
                                 </div>
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="industry-2" name="industry-other" data-name="industry" type="radio" value="Other" data-aria-controls="other-industry" data-id="0">
+                                    <input class="govuk-radios__input" id="industry-2" name="industry" type="radio" value="Other" data-aria-controls="other-industry" data-id="0">
                                     <label class="govuk-label govuk-radios__label" for="industry-2">
                                         Other
                                     </label>
@@ -311,7 +311,7 @@
                                         <label class="govuk-label govuk-visually-hidden" for="other-industry-name">
                                             Other industry
                                         </label>
-                                        <input class="govuk-input" id="industry" name="industry" type="text">
+                                        <input class="govuk-input" id="industry" name="industry-other" type="text" data-cya="industry">
                                     </div>
 
                                 </div>
@@ -327,105 +327,105 @@
                             </legend>
                             <div class="govuk-checkboxes govuk-!-margin-bottom-4" data-module="govuk-checkboxes">
                                 <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="skill-area" name="skill-area" type="checkbox" data-name="skill-area" value="Admin and business support" data-id="1">
+                                    <input class="govuk-checkboxes__input" id="skill-area" name="skill-area" type="checkbox" data-cya="skill-area" value="Admin and business support" data-id="1">
                                     <label class="govuk-label govuk-checkboxes__label" for="skill-area">
                                         Admin and business support
                                     </label>
 
                                 </div>
                                 <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="skill-area-2" name="skill-area" type="checkbox" data-name="skill-area" value="Agriculture" data-id="2">
+                                    <input class="govuk-checkboxes__input" id="skill-area-2" name="skill-area" type="checkbox" data-cya="skill-area" value="Agriculture" data-id="2">
                                     <label class="govuk-label govuk-checkboxes__label" for="skill-area-2">
                                         Agriculture
                                     </label>
 
                                 </div>
                                 <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="skill-area-3" name="skill-area" type="checkbox" data-name="skill-area" value="Arts, entertainment, and recreation" data-id="3">
+                                    <input class="govuk-checkboxes__input" id="skill-area-3" name="skill-area" type="checkbox" data-cya="skill-area" value="Arts, entertainment, and recreation" data-id="3">
                                     <label class="govuk-label govuk-checkboxes__label" for="skill-area-3">
                                         Arts, entertainment, and recreation
                                     </label>
 
                                 </div>
                                 <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="skill-area-4" name="skill-area" type="checkbox" data-name="skill-area" value="Construction" data-id="4">
+                                    <input class="govuk-checkboxes__input" id="skill-area-4" name="skill-area" type="checkbox" data-cya="skill-area" value="Construction" data-id="4">
                                     <label class="govuk-label govuk-checkboxes__label" for="skill-area-4">
                                         Construction
                                     </label>
 
                                 </div>
                                 <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="skill-area-5" name="skill-area" type="checkbox" data-name="skill-area" value="Education and childcare" data-id="5"> 
+                                    <input class="govuk-checkboxes__input" id="skill-area-5" name="skill-area" type="checkbox" data-cya="skill-area" value="Education and childcare" data-id="5"> 
                                     <label class="govuk-label govuk-checkboxes__label" for="skill-area-5">
                                         Education and childcare
                                     </label>
 
                                 </div>
                                 <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="skill-area-6" name="skill-area" type="checkbox" data-name="skill-area" value="Financial services" data-id="6">
+                                    <input class="govuk-checkboxes__input" id="skill-area-6" name="skill-area" type="checkbox" data-cya="skill-area" value="Financial services" data-id="6">
                                     <label class="govuk-label govuk-checkboxes__label" for="skill-area-6">
                                         Financial services
                                     </label>
 
                                 </div>
                                 <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="skill-area-7" name="skill-area" type="checkbox" data-name="skill-area" value="Health and social care" data-id="7">
+                                    <input class="govuk-checkboxes__input" id="skill-area-7" name="skill-area" type="checkbox" data-cya="skill-area" value="Health and social care" data-id="7">
                                     <label class="govuk-label govuk-checkboxes__label" for="skill-area-7">
                                         Health and social care
                                     </label>
 
                                 </div>
                                 <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="skill-area-8" name="skill-area" type="checkbox" data-name="skill-area" value="Hospitality" data-id="8">
+                                    <input class="govuk-checkboxes__input" id="skill-area-8" name="skill-area" type="checkbox" data-cya="skill-area" value="Hospitality" data-id="8">
                                     <label class="govuk-label govuk-checkboxes__label" for="skill-area-8">
                                         Hospitality
                                     </label>
 
                                 </div>
                                 <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="skill-area-9" name="skill-area" type="checkbox" data-name="skill-area" value="IT and communications" data-id="9">
+                                    <input class="govuk-checkboxes__input" id="skill-area-9" name="skill-area" type="checkbox" data-cya="skill-area" value="IT and communications" data-id="9">
                                     <label class="govuk-label govuk-checkboxes__label" for="skill-area-9">
                                         IT and communications
                                     </label>
 
                                 </div>
                                 <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="skill-area-10" name="skill-area" type="checkbox" data-name="skill-area" value="Manufacturing and engineering" data-id="10">
+                                    <input class="govuk-checkboxes__input" id="skill-area-10" name="skill-area" type="checkbox" data-cya="skill-area" value="Manufacturing and engineering" data-id="10">
                                     <label class="govuk-label govuk-checkboxes__label" for="skill-area-10">
                                         Manufacturing and engineering
                                     </label>
 
                                 </div>
                                 <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="skill-area-11" name="skill-area" type="checkbox" data-name="skill-area" value="Public sector" data-id="11">
+                                    <input class="govuk-checkboxes__input" id="skill-area-11" name="skill-area" type="checkbox" data-cya="skill-area" value="Public sector" data-id="11">
                                     <label class="govuk-label govuk-checkboxes__label" for="skill-area-11">
                                         Public sector
                                     </label>
 
                                 </div>
                                 <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="skill-area-12" name="skill-area" type="checkbox" data-name="skill-area" value="Retail and wholesale" data-id="12">
+                                    <input class="govuk-checkboxes__input" id="skill-area-12" name="skill-area" type="checkbox" data-cya="skill-area" value="Retail and wholesale" data-id="12">
                                     <label class="govuk-label govuk-checkboxes__label" for="skill-area-12">
                                         Retail and wholesale
                                     </label>
 
                                 </div>
                                 <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="skill-area-13" name="skill-area" type="checkbox" data-name="skill-area" value="Transport" data-id="13">
+                                    <input class="govuk-checkboxes__input" id="skill-area-13" name="skill-area" type="checkbox" data-cya="skill-area" value="Transport" data-id="13">
                                     <label class="govuk-label govuk-checkboxes__label" for="skill-area-13">
                                         Transport
                                     </label>
 
                                 </div>
                                 <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="skill-area-14" name="skill-area" type="checkbox" data-name="skill-area" value="Utilities" data-id="14">
+                                    <input class="govuk-checkboxes__input" id="skill-area-14" name="skill-area" type="checkbox" data-cya="skill-area" value="Utilities" data-id="14">
                                     <label class="govuk-label govuk-checkboxes__label" for="skill-area-14">
                                         Utilities
                                     </label>
 
                                 </div>
                                 <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="skill-area-15" name="skill-area-other" data-name="skill-area" type="checkbox" value="Other" aria-controls="conditional-skill-area-15" aria-expanded="false" data-id="0">
+                                    <input class="govuk-checkboxes__input" id="skill-area-15" name="skill-area-other" type="checkbox" value="Other" aria-controls="conditional-skill-area-15" aria-expanded="false" data-id="0">
                                     <label class="govuk-label govuk-checkboxes__label" for="skill-area-15">
                                         Other
                                     </label>
@@ -433,7 +433,7 @@
                                 </div>
                                 <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-skill-area-15">
                                     <div class="govuk-form-group">
-                                        <input class="govuk-input govuk-input--width-30 govuk-!-margin-bottom-2" id="skill-other-entry" name="skill-area" type="text" spellcheck="false">
+                                        <input class="govuk-input govuk-input--width-30 govuk-!-margin-bottom-2" id="skill-other-entry" name="skill-area-other" data-cya="skill-area" type="text" spellcheck="false">
                                     </div>
                                 </div>
                             </div>
@@ -443,14 +443,14 @@
                         <label class="govuk-label govuk-label--m" for="postcode">
                             Enter the postcode of your organisation’s location
                         </label>
-                        <input class="govuk-input" id="postcode" name="postcode" type="text">
+                        <input class="govuk-input" id="postcode" name="postcode" type="text" data-cya="postcode">
                     </div>
 
                     <div class="govuk-form-group">
                         <label class="govuk-label govuk-label--m" for="information">
                             Enter any additional information (optional)
                         </label>
-                        <textarea class="govuk-textarea" id="information" name="information" rows="5"></textarea>
+                        <textarea class="govuk-textarea" id="information" name="information" rows="5" data-cya="information"></textarea>
                     </div>
 
                     <a href="?step=3" type="button" class="govuk-button tl-eoi-button" id="tl-eoi-button--2">Save and continue</a>
