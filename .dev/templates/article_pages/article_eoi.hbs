@@ -82,9 +82,12 @@
 
     function populateanswers() {
         $("#tl-eoi-checkanswers .govuk-summary-list__value").each(function () {
-
+            var checkname = $(this).attr("data-name")
+            console.log(checkname);
         });
     }
+
+    populateanswers();
 </script>
 
 
@@ -438,7 +441,7 @@
                 <h1 class="govuk-heading-xl">Check your answers before sending your details</h1>
                 <h2 class="govuk-heading-m">About you</h2>
 
-                <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                <dl class="govuk-summary-list govuk-!-margin-bottom-9" class="tl-eoi-checkanswers">
                     <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
                             Full name
@@ -497,8 +500,8 @@
 
                 <h2 class="govuk-heading-m">About your organisation</h2>
 
-                <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-                    <div class="govuk-summary-list__row" id="tl-eoi-checkanswers">
+                <dl class="govuk-summary-list govuk-!-margin-bottom-9" class="tl-eoi-checkanswers">
+                    <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
                             Name
                         </dt>
