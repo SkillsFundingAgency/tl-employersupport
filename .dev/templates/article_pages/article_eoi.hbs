@@ -78,7 +78,7 @@
             var value = $(this).val();
             var name = $(this).attr("name");
             if (value != "") {
-                if (sessionStorage.getItem(name) != null) {
+                if (sessionStorage.getItem(name) != null || sessionStorage.getItem(name) != "undefined") {
                     var sessionval = sessionStorage.getItem(name)
                 }
                 sessionStorage.setItem(name, sessionval + ", " + value)
