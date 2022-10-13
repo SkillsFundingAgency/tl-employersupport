@@ -80,7 +80,7 @@
             if (value != "") {
                 if (sessionStorage.getItem(name) != null) {
                     var sessionval = sessionStorage.getItem(name)
-                    sessionStorage.setItem(name, sessionval + ", " + value)
+                    sessionStorage.setItem(name, sessionval + "|" + value)
                 }
                 else {
                 sessionStorage.setItem(name, value)
@@ -94,7 +94,7 @@
             if (datavalue != "") {
                 if (sessionStorage.getItem("data-" + name) != null) {
                     var sessionval = sessionStorage.getItem("data-" + name)
-                    sessionStorage.setItem("data-" + name, sessionval + "|" + datavalue)
+                    sessionStorage.setItem("data-" + name, sessionval + ", " + datavalue)
                 }
                 else {
                     sessionStorage.setItem("data-" + name, datavalue)

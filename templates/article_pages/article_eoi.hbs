@@ -80,7 +80,7 @@
             if (value != "") {
                 if (sessionStorage.getItem(name) != null) {
                     var sessionval = sessionStorage.getItem(name)
-                    sessionStorage.setItem(name, sessionval + ", " + value)
+                    sessionStorage.setItem(name, sessionval + "|" + value)
                 }
                 else {
                 sessionStorage.setItem(name, value)
@@ -108,8 +108,9 @@
             var checkname = $(this).attr("data-name");
             var sessionval = sessionStorage.getItem(checkname)
             $(this).text(sessionval);
+            $(this).html().replace(/|/g, "<br />");
         });
-    }
+    };
 </script>
 
 
