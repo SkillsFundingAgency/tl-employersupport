@@ -92,8 +92,8 @@
             var datavalue = $(this).attr("data-id");
             var name = $(this).attr("name");
             if (datavalue != "") {
-                if (sessionStorage.getItem(name) != null) {
-                    var sessionval = sessionStorage.getItem(name)
+                if (sessionStorage.getItem("data-" + name) != null) {
+                    var sessionval = sessionStorage.getItem"data-" + name)
                     sessionStorage.setItem("data-" + name, sessionval + ", " + datavalue)
                 }
                 else {
