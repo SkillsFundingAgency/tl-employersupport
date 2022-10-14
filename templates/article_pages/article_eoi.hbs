@@ -64,6 +64,7 @@
 
     $(document).ready(function () {
         setpage();
+        populatefields()
         populateanswers();
 
         $(".tl-eoi-button").click(function (e) {
@@ -86,8 +87,10 @@
             var name = $(this).attr("data-cya");
             if (value != "") {
                 if (sessionStorage.getItem(name) != null) {
+                    if (!sessionStorage.getItem(name) == value) {
                     var sessionval = sessionStorage.getItem(name)
-                    sessionStorage.setItem(name, sessionval + "|" + value)
+                        sessionStorage.setItem(name, sessionval + "|" + value)
+                    }
                 }
                 else {
                 sessionStorage.setItem(name, value)
@@ -120,6 +123,26 @@
             return html.replace(/\|/g, "<br>");
         });
     };
+
+    function populatefields() {
+        $(".tl-eoi-form input[type='text'], .tl-eoi-form textarea, .tl-eoi-form input[type='email'], .tl-eoi-form input[type='tel']").each(function () {
+            var checkname = $(this).attr("data-cya");
+            var sessionval = sessionStorage.getItem(checkname)
+            $(this).val(sessionval);
+        });
+
+        $(".tl-eoi-form input[type='radio'], .tl-eoi-form input[type='checkbox']").each(function () {
+            var checkname = $(this).attr("data-cya");
+            var sessionval = sessionStorage.getItem(checkname)
+            if (sessionval == checkname) {
+                $(this).prop('checked', true);
+                $(this).parent().next(".govuk-radios__conditional").toggleClass("govuk-radios__conditional--hidden");
+                $(this).parent().next(".govuk-checkboxes__conditional").toggleClass("govuk-checkboxes__conditional--hidden");
+            };
+        });
+    }
+
+    populatefields();
 </script>
 
 
