@@ -169,6 +169,16 @@
             }
         });
     }
+
+    function addError(errortext) {
+        $(this).closest(".govuk-form-group").addClass("govuk-form-group--error");
+        $(this).closest(".govuk-error-message").removeClass("tl-hidden");
+        $(this).closest(".govuk-error-message").text(errortext);
+    }
+
+    $("#full-name").click(function () {
+        addError("Test error message");
+    });
 </script>
 
 
