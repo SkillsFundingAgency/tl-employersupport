@@ -10,7 +10,7 @@
                 <li title="Register an interest">
                     Register an interest
                 </li>
-            </ol>        
+            </ol>
         </div>
     </div>
 </div>
@@ -39,11 +39,14 @@
         populatefields()
         populateanswers();
 
-
         $(".tl-eoi-button").click(function (e) {
             e.preventDefault();
-            storeanswers();
-            window.location = $(this).attr("href");
+            validateanswers();
+            var errorresult = validateanswers();
+            if (errorresult == false) {
+                storeanswers();
+                window.location = $(this).attr("href");
+            }
         });
 
         $("#tl-eoi-button--register").click(function (e) {
@@ -55,12 +58,12 @@
         $('input[name=telephone]').keyup(function () {
             telephoneexpand()
         });
+
     });
 
 
     function setpage() {
         var step = getUrlParameter('step');
-        console.log(step);
 
         if (step == 1) {
             $("#tl-eoi--1").removeClass("tl-hidden");
@@ -170,15 +173,121 @@
         });
     }
 
-    function addError(errortext) {
-        $(this).closest(".govuk-form-group").addClass("govuk-form-group--error");
-        $(this).closest(".govuk-error-message").removeClass("tl-hidden");
-        $(this).closest(".govuk-error-message").text(errortext);
+    function validateanswers() {
+        clearErrors()
+        let haserror = false;
+        var step = getUrlParameter('step');
+        if (step == 1) {
+            // Name val //
+            let fullname = $("#full-name");
+            if (fullname.val().length == 0) {
+                addError("Enter your full name", fullname);
+                haserror = true;
+            }
+            // Email val //
+            let email = $("#email");
+            var emailreg = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            if (!emailreg.test(email.val())) {
+                addError("Enter an email address in the correct format, for example name@example.com", email);
+                haserror = true;
+            }
+            if (email.val().length == 0) {
+                addError("Enter your email address", email);
+                haserror = true;
+            }
+
+            // Tel val //
+            let tel = $("#telephone");
+            var telreg = /^(((\+44\s?\d{4}|\(?0\d{4}\)?)\s?\d{3}\s?\d{3})|((\+44\s?\d{3}|\(?0\d{3}\)?)\s?\d{3}\s?\d{4})|((\+44\s?\d{2}|\(?0\d{2}\)?)\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?$/;
+            if (tel.val().length != 0 && !telreg.test(tel.val())) {
+                addError("Enter a telephone number in the correct format, for example 01632960001 or 07700900982", tel);
+                haserror = true;
+            }
+
+            // Contact pref val //
+            let contactpref = $("#tl-eoi-contactpref input");
+            let contactprefchecked = $("#tl-eoi-contactpref input:checked");
+            if (tel.val().length != 0 && contactprefchecked.length == 0) {
+                addError("Select how you’d prefer to be contacted", contactpref);
+                haserror = true;
+            }
+        }
+
+        if (step == 2) {
+            // Orgname val //
+            let orgname = $("#organisation-name");
+            if (orgname.val().length == 0) {
+                addError("Enter your organisation name", orgname);
+                haserror = true;
+            }
+
+            // Orgname val //
+            let industry = $("#tl-eoi-industry input");
+            let industrychecked = $("#tl-eoi-industry input:checked");
+            if (industrychecked.length == 0) {
+                addError("Select your organisation’s primary industry", industry);
+                haserror = true;
+            }
+            let industryother = $("#industry-other")
+            if (industrychecked.val() == "Other" && industryother.val().length == 0) {
+                addError("Enter an alternative primary industry", industryother);
+            }
+
+            // Skillarea val //
+            let skillarea = $("#tl-eoi-skillarea input");
+            let skillareachecked = $("#tl-eoi-skillarea input:checked:last");
+            if (skillareachecked.length == 0) {
+                addError("Select your organisation’s primary industry", skillarea);
+                haserror = true;
+            }
+            let skillareaother = $("#skill-area-other")
+            if (skillareachecked.val() == "Other" && skillareaother.val().length == 0) {
+                addError("Enter an alternative skill area", skillareaother);
+            }
+
+            // Postcode val //
+            let postcode = $("#postcode");
+            var postcodereg = /^(([A-Z]{1,2}[0-9][A-Z0-9]?|ASCN|STHL|TDCU|BBND|[BFS]IQQ|PCRN|TKCA) ?[0-9][A-Z]{2}|BFPO ?[0-9]{1,4}|(KY[0-9]|MSR|VG|AI)[ -]?[0-9]{4}|[A-Z]{2} ?[0-9]{2}|GE ?CX|GIR ?0A{2}|SAN ?TA1)$/;
+            if (!postcodereg.test(postcode.val())) {
+                addError("Enter a real UK postcode, for example SW1A 1AA", postcode);
+                haserror = true;
+            }
+            if (postcode.val().length == 0) {
+                addError("Enter your organisation’s postcode", postcode);
+                haserror = true;
+            }
+        }
+
+        if (step == 3) {
+            // Orgname val //
+            let consentcheck = $("#tl-consent-check");
+            if (!consentcheck.is(':checked')) {
+                addError("Select the box to confirm that you consent to the Department for Education processing and storing your data for the purposes described in the privacy notice", consentcheck);
+                haserror = true;
+            }
+        }
+
+        return haserror;
+
     }
 
-    $("#full-name").click(function () {
-        addError("Test error message");
-    });
+
+    function addError(errortext, element) {
+        var preerror = '<span class="govuk-visually-hidden">Error: </span>'
+        element.closest(".govuk-form-group").addClass("govuk-form-group--error");
+        element.closest(".govuk-form-group").find(".govuk-error-message").first().removeClass("tl-hidden");
+        element.closest(".govuk-form-group").find(".govuk-error-message").first().html(preerror + errortext);
+        element.first().addClass("govuk-input--error");
+    }
+
+    function clearErrors() {
+        $(".govuk-form-group").removeClass("govuk-form-group--error");
+        $(".govuk-error-message").addClass("tl-hidden");
+        $(".govuk-error-message").html("");
+        $(".govuk-input--error").removeClass("govuk-input--error");
+    }
+
+
 </script>
 
 
@@ -192,7 +301,7 @@
             <div id="tl-eoi--start" class="tl-hidden">
                 <h1 class="govuk-heading-xl">{{article.title}}</h1>
                 <div class="tl-article--content">{{article.body}}</div>
-                    <a href="?step=1" type="button" class="govuk-button" id="tl-eoi-button--register">Register an interest</a>
+                <a href="?step=1" type="button" class="govuk-button" id="tl-eoi-button--register">Register an interest</a>
             </div>
             <!-- Stage 1 - About you -->
             <div id="tl-eoi--1" class="tl-hidden">
@@ -204,29 +313,33 @@
                         <label class="govuk-label govuk-label--m" for="full-name">
                             Full name
                         </label>
-                        <input class="govuk-input" id="full-name" name="full-name" type="text">
+                        <p id="full-name-error" class="govuk-error-message tl-hidden"></p>
+                        <input class="govuk-input" id="full-name" name="full-name" type="text" aria-describedby="full-name-error">
                     </div>
                     <div class="govuk-form-group">
                         <label class="govuk-label govuk-label--m" for="email">
                             Email address
                         </label>
-                        <input class="govuk-input" id="email" name="email" type="email">
+                        <p id="email-error" class="govuk-error-message tl-hidden"></p>
+                        <input class="govuk-input" id="email" name="email" type="email" aria-describedby="email-error">
                     </div>
                     <div class="govuk-form-group">
                         <label class="govuk-label govuk-label--m" for="telephone">
                             Telephone number (optional)
                         </label>
-                        <input class="govuk-input" id="telephone" name="telephone" type="tel">
+                        <p id="telephone-error" class="govuk-error-message tl-hidden"></p>
+                        <input class="govuk-input" id="telephone" name="telephone" type="tel" aria-describedby="telephone-error">
                     </div>
 
                     <script>
 
                     </script>
                     <div class="govuk-form-group tl-hidden" id="tl-eoi-contactpref">
-                        <fieldset class="govuk-fieldset">
+                        <fieldset class="govuk-fieldset" aria-describedby="contact-pref-error">
                             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                                 How would you prefer to be contacted?
                             </legend>
+                            <p id="contact-pref-error" class="govuk-error-message tl-hidden"></p>
                             <div class="govuk-radios" data-name="contact-pref" data-module="govuk-radios">
                                 <div class="govuk-radios__item">
                                     <input class="govuk-radios__input" id="contact-pref" name="contact-pref" type="radio" value="Email" data-id="1">
@@ -262,7 +375,8 @@
                         <label class="govuk-label govuk-label--m" for="organisation-name">
                             Organisation name
                         </label>
-                        <input class="govuk-input" id="organisation-name" name="organisation-name" type="text">
+                        <p id="organisation-name-error" class="govuk-error-message tl-hidden"></p>
+                        <input class="govuk-input" id="organisation-name" name="organisation-name" type="text" aria-describedby="organisation-name-error">
                     </div>
                     <div class="govuk-form-group">
                         <label class="govuk-label govuk-label--m" for="website">
@@ -271,11 +385,12 @@
                         <input class="govuk-input" id="website" name="website" type="text">
                     </div>
 
-                    <div class="govuk-form-group">
-                        <fieldset class="govuk-fieldset">
+                    <div class="govuk-form-group" id="tl-eoi-industry">
+                        <fieldset class="govuk-fieldset" aria-describedby="industry-error">
                             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                                 What is your organisation’s primary industry?
                             </legend>
+                            <p id="industry-error" class="govuk-error-message tl-hidden"></p>
                             <div class="govuk-radios" data-name="industry" data-module="govuk-radios">
                                 <div class="govuk-radios__item">
                                     <input class="govuk-radios__input" id="industry" name="industry" type="radio" value="Admin and Business Support" data-id="1">
@@ -369,12 +484,13 @@
                                         Other
                                     </label>
                                 </div>
-                                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="other-industry" >
+                                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="other-industry">
                                     <div class="govuk-form-group">
-                                        <label class="govuk-label govuk-visually-hidden" for="other-industry-name">
+                                        <label class="govuk-label govuk-visually-hidden" for="industry-other">
                                             Other industry
                                         </label>
-                                        <input class="govuk-input" id="industry" name="industry-other" type="text" data-cya="industry">
+                                        <p id="industry-other-error" class="govuk-error-message tl-hidden"></p>
+                                        <input class="govuk-input" id="industry-other" name="industry-other" type="text" data-cya="industry" aria-describedby="industry-other-error">
                                     </div>
 
                                 </div>
@@ -383,11 +499,12 @@
                         </fieldset>
                     </div>
 
-                    <div class="govuk-form-group">
-                        <fieldset class="govuk-fieldset">
+                    <div class="govuk-form-group" id="tl-eoi-skillarea">
+                        <fieldset class="govuk-fieldset" aria-describedby="skill-area-error">
                             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                                 What skill areas would you be interested in hosting an industry placement in?
                             </legend>
+                            <p id="skill-area-error" class="govuk-error-message tl-hidden"></p>
                             <div class="govuk-checkboxes govuk-!-margin-bottom-4" data-name="skill-area" data-module="govuk-checkboxes">
                                 <div class="govuk-checkboxes__item">
                                     <input class="govuk-checkboxes__input" id="skill-area" name="skill-area" type="checkbox" value="Admin and business support" data-id="1">
@@ -418,7 +535,7 @@
 
                                 </div>
                                 <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="skill-area-5" name="skill-area" type="checkbox" value="Education and childcare" data-id="5"> 
+                                    <input class="govuk-checkboxes__input" id="skill-area-5" name="skill-area" type="checkbox" value="Education and childcare" data-id="5">
                                     <label class="govuk-label govuk-checkboxes__label" for="skill-area-5">
                                         Education and childcare
                                     </label>
@@ -496,7 +613,11 @@
                                 </div>
                                 <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-skill-area-15">
                                     <div class="govuk-form-group">
-                                        <input class="govuk-input govuk-input--width-30 govuk-!-margin-bottom-2" id="skill-other-entry" name="skill-area-other" type="text" spellcheck="false">
+                                        <label class="govuk-label govuk-visually-hidden" for="skill-area-other">
+                                            Other skill area
+                                        </label>
+                                        <p id="skill-area-other-error" class="govuk-error-message tl-hidden"></p>
+                                        <input class="govuk-input govuk-input--width-30 govuk-!-margin-bottom-2" id="skill-area-other" name="skill-area-other" type="text" spellcheck="false" aria-describedby="skill-area-other-error">
                                     </div>
                                 </div>
                             </div>
@@ -506,7 +627,8 @@
                         <label class="govuk-label govuk-label--m" for="postcode">
                             Enter the postcode of your organisation’s location
                         </label>
-                        <input class="govuk-input" id="postcode" name="postcode" type="text" >
+                        <p id="postcode-error" class="govuk-error-message tl-hidden"></p>
+                        <input class="govuk-input" id="postcode" name="postcode" type="text">
                     </div>
 
                     <div class="govuk-form-group">
@@ -675,7 +797,8 @@
                     <div class="govuk-form-group govuk-!-margin-top-5" id="tl-consent">
                         <div class="govuk-checkboxes govuk-checkboxes--small">
                             <div class="govuk-checkboxes__item">
-                                <input class="govuk-checkboxes__input" id="tl-consent-check" name="consent" type="checkbox" value="agree">
+                                <p id="tl-consent-check-error" class="govuk-error-message tl-hidden"></p>
+                                <input class="govuk-checkboxes__input" id="tl-consent-check" name="consent" type="checkbox" value="agree" aria-describedby="tl-consent-check-error">
                                 <label class="govuk-label govuk-checkboxes__label" for="tl-consent-check">
                                     By selecting this box you confirm that you consent to the Department for Education processing and storing your data for the purposes described in the <a href="https://www.gov.uk/government/publications/privacy-notice-for-key-stage-5-and-adult-education" class="govuk-link">privacy notice</a>.
                                     <br />
@@ -685,7 +808,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="?step=4" type="button" class="govuk-button" id="tl-eoi-button--3">Send</a>
+                    <a href="?step=4" type="button" class="govuk-button tl-eoi-button" id="tl-eoi-button--3">Send</a>
                 </form>
 
             </div>
@@ -701,7 +824,7 @@
                 <p class="govuk-body">If a school or college would like to speak to you about hosting an industry placement or another T Level opportunity, they’ll get in touch using the contact details you have provided.</p>
                 <p class="govuk-body">We have also sent you a confirmation email.</p>
                 <p class="govuk-body">In the meantime, if you’d like to learn more about T Levels and industry placements, you can go back to <a href="/hc/en-gb" class="govuk-link govuk-link-no-visited-state">T Levels and industry placement support for employers home</a>.</p>
-</div>
+            </div>
         </div>
 
         <div class="govuk-grid-column-one-third tl-hidden" id="tl-eoi--related">
