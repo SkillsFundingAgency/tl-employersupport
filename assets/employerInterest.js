@@ -6212,7 +6212,7 @@ function addHmacAuthHeader(xhr, uri, appId, apiKey, method, data) {
 
     xhr.setRequestHeader("Authorization", "amx " + appId + ":" + hashInBase64 + ":" + nonce + ":" + ts);
 }
-function EmployerInterestFindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey) {
+function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApiKey) {
 
     if (typeof findProviderApiUri === "undefined" ||
         typeof findProviderAppId === "undefined" ||
@@ -6223,6 +6223,10 @@ function EmployerInterestFindProvider(findProviderApiUri, findProviderAppId, fin
 
     if (findProviderApiUri !== null && findProviderApiUri.substr(-1) !== '/') findProviderApiUri += '/';
 
+    //TODO: Remove this logging
+    console.log('findProviderApiUri: ' + findProviderApiUri);
+    console.log('findProviderAppId: ' + findProviderAppId);
+    console.log('findProviderApiKey: ' + findProviderApiKey);
 
     function buildEoiRequest() {
         let req = {
@@ -6243,9 +6247,21 @@ function EmployerInterestFindProvider(findProviderApiUri, findProviderAppId, fin
     }
 
     function submitEmployerInterest() {
+        //This probably needs to be hooked up with the page - success will need to call back to setPage() to allow it to proceed to step 4
+        
         console.log('submitting...');
 
+        const uri = findProviderApiUri + "employers/createinterest";
+        //TODO: 
+        const method = "GET";
+        //const method = "POST";
+        
         const data = buildEoiRequest();
+        console.log("calling " + uri);
         console.log(JSON.stringify(data));
+
+        //TODO: call back end
+
     }
+
 };

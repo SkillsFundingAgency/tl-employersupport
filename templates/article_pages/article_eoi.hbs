@@ -15,6 +15,7 @@
     </div>
 </div>
 
+<script src="{{asset 'employerInterest.js'}}"></script>
 <script>
     var getUrlParameter = function getUrlParameter(sParam) {
         var sPageURL = window.location.search.substring(1),
@@ -32,7 +33,9 @@
         return false;
     };
 
-
+    const eoi = new EmployerInterest("{{settings.find_provider_api_uri}}",
+                "{{settings.find_provider_api_app_id}}",
+                "{{settings.find_provider_api_key}}");
 
     $(document).ready(function () {
         setpage();
@@ -59,8 +62,13 @@
             telephoneexpand()
         });
 
+        $("#tl-eoi-submission-form").submit(function () {
+            event.stopPropagation();
+            event.preventDefault();
+            eoi.submitEmployerInterest();
+            return false;
+        });
     });
-
 
     function setpage() {
         var step = getUrlParameter('step');
@@ -269,7 +277,6 @@
 
     }
 
-
     function addError(errortext, element) {
         var preerror = '<span class="govuk-visually-hidden">Error: </span>'
         element.closest(".govuk-form-group").addClass("govuk-form-group--error");
@@ -284,7 +291,6 @@
         $(".govuk-error-message").html("");
         $(".govuk-input--error").removeClass("govuk-input--error");
     }
-
 
 </script>
 
@@ -743,7 +749,7 @@
 
                 <h2 class="govuk-heading-m">Now send your details</h2>
                 <p class="govuk-body">By submitting this form you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
-                <form novalidate>
+                <form novalidate id="tl-eoi-submission-form">
                     <div class="govuk-form-group govuk-!-margin-top-5" id="tl-consent">
                         <div class="govuk-checkboxes govuk-checkboxes--small">
                             <div class="govuk-checkboxes__item">
