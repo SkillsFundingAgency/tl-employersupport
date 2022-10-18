@@ -6241,13 +6241,12 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
         return req;
     }
 
-    function submitEmployerInterest() {
+    function submitEmployerInterest(successHref) {
         //This probably needs to be hooked up with the page - success will need to call back to setPage() to allow it to proceed to step 4
         
         console.log('submitting...');
 
         const uri = findProviderApiUri + "employers/createinterest";
-        //TODO: 
         const method = "GET";
         //const method = "POST";
         
@@ -6255,7 +6254,11 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
         console.log("calling " + uri);
         console.log(JSON.stringify(data));
 
+        console.log('will redirect to ' + successHref);
+
         //TODO: call back end
-        alert(JSON.stringify(data));
+
+        alert('will redirect to ' + successHref);
+        window.location.href = successHref;
     }
 };

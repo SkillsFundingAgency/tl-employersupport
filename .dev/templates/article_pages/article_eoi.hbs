@@ -62,10 +62,10 @@
             telephoneexpand()
         });
 
-        $("#tl-eoi-submission-form").submit(function () {
+        $('#tl-eoi-button--3').click(function(){
             event.stopPropagation();
             event.preventDefault();
-            eoi.submitEmployerInterest();
+            eoi.submitEmployerInterest($(this).attr('href'));
             return false;
         });
     });
@@ -749,7 +749,7 @@
 
                 <h2 class="govuk-heading-m">Now send your details</h2>
                 <p class="govuk-body">By submitting this form you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
-                <form novalidate id="tl-eoi-submission-form">
+                <form novalidate>
                     <div class="govuk-form-group govuk-!-margin-top-5" id="tl-consent">
                         <div class="govuk-checkboxes govuk-checkboxes--small">
                             <div class="govuk-checkboxes__item">
