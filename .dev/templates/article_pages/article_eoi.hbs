@@ -48,8 +48,8 @@
             var errorresult = validateanswers();
             if (errorresult == false) {
                 storeanswers();
-                alert($(this).id);
-                if($(this).id == "tl-eoi-button--3") 
+                alert($(this)..attr("id"));
+                if($(this).attr("id") == "tl-eoi-button--3") 
                     eoi.submitEmployerInterest($(this).attr('href'));
                 else
                     window.location = $(this).attr("href");
