@@ -62,11 +62,9 @@
             telephoneexpand()
         });
 
-        $('#tl-eoi-button--3').click(function(){
-            //event.stopPropagation();
-            event.preventDefault();
-            //eoi.submitEmployerInterest($(this).attr('href'));
-            eoi.submitEmployerInterest('?step=4');
+        $('#tl-eoi-button--3').click(function(e){
+            e.preventDefault();
+            eoi.submitEmployerInterest($(this).attr('href'));
             return false;
         });
     });

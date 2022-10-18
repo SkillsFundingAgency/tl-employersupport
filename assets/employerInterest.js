@@ -6242,20 +6242,11 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
     }
 
     EmployerInterest.prototype.submitEmployerInterest = function (successHref) {
-    //submitEmployerInterest(successHref) {
-        //This probably needs to be hooked up with the page - success will need to call back to setPage() to allow it to proceed to step 4
-        alert('submitEmployerInterest');
-        console.log('submitting eoi...');
-
         const uri = findProviderApiUri + "employers/createinterest";
         const method = "GET";
-        //const method = "POST";
-        alert("calling " + method + " " + uri);
         
         const data = buildEoiRequest();
-        console.log("calling " + uri);
-        alert("calling " + method + " " + uri);
-        console.log(data);
+        console.log("calling " + method + " " + uri);
         console.log(JSON.stringify(data));
 
         console.log('will redirect to ' + successHref);
