@@ -63,11 +63,10 @@
         });
 
         $('#tl-eoi-button--3').click(function(){
-            alert('got href');
-            alert($(this).attr('href'));
             //event.stopPropagation();
-            //event.preventDefault();
-            eoi.submitEmployerInterest($(this).attr('href'));
+            event.preventDefault();
+            //eoi.submitEmployerInterest($(this).attr('href'));
+            eoi.submitEmployerInterest('?step=4');
             return false;
         });
     });
