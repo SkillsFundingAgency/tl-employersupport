@@ -9386,13 +9386,13 @@ details summary {
     padding: 20px;
   }
 }
-.tl-card--grey, .tl-hero--card, .tl-fap--home, .tl-card--fap, .tl-home--banner--card {
+.tl-card--grey, .tl-hero--card, .tl-card--fap--home, .tl-card--fap, .tl-home--banner--card {
   background-color: #f3f2f1;
   padding: 30px;
   position: relative;
 }
 @media (max-width: 40.0525em) {
-  .tl-card--grey, .tl-hero--card, .tl-fap--home, .tl-card--fap, .tl-home--banner--card {
+  .tl-card--grey, .tl-hero--card, .tl-card--fap--home, .tl-card--fap, .tl-home--banner--card {
     padding: 20px;
   }
 }
@@ -10314,7 +10314,7 @@ ul.govuk-radios label .gem-radios__input {
   }
 }
 
-.tl-fap--home {
+.tl-card--fap--home {
   width: 100%;
   box-sizing: border-box;
   padding-left: 30px;
@@ -10323,46 +10323,46 @@ ul.govuk-radios label .gem-radios__input {
   padding-bottom: 30px;
 }
 @media (min-width: 40.0625em) {
-  .tl-fap--home {
+  .tl-card--fap--home {
     padding-left: 50px;
   }
 }
 @media (min-width: 40.0625em) {
-  .tl-fap--home {
+  .tl-card--fap--home {
     padding-right: 50px;
   }
 }
 @media (min-width: 40.0625em) {
-  .tl-fap--home {
+  .tl-card--fap--home {
     padding-top: 25px;
   }
 }
 @media (min-width: 40.0625em) {
-  .tl-fap--home {
+  .tl-card--fap--home {
     padding-bottom: 50px;
   }
 }
 @media (min-width: 40.0625em) {
-  .tl-fap--home {
+  .tl-card--fap--home {
     padding-bottom: 25px;
   }
 }
 @media (min-width: 40.0625em) and (min-width: 40.0625em) {
-  .tl-fap--home {
+  .tl-card--fap--home {
     padding-bottom: 40px;
   }
 }
 @media (max-width: 40.0525em) {
-  .tl-fap--home--linkcontainer {
+  .tl-card--fap--home--linkcontainer {
     margin-top: 15px;
   }
 }
 @media (max-width: 40.0525em) and (min-width: 40.0625em) {
-  .tl-fap--home--linkcontainer {
+  .tl-card--fap--home--linkcontainer {
     margin-top: 20px;
   }
 }
-.tl-fap--home--white {
+.tl-card--fap--home--white {
   background: #ffffff;
   padding: 10px;
 }
