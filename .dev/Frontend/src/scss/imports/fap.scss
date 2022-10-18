@@ -93,6 +93,11 @@
         background: govuk-colour("white");
         @include govuk-responsive-padding(4);
         width: 100%;
+        box-sizing: border-box;
+
+        @include govuk-media-query ($until: tablet) {
+            @include govuk-responsive-margin(4, "bottom");
+        }
     }
 }
 
