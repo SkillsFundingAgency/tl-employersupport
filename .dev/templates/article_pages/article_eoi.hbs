@@ -242,10 +242,6 @@
                 addError("Select your organisation’s primary industry", skillarea);
                 haserror = true;
             }
-            let skillareaother = $("#skill-area-other")
-            if (skillareachecked.val() == "Other" && skillareaother.val().length == 0) {
-                addError("Enter an alternative skill area", skillareaother);
-            }
 
             // Postcode val //
             let postcode = $("#postcode");
@@ -573,22 +569,6 @@
                                     <label class="govuk-label govuk-checkboxes__label" for="skill-area-11">
                                         Legal, Finance and Accounting
                                     </label>
-                                </div>
-
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="skill-area-15" name="skill-area" type="checkbox" value="Other" aria-controls="conditional-skill-area-15" aria-expanded="false" data-id="0">
-                                    <label class="govuk-label govuk-checkboxes__label" for="skill-area-15">
-                                        Other
-                                    </label>
-                                </div>
-                                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-skill-area-15">
-                                    <div class="govuk-form-group">
-                                        <label class="govuk-label govuk-visually-hidden" for="skill-area-other">
-                                            Other skill area
-                                        </label>
-                                        <p id="skill-area-other-error" class="govuk-error-message tl-hidden"></p>
-                                        <input class="govuk-input govuk-input--width-30 govuk-!-margin-bottom-2" id="skill-area-other" name="skill-area-other" type="text" spellcheck="false" aria-describedby="skill-area-other-error">
-                                    </div>
                                 </div>
                             </div>
                         </fieldset>
