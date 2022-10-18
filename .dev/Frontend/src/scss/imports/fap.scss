@@ -91,7 +91,8 @@
 
     &--white {
         background: govuk-colour("white");
-        padding: 20px;
+        @include govuk-responsive-padding(4);
+        width: 100%;
     }
 }
 

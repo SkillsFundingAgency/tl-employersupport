@@ -10364,7 +10364,13 @@ ul.govuk-radios label .gem-radios__input {
 }
 .tl-card--fap--home--white {
   background: #ffffff;
-  padding: 20px;
+  padding: 15px;
+  width: 100%;
+}
+@media (min-width: 40.0625em) {
+  .tl-card--fap--home--white {
+    padding: 20px;
+  }
 }
 
 #tl-home--fap .tl-card--fap {
