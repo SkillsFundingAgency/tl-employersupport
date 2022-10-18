@@ -96,6 +96,55 @@
         </div>    
     </div>
 </section>
+
+<script>
+    //initialize autocomplete and file download
+    new LocationAutocomplete(findProviderApiUri);
+    new FindProviderDownload(findProviderApiUri, findProviderAppId, findProviderApiKey);
+
+    $('#tl-search-term').val("");
+
+    $('#tl-search-term').keypress(function (e) {
+        if (e.which === 13) {
+            $("#tl-search-providers").click();
+            return false;
+        }
+    });
+
+    $("#tl-search-providers").click(function () {
+        const searchTerm = $("#tl-search-term").val().trim();
+
+        if (searchTerm === "") {
+            event.stopPropagation();
+            showSearchTermError("Enter postcode or town");
+            return false;
+        }
+
+        $(location).attr('href', findProviderRedirectUrl + '?searchTerm=' + encodeURIComponent(searchTerm));
+
+        return true;
+    });
+
+    $(".tl-fap-search-providers-form").submit(function () {
+        event.preventDefault();
+    });
+
+    function showSearchTermError(message) {
+        if (!$("#tl-search-term-error").length) return;
+        $("#tl-search-term-error").text(message);
+        $('#tl-search-term-error').removeClass("tl-hidden");
+    }
+
+    $(".tl-article--content .govuk-details__summary").click(function () {
+        if (this.closest(".govuk-details").hasAttribute("open")) {
+            $(this).closest(".govuk-details").removeAttr('open');
+        }
+        else {
+            $(this).closest(".govuk-details").attr('open', true);
+        }
+    });
+
+</script>
 {{/if}}
 
 
