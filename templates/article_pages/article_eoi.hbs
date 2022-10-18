@@ -48,7 +48,7 @@
             var errorresult = validateanswers();
             if (errorresult == false) {
                 storeanswers();
-                alert($(this)..attr("id"));
+                alert($(this).attr("id"));
                 if($(this).attr("id") == "tl-eoi-button--3") 
                     eoi.submitEmployerInterest($(this).attr('href'));
                 else
