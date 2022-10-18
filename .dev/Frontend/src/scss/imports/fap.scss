@@ -35,8 +35,10 @@
         }
     }
 
-
-
+    &--white {
+        background: govuk-colour("white");
+        padding: 10px;
+    }
 
     &--left, &--right {
         display: flex;

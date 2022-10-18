@@ -10282,6 +10282,10 @@ ul.govuk-radios label .gem-radios__input {
     margin-top: 20px;
   }
 }
+.tl-card--fap--white {
+  background: #ffffff;
+  padding: 10px;
+}
 .tl-card--fap--left, .tl-card--fap--right {
   display: flex;
   flex-direction: column;
