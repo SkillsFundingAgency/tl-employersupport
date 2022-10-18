@@ -99,6 +99,24 @@ gulp.task('findProviderTilejs', () => {
         .pipe(gulp.dest(paths.dist.Assets));
 });
 
+gulp.task('findProviderTileHomejs', () => {
+    return src([
+        'node_modules/crypto-js/crypto-js.js',
+        'node_modules/accessible-autocomplete/dist/accessible-autocomplete.min.js',
+        'Frontend/src/js/hmac.js',
+        'Frontend/src/js/findProviderTileHome.js',
+        'Frontend/src/js/findProviderDownload.js',
+        'Frontend/src/js/locationAutocomplete.js'
+    ])
+        .pipe(rmLines({
+            'filters': [
+                /^\/\/# sourceMappingURL=/g,
+            ]
+        }))
+        .pipe(concat('findProviderTileHome.js'))
+        .pipe(gulp.dest(paths.dist.Assets));
+});
+
 gulp.task('findProviderDownloadjs', () => {
     return src([
         'node_modules/crypto-js/crypto-js.js',
