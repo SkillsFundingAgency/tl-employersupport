@@ -63,8 +63,10 @@
         });
 
         $('#tl-eoi-button--3').click(function(){
-            event.stopPropagation();
-            event.preventDefault();
+            alert('got href');
+            alert($(this).attr('href'));
+            //event.stopPropagation();
+            //event.preventDefault();
             eoi.submitEmployerInterest($(this).attr('href'));
             return false;
         });
