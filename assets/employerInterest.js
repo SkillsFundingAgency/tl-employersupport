@@ -6241,7 +6241,8 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
         return req;
     }
 
-    submitEmployerInterest(successHref) {
+    EmployerInterest.prototype.submitEmployerInterest = function (successHref) {
+    //submitEmployerInterest(successHref) {
         //This probably needs to be hooked up with the page - success will need to call back to setPage() to allow it to proceed to step 4
         alert('submitEmployerInterest');
         console.log('submitting...');
