@@ -141,6 +141,7 @@ gulp.task('jsfiles', () => {
         '!Frontend/src/js/findProvider.js',
         '!Frontend/src/js/findProviderDownload.js',
         '!Frontend/src/js/findProviderTile.js',
+        '!Frontend/src/js/findProviderTileHome.js',
         '!Frontend/src/js/hmac.js',
     ])
         .pipe(gulp.dest(paths.dist.Assets));
