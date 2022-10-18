@@ -6223,11 +6223,6 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
 
     if (findProviderApiUri !== null && findProviderApiUri.substr(-1) !== '/') findProviderApiUri += '/';
 
-    //TODO: Remove this logging
-    console.log('findProviderApiUri: ' + findProviderApiUri);
-    console.log('findProviderAppId: ' + findProviderAppId);
-    console.log('findProviderApiKey: ' + findProviderApiKey);
-
     function buildEoiRequest() {
         let req = {
             organisationName: sessionStorage.getItem("organisation-name"),
@@ -6261,7 +6256,6 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
         console.log(JSON.stringify(data));
 
         //TODO: call back end
-
+        alert(JSON.stringify(data));
     }
-
 };
