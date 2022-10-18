@@ -48,7 +48,11 @@
             var errorresult = validateanswers();
             if (errorresult == false) {
                 storeanswers();
-                window.location = $(this).attr("href");
+                alert($(this).id);
+                if($(this).id == "tl-eoi-button--3") 
+                    eoi.submitEmployerInterest($(this).attr('href'));
+                else
+                    window.location = $(this).attr("href");
             }
         });
 
@@ -62,11 +66,11 @@
             telephoneexpand()
         });
 
-        $('#tl-eoi-button--3').click(function(e){
+        {{!-- $('#tl-eoi-button--3').click(function(e){
             e.preventDefault();
             eoi.submitEmployerInterest($(this).attr('href'));
             return false;
-        });
+        }); --}}
     });
 
     function setpage() {
@@ -748,7 +752,7 @@
 
                 <h2 class="govuk-heading-m">Now send your details</h2>
                 <p class="govuk-body">By submitting this form you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
-                <form novalidate>
+                <form id="tl-eoi-submission-form" novalidate>
                     <div class="govuk-form-group govuk-!-margin-top-5" id="tl-consent">
                         <div class="govuk-checkboxes govuk-checkboxes--small">
                             <div class="govuk-checkboxes__item">
