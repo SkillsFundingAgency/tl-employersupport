@@ -85,8 +85,14 @@
             $("#tl-eoi--4").removeClass("tl-hidden");
             $("#tl-breadcrumbs").addClass("tl-hidden");
             sessionStorage.clear();
-
         }
+
+
+        else if (step == "withdraw") {
+            $("#tl-eoi--withdraw").removeClass("tl-hidden");
+            $("#tl-breadcrumbs").addClass("tl-hidden");
+        }
+
 
         else {
             $("#tl-eoi--start").removeClass("tl-hidden");
@@ -776,6 +782,21 @@
                 <p class="govuk-body">If a school or college would like to speak to you about hosting an industry placement or another T Level opportunity, they’ll get in touch using the contact details you have provided.</p>
                 <p class="govuk-body">We have also sent you a confirmation email.</p>
                 <p class="govuk-body">In the meantime, if you’d like to learn more about T Levels and industry placements, you can go back to <a href="/hc/en-gb" class="govuk-link govuk-link-no-visited-state">T Levels and industry placement support for employers home</a>.</p>
+            </div>
+
+
+
+            <!-- Unsubscribe -->
+            <div id="tl-eoi--withdraw" class="tl-hidden">
+                <div class="govuk-panel govuk-panel--confirmation">
+                    <h1 class="govuk-panel__title">
+                        You have withdrawn your interest in T Levels and industry placements
+                    </h1>
+                </div>
+                <p class="govuk-body">
+                    We have stopped sharing your details with T Level schools and colleges.
+                </p>
+                <p class="govuk-body">If you would like to connect with T Level schools and colleges in the future, you can find providers near you from the <a href="/hc/en-gb" class="govuk-link govuk-link-no-visited-state">T Levels and industry placement support for employers home</a>.</p>
             </div>
         </div>
 
