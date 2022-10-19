@@ -39,7 +39,7 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
 
         //TODO: call back end
 
-        alert('will redirect to ' + successHref);
-        //window.location.href = successHref;
+        //alert('will redirect to ' + successHref);
+        window.location.href = successHref;
     }
 };
