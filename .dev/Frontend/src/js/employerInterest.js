@@ -59,7 +59,6 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
             console.log('Successfully submitted eoi data.');
             console.log(response);
             console.log('will redirect to ' + successHref);
-            alert('success!');
             window.location.href = successHref;
         }).fail(function (xhr, status, error) {
             console.log('Call to create employer interest failed. ' + status + ' ' + error);
