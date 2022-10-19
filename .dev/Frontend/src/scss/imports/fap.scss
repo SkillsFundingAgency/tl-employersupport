@@ -97,6 +97,7 @@
 
         @include govuk-media-query ($until: tablet) {
             @include govuk-responsive-margin(4, "bottom");
+            @include govuk-responsive-margin(4, "top");
         }
     }
 

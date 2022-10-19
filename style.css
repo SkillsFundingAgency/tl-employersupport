@@ -10401,11 +10401,17 @@ ul.govuk-radios label .gem-radios__input {
 @media (max-width: 40.0525em) {
   .tl-card--fap--home--white {
     margin-bottom: 15px;
+    margin-top: 15px;
   }
 }
 @media (max-width: 40.0525em) and (min-width: 40.0625em) {
   .tl-card--fap--home--white {
     margin-bottom: 20px;
+  }
+}
+@media (max-width: 40.0525em) and (min-width: 40.0625em) {
+  .tl-card--fap--home--white {
+    margin-top: 20px;
   }
 }
 .tl-card--fap--home .tl-card-fap--wrap {

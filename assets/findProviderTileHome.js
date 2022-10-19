@@ -6235,7 +6235,7 @@ function FindProviderTile(findProviderRedirectUrl, findProviderApiUri, findProvi
             <div class="govuk-grid-column-full"> \
                 <div class="tl-card--fap--home"> \
                     <h2 class="govuk-!-margin-top-2 govuk-!-margin-bottom-4 govuk-heading-l">Partner with a school or college</h2> \
-                    <div class="govuk-grid-row tl-row-fill tl-card-fap--wrap"> \
+                    <div class="govuk-grid-row tl-row-fill--fixed tl-card-fap--wrap"> \
                         <div class="govuk-grid-column-one-half tl-row-fill--fixed tl-order-mobile--1"> \
                             <div class="tl-card--fap--home--white"> \
                                 <form role="search" class="tl-fap-search-providers-form"> \
