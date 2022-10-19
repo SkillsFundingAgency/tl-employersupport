@@ -9,7 +9,7 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
 
     if (findProviderApiUri !== null && findProviderApiUri.substr(-1) !== '/') findProviderApiUri += '/';
 
-    function buildEoiRequest() {
+    function buildEoiRequestData() {
         let req = {
             organisationName: sessionStorage.getItem("organisation-name"),
             industryId: parseInt(sessionStorage.getItem("industry")) || 0,
@@ -21,7 +21,7 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
             contactPreferenceType: sessionStorage.getItem("contact-pref"),
             contactName: sessionStorage.getItem("full-name"),
             additionalInformation: sessionStorage.getItem("information"),
-            //routes: sessionStorage.getItem("skill-area").split(',').map(Number)
+            skillAreaIds: sessionStorage.getItem("skill-area").split(',').map(Number)
         };
 
         return req;
@@ -31,15 +31,31 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
         const uri = findProviderApiUri + "employers/createinterest";
         const method = "GET";
         
-        const data = buildEoiRequest();
+        const data = buildEoiRequestData();
         console.log("calling " + method + " " + uri);
         console.log(JSON.stringify(data));
 
-        console.log('will redirect to ' + successHref);
-
-        //TODO: call back end
-
-        //alert('will redirect to ' + successHref);
-        window.location.href = successHref;
+        $.ajax({
+            type: method,
+            url: uri,
+            data: JSON.stringify(data),
+            contentType: "application/json",
+            beforeSend: function (xhr) {
+                addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey, method, dataItem);
+            }
+        }).done(function (response) {
+            console.log('Successfully submitted eoi data.');
+            console.log(response);
+            console.log('will redirect to ' + successHref);
+            alert('success!');
+            window.location.href = successHref;
+        }).fail(function (xhr, status, error) {
+            console.log('Call to create employer interest failed. ' + status + ' ' + error);
+            console.log('error = ' + error);
+            console.log('status = ' + status);
+            console.log('xhr.status = ' + xhr.status);
+            alert('fail!');
+            //Show what?
+        });
     }
 };
