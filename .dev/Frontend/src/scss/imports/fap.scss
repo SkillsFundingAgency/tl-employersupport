@@ -99,6 +99,10 @@
             @include govuk-responsive-margin(4, "bottom");
         }
     }
+
+    .tl-card-fap--wrap {
+        flex-wrap: wrap;
+    }
 }
 
 #tl-home--fap {

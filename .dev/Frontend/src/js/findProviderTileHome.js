@@ -20,7 +20,7 @@ function FindProviderTile(findProviderRedirectUrl, findProviderApiUri, findProvi
             <div class="govuk-grid-column-full"> \
                 <div class="tl-card--fap--home"> \
                     <h2 class="govuk-!-margin-top-2 govuk-!-margin-bottom-4 govuk-heading-l">Partner with a school or college</h2> \
-                    <div class="govuk-grid-row tl-row-fill"> \
+                    <div class="govuk-grid-row tl-row-fill tl-card-fap--wrap"> \
                         <div class="govuk-grid-column-one-half tl-row-fill"> \
                             <div class="tl-card--fap--home--white"> \
                                 <form role="search" class="tl-fap-search-providers-form"> \
@@ -42,8 +42,8 @@ function FindProviderTile(findProviderRedirectUrl, findProviderApiUri, findProvi
                                 <a class="govuk-button tl-button--blue govuk-!-margin-bottom-0 govuk-!-margin-top-1" href="/hc/en-gb/articles/8050093018258">Register your interest</a> \
                             </div> \
                         </div> \
-                    </div> \
-                    <div class="tl-card--fap--left tl-card--fap--linkcontainer govuk-!-padding-left-0 govuk-!-margin-top-5"> \
+                        <div class="govuk-grid-column-full"> \
+                       <div class="tl-card--fap--left tl-card--fap--linkcontainer govuk-!-padding-left-0 govuk-!-margin-top-5"> \
                         <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details"> \
                             <summary class="govuk-details__summary"> \
                                 <span class="govuk-details__summary-text"> \
@@ -59,6 +59,8 @@ function FindProviderTile(findProviderRedirectUrl, findProviderApiUri, findProvi
                                 <p class="govuk-body"><strong>Note:</strong> This file contains publicly available data provided by the schools and colleges listed.</p> \
                             </div> \
                         </details> \
+                    </div> \
+                        </div> \
                     </div> \
                 </div> \
             </div> \

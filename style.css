@@ -10383,6 +10383,9 @@ ul.govuk-radios label .gem-radios__input {
     margin-bottom: 20px;
   }
 }
+.tl-card--fap--home .tl-card-fap--wrap {
+  flex-wrap: wrap;
+}
 
 #tl-home--fap .tl-card--fap {
   padding-top: 30px;
