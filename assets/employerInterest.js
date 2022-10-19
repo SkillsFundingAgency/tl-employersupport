@@ -6242,6 +6242,9 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
     }
 
     EmployerInterest.prototype.submitEmployerInterest = function (successHref) {
+
+        loadRoutes();
+
         const uri = findProviderApiUri + "employers/createinterest";
         const method = "GET";
         
@@ -6270,6 +6273,23 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
             console.log('xhr.status = ' + xhr.status);
             alert('fail!');
             //Show what?
+        });
+    }
+
+    function loadRoutes() {
+        const uri = findProviderApiUri + "routes";
+        $.ajax({
+            type: "GET",
+            url: uri,
+            contentType: "application/json",
+            beforeSend: function (xhr) {
+                addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey);
+            }
+        }).done(function (response) {
+            console.log('got routes');
+            console.log(response);
+        }).fail(function (error) {
+            console.log('Call to get routes failed. ' + error);
         });
     }
 };
