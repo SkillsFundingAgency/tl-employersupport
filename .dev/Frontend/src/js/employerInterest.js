@@ -18,7 +18,7 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
             email: sessionStorage.getItem("email"),
             telephone: sessionStorage.getItem("telephone"),
             website: sessionStorage.getItem("website"),
-            contactPreferenceType: sessionStorage.getItem("contact-pref"),
+            contactPreferenceType: parseInt(sessionStorage.getItem("contact-pref")),
             contactName: sessionStorage.getItem("full-name"),
             additionalInformation: sessionStorage.getItem("information"),
             skillAreaIds: sessionStorage.getItem("skill-area").split(',').map(Number)
@@ -29,19 +29,21 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
 
     EmployerInterest.prototype.submitEmployerInterest = function (successHref) {
 
-        loadRoutes();
-
-        const uri = findProviderApiUri + "employers/createinterest";
+        //TODO: Change toPOST when firewall allows it, use const for uri and data, method === "GET" block
         const method = "GET";
-        
-        const data = JSON.stringify(buildEoiRequestData());
+        let uri = findProviderApiUri + "employers/createinterest";
+        let data = JSON.stringify(buildEoiRequestData());
+        if(method === "GET") {
+            uri += '?employerInterest=' + encodeURIComponent(data);
+            data = null;
+        }
         console.log("calling " + method + " " + uri);
         console.log(data);
 
         $.ajax({
             type: method,
             url: uri,
-            data: JSON.stringify(data),
+            data: data,
             contentType: "application/json",
             beforeSend: function (xhr) {
                 addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey, method, data);
@@ -57,25 +59,7 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
             console.log('error = ' + error);
             console.log('status = ' + status);
             console.log('xhr.status = ' + xhr.status);
-            alert('fail!');
             //Show what?
-        });
-    }
-
-    function loadRoutes() {
-        const uri = findProviderApiUri + "routes";
-        $.ajax({
-            type: "GET",
-            url: uri,
-            contentType: "application/json",
-            beforeSend: function (xhr) {
-                addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey);
-            }
-        }).done(function (response) {
-            console.log('got routes');
-            console.log(response);
-        }).fail(function (error) {
-            console.log('Call to get routes failed. ' + error);
         });
     }
 };
