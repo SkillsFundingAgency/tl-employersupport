@@ -7888,6 +7888,10 @@ x:-moz-any-link {
     display: block;
   }
 }
+.tl-row-fill--fixed {
+  display: flex;
+  align-items: stretch;
+}
 
 .tl-flex-list {
   display: flex;
@@ -7897,6 +7901,27 @@ x:-moz-any-link {
   order: -1;
 }
 
+.tl-order--1 {
+  order: 1;
+}
+.tl-order--2 {
+  order: 1;
+}
+.tl-order--3 {
+  order: 1;
+}
+
+@media (max-width: 40.0525em) {
+  .tl-order-mobile--1 {
+    order: 1;
+  }
+  .tl-order-mobile--2 {
+    order: 1;
+  }
+  .tl-order-mobile--3 {
+    order: 1;
+  }
+}
 .tl-image--cover {
   object-fit: cover;
   max-width: 100%;

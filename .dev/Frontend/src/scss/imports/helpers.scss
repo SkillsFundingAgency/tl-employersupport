@@ -129,6 +129,11 @@
     @include govuk-media-query ($until: tablet) {
         display: block;
     }
+
+    &--fixed {
+        display: flex;
+        align-items: stretch;
+    }
 }
 
 .tl-flex-list {
@@ -139,6 +144,35 @@
         order: -1
     }
 
+}
+
+.tl-order {
+    &--1 {
+        order: 1;
+    }
+
+    &--2 {
+        order: 1;
+    }
+
+    &--3 {
+        order: 1;
+    }
+}
+@include govuk-media-query ($until: tablet) {
+    .tl-order-mobile {
+        &--1 {
+            order: 1;
+        }
+
+        &--2 {
+            order: 1;
+        }
+
+        &--3 {
+            order: 1;
+        }
+    }
 }
 
 
