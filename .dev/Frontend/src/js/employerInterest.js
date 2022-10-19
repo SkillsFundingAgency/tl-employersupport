@@ -31,9 +31,9 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
         const uri = findProviderApiUri + "employers/createinterest";
         const method = "GET";
         
-        const data = buildEoiRequestData();
+        const data = JSON.stringify(buildEoiRequestData());
         console.log("calling " + method + " " + uri);
-        console.log(JSON.stringify(data));
+        console.log(data);
 
         $.ajax({
             type: method,
@@ -41,7 +41,7 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
             data: JSON.stringify(data),
             contentType: "application/json",
             beforeSend: function (xhr) {
-                addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey, method, dataItem);
+                addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey, method, data);
             }
         }).done(function (response) {
             console.log('Successfully submitted eoi data.');
