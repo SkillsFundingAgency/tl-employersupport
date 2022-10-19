@@ -28,26 +28,33 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
     }
 
     EmployerInterest.prototype.submitEmployerInterest = function (successHref) {
+        //TODO: Change to POST when firewall allows it, use const for uri and data, method === "GET" block
+        //const uri = findProviderApiUri + "employers/createinterest";
 
-        //TODO: Change toPOST when firewall allows it, use const for uri and data, method === "GET" block
-        const method = "GET";
-        let uri = findProviderApiUri + "employers/createinterest";
         let data = JSON.stringify(buildEoiRequestData());
-        if(method === "GET") {
-            uri += '?employerInterest=' + encodeURIComponent(data);
-            data = null;
-        }
-        console.log("calling " + method + " " + uri);
-        console.log(data);
+        console.log("data=" + data);
 
+        //const method = "POST";
+        //workaround code using GET
+        const method = "GET";
+        const uri = findProviderApiUri + "employers/createinterest?data=" + CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(data));
+
+        console.log("calling " + method + " " + uri);
         $.ajax({
             type: method,
             url: uri,
-            data: data,
             contentType: "application/json",
             beforeSend: function (xhr) {
-                addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey, method, data);
+                addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey, method);
             }
+            //$.ajax({
+            //    type: method,
+            //    url: uri,
+            //    data: data,
+            //    contentType: "application/json",
+            //    beforeSend: function (xhr) {
+            //        addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey, method, data);
+            //    }
         }).done(function (response) {
             console.log('Successfully submitted eoi data.');
             console.log(response);
