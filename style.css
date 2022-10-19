@@ -7905,10 +7905,10 @@ x:-moz-any-link {
   order: 1;
 }
 .tl-order--2 {
-  order: 1;
+  order: 2;
 }
 .tl-order--3 {
-  order: 1;
+  order: 3;
 }
 
 @media (max-width: 40.0525em) {
@@ -7916,10 +7916,10 @@ x:-moz-any-link {
     order: 1;
   }
   .tl-order-mobile--2 {
-    order: 1;
+    order: 2;
   }
   .tl-order-mobile--3 {
-    order: 1;
+    order: 3;
   }
 }
 .tl-image--cover {
