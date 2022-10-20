@@ -134,8 +134,8 @@ function setpage(eoi) {
                 $("#tl-eoi--withdraw").removeClass("tl-hidden");
                 $("#tl-breadcrumbs").addClass("tl-hidden");
                 $(".tl-backlink").addClass("tl-hidden");
-                document.tit);le = 'You have withdrawn your interest | T Levels and industry placement support for employers';
-        }
+                document.title = 'You have withdrawn your interest | T Levels and industry placement support for employers';
+        });
     }
 
     else {
