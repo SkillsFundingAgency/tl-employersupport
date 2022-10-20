@@ -94,6 +94,7 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
                 console.log('error = ' + error);
                 console.log('status = ' + status);
                 console.log('xhr.status = ' + xhr.status);
+                if(status === 404) successCallback(); //404 means nothing found to delete, because it's already gone
             });
         }
     }
