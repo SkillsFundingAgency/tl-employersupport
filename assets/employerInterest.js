@@ -6289,6 +6289,9 @@ function setpage() {
 
     if (step == 1) {
         $("#tl-eoi--1").removeClass("tl-hidden");
+        $(".tl-breadcrumbs").removeClass("tl-hidden");
+        $(".tl-backlink").addClass("tl-hidden");
+
     }
 
     else if (step == 2) {
@@ -6302,6 +6305,7 @@ function setpage() {
     else if (step == 4) {
         $("#tl-eoi--4").removeClass("tl-hidden");
         $("#tl-breadcrumbs").addClass("tl-hidden");
+        $(".tl-backlink").addClass("tl-hidden");
         sessionStorage.clear();
     }
 
@@ -6309,6 +6313,7 @@ function setpage() {
     else if (step == "withdraw") {
         $("#tl-eoi--withdraw").removeClass("tl-hidden");
         $("#tl-breadcrumbs").addClass("tl-hidden");
+        $(".tl-backlink").addClass("tl-hidden");
         document.title = 'You have withdrawn your interest | T Levels and industry placement support for employers';
     }
 
