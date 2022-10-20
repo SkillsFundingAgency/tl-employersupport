@@ -6324,10 +6324,13 @@ function setpage() {
 
     else if (step == 2) {
         $("#tl-eoi--2").removeClass("tl-hidden");
+        $(".tl-backlink").attr("href", "?step=1");
+
     }
 
     else if (step == 3) {
         $("#tl-eoi--3").removeClass("tl-hidden");
+        $(".tl-backlink").attr("href", "?step=2");
     }
 
     else if (step == 4) {
