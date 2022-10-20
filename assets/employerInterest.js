@@ -6283,7 +6283,7 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
         });
     }
 
-    EmployerInterest.prototype.removeEmployerInterest = function(employerId) {
+    EmployerInterest.prototype.removeEmployerInterest = function(employerId, successCallback) {
         console.log('removeEmployerInterest called for ' + employerId);
         if (employerId) {
             //TODO: Change to DELETE after this has been unblocked in the firewall
@@ -6302,13 +6302,12 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
                 console.log('delete employer interest succeeded');
                 console.log('data = ' + data);
                 console.log('xhr.status = ' + xhr.status);
-                alert('saved');
+                successCallback();
             }).fail(function (xhr, status, error) {
                 console.log('Call to delete employer interest failed. ' + status + ' ' + error);
                 console.log('error = ' + error);
                 console.log('status = ' + status);
                 console.log('xhr.status = ' + xhr.status);
-                alert('error');
             });
         }
     }
@@ -6344,12 +6343,13 @@ function setpage(eoi) {
 
     else if (step == "withdraw") {
         var employerId = getUrlParameter('id');
-        eoi.removeEmployerInterest(employerId);
-
-        $("#tl-eoi--withdraw").removeClass("tl-hidden");
-        $("#tl-breadcrumbs").addClass("tl-hidden");
-        $(".tl-backlink").addClass("tl-hidden");
-        document.title = 'You have withdrawn your interest | T Levels and industry placement support for employers';
+        eoi.removeEmployerInterest(employerId, 
+            function() {
+                $("#tl-eoi--withdraw").removeClass("tl-hidden");
+                $("#tl-breadcrumbs").addClass("tl-hidden");
+                $(".tl-backlink").addClass("tl-hidden");
+                document.tit);le = 'You have withdrawn your interest | T Levels and industry placement support for employers';
+        }
     }
 
     else {
