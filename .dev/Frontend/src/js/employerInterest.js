@@ -27,7 +27,7 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
         return req;
     }
 
-    EmployerInterest.prototype.submitEmployerInterest = function (successHref) {
+    EmployerInterest.prototype.submitEmployerInterest = function(successHref) {
         //TODO: Change to POST when firewall allows it, use const for uri and data, method === "GET" block
         //const uri = findProviderApiUri + "employers/createinterest";
 
@@ -68,37 +68,40 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
             //Show what?
         });
     }
+
+    EmployerInterest.prototype.removeEmployerInterest = function(employerId) {
+        console.log('removeEmployerInterest called for ' + employerId);
+        if (employerId) {
+            //TODO: Change to DELETE after this has been unblocked in the firewall
+            const method = "GET";
+            const uri = findProviderApiUri + "employers/deleteinterest/" + employerId;
+            console.log("Calling delete interest on " + uri);
+    
+            $.ajax({
+                type: method,
+                url: uri,
+                //contentType: "application/json",
+                beforeSend: function (xhr) {
+                    addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey, method);
+                }
+            }).done(function (data, status, xhr) {
+                console.log('delete employer interest succeeded');
+                console.log('data = ' + data);
+                console.log('xhr.status = ' + xhr.status);
+                alert('saved');
+            }).fail(function (xhr, status, error) {
+                console.log('Call to delete employer interest failed. ' + status + ' ' + error);
+                console.log('error = ' + error);
+                console.log('status = ' + status);
+                console.log('xhr.status = ' + xhr.status);
+                alert('error');
+            });
+        }
+    }
 };
 
-function removeEmployerInterest(employerId) {
-    console.log('removeEmployerInterest called for ' + employerId);
-    if (employerId) {
-        //TODO: Change to DELETE after this has been unblocked in the firewall
-        const method = "GET";
-        const uri = findProviderApiUri + "employers/deleteinterest/" + employerId;
-        console.log("Calling delete interest on " + uri);
 
-        $.ajax({
-            type: method,
-            url: uri,
-            //contentType: "application/json",
-            beforeSend: function (xhr) {
-                addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey, method);
-            }
-        }).done(function (data, status, xhr) {
-            console.log('delete employer interest succeeded');
-            console.log('data = ' + data);
-            console.log('xhr.status = ' + xhr.status);
-        }).fail(function (xhr, status, error) {
-            console.log('Call to delete employer interest failed. ' + status + ' ' + error);
-            console.log('error = ' + error);
-            console.log('status = ' + status);
-            console.log('xhr.status = ' + xhr.status);
-        });
-    }
-}
-
-function setpage() {
+function setpage(eoi) {
     var step = getUrlParameter('step');
 
     if (step == 1) {
@@ -125,17 +128,15 @@ function setpage() {
         sessionStorage.clear();
     }
 
-
     else if (step == "withdraw") {
         var employerId = getUrlParameter('id');
-        removeEmployerInterest(employerId);
+        eoi.removeEmployerInterest(employerId);
 
         $("#tl-eoi--withdraw").removeClass("tl-hidden");
         $("#tl-breadcrumbs").addClass("tl-hidden");
         $(".tl-backlink").addClass("tl-hidden");
         document.title = 'You have withdrawn your interest | T Levels and industry placement support for employers';
     }
-
 
     else {
         $("#tl-eoi--start").removeClass("tl-hidden");
