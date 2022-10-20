@@ -6439,7 +6439,7 @@ function validateanswers() {
         let contactpref = $("#tl-eoi-contactpref input");
         let contactprefchecked = $("#tl-eoi-contactpref input:checked");
         if (tel.val().length != 0 && contactprefchecked.length == 0) {
-            addError("Select how you�d prefer to be contacted", contactpref);
+            addError("Select how you'd prefer to be contacted", contactpref);
             haserror = true;
         }
     }
@@ -6456,7 +6456,7 @@ function validateanswers() {
         let industry = $("#tl-eoi-industry input");
         let industrychecked = $("#tl-eoi-industry input:checked");
         if (industrychecked.length == 0) {
-            addError("Select your organisation�s primary industry", industry);
+            addError("Select your organisation's primary industry", industry);
             haserror = true;
         }
         let industryother = $("#industry-other")
@@ -6468,7 +6468,7 @@ function validateanswers() {
         let skillarea = $("#tl-eoi-skillarea input");
         let skillareachecked = $("#tl-eoi-skillarea input:checked:last");
         if (skillareachecked.length == 0) {
-            addError("Select your organisation�s primary industry", skillarea);
+            addError("Select your organisation's primary industry", skillarea);
             haserror = true;
         }
 
@@ -6480,7 +6480,7 @@ function validateanswers() {
             haserror = true;
         }
         if (postcode.val().length == 0) {
-            addError("Enter your organisation�s postcode", postcode);
+            addError("Enter your organisation's postcode", postcode);
             haserror = true;
         }
     }
