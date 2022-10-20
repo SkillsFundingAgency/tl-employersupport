@@ -6241,7 +6241,7 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
         return req;
     }
 
-    EmployerInterest.prototype.submitEmployerInterest = function (successHref) {
+    EmployerInterest.prototype.submitEmployerInterest = function(successHref) {
         //TODO: Change to POST when firewall allows it, use const for uri and data, method === "GET" block
         //const uri = findProviderApiUri + "employers/createinterest";
 
@@ -6283,7 +6283,7 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
         });
     }
 
-    EmployerInterest.prototype.submitEmployerInterest = function removeEmployerInterest(employerId) {
+    EmployerInterest.prototype.removeEmployerInterest = function(employerId) {
         console.log('removeEmployerInterest called for ' + employerId);
         if (employerId) {
             //TODO: Change to DELETE after this has been unblocked in the firewall
