@@ -29,7 +29,43 @@ function EmployerInterest(findProviderApiUri, findProviderEoiApiUri, findProvide
         return req;
     }
 
-    EmployerInterest.prototype.submitEmployerInterest = function(successHref) {
+    EmployerInterest.prototype.validatePostcode = function(postcode, successCallback, errorCallback) {
+        console.log('validatePostcode called for ' + postcode);
+        if (postcode === 'undefined' || !postcode) {
+            //No need to validate missing postcode - this is done elsewhere
+            if(errorCallback !== 'undefined') errorCallback();
+        }
+
+        const method = "GET";
+        const uri = findProviderApiUri + "locations/validate?postcode=" + encodeURIComponent(postcode);
+        $.ajax({
+            type: method,
+            url: uri,
+            beforeSend: function (xhr) {
+                addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey, method);
+            }
+        }).done(function (data, status, xhr) {
+            console.log('postcode validated');
+            console.log('xhr.status = ' + xhr.status);
+            alert('postcode ' + postcode + ' is valid');
+            if(successCallback !== 'undefined') successCallback();
+        }).fail(function (xhr, status, error) {
+            if(xhr.status === 404) {
+                alert('error validating postcode');
+                console.log('delete employer interest returned 404 - no employer interest found');
+                if(errorCallback !== 'undefined') errorCallback(); //404 means nothing found to delete, because it's already gone
+            }
+            else {
+                console.log('Call to delete employer interest failed. ' + status + ' ' + error);
+                console.log('error = ' + error);
+                console.log('status = ' + status);
+                console.log('xhr.status = ' + xhr.status);
+                alert('a real error');
+            }
+        });        
+    }
+
+    EmployerInterest.prototype.submitEmployerInterest = function(successCallback) {
         //TODO: Change to POST when firewall allows it, use const for uri and data, method === "GET" block
         //const uri = findProviderApiUri + "employers/createinterest";
 
@@ -38,8 +74,6 @@ function EmployerInterest(findProviderApiUri, findProviderEoiApiUri, findProvide
 
         const method = "POST";
         const uri = findProviderEoiApiUri + "employers/createinterest";
-
-        console.log("calling " + method + " " + uri);
         $.ajax({
             type: method,
             url: uri,
@@ -51,8 +85,8 @@ function EmployerInterest(findProviderApiUri, findProviderEoiApiUri, findProvide
         }).done(function (response) {
             console.log('Successfully submitted eoi data.');
             console.log(response);
-            console.log('will redirect to ' + successHref);
-            window.location.href = successHref;
+            alert(response);
+            successCallback();
         }).fail(function (xhr, status, error) {
             console.log('Call to create employer interest failed. ' + status + ' ' + error);
             console.log('error = ' + error);
@@ -62,22 +96,19 @@ function EmployerInterest(findProviderApiUri, findProviderEoiApiUri, findProvide
         });
     }
 
-    EmployerInterest.prototype.removeEmployerInterest = function(employerId, displayPageCallback) {
+    EmployerInterest.prototype.removeEmployerInterest = function(employerId, successCallback) {
         console.log('removeEmployerInterest called for ' + employerId);
         if (employerId === 'undefined' || !employerId) {
-            displayPageCallback();
+            successCallback();
             return;
         }
 
         //TODO: Change to DELETE after this has been unblocked in the firewall
         const method = "GET";
         const uri = findProviderApiUri + "employers/deleteinterest/" + employerId;
-        console.log("Calling delete interest on " + uri);
-
         $.ajax({
             type: method,
             url: uri,
-            //contentType: "application/json",
             beforeSend: function (xhr) {
                 addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey, method);
             }
@@ -85,11 +116,11 @@ function EmployerInterest(findProviderApiUri, findProviderEoiApiUri, findProvide
             console.log('delete employer interest succeeded');
             console.log('data = ' + data);
             console.log('xhr.status = ' + xhr.status);
-            displayPageCallback();
+            successCallback();
         }).fail(function (xhr, status, error) {
             if(xhr.status === 404) {
                 console.log('delete employer interest returned 404 - no employer interest found');
-                displayPageCallback(); //404 means nothing found to delete, because it's already gone
+                successCallback(); //404 means nothing found to delete, because it's already gone
             }
             else {
                 console.log('Call to delete employer interest failed. ' + status + ' ' + error);
@@ -108,13 +139,11 @@ function setpage(eoi) {
     if (step == 1) {
         $("#tl-eoi--1").removeClass("tl-hidden");
         $(".tl-backlink").attr("href", "?step=0");
-
     }
 
     else if (step == 2) {
         $("#tl-eoi--2").removeClass("tl-hidden");
         $(".tl-backlink").attr("href", "?step=1");
-
     }
 
     else if (step == 3) {
@@ -145,7 +174,6 @@ function setpage(eoi) {
         $("#tl-eoi--related").removeClass("tl-hidden");
         $(".tl-breadcrumbs").removeClass("tl-hidden");
         $(".tl-backlink").addClass("tl-hidden");
-
     }
 }
 
@@ -234,7 +262,7 @@ function populatefields() {
     });
 }
 
-function validateanswers() {
+function validateanswers(successCallback) {
     clearErrors()
     let haserror = false;
     var step = getUrlParameter('step');
@@ -324,6 +352,22 @@ function validateanswers() {
         }
     }
 
+    if(!hasError)
+    {
+        //TODO: validate postcode last
+        if (step == 2) {
+            var postcode = $("#postcode");
+            eoi.validatePostcode(postcode, successCallback, function() {                
+                addError("Enter a real UK postcode, for example SW1A 1AA", postcode);
+                haserror = true;  
+            });
+        }
+        else
+        {
+            alert('no error');
+            successCallback();
+        }
+    }
     return haserror;
 
 }
