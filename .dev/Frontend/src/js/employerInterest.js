@@ -352,7 +352,7 @@ function validateanswers(successCallback) {
         }
     }
 
-    if(!hasError)
+    if(!haserror)
     {
         //TODO: validate postcode last
         if (step == 2) {
