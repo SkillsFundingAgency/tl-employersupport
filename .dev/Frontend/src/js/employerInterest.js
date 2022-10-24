@@ -41,6 +41,7 @@ function EmployerInterest(findProviderApiUri, findProviderEoiApiUri, findProvide
         $.ajax({
             type: method,
             url: uri,
+            contentType: "application/json",
             beforeSend: function (xhr) {
                 addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey, method);
             }
@@ -357,7 +358,7 @@ function validateanswers(successCallback) {
         //TODO: validate postcode last
         if (step == 2) {
             var postcode = $("#postcode");
-            eoi.validatePostcode(postcode, successCallback, function() {                
+            eoi.validatePostcode(postcode.val(), successCallback, function() {                
                 addError("Enter a real UK postcode, for example SW1A 1AA", postcode);
                 haserror = true;  
             });
