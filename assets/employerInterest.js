@@ -6212,9 +6212,10 @@ function addHmacAuthHeader(xhr, uri, appId, apiKey, method, data) {
 
     xhr.setRequestHeader("Authorization", "amx " + appId + ":" + hashInBase64 + ":" + nonce + ":" + ts);
 }
-function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApiKey) {
+function EmployerInterest(findProviderApiUri,findProviderEoiApiUri, findProviderAppId, findProviderApiKey) {
 
     if (typeof findProviderApiUri === "undefined" ||
+        typeof findProviderEoiApiUri === "undefined" ||
         typeof findProviderAppId === "undefined" ||
         typeof findProviderApiKey === "undefined") {
         console.log('findProvider script requires findProviderApiUri, findProviderAppId and findProviderApiKey parameters');
@@ -6222,6 +6223,7 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
     }
 
     if (findProviderApiUri !== null && findProviderApiUri.substr(-1) !== '/') findProviderApiUri += '/';
+    if (findProviderEoiApiUri !== null && findProviderEoiApiUri.substr(-1) !== '/') findProviderEoiApiUri += '/';
 
     function buildEoiRequestData() {
         let req = {
@@ -6248,27 +6250,18 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
         let data = JSON.stringify(buildEoiRequestData());
         console.log("data=" + data);
 
-        //const method = "POST";
-        //workaround code using GET
-        const method = "GET";
-        const uri = findProviderApiUri + "employers/createinterest?data=" + CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(data));
+        const method = "POST";
+        const uri = findProviderEoiApiUri + "employers/createinterest";
 
         console.log("calling " + method + " " + uri);
         $.ajax({
             type: method,
             url: uri,
-            contentType: "application/json",
-            beforeSend: function (xhr) {
-                addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey, method);
-            }
-            //$.ajax({
-            //    type: method,
-            //    url: uri,
-            //    data: data,
-            //    contentType: "application/json",
-            //    beforeSend: function (xhr) {
-            //        addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey, method, data);
-            //    }
+               data: data,
+               contentType: "application/json",
+               beforeSend: function (xhr) {
+                   addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey, method, data);
+               }
         }).done(function (response) {
             console.log('Successfully submitted eoi data.');
             console.log(response);
