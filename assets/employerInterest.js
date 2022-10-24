@@ -6212,7 +6212,7 @@ function addHmacAuthHeader(xhr, uri, appId, apiKey, method, data) {
 
     xhr.setRequestHeader("Authorization", "amx " + appId + ":" + hashInBase64 + ":" + nonce + ":" + ts);
 }
-function EmployerInterest(findProviderApiUri,findProviderEoiApiUri, findProviderAppId, findProviderApiKey) {
+function EmployerInterest(findProviderApiUri, findProviderEoiApiUri, findProviderAppId, findProviderApiKey) {
 
     if (typeof findProviderApiUri === "undefined" ||
         typeof findProviderEoiApiUri === "undefined" ||

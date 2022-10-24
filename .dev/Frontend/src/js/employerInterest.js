@@ -1,4 +1,4 @@
-function EmployerInterest(findProviderApiUri,findProviderEoiApiUri, findProviderAppId, findProviderApiKey) {
+function EmployerInterest(findProviderApiUri, findProviderEoiApiUri, findProviderAppId, findProviderApiKey) {
 
     if (typeof findProviderApiUri === "undefined" ||
         typeof findProviderEoiApiUri === "undefined" ||
