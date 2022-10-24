@@ -49,16 +49,14 @@
             const btnId = $(this).attr("id");
             const nextPage = $(this).attr("href");
             validateanswers(function() {
-                if (errorresult == false) {
-                    storeanswers();
-                    if(btnId == "tl-eoi-button--3") {
-                        eoi.submitEmployerInterest(function() {
-                            window.location.href = nextPage;
-                        });
-                    }
-                    else {
-                        window.location = nextPage;
-                    }
+                storeanswers();
+                if(btnId == "tl-eoi-button--3") {
+                    eoi.submitEmployerInterest(function() {
+                        window.location.href = nextPage;
+                    });
+                }
+                else {
+                    window.location = nextPage;
                 }
             });
         });
