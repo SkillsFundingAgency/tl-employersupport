@@ -6262,7 +6262,6 @@ function EmployerInterest(findProviderApiUri, findProviderEoiApiUri, findProvide
         }).done(function (data, status, xhr) {
             console.log('postcode validated');
             console.log('xhr.status = ' + xhr.status);
-            alert('postcode ' + postcode + ' is valid');
             if(successCallback !== 'undefined') successCallback();
         }).fail(function (xhr, status, error) {
             if(xhr.status === 404) {
