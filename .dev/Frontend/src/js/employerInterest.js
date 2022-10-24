@@ -53,8 +53,8 @@ function EmployerInterest(findProviderApiUri, findProviderEoiApiUri, findProvide
         }).fail(function (xhr, status, error) {
             if(xhr.status === 404) {
                 alert('error validating postcode');
-                console.log('delete employer interest returned 404 - no employer interest found');
-                if(errorCallback !== 'undefined') errorCallback(); //404 means nothing found to delete, because it's already gone
+                console.log('validate postcode returned 404 - no employer interest found');
+                if(errorCallback !== 'undefined') errorCallback(); 
             }
             else {
                 console.log('Call to delete employer interest failed. ' + status + ' ' + error);
@@ -62,6 +62,7 @@ function EmployerInterest(findProviderApiUri, findProviderEoiApiUri, findProvide
                 console.log('status = ' + status);
                 console.log('xhr.status = ' + xhr.status);
                 alert('a real error');
+                if(errorCallback !== 'undefined') errorCallback(); 
             }
         });        
     }
@@ -365,12 +366,10 @@ function validateanswers(successCallback) {
         }
         else
         {
-            alert('no error');
             successCallback();
         }
     }
     return haserror;
-
 }
 
 function addError(errortext, element) {
