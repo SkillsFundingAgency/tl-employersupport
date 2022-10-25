@@ -6213,7 +6213,7 @@ function addHmacAuthHeader(xhr, uri, appId, apiKey, method, data) {
 
     xhr.setRequestHeader("Authorization", "amx " + appId + ":" + hashInBase64 + ":" + nonce + ":" + ts);
 }
-function FindProviderTile(findProviderRedirectUrl, findProviderApiUri, findProviderAppId, findProviderApiKey) {
+function FindProviderTileHome(findProviderRedirectUrl, findProviderApiUri, findProviderAppId, findProviderApiKey, findProviderEOIArticle) {
     // Find Provider tile
     const fapTileContainer = $(".tl-fap-tile--home").first();
     if (!fapTileContainer.length) return;
@@ -6221,8 +6221,9 @@ function FindProviderTile(findProviderRedirectUrl, findProviderApiUri, findProvi
     if (typeof findProviderRedirectUrl === "undefined" ||
         typeof findProviderApiUri === "undefined"||
         typeof findProviderAppId === "undefined" ||
-        typeof findProviderApiKey === "undefined") {
-        console.log('findProviderTile script requires findProviderApiUri, findProviderAppId, findProviderApiKey and findProvidersRedirectUrl parameters');
+        typeof findProviderApiKey === "undefined" ||
+        typeof findProviderEOIArticle === "underfined") {
+        console.log('findProviderTile script requires findProviderApiUri, findProviderAppId, findProviderApiKey, findProvidersRedirectUrl and findProviderEOIArticle parameters');
         return;
     }
 
@@ -6254,7 +6255,7 @@ function FindProviderTile(findProviderRedirectUrl, findProviderApiUri, findProvi
                             <div class="tl-card--fap--home--white"> \
                                 <h3 class="govuk-heading-m govuk-!-margin-bottom-1">Invite providers to contact you</h3> \
                                 <p class="govuk-body">Leave your details for them to get in touch.</p> \
-                                <a class="govuk-button tl-button--blue govuk-!-margin-bottom-0 govuk-!-margin-top-1" id="tl-eoi-button--home" href="/hc/en-gb/articles/8050093018258">Register your interest</a> \
+                                <a class="govuk-button tl-button--blue govuk-!-margin-bottom-0 govuk-!-margin-top-1" id="tl-eoi-button--home" href="/hc/en-gb/articles/' + findProviderEOIArticle + '">Register your interest</a> \
                             </div> \
                         </div> \
                         <div class="govuk-grid-column-full tl-row-fill--fixed tl-order-mobile--2"> \
