@@ -51,29 +51,23 @@ function EmployerInterest(findProviderApiUri, findProviderEoiApiUri, findProvide
             if(successCallback !== 'undefined') successCallback();
         }).fail(function (xhr, status, error) {
             if(xhr.status === 404) {
-                alert('error validating postcode');
-                console.log('validate postcode returned 404 - no employer interest found');
+                console.log('validate postcode returned 404 - not found');
                 if(errorCallback !== 'undefined') errorCallback(); 
             }
             else {
-                console.log('Call to delete employer interest failed. ' + status + ' ' + error);
-                console.log('error = ' + error);
-                console.log('status = ' + status);
+                console.log('Call to validate postcode failed. ' + status + ' ' + error);
                 console.log('xhr.status = ' + xhr.status);
-                alert('a real error');
                 if(errorCallback !== 'undefined') errorCallback(); 
             }
         });        
     }
 
     EmployerInterest.prototype.submitEmployerInterest = function(successCallback) {
-        //TODO: Change to POST when firewall allows it, use const for uri and data, method === "GET" block
-        //const uri = findProviderApiUri + "employers/createinterest";
-
         let data = JSON.stringify(buildEoiRequestData());
         console.log("data=" + data);
 
         const method = "POST";
+        //const uri = findProviderApiUri + "employers/createinterest";
         const uri = findProviderEoiApiUri + "employers/createinterest";
         $.ajax({
             type: method,
@@ -86,7 +80,6 @@ function EmployerInterest(findProviderApiUri, findProviderEoiApiUri, findProvide
         }).done(function (response) {
             console.log('Successfully submitted eoi data.');
             console.log(response);
-            alert(response);
             successCallback();
         }).fail(function (xhr, status, error) {
             console.log('Call to create employer interest failed. ' + status + ' ' + error);
