@@ -780,19 +780,28 @@ function Accordion ($module) {
   this.$module = $module;
   this.moduleId = $module.getAttribute('id');
   this.$sections = $module.querySelectorAll('.govuk-accordion__section');
-  this.$openAllButton = '';
+  this.$showAllButton = '';
   this.browserSupportsSessionStorage = helper.checkForSessionStorage();
 
   this.controlsClass = 'govuk-accordion__controls';
-  this.openAllClass = 'govuk-accordion__open-all';
-  this.iconClass = 'govuk-accordion__icon';
+  this.showAllClass = 'govuk-accordion__show-all';
+  this.showAllTextClass = 'govuk-accordion__show-all-text';
 
-  this.sectionHeaderClass = 'govuk-accordion__section-header';
-  this.sectionHeaderFocusedClass = 'govuk-accordion__section-header--focused';
-  this.sectionHeadingClass = 'govuk-accordion__section-heading';
-  this.sectionSummaryClass = 'govuk-accordion__section-summary';
-  this.sectionButtonClass = 'govuk-accordion__section-button';
   this.sectionExpandedClass = 'govuk-accordion__section--expanded';
+  this.sectionButtonClass = 'govuk-accordion__section-button';
+  this.sectionHeaderClass = 'govuk-accordion__section-header';
+  this.sectionHeadingClass = 'govuk-accordion__section-heading';
+  this.sectionHeadingTextClass = 'govuk-accordion__section-heading-text';
+  this.sectionHeadingTextFocusClass = 'govuk-accordion__section-heading-text-focus';
+
+  this.sectionShowHideToggleClass = 'govuk-accordion__section-toggle';
+  this.sectionShowHideToggleFocusClass = 'govuk-accordion__section-toggle-focus';
+  this.sectionShowHideTextClass = 'govuk-accordion__section-toggle-text';
+  this.upChevronIconClass = 'govuk-accordion-nav__chevron';
+  this.downChevronIconClass = 'govuk-accordion-nav__chevron--down';
+
+  this.sectionSummaryClass = 'govuk-accordion__section-summary';
+  this.sectionSummaryFocusClass = 'govuk-accordion__section-summary-focus';
 }
 
 // Initialize component
@@ -803,32 +812,39 @@ Accordion.prototype.init = function () {
   }
 
   this.initControls();
-
   this.initSectionHeaders();
 
-  // See if "Open all" button text should be updated
+  // See if "Show all sections" button text should be updated
   var areAllSectionsOpen = this.checkIfAllSectionsOpen();
-  this.updateOpenAllButton(areAllSectionsOpen);
+  this.updateShowAllButton(areAllSectionsOpen);
 };
 
 // Initialise controls and set attributes
 Accordion.prototype.initControls = function () {
-  // Create "Open all" button and set attributes
-  this.$openAllButton = document.createElement('button');
-  this.$openAllButton.setAttribute('type', 'button');
-  this.$openAllButton.innerHTML = 'Open all <span class="govuk-visually-hidden">sections</span>';
-  this.$openAllButton.setAttribute('class', this.openAllClass);
-  this.$openAllButton.setAttribute('aria-expanded', 'false');
-  this.$openAllButton.setAttribute('type', 'button');
+  // Create "Show all" button and set attributes
+  this.$showAllButton = document.createElement('button');
+  this.$showAllButton.setAttribute('type', 'button');
+  this.$showAllButton.setAttribute('class', this.showAllClass);
+  this.$showAllButton.setAttribute('aria-expanded', 'false');
+
+  // Create icon, add to element
+  var $icon = document.createElement('span');
+  $icon.classList.add(this.upChevronIconClass);
+  this.$showAllButton.appendChild($icon);
 
   // Create control wrapper and add controls to it
-  var accordionControls = document.createElement('div');
-  accordionControls.setAttribute('class', this.controlsClass);
-  accordionControls.appendChild(this.$openAllButton);
-  this.$module.insertBefore(accordionControls, this.$module.firstChild);
+  var $accordionControls = document.createElement('div');
+  $accordionControls.setAttribute('class', this.controlsClass);
+  $accordionControls.appendChild(this.$showAllButton);
+  this.$module.insertBefore($accordionControls, this.$module.firstChild);
 
-  // Handle events for the controls
-  this.$openAllButton.addEventListener('click', this.onOpenOrCloseAllToggle.bind(this));
+  // Build additional wrapper for Show all toggle text and place after icon
+  var $wrappershowAllText = document.createElement('span');
+  $wrappershowAllText.classList.add(this.showAllTextClass);
+  this.$showAllButton.appendChild($wrappershowAllText);
+
+  // Handle click events on the show/hide all button
+  this.$showAllButton.addEventListener('click', this.onShowOrHideAllToggle.bind(this));
 };
 
 // Initialise section headers
@@ -836,13 +852,12 @@ Accordion.prototype.initSectionHeaders = function () {
   // Loop through section headers
   nodeListForEach(this.$sections, function ($section, i) {
     // Set header attributes
-    var header = $section.querySelector('.' + this.sectionHeaderClass);
-    this.initHeaderAttributes(header, i);
-
+    var $header = $section.querySelector('.' + this.sectionHeaderClass);
+    this.constructHeaderMarkup($header, i);
     this.setExpanded(this.isExpanded($section), $section);
 
     // Handle events
-    header.addEventListener('click', this.onSectionToggle.bind(this, $section));
+    $header.addEventListener('click', this.onSectionToggle.bind(this, $section));
 
     // See if there is any state stored in sessionStorage and set the sections to
     // open or closed.
@@ -850,51 +865,100 @@ Accordion.prototype.initSectionHeaders = function () {
   }.bind(this));
 };
 
-// Set individual header attributes
-Accordion.prototype.initHeaderAttributes = function ($headerWrapper, index) {
-  var $module = this;
+Accordion.prototype.constructHeaderMarkup = function ($headerWrapper, index) {
   var $span = $headerWrapper.querySelector('.' + this.sectionButtonClass);
   var $heading = $headerWrapper.querySelector('.' + this.sectionHeadingClass);
   var $summary = $headerWrapper.querySelector('.' + this.sectionSummaryClass);
 
-  // Copy existing span element to an actual button element, for improved accessibility.
+  // Create a button element that will replace the '.govuk-accordion__section-button' span
   var $button = document.createElement('button');
   $button.setAttribute('type', 'button');
-  $button.setAttribute('id', this.moduleId + '-heading-' + (index + 1));
   $button.setAttribute('aria-controls', this.moduleId + '-content-' + (index + 1));
 
   // Copy all attributes (https://developer.mozilla.org/en-US/docs/Web/API/Element/attributes) from $span to $button
   for (var i = 0; i < $span.attributes.length; i++) {
     var attr = $span.attributes.item(i);
-    $button.setAttribute(attr.nodeName, attr.nodeValue);
-  }
-
-  $button.addEventListener('focusin', function (e) {
-    if (!$headerWrapper.classList.contains($module.sectionHeaderFocusedClass)) {
-      $headerWrapper.className += ' ' + $module.sectionHeaderFocusedClass;
+    // Add all attributes but not ID as this is being added to
+    // the section heading ($headingText)
+    if (attr.nodeName !== 'id') {
+      $button.setAttribute(attr.nodeName, attr.nodeValue);
     }
-  });
-
-  $button.addEventListener('blur', function (e) {
-    $headerWrapper.classList.remove($module.sectionHeaderFocusedClass);
-  });
-
-  if (typeof ($summary) !== 'undefined' && $summary !== null) {
-    $button.setAttribute('aria-describedby', this.moduleId + '-summary-' + (index + 1));
   }
 
-  // $span could contain HTML elements (see https://www.w3.org/TR/2011/WD-html5-20110525/content-models.html#phrasing-content)
-  $button.innerHTML = $span.innerHTML;
+  // Create container for heading text so it can be styled
+  var $headingText = document.createElement('span');
+  $headingText.classList.add(this.sectionHeadingTextClass);
+  // Copy the span ID to the heading text to allow it to be referenced by `aria-labelledby` on the
+  // hidden content area without "Show this section"
+  $headingText.id = $span.id;
+
+  // Create an inner heading text container to limit the width of the focus state
+  var $headingTextFocus = document.createElement('span');
+  $headingTextFocus.classList.add(this.sectionHeadingTextFocusClass);
+  $headingText.appendChild($headingTextFocus);
+  // span could contain HTML elements (see https://www.w3.org/TR/2011/WD-html5-20110525/content-models.html#phrasing-content)
+  $headingTextFocus.innerHTML = $span.innerHTML;
+
+  // Create container for show / hide icons and text.
+  var $showToggle = document.createElement('span');
+  $showToggle.classList.add(this.sectionShowHideToggleClass);
+  // Tell Google not to index the 'show' text as part of the heading
+  // For the snippet to work with JavaScript, it must be added before adding the page element to the
+  // page's DOM. See https://developers.google.com/search/docs/advanced/robots/robots_meta_tag#data-nosnippet-attr
+  $showToggle.setAttribute('data-nosnippet', '');
+  // Create an inner container to limit the width of the focus state
+  var $showToggleFocus = document.createElement('span');
+  $showToggleFocus.classList.add(this.sectionShowHideToggleFocusClass);
+  $showToggle.appendChild($showToggleFocus);
+  // Create wrapper for the show / hide text. Append text after the show/hide icon
+  var $showToggleText = document.createElement('span');
+  var $icon = document.createElement('span');
+  $icon.classList.add(this.upChevronIconClass);
+  $showToggleFocus.appendChild($icon);
+  $showToggleText.classList.add(this.sectionShowHideTextClass);
+  $showToggleFocus.appendChild($showToggleText);
+
+  // Append elements to the button:
+  // 1. Heading text
+  // 2. Punctuation
+  // 3. (Optional: Summary line followed by punctuation)
+  // 4. Show / hide toggle
+  $button.appendChild($headingText);
+  $button.appendChild(this.getButtonPunctuationEl());
+
+  // If summary content exists add to DOM in correct order
+  if (typeof ($summary) !== 'undefined' && $summary !== null) {
+    // Create a new `span` element and copy the summary line content from the original `div` to the
+    // new `span`
+    // This is because the summary line text is now inside a button element, which can only contain
+    // phrasing content
+    var $summarySpan = document.createElement('span');
+    // Create an inner summary container to limit the width of the summary focus state
+    var $summarySpanFocus = document.createElement('span');
+    $summarySpanFocus.classList.add(this.sectionSummaryFocusClass);
+    $summarySpan.appendChild($summarySpanFocus);
+
+    // Get original attributes, and pass them to the replacement
+    for (var j = 0, l = $summary.attributes.length; j < l; ++j) {
+      var nodeName = $summary.attributes.item(j).nodeName;
+      var nodeValue = $summary.attributes.item(j).nodeValue;
+      $summarySpan.setAttribute(nodeName, nodeValue);
+    }
+
+    // Copy original contents of summary to the new summary span
+    $summarySpanFocus.innerHTML = $summary.innerHTML;
+
+    // Replace the original summary `div` with the new summary `span`
+    $summary.parentNode.replaceChild($summarySpan, $summary);
+
+    $button.appendChild($summarySpan);
+    $button.appendChild(this.getButtonPunctuationEl());
+  }
+
+  $button.appendChild($showToggle);
 
   $heading.removeChild($span);
   $heading.appendChild($button);
-
-  // Add "+/-" icon
-  var icon = document.createElement('span');
-  icon.className = this.iconClass;
-  icon.setAttribute('aria-hidden', 'true');
-
-  $heading.appendChild(icon);
 };
 
 // When section toggled, set and store state
@@ -907,10 +971,9 @@ Accordion.prototype.onSectionToggle = function ($section) {
 };
 
 // When Open/Close All toggled, set and store state
-Accordion.prototype.onOpenOrCloseAllToggle = function () {
+Accordion.prototype.onShowOrHideAllToggle = function () {
   var $module = this;
   var $sections = this.$sections;
-
   var nowExpanded = !this.checkIfAllSectionsOpen();
 
   nodeListForEach($sections, function ($section) {
@@ -919,23 +982,37 @@ Accordion.prototype.onOpenOrCloseAllToggle = function () {
     $module.storeState($section);
   });
 
-  $module.updateOpenAllButton(nowExpanded);
+  $module.updateShowAllButton(nowExpanded);
 };
 
 // Set section attributes when opened/closed
 Accordion.prototype.setExpanded = function (expanded, $section) {
+  var $icon = $section.querySelector('.' + this.upChevronIconClass);
+  var $showHideText = $section.querySelector('.' + this.sectionShowHideTextClass);
   var $button = $section.querySelector('.' + this.sectionButtonClass);
+  var newButtonText = expanded ? 'Hide' : 'Show';
+
+  // Build additional copy of "this section" for assistive technology and place inside toggle link
+  var $visuallyHiddenText = document.createElement('span');
+  $visuallyHiddenText.classList.add('govuk-visually-hidden');
+  $visuallyHiddenText.innerHTML = ' this section';
+
+  $showHideText.innerHTML = newButtonText;
+  $showHideText.appendChild($visuallyHiddenText);
   $button.setAttribute('aria-expanded', expanded);
 
+  // Swap icon, change class
   if (expanded) {
     $section.classList.add(this.sectionExpandedClass);
+    $icon.classList.remove(this.downChevronIconClass);
   } else {
     $section.classList.remove(this.sectionExpandedClass);
+    $icon.classList.add(this.downChevronIconClass);
   }
 
-  // See if "Open all" button text should be updated
+  // See if "Show all sections" button text should be updated
   var areAllSectionsOpen = this.checkIfAllSectionsOpen();
-  this.updateOpenAllButton(areAllSectionsOpen);
+  this.updateShowAllButton(areAllSectionsOpen);
 };
 
 // Get state of section
@@ -954,12 +1031,20 @@ Accordion.prototype.checkIfAllSectionsOpen = function () {
   return areAllSectionsOpen
 };
 
-// Update "Open all" button
-Accordion.prototype.updateOpenAllButton = function (expanded) {
-  var newButtonText = expanded ? 'Close all' : 'Open all';
-  newButtonText += '<span class="govuk-visually-hidden"> sections</span>';
-  this.$openAllButton.setAttribute('aria-expanded', expanded);
-  this.$openAllButton.innerHTML = newButtonText;
+// Update "Show all sections" button
+Accordion.prototype.updateShowAllButton = function (expanded) {
+  var $showAllIcon = this.$showAllButton.querySelector('.' + this.upChevronIconClass);
+  var $showAllText = this.$showAllButton.querySelector('.' + this.showAllTextClass);
+  var newButtonText = expanded ? 'Hide all sections' : 'Show all sections';
+  this.$showAllButton.setAttribute('aria-expanded', expanded);
+  $showAllText.innerHTML = newButtonText;
+
+  // Swap icon, toggle class
+  if (expanded) {
+    $showAllIcon.classList.remove(this.downChevronIconClass);
+  } else {
+    $showAllIcon.classList.add(this.downChevronIconClass);
+  }
 };
 
 // Check for `window.sessionStorage`, and that it actually works.
@@ -973,9 +1058,7 @@ var helper = {
       window.sessionStorage.removeItem(testString);
       return result
     } catch (exception) {
-      if ((typeof console === 'undefined' || typeof console.log === 'undefined')) {
-        console.log('Notice: sessionStorage not available.');
-      }
+      return false
     }
   }
 };
@@ -983,7 +1066,7 @@ var helper = {
 // Set the state of the accordions in sessionStorage
 Accordion.prototype.storeState = function ($section) {
   if (this.browserSupportsSessionStorage) {
-    // We need a unique way of identifying each content in the accordion. Since
+    // We need a unique way of identifying each content in the Accordion. Since
     // an `#id` should be unique and an `id` is required for `aria-` attributes
     // `id` can be safely used.
     var $button = $section.querySelector('.' + this.sectionButtonClass);
@@ -991,14 +1074,6 @@ Accordion.prototype.storeState = function ($section) {
     if ($button) {
       var contentId = $button.getAttribute('aria-controls');
       var contentState = $button.getAttribute('aria-expanded');
-
-      if (typeof contentId === 'undefined' && (typeof console === 'undefined' || typeof console.log === 'undefined')) {
-        console.error(new Error('No aria controls present in accordion section heading.'));
-      }
-
-      if (typeof contentState === 'undefined' && (typeof console === 'undefined' || typeof console.log === 'undefined')) {
-        console.error(new Error('No aria expanded present in accordion section heading.'));
-      }
 
       // Only set the state when both `contentId` and `contentState` are taken from the DOM.
       if (contentId && contentState) {
@@ -1022,6 +1097,25 @@ Accordion.prototype.setInitialState = function ($section) {
       }
     }
   }
+};
+
+/**
+* Create an element to improve semantics of the section button with punctuation
+* @return {object} DOM element
+*
+* Used to add pause (with a comma) for assistive technology.
+* Example: [heading]Section A ,[pause] Show this section.
+* https://accessibility.blog.gov.uk/2017/12/18/what-working-on-gov-uk-navigation-taught-us-about-accessibility/
+*
+* Adding punctuation to the button can also improve its general semantics by dividing its contents
+* into thematic chunks.
+* See https://github.com/alphagov/govuk-frontend/issues/2327#issuecomment-922957442
+*/
+Accordion.prototype.getButtonPunctuationEl = function () {
+  var $punctuationEl = document.createElement('span');
+  $punctuationEl.classList.add('govuk-visually-hidden', 'govuk-accordion__section-heading-divider');
+  $punctuationEl.innerHTML = ', ';
+  return $punctuationEl
 };
 
 (function(undefined) {
@@ -1418,13 +1512,10 @@ Details.prototype.polyfillDetails = function () {
   $summary.tabIndex = 0;
 
   // Detect initial open state
-  var openAttr = $module.getAttribute('open') !== null;
-  if (openAttr === true) {
+  if (this.$module.hasAttribute('open')) {
     $summary.setAttribute('aria-expanded', 'true');
-    $content.setAttribute('aria-hidden', 'false');
   } else {
     $summary.setAttribute('aria-expanded', 'false');
-    $content.setAttribute('aria-hidden', 'true');
     $content.style.display = 'none';
   }
 
@@ -1437,23 +1528,14 @@ Details.prototype.polyfillDetails = function () {
 * @param {object} summary element
 */
 Details.prototype.polyfillSetAttributes = function () {
-  var $module = this.$module;
-  var $summary = this.$summary;
-  var $content = this.$content;
-
-  var expanded = $summary.getAttribute('aria-expanded') === 'true';
-  var hidden = $content.getAttribute('aria-hidden') === 'true';
-
-  $summary.setAttribute('aria-expanded', (expanded ? 'false' : 'true'));
-  $content.setAttribute('aria-hidden', (hidden ? 'false' : 'true'));
-
-  $content.style.display = (expanded ? 'none' : '');
-
-  var hasOpenAttr = $module.getAttribute('open') !== null;
-  if (!hasOpenAttr) {
-    $module.setAttribute('open', 'open');
+  if (this.$module.hasAttribute('open')) {
+    this.$module.removeAttribute('open');
+    this.$summary.setAttribute('aria-expanded', 'false');
+    this.$content.style.display = 'none';
   } else {
-    $module.removeAttribute('open');
+    this.$module.setAttribute('open', 'open');
+    this.$summary.setAttribute('aria-expanded', 'true');
+    this.$content.style.display = '';
   }
 
   return true
@@ -1500,9 +1582,9 @@ Details.prototype.polyfillHandleInputs = function (node, callback) {
 function CharacterCount ($module) {
   this.$module = $module;
   this.$textarea = $module.querySelector('.govuk-js-character-count');
-  if (this.$textarea) {
-    this.$countMessage = $module.querySelector('[id=' + this.$textarea.id + '-info]');
-  }
+  this.$visibleCountMessage = null;
+  this.$screenReaderCountMessage = null;
+  this.lastInputTimestamp = null;
 }
 
 CharacterCount.prototype.defaults = {
@@ -1512,18 +1594,39 @@ CharacterCount.prototype.defaults = {
 
 // Initialize component
 CharacterCount.prototype.init = function () {
-  // Check for module
-  var $module = this.$module;
-  var $textarea = this.$textarea;
-  var $countMessage = this.$countMessage;
-
-  if (!$textarea || !$countMessage) {
+  // Check that required elements are present
+  if (!this.$textarea) {
     return
   }
 
-  // We move count message right after the field
+  // Check for module
+  var $module = this.$module;
+  var $textarea = this.$textarea;
+  var $fallbackLimitMessage = document.getElementById($textarea.id + '-info');
+
+  // Move the fallback count message to be immediately after the textarea
   // Kept for backwards compatibility
-  $textarea.insertAdjacentElement('afterend', $countMessage);
+  $textarea.insertAdjacentElement('afterend', $fallbackLimitMessage);
+
+  // Create the *screen reader* specific live-updating counter
+  // This doesn't need any styling classes, as it is never visible
+  var $screenReaderCountMessage = document.createElement('div');
+  $screenReaderCountMessage.className = 'govuk-character-count__sr-status govuk-visually-hidden';
+  $screenReaderCountMessage.setAttribute('aria-live', 'polite');
+  this.$screenReaderCountMessage = $screenReaderCountMessage;
+  $fallbackLimitMessage.insertAdjacentElement('afterend', $screenReaderCountMessage);
+
+  // Create our live-updating counter element, copying the classes from the
+  // fallback element for backwards compatibility as these may have been configured
+  var $visibleCountMessage = document.createElement('div');
+  $visibleCountMessage.className = $fallbackLimitMessage.className;
+  $visibleCountMessage.classList.add('govuk-character-count__status');
+  $visibleCountMessage.setAttribute('aria-hidden', 'true');
+  this.$visibleCountMessage = $visibleCountMessage;
+  $fallbackLimitMessage.insertAdjacentElement('afterend', $visibleCountMessage);
+
+  // Hide the fallback limit message
+  $fallbackLimitMessage.classList.add('govuk-visually-hidden');
 
   // Read options set using dataset ('data-' values)
   this.options = this.getDataset($module);
@@ -1543,15 +1646,20 @@ CharacterCount.prototype.init = function () {
   }
 
   // Remove hard limit if set
-  $module.removeAttribute('maxlength');
+  $textarea.removeAttribute('maxlength');
 
-  // Bind event changes to the textarea
-  var boundChangeEvents = this.bindChangeEvents.bind(this);
-  boundChangeEvents();
+  this.bindChangeEvents();
 
-  // Update count message
-  var boundUpdateCountMessage = this.updateCountMessage.bind(this);
-  boundUpdateCountMessage();
+  // When the page is restored after navigating 'back' in some browsers the
+  // state of the character count is not restored until *after* the DOMContentLoaded
+  // event is fired, so we need to manually update it after the pageshow event
+  // in browsers that support it.
+  if ('onpageshow' in window) {
+    window.addEventListener('pageshow', this.updateCountMessage.bind(this));
+  } else {
+    window.addEventListener('DOMContentLoaded', this.updateCountMessage.bind(this));
+  }
+  this.updateCountMessage();
 };
 
 // Read data attributes
@@ -1585,7 +1693,7 @@ CharacterCount.prototype.count = function (text) {
 // Bind input propertychange to the elements and update based on the change
 CharacterCount.prototype.bindChangeEvents = function () {
   var $textarea = this.$textarea;
-  $textarea.addEventListener('keyup', this.checkIfValueChanged.bind(this));
+  $textarea.addEventListener('keyup', this.handleKeyUp.bind(this));
 
   // Bind focus/blur events to start/stop polling
   $textarea.addEventListener('focus', this.handleFocus.bind(this));
@@ -1599,47 +1707,68 @@ CharacterCount.prototype.checkIfValueChanged = function () {
   if (!this.$textarea.oldValue) this.$textarea.oldValue = '';
   if (this.$textarea.value !== this.$textarea.oldValue) {
     this.$textarea.oldValue = this.$textarea.value;
-    var boundUpdateCountMessage = this.updateCountMessage.bind(this);
-    boundUpdateCountMessage();
+    this.updateCountMessage();
   }
 };
 
-// Update message box
+// Helper function to update both the visible and screen reader-specific
+// counters simultaneously (e.g. on init)
 CharacterCount.prototype.updateCountMessage = function () {
-  var countElement = this.$textarea;
-  var options = this.options;
-  var countMessage = this.$countMessage;
+  this.updateVisibleCountMessage();
+  this.updateScreenReaderCountMessage();
+};
 
-  // Determine the remaining number of characters/words
-  var currentLength = this.count(countElement.value);
-  var maxLength = this.maxLength;
-  var remainingNumber = maxLength - currentLength;
+// Update visible counter
+CharacterCount.prototype.updateVisibleCountMessage = function () {
+  var $textarea = this.$textarea;
+  var $visibleCountMessage = this.$visibleCountMessage;
+  var remainingNumber = this.maxLength - this.count($textarea.value);
 
-  // Set threshold if presented in options
-  var thresholdPercent = options.threshold ? options.threshold : 0;
-  var thresholdValue = maxLength * thresholdPercent / 100;
-  if (thresholdValue > currentLength) {
-    countMessage.classList.add('govuk-character-count__message--disabled');
-    // Ensure threshold is hidden for users of assistive technologies
-    countMessage.setAttribute('aria-hidden', true);
+  // If input is over the threshold, remove the disabled class which renders the
+  // counter invisible.
+  if (this.isOverThreshold()) {
+    $visibleCountMessage.classList.remove('govuk-character-count__message--disabled');
   } else {
-    countMessage.classList.remove('govuk-character-count__message--disabled');
-    // Ensure threshold is visible for users of assistive technologies
-    countMessage.removeAttribute('aria-hidden');
+    $visibleCountMessage.classList.add('govuk-character-count__message--disabled');
   }
 
   // Update styles
   if (remainingNumber < 0) {
-    countElement.classList.add('govuk-textarea--error');
-    countMessage.classList.remove('govuk-hint');
-    countMessage.classList.add('govuk-error-message');
+    $textarea.classList.add('govuk-textarea--error');
+    $visibleCountMessage.classList.remove('govuk-hint');
+    $visibleCountMessage.classList.add('govuk-error-message');
   } else {
-    countElement.classList.remove('govuk-textarea--error');
-    countMessage.classList.remove('govuk-error-message');
-    countMessage.classList.add('govuk-hint');
+    $textarea.classList.remove('govuk-textarea--error');
+    $visibleCountMessage.classList.remove('govuk-error-message');
+    $visibleCountMessage.classList.add('govuk-hint');
   }
 
   // Update message
+  $visibleCountMessage.innerHTML = this.formattedUpdateMessage();
+};
+
+// Update screen reader-specific counter
+CharacterCount.prototype.updateScreenReaderCountMessage = function () {
+  var $screenReaderCountMessage = this.$screenReaderCountMessage;
+
+  // If over the threshold, remove the aria-hidden attribute, allowing screen
+  // readers to announce the content of the element.
+  if (this.isOverThreshold()) {
+    $screenReaderCountMessage.removeAttribute('aria-hidden');
+  } else {
+    $screenReaderCountMessage.setAttribute('aria-hidden', true);
+  }
+
+  // Update message
+  $screenReaderCountMessage.innerHTML = this.formattedUpdateMessage();
+};
+
+// Format update message
+CharacterCount.prototype.formattedUpdateMessage = function () {
+  var $textarea = this.$textarea;
+  var options = this.options;
+  var remainingNumber = this.maxLength - this.count($textarea.value);
+
   var charVerb = 'remaining';
   var charNoun = 'character';
   var displayNumber = remainingNumber;
@@ -1651,12 +1780,44 @@ CharacterCount.prototype.updateCountMessage = function () {
   charVerb = (remainingNumber < 0) ? 'too many' : 'remaining';
   displayNumber = Math.abs(remainingNumber);
 
-  countMessage.innerHTML = 'You have ' + displayNumber + ' ' + charNoun + ' ' + charVerb;
+  return 'You have ' + displayNumber + ' ' + charNoun + ' ' + charVerb
+};
+
+// Checks whether the value is over the configured threshold for the input.
+// If there is no configured threshold, it is set to 0 and this function will
+// always return true.
+CharacterCount.prototype.isOverThreshold = function () {
+  var $textarea = this.$textarea;
+  var options = this.options;
+
+  // Determine the remaining number of characters/words
+  var currentLength = this.count($textarea.value);
+  var maxLength = this.maxLength;
+
+  // Set threshold if presented in options
+  var thresholdPercent = options.threshold ? options.threshold : 0;
+  var thresholdValue = maxLength * thresholdPercent / 100;
+
+  return (thresholdValue <= currentLength)
+};
+
+// Update the visible character counter and keep track of when the last update
+// happened for each keypress
+CharacterCount.prototype.handleKeyUp = function () {
+  this.updateVisibleCountMessage();
+  this.lastInputTimestamp = Date.now();
 };
 
 CharacterCount.prototype.handleFocus = function () {
-  // Check if value changed on focus
-  this.valueChecker = setInterval(this.checkIfValueChanged.bind(this), 1000);
+  // If the field is focused, and a keyup event hasn't been detected for at
+  // least 1000 ms (1 second), then run the manual change check.
+  // This is so that the update triggered by the manual comparison doesn't
+  // conflict with debounced KeyboardEvent updates.
+  this.valueChecker = setInterval(function () {
+    if (!this.lastInputTimestamp || (Date.now() - 500) >= this.lastInputTimestamp) {
+      this.checkIfValueChanged();
+    }
+  }.bind(this), 1000);
 };
 
 CharacterCount.prototype.handleBlur = function () {
@@ -1669,52 +1830,155 @@ function Checkboxes ($module) {
   this.$inputs = $module.querySelectorAll('input[type="checkbox"]');
 }
 
+/**
+ * Initialise Checkboxes
+ *
+ * Checkboxes can be associated with a 'conditionally revealed' content block –
+ * for example, a checkbox for 'Phone' could reveal an additional form field for
+ * the user to enter their phone number.
+ *
+ * These associations are made using a `data-aria-controls` attribute, which is
+ * promoted to an aria-controls attribute during initialisation.
+ *
+ * We also need to restore the state of any conditional reveals on the page (for
+ * example if the user has navigated back), and set up event handlers to keep
+ * the reveal in sync with the checkbox state.
+ */
 Checkboxes.prototype.init = function () {
   var $module = this.$module;
   var $inputs = this.$inputs;
 
-  /**
-  * Loop over all items with [data-controls]
-  * Check if they have a matching conditional reveal
-  * If they do, assign attributes.
-  **/
   nodeListForEach($inputs, function ($input) {
-    var controls = $input.getAttribute('data-aria-controls');
+    var target = $input.getAttribute('data-aria-controls');
 
-    // Check if input controls anything
-    // Check if content exists, before setting attributes.
-    if (!controls || !$module.querySelector('#' + controls)) {
+    // Skip checkboxes without data-aria-controls attributes, or where the
+    // target element does not exist.
+    if (!target || !document.getElementById(target)) {
       return
     }
 
-    // If we have content that is controlled, set attributes.
-    $input.setAttribute('aria-controls', controls);
+    // Promote the data-aria-controls attribute to a aria-controls attribute
+    // so that the relationship is exposed in the AOM
+    $input.setAttribute('aria-controls', target);
     $input.removeAttribute('data-aria-controls');
-    this.setAttributes($input);
-  }.bind(this));
+  });
 
-  // Handle events
+  // When the page is restored after navigating 'back' in some browsers the
+  // state of form controls is not restored until *after* the DOMContentLoaded
+  // event is fired, so we need to sync after the pageshow event in browsers
+  // that support it.
+  if ('onpageshow' in window) {
+    window.addEventListener('pageshow', this.syncAllConditionalReveals.bind(this));
+  } else {
+    window.addEventListener('DOMContentLoaded', this.syncAllConditionalReveals.bind(this));
+  }
+
+  // Although we've set up handlers to sync state on the pageshow or
+  // DOMContentLoaded event, init could be called after those events have fired,
+  // for example if they are added to the page dynamically, so sync now too.
+  this.syncAllConditionalReveals();
+
   $module.addEventListener('click', this.handleClick.bind(this));
 };
 
-Checkboxes.prototype.setAttributes = function ($input) {
-  var inputIsChecked = $input.checked;
-  $input.setAttribute('aria-expanded', inputIsChecked);
+/**
+ * Sync the conditional reveal states for all inputs in this $module.
+ */
+Checkboxes.prototype.syncAllConditionalReveals = function () {
+  nodeListForEach(this.$inputs, this.syncConditionalRevealWithInputState.bind(this));
+};
 
-  var $content = this.$module.querySelector('#' + $input.getAttribute('aria-controls'));
-  if ($content) {
-    $content.classList.toggle('govuk-checkboxes__conditional--hidden', !inputIsChecked);
+/**
+ * Sync conditional reveal with the input state
+ *
+ * Synchronise the visibility of the conditional reveal, and its accessible
+ * state, with the input's checked state.
+ *
+ * @param {HTMLInputElement} $input Checkbox input
+ */
+Checkboxes.prototype.syncConditionalRevealWithInputState = function ($input) {
+  var $target = document.getElementById($input.getAttribute('aria-controls'));
+
+  if ($target && $target.classList.contains('govuk-checkboxes__conditional')) {
+    var inputIsChecked = $input.checked;
+
+    $input.setAttribute('aria-expanded', inputIsChecked);
+    $target.classList.toggle('govuk-checkboxes__conditional--hidden', !inputIsChecked);
   }
 };
 
+/**
+ * Uncheck other checkboxes
+ *
+ * Find any other checkbox inputs with the same name value, and uncheck them.
+ * This is useful for when a “None of these" checkbox is checked.
+ */
+Checkboxes.prototype.unCheckAllInputsExcept = function ($input) {
+  var allInputsWithSameName = document.querySelectorAll('input[type="checkbox"][name="' + $input.name + '"]');
+
+  nodeListForEach(allInputsWithSameName, function ($inputWithSameName) {
+    var hasSameFormOwner = ($input.form === $inputWithSameName.form);
+    if (hasSameFormOwner && $inputWithSameName !== $input) {
+      $inputWithSameName.checked = false;
+      this.syncConditionalRevealWithInputState($inputWithSameName);
+    }
+  }.bind(this));
+};
+
+/**
+ * Uncheck exclusive inputs
+ *
+ * Find any checkbox inputs with the same name value and the 'exclusive' behaviour,
+ * and uncheck them. This helps prevent someone checking both a regular checkbox and a
+ * "None of these" checkbox in the same fieldset.
+ */
+Checkboxes.prototype.unCheckExclusiveInputs = function ($input) {
+  var allInputsWithSameNameAndExclusiveBehaviour = document.querySelectorAll(
+    'input[data-behaviour="exclusive"][type="checkbox"][name="' + $input.name + '"]'
+  );
+
+  nodeListForEach(allInputsWithSameNameAndExclusiveBehaviour, function ($exclusiveInput) {
+    var hasSameFormOwner = ($input.form === $exclusiveInput.form);
+    if (hasSameFormOwner) {
+      $exclusiveInput.checked = false;
+      this.syncConditionalRevealWithInputState($exclusiveInput);
+    }
+  }.bind(this));
+};
+
+/**
+ * Click event handler
+ *
+ * Handle a click within the $module – if the click occurred on a checkbox, sync
+ * the state of any associated conditional reveal with the checkbox state.
+ *
+ * @param {MouseEvent} event Click event
+ */
 Checkboxes.prototype.handleClick = function (event) {
   var $target = event.target;
 
-  // If a checkbox with aria-controls, handle click
-  var isCheckbox = $target.getAttribute('type') === 'checkbox';
+  // Ignore clicks on things that aren't checkbox inputs
+  if ($target.type !== 'checkbox') {
+    return
+  }
+
+  // If the checkbox conditionally-reveals some content, sync the state
   var hasAriaControls = $target.getAttribute('aria-controls');
-  if (isCheckbox && hasAriaControls) {
-    this.setAttributes($target);
+  if (hasAriaControls) {
+    this.syncConditionalRevealWithInputState($target);
+  }
+
+  // No further behaviour needed for unchecking
+  if (!$target.checked) {
+    return
+  }
+
+  // Handle 'exclusive' checkbox behaviour (ie "None of these")
+  var hasBehaviourExclusive = ($target.getAttribute('data-behaviour') === 'exclusive');
+  if (hasBehaviourExclusive) {
+    this.unCheckAllInputsExcept($target);
+  } else {
+    this.unCheckExclusiveInputs($target);
   }
 };
 
@@ -1774,9 +2038,30 @@ ErrorSummary.prototype.init = function () {
   if (!$module) {
     return
   }
-  $module.focus();
 
+  this.setFocus();
   $module.addEventListener('click', this.handleClick.bind(this));
+};
+
+/**
+ * Focus the error summary
+ */
+ErrorSummary.prototype.setFocus = function () {
+  var $module = this.$module;
+
+  if ($module.getAttribute('data-disable-auto-focus') === 'true') {
+    return
+  }
+
+  // Set tabindex to -1 to make the element programmatically focusable, but
+  // remove it on blur as the error summary doesn't need to be focused again.
+  $module.setAttribute('tabindex', '-1');
+
+  $module.addEventListener('blur', function () {
+    $module.removeAttribute('tabindex');
+  });
+
+  $module.focus();
 };
 
 /**
@@ -1907,124 +2192,349 @@ ErrorSummary.prototype.getAssociatedLegendOrLabel = function ($input) {
     $input.closest('label')
 };
 
-function Header ($module) {
+function NotificationBanner ($module) {
   this.$module = $module;
 }
 
-Header.prototype.init = function () {
-  // Check for module
+/**
+ * Initialise the component
+ */
+NotificationBanner.prototype.init = function () {
   var $module = this.$module;
+  // Check for module
   if (!$module) {
     return
   }
 
-  // Check for button
-  var $toggleButton = $module.querySelector('.govuk-js-header-toggle');
-  if (!$toggleButton) {
+  this.setFocus();
+};
+
+/**
+ * Focus the element
+ *
+ * If `role="alert"` is set, focus the element to help some assistive technologies
+ * prioritise announcing it.
+ *
+ * You can turn off the auto-focus functionality by setting `data-disable-auto-focus="true"` in the
+ * component HTML. You might wish to do this based on user research findings, or to avoid a clash
+ * with another element which should be focused when the page loads.
+ */
+NotificationBanner.prototype.setFocus = function () {
+  var $module = this.$module;
+
+  if ($module.getAttribute('data-disable-auto-focus') === 'true') {
     return
   }
 
-  // Handle $toggleButton click events
-  $toggleButton.addEventListener('click', this.handleClick.bind(this));
+  if ($module.getAttribute('role') !== 'alert') {
+    return
+  }
+
+  // Set tabindex to -1 to make the element focusable with JavaScript.
+  // Remove the tabindex on blur as the component doesn't need to be focusable after the page has
+  // loaded.
+  if (!$module.getAttribute('tabindex')) {
+    $module.setAttribute('tabindex', '-1');
+
+    $module.addEventListener('blur', function () {
+      $module.removeAttribute('tabindex');
+    });
+  }
+
+  $module.focus();
 };
 
+function Header ($module) {
+  this.$module = $module;
+  this.$menuButton = $module && $module.querySelector('.govuk-js-header-toggle');
+  this.$menu = this.$menuButton && $module.querySelector(
+    '#' + this.$menuButton.getAttribute('aria-controls')
+  );
+
+  // Save the opened/closed state for the nav in memory so that we can
+  // accurately maintain state when the screen is changed from small to
+  // big and back to small
+  this.menuIsOpen = false;
+
+  // A global const for storing a matchMedia instance which we'll use to
+  // detect when a screen size change happens. We set this later during the
+  // init function and rely on it being null if the feature isn't available
+  // to initially apply hidden attributes
+  this.mql = null;
+}
+
 /**
-* Toggle class
-* @param {object} node element
-* @param {string} className to toggle
-*/
-Header.prototype.toggleClass = function (node, className) {
-  if (node.className.indexOf(className) > 0) {
-    node.className = node.className.replace(' ' + className, '');
+ * Initialise header
+ *
+ * Check for the presence of the header, menu and menu button – if any are
+ * missing then there's nothing to do so return early.
+ * Feature sniff for and apply a matchMedia for desktop which will
+ * trigger a state sync if the browser viewport moves between states. If
+ * matchMedia isn't available, hide the menu button and present the "no js"
+ * version of the menu to the user.
+ */
+Header.prototype.init = function () {
+  if (!this.$module || !this.$menuButton || !this.$menu) {
+    return
+  }
+
+  if ('matchMedia' in window) {
+    // Set the matchMedia to the govuk-frontend desktop breakpoint
+    this.mql = window.matchMedia('(min-width: 48.0625em)');
+
+    if ('addEventListener' in this.mql) {
+      this.mql.addEventListener('change', this.syncState.bind(this));
+    } else {
+      // addListener is a deprecated function, however addEventListener
+      // isn't supported by IE or Safari. We therefore add this in as
+      // a fallback for those browsers
+      this.mql.addListener(this.syncState.bind(this));
+    }
+
+    this.syncState();
+    this.$menuButton.addEventListener('click', this.handleMenuButtonClick.bind(this));
   } else {
-    node.className += ' ' + className;
+    this.$menuButton.setAttribute('hidden', '');
   }
 };
 
 /**
-* An event handler for click event on $toggleButton
-* @param {object} event event
-*/
-Header.prototype.handleClick = function (event) {
-  var $module = this.$module;
-  var $toggleButton = event.target || event.srcElement;
-  var $target = $module.querySelector('#' + $toggleButton.getAttribute('aria-controls'));
+ * Sync menu state
+ *
+ * Uses the global variable menuIsOpen to correctly set the accessible and
+ * visual states of the menu and the menu button.
+ * Additionally will force the menu to be visible and the menu button to be
+ * hidden if the matchMedia is triggered to desktop.
+ */
+Header.prototype.syncState = function () {
+  if (this.mql.matches) {
+    this.$menu.removeAttribute('hidden');
+    this.$menuButton.setAttribute('hidden', '');
+  } else {
+    this.$menuButton.removeAttribute('hidden');
+    this.$menuButton.setAttribute('aria-expanded', this.menuIsOpen);
 
-  // If a button with aria-controls, handle click
-  if ($toggleButton && $target) {
-    this.toggleClass($target, 'govuk-header__navigation--open');
-    this.toggleClass($toggleButton, 'govuk-header__menu-button--open');
-
-    $toggleButton.setAttribute('aria-expanded', $toggleButton.getAttribute('aria-expanded') !== 'true');
-    $target.setAttribute('aria-hidden', $target.getAttribute('aria-hidden') === 'false');
+    if (this.menuIsOpen) {
+      this.$menu.removeAttribute('hidden');
+    } else {
+      this.$menu.setAttribute('hidden', '');
+    }
   }
+};
+
+/**
+ * Handle menu button click
+ *
+ * When the menu button is clicked, change the visibility of the menu and then
+ * sync the accessibility state and menu button state
+ */
+Header.prototype.handleMenuButtonClick = function () {
+  this.menuIsOpen = !this.menuIsOpen;
+  this.syncState();
 };
 
 function Radios ($module) {
   this.$module = $module;
+  this.$inputs = $module.querySelectorAll('input[type="radio"]');
 }
 
+/**
+ * Initialise Radios
+ *
+ * Radios can be associated with a 'conditionally revealed' content block – for
+ * example, a radio for 'Phone' could reveal an additional form field for the
+ * user to enter their phone number.
+ *
+ * These associations are made using a `data-aria-controls` attribute, which is
+ * promoted to an aria-controls attribute during initialisation.
+ *
+ * We also need to restore the state of any conditional reveals on the page (for
+ * example if the user has navigated back), and set up event handlers to keep
+ * the reveal in sync with the radio state.
+ */
 Radios.prototype.init = function () {
   var $module = this.$module;
-  var $inputs = $module.querySelectorAll('input[type="radio"]');
+  var $inputs = this.$inputs;
 
-  /**
-  * Loop over all items with [data-controls]
-  * Check if they have a matching conditional reveal
-  * If they do, assign attributes.
-  **/
   nodeListForEach($inputs, function ($input) {
-    var controls = $input.getAttribute('data-aria-controls');
+    var target = $input.getAttribute('data-aria-controls');
 
-    // Check if input controls anything
-    // Check if content exists, before setting attributes.
-    if (!controls || !$module.querySelector('#' + controls)) {
+    // Skip radios without data-aria-controls attributes, or where the
+    // target element does not exist.
+    if (!target || !document.getElementById(target)) {
       return
     }
 
-    // If we have content that is controlled, set attributes.
-    $input.setAttribute('aria-controls', controls);
+    // Promote the data-aria-controls attribute to a aria-controls attribute
+    // so that the relationship is exposed in the AOM
+    $input.setAttribute('aria-controls', target);
     $input.removeAttribute('data-aria-controls');
-    this.setAttributes($input);
-  }.bind(this));
+  });
+
+  // When the page is restored after navigating 'back' in some browsers the
+  // state of form controls is not restored until *after* the DOMContentLoaded
+  // event is fired, so we need to sync after the pageshow event in browsers
+  // that support it.
+  if ('onpageshow' in window) {
+    window.addEventListener('pageshow', this.syncAllConditionalReveals.bind(this));
+  } else {
+    window.addEventListener('DOMContentLoaded', this.syncAllConditionalReveals.bind(this));
+  }
+
+  // Although we've set up handlers to sync state on the pageshow or
+  // DOMContentLoaded event, init could be called after those events have fired,
+  // for example if they are added to the page dynamically, so sync now too.
+  this.syncAllConditionalReveals();
 
   // Handle events
   $module.addEventListener('click', this.handleClick.bind(this));
 };
 
-Radios.prototype.setAttributes = function ($input) {
-  var $content = document.querySelector('#' + $input.getAttribute('aria-controls'));
+/**
+ * Sync the conditional reveal states for all inputs in this $module.
+ */
+Radios.prototype.syncAllConditionalReveals = function () {
+  nodeListForEach(this.$inputs, this.syncConditionalRevealWithInputState.bind(this));
+};
 
-  if ($content && $content.classList.contains('govuk-radios__conditional')) {
+/**
+ * Sync conditional reveal with the input state
+ *
+ * Synchronise the visibility of the conditional reveal, and its accessible
+ * state, with the input's checked state.
+ *
+ * @param {HTMLInputElement} $input Radio input
+ */
+Radios.prototype.syncConditionalRevealWithInputState = function ($input) {
+  var $target = document.getElementById($input.getAttribute('aria-controls'));
+
+  if ($target && $target.classList.contains('govuk-radios__conditional')) {
     var inputIsChecked = $input.checked;
 
     $input.setAttribute('aria-expanded', inputIsChecked);
-
-    $content.classList.toggle('govuk-radios__conditional--hidden', !inputIsChecked);
+    $target.classList.toggle('govuk-radios__conditional--hidden', !inputIsChecked);
   }
 };
 
+/**
+ * Click event handler
+ *
+ * Handle a click within the $module – if the click occurred on a radio, sync
+ * the state of the conditional reveal for all radio buttons in the same form
+ * with the same name (because checking one radio could have un-checked a radio
+ * in another $module)
+ *
+ * @param {MouseEvent} event Click event
+ */
 Radios.prototype.handleClick = function (event) {
   var $clickedInput = event.target;
-  // We only want to handle clicks for radio inputs
+
+  // Ignore clicks on things that aren't radio buttons
   if ($clickedInput.type !== 'radio') {
     return
   }
-  // Because checking one radio can uncheck a radio in another $module,
-  // we need to call set attributes on all radios in the same form, or document if they're not in a form.
-  //
-  // We also only want radios which have aria-controls, as they support conditional reveals.
-  var $allInputs = document.querySelectorAll('input[type="radio"][aria-controls]');
-  nodeListForEach($allInputs, function ($input) {
-    // Only inputs with the same form owner should change.
-    var hasSameFormOwner = ($input.form === $clickedInput.form);
 
-    // In radios, only radios with the same name will affect each other.
+  // We only need to consider radios with conditional reveals, which will have
+  // aria-controls attributes.
+  var $allInputs = document.querySelectorAll('input[type="radio"][aria-controls]');
+
+  nodeListForEach($allInputs, function ($input) {
+    var hasSameFormOwner = ($input.form === $clickedInput.form);
     var hasSameName = ($input.name === $clickedInput.name);
+
     if (hasSameName && hasSameFormOwner) {
-      this.setAttributes($input);
+      this.syncConditionalRevealWithInputState($input);
     }
   }.bind(this));
+};
+
+function SkipLink ($module) {
+  this.$module = $module;
+  this.$linkedElement = null;
+  this.linkedElementListener = false;
+}
+
+/**
+ * Initialise the component
+ */
+SkipLink.prototype.init = function () {
+  // Check for module
+  if (!this.$module) {
+    return
+  }
+
+  // Check for linked element
+  this.$linkedElement = this.getLinkedElement();
+  if (!this.$linkedElement) {
+    return
+  }
+
+  this.$module.addEventListener('click', this.focusLinkedElement.bind(this));
+};
+
+/**
+* Get linked element
+*
+* @returns {HTMLElement} $linkedElement - DOM element linked to from the skip link
+*/
+SkipLink.prototype.getLinkedElement = function () {
+  var linkedElementId = this.getFragmentFromUrl();
+
+  if (!linkedElementId) {
+    return false
+  }
+
+  return document.getElementById(linkedElementId)
+};
+
+/**
+ * Focus the linked element
+ *
+ * Set tabindex and helper CSS class. Set listener to remove them on blur.
+ */
+SkipLink.prototype.focusLinkedElement = function () {
+  var $linkedElement = this.$linkedElement;
+
+  if (!$linkedElement.getAttribute('tabindex')) {
+    // Set the element tabindex to -1 so it can be focused with JavaScript.
+    $linkedElement.setAttribute('tabindex', '-1');
+    $linkedElement.classList.add('govuk-skip-link-focused-element');
+
+    // Add listener for blur on the focused element (unless the listener has previously been added)
+    if (!this.linkedElementListener) {
+      this.$linkedElement.addEventListener('blur', this.removeFocusProperties.bind(this));
+      this.linkedElementListener = true;
+    }
+  }
+  $linkedElement.focus();
+};
+
+/**
+ * Remove the tabindex that makes the linked element focusable because the element only needs to be
+ * focusable until it has received programmatic focus and a screen reader has announced it.
+ *
+ * Remove the CSS class that removes the native focus styles.
+ */
+SkipLink.prototype.removeFocusProperties = function () {
+  this.$linkedElement.removeAttribute('tabindex');
+  this.$linkedElement.classList.remove('govuk-skip-link-focused-element');
+};
+
+/**
+ * Get fragment from URL
+ *
+ * Extract the fragment (everything after the hash symbol) from a URL, but not including
+ * the symbol.
+ *
+ * @returns {string} Fragment from URL, without the hash symbol
+ */
+SkipLink.prototype.getFragmentFromUrl = function () {
+  // Bail if the anchor link doesn't have a hash
+  if (!this.$module.hash) {
+    return false
+  }
+
+  return this.$module.hash.split('#').pop()
 };
 
 (function(undefined) {
@@ -2382,10 +2892,19 @@ function initAll (options) {
   var $toggleButton = scope.querySelector('[data-module="govuk-header"]');
   new Header($toggleButton).init();
 
+  var $notificationBanners = scope.querySelectorAll('[data-module="govuk-notification-banner"]');
+  nodeListForEach($notificationBanners, function ($notificationBanner) {
+    new NotificationBanner($notificationBanner).init();
+  });
+
   var $radios = scope.querySelectorAll('[data-module="govuk-radios"]');
   nodeListForEach($radios, function ($radio) {
     new Radios($radio).init();
   });
+
+  // Find first skip link module to enhance.
+  var $skipLink = scope.querySelector('[data-module="govuk-skip-link"]');
+  new SkipLink($skipLink).init();
 
   var $tabs = scope.querySelectorAll('[data-module="govuk-tabs"]');
   nodeListForEach($tabs, function ($tabs) {
@@ -2401,7 +2920,9 @@ exports.CharacterCount = CharacterCount;
 exports.Checkboxes = Checkboxes;
 exports.ErrorSummary = ErrorSummary;
 exports.Header = Header;
+exports.NotificationBanner = NotificationBanner;
 exports.Radios = Radios;
+exports.SkipLink = SkipLink;
 exports.Tabs = Tabs;
 
 })));
