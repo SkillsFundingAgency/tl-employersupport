@@ -10,6 +10,10 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
     if (findProviderApiUri !== null && findProviderApiUri.substr(-1) !== '/') findProviderApiUri += '/';
 
     function buildEoiRequestData() {
+        //encode so it will go through the firewall
+        let website = sessionStorage.getItem("website");
+        if(website) website = btoa(website);
+
         let req = {
             organisationName: sessionStorage.getItem("organisation-name"),
             industryId: parseInt(sessionStorage.getItem("industry")) || 0,
@@ -17,7 +21,7 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
             postcode: sessionStorage.getItem("postcode"),
             email: sessionStorage.getItem("email"),
             telephone: sessionStorage.getItem("telephone"),
-            website: sessionStorage.getItem("website"),
+            website: website,
             contactPreferenceType: parseInt(sessionStorage.getItem("contact-pref")),
             contactName: sessionStorage.getItem("full-name"),
             additionalInformation: sessionStorage.getItem("information"),
