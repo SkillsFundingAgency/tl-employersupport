@@ -6212,10 +6212,9 @@ function addHmacAuthHeader(xhr, uri, appId, apiKey, method, data) {
 
     xhr.setRequestHeader("Authorization", "amx " + appId + ":" + hashInBase64 + ":" + nonce + ":" + ts);
 }
-function EmployerInterest(findProviderApiUri, findProviderEoiApiUri, findProviderAppId, findProviderApiKey) {
+function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApiKey) {
 
     if (typeof findProviderApiUri === "undefined" ||
-        typeof findProviderEoiApiUri === "undefined" ||
         typeof findProviderAppId === "undefined" ||
         typeof findProviderApiKey === "undefined") {
         console.log('findProvider script requires findProviderApiUri, findProviderAppId and findProviderApiKey parameters');
@@ -6223,9 +6222,12 @@ function EmployerInterest(findProviderApiUri, findProviderEoiApiUri, findProvide
     }
 
     if (findProviderApiUri !== null && findProviderApiUri.substr(-1) !== '/') findProviderApiUri += '/';
-    if (findProviderEoiApiUri !== null && findProviderEoiApiUri.substr(-1) !== '/') findProviderEoiApiUri += '/';
 
     function buildEoiRequestData() {
+        //encode so it will go through the firewall
+        let website = sessionStorage.getItem("website");
+        if(website) website = btoa(website);
+
         let req = {
             organisationName: sessionStorage.getItem("organisation-name"),
             industryId: parseInt(sessionStorage.getItem("industry")) || 0,
@@ -6233,7 +6235,7 @@ function EmployerInterest(findProviderApiUri, findProviderEoiApiUri, findProvide
             postcode: sessionStorage.getItem("postcode"),
             email: sessionStorage.getItem("email"),
             telephone: sessionStorage.getItem("telephone"),
-            website: sessionStorage.getItem("website"),
+            website: website,
             contactPreferenceType: parseInt(sessionStorage.getItem("contact-pref")),
             contactName: sessionStorage.getItem("full-name"),
             additionalInformation: sessionStorage.getItem("information"),
@@ -6281,8 +6283,7 @@ function EmployerInterest(findProviderApiUri, findProviderEoiApiUri, findProvide
         console.log("data=" + data);
 
         const method = "POST";
-        //const uri = findProviderApiUri + "employers/createinterest";
-        const uri = findProviderEoiApiUri + "employers/createinterest";
+        const uri = findProviderApiUri + "employers/createinterest";        
         $.ajax({
             type: method,
             url: uri,
@@ -6311,8 +6312,7 @@ function EmployerInterest(findProviderApiUri, findProviderEoiApiUri, findProvide
             return;
         }
 
-        //TODO: Change to DELETE after this has been unblocked in the firewall
-        const method = "GET";
+        const method = "DELETE";
         const uri = findProviderApiUri + "employers/deleteinterest/" + employerId;
         $.ajax({
             type: method,
