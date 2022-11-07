@@ -180,7 +180,7 @@ function telephoneexpand() {
 }
 
 function storeanswers() {
-    $(".tl-eoi-form input[type='text'], .tl-eoi-form textarea, .tl-eoi-form input[type='email'], .tl-eoi-form input[type='tel']").each(function () {
+    $(".tl-eoi-form input[type='text'], .tl-eoi-form input[type='email'], .tl-eoi-form input[type='tel']").each(function () {
         var value = $(this).val();
         var name = $(this).attr("name");
         if (value == "") {
@@ -188,6 +188,19 @@ function storeanswers() {
         }
         else {
             sessionStorage.setItem(name, value)
+        }
+    });
+
+    $(".tl-eoi-form textarea").each(function () {
+        var value = $(this).val();
+        var formattedvalue = value.replace(/\n\r?/g, '<br />');
+        var name = $(this).attr("name");
+        if (formattedvalue == "") {
+            sessionStorage.removeItem(name)
+        }
+        else {
+            sessionStorage.setItem(name, formattedvalue)
+            console.log(formattedvalue)
         }
     });
 
@@ -224,7 +237,7 @@ function populateanswers() {
             }
         })
         let checkoutput = checkvalues.join('|');
-        $(this).text(checkoutput);
+        $(this).html(checkoutput);
     });
 
     $('#tl-eoi-check--skill-area').html(function (index, html) {
