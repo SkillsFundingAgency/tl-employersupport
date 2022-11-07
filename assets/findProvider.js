@@ -6428,7 +6428,7 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
         $('#tl-search-term-error').addClass("tl-hidden");
         $('.tl-fap--noresult').addClass("tl-hidden");
         $('.tl-fap--info-panel').addClass("tl-hidden");
-        $("#tl-next-results-link").addClass("tl-hidden");
+        $("#tl-fap--showmore").addClass("tl-hidden");
         $("#tl-fap--results").find(".tl-fap--result").remove();
         currentPage = 0;
     }
@@ -6537,9 +6537,9 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
         if (typeof data.totalResults !== "undefined" &&
             data.totalResults !== null &&
             data.totalResults <= ((page + 1) * pageSize)) {
-            $('#tl-next-results-link').addClass("tl-hidden");
+            $('#tl-fap--showmore').addClass("tl-hidden");
         } else {
-            $('#tl-next-results-link').removeClass("tl-hidden");
+            $('#tl-fap--showmore').removeClass("tl-hidden");
         }
     }
 
