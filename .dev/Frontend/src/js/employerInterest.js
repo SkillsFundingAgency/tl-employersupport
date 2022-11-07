@@ -1,7 +1,6 @@
-function EmployerInterest(findProviderApiUri, findProviderEoiApiUri, findProviderAppId, findProviderApiKey) {
+function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApiKey) {
 
     if (typeof findProviderApiUri === "undefined" ||
-        typeof findProviderEoiApiUri === "undefined" ||
         typeof findProviderAppId === "undefined" ||
         typeof findProviderApiKey === "undefined") {
         console.log('findProvider script requires findProviderApiUri, findProviderAppId and findProviderApiKey parameters');
@@ -9,7 +8,6 @@ function EmployerInterest(findProviderApiUri, findProviderEoiApiUri, findProvide
     }
 
     if (findProviderApiUri !== null && findProviderApiUri.substr(-1) !== '/') findProviderApiUri += '/';
-    if (findProviderEoiApiUri !== null && findProviderEoiApiUri.substr(-1) !== '/') findProviderEoiApiUri += '/';
 
     function buildEoiRequestData() {
         let req = {
@@ -67,8 +65,7 @@ function EmployerInterest(findProviderApiUri, findProviderEoiApiUri, findProvide
         console.log("data=" + data);
 
         const method = "POST";
-        //const uri = findProviderApiUri + "employers/createinterest";
-        const uri = findProviderEoiApiUri + "employers/createinterest";
+        const uri = findProviderApiUri + "employers/createinterest";        
         $.ajax({
             type: method,
             url: uri,
@@ -97,8 +94,7 @@ function EmployerInterest(findProviderApiUri, findProviderEoiApiUri, findProvide
             return;
         }
 
-        //TODO: Change to DELETE after this has been unblocked in the firewall
-        const method = "GET";
+        const method = "DELETE";
         const uri = findProviderApiUri + "employers/deleteinterest/" + employerId;
         $.ajax({
             type: method,
