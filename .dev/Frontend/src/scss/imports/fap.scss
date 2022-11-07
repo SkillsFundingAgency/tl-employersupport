@@ -631,3 +631,10 @@
     border: 3px solid $govuk-link-colour;
     @include govuk-responsive-margin(4, "bottom");
 }
+
+.tl-fap--showmore {
+    text-align: center;
+    width: 100%;
+    border-top: 4px solid $govuk-link-colour;
+    @include govuk-responsive-padding(3, "top");
+}

@@ -10894,6 +10894,13 @@ ul.govuk-radios label .gem-radios__input {
   }
 }
 
+.tl-fap--showmore {
+  text-align: center;
+  width: 100%;
+  border-top: 4px solid #1d70b8;
+  padding-top: 15px;
+}
+
 .HeaderView-* {
   background-color: red !important;
 }
