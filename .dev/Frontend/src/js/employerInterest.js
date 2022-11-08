@@ -416,11 +416,13 @@ function checkSessionStorage(stage) {
     if (stage = 2) {
         if ((sessionStorage.getItem("full-name") != null) && (sessionStorage.getItem("email") != null)) {
             storagestate = true;
+            console.log("stage 2 - true")
         }
     }
     if (stage = 3) {
         if ((sessionStorage.getItem("full-name") != null) && (sessionStorage.getItem("email") != null) && (sessionStorage.getItem("postcode") != null) && (sessionStorage.getItem("organisation-name") != null) && (sessionStorage.getItem("industry") != null) && (sessionStorage.getItem("skill-area") != null)) {
             storagestate = true;
+            console.log("stage 3 - true")
         }
     }
     return storagestate;
