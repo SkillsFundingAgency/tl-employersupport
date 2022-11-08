@@ -143,8 +143,10 @@ function setpage(eoi) {
         }
 
         else {
-            window.location = window.location.pathname;
-        }
+            $("#tl-eoi--start").removeClass("tl-hidden");
+            $("#tl-eoi--related").removeClass("tl-hidden");
+            $(".tl-breadcrumbs").removeClass("tl-hidden");
+            $(".tl-backlink").addClass("tl-hidden");        }
     }
 
     else if (step == 3) {
@@ -155,7 +157,10 @@ function setpage(eoi) {
         }
 
         else {
-            window.location = window.location.pathname;
+            $("#tl-eoi--start").removeClass("tl-hidden");
+            $("#tl-eoi--related").removeClass("tl-hidden");
+            $(".tl-breadcrumbs").removeClass("tl-hidden");
+            $(".tl-backlink").addClass("tl-hidden");
         }
     }
 
