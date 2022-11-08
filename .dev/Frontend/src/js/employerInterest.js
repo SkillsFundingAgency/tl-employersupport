@@ -131,15 +131,8 @@ function setpage(eoi) {
     var step = getUrlParameter('step');
 
     if (step == 1) {
-        session = checkSessionStorage(1);
-        if (session == "true") {
-            $("#tl-eoi--1").removeClass("tl-hidden");
-            $(".tl-backlink").attr("href", "?step=0");
-        }
-
-        else {
-            window.location = window.location.pathname;
-        }
+        $("#tl-eoi--1").removeClass("tl-hidden");
+        $(".tl-backlink").attr("href", "?step=0");
     }
 
     else if (step == 2) {
@@ -420,18 +413,11 @@ function clearErrors() {
 
 function checkSessionStorage(stage) {
     let storagestate = false;
-    if (stage = 1) {
+    if (stage = 2) {
         if ((sessionStorage.getItem("full-name") != null) && (sessionStorage.getItem("email") != null)) {
             storagestate = true;
         }
     }
-
-    if (stage = 2) {
-        if ((sessionStorage.getItem("postcode") != null) && (sessionStorage.getItem("organisation-name") != null) && (sessionStorage.getItem("industry") != null) && (sessionStorage.getItem("skill-area") != null)) {
-            storagestate = true;
-        }
-    }
-
     if (stage = 3) {
         if ((sessionStorage.getItem("full-name") != null) && (sessionStorage.getItem("email") != null) && (sessionStorage.getItem("postcode") != null) && (sessionStorage.getItem("organisation-name") != null) && (sessionStorage.getItem("industry") != null) && (sessionStorage.getItem("skill-area") != null)) {
             storagestate = true;
