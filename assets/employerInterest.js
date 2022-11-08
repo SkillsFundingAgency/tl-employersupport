@@ -6366,6 +6366,13 @@ function setpage(eoi) {
         sessionStorage.clear();
     }
 
+    else if (step == "error") {
+        $("#tl-eoi--error").removeClass("tl-hidden");
+        $("#tl-breadcrumbs").addClass("tl-hidden");
+        $(".tl-backlink").addClass("tl-hidden");
+        sessionStorage.clear();
+    }
+
     else if (step == "withdraw") {
         var employerId = getUrlParameter('id');
         eoi.removeEmployerInterest(employerId, 
