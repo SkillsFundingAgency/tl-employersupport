@@ -6226,7 +6226,9 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
     function buildEoiRequestData() {
         //encode so it will go through the firewall
         let website = sessionStorage.getItem("website");
-        if(website) website = btoa(website);
+        if(website) website = website.replace(/(http[s]?):\/\//gi, '_$1___');
+        let information = sessionStorage.getItem("information");
+        if(information) information = information.replace(/(http[s]?):\/\//gi, '_$1___');
 
         let req = {
             organisationName: sessionStorage.getItem("organisation-name"),
@@ -6238,7 +6240,7 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
             website: website,
             contactPreferenceType: parseInt(sessionStorage.getItem("contact-pref")),
             contactName: sessionStorage.getItem("full-name"),
-            additionalInformation: sessionStorage.getItem("information"),
+            additionalInformation: information,
             skillAreaIds: sessionStorage.getItem("skill-area").split(',').map(Number)
         };
 
@@ -6280,7 +6282,6 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
 
     EmployerInterest.prototype.submitEmployerInterest = function(successCallback) {
         let data = JSON.stringify(buildEoiRequestData());
-        console.log("data=" + data);
 
         const method = "POST";
         const uri = findProviderApiUri + "employers/createinterest";        
