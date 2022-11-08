@@ -137,7 +137,7 @@ function setpage(eoi) {
 
     else if (step == 2) {
         session = checkSessionStorage(2);
-        if (session = true) {
+        if (session == true) {
             $("#tl-eoi--2").removeClass("tl-hidden");
             $(".tl-backlink").attr("href", "?step=1");
         }
@@ -149,7 +149,7 @@ function setpage(eoi) {
 
     else if (step == 3) {
         session = checkSessionStorage(3);
-        if (session = true) {
+        if (session == true) {
             $("#tl-eoi--3").removeClass("tl-hidden");
             $(".tl-backlink").attr("href", "?step=2");
         }
@@ -413,13 +413,13 @@ function clearErrors() {
 
 function checkSessionStorage(stage) {
     let storagestate = false;
-    if (stage = 2) {
+    if (stage === 2) {
         if ((sessionStorage.getItem("full-name") != null) && (sessionStorage.getItem("email") != null)) {
             storagestate = true;
             console.log("stage 2 - true")
         }
     }
-    if (stage = 3) {
+    if (stage === 3) {
         if ((sessionStorage.getItem("full-name") != null) && (sessionStorage.getItem("email") != null) && (sessionStorage.getItem("postcode") != null) && (sessionStorage.getItem("organisation-name") != null) && (sessionStorage.getItem("industry") != null) && (sessionStorage.getItem("skill-area") != null)) {
             storagestate = true;
             console.log("stage 3 - true")
