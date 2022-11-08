@@ -9969,6 +9969,10 @@ ul.govuk-radios label .gem-radios__input {
   text-transform: uppercase;
 }
 
+.tl-prewrap {
+  white-space: pre-wrap;
+}
+
 .tl-dropdown label {
   display: block;
 }
