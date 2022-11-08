@@ -131,18 +131,39 @@ function setpage(eoi) {
     var step = getUrlParameter('step');
 
     if (step == 1) {
-        $("#tl-eoi--1").removeClass("tl-hidden");
-        $(".tl-backlink").attr("href", "?step=0");
+        session = checkSessionStorage(1);
+        if (session == "true") {
+            $("#tl-eoi--1").removeClass("tl-hidden");
+            $(".tl-backlink").attr("href", "?step=0");
+        }
+
+        else {
+            window.location = window.location.pathname;
+        }
     }
 
     else if (step == 2) {
-        $("#tl-eoi--2").removeClass("tl-hidden");
-        $(".tl-backlink").attr("href", "?step=1");
+        session = checkSessionStorage(2);
+        if (session == "true") {
+            $("#tl-eoi--2").removeClass("tl-hidden");
+            $(".tl-backlink").attr("href", "?step=1");
+        }
+
+        else {
+            window.location = window.location.pathname;
+        }
     }
 
     else if (step == 3) {
-        $("#tl-eoi--3").removeClass("tl-hidden");
-        $(".tl-backlink").attr("href", "?step=2");
+        session = checkSessionStorage(3);
+        if (session == "true") {
+            $("#tl-eoi--3").removeClass("tl-hidden");
+            $(".tl-backlink").attr("href", "?step=2");
+        }
+
+        else {
+            window.location = window.location.pathname;
+        }
     }
 
     else if (step == 4) {
@@ -395,4 +416,26 @@ function clearErrors() {
     $(".govuk-error-message").addClass("tl-hidden");
     $(".govuk-error-message").html("");
     $(".govuk-input--error").removeClass("govuk-input--error");
+}
+
+function checkSessionStorage(stage) {
+    let storagestate = false;
+    if (stage = 1) {
+        if ((sessionStorage.getItem("full-name") != null) && (sessionStorage.getItem("email") != null)) {
+            storagestate = true;
+        }
+    }
+
+    if (stage = 2) {
+        if ((sessionStorage.getItem("postcode") != null) && (sessionStorage.getItem("organisation-name") != null) && (sessionStorage.getItem("industry") != null) && (sessionStorage.getItem("skill-area") != null)) {
+            storagestate = true;
+        }
+    }
+
+    if (stage = 3) {
+        if ((sessionStorage.getItem("full-name") != null) && (sessionStorage.getItem("email") != null) && (sessionStorage.getItem("postcode") != null) && (sessionStorage.getItem("organisation-name") != null) && (sessionStorage.getItem("industry") != null) && (sessionStorage.getItem("skill-area") != null)) {
+            storagestate = true;
+        }
+    }
+    return storagestate;
 }
