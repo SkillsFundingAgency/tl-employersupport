@@ -137,7 +137,7 @@ function setpage(eoi) {
 
     else if (step == 2) {
         session = checkSessionStorage(2);
-        if (session == "true") {
+        if (session = true) {
             $("#tl-eoi--2").removeClass("tl-hidden");
             $(".tl-backlink").attr("href", "?step=1");
         }
@@ -149,7 +149,7 @@ function setpage(eoi) {
 
     else if (step == 3) {
         session = checkSessionStorage(3);
-        if (session == "true") {
+        if (session = true) {
             $("#tl-eoi--3").removeClass("tl-hidden");
             $(".tl-backlink").attr("href", "?step=2");
         }
