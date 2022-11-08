@@ -6226,9 +6226,9 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
     function buildEoiRequestData() {
         //encode so it will go through the firewall
         let website = sessionStorage.getItem("website");
-        if(website) website = website.replace(/(http[s]?):\/\//gi, '_$1___');
+        if(website) website = website.replace(/(http[s]?):\/\//gi, '$1___');
         let information = sessionStorage.getItem("information");
-        if(information) information = information.replace(/(http[s]?):\/\//gi, '_$1___');
+        if(information) information = information.replace(/(http[s]?):\/\//gi, '$1___');
 
         let req = {
             organisationName: sessionStorage.getItem("organisation-name"),
