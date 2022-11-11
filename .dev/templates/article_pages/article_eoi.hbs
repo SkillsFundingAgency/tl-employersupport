@@ -52,6 +52,9 @@
                 if(btnId == "tl-eoi-button--3") {
                     eoi.submitEmployerInterest(function() {
                         window.location.href = nextPage;
+                    },
+                    function() {
+                        window.location.href = "?step=error";
                     });
                 }
                 else {
