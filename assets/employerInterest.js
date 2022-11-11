@@ -6280,7 +6280,7 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
         });        
     }
 
-    EmployerInterest.prototype.submitEmployerInterest = function(successCallback) {
+    EmployerInterest.prototype.submitEmployerInterest = function(successCallback, errorCallback) {
         let data = JSON.stringify(buildEoiRequestData());
 
         const method = "POST";
@@ -6302,7 +6302,7 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
             console.log('error = ' + error);
             console.log('status = ' + status);
             console.log('xhr.status = ' + xhr.status);
-            //Show what?
+            if(errorCallback !== 'undefined') errorCallback(); 
         });
     }
 
