@@ -6587,6 +6587,13 @@ function validateanswers(successCallback) {
             addError("Enter your organisation's postcode", postcode);
             haserror = true;
         }
+
+        // More info val //
+        let moreinfo = $("#information");
+        if (moreinfo.val().length > 1000) {
+            addError("Enter 1000 characters or less", moreinfo);
+            haserror = true;
+        }
     }
 
     if (step == 3) {
