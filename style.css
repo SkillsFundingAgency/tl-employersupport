@@ -7888,6 +7888,10 @@ x:-moz-any-link {
     display: block;
   }
 }
+.tl-row-fill--fixed {
+  display: flex;
+  align-items: stretch;
+}
 
 .tl-flex-list {
   display: flex;
@@ -7897,6 +7901,27 @@ x:-moz-any-link {
   order: -1;
 }
 
+.tl-order--1 {
+  order: 1;
+}
+.tl-order--2 {
+  order: 2;
+}
+.tl-order--3 {
+  order: 3;
+}
+
+@media (max-width: 40.0525em) {
+  .tl-order-mobile--1 {
+    order: 1;
+  }
+  .tl-order-mobile--2 {
+    order: 2;
+  }
+  .tl-order-mobile--3 {
+    order: 3;
+  }
+}
 .tl-image--cover {
   object-fit: cover;
   max-width: 100%;
@@ -9386,13 +9411,13 @@ details summary {
     padding: 20px;
   }
 }
-.tl-card--grey, .tl-hero--card, .tl-card--fap, .tl-home--banner--card {
+.tl-card--grey, .tl-hero--card, .tl-card--fap--home, .tl-card--fap, .tl-home--banner--card {
   background-color: #f3f2f1;
   padding: 30px;
   position: relative;
 }
 @media (max-width: 40.0525em) {
-  .tl-card--grey, .tl-hero--card, .tl-card--fap, .tl-home--banner--card {
+  .tl-card--grey, .tl-hero--card, .tl-card--fap--home, .tl-card--fap, .tl-home--banner--card {
     padding: 20px;
   }
 }
@@ -9458,13 +9483,6 @@ div.gem-c-cookie-banner__buttons .govuk-button:hover, div.gem-c-cookie-banner__b
   color: #00692f;
   background-color: #f8f8f8;
   text-decoration: none;
-}
-
-p {
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0;
-  margin-inline-end: 0;
 }
 
 #global-cookie-message-help p {
@@ -9951,6 +9969,10 @@ ul.govuk-radios label .gem-radios__input {
   text-transform: uppercase;
 }
 
+.tl-prewrap {
+  white-space: pre-wrap;
+}
+
 .tl-dropdown label {
   display: block;
 }
@@ -10319,6 +10341,79 @@ ul.govuk-radios label .gem-radios__input {
   .tl-card--fap--left {
     flex: 1 1 100%;
   }
+}
+
+.tl-card--fap--home {
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 15px;
+  padding-bottom: 30px;
+}
+@media (min-width: 40.0625em) {
+  .tl-card--fap--home {
+    padding-left: 50px;
+  }
+}
+@media (min-width: 40.0625em) {
+  .tl-card--fap--home {
+    padding-right: 50px;
+  }
+}
+@media (min-width: 40.0625em) {
+  .tl-card--fap--home {
+    padding-top: 25px;
+  }
+}
+@media (min-width: 40.0625em) {
+  .tl-card--fap--home {
+    padding-bottom: 50px;
+  }
+}
+@media (min-width: 40.0625em) {
+  .tl-card--fap--home {
+    padding-bottom: 25px;
+  }
+}
+@media (min-width: 40.0625em) and (min-width: 40.0625em) {
+  .tl-card--fap--home {
+    padding-bottom: 40px;
+  }
+}
+@media (max-width: 40.0525em) {
+  .tl-card--fap--home--linkcontainer {
+    margin-top: 15px;
+  }
+}
+@media (max-width: 40.0525em) and (min-width: 40.0625em) {
+  .tl-card--fap--home--linkcontainer {
+    margin-top: 20px;
+  }
+}
+.tl-card--fap--home--white {
+  background: #ffffff;
+  padding: 15px;
+  width: 100%;
+  box-sizing: border-box;
+}
+@media (min-width: 40.0625em) {
+  .tl-card--fap--home--white {
+    padding: 20px;
+  }
+}
+@media (max-width: 40.0525em) {
+  .tl-card--fap--home--white {
+    margin-top: 15px;
+  }
+}
+@media (max-width: 40.0525em) and (min-width: 40.0625em) {
+  .tl-card--fap--home--white {
+    margin-top: 20px;
+  }
+}
+.tl-card--fap--home .tl-card-fap--wrap {
+  flex-wrap: wrap;
 }
 
 #tl-home--fap .tl-card--fap {
@@ -10801,6 +10896,13 @@ ul.govuk-radios label .gem-radios__input {
   .tl-fap--info-panel {
     margin-bottom: 20px;
   }
+}
+
+.tl-fap--showmore {
+  text-align: center;
+  width: 100%;
+  border-top: 4px solid #1d70b8;
+  padding-top: 15px;
 }
 
 .HeaderView-* {
