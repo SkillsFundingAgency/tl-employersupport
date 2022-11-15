@@ -365,8 +365,11 @@
                         <label class="govuk-label govuk-label--m" for="postcode">
                             Enter the postcode of your organisation’s location
                         </label>
+                        <div id="postcode-hint" class="govuk-hint">
+                            This should be the location where any industry placements might take place.
+                        </div>
                         <p id="postcode-error" class="govuk-error-message tl-hidden"></p>
-                        <input class="govuk-input govuk-input--width-10" id="postcode" name="postcode" type="text">
+                        <input class="govuk-input govuk-input--width-10" id="postcode" name="postcode" type="text" aria-describedby="postcode-hint">
                     </div>
 
                     <div class="govuk-form-group">
