@@ -358,13 +358,13 @@ function validateanswers(successCallback) {
         let skillarea = $("#tl-eoi-skillarea input");
         let skillareachecked = $("#tl-eoi-skillarea input:checked:last");
         if (skillareachecked.length == 0) {
-            addError("Select your organisation's primary industry", skillarea);
+            addError("Select at least one skill area you’d be interested in hosting an industry placement in", skillarea);
             haserror = true;
         }
 
         // Postcode val //
         let postcode = $("#postcode");
-        var postcodereg = /^(([A-Z]{1,2}[0-9][A-Z0-9]?|ASCN|STHL|TDCU|BBND|[BFS]IQQ|PCRN|TKCA) ?[0-9][A-Z]{2}|BFPO ?[0-9]{1,4}|(KY[0-9]|MSR|VG|AI)[ -]?[0-9]{4}|[A-Z]{2} ?[0-9]{2}|GE ?CX|GIR ?0A{2}|SAN ?TA1)$/;
+        var postcodereg = /^(([A-Z]{1,2}[0-9][A-Z0-9]?|ASCN|STHL|TDCU|BBND|[BFS]IQQ|PCRN|TKCA) ?[0-9][A-Z]{2}|BFPO ?[0-9]{1,4}|(KY[0-9]|MSR|VG|AI)[ -]?[0-9]{4}|[A-Z]{2} ?[0-9]{2}|GE ?CX|GIR ?0A{2}|SAN ?TA1)$/i;
         if (!postcodereg.test(postcode.val())) {
             addError("Enter a real UK postcode, for example SW1A 1AA", postcode);
             haserror = true;
