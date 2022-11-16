@@ -6572,7 +6572,7 @@ function validateanswers(successCallback) {
         let skillarea = $("#tl-eoi-skillarea input");
         let skillareachecked = $("#tl-eoi-skillarea input:checked:last");
         if (skillareachecked.length == 0) {
-            addError("Select at least one skill area you�d be interested in hosting an industry placement in", skillarea);
+            addError("Select at least one skill area you'd be interested in hosting an industry placement in", skillarea);
             haserror = true;
         }
 
