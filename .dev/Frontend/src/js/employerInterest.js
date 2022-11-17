@@ -301,7 +301,7 @@ function validateanswers(successCallback) {
     if (step == 1) {
         // Name val //
         let fullname = $("#full-name");
-        if (fullname.val().length == 0) {
+        if (fullname.val().trim().length == 0) {
             addError("Enter your full name", fullname);
             haserror = true;
         }
@@ -312,7 +312,7 @@ function validateanswers(successCallback) {
             addError("Enter an email address in the correct format, for example name@example.com", email);
             haserror = true;
         }
-        if (email.val().length == 0) {
+        if (email.val().trim().length == 0) {
             addError("Enter your email address", email);
             haserror = true;
         }
@@ -337,7 +337,7 @@ function validateanswers(successCallback) {
     if (step == 2) {
         // Orgname val //
         let orgname = $("#organisation-name");
-        if (orgname.val().length == 0) {
+        if (orgname.val().trim().length == 0) {
             addError("Enter your organisation name", orgname);
             haserror = true;
         }
@@ -345,7 +345,7 @@ function validateanswers(successCallback) {
         // Orgname val //
         let industry = $("#tl-eoi-industry input");
         let industrychecked = $("#tl-eoi-industry input:checked");
-        if (industrychecked.length == 0) {
+        if (industrychecked.trim().length == 0) {
             addError("Select your organisation's primary industry", industry);
             haserror = true;
         }
@@ -370,7 +370,7 @@ function validateanswers(successCallback) {
             addError("Enter a real UK postcode, for example SW1A 1AA", postcode);
             haserror = true;
         }
-        if (postcode.val().length == 0) {
+        if (postcode.val().trim().length == 0) {
             addError("Enter your organisation's postcode", postcode);
             haserror = true;
         }
