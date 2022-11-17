@@ -6566,6 +6566,7 @@ function validateanswers(successCallback) {
         let industryother = $("#industry-other")
         if (industrychecked.val() == "Other" && industryother.val().length == 0) {
             addError("Enter an alternative primary industry", industryother);
+            haserror = true;
         }
 
         // Skillarea val //
