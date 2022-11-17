@@ -18,16 +18,16 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
 
         let req = {
             organisationName: sessionStorage.getItem("organisation-name"),
-            industryId: parseInt(sessionStorage.getItem("industry")) || 0,
+            industryId: parseInt(sessionStorage.getItem("industry").replace('-', '')) || 0,
             otherIndustry: sessionStorage.getItem("industry-other"),
             postcode: sessionStorage.getItem("postcode"),
             email: sessionStorage.getItem("email"),
             telephone: sessionStorage.getItem("telephone"),
             website: website,
-            contactPreferenceType: parseInt(sessionStorage.getItem("contact-pref")),
+            contactPreferenceType: parseInt(sessionStorage.getItem("contact-pref").replace('-', '')),
             contactName: sessionStorage.getItem("full-name"),
             additionalInformation: information,
-            skillAreaIds: sessionStorage.getItem("skill-area").split(',').map(Number)
+            skillAreaIds: sessionStorage.getItem("skill-area").replace('-','').split(',').map(Number)
         };
 
         return req;
@@ -234,7 +234,7 @@ function storeanswers() {
         let selection = [];
         let name = $(this).attr("data-name");
         $(this).find("input:checked").each(function () {
-            selection.push($(this).attr("data-id"));
+            selection.push("-" + $(this).attr("data-id") + "-");
         });
         if (selection.length === 0) {
             sessionStorage.removeItem(name)
@@ -285,7 +285,7 @@ function populatefields() {
 
         var sessionval = sessionStorage.getItem(checkname)
         if (sessionval != null) {
-            if (sessionval.indexOf(datavalue) > -1 || sessionval.indexOf(dataid) > -1) {
+            if (sessionval.indexOf(datavalue) > -1 || sessionval.indexOf("-" + dataid + "-") > -1) {
                 $(this).prop('checked', true);
                 $(this).parent().next(".govuk-radios__conditional").toggleClass("govuk-radios__conditional--hidden");
                 $(this).parent().next(".govuk-checkboxes__conditional").toggleClass("govuk-checkboxes__conditional--hidden");
