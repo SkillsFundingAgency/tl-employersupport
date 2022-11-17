@@ -6241,7 +6241,7 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
             contactPreferenceType: parseInt(sessionStorage.getItem("contact-pref").replace('-', '')),
             contactName: sessionStorage.getItem("full-name"),
             additionalInformation: information,
-            skillAreaIds: sessionStorage.getItem("skill-area").replace('-','').split(',').map(Number)
+            skillAreaIds: sessionStorage.getItem("skill-area").replaceAll('-', '').split(',').map(Number)
         };
 
         return req;
