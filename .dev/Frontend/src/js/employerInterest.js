@@ -290,6 +290,9 @@ function populatefields() {
                 $(this).parent().next(".govuk-radios__conditional").toggleClass("govuk-radios__conditional--hidden");
                 $(this).parent().next(".govuk-checkboxes__conditional").toggleClass("govuk-checkboxes__conditional--hidden");
             }
+            else {
+                $(this).prop('checked', false);
+            }
         }
     });
 }
