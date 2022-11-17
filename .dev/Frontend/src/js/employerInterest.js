@@ -345,7 +345,7 @@ function validateanswers(successCallback) {
         // Orgname val //
         let industry = $("#tl-eoi-industry input");
         let industrychecked = $("#tl-eoi-industry input:checked");
-        if (industrychecked.trim().length == 0) {
+        if (industrychecked.length == 0) {
             addError("Select your organisation's primary industry", industry);
             haserror = true;
         }
