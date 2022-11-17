@@ -11,7 +11,7 @@
   "dependencies": {
     "accessible-autocomplete": "^2.0.4",
     "crypto-js": "^4.1.1",
-    "govuk-frontend": "^3.6.0",
+    "govuk-frontend": "4.3.1",
     "jquery": "^3.4.1",
     "jquery-ui-dist": "1.12.1",
     "moment": "^2.27.0",
