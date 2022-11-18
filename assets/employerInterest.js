@@ -6415,9 +6415,6 @@ function setpage(eoi) {
 function telephoneexpand() {
     var inputlength = $("input[name=telephone]").val().length;
     $("#tl-eoi-contactpref").toggleClass('tl-hidden', inputlength == 0);
-    if (inputlength == 0) {
-        $("#tl-eoi-contactpref input").prop("checked", false);
-    }
 }
 
 function storeanswers() {
