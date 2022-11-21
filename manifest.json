@@ -303,6 +303,13 @@
           "value": "4416409730578"
         },
         {
+          "identifier": "article_id_privacy",
+          "type": "text",
+          "description": "Footer section",
+          "label": "Privacy",
+          "value": "8683007714706"
+        },
+        {
           "identifier": "article_id_confirmation",
           "type": "text",
           "description": "Footer section",
