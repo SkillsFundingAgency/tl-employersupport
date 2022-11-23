@@ -52,13 +52,13 @@
         <ul class="govuk-list">
             {{#each articles}}
             <li>
-                <a class="govuk-link tl-category--article" href="{{url}}">{{title}}</a>
+                <a class="govuk-body-l govuk-link tl-category--article" href="{{url}}">{{title}}</a>
             </li>
             {{/each}}
 
             {{#if more_articles}}
             <li class="govuk-!-margin-top-4">
-                <a class="govuk-link govuk-body-s tl-category--more" href="{{url}}">
+                <a class="govuk-body-l govuk-link govuk-body-s tl-category--more" href="{{url}}">
                     {{t 'show_all_articles' count=article_count}}
                 </a>
             </li>
