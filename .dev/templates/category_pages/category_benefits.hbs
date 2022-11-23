@@ -75,24 +75,26 @@
                     </li>
                 </ul>
                 {{/if}}
+                <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-top-8 govuk-!-margin-bottom-7">
+
                 {{else}}
                 <h3 class="govuk-heading-m govuk-!-margin-top-7">{{name}}</h3>
                 <div class="govuk-!-margin-top-2">
 
                     {{#each sections}}
-                        <h3 class="govuk-body-l">{{name}}</h3>
-                        <ul class="govuk-list">
-                            {{#each articles}}
-                            <li>
-                                <a class="govuk-link tl-category--section--article" href="{{url}}">{{title}}</a>
-                            </li>
-                            {{/each}}
-                            {{#if more_articles}}
-                            <li>
-                                <a class="govuk-link tl-category--section--article" href="{{url}}">{{t 'show_all_articles' count=article_count}}</a>
-                            </li>
-                            {{/if}}
-                        </ul>
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-1">{{name}}</h3>
+                    <ul class="govuk-list">
+                        {{#each articles}}
+                        <li>
+                            <a class="govuk-link tl-category--section--article" href="{{url}}">{{title}}</a>
+                        </li>
+                        {{/each}}
+                        {{#if more_articles}}
+                        <li>
+                            <a class="govuk-link tl-category--section--article" href="{{url}}">{{t 'show_all_articles' count=article_count}}</a>
+                        </li>
+                        {{/if}}
+                    </ul>
                     {{/each}}
                 </div>
 
