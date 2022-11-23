@@ -46,33 +46,38 @@
         {{#each sections}}
 
         {{#isnt name "How industry placements work"}}
-        <div class="govuk-grid-row">
-            <div class="govuk-grid-column-full">
+        <h2 class="govuk-heading-m">{{name}}</h2>
 
 
-                <h3 class="govuk-heading-m govuk-!-margin-top-7">{{name}}</h3>
+        {{#if articles}}
+        <ul class="govuk-list">
+            {{#each articles}}
+            <li>
+                <a class="govuk-link tl-category--article" href="{{url}}">{{title}}</a>
+            </li>
+            {{/each}}
 
-                <div class="tl-boxlinks govuk-!-margin-top-2">
-
-                    {{#each articles}}
-                    {{#if promoted}}
-                    {{else}}
-                    <div class="tl-boxlinks--card">
-                        <p class="govuk-body-l govuk-!-margin-bottom-2">
-                            <a class="govuk-link govuk-!-margin-bottom-1 tl-category--section--article" href="{{url}}">{{title}}</a>
-                        </p>
-                    </div>
-                    {{/if}}
-
-                    {{/each}}
-                    {{#if more_articles}}
-                    <p class="govuk-body-l govuk-!-margin-top-2 govuk-!-margin-bottom-4 tl-width-100">
-                        <a class="govuk-link govuk-!-margin-bottom-1 tl-category--section--article" href="{{url}}">{{t 'show_all_articles' count=article_count}}</a>
-                    </p>
-                    {{/if}}
-                </div>
-            </div>
-        </div>
+            {{#if more_articles}}
+            <li class="govuk-!-margin-top-4">
+                <a class="govuk-link govuk-body-s tl-category--more" href="{{url}}">
+                    {{t 'show_all_articles' count=article_count}}
+                </a>
+            </li>
+            {{/if}}
+        </ul>
+        {{else}}
+        <ul class="govuk-list">
+            <li>
+                <p class="govuk-body">There's nothing here at the moment</p>
+            </li>
+        </ul>
+        {{/if}}
+        {{#isnt sections.length 1}}
+        {{#unless @last}}
+        <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-top-8 govuk-!-margin-bottom-7">
+        {{/unless}}
+        {{/isnt}}
+        {{/each}}
         {{/isnt}}
         {{/each}}
     </section>
