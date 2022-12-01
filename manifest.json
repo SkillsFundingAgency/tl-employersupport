@@ -1,7 +1,7 @@
 {
-  "name": "GDS Style - EOI",
+  "name": "GDS Style - 1000ch limit",
   "author": "Ash Anderton",
-  "version": "0.1.959",
+  "version": "0.1.975",
   "api_version": 2,
   "default_locale": "en-gb",
   "settings": [
@@ -301,6 +301,13 @@
           "description": "Footer section",
           "label": "Terms",
           "value": "4416409730578"
+        },
+        {
+          "identifier": "article_id_privacy",
+          "type": "text",
+          "description": "Footer section",
+          "label": "Privacy",
+          "value": "8683007714706"
         },
         {
           "identifier": "article_id_confirmation",
