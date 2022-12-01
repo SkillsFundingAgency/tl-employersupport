@@ -376,6 +376,21 @@
                         <label class="govuk-label govuk-label--m" for="information">
                             Enter any additional information (optional)
                         </label>
+                        <div id="information-hint" class="govuk-hint">
+                            You have <span id="information-chars">1000</span> characters remaining
+                        </div>
+                        <script>
+                            function updateCountdown() {
+                                var remaining = 1000 - $('#information').val().length;
+                                $('#information-chars').text(remaining);
+                            }
+
+                            $(document).ready(function ($) {
+                                updateCountdown();
+                                $('#information').change(updateCountdown);
+                                $('#information').keyup(updateCountdown);
+                            });
+                        </script>
                         <p id="information-error" class="govuk-error-message tl-hidden"></p>
                         <textarea class="govuk-textarea" id="information" name="information" rows="5"></textarea>
                     </div>
