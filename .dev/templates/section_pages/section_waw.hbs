@@ -1,132 +1,344 @@
-﻿
+﻿<div class="govuk-width-container">
+    <div id="tl-breadcrumbs--help">
+        <div class="tl-breadcrumbs">
+            {{breadcrumbs}}
+        </div>
+    </div>
+</div>
 
-<!-- Main content -->
- 
 
-    <div class="govuk-width-container">
-        <div id="tl-breadcrumbs--help">
-            <div class="tl-breadcrumbs">
-                {{breadcrumbs}}
-            </div>
+<!-- Category Content -->
+<div class="govuk-width-container govuk-main-wrapper">
+
+    <div class="govuk-grid-row govuk-!-margin-bottom-7">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-xl govuk-!-margin-bottom-3">{{section.name}}</h1>
+            {{#if section.description}}
+            <p class="govuk-body-l">{{section.description}}</p>
+            {{/if}}
+
+
         </div>
     </div>
 
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third tl-hide tl-js-visible">
+            <div class="govuk-form-group tl-filter">
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                        <span class="govuk-fieldset__heading">
+                            Filter
+                        </span>
+                    </legend>
 
-    <!-- Category Content -->
-    <div class="govuk-width-container govuk-main-wrapper">
+                    <div class="govuk-checkboxes--small govuk-!-padding-left-3 govuk-!-margin-bottom-4 tl-overflow--auto">
+                        <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Location</h3>
 
-        <div class="govuk-grid-row govuk-!-margin-bottom-7">
-            <div class="govuk-grid-column-two-thirds">
-                <h1 class="govuk-heading-xl govuk-!-margin-bottom-3">{{section.name}}</h1>
-                {{#if section.description}}
-                <p class="govuk-body-l">{{section.description}}</p>
-                {{/if}}
-
-
-            </div>
-        </div>
-        <div class="govuk-grid-row">
-            <div class="govuk-grid-column-one-third tl-hide tl-js-visible">
-                <div class="govuk-form-group tl-filter">
-                    <fieldset class="govuk-fieldset">
-                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                            <span class="govuk-fieldset__heading">
-                                Filter by event type
-                            </span>
-                        </legend>
-                        <div class="govuk-radios--small tl-filter--radios">
-                            <div class="govuk-radios__item" id="tl-waw-filter--all">
-                                <input class="govuk-radios__input" id="event-type" name="Event type" type="radio" value="all" checked="checked">
-                                <label class="govuk-label govuk-radios__label" for="event-type">
-                                    All events
-                                </label>
-                            </div>
-                            <div class="govuk-radios__item" id="tl-waw-filter--workshops">
-                                <input class="govuk-radios__input" id="event-type-2" name="Event type" type="radio" value="workshops">
-                                <label class="govuk-label govuk-radios__label" for="event-type-2">
-                                    Workshops
-                                </label>
-                            </div>
-                            <div class="govuk-radios__item" id="tl-waw-filter--webinars">
-                                <input class="govuk-radios__input" id="event-type-3" name="Event type" type="radio" value="webinars">
-                                <label class="govuk-label govuk-radios__label" for="event-type-3">
-                                    Webinars
-                                </label>
-                            </div>
-
-                            <script>
-                                $('input:radio[name="Event type"]').change(
-                                    function () {
-                                        if ($(this).is(':checked')) {
-                                            var eventtype = $(this).val();
-                                            $(".tl-event--list").attr("data-event--filter", eventtype);
-                                            sessionStorage.setItem('wawfilter', eventtype);
-                                        }
-                                    });
-
-                                $(document).ready(function () {
-                                    if (sessionStorage.getItem("wawfilter")) {
-                                        var eventtype = sessionStorage.getItem('wawfilter');
-                                        $('.tl-event--list').attr("data-event--filter", eventtype);
-                                        $('input:radio[value=' + eventtype + ']').prop("checked", true);
-                                    }
-                                    else {
-                                        var eventtype = $('input:radio[name="Event type"]:checked').val();
-                                        $(".tl-event--list").attr("data-event--filter", eventtype);
-                                    }
-                                });
-                            </script>
+                        <div class="govuk-checkboxes__item" id="tl-events-filter--online" gtmname="Upcoming webinars">
+                            <input class="govuk-checkboxes__input" id="type-upcoming" name="Webinar type" type="checkbox" value="upcoming" gtmname="Upcoming webinars" checked>
+                            <label class="govuk-label govuk-checkboxes__label" for="type-upcoming" gtmname="type-upcoming">
+                                Upcoming webinars
+                            </label>
+                        </div>
+                        <div class="govuk-checkboxes__item" id="tl-events-filter--inperson" gtmname="inperson">
+                            <input class="govuk-checkboxes__input" id="type-recording" name="Webinar type" type="checkbox" value="recording" gtmname="Webinar recordings" checked>
+                            <label class="govuk-label govuk-checkboxes__label" for="type-recording" gtmname="Webinar recordings">
+                                Webinar recordings
+                            </label>
                         </div>
 
-                    </fieldset>
-                </div>
+                    </div>
+                    <div class="govuk-radios--small tl-filter--radios govuk-!-margin-left-1 govuk-!-margin-bottom-4 tl-overflow--auto">
+                        <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Date</h3>
+                        <div class="govuk-radios__item" id="tl-events-filter--all" gtmname="All date events">
+                            <input class="govuk-radios__input" id="date-all" name="Event date" type="radio" value="all" checked="checked" gtmname="All date events">
+                            <label class="govuk-label govuk-radios__label" for="date-all" gtmname="All date events">
+                                All
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item" id="tl-events-filter--courseinfo" gtmname="This week events">
+                            <input class="govuk-radios__input" id="date-this-week" name="Event date" type="radio" value="This week" gtmname="This week events">
+                            <label class="govuk-label govuk-radios__label" for="date-this-week" gtmname="This week events">
+                                This week
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item" id="tl-events-filter--industryplacements" gtmname="This month events">
+                            <input class="govuk-radios__input" id="date-this-month" name="Event date" type="radio" value="This month" gtmname="This month events">
+                            <label class="govuk-label govuk-radios__label" for="date-this-month" gtmname="This month events">
+                                This month
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item" id="tl-events-filter--networking" gtmname="Next month events">
+                            <input class="govuk-radios__input" id="date-next-month" name="Event date" type="radio" value="Next month" gtmname="Next month events">
+                            <label class="govuk-label govuk-radios__label" for="date-next-month" gtmname="Next month events">
+                                Next month
+                            </label>
+                        </div>
 
+                    </div>
+
+
+
+                    <script>
+                        function checkchange() {
+                            let checkitem = $(this).attr("id");
+                            if (!$(this).is(':checked')) {
+                                sessionStorage.setItem("eventfilter" + checkitem, 'false');
+                                $(".tl-event--list").attr("data-" + checkitem, false);
+                            }
+
+                            else {
+                                sessionStorage.removeItem("eventfilter" + checkitem);
+                                $(".tl-event--list").removeAttr("data-" + checkitem);
+                            }
+                            eventsearch()
+                        }
+
+                        function radiochange() {
+                            let checkitem = $(this).attr("id");
+                            if ($(this).is(':checked')) {
+                                sessionStorage.setItem("eventdate", checkitem);
+                                $(".tl-event--list").attr("data-date", checkitem);
+                            }
+                            eventsearch()
+                        }
+
+                        function setfilters() {
+                            for (const [key, value] of Object.entries(sessionStorage)) {
+                                if (!key.indexOf("eventfilter")) {
+                                    let checkitem = key.replace("eventfilter", "");
+                                    let checkvalue = value;
+                                    $(".tl-event--list").attr("data-" + checkitem, checkvalue)
+                                    if (checkvalue != "true") {
+                                        $('input[id="' + checkitem + '"]').prop("checked", false)
+                                    }
+                                }
+
+                                if (!key.indexOf("eventdate")) {
+                                    let checkvalue = value;
+                                    $(".tl-event--list").attr("data-date", checkvalue)
+                                    $('input[id="' + checkvalue + '"]').prop("checked", true)
+                                }
+                            }
+                        }
+                        $('input[name="Webinar type"]').change(checkchange);
+                        $('input[name="Event date"]').change(radiochange);
+                        $(document).ready(setfilters);
+                    </script>
+                </fieldset>
             </div>
 
-            <div class="govuk-grid-column-two-thirds">
-                <section>
-                    <ul class="govuk-list tl-event--list" data-event--filter="all">
+        </div>
 
-                        {{#each section.articles}}
-                        <li id="tl-article--container--{{id}}">
-                            <span class="govuk-body-s tl-text-headercase" id="tl-article--type--{{id}}"></span>
-                            <h3 class="govuk-heading-m govuk-!-margin-bottom-0">{{title}}</h3>
-                            <span class="govuk-body-s tl-text-headercase" id="tl-article--date--{{id}}"></span>
-                            <p class="govuk-body">{{excerpt body characters=400}}</p>
-                            <a class="govuk-link tl-waw--book" GTMname="{{title}}" href="{{url}}">Book your place</a>
-                            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-                        </li>
+        <div class="govuk-grid-column-two-thirds">
+            <section>
+                <form class="tl-event--search tl-search govuk-!-margin-bottom-4 tl-js-visible--flex">
+                    <input type="search" name="query" id="tl-event--search--input" placeholder="Search events" aria-label="Search events">
+                    <input type="submit" value="Search">
+                </form>
+                <!-- Search Events JS -->
+                <script>
+                    $(".tl-event--search").submit(function (e) {
+                        e.preventDefault();
+                        eventsearch();
+                    });
 
-                        <script>
-                            $.getJSON('/api/v2/help_center/articles/{{id}}', function (articlelabels) {
+                    function eventsearch() {
+                        var searchquery = $("#tl-event--search--input").val();
+                        $(".tl-event--list-none").show();
+                        $(".tl-event--list-query").text(searchquery);
+
+                        $(".tl-event--list li").each(function () {
+                            var eventtitle = $(this).find("h3").text();
+
+
+                            if (eventtitle.toLowerCase().indexOf(searchquery.toLowerCase()) >= 0) {
+                                $(this).removeClass("tl-js-hidden--important");
+                                $(".tl-event--list-none").hide();
+                            }
+                            else {
+                                $(this).addClass("tl-js-hidden--important");
+                            }
+                        });
+                    }
+                </script>
+                <div class="tl-event--list-none" style="display: none">
+                    <p class="govuk-body">No results for "<span class="govuk-!-font-weight-bold tl-event--list-query"></span>". You can use the filter to search by event type, date or location, or see all events.</p>
+                </div>
+                {{#if section.articles}}
+                <ul class="govuk-list tl-event--list">
+                    {{#each section.articles}}
+                    <li id="tl-article--container--{{id}}">
+                        <div class="tl-text--right"><strong class="tl-event--list--tag govuk-tag govuk-tag--grey" id="tl-event--list--tag--type--{{id}}"></strong><strong class="tl-event--list--tag govuk-tag govuk-tag--grey" id="tl-event--list--tag--location--{{id}}"></strong></div>
+                        <h3 class="govuk-heading-m govuk-!-margin-bottom-0">{{title}}</h3>
+                        <span class="govuk-body-s tl-text-headercase" id="tl-article--date--{{id}}"></span>
+                        <p class="govuk-body">{{excerpt body characters=395}}</p>
+                        <a class="govuk-link govuk-link-no-visited-state tl-event--moreinfo" GTMname="{{title}}" href="{{url}}">More information</a>
+                        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                    </li>
+                    {{/each}}
+                </ul>
+                {{else}}
+                <p class="govuk-body">There are no upcoming T Level events at the moment.</p>
+                {{/if}}
+            </section>
+            <script>
+                window.onload = function () {
+                    unpaginatedSections();
+                };
+
+                function unpaginatedSections() {
+
+                    // Only execute this if we're on a paginated section page.
+                    if (document.getElementsByClassName("pagination")[0] == null) {
+                        $('[id^="tl-article--container--"]').each(function () {
+                            var eventid = $(this).attr('id');
+                            var functionid = eventid.replace('tl-article--container--', '');
+
+                            $.getJSON('/api/v2/help_center/articles/' + functionid, function (articlelabels) {
 
                                 if (articlelabels.article.label_names && articlelabels.article.label_names.length) {
                                     articlelabels.article.label_names.forEach(function (labelname) {
-                                        
+
                                         if (labelname.indexOf("type") != -1) {
                                             var type = labelname.split('/')[1];
-                                            $("#tl-article--type--{{id}}").text(type);
-                                            $("#tl-article--container--{{id}}").attr("data-event--labels", type);
+                                            $("#tl-article--container--" + functionid).attr("data-event--type", type);
+                                            $("#tl-event--list--tag--type--" + functionid).text(type);
                                         }
 
                                         if (labelname.indexOf("date") != -1) {
                                             var date = labelname.split('/')[1];
-                                            $("#tl-article--date--{{id}}").text(date);
+                                            var dateformatted = moment(date).format("dddd, Do MMMM YYYY, h:mm A");
+                                            var weekcheck = moment(date).isSame(new Date(), 'week');
+                                            var monthcheck = moment(date).isSame(new Date(), 'month');
+                                            var nextmonthcheck = moment(date).subtract(1, 'months').isSame(new Date(), 'month');
+                                            if (weekcheck == true) {
+                                                $("#tl-article--container--" + functionid).attr("data-event--thisweek", true);;
+                                            }
+                                            if (monthcheck == true) {
+                                                $("#tl-article--container--" + functionid).attr("data-event--thismonth", true);;
+                                            }
+                                            if (nextmonthcheck == true) {
+                                                $("#tl-article--container--" + functionid).attr("data-event--nextmonth", true);;
+                                            }
+                                            $("#tl-article--date--" + functionid).text(dateformatted);;
+                                        }
+
+                                        if (labelname.indexOf("location") != -1) {
+                                            var location = labelname.split('/')[1];
+                                            $("#tl-article--container--" + functionid).attr("data-event--location", location);
+                                            $("#tl-event--list--tag--location--" + functionid).text(location);
+
                                         }
                                     });
-                                }
+                                };
                             });
+                        });
 
-                        </script>
-                        {{/each}}
+                        return;
+                    };
+                    // Does the URL specify a page number? If so, yield to the user.
+                    if (document.URL.includes('?page=')) return;
 
-                    </ul>
-                </section>
-                <div class="tl-waw--pagination">
-                    {{pagination}}
-                </div>
+                    // Start with the articles listed on the first page
+                    var long_list = document.getElementsByClassName("tl-event--list")[0].innerHTML;
+                    var next_url = document.getElementsByClassName("pagination-next-link")[0]
+                        .getAttribute('href');
+                    var is_finished = false;
+
+                    // Request the next page
+                    var next_page = new XMLHttpRequest();
+                    next_page.open("GET", next_url);
+                    next_page.responseType = 'document';
+                    next_page.send();
+                    next_page.onload = function () {
+                        // If something went wrong, leave pagination in place.
+                        if (next_page.status !== 200) return;
+                        // Add the articles from this page of results to our list.
+                        long_list += next_page.response.getElementsByClassName("tl-event--list")[0]
+                            .innerHTML;
+                        // Check for another page.
+                        try {
+                            next_url =
+                                next_page.response.getElementsByClassName("pagination-next-link")[0]
+                                    .getAttribute('href');
+                            next_page.open("GET", next_url);
+                            next_page.send();
+                        }
+                        catch (e) {
+                            // No more pages.
+                            is_finished = true;
+                        }
+                        finally {
+                            if (is_finished) {
+                                // Write the new list to the current page.
+                                document.getElementsByClassName("tl-event--list")[0].innerHTML = long_list;
+                                // Run JS functions for filtering.
+                                $('[id^="tl-article--container--"]').each(function () {
+                                    var eventid = $(this).attr('id');
+                                    var functionid = eventid.replace('tl-article--container--', '');
+
+                                    $.getJSON('/api/v2/help_center/articles/' + functionid, function (articlelabels) {
+
+                                        if (articlelabels.article.label_names && articlelabels.article.label_names.length) {
+                                            articlelabels.article.label_names.forEach(function (labelname) {
+
+                                                if (labelname.indexOf("type") != -1) {
+                                                    var type = labelname.split('/')[1];
+                                                    $("#tl-article--container--" + functionid).attr("data-event--type", type);
+                                                    $("#tl-event--list--tag--type--" + functionid).text(type);
+                                                }
+
+                                                if (labelname.indexOf("date") != -1) {
+                                                    var date = labelname.split('/')[1];
+                                                    var dateformatted = moment(date).format("dddd, Do MMMM YYYY, h:mm A");
+                                                    var weekcheck = moment(date).isSame(new Date(), 'week');
+                                                    var monthcheck = moment(date).isSame(new Date(), 'month');
+                                                    var nextmonthcheck = moment(date).subtract(1, 'months').isSame(new Date(), 'month');
+                                                    if (weekcheck == true) {
+                                                        $("#tl-article--container--" + functionid).attr("data-event--thisweek", true);;
+                                                    }
+                                                    if (monthcheck == true) {
+                                                        $("#tl-article--container--" + functionid).attr("data-event--thismonth", true);;
+                                                    }
+                                                    if (nextmonthcheck == true) {
+                                                        $("#tl-article--container--" + functionid).attr("data-event--nextmonth", true);;
+                                                    }
+                                                    $("#tl-article--date--" + functionid).text(dateformatted);;
+                                                }
+
+                                                if (labelname.indexOf("location") != -1) {
+                                                    var location = labelname.split('/')[1];
+                                                    $("#tl-article--container--" + functionid).attr("data-event--location", location);
+                                                    $("#tl-event--list--tag--location--" + functionid).text(location);
+                                                }
+                                            });
+                                        };
+                                    });
+                                });
+                                // Remove the pagination controls.
+                                document.getElementsByClassName("pagination")[0].innerHTML = '';
+                            };
+                        };
+
+                    };
+
+
+
+                };
+            </script>
+            <div class="tl-event--pagination">
+                {{pagination}}
             </div>
         </div>
     </div>
-</main>
+</div>
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
