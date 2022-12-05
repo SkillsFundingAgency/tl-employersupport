@@ -31,21 +31,23 @@
                         </span>
                     </legend>
 
-                    <div class="govuk-checkboxes--small govuk-!-padding-left-3 govuk-!-margin-bottom-4 tl-overflow--auto">
-                        <div class="govuk-checkboxes__item" id="tl-events-filter--online" gtmname="Upcoming webinars">
-                            <input class="govuk-checkboxes__input" id="type-upcoming" name="Webinar type" type="checkbox" value="upcoming" gtmname="Upcoming webinars" checked>
-                            <label class="govuk-label govuk-checkboxes__label" for="type-upcoming" gtmname="type-upcoming">
+                    <div class="govuk-radios--small govuk-!-padding-left-3 govuk-!-margin-left-1 govuk-!-padding-top-1 govuk-!-margin-bottom-4 tl-overflow--auto">
+                        <div class="govuk-radios__item" id="tl-events-filter--online" gtmname="Upcoming webinars">
+                            <input class="govuk-radios__input" id="type-upcoming" name="Webinar type" type="radio" value="upcoming" checked="checked" gtmname="Upcoming webinars">
+                            <label class="govuk-label govuk-radios__label" for="type-upcoming" gtmname="Upcoming webinars">
                                 Upcoming webinars
                             </label>
                         </div>
-                        <div class="govuk-checkboxes__item" id="tl-events-filter--inperson" gtmname="inperson">
-                            <input class="govuk-checkboxes__input" id="type-recording" name="Webinar type" type="checkbox" value="recording" gtmname="Webinar recordings" checked>
-                            <label class="govuk-label govuk-checkboxes__label" for="type-recording" gtmname="Webinar recordings">
+                        <div class="govuk-radios__item" id="tl-events-filter--inperson" gtmname="inperson">
+                            <input class="govuk-radios__input" id="type-recording" name="Webinar type" type="radio" value="recording" gtmname="Webinar recordings">
+                            <label class="govuk-label govuk-radios__label" for="type-recording" gtmname="Webinar recordings">
                                 Webinar recordings
                             </label>
                         </div>
 
                     </div>
+                    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-left-3 govuk-!-margin-right-3">
+
                     <div class="govuk-radios--small tl-filter--radios govuk-!-margin-left-1 govuk-!-margin-bottom-4 tl-overflow--auto">
                         <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Date</h3>
                         <div class="govuk-radios__item" id="tl-events-filter--all" gtmname="All date events">
@@ -80,16 +82,10 @@
                     <script>
                         function checkchange() {
                             let checkitem = $(this).attr("id");
-                            if (!$(this).is(':checked')) {
-                                sessionStorage.setItem("eventfilter" + checkitem, 'false');
-                                $(".tl-event--list").attr("data-" + checkitem, false);
+                            if ($(this).is(':checked')) {
+                                sessionStorage.setItem("eventtype", checkitem);
+                                $(".tl-event--list").attr("data-type", checkitem);
                             }
-
-                            else {
-                                sessionStorage.removeItem("eventfilter" + checkitem);
-                                $(".tl-event--list").removeAttr("data-" + checkitem);
-                            }
-                            eventsearch()
                         }
 
                         function radiochange() {
@@ -98,18 +94,14 @@
                                 sessionStorage.setItem("eventdate", checkitem);
                                 $(".tl-event--list").attr("data-date", checkitem);
                             }
-                            eventsearch()
                         }
 
                         function setfilters() {
                             for (const [key, value] of Object.entries(sessionStorage)) {
-                                if (!key.indexOf("eventfilter")) {
-                                    let checkitem = key.replace("eventfilter", "");
+                                if (!key.indexOf("eventtype")) {
                                     let checkvalue = value;
-                                    $(".tl-event--list").attr("data-" + checkitem, checkvalue)
-                                    if (checkvalue != "true") {
-                                        $('input[id="' + checkitem + '"]').prop("checked", false)
-                                    }
+                                    $(".tl-event--list").attr("data-type", checkvalue)
+                                    $('input[id="' + checkvalue + '"]').prop("checked", true)
                                 }
 
                                 if (!key.indexOf("eventdate")) {
@@ -191,12 +183,6 @@
                                             $("#tl-article--date--" + functionid).text(dateformatted);;
                                         }
 
-                                        if (labelname.indexOf("location") != -1) {
-                                            var location = labelname.split('/')[1];
-                                            $("#tl-article--container--" + functionid).attr("data-event--location", location);
-                                            $("#tl-event--list--tag--location--" + functionid).text(location);
-
-                                        }
                                     });
                                 };
                             });
