@@ -10166,13 +10166,13 @@ ul.govuk-radios label .gem-radios__input {
   margin: 10px 0 15px 0;
 }
 .tl-event--list[data-type=type-upcoming] li {
-  display: none !important;
+  display: none;
 }
 .tl-event--list[data-type=type-upcoming] li[data-event--type=upcoming] {
   display: block;
 }
 .tl-event--list[data-type=type-recording] li {
-  display: none !important;
+  display: none;
 }
 .tl-event--list[data-type=type-recording] li[data-event--type=recording] {
   display: block;

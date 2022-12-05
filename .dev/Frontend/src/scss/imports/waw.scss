@@ -11,7 +11,7 @@
 
     &[data-type="type-upcoming"] {
         li {
-            display: none !important;
+            display: none;
         }
 
         li[data-event--type="upcoming"] {
@@ -21,7 +21,7 @@
 
     &[data-type="type-recording"] {
         li {
-            display: none !important;
+            display: none;
         }
 
         li[data-event--type="recording"] {
