@@ -10159,23 +10159,8 @@ ul.govuk-radios label .gem-radios__input {
 }
 
 /*Workshops and webinars CSS*/
-.tl-event--list li {
-  display: none;
-}
 .tl-event--list li p {
   margin: 10px 0 15px 0;
-}
-.tl-event--list[data-type=type-upcoming] li {
-  display: none;
-}
-.tl-event--list[data-type=type-upcoming] li[data-event--type=upcoming] {
-  display: block;
-}
-.tl-event--list[data-type=type-recording] li {
-  display: none;
-}
-.tl-event--list[data-type=type-recording] li[data-event--type=recording] {
-  display: block;
 }
 .tl-event--list[data-date=date-this-week] li {
   display: none;
@@ -10195,7 +10180,16 @@ ul.govuk-radios label .gem-radios__input {
 .tl-event--list[data-date=date-next-month] li[data-event--nextmonth=true] {
   display: block;
 }
-.tl-event--list[data-date=date-all] li {
+.tl-event--list[data-type=type-upcoming] li {
+  display: none;
+}
+.tl-event--list[data-type=type-upcoming] li[data-event--type=upcoming] {
+  display: block;
+}
+.tl-event--list[data-type=type-recording] li {
+  display: none;
+}
+.tl-event--list[data-type=type-recording] li[data-event--type=recording] {
   display: block;
 }
 

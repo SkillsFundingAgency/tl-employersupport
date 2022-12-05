@@ -2,30 +2,9 @@
 
 .tl-event--list {
     li {
-        display: none;
 
         p {
             margin: 10px 0 15px 0;
-        }
-    }
-
-    &[data-type="type-upcoming"] {
-        li {
-            display: none;
-        }
-
-        li[data-event--type="upcoming"] {
-            display: block;
-        }
-    }
-
-    &[data-type="type-recording"] {
-        li {
-            display: none;
-        }
-
-        li[data-event--type="recording"] {
-            display: block;
         }
     }
 
@@ -59,8 +38,22 @@
         }
     }
 
-    &[data-date="date-all"] {
+    &[data-type="type-upcoming"] {
         li {
+            display: none;
+        }
+
+        li[data-event--type="upcoming"] {
+            display: block;
+        }
+    }
+
+    &[data-type="type-recording"] {
+        li {
+            display: none;
+        }
+
+        li[data-event--type="recording"] {
             display: block;
         }
     }
