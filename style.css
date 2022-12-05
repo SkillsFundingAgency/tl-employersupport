@@ -10165,8 +10165,14 @@ ul.govuk-radios label .gem-radios__input {
 .tl-event--list li p {
   margin: 10px 0 15px 0;
 }
+.tl-event--list[data-type=upcoming] li {
+  display: none;
+}
 .tl-event--list[data-type=upcoming] li[data-event--type=upcoming] {
   display: block;
+}
+.tl-event--list[data-type=recording] li {
+  display: none;
 }
 .tl-event--list[data-type=recording] li[data-event--type=recording] {
   display: block;

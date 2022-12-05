@@ -10,12 +10,20 @@
     }
 
     &[data-type="upcoming"] {
+        li {
+            display: none;
+        }
+
         li[data-event--type="upcoming"] {
             display: block;
         }
     }
 
     &[data-type="recording"] {
+        li {
+            display: none;
+        }
+
         li[data-event--type="recording"] {
             display: block;
         }
