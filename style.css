@@ -10189,6 +10189,9 @@ ul.govuk-radios label .gem-radios__input {
 .tl-event--list[data-date=date-next-month] li[data-event--nextmonth=true] {
   display: block;
 }
+.tl-event--list[data-date=date-all] li {
+  display: block;
+}
 
 .tl-waw--pagination {
   padding: 40px 0px;

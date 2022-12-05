@@ -50,6 +50,12 @@
             display: block;
         }
     }
+
+    &[data-date="date-all"] {
+        li {
+            display: block;
+        }
+    }
 }
 
 .tl-waw--pagination {
