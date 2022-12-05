@@ -2,6 +2,7 @@
 
 .tl-event--list {
     li {
+        display: block;
 
         p {
             margin: 10px 0 15px 0;
@@ -38,23 +39,16 @@
         }
     }
 
-    &[data-type="type-upcoming"] {
-        li {
-            display: none !important;
-        }
 
-        li[data-event--type="upcoming"] {
-            display: block;
+    &[data-type="type-upcoming"] {
+        li[data-event--type="recording"] {
+            display: none;
         }
     }
 
     &[data-type="type-recording"] {
-        li {
+        li[data-event--type="upcoming"] {
             display: none;
-        }
-
-        li[data-event--type="recording"] {
-            display: block;
         }
     }
 }
