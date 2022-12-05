@@ -10,7 +10,7 @@
 
     &[data-date="date-this-week"] {
         li {
-            display: none !important;
+            display: none;
         }
 
         li[data-event--thisweek="true"] {
@@ -20,7 +20,7 @@
 
     &[data-date="date-this-month"] {
         li {
-            display: none !important;
+            display: none;
         }
 
         li[data-event--thismonth="true"] {
@@ -30,7 +30,7 @@
 
     &[data-date="date-next-month"] {
         li {
-            display: none !important;
+            display: none;
         }
 
         li[data-event--nextmonth="true"] {
@@ -50,7 +50,7 @@
 
     &[data-type="type-recording"] {
         li {
-            display: none !important;
+            display: none;
         }
 
         li[data-event--type="recording"] {
