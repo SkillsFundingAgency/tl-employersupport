@@ -9,7 +9,7 @@
         }
     }
 
-    &[data-type="upcoming"] {
+    &[data-type="type-upcoming"] {
         li {
             display: none !important;
         }
@@ -19,7 +19,7 @@
         }
     }
 
-    &[data-type="recording"] {
+    &[data-type="type-recording"] {
         li {
             display: none !important;
         }

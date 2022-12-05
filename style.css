@@ -10165,16 +10165,16 @@ ul.govuk-radios label .gem-radios__input {
 .tl-event--list li p {
   margin: 10px 0 15px 0;
 }
-.tl-event--list[data-type=upcoming] li {
+.tl-event--list[data-type=type-upcoming] li {
   display: none !important;
 }
-.tl-event--list[data-type=upcoming] li[data-event--type=upcoming] {
+.tl-event--list[data-type=type-upcoming] li[data-event--type=upcoming] {
   display: block;
 }
-.tl-event--list[data-type=recording] li {
+.tl-event--list[data-type=type-recording] li {
   display: none !important;
 }
-.tl-event--list[data-type=recording] li[data-event--type=recording] {
+.tl-event--list[data-type=type-recording] li[data-event--type=recording] {
   display: block;
 }
 .tl-event--list[data-date=date-this-week] li {
