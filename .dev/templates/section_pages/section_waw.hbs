@@ -32,8 +32,6 @@
                     </legend>
 
                     <div class="govuk-checkboxes--small govuk-!-padding-left-3 govuk-!-margin-bottom-4 tl-overflow--auto">
-                        <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Location</h3>
-
                         <div class="govuk-checkboxes__item" id="tl-events-filter--online" gtmname="Upcoming webinars">
                             <input class="govuk-checkboxes__input" id="type-upcoming" name="Webinar type" type="checkbox" value="upcoming" gtmname="Upcoming webinars" checked>
                             <label class="govuk-label govuk-checkboxes__label" for="type-upcoming" gtmname="type-upcoming">
@@ -132,39 +130,8 @@
 
         <div class="govuk-grid-column-two-thirds">
             <section>
-                <form class="tl-event--search tl-search govuk-!-margin-bottom-4 tl-js-visible--flex">
-                    <input type="search" name="query" id="tl-event--search--input" placeholder="Search events" aria-label="Search events">
-                    <input type="submit" value="Search">
-                </form>
-                <!-- Search Events JS -->
-                <script>
-                    $(".tl-event--search").submit(function (e) {
-                        e.preventDefault();
-                        eventsearch();
-                    });
-
-                    function eventsearch() {
-                        var searchquery = $("#tl-event--search--input").val();
-                        $(".tl-event--list-none").show();
-                        $(".tl-event--list-query").text(searchquery);
-
-                        $(".tl-event--list li").each(function () {
-                            var eventtitle = $(this).find("h3").text();
 
 
-                            if (eventtitle.toLowerCase().indexOf(searchquery.toLowerCase()) >= 0) {
-                                $(this).removeClass("tl-js-hidden--important");
-                                $(".tl-event--list-none").hide();
-                            }
-                            else {
-                                $(this).addClass("tl-js-hidden--important");
-                            }
-                        });
-                    }
-                </script>
-                <div class="tl-event--list-none" style="display: none">
-                    <p class="govuk-body">No results for "<span class="govuk-!-font-weight-bold tl-event--list-query"></span>". You can use the filter to search by event type, date or location, or see all events.</p>
-                </div>
                 {{#if section.articles}}
                 <ul class="govuk-list tl-event--list">
                     {{#each section.articles}}
@@ -333,12 +300,3 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
