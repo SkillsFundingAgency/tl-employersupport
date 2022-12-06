@@ -103,6 +103,11 @@
                                     $(".tl-event--list").attr("data-type", checkvalue)
                                     $('input[id="' + checkvalue + '"]').prop("checked", true)
                                 }
+                                else {
+                                    $(".tl-event--list").attr("data-type", "type-upcoming")
+                                    $('input[id="type-upcoming"]').prop("checked", true)
+
+                                }
 
                                 if (!key.indexOf("eventdate")) {
                                     let checkvalue = value;
