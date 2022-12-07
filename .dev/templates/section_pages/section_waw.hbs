@@ -46,9 +46,9 @@
                         </div>
 
                     </div>
-                    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-left-3 govuk-!-margin-right-3">
+                    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-left-3 govuk-!-margin-right-3" id="tl-filter--split">
 
-                    <div class="govuk-radios--small tl-filter--radios govuk-!-margin-left-1 govuk-!-margin-bottom-4 tl-overflow--auto">
+                    <div class="govuk-radios--small tl-filter--radios govuk-!-margin-left-1 govuk-!-margin-bottom-4 tl-overflow--auto" id="tl-filter--date">
                         <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Date</h3>
                         <div class="govuk-radios__item" id="tl-events-filter--all" gtmname="All date events">
                             <input class="govuk-radios__input" id="date-all" name="Event date" type="radio" value="all" checked="checked" gtmname="All date events">
@@ -85,6 +85,15 @@
                             if ($(this).is(':checked')) {
                                 sessionStorage.setItem("eventtype", checkitem);
                                 $(".tl-event--list").attr("data-type", checkitem);
+                            }
+                            if (checkitem == "type-recording") {
+                                $("#tl-filter--date").hide();
+                                $("#tl-filter--split").hide();
+                            }
+
+                            if (checkitem != "type-recording") {
+                                $("#tl-filter--date").show();
+                                $("#tl-filter--split").show();
                             }
                         }
 
