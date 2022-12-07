@@ -89,11 +89,13 @@
                             if (checkitem == "type-recording") {
                                 $("#tl-filter--date").hide();
                                 $("#tl-filter--split").hide();
+                                $("#date-all").prop("checked", true);
                             }
 
                             if (checkitem != "type-recording") {
                                 $("#tl-filter--date").show();
                                 $("#tl-filter--split").show();
+                                setfilters();
                             }
                         }
 
