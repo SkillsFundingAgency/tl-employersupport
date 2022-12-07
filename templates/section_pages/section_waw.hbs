@@ -110,10 +110,13 @@
                                     $('input[id="' + checkvalue + '"]').prop("checked", true)
                                 }
                             }
+                            $(".tl-event--list").removeClass("tl-hide");
                         }
                         $('input[name="Webinar type"]').change(checkchange);
                         $('input[name="Event date"]').change(radiochange);
-                        $(document).ready(setfilters);
+                        $(document).ready(function () {
+                            setfilters();
+                        });
                     </script>
                 </fieldset>
             </div>
@@ -125,7 +128,7 @@
 
 
                 {{#if section.articles}}
-                <ul class="govuk-list tl-event--list" data-type="type-upcoming">
+                <ul class="govuk-list tl-event--list tl-hide" data-type="type-upcoming">
                     {{#each section.articles}}
                     <li id="tl-article--container--{{id}}">
                         <h3 class="govuk-heading-m govuk-!-margin-bottom-0">{{title}}</h3>
