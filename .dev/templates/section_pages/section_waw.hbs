@@ -176,6 +176,10 @@
                                             var type = labelname.split('/')[1];
                                             $("#tl-article--container--" + functionid).attr("data-event--type", type);
                                             $("#tl-event--list--tag--type--" + functionid).text(type);
+
+                                            if (type == "recording") {
+                                                $("#tl-article--container--" + functionid + " .tl-event--moreinfo").text("Watch webinar")
+                                            }
                                         }
 
                                         if (labelname.indexOf("date") != -1) {
@@ -193,7 +197,7 @@
                                             if (nextmonthcheck == true) {
                                                 $("#tl-article--container--" + functionid).attr("data-event--nextmonth", true);;
                                             }
-                                            $("#tl-article--date--" + functionid).text(dateformatted);;
+                                            $("#tl-article--date--" + functionid).text(dateformatted);
                                         }
 
                                     });
