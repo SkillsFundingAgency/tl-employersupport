@@ -6358,13 +6358,13 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
         searchTerm = searchTerm ? searchTerm.trim() : "";
         if (searchTerm === "") {
             if (event) event.stopPropagation();
-            showSearchTermError("Enter postcode or town");
+            showSearchTermError("Enter a valid postcode or town in England");
             return false;
         }
 
         if (!searchTerm.match(/^[0-9a-zA-Z,\.'\-!&\(\)/\s]+$/)) {
             if (event) event.stopPropagation();
-            showSearchTermError("Enter a valid postcode or town");
+            showSearchTermError("Enter a valid postcode or town in England");
             return false;
         }
 
