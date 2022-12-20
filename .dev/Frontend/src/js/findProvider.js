@@ -187,7 +187,7 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
         }).done(function (response) {
             if (response.error) {
                 console.log("Invalid providers search response received - " + response.error);
-                showSearchTermError("Enter a valid postcode or town");
+                showSearchTermError("Enter a valid postcode or town in England");
             } else if (activeSearchQuery !== uri) {
                 return;
             } else {
