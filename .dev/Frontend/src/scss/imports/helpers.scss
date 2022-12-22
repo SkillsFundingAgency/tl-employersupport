@@ -230,3 +230,11 @@ $bordercolours:
 details summary {
     cursor: pointer;
 }
+
+.tl-overflow--auto {
+    overflow: auto;
+}
+
+.tl-overflow--visible {
+    overflow: visible;
+}

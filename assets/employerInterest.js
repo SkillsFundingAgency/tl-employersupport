@@ -6429,6 +6429,10 @@ function storeanswers() {
         if (value == "") {
             sessionStorage.removeItem(name)
         }
+        if (name == "postcode") {
+            var valueupper = value.toUpperCase();
+            sessionStorage.setItem(name, valueupper)
+        }
         else {
             sessionStorage.setItem(name, value)
         }

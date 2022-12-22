@@ -8431,6 +8431,14 @@ details summary {
   cursor: pointer;
 }
 
+.tl-overflow--auto {
+  overflow: auto;
+}
+
+.tl-overflow--visible {
+  overflow: visible;
+}
+
 .tl-search {
   display: flex;
 }
@@ -10152,19 +10160,34 @@ ul.govuk-radios label .gem-radios__input {
 
 /*Workshops and webinars CSS*/
 .tl-event--list li {
-  display: none;
+  display: block;
 }
 .tl-event--list li p {
   margin: 10px 0 15px 0;
 }
-.tl-event--list[data-event--filter=workshops] li[data-event--labels*=workshop] {
+.tl-event--list[data-date=date-this-week] li {
+  display: none;
+}
+.tl-event--list[data-date=date-this-week] li[data-event--thisweek=true] {
   display: block;
 }
-.tl-event--list[data-event--filter=webinars] li[data-event--labels*=webinar] {
+.tl-event--list[data-date=date-this-month] li {
+  display: none;
+}
+.tl-event--list[data-date=date-this-month] li[data-event--thismonth=true] {
   display: block;
 }
-.tl-event--list[data-event--filter=all] li {
+.tl-event--list[data-date=date-next-month] li {
+  display: none;
+}
+.tl-event--list[data-date=date-next-month] li[data-event--nextmonth=true] {
   display: block;
+}
+.tl-event--list[data-type=type-upcoming] li[data-event--type=recording] {
+  display: none;
+}
+.tl-event--list[data-type=type-recording] li[data-event--type=upcoming] {
+  display: none;
 }
 
 .tl-waw--pagination {
