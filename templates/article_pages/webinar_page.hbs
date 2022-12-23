@@ -209,7 +209,8 @@
 
             if (articlelabels.article.label_names && articlelabels.article.label_names.length) {
                 articlelabels.article.label_names.forEach(function (labelname) {
-                    var type = null;
+                    var type = labelname.indexOf("type").split('/')[1];
+
                     if (labelname.indexOf("type") != -1) {
                         var type = labelname.split('/')[1];
                         if (type == "recording") {
@@ -228,7 +229,6 @@
                         }
                         else {
                             var dateformatted = moment(date).format("dddd, Do MMMM YYYY, h:mm A");
-
                         }
                         $("#tl-article--details").show();
                         $("#tl-article--date").show();
