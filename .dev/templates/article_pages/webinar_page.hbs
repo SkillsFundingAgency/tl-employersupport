@@ -209,7 +209,7 @@
 
             if (articlelabels.article.label_names && articlelabels.article.label_names.length) {
                 articlelabels.article.label_names.forEach(function (labelname) {
-
+                    var type = null;
                     if (labelname.indexOf("type") != -1) {
                         var type = labelname.split('/')[1];
                         if (type == "recording") {
@@ -223,7 +223,13 @@
 
                     if (labelname.indexOf("date") != -1) {
                         var date = labelname.split('/')[1];
-                        var dateformatted = moment(date).format("dddd, Do MMMM YYYY, h:mm A");
+                        if (type == "recording") {
+                            var dateformatted = moment(date).format("dddd, Do MMMM YYYY");
+                        }
+                        else {
+                            var dateformatted = moment(date).format("dddd, Do MMMM YYYY, h:mm A");
+
+                        }
                         $("#tl-article--details").show();
                         $("#tl-article--date").show();
                         $("#tl-article--date span").text(dateformatted);
