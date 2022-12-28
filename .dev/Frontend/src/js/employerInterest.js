@@ -57,12 +57,7 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
     }
 
     EmployerInterest.prototype.submitEmployerInterest = function(successCallback, errorCallback) {
-        let data = JSON.stringify(
-            {
-                uniqueId: employerId
-            }
-        );
-
+        let data = JSON.stringify(buildEoiRequestData());
         const method = "POST";
         const uri = findProviderApiUri + "employers/createinterest";
         $.ajax({
@@ -111,34 +106,30 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
                 console.log('status = ' + status);
                 console.log('xhr.status = ' + xhr.status);
             }
-        });        
+        });
     }
 
-    EmployerInterest.prototype.extendEmployerInterest = function(employerId, successCallback) {
+    EmployerInterest.prototype.extendEmployerInterest = function(employerId, successCallback, notFoundCallback) {
         console.log('extending interest');
-
-        let data = JSON.stringify(buildEoiRequestData());
         const method = "POST";
-        const uri = findProviderApiUri + "employers/extendinterest";
+        const uri = findProviderApiUri + "employers/extendinterest/" + employerId;
         $.ajax({
             type: method,
             url: uri,
-               data: data,
                contentType: "application/json",
                beforeSend: function (xhr) {
-                   addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey, method, data);
+                   addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey, method);
                }
         }).done(function (response) {
             console.log(response);
             successCallback();
         }).fail(function (xhr, status, error) {
-            //Show removed page if 404 returned
-
             console.log('Call to extend employer interest failed. ' + status + ' ' + error);
             console.log('error = ' + error);
             console.log('status = ' + status);
             console.log('xhr.status = ' + xhr.status);
-            if(errorCallback !== 'undefined') errorCallback(); 
+            
+            notFoundCallback();
         });
     }
 };
@@ -162,7 +153,8 @@ function setpage(eoi) {
             $("#tl-eoi--start").removeClass("tl-hidden");
             $("#tl-eoi--related").removeClass("tl-hidden");
             $(".tl-breadcrumbs").removeClass("tl-hidden");
-            $(".tl-backlink").addClass("tl-hidden");        }
+            $(".tl-backlink").addClass("tl-hidden");
+        }
     }
 
     else if (step == 3) {
@@ -213,14 +205,13 @@ function setpage(eoi) {
                 $("#tl-breadcrumbs").addClass("tl-hidden");
                 $(".tl-backlink").addClass("tl-hidden");
                 document.title = 'Your interest has been extended | T Levels and industry placement support for employers';
-        });
-    }
-
-    else if (step == "removed") {
-        $("#tl-eoi--removed").removeClass("tl-hidden");
-        $("#tl-breadcrumbs").addClass("tl-hidden");
-        $(".tl-backlink").addClass("tl-hidden");
-        document.title = 'Your interest has been removeded | T Levels and industry placement support for employers';
+        },
+        function() {
+            $("#tl-eoi--removed").removeClass("tl-hidden");
+            $("#tl-breadcrumbs").addClass("tl-hidden");
+            $(".tl-backlink").addClass("tl-hidden");
+            document.title = 'Your interest has been removed | T Levels and industry placement support for employers';
+            });
     }
 
     else {
