@@ -148,7 +148,8 @@
 
                                         if (labelname.indexOf("date") != -1) {
                                             var date = labelname.split('/')[1];
-                                            $("#tl-article--date--{{id}}").text(date);
+                                            var dateformatted = moment(date).format("dddd, Do MMMM YYYY, h:mm A");
+                                            $("#tl-article--date--{{id}}").text(dateformatted);
                                         }
                                     });
                                 }
