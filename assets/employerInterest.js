@@ -6264,27 +6264,16 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
                 addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey, method);
             }
         }).done(function (data, status, xhr) {
-            console.log('postcode validated');
-            console.log('xhr.status = ' + xhr.status);
             if(successCallback !== 'undefined') successCallback();
         }).fail(function (xhr, status, error) {
-            if(xhr.status === 404) {
-                console.log('validate postcode returned 404 - not found');
-                if(errorCallback !== 'undefined') errorCallback(); 
-            }
-            else {
-                console.log('Call to validate postcode failed. ' + status + ' ' + error);
-                console.log('xhr.status = ' + xhr.status);
-                if(errorCallback !== 'undefined') errorCallback(); 
-            }
-        });        
+            if(errorCallback !== 'undefined') errorCallback();
+        });
     }
 
     EmployerInterest.prototype.submitEmployerInterest = function(successCallback, errorCallback) {
         let data = JSON.stringify(buildEoiRequestData());
-
         const method = "POST";
-        const uri = findProviderApiUri + "employers/createinterest";        
+        const uri = findProviderApiUri + "employers/createinterest";
         $.ajax({
             type: method,
             url: uri,
@@ -6294,8 +6283,6 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
                    addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey, method, data);
                }
         }).done(function (response) {
-            console.log('Successfully submitted eoi data.');
-            console.log(response);
             successCallback();
         }).fail(function (xhr, status, error) {
             console.log('Call to create employer interest failed. ' + status + ' ' + error);
@@ -6307,7 +6294,6 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
     }
 
     EmployerInterest.prototype.removeEmployerInterest = function(employerId, successCallback) {
-        console.log('removeEmployerInterest called for ' + employerId);
         if (employerId === 'undefined' || !employerId) {
             successCallback();
             return;
@@ -6322,14 +6308,11 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
                 addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey, method);
             }
         }).done(function (data, status, xhr) {
-            console.log('delete employer interest succeeded');
-            console.log('data = ' + data);
-            console.log('xhr.status = ' + xhr.status);
             successCallback();
         }).fail(function (xhr, status, error) {
             if(xhr.status === 404) {
-                console.log('delete employer interest returned 404 - no employer interest found');
-                successCallback(); //404 means nothing found to delete, because it's already gone
+                //delete employer interest returned 404 - no employer interest found
+                successCallback(); 
             }
             else {
                 console.log('Call to delete employer interest failed. ' + status + ' ' + error);
@@ -6337,10 +6320,33 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
                 console.log('status = ' + status);
                 console.log('xhr.status = ' + xhr.status);
             }
-        });        
+        });
+    }
+
+    EmployerInterest.prototype.extendEmployerInterest = function(employerId, successCallback, notFoundCallback) {
+        console.log('extending interest');
+        const method = "POST";
+        const uri = findProviderApiUri + "employers/extendinterest/" + employerId;
+        $.ajax({
+            type: method,
+            url: uri,
+               contentType: "application/json",
+               beforeSend: function (xhr) {
+                   addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey, method);
+               }
+        }).done(function (response) {
+            console.log(response);
+            successCallback();
+        }).fail(function (xhr, status, error) {
+            console.log('Call to extend employer interest failed. ' + status + ' ' + error);
+            console.log('error = ' + error);
+            console.log('status = ' + status);
+            console.log('xhr.status = ' + xhr.status);
+            
+            notFoundCallback();
+        });
     }
 };
-
 
 function setpage(eoi) {
     var step = getUrlParameter('step');
@@ -6361,7 +6367,8 @@ function setpage(eoi) {
             $("#tl-eoi--start").removeClass("tl-hidden");
             $("#tl-eoi--related").removeClass("tl-hidden");
             $(".tl-breadcrumbs").removeClass("tl-hidden");
-            $(".tl-backlink").addClass("tl-hidden");        }
+            $(".tl-backlink").addClass("tl-hidden");
+        }
     }
 
     else if (step == 3) {
@@ -6402,6 +6409,23 @@ function setpage(eoi) {
                 $(".tl-backlink").addClass("tl-hidden");
                 document.title = 'You have withdrawn your interest | T Levels and industry placement support for employers';
         });
+    }
+
+    else if (step == "extend") {
+        var employerId = getUrlParameter('id');
+        eoi.extendEmployerInterest(employerId, 
+            function() {
+                $("#tl-eoi--extend").removeClass("tl-hidden");
+                $("#tl-breadcrumbs").addClass("tl-hidden");
+                $(".tl-backlink").addClass("tl-hidden");
+                document.title = 'Your interest has been extended | T Levels and industry placement support for employers';
+        },
+        function() {
+            $("#tl-eoi--removed").removeClass("tl-hidden");
+            $("#tl-breadcrumbs").addClass("tl-hidden");
+            $(".tl-backlink").addClass("tl-hidden");
+            document.title = 'Your interest has been removed | T Levels and industry placement support for employers';
+            });
     }
 
     else {
