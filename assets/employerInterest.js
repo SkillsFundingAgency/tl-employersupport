@@ -6376,16 +6376,6 @@ function setpage(eoi) {
         if (session == true) {
             $("#tl-eoi--3").removeClass("tl-hidden");
             $(".tl-backlink").attr("href", "?step=2");
-
-            var tellength = $("#tl-eoi-check--telephone").text().length;
-            if (tellength == 0) {
-                $(".tl-eoi-checkanswers--contact").addClass('tl-hidden');
-            }
-
-            else {
-                $(".tl-eoi-checkanswers--contact").removeClass('tl-hidden');
-            }
-
         }
 
         else {
@@ -6518,6 +6508,15 @@ function populateanswers() {
         let checkoutput = checkvalues.join('|');
         $(this).html(checkoutput);
     });
+
+    var tellength = $("#tl-eoi-check--telephone").text().length;
+    if (tellength == 0) {
+        $(".tl-eoi-checkanswers--contact").addClass('tl-hidden');
+    }
+
+    else {
+        $(".tl-eoi-checkanswers--contact").removeClass('tl-hidden');
+    }
 
     $('#tl-eoi-check--skill-area').html(function (index, html) {
         return html.replace(/\|/g, "<br>");
