@@ -168,6 +168,11 @@ function setpage(eoi) {
                 $(".tl-eoi-checkanswers--contact").removeClass('tl-hidden');
             }
 
+            else {
+                $(".tl-eoi-checkanswers--contact").addClass('tl-hidden');
+
+            }
+
         }
 
         else {
