@@ -162,6 +162,7 @@ function setpage(eoi) {
         if (session == true) {
             $("#tl-eoi--3").removeClass("tl-hidden");
             $(".tl-backlink").attr("href", "?step=2");
+            telephoneexpand();
         }
 
         else {
