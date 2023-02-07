@@ -6379,8 +6379,8 @@ function setpage(eoi) {
             $("#tl-eoi--3").removeClass("tl-hidden");
             $(".tl-backlink").attr("href", "?step=2");
 
-            var tellength = sessionStorage.getItem('telephone');
-            if (tellength != null) {
+            var tellength = sessionStorage.getItem('telephone').length;
+            if (tellength != 0) {
                 $(".tl-eoi-checkanswers--contact").removeClass('tl-hidden');
             }
         }
