@@ -6446,8 +6446,6 @@ function telephoneexpand() {
     $("#tl-eoi-contactpref").toggleClass('tl-hidden', inputlength == 0);
     if (inputlength == 0) {
         $("#tl-eoi-contactpref input").prop("checked", false);
-        $("#tl-eoi-contactpref #contact-pref-3").prop("checked", true);
-
     }
 }
 
