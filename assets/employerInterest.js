@@ -6379,7 +6379,7 @@ function setpage(eoi) {
             $("#tl-eoi--3").removeClass("tl-hidden");
             $(".tl-backlink").attr("href", "?step=2");
 
-            var tellength = sessionStorage.getItem(telephone);
+            var tellength = sessionStorage.getItem('telephone');
             if (tellength != null) {
                 $(".tl-eoi-checkanswers--contact").removeClass('tl-hidden');
             }
