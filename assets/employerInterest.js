@@ -6233,15 +6233,17 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
         let req = {
             organisationName: sessionStorage.getItem("organisation-name"),
             industryId: parseInt(sessionStorage.getItem("industry").replace('-', '')) || 0,
-            otherIndustry: sessionStorage.getItem("industry-other"),
+            otherIndustry: sessionStorage.getItem("industry-other") || null,
             postcode: sessionStorage.getItem("postcode"),
             email: sessionStorage.getItem("email"),
-            telephone: sessionStorage.getItem("telephone"),
-            website: website,
-            contactPreferenceType: parseInt(sessionStorage.getItem("contact-pref").replace('-', '')),
+            telephone: sessionStorage.getItem("telephone")  || null,
+            website: website || null,
+            contactPreferenceType: sessionStorage.getItem("contact-pref") 
+                ? parseInt(sessionStorage.getItem("contact-pref").replace('-', '')) || null 
+                : null,
             contactName: sessionStorage.getItem("full-name"),
-            additionalInformation: information,
-            skillAreaIds: sessionStorage.getItem("skill-area").replaceAll('-', '').split(',').map(Number)
+            additionalInformation: information || null,
+            skillAreaIds: sessionStorage.getItem("skill-area").replace(/-/g, '').split(',').map(Number)
         };
 
         return req;
@@ -6376,6 +6378,11 @@ function setpage(eoi) {
         if (session == true) {
             $("#tl-eoi--3").removeClass("tl-hidden");
             $(".tl-backlink").attr("href", "?step=2");
+
+            var tellength = sessionStorage.getItem('telephone').length;
+            if (tellength != 0) {
+                $(".tl-eoi-checkanswers--contact").removeClass('tl-hidden');
+            }
         }
 
         else {
@@ -6441,8 +6448,6 @@ function telephoneexpand() {
     $("#tl-eoi-contactpref").toggleClass('tl-hidden', inputlength == 0);
     if (inputlength == 0) {
         $("#tl-eoi-contactpref input").prop("checked", false);
-        $("#tl-eoi-contactpref #contact-pref-3").prop("checked", true);
-
     }
 }
 

@@ -9175,6 +9175,10 @@ details summary {
   position: relative;
   top: -5px;
 }
+.tl-home--benefit a {
+  display: inline-block;
+  line-height: 27px;
+}
 @media (max-width: 40.0525em) {
   .tl-home--benefit {
     border-bottom: 3px solid #4c2c92;
