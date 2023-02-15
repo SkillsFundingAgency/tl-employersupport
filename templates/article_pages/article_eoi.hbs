@@ -369,19 +369,30 @@
                         </fieldset>
                     </div>
                     <div class="govuk-form-group">
-                        <label class="govuk-label govuk-label--m" for="postcode">
-                            Enter the postcode of your organisation’s location
-                        </label>
-                        <div id="postcode-hint" class="govuk-hint">
-                            This should be the location where any industry placements might take place. You can add up to 6.
-                        </div>
+                        <fieldset class="govuk-fieldset">
+                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                <h3 class="govuk-fieldset__heading">
+                                    Enter the postcode of your organisation’s location
+                                </h3>
+                            </legend>
 
-                        <div class="govuk-inset-text">
-                            <input class="govuk-input govuk-input--width-10" id="location" name="location" type="text" aria-describedby="postcode-hint">
+                            <div id="postcode-hint" class="govuk-hint">
+                                This should be the location where any industry placements might take place. You can add up to 6.
+                            </div>
 
-                            <p id="postcode-error" class="govuk-error-message tl-hidden"></p>
-                            <input class="govuk-input govuk-input--width-10" id="postcode" name="postcode" type="text" aria-describedby="postcode-hint">
-                        </div>
+                            <div class="govuk-inset-text">
+                                <label class="govuk-label govuk-label--m" for="location">
+                                    Location name
+                                </label>
+                                <input class="govuk-input govuk-input--width-10" id="location" name="location" type="text" aria-describedby="postcode-hint">
+                                <label class="govuk-label govuk-label--m" for="postcode">
+                                    Postcode
+                                </label>
+                                <p id="postcode-error" class="govuk-error-message tl-hidden"></p>
+                                <input class="govuk-input govuk-input--width-10" id="postcode" name="postcode" type="text" aria-describedby="postcode-hint">
+                                <button class="govuk-button">Add</button>
+                            </div>
+                        </fieldset>
                     </div>
 
                     <div class="govuk-form-group">
