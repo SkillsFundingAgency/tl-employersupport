@@ -457,6 +457,9 @@
 
 
                                     function populatepostcodes() {
+                                        $("#location").val('');
+                                        $("#postcode").val('');
+
                                         if (locations.length > 0) {
                                             $("#tl-eoi--postcodes").removeClass("tl-hidden");
                                             $("#tl-eoi--postcodes--table").empty();
