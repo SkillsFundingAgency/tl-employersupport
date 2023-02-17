@@ -412,8 +412,10 @@
                                     $("#tl-eoi--postcode--add").click(function() {
                                         let location = $("#location").val();
                                         let postcode = $("#postcode").val();
+                                        clearErrors()
                                         validatelocations()
-                                        if (haserror = false) {
+
+                                        if (validatelocations() == false) {
                                             locations.push([location, postcode])
                                             populatepostcodes()
                                         }
@@ -423,7 +425,6 @@
 
                                     $(document).on('click', '.tl-eoi-postcodes-remove', function () {
                                         let value = $(this).attr("data-value");
-                                        console.log(value)
                                         locations.splice(value, 1)
                                         populatepostcodes()
 

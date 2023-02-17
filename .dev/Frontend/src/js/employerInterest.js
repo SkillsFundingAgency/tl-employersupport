@@ -443,7 +443,6 @@ function validateanswers(successCallback) {
 function addError(errortext, element) {
     var preerror = '<span class="govuk-visually-hidden">Error: </span>';
     var errormessageid = element.attr("id") + '-error';
-    console.log(errormessageid);
     element.closest(".govuk-form-group").addClass("govuk-form-group--error");
     $("#" + errormessageid).removeClass("tl-hidden");
     $("#" + errormessageid).html(preerror + errortext);
