@@ -381,22 +381,83 @@
                             </div>
 
                             <div class="govuk-inset-text">
-                                <div class="tl-overflow--auto govuk-!-margin-bottom-4">
-                                    <div class="tl-push--left govuk-!-margin-right-2">
+                                <div id="tl-eoi--postcodes" class="tl-hidden">
+                                    <table class="govuk-table">
+                                        <tbody class="govuk-table__body" id="tl-eoi--postcodes--table">
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="tl-inlineblock tl-width-100" id="tl-eoi--postcode--form">
+                                    <div class="tl-push--left govuk-!-margin-right-2 govuk-!-margin-bottom-2 tl-width-100--mobile">
                                         <label class="govuk-label govuk-!-font-weight-bold" for="location">
                                             Location name
                                         </label>
-                                        <input class="govuk-input govuk-input--width-10" id="location" name="location" type="text" aria-describedby="postcode-hint">
+                                        <input class="govuk-input" id="location" name="location" type="text" aria-describedby="postcode-hint">
                                     </div>
-                                    <div class="tl-push--left">
+                                    <div class="tl-push--left tl-width-100--mobile">
                                         <label class="govuk-label govuk-!-font-weight-bold" for="postcode">
                                             Postcode
                                         </label>
                                         <p id="postcode-error" class="govuk-error-message tl-hidden"></p>
-                                        <input class="govuk-input govuk-input--width-10" id="postcode" name="postcode" type="text" aria-describedby="postcode-hint">
+                                        <input class="govuk-input" id="postcode" name="postcode" type="text" aria-describedby="postcode-hint">
                                     </div>
                                 </div>
-                                <button class="govuk-button">Add</button>
+                                <a class="govuk-button" id="tl-eoi--postcode--add">Add</a>
+                                <script>
+                                    var locations = [];
+
+                                    $("#tl-eoi--postcode--add").click(function() {
+                                        let location = $("#location").val();
+                                        let postcode = $("#postcode").val();
+                                        locations.push([location, postcode])
+
+                                        populatepostcodes()
+                                        
+                                    }); 
+
+                                    $(document).on('click', '.tl-eoi-postcodes-remove', function () {
+                                        let value = $(this).attr("data-value");
+                                        console.log(value)
+                                        locations.splice(value, 1)
+                                        populatepostcodes()
+
+                                    }); 
+
+
+                                    function populatepostcodes() {
+
+                                        if (locations.length > 0) {
+                                            $("#tl-eoi--postcodes").removeClass("tl-hidden");
+                                            $("#tl-eoi--postcodes--table").empty();
+                                            locations.forEach(function (locationitem, i) {
+                                                let locationrow =
+                                                    '<tr class="govuk-table__row"> \
+                                                 <th scope="row" class="govuk-table__header">' + locationitem[0] + ' </th> \
+                                                <td class="govuk-table__cell" > ' + locationitem[1] + ' </td> \
+                                                <td class="govuk-table__cell" > <a class="tl-eoi-postcodes-remove" data-value="' + i + '" class="govuk-link">Remove</a></td> \
+                                                 </tr>';
+
+                                                $("#tl-eoi--postcodes--table").append(locationrow)
+                                            });
+
+                                            if (locations.length > 6) {
+                                                $("#tl-eoi--postcode--form").addClass("tl-hidden");
+                                            }
+
+                                            else {
+                                                $("#tl-eoi--postcode--form").removeClass("tl-hidden");
+
+                                            }
+                                        }
+
+                                        else {
+                                            $("#tl-eoi--postcodes").addClass("tl-hidden");
+                                        }
+                                    }
+                                    
+                                </script>
                             </div>
                         </fieldset>
                     </div>
@@ -469,7 +530,7 @@
                             Telephone number
                         </dt>
                         <dd class="govuk-summary-list__value" id="tl-eoi-check--telephone" data-name="telephone">
-                            
+
                         </dd>
                         <dd class="govuk-summary-list__actions">
                             <a class="govuk-link" href="?step=1">
