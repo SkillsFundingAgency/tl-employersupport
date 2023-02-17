@@ -6655,7 +6655,9 @@ function validateanswers(successCallback) {
 }
 
 function addError(errortext, element) {
-    var preerror = '<span class="govuk-visually-hidden">Error: </span>'
+    var preerror = '<span class="govuk-visually-hidden">Error: </span>';
+    var errormessageid = element.attr("id") + '-error';
+    console.log(errormessageid);
     element.closest(".govuk-form-group").addClass("govuk-form-group--error");
     element.closest(".govuk-form-group").find(".govuk-error-message").first().removeClass("tl-hidden");
     element.closest(".govuk-form-group").find(".govuk-error-message").first().html(preerror + errortext);
