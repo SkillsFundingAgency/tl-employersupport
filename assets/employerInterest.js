@@ -6659,8 +6659,8 @@ function addError(errortext, element) {
     var errormessageid = element.attr("id") + '-error';
     console.log(errormessageid);
     element.closest(".govuk-form-group").addClass("govuk-form-group--error");
-    element.closest(".govuk-form-group").find(".govuk-error-message").first().removeClass("tl-hidden");
-    element.closest(".govuk-form-group").find(".govuk-error-message").first().html(preerror + errortext);
+    $("#" + errormessageid).removeClass("tl-hidden");
+    $("#" + errormessageid).html(preerror + errortext);
     element.first().addClass("govuk-input--error");
 }
 
