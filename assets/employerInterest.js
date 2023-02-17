@@ -6638,18 +6638,7 @@ function validateanswers(successCallback) {
 
     if(!haserror)
     {
-        //TODO: validate postcode last
-        if (step == 2) {
-            var postcode = $("#postcode");
-            eoi.validatePostcode(postcode.val(), successCallback, function() {                
-                addError("Enter a real UK postcode, for example SW1A 1AA", postcode);
-                haserror = true;  
-            });
-        }
-        else
-        {
-            successCallback();
-        }
+        successCallback();
     }
     return haserror;
 }
