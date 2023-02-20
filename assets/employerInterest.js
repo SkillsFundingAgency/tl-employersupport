@@ -6230,12 +6230,6 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
         let information = sessionStorage.getItem("information");
         if(information) information = information.replace(/(http[s]?):\/\//gi, '$1___');
 
-        console.log('buildEoiRequestData locations=' + sessionStorage.getItem("locations"));
-        if(sessionStorage.getItem("locations"))
-        {
-            console.log(' - split to ' + sessionStorage.getItem("locations").split(','));
-        }
-
         let req = {
             organisationName: sessionStorage.getItem("organisation-name"),
             industryId: parseInt(sessionStorage.getItem("industry").replace('-', '')) || 0,
@@ -6476,6 +6470,8 @@ function telephoneexpand() {
 }
 
 function storeanswers() {
+    console.log('storeanswers locations before=' + sessionStorage.getItem("locations"));
+    
     $(".tl-eoi-form input[type='text'], .tl-eoi-form input[type='email'], .tl-eoi-form input[type='tel']").each(function () {
         var value = $(this).val();
         var name = $(this).attr("name");
@@ -6518,8 +6514,8 @@ function storeanswers() {
     });
 
     /* Store data value for locations */
-    sessionStorage.setItem("locations", locations)
-
+    console.log("storing locations " + locations);
+    sessionStorage.setItem("locations", locations);
 };
 
 function populateanswers() {
