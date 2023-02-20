@@ -462,7 +462,7 @@
                                                 }
                                             }).done(function (data, status, xhr) {
                                                 if (location.val().trim().length != 0) {
-                                                    locations.push([location, postcode])
+                                                    locations.push([location.val(), postcodeval])
                                                     populatepostcodes()
                                                 }
                                             }).fail(function () {
