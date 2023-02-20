@@ -6230,12 +6230,18 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
         let information = sessionStorage.getItem("information");
         if(information) information = information.replace(/(http[s]?):\/\//gi, '$1___');
 
+        console.log('buildEoiRequestData locations=' + sessionStorage.getItem("locations"));
+        if(sessionStorage.getItem("locations"))
+        {
+            console.log(' - split to ' + sessionStorage.getItem("locations").split(','));
+        }
+
         let req = {
             organisationName: sessionStorage.getItem("organisation-name"),
             industryId: parseInt(sessionStorage.getItem("industry").replace('-', '')) || 0,
             otherIndustry: sessionStorage.getItem("industry-other") || null,
             postcode: sessionStorage.getItem("postcode"),
-            locations: sessionStorage.getItem("locations") 
+            locations: sessionStorage.getItem("locations")
                 ? sessionStorage.getItem("locations").split(',').map((str, index) => ({ location: str, postcode: index + 1 }))
                 : [],
             email: sessionStorage.getItem("email"),
@@ -6436,11 +6442,11 @@ function setpage(eoi) {
                 $("#tl-eoi--extend").removeClass("tl-hidden");
                 $("#tl-breadcrumbs").addClass("tl-hidden");
                 $(".tl-backlink").addClass("tl-hidden");
-                if(finalExtension) {                
-                    $("#tl--eoi--extend--final").removeClass("tl-hidden");
+                if(finalExtension) {
+                    $("#tl-eoi--extend--final").removeClass("tl-hidden");
                 }
                 else {
-                    $("#tl--eoi--extend--final").addClass("tl-hidden");
+                    $("#tl-eoi--extend--final").addClass("tl-hidden");
                 }
                 
                 document.title = 'Your interest has been extended | T Levels and industry placement support for employers';
