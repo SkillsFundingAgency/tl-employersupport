@@ -296,7 +296,6 @@ function storeanswers() {
     });
 
     /* Store data value for locations */
-    if (locations != null) {
         sessionStorage.setItem("locations", locations);
     }
 };
