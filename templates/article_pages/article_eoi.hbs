@@ -463,7 +463,7 @@
                                                 beforeSend: function (xhr) {
                                                     addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey, method);
                                                 }
-                                            }).fail(function (xhr, status, error) {
+                                            }).fail(function () {
                                                 addError("Postcode nope", postcode);
                                                 haserror = true;
                                             });
