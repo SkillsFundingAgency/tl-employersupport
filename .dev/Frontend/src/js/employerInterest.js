@@ -16,14 +16,20 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
         let information = sessionStorage.getItem("information");
         if(information) information = information.replace(/(http[s]?):\/\//gi, '$1___');
 
+        const splitLocations = sessionStorage.getItem("locations")
+            ? sessionStorage.getItem("locations").split(',') : [];
+
+        var locationsArray = [];
+        for (let i = 0; i < splitLocations.length; i = i + 2) {
+            locationsArray.push({ name: splitLocations[i], postcode: splitLocations[i + 1] } );
+        }
+
         let req = {
             organisationName: sessionStorage.getItem("organisation-name"),
             industryId: parseInt(sessionStorage.getItem("industry").replace('-', '')) || 0,
             otherIndustry: sessionStorage.getItem("industry-other") || null,
             postcode: sessionStorage.getItem("postcode"),
-            locations: sessionStorage.getItem("locations")
-                ? sessionStorage.getItem("locations").split(',').map((str, index) => ({ name: str, postcode: index + 1 }))
-                : [],
+            locations: locationsArray,
             email: sessionStorage.getItem("email"),
             telephone: sessionStorage.getItem("telephone")  || null,
             website: website || null,
