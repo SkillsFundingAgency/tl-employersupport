@@ -6252,28 +6252,6 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
         return req;
     }
 
-    EmployerInterest.prototype.validatePostcode = function(postcode, successCallback, errorCallback) {
-        console.log('validatePostcode called for ' + postcode);
-        if (postcode === 'undefined' || !postcode) {
-            //No need to validate missing postcode - this is done elsewhere
-            if(errorCallback !== 'undefined') errorCallback();
-        }
-
-        const method = "GET";
-        const uri = findProviderApiUri + "locations/validate?postcode=" + encodeURIComponent(postcode);
-        $.ajax({
-            type: method,
-            url: uri,
-            contentType: "application/json",
-            beforeSend: function (xhr) {
-                addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey, method);
-            }
-        }).done(function (data, status, xhr) {
-            if(successCallback !== 'undefined') successCallback();
-        }).fail(function (xhr, status, error) {
-            if(errorCallback !== 'undefined') errorCallback();
-        });
-    }
 
     EmployerInterest.prototype.submitEmployerInterest = function(successCallback, errorCallback) {
         let data = JSON.stringify(buildEoiRequestData());
