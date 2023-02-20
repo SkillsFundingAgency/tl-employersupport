@@ -445,25 +445,29 @@
                                             haserror = true;
                                         }
 
-                                        let findProviderApiUri = "{{settings.find_provider_api_uri}}";
-                                        let findProviderAppId = "{{settings.find_provider_api_app_id}}";
-                                        let findProviderApiKey = "{{settings.find_provider_api_key}}";
+                                        else {
+                                            let findProviderApiUri = "{{settings.find_provider_api_uri}}";
+                                            let findProviderAppId = "{{settings.find_provider_api_app_id}}";
+                                            let findProviderApiKey = "{{settings.find_provider_api_key}}";
 
-                                        console.log('validatePostcode called for ' + postcodeval);
+                                            console.log('validatePostcode called for ' + postcodeval);
 
-                                        const method = "GET";
-                                        const uri = findProviderApiUri + "locations/validate?postcode=" + encodeURIComponent(postcodeval);
-                                        $.ajax({
-                                            type: method,
-                                            url: uri,
-                                            contentType: "application/json",
-                                            beforeSend: function (xhr) {
-                                                addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey, method);
-                                            }
-                                        }).fail(function (xhr, status, error) {
-                                            addError("Postcode nope", postcode);
-                                            haserror = true;
-                                        });
+                                            const method = "GET";
+                                            const uri = findProviderApiUri + "locations/validate?postcode=" + encodeURIComponent(postcodeval);
+                                            $.ajax({
+                                                type: method,
+                                                url: uri,
+                                                contentType: "application/json",
+                                                beforeSend: function (xhr) {
+                                                    addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey, method);
+                                                }
+                                            }).fail(function (xhr, status, error) {
+                                                addError("Postcode nope", postcode);
+                                                haserror = true;
+                                            });
+
+                                        }
+
 
 
                                         // Location val //
