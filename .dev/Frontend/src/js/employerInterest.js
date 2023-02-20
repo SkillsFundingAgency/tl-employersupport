@@ -22,7 +22,7 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
             otherIndustry: sessionStorage.getItem("industry-other") || null,
             postcode: sessionStorage.getItem("postcode"),
             locations: sessionStorage.getItem("locations")
-                ? sessionStorage.getItem("locations").split(',').map((str, index) => ({ location: str, postcode: index + 1 }))
+                ? sessionStorage.getItem("locations").split(',').map((str, index) => ({ name: str, postcode: index + 1 }))
                 : [],
             email: sessionStorage.getItem("email"),
             telephone: sessionStorage.getItem("telephone")  || null,
@@ -256,8 +256,6 @@ function telephoneexpand() {
 }
 
 function storeanswers() {
-    console.log('storeanswers locations before=' + sessionStorage.getItem("locations"));
-    
     $(".tl-eoi-form input[type='text'], .tl-eoi-form input[type='email'], .tl-eoi-form input[type='tel']").each(function () {
         var value = $(this).val();
         var name = $(this).attr("name");
@@ -300,7 +298,6 @@ function storeanswers() {
     });
 
     /* Store data value for locations */
-    console.log("storing locations " + locations);
     sessionStorage.setItem("locations", locations);
 };
 
