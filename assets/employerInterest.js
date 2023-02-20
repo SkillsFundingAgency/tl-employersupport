@@ -6235,6 +6235,9 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
             industryId: parseInt(sessionStorage.getItem("industry").replace('-', '')) || 0,
             otherIndustry: sessionStorage.getItem("industry-other") || null,
             postcode: sessionStorage.getItem("postcode"),
+            locations: sessionStorage.getItem("locations") 
+                ? sessionStorage.getItem("locations").split(',').map((str, index) => ({ location: str, postcode: index + 1 }))
+                : [],
             email: sessionStorage.getItem("email"),
             telephone: sessionStorage.getItem("telephone")  || null,
             website: website || null,
@@ -6338,11 +6341,10 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
                }
         }).done(function (response) {
             console.log(response);
-            const extensionResponse = JSON.parse(response);
-            console.log(extensionResponse.success);
-            if(extensionResponse.success)
+            console.log('response is success=' + response.success + ', remaing extensions=' + response.extensionsRemaining);
+            if(response.success)
             {
-                successCallback(extensionResponse.extensionsRemaining === 0);
+                successCallback(response.extensionsRemaining === 0);
             }
             else
             {
