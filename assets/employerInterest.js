@@ -6340,8 +6340,6 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
                    addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey, method);
                }
         }).done(function (response) {
-            console.log(response);
-            console.log('response is success=' + response.success + ', remaing extensions=' + response.extensionsRemaining);
             if(response.success)
             {
                 successCallback(response.extensionsRemaining === 0);
