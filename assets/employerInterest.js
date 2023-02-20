@@ -6325,7 +6325,7 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
         });
     }
 
-    EmployerInterest.prototype.extendEmployerInterest = function(employerId, successCallback, notFoundCallback) {
+    EmployerInterest.prototype.extendEmployerInterest = function(employerId, successCallback, failureCallback) {
         console.log('extending interest');
         const method = "POST";
         const uri = findProviderApiUri + "employers/extendinterest/" + employerId;
@@ -6338,14 +6338,23 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
                }
         }).done(function (response) {
             console.log(response);
-            successCallback();
+            const extensionResponse = JSON.parse(response);
+            console.log(extensionResponse.success);
+            if(extensionResponse.success)
+            {
+                successCallback(extensionResponse.extensionsRemaining === 0);
+            }
+            else
+            {
+                failureCallback();
+            }
         }).fail(function (xhr, status, error) {
             console.log('Call to extend employer interest failed. ' + status + ' ' + error);
             console.log('error = ' + error);
             console.log('status = ' + status);
             console.log('xhr.status = ' + xhr.status);
             
-            notFoundCallback();
+            failureCallback();
         });
     }
 };
@@ -6421,10 +6430,17 @@ function setpage(eoi) {
     else if (step == "extend") {
         var employerId = getUrlParameter('id');
         eoi.extendEmployerInterest(employerId, 
-            function() {
+            function(finalExtension) {
                 $("#tl-eoi--extend").removeClass("tl-hidden");
                 $("#tl-breadcrumbs").addClass("tl-hidden");
                 $(".tl-backlink").addClass("tl-hidden");
+                if(finalExtension) {                
+                    $("#tl--eoi--extend--final").removeClass("tl-hidden");
+                }
+                else {
+                    $("#tl--eoi--extend--final").addClass("tl-hidden");
+                }
+                
                 document.title = 'Your interest has been extended | T Levels and industry placement support for employers';
         },
         function() {
