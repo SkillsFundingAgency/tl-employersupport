@@ -413,9 +413,9 @@
                                         let location = $("#location").val();
                                         let postcode = $("#postcode").val();
                                         clearErrors()
-                                        validatelocations()
+                                        var validation = validatelocations()
 
-                                        if (validatelocations() == false) {
+                                        if (validation == false) {
                                             locations.push([location, postcode])
                                             populatepostcodes()
                                         }
