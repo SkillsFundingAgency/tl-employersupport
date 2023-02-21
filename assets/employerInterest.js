@@ -6494,7 +6494,7 @@ function storeanswers() {
     });
 
     /* Store data value for locations */
-        sessionStorage.setItem("locations", locations);
+    sessionStorage.setItem("locations", JSON.stringify(locations));
 };
 
 function populateanswers() {

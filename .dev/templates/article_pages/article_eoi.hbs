@@ -408,7 +408,7 @@
                                 </div>
                                 <a class="govuk-button" id="tl-eoi--postcode--add">Add</a>
                                 <script>
-                                    var locations = [sessionStorage.getItem("locations")];
+                                    var locations = [];
 
                                     $("#tl-eoi--postcode--add").click(function() {
                                         let location = $("#location").val();
@@ -477,6 +477,8 @@
                                     function populatepostcodes() {
                                         $("#location").val('');
                                         $("#postcode").val('');
+                                        let locations = sessionStorage.getItem("locations")
+
 
                                         if (locations.length > 0) {
                                             $("#tl-eoi--postcodes").removeClass("tl-hidden");
