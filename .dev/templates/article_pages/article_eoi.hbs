@@ -414,10 +414,11 @@
                                     };
 
                                     $("#tl-eoi--postcode--add").click(function() {
-                                        let location = $("#location").val();
-                                        let postcode = $("#postcode").val();
+                                        let findProviderApiUri = "{{settings.find_provider_api_uri}}";
+                                        let findProviderAppId = "{{settings.find_provider_api_app_id}}";
+                                        let findProviderApiKey = "{{settings.find_provider_api_key}}";
                                         clearErrors()
-                                        var validation = validatelocations()
+                                        var validation = validatelocations(findProviderApiUri, findProviderAppId, findProviderApiKey)
 
                                     });
 

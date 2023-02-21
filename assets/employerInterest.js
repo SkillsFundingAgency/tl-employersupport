@@ -6668,7 +6668,7 @@ function validateanswers(successCallback) {
     return haserror;
 }
 
-function validatelocations() {
+function validatelocations(findProviderApiUri, findProviderAppId, findProviderApiKey) {
     let location = $("#location");
     if (location.val().trim().length == 0) {
         addError("Enter a location", location);
@@ -6687,9 +6687,6 @@ function validatelocations() {
     }
 
     else {
-        let findProviderApiUri = "{{settings.find_provider_api_uri}}";
-        let findProviderAppId = "{{settings.find_provider_api_app_id}}";
-        let findProviderApiKey = "{{settings.find_provider_api_key}}";
         const method = "GET";
         const uri = findProviderApiUri + "locations/validate?postcode=" + encodeURIComponent(postcodeval);
         $.ajax({
