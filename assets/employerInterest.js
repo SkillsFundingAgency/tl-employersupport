@@ -6540,8 +6540,15 @@ function populatepostcodes() {
             $("#tl-eoi--postcodes--table").append(locationrow)
         });
 
-        if (locations.length > 5) {$("#tl-eoi--postcode--form").addClass("tl-hidden")}
-        else {$("#tl-eoi--postcode--form").removeClass("tl-hidden")}
+        if (locations.length > 5) {
+            $("#tl-eoi--postcode--form").addClass("tl-hidden");
+            $("#tl-eoi--postcode--maximum").removeClass("tl-hidden");
+        }
+        else {
+            $("#tl-eoi--postcode--form").removeClass("tl-hidden");
+            $("#tl-eoi--postcode--maximum").addClass("tl-hidden");
+
+        }
     }
     else {$("#tl-eoi--postcodes").addClass("tl-hidden")}
 }
