@@ -6678,7 +6678,7 @@ function validateanswers(successCallback) {
 function validatelocations(findProviderApiUri, findProviderAppId, findProviderApiKey) {
     let location = $("#location");
     if (location.val().trim().length == 0) {
-        addError("Enter a location", location);
+        addError("Enter a name for this location", location);
     }
 
     // Postcode val //
