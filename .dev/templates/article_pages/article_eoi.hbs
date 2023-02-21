@@ -42,6 +42,7 @@
         setpage(eoi);
         populatefields()
         populateanswers();
+        populatepostcodes();
 
         $(".tl-eoi-button").click(function (e) {
             e.preventDefault();
@@ -406,7 +407,7 @@
                                 </div>
                                 <a class="govuk-button" id="tl-eoi--postcode--add">Add</a>
                                 <script>
-                                    var locations = [];
+
 
                                     $("#tl-eoi--postcode--add").click(function() {
                                         let location = $("#location").val();
@@ -475,6 +476,12 @@
                                     function populatepostcodes() {
                                         $("#location").val('');
                                         $("#postcode").val('');
+
+                                        if (localStorage.getItem('locations') == null) {
+                                            var locations = [];
+                                        } else {
+                                            locations = JSON.parse(localStorage.getItem('locations'));
+                                        };
 
                                         if (locations.length > 0) {
                                             $("#tl-eoi--postcodes").removeClass("tl-hidden");

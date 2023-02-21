@@ -6492,9 +6492,6 @@ function storeanswers() {
             sessionStorage.setItem(name, selection)
         }
     });
-
-    /* Store data value for locations */
-    sessionStorage.setItem("locations", JSON.stringify(locations));
 };
 
 function populateanswers() {
