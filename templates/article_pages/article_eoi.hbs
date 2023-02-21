@@ -42,6 +42,7 @@
         setpage(eoi);
         populatefields()
         populateanswers();
+        populatepostcodes()
 
         $(".tl-eoi-button").click(function (e) {
             e.preventDefault();
@@ -407,7 +408,7 @@
                                 </div>
                                 <a class="govuk-button" id="tl-eoi--postcode--add">Add</a>
                                 <script>
-                                    var locations = [];
+                                    var locations = [sessionStorage.getItem("locations")];
 
                                     $("#tl-eoi--postcode--add").click(function() {
                                         let location = $("#location").val();
