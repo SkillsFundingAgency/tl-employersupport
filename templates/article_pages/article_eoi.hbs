@@ -384,7 +384,6 @@
                                 <div id="tl-eoi--postcodes" class="tl-hidden">
                                     <table class="govuk-table">
                                         <tbody class="govuk-table__body" id="tl-eoi--postcodes--table">
-
                                         </tbody>
                                     </table>
                                 </div>
@@ -406,7 +405,7 @@
                                     </div>
                                 </div>
                                 <a class="govuk-button" id="tl-eoi--postcode--add">Add</a>
-                                <script> }
+                                <script>
                                     var locations = [];
 
                                     $("#tl-eoi--postcode--add").click(function() {
@@ -414,15 +413,15 @@
                                         let postcode = $("#postcode").val();
                                         clearErrors()
                                         var validation = validatelocations()
-                                       
-                                    }); 
+
+                                    });
 
                                     $(document).on('click', '.tl-eoi-postcodes-remove', function () {
                                         let value = $(this).attr("data-value");
                                         locations.splice(value, 1)
                                         populatepostcodes()
 
-                                    }); 
+                                    });
 
                                     function validatelocations() {
                                         let location = $("#location");
@@ -473,12 +472,9 @@
                                     }
 
 
-                                    function populatepostcodes()
-
+                                    function populatepostcodes() {
                                         $("#location").val('');
-                                        $("#postcode").val('' }
-
-
+                                        $("#postcode").val('');
 
                                         if (locations.length > 0) {
                                             $("#tl-eoi--postcodes").removeClass("tl-hidden");
@@ -507,7 +503,7 @@
                                             $("#tl-eoi--postcodes").addClass("tl-hidden");
                                         }
                                     }
-                                    
+
                                 </script>
                             </div>
                         </fieldset>
@@ -665,7 +661,7 @@
                         <dt class="govuk-summary-list__key">
                             Locations
                         </dt>
-                        <dd class="govuk-summary-list__value" id="tl-eoi-check-locations" data-name="locations">
+                        <dd class="govuk-summary-list__value" id="tl-eoi-check--locations" data-name="locations">
                             XXXX
                         </dd>
                         <dd class="govuk-summary-list__actions">
