@@ -6520,6 +6520,12 @@ function populateanswers() {
     $('#tl-eoi-check--skill-area').html(function (index, html) {
         return html.replace(/\|/g, "<br>");
     });
+
+    let locationcontent = (sessionStorage.getItem("locations") + ',').replace(/\,([^,]*)\,/g, ' - $1</br>')
+
+    $('#tl-eoi-check--locations').html(locationcontent);
+
+
 };
 
 function populatefields() {

@@ -449,8 +449,6 @@
                                             let findProviderAppId = "{{settings.find_provider_api_app_id}}";
                                             let findProviderApiKey = "{{settings.find_provider_api_key}}";
 
-                                            console.log('validatePostcode called for ' + postcodeval);
-
                                             const method = "GET";
                                             const uri = findProviderApiUri + "locations/validate?postcode=" + encodeURIComponent(postcodeval);
                                             $.ajax({
@@ -662,14 +660,14 @@
                     </div>
                     <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
-                            Postcode
+                            Locations
                         </dt>
-                        <dd class="govuk-summary-list__value" id="tl-eoi-check--postcode" data-name="postcode">
+                        <dd class="govuk-summary-list__value" id="tl-eoi-check--locations" data-name="locations">
                             XXXX
                         </dd>
                         <dd class="govuk-summary-list__actions">
                             <a class="govuk-link" href="?step=2">
-                                Change<span class="govuk-visually-hidden"> postcode</span>
+                                Change<span class="govuk-visually-hidden"> locations</span>
                             </a>
                         </dd>
                     </div>
