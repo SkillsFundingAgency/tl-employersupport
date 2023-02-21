@@ -307,7 +307,7 @@ function populateanswers() {
         return html.replace(/\|/g, "<br>");
     });
 
-    let locationcontent = (sessionStorage.getItem("locations") + ',').replace(/\,([^,]*)\,/g, ' - $1</br>').replace('[', '').replace(']', '');
+    let locationcontent = (sessionStorage.getItem("locations") + ',').replace(/\,([^,]*)\,/g, ' - $1</br>').replaceAll('[', '').replaceAll(']', '');
 
     $('#tl-eoi-check--locations').html(locationcontent);
 
