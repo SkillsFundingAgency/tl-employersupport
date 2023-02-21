@@ -6709,7 +6709,7 @@ function validatelocations(findProviderApiUri, findProviderAppId, findProviderAp
                 populatepostcodes()
             }
         }).fail(function () {
-            addError("Postcode nope", postcode);
+            addError("Enter a real UK postcode, for example SW1A 1AA", postcode);
         });
     }
 }
