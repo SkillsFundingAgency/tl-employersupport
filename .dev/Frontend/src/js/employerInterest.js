@@ -16,13 +16,8 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
         let information = sessionStorage.getItem("information");
         if(information) information = information.replace(/(http[s]?):\/\//gi, '$1___');
 
-        const splitLocations = sessionStorage.getItem("locations")
-            ? sessionStorage.getItem("locations").split(',') : [];
-
-        var locationsArray = [];
-        for (let i = 0; i < splitLocations.length; i = i + 2) {
-            locationsArray.push({ name: splitLocations[i], postcode: splitLocations[i + 1] } );
-        }
+        const parsedLocations = sessionStorage.getItem("locations") ? JSON.parse(sessionStorage.getItem("locations")) : [];
+        const locationsArray = parsedLocations.map(function (loc) {return { name: loc[0], postcode: loc[1] }; });
 
         let req = {
             organisationName: sessionStorage.getItem("organisation-name"),
