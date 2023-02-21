@@ -6492,6 +6492,9 @@ function storeanswers() {
             sessionStorage.setItem(name, selection)
         }
     });
+
+    /* Store data value for locations */
+    sessionStorage.setItem("locations", JSON.stringify(locations));
 };
 
 function populateanswers() {
@@ -6518,7 +6521,7 @@ function populateanswers() {
         return html.replace(/\|/g, "<br>");
     });
 
-    let locationcontent = (sessionStorage.getItem("locations") + ',').replace(/\,([^,]*)\,/g, ' - $1</br>')
+    let locationcontent = (sessionStorage.getItem("locations") + ',').replace(/\,([^,]*)\,/g, ' - $1</br>').replace('[', '').replace(']', '');
 
     $('#tl-eoi-check--locations').html(locationcontent);
 
