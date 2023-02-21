@@ -309,6 +309,31 @@ function populateanswers() {
 
 };
 
+function populatepostcodes() {
+    $("#location").val('');
+    $("#postcode").val('');
+
+    if (locations.length > 0) {
+        $("#tl-eoi--postcodes").removeClass("tl-hidden");
+        $("#tl-eoi--postcodes--table").empty();
+        locations.forEach(function (locationitem, i) {
+            let locationrow =
+                '<tr class="govuk-table__row"> \
+                                                 <th scope="row" class="govuk-table__header">' + locationitem[0] + ' </th> \
+                                                <td class="govuk-table__cell" > ' + locationitem[1] + ' </td> \
+                                                <td class="govuk-table__cell" > <a href="javascript:void(0);" class="tl-eoi-postcodes-remove govuk-link" data-value="' + i + '" class="govuk-link">Remove</a></td> \
+                                                 </tr>';
+            $("#tl-eoi--postcodes--table").append(locationrow)
+        });
+
+        if (locations.length > 5) {$("#tl-eoi--postcode--form").addClass("tl-hidden")}
+        else {$("#tl-eoi--postcode--form").removeClass("tl-hidden")}
+    }
+    else {$("#tl-eoi--postcodes").addClass("tl-hidden")}
+}
+
+
+
 function populatefields() {
     $(".tl-eoi-form input[type='text'], .tl-eoi-form textarea, .tl-eoi-form input[type='email'], .tl-eoi-form input[type='tel']").each(function () {
         var checkname = $(this).attr("name");
@@ -427,6 +452,48 @@ function validateanswers(successCallback) {
         successCallback();
     }
     return haserror;
+}
+
+function validatelocations() {
+    let location = $("#location");
+    if (location.val().trim().length == 0) {
+        addError("Enter a location", location);
+    }
+
+    // Postcode val //
+    let postcode = $("#postcode");
+    let postcodeval = $("#postcode").val().trim();
+    var postcodereg = /^(([A-Z]{1,2}[0-9][A-Z0-9]?|ASCN|STHL|TDCU|BBND|[BFS]IQQ|PCRN|TKCA) ?[0-9][A-Z]{2}|BFPO ?[0-9]{1,4}|(KY[0-9]|MSR|VG|AI)[ -]?[0-9]{4}|[A-Z]{2} ?[0-9]{2}|GE ?CX|GIR ?0A{2}|SAN ?TA1)$/i;
+    if (postcodeval.length == 0) {
+        addError("Enter your organisation's postcode", postcode);
+    }
+
+    else if (!postcodereg.test(postcodeval)) {
+        addError("Enter a real UK postcode, for example SW1A 1AA", postcode);
+    }
+
+    else {
+        let findProviderApiUri = "{{settings.find_provider_api_uri}}";
+        let findProviderAppId = "{{settings.find_provider_api_app_id}}";
+        let findProviderApiKey = "{{settings.find_provider_api_key}}";
+        const method = "GET";
+        const uri = findProviderApiUri + "locations/validate?postcode=" + encodeURIComponent(postcodeval);
+        $.ajax({
+            type: method,
+            url: uri,
+            contentType: "application/json",
+            beforeSend: function (xhr) {
+                addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey, method);
+            }
+        }).done(function (data, status, xhr) {
+            if (location.val().trim().length != 0) {
+                locations.push([location.val(), postcodeval]);
+                populatepostcodes()
+            }
+        }).fail(function () {
+            addError("Postcode nope", postcode);
+        });
+    }
 }
 
 function addError(errortext, element) {
