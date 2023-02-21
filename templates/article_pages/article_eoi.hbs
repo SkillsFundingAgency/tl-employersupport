@@ -407,6 +407,11 @@
                                 </div>
                                 <a class="govuk-button" id="tl-eoi--postcode--add">Add</a>
                                 <script>
+                                    if (sessionStorage.getItem('locations') == null) {
+                                        var locations = [];
+                                    } else {
+                                        locations = JSON.parse(sessionStorage.getItem('locations'));
+                                    };
 
 
                                     $("#tl-eoi--postcode--add").click(function() {
@@ -477,12 +482,6 @@
                                         $("#location").val('');
                                         $("#postcode").val('');
 
-                                        if (localStorage.getItem('locations') == null) {
-                                            var locations = [];
-                                        } else {
-                                            locations = JSON.parse(localStorage.getItem('locations'));
-                                        };
-
                                         if (locations.length > 0) {
                                             $("#tl-eoi--postcodes").removeClass("tl-hidden");
                                             $("#tl-eoi--postcodes--table").empty();
@@ -504,11 +503,17 @@
                                             else {
                                                 $("#tl-eoi--postcode--form").removeClass("tl-hidden");
                                             }
+
+                                            /* Store data value for locations */
+                                            sessionStorage.setItem("locations", JSON.stringify(locations));
+
                                         }
 
                                         else {
                                             $("#tl-eoi--postcodes").addClass("tl-hidden");
                                         }
+
+
                                     }
 
                                 </script>
