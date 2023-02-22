@@ -446,6 +446,13 @@ function validateanswers(successCallback) {
             addError("Enter 1000 characters or less", moreinfo);
             haserror = true;
         }
+
+        // Locations val //
+        let location = $("#location");
+        if (locations.length == 0) {
+            addError("Enter a location", location);
+            haserror = true;
+        }
     }
 
     if (step == 3) {
