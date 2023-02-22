@@ -336,7 +336,10 @@ function populatepostcodes() {
 
         }
     }
-    else {$("#tl-eoi--postcodes").addClass("tl-hidden")}
+    else { $("#tl-eoi--postcodes").addClass("tl-hidden") }
+
+    sessionStorage.setItem("locations", JSON.stringify(locations));
+
 }
 
 
@@ -493,7 +496,6 @@ function validatelocations(findProviderApiUri, findProviderAppId, findProviderAp
             if (location.val().trim().length != 0) {
                 locations.push([location.val(), postcodeval]);
                 populatepostcodes()
-                sessionStorage.setItem("locations", JSON.stringify(locations));
             }
         }).fail(function () {
             addError("Enter a real UK postcode, for example SW1A 1AA", postcode);
