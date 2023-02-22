@@ -449,8 +449,10 @@ function validateanswers(successCallback) {
 
         // Locations val //
         let location = $("#location");
+        let postcode = $("#postcode");
         if (locations.length == 0) {
-            addError("Enter a location", location);
+            addError("Enter a location and postcode", location);
+            addError("", postcode);
             haserror = true;
         }
     }
