@@ -452,7 +452,7 @@ function validateanswers(successCallback) {
         let postcode = $("#postcode");
         if (locations.length == 0) {
             addError("Enter at least one location and postcode", location);
-            addError("<br>", postcode);
+            addError("", postcode);
             haserror = true;
         }
     }
