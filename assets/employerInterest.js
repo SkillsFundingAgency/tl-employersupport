@@ -6488,8 +6488,6 @@ function storeanswers() {
         }
     });
 
-    /* Store data value for locations */
-    sessionStorage.setItem("locations", JSON.stringify(locations));
 };
 
 function populateanswers() {
@@ -6709,6 +6707,7 @@ function validatelocations(findProviderApiUri, findProviderAppId, findProviderAp
             if (location.val().trim().length != 0) {
                 locations.push([location.val(), postcodeval]);
                 populatepostcodes()
+                sessionStorage.setItem("locations", JSON.stringify(locations));
             }
         }).fail(function () {
             addError("Enter a real UK postcode, for example SW1A 1AA", postcode);
