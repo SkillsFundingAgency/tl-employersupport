@@ -6665,7 +6665,7 @@ function validateanswers(successCallback) {
         let location = $("#location");
         let postcode = $("#postcode");
         if (locations.length == 0) {
-            addError("Enter at least one location and postcode", location);
+            addError("Enter at least one location name and postcode", location);
             addError("", postcode);
             haserror = true;
         }
