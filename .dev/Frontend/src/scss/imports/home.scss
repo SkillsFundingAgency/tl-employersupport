@@ -49,6 +49,11 @@
         top: -5px;
     }
 
+    a {
+        display: inline-block;
+        line-height: 27px;
+    }
+
     @include govuk-media-query($until: tablet) {
         border-bottom: 3px solid $govuk-link-visited-colour;
         @include govuk-responsive-padding(2, "left");

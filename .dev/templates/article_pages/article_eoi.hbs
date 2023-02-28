@@ -83,6 +83,13 @@
 
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
+
+            <div id="tl-eoi--js" class="tl-js-hidden">
+                <p class="govuk-body">
+                    Please enable JavaScript in your browser to use this service.
+                </p>
+            </div>
+
             <!-- Start -->
             <div id="tl-eoi--start" class="tl-hidden">
                 <h1 class="govuk-heading-xl">{{article.title}}</h1>
@@ -140,7 +147,7 @@
                                     </label>
                                 </div>
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="contact-pref-3" name="contact-pref" type="radio" value="I don't have a preference" data-id="3" checked>
+                                    <input class="govuk-radios__input" id="contact-pref-3" name="contact-pref" type="radio" value="I don't have a preference" data-id="3">
                                     <label class="govuk-label govuk-radios__label" for="contact-pref-3">
                                         I don't have a preference
                                     </label>
@@ -440,7 +447,7 @@
                             Telephone number
                         </dt>
                         <dd class="govuk-summary-list__value" id="tl-eoi-check--telephone" data-name="telephone">
-                            XXXX
+                            
                         </dd>
                         <dd class="govuk-summary-list__actions">
                             <a class="govuk-link" href="?step=1">
@@ -448,7 +455,7 @@
                             </a>
                         </dd>
                     </div>
-                    <div class="govuk-summary-list__row">
+                    <div class="govuk-summary-list__row tl-hidden tl-eoi-checkanswers--contact">
                         <dt class="govuk-summary-list__key">
                             Contact preference
                         </dt>
@@ -557,7 +564,7 @@
                                 <p id="tl-consent-check-error" class="govuk-error-message tl-hidden"></p>
                                 <input class="govuk-checkboxes__input" id="tl-consent-check" name="consent" type="checkbox" value="agree" aria-describedby="tl-consent-check-error">
                                 <label class="govuk-label govuk-checkboxes__label" for="tl-consent-check">
-                                    By selecting this box you confirm that you consent to the Department for Education processing and storing your data for the purposes described in the <a href="https://www.gov.uk/government/publications/privacy-notice-for-key-stage-5-and-adult-education" class="govuk-link">privacy notice</a>.
+                                    By selecting this box you confirm that you consent to the Department for Education processing and storing your data for the purposes described in the <a href="/hc/en-gb/articles/{{settings.article_id_privacy}}/" target="_blank" class="govuk-link">privacy notice</a>.
                                     <br />
                                     <br />
                                     In doing so, we will comply with the General Data Protection Regulation (GDPR) and ensure that any personal data (as defined by GDPR) is protected, used only for the purposes for which it was obtained and disposed of accordingly.
@@ -646,9 +653,9 @@
 
             <!-- Error -->
             <div id="tl-eoi--error" class="tl-hidden">
-                    <h1 class="govuk-heading-l">
-                        Sorry, there is a problem with the service
-                    </h1>
+                <h1 class="govuk-heading-l">
+                    Sorry, there is a problem with the service
+                </h1>
                 <p class="govuk-body">
                     Please try again later.
                 </p>
@@ -657,6 +664,7 @@
                 </p>
             </div>
         </div>
+
 
         <div class="govuk-grid-column-one-third tl-hidden" id="tl-eoi--related">
             <hr class="govuk-section-break govuk-section-break--visible tl-section-break--blue">
