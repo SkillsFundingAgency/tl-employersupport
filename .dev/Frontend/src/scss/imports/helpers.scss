@@ -8,6 +8,12 @@
 
 .tl-image-100, .tl-width-100 {
     width: 100%;
+
+    &--mobile {
+        @include govuk-media-query ($until: tablet) {
+            width: 100%;
+        }
+    }
 }
 
 

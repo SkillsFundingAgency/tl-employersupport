@@ -7761,6 +7761,11 @@ x:-moz-any-link {
 .tl-image-100, .tl-width-100 {
   width: 100%;
 }
+@media (max-width: 40.0525em) {
+  .tl-image-100--mobile, .tl-width-100--mobile {
+    width: 100%;
+  }
+}
 
 .tl-padding-0 {
   padding: 0;
