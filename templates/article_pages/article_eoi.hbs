@@ -42,13 +42,13 @@
         setpage(eoi);
         populatefields()
         populateanswers();
+        populatepostcodes();
 
         $(".tl-eoi-button").click(function (e) {
             e.preventDefault();
             const btnId = $(this).attr("id");
             const nextPage = $(this).attr("href");
             validateanswers(function() {
-                storeanswers();
                 if(btnId == "tl-eoi-button--3") {
                     eoi.submitEmployerInterest(function() {
                         window.location.href = nextPage;
@@ -58,6 +58,7 @@
                     });
                 }
                 else {
+                    storeanswers();
                     window.location = nextPage;
                 }
             });
@@ -212,9 +213,9 @@
                                     </label>
                                 </div>
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="industry-5" name="industry" type="radio" value="Education and Childcare" data-id="5">
+                                    <input class="govuk-radios__input" id="industry-5" name="industry" type="radio" value="Education and Early Years" data-id="5">
                                     <label class="govuk-label govuk-radios__label" for="industry-5">
-                                        Education and Childcare
+                                        Education and Early Years
                                     </label>
                                 </div>
                                 <div class="govuk-radios__item">
@@ -336,9 +337,9 @@
                                     </label>
                                 </div>
                                 <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="skill-area-7" name="skill-area" type="checkbox" value="Education and Childcare" data-id="7">
+                                    <input class="govuk-checkboxes__input" id="skill-area-7" name="skill-area" type="checkbox" value="Education and Early Years" data-id="7">
                                     <label class="govuk-label govuk-checkboxes__label" for="skill-area-7">
-                                        Education and Childcare
+                                        Education and Early Years
                                     </label>
                                 </div>
                                 <div class="govuk-checkboxes__item">
@@ -369,14 +370,67 @@
                         </fieldset>
                     </div>
                     <div class="govuk-form-group">
-                        <label class="govuk-label govuk-label--m" for="postcode">
-                            Enter the postcode of your organisation’s location
-                        </label>
-                        <div id="postcode-hint" class="govuk-hint">
-                            This should be the location where any industry placements might take place.
-                        </div>
-                        <p id="postcode-error" class="govuk-error-message tl-hidden"></p>
-                        <input class="govuk-input govuk-input--width-10" id="postcode" name="postcode" type="text" aria-describedby="postcode-hint">
+                        <fieldset class="govuk-fieldset">
+                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                                <h3 class="govuk-fieldset__heading">
+                                    Enter the postcode of your organisation’s location
+                                </h3>
+                            </legend>
+
+                            <div id="postcode-hint" class="govuk-hint">
+                                This should be the location where any industry placements might take place. You can add up to 6.
+                            </div>
+
+                            <div class="govuk-inset-text">
+                                <div id="tl-eoi--postcodes" class="tl-hidden">
+                                    <table class="govuk-table">
+                                        <tbody class="govuk-table__body" id="tl-eoi--postcodes--table">
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="tl-inlineblock tl-width-100" id="tl-eoi--postcode--form">
+                                    <div class="tl-push--left govuk-!-margin-right-2 govuk-!-margin-bottom-2 tl-width-100--mobile">
+                                        <label class="govuk-label govuk-!-font-weight-bold" for="location">
+                                            Location name
+                                        </label>
+                                        <p id="location-error" class="govuk-error-message tl-hidden"></p>
+                                        <input class="govuk-input" id="location" name="location" type="text" aria-describedby="postcode-hint">
+                                    </div>
+                                    <div class="tl-push--left tl-width-100--mobile">
+                                        <label class="govuk-label govuk-!-font-weight-bold" for="postcode">
+                                            Postcode
+                                        </label>
+                                        <p id="postcode-error" class="govuk-error-message tl-hidden"></p>
+                                        <input class="govuk-input" id="postcode" name="postcode" type="text" aria-describedby="postcode-hint">
+                                    </div>
+                                </div>
+                                <p class="govuk-body tl-hidden" id="tl-eoi--postcode--maximum">You have reached the maximum number of locations. If you are interested in offering placements at more than 6 locations, please <a href="/hc/en-gb/requests/new" class="govuk-link">contact us</a></p>
+                                <a class="govuk-button" href="javascript:void(0);"  id="tl-eoi--postcode--add">Add</a>
+                                <script>
+                                    if (sessionStorage.getItem('locations') == null) {
+                                        var locations = [];
+                                    } else {
+                                        locations = JSON.parse(sessionStorage.getItem('locations'));
+                                    };
+
+                                    $("#tl-eoi--postcode--add").click(function() {
+                                        let findProviderApiUri = "{{settings.find_provider_api_uri}}";
+                                        let findProviderAppId = "{{settings.find_provider_api_app_id}}";
+                                        let findProviderApiKey = "{{settings.find_provider_api_key}}";
+                                        clearErrors()
+                                        var validation = validatelocations(findProviderApiUri, findProviderAppId, findProviderApiKey)
+
+                                    });
+
+                                    $(document).on('click', '.tl-eoi-postcodes-remove', function () {
+                                        let value = $(this).attr("data-value");
+                                        locations.splice(value, 1)
+                                        populatepostcodes()
+                                    });
+                                </script>
+                            </div>
+                        </fieldset>
                     </div>
 
                     <div class="govuk-form-group">
@@ -447,7 +501,7 @@
                             Telephone number
                         </dt>
                         <dd class="govuk-summary-list__value" id="tl-eoi-check--telephone" data-name="telephone">
-                            
+
                         </dd>
                         <dd class="govuk-summary-list__actions">
                             <a class="govuk-link" href="?step=1">
@@ -529,14 +583,14 @@
                     </div>
                     <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
-                            Postcode
+                            Locations
                         </dt>
-                        <dd class="govuk-summary-list__value" id="tl-eoi-check--postcode" data-name="postcode">
+                        <dd class="govuk-summary-list__value" id="tl-eoi-check--locations" data-name="locations">
                             XXXX
                         </dd>
                         <dd class="govuk-summary-list__actions">
                             <a class="govuk-link" href="?step=2">
-                                Change<span class="govuk-visually-hidden"> postcode</span>
+                                Change<span class="govuk-visually-hidden"> locations</span>
                             </a>
                         </dd>
                     </div>
@@ -617,6 +671,11 @@
                 <p class="govuk-body">
                     If a school or college would like to speak to you about hosting an industry placement or another T Level opportunity, they’ll get in touch using the contact details you have provided.
                 </p>
+                <div class="govuk-inset-text tl-hidden" id="tl-eoi--extend--final">
+                    <p class="govuk-body">
+                        You will not be able to extend this interest again, but you can <a href="/hc/en-gb/articles/{{settings.article_id_eoi}}" class="govuk-link govuk-link-no-visited-state">register another interest in T Levels and industry placements</a> at any time. If you need help with your expression of interest, you can <a href="/hc/en-gb/requests/new" class="govuk-link govuk-link-no-visited-state">contact us</a>.
+                    </p>
+                </div>
                 <p class="govuk-body">In the meantime, if you’d like to learn more about T Levels and industry placements, you can go back to <a href="/hc/en-gb" class="govuk-link govuk-link-no-visited-state">T Levels and industry placement support for employers home</a>.</p>
             </div>
 
@@ -634,7 +693,7 @@
                     <li>
                         <strong>You have already extended your interest</strong>
                         <p class="govuk-body">
-                            If you have previously clicked on the link to extend your interest, it’s already taken care of.
+                            If you have previously clicked on the link to extend your interest, it’s already taken care of. If you have extended 20 times, you cannot extend again.
                         </p>
                     </li>
                     <li>
