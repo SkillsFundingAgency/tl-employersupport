@@ -9358,7 +9358,7 @@ details summary {
   max-width: 300px;
   float: right;
 }
-@media (max-width: 19.99em) {
+@media (max-width: 40.0525em) {
   .tl-header--search {
     width: 100%;
     max-width: unset;

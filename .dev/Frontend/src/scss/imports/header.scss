@@ -44,7 +44,7 @@
     max-width: 300px;
     float: right;
 
-    @include govuk-media-query ($until: mobile) {
+    @include govuk-media-query ($until: tablet) {
         width: 100%;
         max-width: unset;
     }
