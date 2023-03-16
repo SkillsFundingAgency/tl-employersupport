@@ -53,7 +53,6 @@
                     var attr = $("#tl-eoi-button--3").attr('disabled')
                     if (attr != 'disabled') {
                         $("#tl-eoi-button--3").attr('disabled', 'disabled');
-                        console.log("submitted");
                         eoi.submitEmployerInterest(function () {
                             window.location.href = nextPage;
                         },
