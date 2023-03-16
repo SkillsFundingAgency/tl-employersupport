@@ -9358,6 +9358,12 @@ details summary {
   max-width: 300px;
   float: right;
 }
+@media (max-width: 19.99em) {
+  .tl-header--search {
+    width: 100%;
+    max-width: unset;
+  }
+}
 .tl-header--search .tl-search input[type=search] {
   border: none;
   padding-left: 10px;

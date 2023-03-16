@@ -44,6 +44,11 @@
     max-width: 300px;
     float: right;
 
+    @include govuk-media-query ($until: mobile) {
+        width: 100%;
+        max-width: unset;
+    }
+
     .tl-search {
         input[type="search"] {
             border: none;

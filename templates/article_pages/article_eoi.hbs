@@ -49,13 +49,16 @@
             const btnId = $(this).attr("id");
             const nextPage = $(this).attr("href");
             validateanswers(function() {
-                if(btnId == "tl-eoi-button--3") {
-                    eoi.submitEmployerInterest(function() {
-                        window.location.href = nextPage;
-                    },
-                    function() {
-                        window.location.href = "?step=error";
-                    });
+                if (btnId == "tl-eoi-button--3") {
+                    $(this).attr('disabled', true);
+                    if (!$(this).is(":disabled")) {
+                        eoi.submitEmployerInterest(function () {
+                            window.location.href = nextPage;
+                        },
+                        function () {
+                            window.location.href = "?step=error";
+                        });
+                    }
                 }
                 else {
                     storeanswers();
@@ -437,7 +440,7 @@
                         <label class="govuk-label govuk-label--m" for="information">
                             Enter any additional information (optional)
                         </label>
-                        <div id="information-hint" class="govuk-hint">
+                        <div id="information-hint" class="govuk-hint tl-js-visible">
                             You have <span id="information-chars">1000</span> characters remaining
                         </div>
                         <script>
