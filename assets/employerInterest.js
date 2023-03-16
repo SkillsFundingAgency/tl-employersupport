@@ -6230,11 +6230,15 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
         let information = sessionStorage.getItem("information");
         if(information) information = information.replace(/(http[s]?):\/\//gi, '$1___');
 
+        const parsedLocations = sessionStorage.getItem("locations") ? JSON.parse(sessionStorage.getItem("locations")) : [];
+        const locationsArray = parsedLocations.map(function (loc) {return { name: loc[0], postcode: loc[1] }; });
+
         let req = {
             organisationName: sessionStorage.getItem("organisation-name"),
             industryId: parseInt(sessionStorage.getItem("industry").replace('-', '')) || 0,
             otherIndustry: sessionStorage.getItem("industry-other") || null,
             postcode: sessionStorage.getItem("postcode"),
+            locations: locationsArray,
             email: sessionStorage.getItem("email"),
             telephone: sessionStorage.getItem("telephone")  || null,
             website: website || null,
@@ -6249,28 +6253,6 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
         return req;
     }
 
-    EmployerInterest.prototype.validatePostcode = function(postcode, successCallback, errorCallback) {
-        console.log('validatePostcode called for ' + postcode);
-        if (postcode === 'undefined' || !postcode) {
-            //No need to validate missing postcode - this is done elsewhere
-            if(errorCallback !== 'undefined') errorCallback();
-        }
-
-        const method = "GET";
-        const uri = findProviderApiUri + "locations/validate?postcode=" + encodeURIComponent(postcode);
-        $.ajax({
-            type: method,
-            url: uri,
-            contentType: "application/json",
-            beforeSend: function (xhr) {
-                addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey, method);
-            }
-        }).done(function (data, status, xhr) {
-            if(successCallback !== 'undefined') successCallback();
-        }).fail(function (xhr, status, error) {
-            if(errorCallback !== 'undefined') errorCallback();
-        });
-    }
 
     EmployerInterest.prototype.submitEmployerInterest = function(successCallback, errorCallback) {
         let data = JSON.stringify(buildEoiRequestData());
@@ -6325,7 +6307,7 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
         });
     }
 
-    EmployerInterest.prototype.extendEmployerInterest = function(employerId, successCallback, notFoundCallback) {
+    EmployerInterest.prototype.extendEmployerInterest = function(employerId, successCallback, failureCallback) {
         console.log('extending interest');
         const method = "POST";
         const uri = findProviderApiUri + "employers/extendinterest/" + employerId;
@@ -6337,15 +6319,21 @@ function EmployerInterest(findProviderApiUri, findProviderAppId, findProviderApi
                    addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey, method);
                }
         }).done(function (response) {
-            console.log(response);
-            successCallback();
+            if(response.success)
+            {
+                successCallback(response.extensionsRemaining === 0);
+            }
+            else
+            {
+                failureCallback();
+            }
         }).fail(function (xhr, status, error) {
             console.log('Call to extend employer interest failed. ' + status + ' ' + error);
             console.log('error = ' + error);
             console.log('status = ' + status);
             console.log('xhr.status = ' + xhr.status);
             
-            notFoundCallback();
+            failureCallback();
         });
     }
 };
@@ -6421,10 +6409,17 @@ function setpage(eoi) {
     else if (step == "extend") {
         var employerId = getUrlParameter('id');
         eoi.extendEmployerInterest(employerId, 
-            function() {
+            function(finalExtension) {
                 $("#tl-eoi--extend").removeClass("tl-hidden");
                 $("#tl-breadcrumbs").addClass("tl-hidden");
                 $(".tl-backlink").addClass("tl-hidden");
+                if(finalExtension) {
+                    $("#tl-eoi--extend--final").removeClass("tl-hidden");
+                }
+                else {
+                    $("#tl-eoi--extend--final").addClass("tl-hidden");
+                }
+                
                 document.title = 'Your interest has been extended | T Levels and industry placement support for employers';
         },
         function() {
@@ -6492,6 +6487,7 @@ function storeanswers() {
             sessionStorage.setItem(name, selection)
         }
     });
+
 };
 
 function populateanswers() {
@@ -6517,7 +6513,50 @@ function populateanswers() {
     $('#tl-eoi-check--skill-area').html(function (index, html) {
         return html.replace(/\|/g, "<br>");
     });
+
+    let locationcontent = (sessionStorage.getItem("locations") + ',').replace(/\,([^,]*)\,/g, ' - $1,</br>').replace(/[\[\]"]+/g, '').replace(/(.*),/g, '$1')
+
+    $('#tl-eoi-check--locations').html(locationcontent);
+
+
 };
+
+function populatepostcodes() {
+    $("#location").val('');
+    $("#postcode").val('');
+
+    if (locations.length > 0) {
+        $("#tl-eoi--postcodes").removeClass("tl-hidden");
+        $("#tl-eoi--postcodes--table").empty();
+        locations.forEach(function (locationitem, i) {
+            let locationrow =
+                '<tr class="govuk-table__row"> \
+                                                 <th scope="row" class="govuk-table__header">' + locationitem[0] + ' </th> \
+                                                <td class="govuk-table__cell" > ' + locationitem[1] + ' </td> \
+                                                <td class="govuk-table__cell" > <a href="javascript:void(0);" class="tl-eoi-postcodes-remove govuk-link" data-value="' + i + '" class="govuk-link">Remove</a></td> \
+                                                 </tr>';
+            $("#tl-eoi--postcodes--table").append(locationrow)
+        });
+
+        if (locations.length > 5) {
+            $("#tl-eoi--postcode--form").addClass("tl-hidden");
+            $("#tl-eoi--postcode--maximum").removeClass("tl-hidden");
+            $("#tl-eoi--postcode--add").addClass("tl-hidden");
+        }
+        else {
+            $("#tl-eoi--postcode--form").removeClass("tl-hidden");
+            $("#tl-eoi--postcode--maximum").addClass("tl-hidden");
+            $("#tl-eoi--postcode--add").removeClass("tl-hidden");
+
+        }
+    }
+    else { $("#tl-eoi--postcodes").addClass("tl-hidden") }
+
+    sessionStorage.setItem("locations", JSON.stringify(locations));
+
+}
+
+
 
 function populatefields() {
     $(".tl-eoi-form input[type='text'], .tl-eoi-form textarea, .tl-eoi-form input[type='email'], .tl-eoi-form input[type='tel']").each(function () {
@@ -6615,22 +6654,19 @@ function validateanswers(successCallback) {
             haserror = true;
         }
 
-        // Postcode val //
-        let postcode = $("#postcode");
-        var postcodereg = /^(([A-Z]{1,2}[0-9][A-Z0-9]?|ASCN|STHL|TDCU|BBND|[BFS]IQQ|PCRN|TKCA) ?[0-9][A-Z]{2}|BFPO ?[0-9]{1,4}|(KY[0-9]|MSR|VG|AI)[ -]?[0-9]{4}|[A-Z]{2} ?[0-9]{2}|GE ?CX|GIR ?0A{2}|SAN ?TA1)$/i;
-        if (!postcodereg.test(postcode.val().trim())) {
-            addError("Enter a real UK postcode, for example SW1A 1AA", postcode);
-            haserror = true;
-        }
-        if (postcode.val().trim().length == 0) {
-            addError("Enter your organisation's postcode", postcode);
-            haserror = true;
-        }
-
         // More info val //
         let moreinfo = $("#information");
         if (moreinfo.val().length > 1000) {
             addError("Enter 1000 characters or less", moreinfo);
+            haserror = true;
+        }
+
+        // Locations val //
+        let location = $("#location");
+        let postcode = $("#postcode");
+        if (locations.length == 0) {
+            addError("Enter at least one location name and postcode", location);
+            addError("", postcode);
             haserror = true;
         }
     }
@@ -6646,27 +6682,56 @@ function validateanswers(successCallback) {
 
     if(!haserror)
     {
-        //TODO: validate postcode last
-        if (step == 2) {
-            var postcode = $("#postcode");
-            eoi.validatePostcode(postcode.val(), successCallback, function() {                
-                addError("Enter a real UK postcode, for example SW1A 1AA", postcode);
-                haserror = true;  
-            });
-        }
-        else
-        {
-            successCallback();
-        }
+        successCallback();
     }
     return haserror;
 }
 
+function validatelocations(findProviderApiUri, findProviderAppId, findProviderApiKey) {
+    let location = $("#location");
+    if (location.val().trim().length == 0) {
+        addError("Enter a name for this location", location);
+    }
+
+    // Postcode val //
+    let postcode = $("#postcode");
+    let postcodeval = $("#postcode").val().toUpperCase().trim();
+    var postcodereg = /^(([A-Z]{1,2}[0-9][A-Z0-9]?|ASCN|STHL|TDCU|BBND|[BFS]IQQ|PCRN|TKCA) ?[0-9][A-Z]{2}|BFPO ?[0-9]{1,4}|(KY[0-9]|MSR|VG|AI)[ -]?[0-9]{4}|[A-Z]{2} ?[0-9]{2}|GE ?CX|GIR ?0A{2}|SAN ?TA1)$/i;
+    if (postcodeval.length == 0) {
+        addError("Enter your organisation's postcode", postcode);
+    }
+
+    else if (!postcodereg.test(postcodeval)) {
+        addError("Enter a real UK postcode, for example SW1A 1AA", postcode);
+    }
+
+    else {
+        const method = "GET";
+        const uri = findProviderApiUri + "locations/validate?postcode=" + encodeURIComponent(postcodeval);
+        $.ajax({
+            type: method,
+            url: uri,
+            contentType: "application/json",
+            beforeSend: function (xhr) {
+                addHmacAuthHeader(xhr, uri, findProviderAppId, findProviderApiKey, method);
+            }
+        }).done(function (data, status, xhr) {
+            if (location.val().trim().length != 0) {
+                locations.push([location.val(), postcodeval]);
+                populatepostcodes()
+            }
+        }).fail(function () {
+            addError("Enter a real UK postcode, for example SW1A 1AA", postcode);
+        });
+    }
+}
+
 function addError(errortext, element) {
-    var preerror = '<span class="govuk-visually-hidden">Error: </span>'
+    var preerror = '<span class="govuk-visually-hidden">Error: </span>';
+    var errormessageid = element.attr("id") + '-error';
     element.closest(".govuk-form-group").addClass("govuk-form-group--error");
-    element.closest(".govuk-form-group").find(".govuk-error-message").first().removeClass("tl-hidden");
-    element.closest(".govuk-form-group").find(".govuk-error-message").first().html(preerror + errortext);
+    $("#" + errormessageid).removeClass("tl-hidden");
+    $("#" + errormessageid).html(preerror + errortext);
     element.first().addClass("govuk-input--error");
 }
 
