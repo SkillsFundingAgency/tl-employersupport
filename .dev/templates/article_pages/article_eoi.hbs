@@ -50,9 +50,10 @@
             const nextPage = $(this).attr("href");
             validateanswers(function() {
                 if (btnId == "tl-eoi-button--3") {
+                    $("#tl-eoi-button--3").attr('disabled', 'disabled');
+                    console.log("button disabled");
+
                     if (!$(this).is(":disabled")) {
-                        $(this).attr('disabled', true);
-                        console.log("button disabled");
                         eoi.submitEmployerInterest(function () {
                             window.location.href = nextPage;
                         },
