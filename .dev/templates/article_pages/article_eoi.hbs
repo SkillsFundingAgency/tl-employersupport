@@ -51,7 +51,8 @@
             validateanswers(function() {
                 if (btnId == "tl-eoi-button--3") {
                     $("#tl-eoi-button--3").attr('disabled', 'disabled');
-                    if (!$("#tl-eoi-button--3").is(":disabled")) {
+                    var attr = $("#tl-eoi-button--3").attr('disabled')
+                    if (typeof attr == 'undefined' && attr == false) {
                         console.log("submitted");
                         eoi.submitEmployerInterest(function () {
                             window.location.href = nextPage;
