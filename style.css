@@ -7794,6 +7794,21 @@ x:-moz-any-link {
   display: none;
 }
 
+.cookies-enabled .tl-cookies-hidden {
+  display: none;
+}
+.cookies-enabled .tl-cookies-visible {
+  display: inline-block;
+}
+
+.tl-cookies-hidden {
+  display: inline-block;
+}
+
+.tl-cookies-visible {
+  display: none;
+}
+
 .tl-inline {
   display: inline;
 }
