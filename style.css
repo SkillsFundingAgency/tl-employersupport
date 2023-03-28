@@ -7794,6 +7794,21 @@ x:-moz-any-link {
   display: none;
 }
 
+.cookies-enabled .tl-cookies-hidden {
+  display: none;
+}
+.cookies-enabled .tl-cookies-visible {
+  display: inline-block;
+}
+
+.tl-cookies-hidden {
+  display: inline-block;
+}
+
+.tl-cookies-visible {
+  display: none;
+}
+
 .tl-inline {
   display: inline;
 }
@@ -9357,6 +9372,12 @@ details summary {
 .tl-header--search {
   max-width: 300px;
   float: right;
+}
+@media (max-width: 40.0525em) {
+  .tl-header--search {
+    width: 100%;
+    max-width: unset;
+  }
 }
 .tl-header--search .tl-search input[type=search] {
   border: none;

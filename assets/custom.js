@@ -20,6 +20,12 @@ $(document).ready(function () {
     $("main").attr('id', 'main-content');
 });
 
+//Cookies enabled to body
+$(document).ready(function () {
+    if (navigator.cookieEnabled) {
+        $("body").addClass("cookies-enabled")
+    }
+});
 
 // Article voting show/hide
 $(document).ready(function () {
