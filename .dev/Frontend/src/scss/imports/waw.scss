@@ -2,28 +2,53 @@
 
 .tl-event--list {
     li {
-        display: none;
+        display: block;
 
         p {
             margin: 10px 0 15px 0;
         }
     }
 
-    &[data-event--filter="workshops"] {
-        li[data-event--labels*="workshop"] {
-            display: block;
-        }
-    }
-
-    &[data-event--filter="webinars"] {
-        li[data-event--labels*="webinar"] {
-            display: block;
-        }
-    }
-
-    &[data-event--filter="all"] {
+    &[data-date="date-this-week"] {
         li {
+            display: none;
+        }
+
+        li[data-event--thisweek="true"] {
             display: block;
+        }
+    }
+
+    &[data-date="date-this-month"] {
+        li {
+            display: none;
+        }
+
+        li[data-event--thismonth="true"] {
+            display: block;
+        }
+    }
+
+    &[data-date="date-next-month"] {
+        li {
+            display: none;
+        }
+
+        li[data-event--nextmonth="true"] {
+            display: block;
+        }
+    }
+
+
+    &[data-type="type-upcoming"] {
+        li[data-event--type="recording"] {
+            display: none;
+        }
+    }
+
+    &[data-type="type-recording"] {
+        li[data-event--type="upcoming"] {
+            display: none;
         }
     }
 }

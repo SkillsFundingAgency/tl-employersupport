@@ -79,9 +79,12 @@
                 <div class="tl-fap--result">
                 </div>
             </div>
-            <p class="govuk-body">
-                <a class="govuk-link tl-hidden" id="tl-next-results-link" href="more-results">Show more results</a>
-            </p>
+            <div class="tl-fap--showmore tl-hidden" id="tl-fap--showmore">
+                <p class="govuk-body">
+                    <a class="govuk-link" id="tl-next-results-link" href="more-results">Show more results</a> or <a class="govuk-link" id="tl-eoi-link" href="/hc/en-gb/articles/{{settings.article_id_eoi}}">register your interest with schools and colleges</a>
+                </p>
+
+            </div>
         </div>
     </div>
 </div>
@@ -109,7 +112,14 @@
         48: "{{settings.qualification_article_48}}",
         49: "{{settings.qualification_article_49}}",
         50: "{{settings.qualification_article_50}}",
-        51: "{{settings.qualification_article_51}}"
+        51: "{{settings.qualification_article_51}}",
+        52: "{{settings.qualification_article_52}}",
+        53: "{{settings.qualification_article_53}}",
+        54: "{{settings.qualification_article_54}}",
+        55: "{{settings.qualification_article_55}}",
+        56: "{{settings.qualification_article_56}}",
+        57: "{{settings.qualification_article_57}}",
+        58: "{{settings.qualification_article_58}}"
     };
 
     new FindProvider("{{settings.find_provider_api_uri}}",

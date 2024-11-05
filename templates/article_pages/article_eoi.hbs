@@ -1,0 +1,758 @@
+
+
+<div class="govuk-width-container">
+    <div id="tl-breadcrumbs">
+        <div class="tl-breadcrumbs tl-hidden">
+            <ol class="breadcrumbs">
+                <li title="T Levels and industry placement support for employers">
+                    <a href="/hc/en-gb">Home</a>
+                </li>
+                <li title="Register an interest">
+                    Register an interest
+                </li>
+            </ol>
+        </div>
+        <a href="#" class="govuk-back-link tl-backlink">Back</a>
+    </div>
+</div>
+
+<script src="{{asset 'employerInterest.js'}}"></script>
+<script>
+    var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = window.location.search.substring(1),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+            }
+        }
+        return false;
+    };
+
+    const eoi = new EmployerInterest("{{settings.find_provider_api_uri}}",
+                "{{settings.find_provider_api_app_id}}",
+                "{{settings.find_provider_api_key}}");
+
+    $(document).ready(function () {
+        setpage(eoi);
+        populatefields()
+        populateanswers();
+        populatepostcodes();
+
+        $(".tl-eoi-button").click(function (e) {
+            e.preventDefault();
+            const btnId = $(this).attr("id");
+            const nextPage = $(this).attr("href");
+            validateanswers(function() {
+                if (btnId == "tl-eoi-button--3") {
+                    var attr = $("#tl-eoi-button--3").attr('disabled')
+                    if (attr != 'disabled') {
+                        $("#tl-eoi-button--3").attr('disabled', 'disabled');
+                        eoi.submitEmployerInterest(function () {
+                            window.location.href = nextPage;
+                        },
+                        function () {
+                            window.location.href = "?step=error";
+                        });
+                    }
+                }
+                else {
+                    storeanswers();
+                    window.location = nextPage;
+                }
+            });
+        });
+
+        $("#tl-eoi-button--register").click(function (e) {
+            e.preventDefault();
+            sessionStorage.clear();
+            window.location = $(this).attr("href");
+        })
+
+        $('input[name=telephone]').keyup(function () {
+            telephoneexpand()
+        });
+    });
+
+</script>
+
+
+
+<!-- Article Content -->
+<div class="govuk-width-container govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+            <div id="tl-eoi--js" class="tl-js-hidden">
+                <p class="govuk-body">
+                    Please enable JavaScript in your browser to use this service.
+                </p>
+            </div>
+
+            <div id="tl-eoi--cookies" class="tl-cookies-hidden">
+                <p class="govuk-body">
+                    Please enable cookies in your browser to use this service.
+                </p>
+            </div>
+            <div class="tl-cookies-visible">
+                <!-- Start -->
+                <div id="tl-eoi--start" class="tl-hidden">
+                    <h1 class="govuk-heading-xl">{{article.title}}</h1>
+                    <div class="tl-article--content">{{article.body}}</div>
+                    <a href="?step=1" type="button" class="govuk-button" id="tl-eoi-button--register">Register an interest</a>
+                </div>
+                <!-- Stage 1 - About you -->
+                <div id="tl-eoi--1" class="tl-hidden">
+                    <span class="govuk-caption-xl">Step 1 of 3</span>
+                    <h1 class="govuk-heading-xl">About you</h1>
+                    <p class="govuk-body">Enter your contact details so that T Level schools and colleges can get in touch with you to discuss your interest in T Levels and industry placements.</p>
+                    <form class="tl-eoi-form" novalidate>
+                        <div class="govuk-form-group">
+                            <label class="govuk-label govuk-label--m" for="full-name">
+                                Full name
+                            </label>
+                            <p id="full-name-error" class="govuk-error-message tl-hidden"></p>
+                            <input class="govuk-input" id="full-name" name="full-name" type="text" aria-describedby="full-name-error">
+                        </div>
+                        <div class="govuk-form-group">
+                            <label class="govuk-label govuk-label--m" for="email">
+                                Email address
+                            </label>
+                            <p id="email-error" class="govuk-error-message tl-hidden"></p>
+                            <input class="govuk-input" id="email" name="email" type="email" aria-describedby="email-error">
+                        </div>
+                        <div class="govuk-form-group">
+                            <label class="govuk-label govuk-label--m" for="telephone">
+                                Telephone number (optional)
+                            </label>
+                            <p id="telephone-error" class="govuk-error-message tl-hidden"></p>
+                            <input class="govuk-input" id="telephone" name="telephone" type="tel" aria-describedby="telephone-error">
+                        </div>
+
+                        <script>
+
+                        </script>
+                        <div class="govuk-form-group tl-hidden" id="tl-eoi-contactpref">
+                            <fieldset class="govuk-fieldset" aria-describedby="contact-pref-error">
+                                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                                    How would you prefer to be contacted?
+                                </legend>
+                                <p id="contact-pref-error" class="govuk-error-message tl-hidden"></p>
+                                <div class="govuk-radios" data-name="contact-pref" data-module="govuk-radios">
+                                    <div class="govuk-radios__item">
+                                        <input class="govuk-radios__input" id="contact-pref" name="contact-pref" type="radio" value="Email" data-id="1">
+                                        <label class="govuk-label govuk-radios__label" for="contact-pref">
+                                            Email
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item">
+                                        <input class="govuk-radios__input" id="contact-pref-2" name="contact-pref" type="radio" value="Telephone" data-id="2">
+                                        <label class="govuk-label govuk-radios__label" for="contact-pref-2">
+                                            Telephone
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item">
+                                        <input class="govuk-radios__input" id="contact-pref-3" name="contact-pref" type="radio" value="I don't have a preference" data-id="3">
+                                        <label class="govuk-label govuk-radios__label" for="contact-pref-3">
+                                            I don't have a preference
+                                        </label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <a href="?step=2" type="button" class="govuk-button tl-eoi-button" id="tl-eoi-button--1">Save and continue</a>
+                    </form>
+
+                </div>
+                <!-- Stage 2 - About organisation -->
+                <div id="tl-eoi--2" class="tl-hidden">
+                    <span class="govuk-caption-xl">Step 2 of 3</span>
+                    <h1 class="govuk-heading-xl">About your organisation</h1>
+                    <form class="tl-eoi-form" novalidate>
+                        <div class="govuk-form-group">
+                            <label class="govuk-label govuk-label--m" for="organisation-name">
+                                Organisation name
+                            </label>
+                            <p id="organisation-name-error" class="govuk-error-message tl-hidden"></p>
+                            <input class="govuk-input govuk-input--width-20" id="organisation-name" name="organisation-name" type="text" aria-describedby="organisation-name-error">
+                        </div>
+                        <div class="govuk-form-group">
+                            <label class="govuk-label govuk-label--m" for="website">
+                                Website (optional)
+                            </label>
+                            <input class="govuk-input govuk-input--width-20" id="website" name="website" type="text">
+                        </div>
+
+                        <div class="govuk-form-group" id="tl-eoi-industry">
+                            <fieldset class="govuk-fieldset" aria-describedby="industry-error">
+                                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                                    What is your organisation’s primary industry?
+                                </legend>
+                                <p id="industry-error" class="govuk-error-message tl-hidden"></p>
+                                <div class="govuk-radios" data-name="industry" data-module="govuk-radios">
+                                    <div class="govuk-radios__item">
+                                        <input class="govuk-radios__input" id="industry" name="industry" type="radio" value="Admin and Business Support" data-id="1">
+                                        <label class="govuk-label govuk-radios__label" for="industry">
+                                            Admin and Business Support
+                                        </label>
+                                    </div>
+
+                                    <div class="govuk-radios__item">
+                                        <input class="govuk-radios__input" id="industry-2" name="industry" type="radio" value="Agriculture" data-id="2">
+                                        <label class="govuk-label govuk-radios__label" for="industry-2">
+                                            Agriculture
+                                        </label>
+                                    </div>
+
+                                    <div class="govuk-radios__item">
+                                        <input class="govuk-radios__input" id="industry-3" name="industry" type="radio" value="Arts Entertainment and Recreation" data-id="3">
+                                        <label class="govuk-label govuk-radios__label" for="industry-3">
+                                            Arts, Entertainment and Recreation
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item">
+                                        <input class="govuk-radios__input" id="industry-4" name="industry" type="radio" value="Construction" data-id="4">
+                                        <label class="govuk-label govuk-radios__label" for="industry-4">
+                                            Construction
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item">
+                                        <input class="govuk-radios__input" id="industry-5" name="industry" type="radio" value="Education and Early Years" data-id="5">
+                                        <label class="govuk-label govuk-radios__label" for="industry-5">
+                                            Education and Early Years
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item">
+                                        <input class="govuk-radios__input" id="industry-6" name="industry" type="radio" value="Financial Services" data-id="6">
+                                        <label class="govuk-label govuk-radios__label" for="industry-6">
+                                            Financial Services
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item">
+                                        <input class="govuk-radios__input" id="industry-7" name="industry" type="radio" value="Health and Social Care" data-id="7">
+                                        <label class="govuk-label govuk-radios__label" for="industry-7">
+                                            Health and Social Care
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item">
+                                        <input class="govuk-radios__input" id="industry-8" name="industry" type="radio" value="Hospitality" data-id="8">
+                                        <label class="govuk-label govuk-radios__label" for="industry-8">
+                                            Hospitality
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item">
+                                        <input class="govuk-radios__input" id="industry-9" name="industry" type="radio" value="IT and Communications" data-id="9">
+                                        <label class="govuk-label govuk-radios__label" for="industry-9">
+                                            IT and Communications
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item">
+                                        <input class="govuk-radios__input" id="industry-10" name="industry" type="radio" value="Manufacturing and Engineering" data-id="10">
+                                        <label class="govuk-label govuk-radios__label" for="industry-10">
+                                            Manufacturing and Engineering
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item">
+                                        <input class="govuk-radios__input" id="industry-11" name="industry" type="radio" value="Public Sector" data-id="11">
+                                        <label class="govuk-label govuk-radios__label" for="industry-11">
+                                            Public Sector
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item">
+                                        <input class="govuk-radios__input" id="industry-12" name="industry" type="radio" value="Retail and Wholesale" data-id="12">
+                                        <label class="govuk-label govuk-radios__label" for="industry-12">
+                                            Retail and Wholesale
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item">
+                                        <input class="govuk-radios__input" id="industry-13" name="industry" type="radio" value="Transport" data-id="13">
+                                        <label class="govuk-label govuk-radios__label" for="industry-13">
+                                            Transport
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item">
+                                        <input class="govuk-radios__input" id="industry-14" name="industry" type="radio" value="Utilities" data-id="14">
+                                        <label class="govuk-label govuk-radios__label" for="industry-14">
+                                            Utilities
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item">
+                                        <input class="govuk-radios__input" id="industry-15" name="industry" type="radio" value="Other" data-aria-controls="other-industry" data-id="0">
+                                        <label class="govuk-label govuk-radios__label" for="industry-15">
+                                            Other
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="other-industry">
+                                        <div class="govuk-form-group">
+                                            <label class="govuk-label govuk-visually-hidden" for="industry-other">
+                                                Other industry
+                                            </label>
+                                            <p id="industry-other-error" class="govuk-error-message tl-hidden"></p>
+                                            <input class="govuk-input govuk-input--width-20" id="industry-other" name="industry-other" type="text" data-cya="industry" aria-describedby="industry-other-error">
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="govuk-form-group" id="tl-eoi-skillarea">
+                            <fieldset class="govuk-fieldset" aria-describedby="skill-area-error">
+                                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                                    What skill areas would you be interested in hosting an industry placement in?
+                                </legend>
+                                <p id="skill-area-error" class="govuk-error-message tl-hidden"></p>
+                                <div class="govuk-checkboxes govuk-!-margin-bottom-4" data-name="skill-area" data-module="govuk-checkboxes">
+                                    <div class="govuk-checkboxes__item">
+                                        <input class="govuk-checkboxes__input" id="skill-area" name="skill-area" type="checkbox" value="Agriculture, Environment and Animal Care" data-id="1">
+                                        <label class="govuk-label govuk-checkboxes__label" for="skill-area">
+                                            Agriculture, Environment and Animal Care
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item">
+                                        <input class="govuk-checkboxes__input" id="skill-area-2" name="skill-area" type="checkbox" value="Business and Administration" data-id="2">
+                                        <label class="govuk-label govuk-checkboxes__label" for="skill-area-2">
+                                            Business and Administration
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item">
+                                        <input class="govuk-checkboxes__input" id="skill-area-3" name="skill-area" type="checkbox" value="Catering " data-id="3">
+                                        <label class="govuk-label govuk-checkboxes__label" for="skill-area-3">
+                                            Catering
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item">
+                                        <input class="govuk-checkboxes__input" id="skill-area-4" name="skill-area" type="checkbox" value="Construction and the Built Environment" data-id="4">
+                                        <label class="govuk-label govuk-checkboxes__label" for="skill-area-4">
+                                            Construction and the Built Environment
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item">
+                                        <input class="govuk-checkboxes__input" id="skill-area-5" name="skill-area" type="checkbox" value="Creative and Design" data-id="5">
+                                        <label class="govuk-label govuk-checkboxes__label" for="skill-area-5">
+                                            Creative and Design
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item">
+                                        <input class="govuk-checkboxes__input" id="skill-area-6" name="skill-area" type="checkbox" value="Digital and IT" data-id="6">
+                                        <label class="govuk-label govuk-checkboxes__label" for="skill-area-6">
+                                            Digital and IT
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item">
+                                        <input class="govuk-checkboxes__input" id="skill-area-7" name="skill-area" type="checkbox" value="Education and Early Years" data-id="7">
+                                        <label class="govuk-label govuk-checkboxes__label" for="skill-area-7">
+                                            Education and Early Years
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item">
+                                        <input class="govuk-checkboxes__input" id="skill-area-8" name="skill-area" type="checkbox" value="Engineering and Manufacturing" data-id="8">
+                                        <label class="govuk-label govuk-checkboxes__label" for="skill-area-8">
+                                            Engineering and Manufacturing
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item">
+                                        <input class="govuk-checkboxes__input" id="skill-area-9" name="skill-area" type="checkbox" value="Hair and Beauty" data-id="9">
+                                        <label class="govuk-label govuk-checkboxes__label" for="skill-area-9">
+                                            Hair and Beauty
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item">
+                                        <input class="govuk-checkboxes__input" id="skill-area-10" name="skill-area" type="checkbox" value="Health and Science" data-id="10">
+                                        <label class="govuk-label govuk-checkboxes__label" for="skill-area-10">
+                                            Health and Science
+                                        </label>
+                                    </div>
+                                    <div class="govuk-checkboxes__item">
+                                        <input class="govuk-checkboxes__input" id="skill-area-11" name="skill-area" type="checkbox" value="Legal, Finance and Accounting" data-id="11">
+                                        <label class="govuk-label govuk-checkboxes__label" for="skill-area-11">
+                                            Legal, Finance and Accounting
+                                        </label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="govuk-form-group">
+                            <fieldset class="govuk-fieldset">
+                                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                                    <h3 class="govuk-fieldset__heading">
+                                        Enter the postcode of your organisation’s location
+                                    </h3>
+                                </legend>
+
+                                <div id="postcode-hint" class="govuk-hint">
+                                    This should be the location where any industry placements might take place. You can add up to 6.
+                                </div>
+
+                                <div class="govuk-inset-text">
+                                    <div id="tl-eoi--postcodes" class="tl-hidden">
+                                        <table class="govuk-table">
+                                            <tbody class="govuk-table__body" id="tl-eoi--postcodes--table">
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="tl-inlineblock tl-width-100" id="tl-eoi--postcode--form">
+                                        <div class="tl-push--left govuk-!-margin-right-2 govuk-!-margin-bottom-2 tl-width-100--mobile">
+                                            <label class="govuk-label govuk-!-font-weight-bold" for="location">
+                                                Location name
+                                            </label>
+                                            <p id="location-error" class="govuk-error-message tl-hidden"></p>
+                                            <input class="govuk-input" id="location" name="location" type="text" aria-describedby="postcode-hint">
+                                        </div>
+                                        <div class="tl-push--left tl-width-100--mobile">
+                                            <label class="govuk-label govuk-!-font-weight-bold" for="postcode">
+                                                Postcode
+                                            </label>
+                                            <p id="postcode-error" class="govuk-error-message tl-hidden"></p>
+                                            <input class="govuk-input" id="postcode" name="postcode" type="text" aria-describedby="postcode-hint">
+                                        </div>
+                                    </div>
+                                    <p class="govuk-body tl-hidden" id="tl-eoi--postcode--maximum">You have reached the maximum number of locations. If you are interested in offering placements at more than 6 locations, please <a href="/hc/en-gb/requests/new" class="govuk-link">contact us</a></p>
+                                    <a class="govuk-button" href="javascript:void(0);" id="tl-eoi--postcode--add">Add</a>
+                                    <script>
+                                    if (sessionStorage.getItem('locations') == null) {
+                                        var locations = [];
+                                    } else {
+                                        locations = JSON.parse(sessionStorage.getItem('locations'));
+                                    };
+
+                                    $("#tl-eoi--postcode--add").click(function() {
+                                        let findProviderApiUri = "{{settings.find_provider_api_uri}}";
+                                        let findProviderAppId = "{{settings.find_provider_api_app_id}}";
+                                        let findProviderApiKey = "{{settings.find_provider_api_key}}";
+                                        clearErrors()
+                                        var validation = validatelocations(findProviderApiUri, findProviderAppId, findProviderApiKey)
+
+                                    });
+
+                                    $(document).on('click', '.tl-eoi-postcodes-remove', function () {
+                                        let value = $(this).attr("data-value");
+                                        locations.splice(value, 1)
+                                        populatepostcodes()
+                                    });
+                                    </script>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="govuk-form-group">
+                            <label class="govuk-label govuk-label--m" for="information">
+                                Enter any additional information (optional)
+                            </label>
+                            <div id="information-hint" class="govuk-hint tl-js-visible">
+                                You have <span id="information-chars">1000</span> characters remaining
+                            </div>
+                            <script>
+                                function updateCountdown() {
+                                    var remaining = 1000 - $('#information').val().length;
+                                    $('#information-chars').text(remaining);
+                                }
+
+                                $(document).ready(function ($) {
+                                    updateCountdown();
+                                    $('#information').change(updateCountdown);
+                                    $('#information').keyup(updateCountdown);
+                                });
+                            </script>
+                            <p id="information-error" class="govuk-error-message tl-hidden"></p>
+                            <textarea class="govuk-textarea" id="information" name="information" rows="5"></textarea>
+                        </div>
+
+                        <a href="?step=3" type="button" class="govuk-button tl-eoi-button" id="tl-eoi-button--2">Save and continue</a>
+
+                    </form>
+
+
+
+                </div>
+                <!-- Stage 3 Check Answers-->
+                <div id="tl-eoi--3" class="tl-hidden">
+                    <span class="govuk-caption-xl">Step 3 of 3</span>
+                    <h1 class="govuk-heading-xl">Check your answers before sending your details</h1>
+                    <h2 class="govuk-heading-m">About you</h2>
+
+                    <dl class="govuk-summary-list govuk-!-margin-bottom-9 tl-eoi-checkanswers">
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                Full name
+                            </dt>
+                            <dd class="govuk-summary-list__value" id="tl-eoi-check--full-name" data-name="full-name">
+                                XXXX
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="?step=1">
+                                    Change<span class="govuk-visually-hidden"> full name</span>
+                                </a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                Email address
+                            </dt>
+                            <dd class="govuk-summary-list__value" id="tl-eoi-check--email" data-name="email">
+                                XXXX
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="?step=1">
+                                    Change<span class="govuk-visually-hidden"> email address</span>
+                                </a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                Telephone number
+                            </dt>
+                            <dd class="govuk-summary-list__value" id="tl-eoi-check--telephone" data-name="telephone">
+
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="?step=1">
+                                    Change<span class="govuk-visually-hidden"> telephone number</span>
+                                </a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row tl-hidden tl-eoi-checkanswers--contact">
+                            <dt class="govuk-summary-list__key">
+                                Contact preference
+                            </dt>
+                            <dd class="govuk-summary-list__value" id="tl-eoi-check--contact-pref" data-name="contact-pref">
+                                XXXX
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="?step=1">
+                                    Change<span class="govuk-visually-hidden"> contact preference</span>
+                                </a>
+                            </dd>
+                        </div>
+                    </dl>
+
+
+
+                    <h2 class="govuk-heading-m">About your organisation</h2>
+
+                    <dl class="govuk-summary-list govuk-!-margin-bottom-9 tl-eoi-checkanswers">
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                Name
+                            </dt>
+                            <dd class="govuk-summary-list__value" id="tl-eoi-check--organisation-name" data-name="organisation-name">
+                                XXXX
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="?step=2">
+                                    Change<span class="govuk-visually-hidden"> name</span>
+                                </a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                Website
+                            </dt>
+                            <dd class="govuk-summary-list__value" id="tl-eoi-check--website" data-name="website">
+                                XXXX
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="?step=2">
+                                    Change<span class="govuk-visually-hidden"> website</span>
+                                </a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                Primary industry
+                            </dt>
+                            <dd class="govuk-summary-list__value" id="tl-eoi-check--industry" data-name="industry">
+                                XXXX
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="?step=2">
+                                    Change<span class="govuk-visually-hidden"> primary industry</span>
+                                </a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                Industry placement skill areas
+                            </dt>
+                            <dd class="govuk-summary-list__value" id="tl-eoi-check--skill-area" data-name="skill-area">
+                                XXXX
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="?step=2">
+                                    Change<span class="govuk-visually-hidden"> industry placement skill areas</span>
+                                </a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                Locations
+                            </dt>
+                            <dd class="govuk-summary-list__value" id="tl-eoi-check--locations" data-name="locations">
+                                XXXX
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="?step=2">
+                                    Change<span class="govuk-visually-hidden"> locations</span>
+                                </a>
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                Additional information
+                            </dt>
+                            <dd class="govuk-summary-list__value tl-prewrap" id="tl-eoi-check--information" data-name="information">
+                                XXXX
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="?step=2">
+                                    Change<span class="govuk-visually-hidden"> additional information</span>
+                                </a>
+                            </dd>
+                        </div>
+                    </dl>
+
+                    <h2 class="govuk-heading-m">Now send your details</h2>
+                    <p class="govuk-body">By submitting this form you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+                    <form id="tl-eoi-submission-form" novalidate>
+                        <div class="govuk-form-group govuk-!-margin-top-5" id="tl-consent">
+                            <div class="govuk-checkboxes govuk-checkboxes--small">
+                                <div class="govuk-checkboxes__item">
+                                    <p id="tl-consent-check-error" class="govuk-error-message tl-hidden"></p>
+                                    <input class="govuk-checkboxes__input" id="tl-consent-check" name="consent" type="checkbox" value="agree" aria-describedby="tl-consent-check-error">
+                                    <label class="govuk-label govuk-checkboxes__label" for="tl-consent-check">
+                                        By selecting this box you confirm that you consent to the Department for Education processing and storing your data for the purposes described in the <a href="/hc/en-gb/articles/{{settings.article_id_privacy}}/" target="_blank" class="govuk-link">privacy notice</a>.
+                                        <br />
+                                        <br />
+                                        In doing so, we will comply with the General Data Protection Regulation (GDPR) and ensure that any personal data (as defined by GDPR) is protected, used only for the purposes for which it was obtained and disposed of accordingly.
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="?step=4" type="button" class="govuk-button tl-eoi-button" id="tl-eoi-button--3">Send</a>
+                    </form>
+
+                </div>
+                <!-- Confirmation -->
+                <div id="tl-eoi--4" class="tl-hidden">
+                    <div class="govuk-panel govuk-panel--confirmation">
+                        <h1 class="govuk-panel__title">
+                            Your details have been saved
+                        </h1>
+                    </div>
+                    <h2 class="govuk-heading-m govuk-!-margin-top-8">What happens next</h2>
+                    <p class="govuk-body">The information you have provided will be shared with T Level schools and colleges near you for the next 12 weeks.</p>
+                    <p class="govuk-body">If a school or college would like to speak to you about hosting an industry placement or another T Level opportunity, they’ll get in touch using the contact details you have provided.</p>
+                    <p class="govuk-body">We have also sent you a confirmation email.</p>
+                    <p class="govuk-body">In the meantime, if you’d like to learn more about T Levels and industry placements, you can go back to <a href="/hc/en-gb" class="govuk-link govuk-link-no-visited-state">T Levels and industry placement support for employers home</a>.</p>
+                </div>
+            </div>
+            <!-- Unsubscribe -->
+            <div id="tl-eoi--withdraw" class="tl-hidden">
+                <div class="govuk-panel govuk-panel--confirmation">
+                    <h1 class="govuk-panel__title">
+                        You have withdrawn your interest in T Levels and industry placements
+                    </h1>
+                </div>
+                <p class="govuk-body govuk-!-margin-top-8">
+                    We have stopped sharing your details with T Level schools and colleges.
+                </p>
+                <p class="govuk-body">If you would like to connect with T Level schools and colleges in the future, you can find providers near you from the <a href="/hc/en-gb" class="govuk-link govuk-link-no-visited-state">T Levels and industry placement support for employers home</a>.</p>
+            </div>
+
+            <!-- Extend -->
+            <div id="tl-eoi--extend" class="tl-hidden">
+                <div class="govuk-panel govuk-panel--confirmation">
+                    <h1 class="govuk-panel__title">
+                        Your interest has been extended
+                    </h1>
+                </div>
+                <h2 class="govuk-heading-m govuk-!-margin-top-8">What happens next</h2>
+                <p class="govuk-body">
+                    We’ll continue sharing the information you have provided with T Level schools and colleges for the next 12 weeks.
+                </p>
+                <p class="govuk-body">
+                    If a school or college would like to speak to you about hosting an industry placement or another T Level opportunity, they’ll get in touch using the contact details you have provided.
+                </p>
+                <div class="govuk-inset-text tl-hidden" id="tl-eoi--extend--final">
+                    <p class="govuk-body">
+                        You will not be able to extend this interest again, but you can <a href="/hc/en-gb/articles/{{settings.article_id_eoi}}" class="govuk-link govuk-link-no-visited-state">register another interest in T Levels and industry placements</a> at any time. If you need help with your expression of interest, you can <a href="/hc/en-gb/requests/new" class="govuk-link govuk-link-no-visited-state">contact us</a>.
+                    </p>
+                </div>
+                <p class="govuk-body">In the meantime, if you’d like to learn more about T Levels and industry placements, you can go back to <a href="/hc/en-gb" class="govuk-link govuk-link-no-visited-state">T Levels and industry placement support for employers home</a>.</p>
+            </div>
+
+            <!-- Removed -->
+            <div id="tl-eoi--removed" class="tl-hidden">
+                <div class="govuk-panel govuk-panel--confirmation">
+                    <h1 class="govuk-panel__title">
+                        We can't extend your interest in T Levels
+                    </h1>
+                </div>
+                <p class="govuk-body">
+                    This could be because:
+                </p>
+                <ol class="govuk-list govuk-list--number">
+                    <li>
+                        <strong>You have already extended your interest</strong>
+                        <p class="govuk-body">
+                            If you have previously clicked on the link to extend your interest, it’s already taken care of. If you have extended 20 times, you cannot extend again.
+                        </p>
+                    </li>
+                    <li>
+                        <strong>Your interest in T Levels has been removed</strong>
+                        <p class="govuk-body">
+                            This may be because you did not extend your interest before it was automatically stopped.
+                        </p>
+                    </li>
+                </ol>
+                <p class="govuk-body">
+                    If this is the case, we will have sent an email confirming that we are no longer sharing your details with T Level schools and colleges.
+                </p>
+                <p class="govuk-body">You can <a href="/hc/en-gb/articles/{{settings.article_id_eoi}}" class="govuk-link govuk-link-no-visited-state">register an interest in T Levels and industry placements</a> again at any time.</p>
+                <p class="govuk-body">If you’d like to learn more about T Levels and industry placements, you can go back to <a href="/hc/en-gb" class="govuk-link govuk-link-no-visited-state">T Levels and industry placement support for employers home</a>.</p>
+            </div>
+
+            <!-- Error -->
+            <div id="tl-eoi--error" class="tl-hidden">
+                <h1 class="govuk-heading-l">
+                    Sorry, there is a problem with the service
+                </h1>
+                <p class="govuk-body">
+                    Please try again later.
+                </p>
+                <p class="govuk-body">
+                    You can <a href="mailto:support.deliveringtlevels@education.gov.uk" class="govuk-link govuk-link-no-visited-state">email us</a> if you have an urgent query about T Levels.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="govuk-grid-column-one-third tl-hidden" id="tl-eoi--related">
+            <hr class="govuk-section-break govuk-section-break--visible tl-section-break--blue">
+            <div class="tl-article--sidebar govuk-!-margin-top-4">
+                <h2 class="govuk-heading-m">More about T Levels and industry placements</h2>
+                <ul>
+                    <li><a href="/hc/en-gb/articles/{{settings.contact_link_2}}" class="govuk-link">What are T Levels?</a></li>
+                    <li><a href="/hc/en-gb/articles/{{settings.contact_link_5}}" class="govuk-link">What are industry placements?</a></li>
+                    <li><a href="/hc/en-gb/articles/{{settings.contact_link_3}}" class="govuk-link">How industry placements work</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+
+

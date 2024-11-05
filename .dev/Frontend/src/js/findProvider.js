@@ -101,6 +101,8 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
 
         $.each(data,
             function (_, item) {
+                if(item.id === 3) return; // skip Catering as we don't know when/if it will start
+                
                 let skillArea = '<div class="tl-fap--filter--section"> \
                                    <h4 class="govuk-heading-s govuk-!-margin-top-2">' +
                     item.name + '<br /> \
@@ -143,13 +145,13 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
         searchTerm = searchTerm ? searchTerm.trim() : "";
         if (searchTerm === "") {
             if (event) event.stopPropagation();
-            showSearchTermError("Enter postcode or town");
+            showSearchTermError("Enter a valid postcode or town in England");
             return false;
         }
 
         if (!searchTerm.match(/^[0-9a-zA-Z,\.'\-!&\(\)/\s]+$/)) {
             if (event) event.stopPropagation();
-            showSearchTermError("Enter a valid postcode or town");
+            showSearchTermError("Enter a valid postcode or town in England");
             return false;
         }
 
@@ -187,7 +189,7 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
         }).done(function (response) {
             if (response.error) {
                 console.log("Invalid providers search response received - " + response.error);
-                showSearchTermError("Enter a valid postcode or town");
+                showSearchTermError("Enter a valid postcode or town in England");
             } else if (activeSearchQuery !== uri) {
                 return;
             } else {
@@ -213,7 +215,7 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
         $('#tl-search-term-error').addClass("tl-hidden");
         $('.tl-fap--noresult').addClass("tl-hidden");
         $('.tl-fap--info-panel').addClass("tl-hidden");
-        $("#tl-next-results-link").addClass("tl-hidden");
+        $("#tl-fap--showmore").addClass("tl-hidden");
         $("#tl-fap--results").find(".tl-fap--result").remove();
         currentPage = 0;
     }
@@ -322,9 +324,9 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
         if (typeof data.totalResults !== "undefined" &&
             data.totalResults !== null &&
             data.totalResults <= ((page + 1) * pageSize)) {
-            $('#tl-next-results-link').addClass("tl-hidden");
+            $('#tl-fap--showmore').addClass("tl-hidden");
         } else {
-            $('#tl-next-results-link').removeClass("tl-hidden");
+            $('#tl-fap--showmore').removeClass("tl-hidden");
         }
     }
 
@@ -334,49 +336,56 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
         const overMinDistance =
             (searchResults && searchResults.length > 0 && searchResults[0].distance >= 15);
 
-        const qualificationNames = [];
+        const qualificationsNotAvailable = [];
         $('#tl-skill-area-filter .tl-checkbox:checked').each(
             function (_, item) {
                 const qualificationsOffered = parseInt($(item).attr("data-offerings"));
                 if (qualificationsOffered === 0) {
-                    qualificationNames.push($(item).next('label').text());
-                }
-            });
-        qualificationNames.sort();
+                    qualificationsNotAvailable.push(
+                        {
+                            id: item.value,
+                            name: $(item).next('label').text(),
+                            year: 2024 //Assume all unfound courses start in 2024
+                        });
+        }});
+        qualificationsNotAvailable.sort(function (x, y) { return (x.name < y.name) ? -1 : ((x.name > y.name) ? 1 : 0) });
 
-        if (qualificationNames.length === 0 && overMinDistance) {
+        if (qualificationsNotAvailable.length === 0 && overMinDistance) {
             $(".tl-fap--info-panel--heading").text("There are currently no T Level schools or colleges within 15 miles of your location.");
             $(".tl-fap--info-panel--detail").append(
                 '<p class="govuk-body">Please ' +
                 '<a class="govuk-link tl-fap--no-course-contact" href="/hc/en-gb/requests/new">contact us</a> ' +
                 'and we can help you with your search.</p>');
         }
-        else if (qualificationNames.length > 0 && overMinDistance) {
+        else if (qualificationsNotAvailable.length > 0 && overMinDistance) {
+            const has2024Qualifications = (qualificationsNotAvailable.filter(function(q) { return q.year === 2024; }).length > 0);
             $(".tl-fap--info-panel--heading").text("Contact us for help with your search");
-            $(".tl-fap--info-panel--detail").append(
-                '<p class="govuk-body">There are currently no T Level schools or colleges within 15 miles of your location.</p>' +
-                '<p class="govuk-body">The following T Levels start in September 2023 — we don’t have details of the schools and colleges offering them yet:</p>');
-            $(".tl-fap--info-panel--detail").append(buildQualificationList(qualificationNames));
+            $(".tl-fap--info-panel--detail").append('<p class="govuk-body">There are currently no T Level schools or colleges within 15 miles of your location.</p>');
+            if (has2024Qualifications) {
+                $(".tl-fap--info-panel--detail").append(
+                    '<p class="govuk-body">The following T Levels start in September 2024 — we don’t have details of the schools and colleges offering them yet:</p>');
+                $(".tl-fap--info-panel--detail").append(buildQualificationList(qualificationsNotAvailable, 2024));
+            }
             $(".tl-fap--info-panel--detail").append(
                 '<p class="govuk-body">Please ' +
                 '<a class="govuk-link tl-fap--no-course-contact" href="/hc/en-gb/requests/new">contact us</a> ' +
                 'and we can help you with your search.</p>');
         }
-        else if (qualificationNames.length === 1) {
-            $(".tl-fap--info-panel--heading").text("The " + qualificationNames[0] + " T Level starts in September 2023");
+        else if (qualificationsNotAvailable.length === 1) {            
+            $(".tl-fap--info-panel--heading").text("The " + qualificationsNotAvailable[0].name + " T Level starts in September " + qualificationsNotAvailable[0].year);
             $(".tl-fap--info-panel--detail").append(
                 '<p class="govuk-body">We don’t have details of the schools and colleges offering this T Level yet, but if you’re interested in offering an industry placement in this skill area, ' +
                 '<a class="govuk-link tl-fap--no-course-contact" href="/hc/en-gb/requests/new">contact us</a>.</p>');
         }
-        else if (qualificationNames.length > 1) {
-            $(".tl-fap--info-panel--heading").text("The following T Levels start in September 2023:");
-            $(".tl-fap--info-panel--detail").append(buildQualificationList(qualificationNames));
+        else if (qualificationsNotAvailable.length > 1) {
+            $(".tl-fap--info-panel--heading").text("The following T Levels start in September 2024:");
+            $(".tl-fap--info-panel--detail").append(buildQualificationList(qualificationsNotAvailable, 2024));
             $(".tl-fap--info-panel--detail").append(
                 '<p class="govuk-body">We don’t have details of the schools and colleges offering these T Levels yet, but if you’re interested in offering an industry placement in these areas, ' +
                 '<a class="govuk-link tl-fap--no-course-contact" href="/hc/en-gb/requests/new">contact us</a>.</p>');
         }
 
-        if (qualificationNames.length > 0 || overMinDistance) {
+        if (qualificationsNotAvailable.length > 0 || overMinDistance) {
             $('.tl-fap--info-panel').removeClass("tl-hidden");
             $('.tl-fap--noresult').addClass("tl-hidden");
         } else if ((!searchResults || searchResults.length === 0) && currentPage === 0) {
@@ -384,15 +393,17 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
         }
     }
 
-    function buildQualificationList(qualificationNames) {
+    function buildQualificationList(qualificationDetails, year) {
         let list = '<ul class="govuk-list govuk-list--bullet">';
-        $.each(qualificationNames,
-            function (_, qualificationName) {
-                list += '<li>' + qualificationName + '</li>';
+        $.each(qualificationDetails,
+            function (_, qualification) {
+                if(qualification.year === year) {
+                    list += '<li>' + qualification.name + '</li>';
+                }
             });
         list += "</ul>";     
         return list;
-    }
+    }   
 
     function showError(status, errorText) {
         console.log("Error status " + status + " was encountered. " + errorText);

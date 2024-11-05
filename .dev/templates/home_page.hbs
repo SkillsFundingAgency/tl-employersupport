@@ -57,11 +57,10 @@
 {{#if settings.fap_enabled}}
 <section id="tl-home--fap" class="govuk-!-margin-top-8">
     <div class="govuk-width-container">
-        <div class="tl-fap-tile"></div>
+        <div class="tl-fap-tile--home"></div>
     </div>
 </section>
 {{/if}}
-
 
 
 <!-- IA -->
@@ -72,7 +71,7 @@
             {{#each categories}}
             {{#isnt name "Find a T Level school or college"}}
             {{#isnt name "How this site works"}}
-            {{#isnt name "T Level workshops and webinars"}}
+            {{#isnt name "T Level webinars"}}
             {{#isnt name "Tailored support sessions"}}
             {{#isnt name "Skill areas and courses"}}
             <div class="tl-home--category">
@@ -123,24 +122,25 @@
 
                         <p class="govuk-body govuk-!-margin-bottom-0"><a href="{{url}}" class="govuk-link" id="tl-home-skillareas--all">All skill areas</a></p>
                     </div>
-                        {{/is}}
-                        {{/each}}
-                    </div>
-
+                    {{/is}}
+                    {{/each}}
                 </div>
+
+            </div>
             <div class="govuk-grid-column-one-third tl-row-fill govuk-!-margin-bottom-5">
                 <div class="tl-card--grey tl-card--flex">
+                    <h3 class="govuk-heading-m">T Level  webinars</h3>
 
-                    {{#each categories}}
-                    {{#is name "T Level workshops and webinars"}}
-                    <h3 class="govuk-heading-m">{{name}}</h3>
+                    <div id="tl-workshopsandwebinars">
+                        {{#each categories}}
+                        {{#is name "T Level webinars"}}
 
-                    {{#each sections}}
-                    {{#each articles}}
-                    {{#if @first}}
-                    <h4 class="govuk-heading-s govuk-!-margin-bottom-1"><a id="tl-home-waw--article" class="govuk-link" href="{{url}}">{{title}}</a></h4>
-                    <span class="govuk-body-s tl-text-headercase" id="tl-article--date--{{id}}"></span>
-                    <script>
+                        {{#each sections}}
+                        {{#each articles}}
+                        {{#if @first}}
+                        <h4 class="govuk-heading-s govuk-!-margin-bottom-1"><a id="tl-home-waw--article" class="govuk-link" href="{{url}}">{{title}}</a></h4>
+                        <span class="govuk-body-s tl-text-headercase" id="tl-article--date--{{id}}"></span>
+                        <script>
                             $.getJSON('/api/v2/help_center/articles/{{id}}', function (articlelabels) {
 
                                 if (articlelabels.article.label_names && articlelabels.article.label_names.length) {
@@ -148,25 +148,28 @@
 
                                         if (labelname.indexOf("date") != -1) {
                                             var date = labelname.split('/')[1];
-                                            $("#tl-article--date--{{id}}").text(date);
+                                            var dateformatted = moment(date).format("dddd, Do MMMM YYYY, h:mm A");
+                                            $("#tl-article--date--{{id}}").text(dateformatted);
                                         }
                                     });
                                 }
                             });
 
-                    </script>
+                        </script>
 
-                    {{/if}}
-                    {{/each}}
-                    {{/each}}
-                <div class="tl-card--grey--lower">
-                    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-                    {{#each sections}}
-                    <p class="govuk-body govuk-!-margin-bottom-0"><a href="{{url}}" class="govuk-link" id="tl-home-waw--all">All workshops and webinars</a></p>
-                    {{/each}}
-                </div>
-                    {{/is}}
-                    {{/each}}
+                        {{/if}}
+                        {{/each}}
+                        {{/each}}
+                        <div class="tl-card--grey--lower">
+                            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                            {{#each sections}}
+                            <p class="govuk-body govuk-!-margin-bottom-0"><a href="{{url}}" class="govuk-link" id="tl-home-waw--all">See all webinars</a></p>
+                            {{/each}}
+                        </div>
+                        {{/is}}
+                        {{/each}}
+                    </div>
+
                 </div>
 
             </div>
@@ -215,12 +218,14 @@
     $("#tl-home-lower--image").attr("src", "{{settings.home_image_lower}}");
 </script>
 
-<script src="{{asset 'findProviderTile.js'}}"></script>
+<script src="{{asset 'findProviderTileHome.js'}}"></script>
 <script>
-    new FindProviderTile("/hc/en-gb/articles/{{settings.article_id_find_provider}}", 
+    new FindProviderTileHome("/hc/en-gb/articles/{{settings.article_id_find_provider}}",
                          "{{settings.find_provider_api_uri}}",
                          "{{settings.find_provider_api_app_id}}",
-                         "{{settings.find_provider_api_key}}");
+                         "{{settings.find_provider_api_key}}",
+                         "{{settings.article_id_eoi}}");
+
 </script>
 
 <!-- Start of tlevelsemployertest Zendesk Widget script -->
@@ -249,3 +254,9 @@
     };
 </script>
 <!-- End of tlevelsemployertest Zendesk Widget script -->
+
+<script>
+    if ($('#tl-workshopsandwebinars').children().length == 0) {
+        $('#tl-workshopsandwebinars').html('<p class="govuk-body">There are currently no upcoming T Level events.</p>')
+    }
+</script>
