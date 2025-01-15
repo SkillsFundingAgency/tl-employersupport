@@ -30,6 +30,15 @@
     </div>
 </section>
 
+<section id="tl-home-category">
+  <div class="tl-home--category">
+        {{#each categories}}
+            {{#is name "News and updates (draft - do not use)"}}
+                <a id="tl-home-waw--article" class="govuk-link" href="{{url}}">{{title}}</a>
+            {{/is}}
+        {{/each}}
+    </div>
+</section>
 <!-- Benefits -->
 <section id="tl-home--benefits" class="govuk-!-margin-top-9">
     <div class="govuk-width-container">
