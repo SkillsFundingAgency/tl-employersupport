@@ -9,10 +9,10 @@
 <!-- Banner -->
 <section id="tl-home--banner">
     <div class="govuk-width-container">
-        <div class="">
+        <div class="govuk-grid-row" style="text-align: right;padding-top: 5px;">
             {{#each categories}}
                 {{#is name "News and updates (draft - do not use)"}}
-                    <a id="tl-home-waw--article" class="govuk-link" href="{{url}}">{{name}}</a>
+                    <a id="tl-home-waw--article" class="govuk-link govuk-grid-column-full" href="{{url}}">{{name}}</a>
                 {{/is}}
             {{/each}}
         </div>
