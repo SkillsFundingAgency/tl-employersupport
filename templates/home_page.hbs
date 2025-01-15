@@ -81,11 +81,13 @@
             {{#isnt name "T Level webinars"}}
             {{#isnt name "Tailored support sessions"}}
             {{#isnt name "Skill areas and courses"}}
+            {{#isnt name "News and updates (draft - do not use)"}}
             <div class="tl-home--category">
                 <span class="tl-home--category--image"></span>
                 <h3 class="govuk-heading-s"><a href="{{url}}" class="govuk-link" GTMname="{{name}}">{{name}}</a></h3>
                 <p class="govuk-body">{{excerpt description characters=200}}</p>
             </div>
+            {{/isnt}}
             {{/isnt}}
             {{/isnt}}
             {{/isnt}}
