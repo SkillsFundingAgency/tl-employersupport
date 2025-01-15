@@ -91,11 +91,13 @@
             </span>
         </p>
     </div>
-    {{#each categories}}
-    	{{#is name "News and updates (draft - do not use)"}}
-		    <a id="tl-home-waw--article" class="govuk-link" href="{{url}}">{{title}}</a>
-	    {{/is}}
-    {{/each}}
+    <div class="tl-home--category">
+        {{#each categories}}
+            {{#is name "News and updates (draft - do not use)"}}
+                <a id="tl-home-waw--article" class="govuk-link" href="{{url}}">{{title}}</a>
+            {{/is}}
+        {{/each}}
+    </div>
 </div>
 
 
