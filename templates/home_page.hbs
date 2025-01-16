@@ -12,7 +12,7 @@
         <div class="govuk-grid-row" style="text-align: right;padding-top: 5px;">
             <div class="govuk-grid-column-full">
             {{#each categories}}
-                {{#is name "News and updates (draft - do not use)"}}
+                {{#is name "News and updates"}}
                     <a id="tl-home-waw--article" class="govuk-link" href="{{url}}">{{name}}</a>
                 {{/is}}
             {{/each}}
@@ -83,7 +83,7 @@
             {{#isnt name "T Level webinars"}}
             {{#isnt name "Tailored support sessions"}}
             {{#isnt name "Skill areas and courses"}}
-            {{#isnt name "News and updates (draft - do not use)"}}
+            {{#isnt name "News and updates"}}
             <div class="tl-home--category">
                 <span class="tl-home--category--image"></span>
                 <h3 class="govuk-heading-s"><a href="{{url}}" class="govuk-link" GTMname="{{name}}">{{name}}</a></h3>
