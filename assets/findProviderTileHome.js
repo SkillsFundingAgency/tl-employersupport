@@ -6235,13 +6235,12 @@ function FindProviderTileHome(findProviderRedirectUrl, findProviderApiUri, findP
         '<div class="govuk-grid-row govuk-!-margin-top-2 tl-fap-home--container"> \
             <div class="govuk-grid-column-full"> \
                 <div class="tl-card--fap--home"> \
-                    <h2 class="govuk-!-margin-top-2 govuk-!-margin-bottom-4 govuk-heading-l">Partner with a school or college</h2> \
+                    <h2 class="govuk-!-margin-top-2 govuk-!-margin-bottom-4 govuk-heading-l">Search for schools and colleges near you or invite them to contact you</h2> \
                     <div class="govuk-grid-row tl-row-fill--fixed tl-card-fap--wrap"> \
                         <div class="govuk-grid-column-one-half tl-row-fill--fixed tl-order-mobile--1"> \
                             <div class="tl-card--fap--home--white"> \
                                 <form role="search" class="tl-fap-search-providers-form"> \
-                                    <h3 class="govuk-heading-m govuk-!-margin-bottom-1">Search for providers</h3> \
-                                    <p class="govuk-body">See schools and colleges near you.</p> \
+                                    <p class="govuk-body">See which T Levels are on offer near you.</p> \
                                     <span class="govuk-error-message tl-hidden" id="tl-search-term-error">You must enter a postcode or town</span> \
                                     <label class="govuk-visually-hidden" for="tl-search-term">Postcode or town</label> \
                                     <input class="govuk-input govuk-input--width-10 tl-fap-home--input" id="tl-search-term" name="tl-search-term" type="text" placeholder="Enter postcode or town"> \
@@ -6253,7 +6252,6 @@ function FindProviderTileHome(findProviderRedirectUrl, findProviderApiUri, findP
                         </div> \
                         <div class="govuk-grid-column-one-half tl-row-fill--fixed tl-order-mobile--3"> \
                             <div class="tl-card--fap--home--white"> \
-                                <h3 class="govuk-heading-m govuk-!-margin-bottom-1">Invite providers to contact you</h3> \
                                 <p class="govuk-body">Leave your details for them to get in touch.</p> \
                                 <a class="govuk-button tl-button--blue govuk-!-margin-bottom-0 govuk-!-margin-top-1" id="tl-eoi-button--home" href="/hc/en-gb/articles/' + findProviderEOIArticle + '">Register your interest</a> \
                             </div> \
@@ -6263,7 +6261,7 @@ function FindProviderTileHome(findProviderRedirectUrl, findProviderApiUri, findP
                                 <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details"> \
                                     <summary class="govuk-details__summary"> \
                                         <span class="govuk-details__summary-text"> \
-                                            Looking for providers in more than one location? \
+                                            Looking for schools and colleges in more than one location? \
                                         </span> \
                                     </summary> \
                                     <div class="govuk-details__text"> \
