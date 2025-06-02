@@ -345,7 +345,7 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
                         {
                             id: item.value,
                             name: $(item).next('label').text(),
-                            year: 2024 //Assume all unfound courses start in 2024
+                            year: 2025 //Assume all unfound courses start in 2024
                         });
         }});
         qualificationsNotAvailable.sort(function (x, y) { return (x.name < y.name) ? -1 : ((x.name > y.name) ? 1 : 0) });
@@ -374,14 +374,14 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
         else if (qualificationsNotAvailable.length === 1) {            
             $(".tl-fap--info-panel--heading").text("The " + qualificationsNotAvailable[0].name + " T Level starts in September " + qualificationsNotAvailable[0].year);
             $(".tl-fap--info-panel--detail").append(
-                '<p class="govuk-body">We don’t have details of the schools and colleges offering this T Level yet, but if you’re interested in offering an industry placement in this skill area, ' +
+                '<p class="govuk-body">We don’t have details of the schools and colleges offering this T Level yet, but if you’re interested in offering an industry placement in this subject, ' +
                 '<a class="govuk-link tl-fap--no-course-contact" href="/hc/en-gb/requests/new">contact us</a>.</p>');
         }
         else if (qualificationsNotAvailable.length > 1) {
             $(".tl-fap--info-panel--heading").text("The following T Levels start in September 2024:");
-            $(".tl-fap--info-panel--detail").append(buildQualificationList(qualificationsNotAvailable, 2024));
+            $(".tl-fap--info-panel--detail").append(buildQualificationList(qualificationsNotAvailable, 2025));
             $(".tl-fap--info-panel--detail").append(
-                '<p class="govuk-body">We don’t have details of the schools and colleges offering these T Levels yet, but if you’re interested in offering an industry placement in these areas, ' +
+                '<p class="govuk-body">We don’t have details of the schools and colleges offering these T Levels yet, but if you’re interested in offering an industry placement in these subjects, ' +
                 '<a class="govuk-link tl-fap--no-course-contact" href="/hc/en-gb/requests/new">contact us</a>.</p>');
         }
 
