@@ -82,7 +82,7 @@
             {{#isnt name "How this site works"}}
             {{#isnt name "T Level webinars"}}
             {{#isnt name "Tailored support sessions"}}
-            {{#isnt name "Skill areas and courses"}}
+            {{#isnt name "T Level subjects"}}
             {{#isnt name "News and updates"}}
             <div class="tl-home--category">
                 <span class="tl-home--category--image"></span>
@@ -103,49 +103,37 @@
 
     <div class="govuk-width-container">
         <div class="govuk-grid-row tl-row-fill">
-            <div class="govuk-grid-column-two-thirds tl-row-fill govuk-!-margin-bottom-5">
+            <div class="govuk-grid-column-one-half tl-row-fill govuk-!-margin-bottom-5">
                 <div class="tl-card--grey tl-card--flex">
                     {{#each categories}}
-                    {{#is name "Skill areas and courses"}}
+                    {{#is name "T Level subjects"}}
                     <h3 class="govuk-heading-m">{{name}}</h3>
-                    <div class="govuk-grid-row">
-                        <div class="govuk-grid-column-one-half">
-
-
-                            {{#each sections}}
-                            {{#is name "Digital and IT"}}
-                            <h4 class="govuk-heading-s">
-                                <a href="{{url}}" class="govuk-link" id="tl-home-skillareas--digital">{{name}}</a>
-                            </h4>
-                            <p class="govuk-body">{{excerpt description characters=200}}</p>
-                            {{/is}}
-                            {{/each}}
-
-                        </div>
-                        <div class="govuk-grid-column-one-half">
-                            <img class="tl-image-100" id="tl-home-lower--image" src="" />
-                        </div>
-
+                    <div class="tl-workshopsandwebinars">
+                        
+														<p class="govuk-body">{{description}}</p>
+                      
                     </div>
                     <div class="tl-card--grey--lower">
 
                         <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
-                        <p class="govuk-body govuk-!-margin-bottom-0"><a href="{{url}}" class="govuk-link" id="tl-home-skillareas--all">All skill areas</a></p>
+                        <p class="govuk-body govuk-!-margin-bottom-0"><a href="{{url}}" class="govuk-link" id="tl-home-skillareas--all">All T Level subjects</a></p>
                     </div>
                     {{/is}}
                     {{/each}}
                 </div>
 
             </div>
-            <div class="govuk-grid-column-one-third tl-row-fill govuk-!-margin-bottom-5">
+            <div class="govuk-grid-column-one-half tl-row-fill govuk-!-margin-bottom-5">
                 <div class="tl-card--grey tl-card--flex">
-                    <h3 class="govuk-heading-m">T Level  webinars</h3>
+                    <h3 class="govuk-heading-m">T Level webinars and events</h3>
 
                     <div id="tl-workshopsandwebinars">
                         {{#each categories}}
                         {{#is name "T Level webinars"}}
-
+												<div class="tl-workshopsandwebinars">
+														<p class="govuk-body">{{description}}</p>
+                    </div>
                         {{#each sections}}
                         {{#each articles}}
                         {{#if @first}}
@@ -174,7 +162,7 @@
                         <div class="tl-card--grey--lower">
                             <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
                             {{#each sections}}
-                            <p class="govuk-body govuk-!-margin-bottom-0"><a href="{{url}}" class="govuk-link" id="tl-home-waw--all">See all webinars</a></p>
+                            <p class="govuk-body govuk-!-margin-bottom-0"><a href="{{url}}" class="govuk-link" id="tl-home-waw--all">See all webinars and events</a></p>
                             {{/each}}
                         </div>
                         {{/is}}
