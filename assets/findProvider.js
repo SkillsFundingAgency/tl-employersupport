@@ -6229,11 +6229,13 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
 
     let activeSearchQuery = null;
     let currentPage = 0;
+    let previousPage = 0;
+    let nextPage = 0;
     let currentSearchTerm = null;
     let currentQualificationIds = [];
     let isClearAllInProgress = false;
 
-    if($("#tl-search-term").length) {
+    if ($("#tl-search-term").length) {
         //initialize autocomplete
         new LocationAutocomplete(findProviderApiUri);
     }
@@ -6274,10 +6276,11 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
         event.preventDefault();
     });
 
-    $("#tl-next-results-link").click(function () {
+    $(document).on("click", "#tl-next-results-link", function (event) {
         event.stopPropagation();
         event.preventDefault();
-        callProviderSearchApi(currentSearchTerm, currentQualificationIds, currentPage + 1);
+        const pageNumber = $(this).data("page-number");
+        callProviderSearchApi(currentSearchTerm, currentQualificationIds, pageNumber);
         return false;
     });
 
@@ -6316,8 +6319,8 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
 
         $.each(data,
             function (_, item) {
-                if(item.id === 3) return; // skip Catering as we don't know when/if it will start
-                
+                if (item.id === 3) return; // skip Catering as we don't know when/if it will start
+
                 let skillArea = '<div class="tl-fap--filter--section"> \
                                    <h4 class="govuk-heading-s govuk-!-margin-top-2">' +
                     item.name + '<br /> \
@@ -6381,6 +6384,8 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
 
         page = (page === undefined ? 0 : page);
         pageSize = (pageSize === undefined ? 5 : pageSize);
+        previousPage = page > 0 ? page - 1 : 0;
+        nextPage = page >= 5 ? 5 : page + 1;
 
         const encodedSearchTerm = encodeURIComponent(searchTerm).replace(/'/g, '%27');
         let uri = findProviderApiUri + "providers?searchTerm=" + encodedSearchTerm + '&page=' + page + '&pageSize=' + pageSize;
@@ -6446,7 +6451,7 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
             $('.tl-fap--result').addClass("tl-hidden");
             return;
         }
-
+        $("#tl-fap--results").empty();
         $.each(data.searchResults,
             function (_, providerLocation) {
                 let searchResult =
@@ -6543,6 +6548,57 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
         } else {
             $('#tl-fap--showmore').removeClass("tl-hidden");
         }
+
+        let pageCount = Math.ceil(data.totalResults / pageSize);
+        pageCount >= 5 ? pageCount = 5 : pageCount; // Limit to 5 pages
+        let paging = '';
+
+        if (pageCount > 1) {
+            let pageList = '';
+            for (let i = 0; i < pageCount; i++) {
+                pageList +=
+                    `<li class="govuk-pagination__item ${(i === currentPage ? "govuk-pagination__item--current" : '')}">
+                        <a class="govuk-link govuk-pagination__link" id="tl-next-results-link" data-page-number="${i}" href="more-results" aria-label="Page ${(i + 1)}">
+                            ${(i + 1)}
+                        </a>
+                    </li>`;
+            }
+
+            paging =
+                `<nav class="govuk-pagination" aria-label="Pagination">
+                    <div class="govuk-pagination__prev">
+                    <a class="govuk-link govuk-pagination__link previous-page" href="more-results" rel="prev" id="tl-next-results-link" data-page-number="${previousPage}">
+                        <svg class="govuk-pagination__icon govuk-pagination__icon--prev" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+                        <path d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path>
+                        </svg>
+                        <span class="govuk-pagination__link-title">
+                        Previous<span class="govuk-visually-hidden"> page</span>
+                        </span>
+                    </a>
+                    </div>
+                    <ul class="govuk-pagination__list">
+                        ${pageList}
+                    </ul>
+                    <div class="govuk-pagination__next">
+                    <a class="govuk-link govuk-pagination__link next-page" href="more-results" id="tl-next-results-link" rel="next" data-page-number="${nextPage}">
+                        <span class="govuk-pagination__link-title">
+                        Next<span class="govuk-visually-hidden"> page</span>
+                        </span>
+                        <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+                        <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+                        </svg>
+                    </a>
+                    </div>
+                </nav>`;
+        }
+        $('#tl-fap--showmore').html(paging);
+        
+        if (nextPage >= pageCount) {
+            $('#tl-next-results-link.next-page').addClass("disabled");
+        }
+        if (currentPage === previousPage) {
+            $('#tl-next-results-link.previous-page').addClass("disabled");
+        }
     }
 
     function showSearchResultsInfoPanel(searchResults) {
@@ -6562,7 +6618,8 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
                             name: $(item).next('label').text(),
                             year: 2025 //Assume all unfound courses start in 2024
                         });
-        }});
+                }
+            });
         qualificationsNotAvailable.sort(function (x, y) { return (x.name < y.name) ? -1 : ((x.name > y.name) ? 1 : 0) });
 
         if (qualificationsNotAvailable.length === 0 && overMinDistance) {
@@ -6573,7 +6630,7 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
                 'and we can help you with your search.</p>');
         }
         else if (qualificationsNotAvailable.length > 0 && overMinDistance) {
-            const has2024Qualifications = (qualificationsNotAvailable.filter(function(q) { return q.year === 2024; }).length > 0);
+            const has2024Qualifications = (qualificationsNotAvailable.filter(function (q) { return q.year === 2024; }).length > 0);
             $(".tl-fap--info-panel--heading").text("Contact us for help with your search");
             $(".tl-fap--info-panel--detail").append('<p class="govuk-body">There are currently no T Level schools or colleges within 15 miles of your location.</p>');
             if (has2024Qualifications) {
@@ -6586,7 +6643,7 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
                 '<a class="govuk-link tl-fap--no-course-contact" href="/hc/en-gb/requests/new">contact us</a> ' +
                 'and we can help you with your search.</p>');
         }
-        else if (qualificationsNotAvailable.length === 1) {            
+        else if (qualificationsNotAvailable.length === 1) {
             $(".tl-fap--info-panel--heading").text("The " + qualificationsNotAvailable[0].name + " T Level starts in September " + qualificationsNotAvailable[0].year);
             $(".tl-fap--info-panel--detail").append(
                 '<p class="govuk-body">We don’t have details of the schools and colleges offering this T Level yet, but if you’re interested in offering an industry placement in this subject, ' +
@@ -6612,13 +6669,13 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
         let list = '<ul class="govuk-list govuk-list--bullet">';
         $.each(qualificationDetails,
             function (_, qualification) {
-                if(qualification.year === year) {
+                if (qualification.year === year) {
                     list += '<li>' + qualification.name + '</li>';
                 }
             });
-        list += "</ul>";     
+        list += "</ul>";
         return list;
-    }   
+    }
 
     function showError(status, errorText) {
         console.log("Error status " + status + " was encountered. " + errorText);
@@ -6676,7 +6733,7 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
         if (totalNumberOfChecked.length !== 0) {
             $(".tl-fap--filter--selected").html('');
 
-            checkedSection.sort(function(x, y) {
+            checkedSection.sort(function (x, y) {
                 return ($(x).text() < $(y).text()) ? -1 : (($(x).text() > $(y).text()) ? 1 : 0);
             });
 
