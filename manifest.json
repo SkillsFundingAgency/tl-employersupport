@@ -646,6 +646,13 @@
           "description": "Qualification article for id 58",
           "label": "Qualification article for id 58",
           "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/4416405086098-Agriculture-Environment-and-Animal-Care#animal-care-and-management"
+        }, 
+        {
+          "identifier": "qualification_article_59",
+          "type": "text",
+          "description": "Qualification article for id 59",
+          "label": "Qualification article for id 59",
+          "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/32576435521170-Sales-Marketing-and-Procurement"
         }
       ]
     }
