@@ -31,7 +31,7 @@
           "type": "text",
           "description": "Home page banner title",
           "label": "Home page banner title",
-          "value": "Discover your future workforce"
+          "value": "What are T Levels?"
         },
         {
           "identifier": "homepage_banner_text_1",
@@ -336,13 +336,6 @@
           "description": "Find Provider",
           "label": "Find Provider",
           "value": "4416405115154"
-        },
-        {
-          "identifier": "section_id_how_industry",
-          "type": "text",
-          "description": "How industry placements work",
-          "label": "How industry placements work",
-          "value": "4507598340882"
         },
         {
           "identifier": "subdomain",
