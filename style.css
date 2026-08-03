@@ -9161,6 +9161,12 @@ details summary {
     order: 2;
   }
 }
+.tl-home--banner--column-two-thirds {
+  width: 66.6666666667%;
+}
+.tl-home--banner--column-one-third {
+  width: 33.3333333333%;
+}
 @media (max-width: 48.0525em) {
   .tl-home--banner {
     flex-direction: column;
