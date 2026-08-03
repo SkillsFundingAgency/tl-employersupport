@@ -68,7 +68,7 @@
 <section id="tl-home--ia">
     <div class="govuk-width-container govuk-main-wrapper">
 
-        <p class="govuk-body-l govuk-!-margin-bottom-2">About T Levels and industry placements</p>
+        <h2 class="govuk-heading-m">About T Levels and industry placements</h2>
         <div class="tl-home--categories">
 
             {{#each categories}}
@@ -95,79 +95,6 @@
         </div>
     </div>
 
-    <div class="govuk-width-container">
-        <div class="govuk-grid-row tl-row-fill">
-            <div class="govuk-grid-column-one-half tl-row-fill govuk-!-margin-bottom-5">
-                <div class="tl-card--grey tl-card--flex">
-                    {{#each categories}}
-                    {{#is name "T Level subjects"}}
-                    <h3 class="govuk-heading-m">{{name}}</h3>
-                    <div class="tl-workshopsandwebinars">
-
-                        <p class="govuk-body">{{description}}</p>
-
-                    </div>
-                    <div class="tl-card--grey--lower">
-
-                        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-
-                        <p class="govuk-body govuk-!-margin-bottom-0"><a href="{{url}}" class="govuk-link" id="tl-home-skillareas--all">All T Level subjects</a></p>
-                    </div>
-                    {{/is}}
-                    {{/each}}
-                </div>
-
-            </div>
-            <div class="govuk-grid-column-one-half tl-row-fill govuk-!-margin-bottom-5">
-                <div class="tl-card--grey tl-card--flex">
-                    <h3 class="govuk-heading-m">T Level webinars and events</h3>
-
-                    <div id="tl-workshopsandwebinars">
-                        {{#each categories}}
-                        {{#is name "T Level webinars"}}
-                        <div class="tl-workshopsandwebinars">
-                            <p class="govuk-body">{{description}}</p>
-                        </div>
-                        {{#each sections}}
-                        {{#each articles}}
-                        {{#if @first}}
-                        <h4 class="govuk-heading-s govuk-!-margin-bottom-1"><a id="tl-home-waw--article" class="govuk-link" href="{{url}}">{{title}}</a></h4>
-                        <span class="govuk-body-s tl-text-headercase" id="tl-article--date--{{id}}"></span>
-                        <script>
-                            $.getJSON('/api/v2/help_center/articles/{{id}}', function (articlelabels) {
-
-                                if (articlelabels.article.label_names && articlelabels.article.label_names.length) {
-                                    articlelabels.article.label_names.forEach(function (labelname) {
-
-                                        if (labelname.indexOf("date") != -1) {
-                                            var date = labelname.split('/')[1];
-                                            var dateformatted = moment(date).format("dddd, Do MMMM YYYY, h:mm A");
-                                            $("#tl-article--date--{{id}}").text(dateformatted);
-                                        }
-                                    });
-                                }
-                            });
-
-                        </script>
-
-                        {{/if}}
-                        {{/each}}
-                        {{/each}}
-                        <div class="tl-card--grey--lower">
-                            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-                            {{#each sections}}
-                            <p class="govuk-body govuk-!-margin-bottom-0"><a href="{{url}}" class="govuk-link" id="tl-home-waw--all">See all webinars and events</a></p>
-                            {{/each}}
-                        </div>
-                        {{/is}}
-                        {{/each}}
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-    </div>
 </section>
 
 <!-- FAP -->
