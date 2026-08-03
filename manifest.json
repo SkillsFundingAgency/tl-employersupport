@@ -289,6 +289,13 @@
       "label": "Custom article IDs",
       "variables": [
         {
+          "identifier": "article_id_benefits",
+          "type": "text",
+          "description": "Footer section",
+          "label": "Benefits",
+          "value": "4403442822034"
+        },
+        {
           "identifier": "article_id_cookies",
           "type": "text",
           "description": "Footer section",
