@@ -338,6 +338,13 @@
           "value": "4416405115154"
         },
         {
+          "identifier": "section_id_how_industry",
+          "type": "text",
+          "description": "How industry placements work",
+          "label": "How industry placements work",
+          "value": "4507598340882"
+        },
+        {
           "identifier": "subdomain",
           "type": "text",
           "description": "Subdomain of ZD instance",
