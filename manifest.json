@@ -253,6 +253,95 @@
       ]
     },
     {
+      "label": "Quick Links",
+      "variables": [
+        {
+          "identifier": "quick_link_1_heading",
+          "type": "text",
+          "description": "heading of quick link 1",
+          "label": "Quick Link 1 Heading",
+          "value": "5 step checklist"
+        },
+        {
+          "identifier": "quick_link_1_url",
+          "type": "text",
+          "description": "url of quick link 1",
+          "label": "Quick Link 1 URL",
+          "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/4416396531090-getting-started-with-industry-placements"
+        },
+        {
+          "identifier": "quick_link_1_content",
+          "type": "text",
+          "description": "content of quick link 1",
+          "label": "Quick Link 1 Content",
+          "value": "Find out how to partner with a local school or college, find a student and work on their progression."
+        },
+        {
+          "identifier": "quick_link_2_heading",
+          "type": "text",
+          "description": "heading of quick link 2",
+          "label": "Quick Link 2 Heading",
+          "value": "T Level subject areas"
+        },
+        {
+          "identifier": "quick_link_2_url",
+          "type": "text",
+          "description": "url of quick link 2",
+          "label": "Quick Link 2 URL",
+          "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/categories/4416396528786-T-Level-subjects"
+        },
+        {
+          "identifier": "quick_link_2_content",
+          "type": "text",
+          "description": "content of quick link 2",
+          "label": "Quick Link 2 Content",
+          "value": "Check out which subject areas are on offer and the course outlines."
+        },
+        {
+          "identifier": "quick_link_3_heading",
+          "type": "text",
+          "description": "heading of quick link 3",
+          "label": "Quick Link 3 Heading",
+          "value": "Supporting a student"
+        },
+        {
+          "identifier": "quick_link_3_url",
+          "type": "text",
+          "description": "url of quick link 3",
+          "label": "Quick Link 3 URL",
+          "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/categories/4416409669394-During-industry-placements"
+        },
+        {
+          "identifier": "quick_link_3_content",
+          "type": "text",
+          "description": "content of quick link 3",
+          "label": "Quick Link 3 Content",
+          "value": "Find out what you'll need to support a student and make sure you have the correct safeguarding measures in place."
+        },
+        {
+          "identifier": "quick_link_4_heading",
+          "type": "text",
+          "description": "heading of quick link 4",
+          "label": "Quick Link 4 Heading",
+          "value": "Employer webinars"
+        },
+        {
+          "identifier": "quick_link_4_url",
+          "type": "text",
+          "description": "url of quick link 4",
+          "label": "Quick Link 4 URL",
+          "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/4416396529938-Webinars"
+        },
+        {
+          "identifier": "quick_link_4_content",
+          "type": "text",
+          "description": "content of quick link 4",
+          "label": "Quick Link 4 Content",
+          "value": "Webinars and recordings to help you understand more about T Levels, whatever stage of your journey."
+        }
+      ]
+    },
+    {
       "label": "search_group_label",
       "variables": [
         {
@@ -660,7 +749,7 @@
           "description": "Qualification article for id 58",
           "label": "Qualification article for id 58",
           "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/4416405086098-Agriculture-Environment-and-Animal-Care#animal-care-and-management"
-        }, 
+        },
         {
           "identifier": "qualification_article_59",
           "type": "text",
@@ -674,13 +763,15 @@
           "description": "Qualification article for id 61",
           "label": "Qualification article for id 61",
           "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/4416396532882-Digital-and-IT#digital-software-development"
-        }, {
+        },
+        {
           "identifier": "qualification_article_62",
           "type": "text",
           "description": "Qualification article for id 62",
           "label": "Qualification article for id 62",
           "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/4416396532882-Digital-and-IT#digital-support-security"
-        }, {
+        },
+        {
           "identifier": "qualification_article_63",
           "type": "text",
           "description": "Qualification article for id 63",

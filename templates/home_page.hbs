@@ -71,25 +71,29 @@
         <h2 class="govuk-heading-m">About T Levels and industry placements</h2>
         <div class="tl-home--categories">
 
-            {{#each categories}}
-            {{#isnt name "Find a T Level school or college"}}
-            {{#isnt name "How this site works"}}
-            {{#isnt name "T Level webinars"}}
-            {{#isnt name "Tailored support sessions"}}
-            {{#isnt name "T Level subjects"}}
-            {{#isnt name "News and updates"}}
             <div class="tl-home--category">
                 <span class="tl-home--category--image"></span>
-                <h3 class="govuk-heading-s"><a href="{{url}}" class="govuk-link" GTMname="{{name}}">{{name}}</a></h3>
-                <p class="govuk-body">{{excerpt description characters=200}}</p>
+                <h3 class="govuk-heading-s"><a href="{{settings.quick_link_1_url}}" class="govuk-link">{{settings.quick_link_1_heading}}</a></h3>
+                <p class="govuk-body">{{settings.quick_link_1_content}}</p>
             </div>
-            {{/isnt}}
-            {{/isnt}}
-            {{/isnt}}
-            {{/isnt}}
-            {{/isnt}}
-            {{/isnt}}
-            {{/each}}
+
+            <div class="tl-home--category">
+                <span class="tl-home--category--image"></span>
+                <h3 class="govuk-heading-s"><a href="{{settings.quick_link_2_url}}" class="govuk-link">{{settings.quick_link_2_heading}}</a></h3>
+                <p class="govuk-body">{{settings.quick_link_2_content}}</p>
+            </div>
+
+            <div class="tl-home--category">
+                <span class="tl-home--category--image"></span>
+                <h3 class="govuk-heading-s"><a href="{{settings.quick_link_3_url}}" class="govuk-link">{{settings.quick_link_3_heading}}</a></h3>
+                <p class="govuk-body">{{settings.quick_link_3_content}}</p>
+            </div>
+
+            <div class="tl-home--category">
+                <span class="tl-home--category--image"></span>
+                <h3 class="govuk-heading-s"><a href="{{settings.quick_link_4_url}}" class="govuk-link">{{settings.quick_link_4_heading}}</a></h3>
+                <p class="govuk-body">{{settings.quick_link_4_content}}</p>
+            </div>
 
 
         </div>
