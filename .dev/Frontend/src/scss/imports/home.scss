@@ -75,7 +75,7 @@
 
 
 
-.tl-home--categories {
+.tl-home--quicklinks {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -84,7 +84,7 @@
     @include govuk-responsive-padding(5, "top");
 }
 
-.tl-home--category {
+.tl-home--quicklink {
     width: 100%;
     padding: 0 15px;
     @include govuk-responsive-margin(3, "bottom");
@@ -92,9 +92,6 @@
     @include govuk-media-query($from: desktop) {
         width: calc(25% - 30px);
 
-        h3 {
-            min-height: 50px;
-        }
     }
 
 
@@ -126,31 +123,31 @@
 
 
     &:nth-child(2) {
-        .tl-home--category--image {
+        .tl-home--quicklink--image {
             background-image: url("$home_image_2");
         }
     }
 
     &:nth-child(3) {
-        .tl-home--category--image {
+        .tl-home--quicklink--image {
             background-image: url("$home_image_3");
         }
     }
 
     &:nth-child(4) {
-        .tl-home--category--image {
+        .tl-home--quicklink--image {
             background-image: url("$home_image_4");
         }
     }
 
     &:nth-child(5) {
-        .tl-home--category--image {
+        .tl-home--quicklink--image {
             background-image: url("$home_image_5");
         }
     }
 
     &:nth-child(6) {
-        .tl-home--category--image {
+        .tl-home--quicklink--image {
             background-image: url("$home_image_6");
         }
     }
