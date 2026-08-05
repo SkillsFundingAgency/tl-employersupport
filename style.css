@@ -9231,7 +9231,6 @@ details summary {
 .tl-home--quicklink {
   width: 100%;
   padding: 0 15px;
-  margin-bottom: 15px;
 }
 @media (min-width: 48.0625em) {
   .tl-home--quicklink {
@@ -9470,8 +9469,7 @@ details summary {
   flex-direction: column;
 }
 .tl-card--purple {
-  background-color: #f3f2f1;
-  padding: 30px;
+  background-color: transparent;
   margin: 20px 0;
   border-bottom: 5px solid #4c2c92;
 }

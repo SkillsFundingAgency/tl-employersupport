@@ -87,13 +87,11 @@
 .tl-home--quicklink {
     width: 100%;
     padding: 0 15px;
-    @include govuk-responsive-margin(3, "bottom");
 
     @include govuk-media-query($from: desktop) {
         width: calc(25% - 30px);
 
     }
-
 
 
     &--image {
