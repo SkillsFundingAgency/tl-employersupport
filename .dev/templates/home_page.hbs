@@ -46,18 +46,17 @@
 
         <div class="govuk-grid-row tl-row-fill">
             <div class="govuk-grid-column-one-third tl-row-fill">
-                <h2 class="govuk-heading-l tl-home--benefit">71% <br /><p class="govuk-!-font-weight-regular"></p><p class="govuk-body">T Level completers agreed their course prepared them for the workplace</p></h2>
+                <h2 class="govuk-heading-l tl-home--benefit">{{settings.benefit_section_1_percentage}}<br /><p class="govuk-!-font-weight-regular"></p><p class="govuk-body">{{settings.benefit_section_1_content}}</p></h2>
             </div>
             <div class="govuk-grid-column-one-third tl-row-fill">
-                <h2 class="govuk-heading-l tl-home--benefit">34% <br /><p class="govuk-!-font-weight-regular"></p><p class="govuk-body">T Level students gained employment at their industry placement organisation</p></h2>
+                <h2 class="govuk-heading-l tl-home--benefit">{{settings.benefit_section_2_percentage}} <br /><p class="govuk-!-font-weight-regular"></p><p class="govuk-body">{{settings.benefit_section_2_content}}</p></h2>
             </div>
             <div class="govuk-grid-column-one-third tl-row-fill">
-                <h2 class="govuk-heading-l tl-home--benefit">71% <br /><p class="govuk-!-font-weight-regular"></p><p class="govuk-body">T Level students remained in their chosen field after completing their T Level</p></h2>
+                <h2 class="govuk-heading-l tl-home--benefit">{{settings.benefit_section_3_percentage}} <br /><p class="govuk-!-font-weight-regular"></p><p class="govuk-body">{{settings.benefit_section_3_content}}</p></h2>
             </div>
         </div>
     </div>
 </section>
-
 
 <!-- IA -->
 <section id="tl-home--ia">
@@ -66,9 +65,10 @@
         <div class="tl-home--quicklinks">
             <div class="tl-home--quicklink">
                 <span class="tl-home--quicklink--image"></span>
-                <h3 class="govuk-heading-s"><a href="{{settings.quick_link_1_url}}" class="govuk-link">{{settings.quick_link_1_heading}}</a></h3>
-                <p class="govuk-body">{{settings.quick_link_1_content}}</p>
-            </div>
+                <h3 class="govuk-heading-s"><a href="{{settings.quick_link_1_url
+                    }}" class="govuk-link">{{settings.quick_link_1_heading}}</a></h3>
+                    <p class="govuk-body">{{settings.quick_link_1_content}}</p>
+</div>
 
             <div class="tl-home--quicklink">
                 <span class="tl-home--quicklink--image"></span>
@@ -125,7 +125,7 @@
                     <div class="tl-card--purple" id="tl-home--question">
                         <h3 class="govuk-heading-m">Have a T Levels question?</h3>
                         <p class="govuk-body">
-                            Our T Levels support bot is here to help you find the answers. <a href="#" id="tl-home--answerbot" class="govuk-link">Ask a question</a>
+                            Our T Levels support bot is here to help you find the answers. <a href="#" id="tl-home--answerbot" class="govuk-link">Ask the support bot a question</a>
                         </p>
                     </div>
                 </div>
@@ -133,7 +133,7 @@
                 <div class="govuk-grid-column-one-third tl-row-fill">
                     <div class="tl-card--purple tl-js-hidden" id="tl-home--ticket">
                         <h3 class="govuk-heading-m">Contact us</h3>
-                        <p class="govuk-body">If you'd like to speak to someone about T Levels or industry placements, or can't find what you're looking for, {{#link 'new_request' class='govuk-link tl-home--contact'}}contact us{{/link}}</p>
+                        <p class="govuk-body">If you'd like to speak to someone about T Levels, or can't find what you're looking for, {{#link 'new_request' class='govuk-link tl-home--contact'}}contact us{{/link}}</p>
                     </div>
                 </div>
             </div>

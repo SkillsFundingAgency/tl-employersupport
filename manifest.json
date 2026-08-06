@@ -38,14 +38,14 @@
           "type": "text",
           "description": "Home page banner text 1",
           "label": "Home page banner text 1",
-          "value": "T Levels are a qualification for students aged 16-19 who have finished their GCSEs. Some T Level students go on to apprenticeships or become a full-time staff member. There are 21 courses across 10 subject areas that students can study."
+          "value": "T Levels are a two year qualification for students aged 16-19. There are 20 courses across 10 subject areas that students can study.  "
         },
         {
           "identifier": "homepage_banner_text_2",
           "type": "text",
           "description": "Home page banner text 2",
           "label": "Home page banner text 2",
-          "value": "20% of a T Level qualification is an industry placement and employers can offer a placement that aligns to what they're interested in and already studying."
+          "value": "20% of a T Level is an industry placement and employers can offer a placement that aligns to your needs and what students are interested in and already studying. Some T Level students go on to Apprenticeships or become full-time employees."
         },
         {
           "identifier": "homepage_banner_button",
@@ -66,6 +66,53 @@
           "type": "file",
           "description": "Home Page Banner Image",
           "label": "Banner Image"
+        }
+      ]
+    },
+    {
+      "label": "Benefit Section",
+      "variables": [
+        {
+          "identifier": "benefit_section_1_percentage",
+          "type": "text",
+          "description": "Benefit Section 1 Percentage",
+          "label": "Benefit Section 1 Percentage",
+          "value": "66%"
+        },
+        {
+          "identifier": "benefit_section_1_content",
+          "type": "text",
+          "description": "Benefit Section 1 Content",
+          "label": "Benefit Section 1 Content",
+          "value": "T Level students agreed their course prepared them for the workplace and future career"
+        },
+        {
+          "identifier": "benefit_section_2_percentage",
+          "type": "text",
+          "description": "Benefit Section 2 Percentage",
+          "label": "Benefit Section 2 Percentage",
+          "value": "27%"
+        },
+        {
+          "identifier": "benefit_section_2_content",
+          "type": "text",
+          "description": "Benefit Section 2 Content",
+          "label": "Benefit Section 2 Content",
+          "value": "T Level students gained employment at their industry placement organisation"
+        },
+        {
+          "identifier": "benefit_section_3_percentage",
+          "type": "text",
+          "description": "Benefit Section 3 Percentage",
+          "label": "Benefit Section 3 Percentage",
+          "value": "79%"
+        },
+        {
+          "identifier": "benefit_section_3_content",
+          "type": "text",
+          "description": "Benefit Section 3 Content",
+          "label": "Benefit Section 3 Content",
+          "value": "T Level students reported a positive experience on their industry placement"
         }
       ]
     },
