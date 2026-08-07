@@ -31,14 +31,21 @@
           "type": "text",
           "description": "Home page banner title",
           "label": "Home page banner title",
-          "value": "Discover your future workforce"
+          "value": "What are T Levels?"
         },
         {
-          "identifier": "homepage_banner_text",
+          "identifier": "homepage_banner_text_1",
           "type": "text",
-          "description": "Home page banner text",
-          "label": "Home page banner text",
-          "value": "T Levels: a new qualification developed in collaboration with employers."
+          "description": "Home page banner text 1",
+          "label": "Home page banner text 1",
+          "value": "T Levels are a two year qualification for students aged 16-19. There are 20 courses across 10 subject areas that students can study.  "
+        },
+        {
+          "identifier": "homepage_banner_text_2",
+          "type": "text",
+          "description": "Home page banner text 2",
+          "label": "Home page banner text 2",
+          "value": "20% of a T Level is an industry placement and employers can offer a placement that aligns to your needs and what students are interested in and already studying. Some T Level students go on to Apprenticeships or become full-time employees."
         },
         {
           "identifier": "homepage_banner_button",
@@ -59,13 +66,53 @@
           "type": "file",
           "description": "Home Page Banner Image",
           "label": "Banner Image"
+        }
+      ]
+    },
+    {
+      "label": "Benefit Section",
+      "variables": [
+        {
+          "identifier": "benefit_section_1_percentage",
+          "type": "text",
+          "description": "Benefit Section 1 Percentage",
+          "label": "Benefit Section 1 Percentage",
+          "value": "66%"
         },
         {
-          "identifier": "homepage_benefits_intro",
+          "identifier": "benefit_section_1_content",
           "type": "text",
-          "description": "Home page benefits section intro",
-          "label": "Home page benefits section intro",
-          "value": "An industry placement is at the heart of each T Level course:"
+          "description": "Benefit Section 1 Content",
+          "label": "Benefit Section 1 Content",
+          "value": "T Level students agreed their course prepared them for the workplace and future career"
+        },
+        {
+          "identifier": "benefit_section_2_percentage",
+          "type": "text",
+          "description": "Benefit Section 2 Percentage",
+          "label": "Benefit Section 2 Percentage",
+          "value": "27%"
+        },
+        {
+          "identifier": "benefit_section_2_content",
+          "type": "text",
+          "description": "Benefit Section 2 Content",
+          "label": "Benefit Section 2 Content",
+          "value": "T Level students gained employment at their industry placement organisation"
+        },
+        {
+          "identifier": "benefit_section_3_percentage",
+          "type": "text",
+          "description": "Benefit Section 3 Percentage",
+          "label": "Benefit Section 3 Percentage",
+          "value": "79%"
+        },
+        {
+          "identifier": "benefit_section_3_content",
+          "type": "text",
+          "description": "Benefit Section 3 Content",
+          "label": "Benefit Section 3 Content",
+          "value": "T Level students reported a positive experience on their industry placement"
         }
       ]
     },
@@ -246,6 +293,95 @@
       ]
     },
     {
+      "label": "Quick Links",
+      "variables": [
+        {
+          "identifier": "quick_link_1_heading",
+          "type": "text",
+          "description": "heading of quick link 1",
+          "label": "Quick Link 1 Heading",
+          "value": "5 step checklist"
+        },
+        {
+          "identifier": "quick_link_1_url",
+          "type": "text",
+          "description": "url of quick link 1",
+          "label": "Quick Link 1 URL",
+          "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/4416396531090-getting-started-with-industry-placements"
+        },
+        {
+          "identifier": "quick_link_1_content",
+          "type": "text",
+          "description": "content of quick link 1",
+          "label": "Quick Link 1 Content",
+          "value": "Find out how to partner with a local school or college, find a student and work on their progression."
+        },
+        {
+          "identifier": "quick_link_2_heading",
+          "type": "text",
+          "description": "heading of quick link 2",
+          "label": "Quick Link 2 Heading",
+          "value": "T Level subject areas"
+        },
+        {
+          "identifier": "quick_link_2_url",
+          "type": "text",
+          "description": "url of quick link 2",
+          "label": "Quick Link 2 URL",
+          "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/categories/4416396528786-T-Level-subjects"
+        },
+        {
+          "identifier": "quick_link_2_content",
+          "type": "text",
+          "description": "content of quick link 2",
+          "label": "Quick Link 2 Content",
+          "value": "Check out which subject areas are on offer and the course outlines."
+        },
+        {
+          "identifier": "quick_link_3_heading",
+          "type": "text",
+          "description": "heading of quick link 3",
+          "label": "Quick Link 3 Heading",
+          "value": "Supporting a student"
+        },
+        {
+          "identifier": "quick_link_3_url",
+          "type": "text",
+          "description": "url of quick link 3",
+          "label": "Quick Link 3 URL",
+          "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/articles/4416559508242-Supporting-students-health-and-wellbeing-on-placement"
+        },
+        {
+          "identifier": "quick_link_3_content",
+          "type": "text",
+          "description": "content of quick link 3",
+          "label": "Quick Link 3 Content",
+          "value": "Find out what you'll need to support a student and make sure you have the correct safeguarding measures in place."
+        },
+        {
+          "identifier": "quick_link_4_heading",
+          "type": "text",
+          "description": "heading of quick link 4",
+          "label": "Quick Link 4 Heading",
+          "value": "Employer webinars"
+        },
+        {
+          "identifier": "quick_link_4_url",
+          "type": "text",
+          "description": "url of quick link 4",
+          "label": "Quick Link 4 URL",
+          "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/4416396529938-Webinars"
+        },
+        {
+          "identifier": "quick_link_4_content",
+          "type": "text",
+          "description": "content of quick link 4",
+          "label": "Quick Link 4 Content",
+          "value": "Webinars and recordings to help you understand more about T Levels, whatever stage of your journey."
+        }
+      ]
+    },
+    {
       "label": "search_group_label",
       "variables": [
         {
@@ -281,6 +417,13 @@
     {
       "label": "Custom article IDs",
       "variables": [
+        {
+          "identifier": "article_id_benefits",
+          "type": "text",
+          "description": "Footer section",
+          "label": "Benefits",
+          "value": "4416409667218"
+        },
         {
           "identifier": "article_id_cookies",
           "type": "text",
@@ -646,7 +789,7 @@
           "description": "Qualification article for id 58",
           "label": "Qualification article for id 58",
           "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/4416405086098-Agriculture-Environment-and-Animal-Care#animal-care-and-management"
-        }, 
+        },
         {
           "identifier": "qualification_article_59",
           "type": "text",
@@ -660,13 +803,15 @@
           "description": "Qualification article for id 61",
           "label": "Qualification article for id 61",
           "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/4416396532882-Digital-and-IT#digital-software-development"
-        }, {
+        },
+        {
           "identifier": "qualification_article_62",
           "type": "text",
           "description": "Qualification article for id 62",
           "label": "Qualification article for id 62",
           "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/4416396532882-Digital-and-IT#digital-support-security"
-        }, {
+        },
+        {
           "identifier": "qualification_article_63",
           "type": "text",
           "description": "Qualification article for id 63",

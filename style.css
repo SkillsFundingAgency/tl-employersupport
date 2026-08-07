@@ -9161,6 +9161,12 @@ details summary {
     order: 2;
   }
 }
+.tl-home--banner--column-two-thirds {
+  width: 66.6666666667%;
+}
+.tl-home--banner--column-one-third {
+  width: 33.3333333333%;
+}
 @media (max-width: 48.0525em) {
   .tl-home--banner {
     flex-direction: column;
@@ -9208,7 +9214,7 @@ details summary {
   }
 }
 
-.tl-home--categories {
+.tl-home--quicklinks {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -9217,25 +9223,21 @@ details summary {
   padding-top: 15px;
 }
 @media (min-width: 40.0625em) {
-  .tl-home--categories {
+  .tl-home--quicklinks {
     padding-top: 25px;
   }
 }
 
-.tl-home--category {
+.tl-home--quicklink {
   width: 100%;
   padding: 0 15px;
-  margin-bottom: 15px;
 }
 @media (min-width: 48.0625em) {
-  .tl-home--category {
+  .tl-home--quicklink {
     width: calc(25% - 30px);
   }
-  .tl-home--category h3 {
-    min-height: 50px;
-  }
 }
-.tl-home--category--image {
+.tl-home--quicklink--image {
   max-width: 100%;
   background-image: url("$home_image_1");
   background-size: cover;
@@ -9247,7 +9249,7 @@ details summary {
   margin: 0 20px 20px 0;
 }
 @media (min-width: 48.0625em) {
-  .tl-home--category--image {
+  .tl-home--quicklink--image {
     width: 100%;
     float: unset;
     margin: 0 0 20px 0;
@@ -9255,24 +9257,24 @@ details summary {
   }
 }
 @media (max-width: 420px) {
-  .tl-home--category--image {
+  .tl-home--quicklink--image {
     width: 100%;
     margin: 0 0 20px 0;
   }
 }
-.tl-home--category:nth-child(2) .tl-home--category--image {
+.tl-home--quicklink:nth-child(2) .tl-home--quicklink--image {
   background-image: url("$home_image_2");
 }
-.tl-home--category:nth-child(3) .tl-home--category--image {
+.tl-home--quicklink:nth-child(3) .tl-home--quicklink--image {
   background-image: url("$home_image_3");
 }
-.tl-home--category:nth-child(4) .tl-home--category--image {
+.tl-home--quicklink:nth-child(4) .tl-home--quicklink--image {
   background-image: url("$home_image_4");
 }
-.tl-home--category:nth-child(5) .tl-home--category--image {
+.tl-home--quicklink:nth-child(5) .tl-home--quicklink--image {
   background-image: url("$home_image_5");
 }
-.tl-home--category:nth-child(6) .tl-home--category--image {
+.tl-home--quicklink:nth-child(6) .tl-home--quicklink--image {
   background-image: url("$home_image_6");
 }
 
@@ -9467,8 +9469,7 @@ details summary {
   flex-direction: column;
 }
 .tl-card--purple {
-  background-color: #f3f2f1;
-  padding: 30px;
+  background-color: transparent;
   margin: 20px 0;
   border-bottom: 5px solid #4c2c92;
 }
