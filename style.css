@@ -9152,8 +9152,6 @@ details summary {
 }
 .tl-home--banner--column {
   display: flex;
-  flex-basis: 100%;
-  flex: 1;
   width: 50%;
 }
 @media (max-width: 48.0525em) {
