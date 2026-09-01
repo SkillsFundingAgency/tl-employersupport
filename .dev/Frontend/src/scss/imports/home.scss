@@ -53,7 +53,10 @@
     line-height: 1 !important;
     width: 100%;
     box-sizing: border-box;
-    margin-bottom: 0px;
+
+    @include govuk-media-query($from: desktop) {
+        margin-bottom: 0px;
+    }
 
     .govuk-body {
         position: relative;

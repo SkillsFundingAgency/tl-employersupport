@@ -9186,7 +9186,6 @@ details summary {
   line-height: 1 !important;
   width: 100%;
   box-sizing: border-box;
-  margin-bottom: 0px;
 }
 @media (min-width: 40.0625em) {
   .tl-home--benefit {
@@ -9196,6 +9195,11 @@ details summary {
 @media (min-width: 40.0625em) {
   .tl-home--benefit {
     padding-bottom: 25px;
+  }
+}
+@media (min-width: 48.0625em) {
+  .tl-home--benefit {
+    margin-bottom: 0px;
   }
 }
 .tl-home--benefit .govuk-body, .tl-home--benefit .tl-ticket--form #upload-dropzone span, .tl-ticket--form #upload-dropzone .tl-home--benefit span, .tl-home--benefit .tl-ticket--form p, .tl-ticket--form .tl-home--benefit p, .tl-home--benefit .tl-community--post--content p, .tl-community--post--content .tl-home--benefit p, .tl-home--benefit .tl-community-table-post--description, .tl-home--benefit .tl-search--filters .tl-search--filter--radio, .tl-search--filters .tl-home--benefit .tl-search--filter--radio, .tl-home--benefit .tl-article--content p, .tl-article--content .tl-home--benefit p {
