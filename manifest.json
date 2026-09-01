@@ -77,14 +77,14 @@
           "type": "text",
           "description": "Benefit Section 1 Percentage",
           "label": "Benefit Section 1 Percentage",
-          "value": "66%"
+          "value": "67%"
         },
         {
           "identifier": "benefit_section_1_content",
           "type": "text",
           "description": "Benefit Section 1 Content",
           "label": "Benefit Section 1 Content",
-          "value": "T Level students agreed their course prepared them for the workplace and future career"
+          "value": "T Level students had remained working or studying in their T Level field"
         },
         {
           "identifier": "benefit_section_2_percentage",

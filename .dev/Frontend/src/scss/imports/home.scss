@@ -70,6 +70,11 @@
         @include govuk-responsive-padding(2, "right");
         background-color: govuk-colour("light-grey");
     }
+
+    &-footnote-column {
+        margin-top: 5px;
+        text-align: right;
+    }
 }
 
 

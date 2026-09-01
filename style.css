@@ -9213,6 +9213,10 @@ details summary {
     background-color: #f3f2f1;
   }
 }
+.tl-home--benefit-footnote-column {
+  margin-top: 5px;
+  text-align: right;
+}
 
 .tl-home--quicklinks {
   display: flex;
