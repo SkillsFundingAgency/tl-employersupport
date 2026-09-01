@@ -53,6 +53,7 @@
     line-height: 1 !important;
     width: 100%;
     box-sizing: border-box;
+    margin-bottom: 0px;
 
     .govuk-body {
         position: relative;
@@ -72,7 +73,11 @@
     }
 
     &-footnote-column {
-        margin-top: 5px;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &-footnote {
         text-align: right;
     }
 }

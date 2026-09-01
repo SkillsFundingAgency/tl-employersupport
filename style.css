@@ -9186,6 +9186,7 @@ details summary {
   line-height: 1 !important;
   width: 100%;
   box-sizing: border-box;
+  margin-bottom: 0px;
 }
 @media (min-width: 40.0625em) {
   .tl-home--benefit {
@@ -9214,7 +9215,10 @@ details summary {
   }
 }
 .tl-home--benefit-footnote-column {
-  margin-top: 5px;
+  display: flex;
+  justify-content: flex-end;
+}
+.tl-home--benefit-footnote {
   text-align: right;
 }
 
