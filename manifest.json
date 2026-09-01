@@ -45,7 +45,7 @@
           "type": "text",
           "description": "Home page banner text 2",
           "label": "Home page banner text 2",
-          "value": "20% of a T Level is an industry placement and employers can offer a placement that aligns to your needs and what students are interested in and already studying. Some T Level students go on to Apprenticeships or become full-time employees."
+          "value": "20% of a T Level is an industry placement. You can offer a placement tailored to your needs, as well as students' interests and current studies. Some T Level students go on to Apprenticeships or become full-time employees."
         },
         {
           "identifier": "homepage_banner_button",
