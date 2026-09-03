@@ -42,7 +42,7 @@
             width: 100%;
 
             &--image {
-                max-height: 73vw;
+                max-height: 100vw;
             }
         }
     }
@@ -75,6 +75,8 @@
         @include govuk-responsive-padding(2, "left");
         @include govuk-responsive-padding(2, "right");
         background-color: govuk-colour("light-grey");
+        padding: 20px !important;
+        margin: 20px 0;
     }
 
     &-footnote-column {
@@ -84,6 +86,8 @@
 
     &-footnote {
         text-align: right;
+        padding: 0 15px;
+        width: 100%;
     }
 }
 

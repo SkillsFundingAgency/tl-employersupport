@@ -7946,7 +7946,7 @@ x:-moz-any-link {
   object-fit: cover;
   max-width: 100%;
   max-height: 100%;
-  object-position: right bottom;
+  object-position: bottom;
   height: 100%;
   width: 100%;
 }
@@ -9177,7 +9177,7 @@ details summary {
     width: 100%;
   }
   .tl-home--banner--column--image {
-    max-height: 73vw;
+    max-height: 100vw;
   }
 }
 
@@ -9218,6 +9218,8 @@ details summary {
     padding-left: 10px;
     padding-right: 10px;
     background-color: #f3f2f1;
+    padding: 20px !important;
+    margin: 20px 0;
   }
 }
 .tl-home--benefit-footnote-column {
@@ -9226,6 +9228,8 @@ details summary {
 }
 .tl-home--benefit-footnote {
   text-align: right;
+  padding: 0 15px;
+  width: 100%;
 }
 
 .tl-home--quicklinks {
