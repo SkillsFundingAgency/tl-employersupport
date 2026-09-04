@@ -21,15 +21,16 @@
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-full">
                 <div class="tl-home--banner">
-                    <div class="tl-home--banner--column-two-thirds">
+                    <div class="tl-home--banner--column tl-home--banner--column-two-thirds">
                         <div class="tl-home--banner--card govuk-!-padding-8">
                             <h1 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-0">{{settings.homepage_banner_title}}</h1>
                             <p class="govuk-body-l">{{settings.homepage_banner_text_1}}</p>
                             <p class="govuk-body-l">{{settings.homepage_banner_text_2}}</p>
+                            <p class="govuk-body-l">{{settings.homepage_banner_text_3}}</p>
                             <p class="govuk-body govuk-!-margin-bottom-0"><a class="govuk-button govuk-!-margin-bottom-0" id="tl-home-banner--cta" href="/hc/en-gb/articles/{{settings.homepage_banner_button_article}}">{{settings.homepage_banner_button}}</a></p>
                         </div>
                     </div>
-                    <div class="tl-home--banner--column-one-third">
+                    <div class="tl-home--banner--column tl-home--banner--column-one-third">
                         <img class="tl-image--cover tl-home--banner--column--image" src="{{settings.homepage_banner_image}}" />
                     </div>
                 </div>
@@ -55,6 +56,11 @@
                 <h2 class="govuk-heading-l tl-home--benefit">{{settings.benefit_section_3_percentage}} <br /><p class="govuk-!-font-weight-regular"></p><p class="govuk-body">{{settings.benefit_section_3_content}}</p></h2>
             </div>
         </div>
+        <div class="govuk-grid-row tl-home--benefit-footnote-column">
+            <p class="govuk-body-s tl-home--benefit-footnote">
+                <a class="govuk-link" href="https://employers.tlevels.gov.uk/hc/en-gb/articles/38424164938770-Technical-education-learner-surveys-TELs" target="_blank" rel="noopener">Technical education learner survey 2025</a> (opens in a new window)
+            </p>
+        </div>
     </div>
 </section>
 
@@ -65,10 +71,12 @@
         <div class="tl-home--quicklinks">
             <div class="tl-home--quicklink">
                 <span class="tl-home--quicklink--image"></span>
-                <h3 class="govuk-heading-s"><a href="{{settings.quick_link_1_url
-                    }}" class="govuk-link">{{settings.quick_link_1_heading}}</a></h3>
-                    <p class="govuk-body">{{settings.quick_link_1_content}}</p>
-</div>
+                <h3 class="govuk-heading-s">
+                    <a href="{{settings.quick_link_1_url
+                    }}" class="govuk-link">{{settings.quick_link_1_heading}}</a>
+                </h3>
+                <p class="govuk-body">{{settings.quick_link_1_content}}</p>
+            </div>
 
             <div class="tl-home--quicklink">
                 <span class="tl-home--quicklink--image"></span>
@@ -116,7 +124,7 @@
                     <div class="tl-card--purple" id="tl-home--question">
                         <h3 class="govuk-heading-m">Case studies</h3>
                         <p class="govuk-body">
-                            Discover the <a href="/hc/en-gb/categories/{{settings.article_id_benefits}}" class="govuk-link">benefits</a> of hosting an industry placement student at your organisation. 
+                            Discover the <a href="/hc/en-gb/categories/{{settings.article_id_benefits}}" class="govuk-link">benefits</a> of hosting an industry placement student at your organisation.
                         </p>
                     </div>
                 </div>

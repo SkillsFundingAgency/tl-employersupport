@@ -38,14 +38,21 @@
           "type": "text",
           "description": "Home page banner text 1",
           "label": "Home page banner text 1",
-          "value": "T Levels are a two year qualification for students aged 16-19. There are 20 courses across 10 subject areas that students can study.  "
+          "value": "T Levels are a two year qualification for students aged 16-19. There are 20 courses across 10 subject areas that students can study."
         },
         {
           "identifier": "homepage_banner_text_2",
           "type": "text",
           "description": "Home page banner text 2",
           "label": "Home page banner text 2",
-          "value": "20% of a T Level is an industry placement and employers can offer a placement that aligns to your needs and what students are interested in and already studying. Some T Level students go on to Apprenticeships or become full-time employees."
+          "value": "20% of a T Level is an industry placement. You can offer a placement tailored to your needs, as well as students' interests and current studies."
+        },
+        {
+          "identifier": "homepage_banner_text_3",
+          "type": "text",
+          "description": "Home page banner text 3",
+          "label": "Home page banner text 3",
+          "value": "Some T Level students go on to Apprenticeships or become full-time employees."
         },
         {
           "identifier": "homepage_banner_button",
@@ -77,14 +84,14 @@
           "type": "text",
           "description": "Benefit Section 1 Percentage",
           "label": "Benefit Section 1 Percentage",
-          "value": "66%"
+          "value": "67%"
         },
         {
           "identifier": "benefit_section_1_content",
           "type": "text",
           "description": "Benefit Section 1 Content",
           "label": "Benefit Section 1 Content",
-          "value": "T Level students agreed their course prepared them for the workplace and future career"
+          "value": "T Level students had remained working or studying in their T Level field"
         },
         {
           "identifier": "benefit_section_2_percentage",
