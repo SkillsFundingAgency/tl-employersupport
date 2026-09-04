@@ -7946,7 +7946,7 @@ x:-moz-any-link {
   object-fit: cover;
   max-width: 100%;
   max-height: 100%;
-  object-position: right bottom;
+  object-position: bottom;
   height: 100%;
   width: 100%;
 }
@@ -9152,13 +9152,21 @@ details summary {
 }
 .tl-home--banner--column {
   display: flex;
-  flex-basis: 100%;
-  flex: 1;
   width: 50%;
 }
 @media (max-width: 48.0525em) {
   .tl-home--banner--column:first-child {
     order: 2;
+  }
+}
+@media (min-width: 48.0625em) {
+  .tl-home--banner--column-two-thirds {
+    width: 66.6667%;
+  }
+}
+@media (min-width: 48.0625em) {
+  .tl-home--banner--column-one-third {
+    width: 33.3333%;
   }
 }
 @media (max-width: 48.0525em) {
@@ -9169,7 +9177,7 @@ details summary {
     width: 100%;
   }
   .tl-home--banner--column--image {
-    max-height: 73vw;
+    max-height: 100vw;
   }
 }
 
@@ -9191,6 +9199,11 @@ details summary {
     padding-bottom: 25px;
   }
 }
+@media (min-width: 48.0625em) {
+  .tl-home--benefit {
+    margin-bottom: 0px;
+  }
+}
 .tl-home--benefit .govuk-body, .tl-home--benefit .tl-ticket--form #upload-dropzone span, .tl-ticket--form #upload-dropzone .tl-home--benefit span, .tl-home--benefit .tl-ticket--form p, .tl-ticket--form .tl-home--benefit p, .tl-home--benefit .tl-community--post--content p, .tl-community--post--content .tl-home--benefit p, .tl-home--benefit .tl-community-table-post--description, .tl-home--benefit .tl-search--filters .tl-search--filter--radio, .tl-search--filters .tl-home--benefit .tl-search--filter--radio, .tl-home--benefit .tl-article--content p, .tl-article--content .tl-home--benefit p {
   position: relative;
   top: -5px;
@@ -9205,10 +9218,21 @@ details summary {
     padding-left: 10px;
     padding-right: 10px;
     background-color: #f3f2f1;
+    padding: 20px !important;
+    margin: 20px 0;
   }
 }
+.tl-home--benefit-footnote-column {
+  display: flex;
+  justify-content: flex-end;
+}
+.tl-home--benefit-footnote {
+  text-align: right;
+  padding: 0 15px;
+  width: 100%;
+}
 
-.tl-home--categories {
+.tl-home--quicklinks {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -9217,25 +9241,21 @@ details summary {
   padding-top: 15px;
 }
 @media (min-width: 40.0625em) {
-  .tl-home--categories {
+  .tl-home--quicklinks {
     padding-top: 25px;
   }
 }
 
-.tl-home--category {
+.tl-home--quicklink {
   width: 100%;
   padding: 0 15px;
-  margin-bottom: 15px;
 }
 @media (min-width: 48.0625em) {
-  .tl-home--category {
+  .tl-home--quicklink {
     width: calc(25% - 30px);
   }
-  .tl-home--category h3 {
-    min-height: 50px;
-  }
 }
-.tl-home--category--image {
+.tl-home--quicklink--image {
   max-width: 100%;
   background-image: url("$home_image_1");
   background-size: cover;
@@ -9247,7 +9267,7 @@ details summary {
   margin: 0 20px 20px 0;
 }
 @media (min-width: 48.0625em) {
-  .tl-home--category--image {
+  .tl-home--quicklink--image {
     width: 100%;
     float: unset;
     margin: 0 0 20px 0;
@@ -9255,24 +9275,24 @@ details summary {
   }
 }
 @media (max-width: 420px) {
-  .tl-home--category--image {
+  .tl-home--quicklink--image {
     width: 100%;
     margin: 0 0 20px 0;
   }
 }
-.tl-home--category:nth-child(2) .tl-home--category--image {
+.tl-home--quicklink:nth-child(2) .tl-home--quicklink--image {
   background-image: url("$home_image_2");
 }
-.tl-home--category:nth-child(3) .tl-home--category--image {
+.tl-home--quicklink:nth-child(3) .tl-home--quicklink--image {
   background-image: url("$home_image_3");
 }
-.tl-home--category:nth-child(4) .tl-home--category--image {
+.tl-home--quicklink:nth-child(4) .tl-home--quicklink--image {
   background-image: url("$home_image_4");
 }
-.tl-home--category:nth-child(5) .tl-home--category--image {
+.tl-home--quicklink:nth-child(5) .tl-home--quicklink--image {
   background-image: url("$home_image_5");
 }
-.tl-home--category:nth-child(6) .tl-home--category--image {
+.tl-home--quicklink:nth-child(6) .tl-home--quicklink--image {
   background-image: url("$home_image_6");
 }
 
@@ -9467,8 +9487,7 @@ details summary {
   flex-direction: column;
 }
 .tl-card--purple {
-  background-color: #f3f2f1;
-  padding: 30px;
+  background-color: transparent;
   margin: 20px 0;
   border-bottom: 5px solid #4c2c92;
 }

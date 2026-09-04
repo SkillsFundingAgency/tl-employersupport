@@ -7,8 +7,6 @@
 
     &--column {
         display: flex;
-        flex-basis: 100%;
-        flex: 1;
         width: 50%;
 
         &:first-child {
@@ -16,7 +14,21 @@
                 order: 2;
             }
         }
+
+        &-two-thirds {
+            @include govuk-media-query($from: desktop) {
+                width: 66.6667%;
+            }
+        }
+
+        &-one-third {
+            @include govuk-media-query($from: desktop) {
+                width: calc(100% - 66.6667%);
+            }
+        }
     }
+
+
 
     &--card {
         @extend .tl-card--grey;
@@ -30,7 +42,7 @@
             width: 100%;
 
             &--image {
-                max-height: 73vw;
+                max-height: 100vw;
             }
         }
     }
@@ -43,6 +55,10 @@
     line-height: 1 !important;
     width: 100%;
     box-sizing: border-box;
+
+    @include govuk-media-query($from: desktop) {
+        margin-bottom: 0px;
+    }
 
     .govuk-body {
         position: relative;
@@ -59,13 +75,26 @@
         @include govuk-responsive-padding(2, "left");
         @include govuk-responsive-padding(2, "right");
         background-color: govuk-colour("light-grey");
+        padding: 20px !important;
+        margin: 20px 0;
+    }
+
+    &-footnote-column {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &-footnote {
+        text-align: right;
+        padding: 0 15px;
+        width: 100%;
     }
 }
 
 
 
 
-.tl-home--categories {
+.tl-home--quicklinks {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -74,19 +103,14 @@
     @include govuk-responsive-padding(5, "top");
 }
 
-.tl-home--category {
+.tl-home--quicklink {
     width: 100%;
     padding: 0 15px;
-    @include govuk-responsive-margin(3, "bottom");
 
     @include govuk-media-query($from: desktop) {
         width: calc(25% - 30px);
 
-        h3 {
-            min-height: 50px;
-        }
     }
-
 
 
     &--image {
@@ -116,31 +140,31 @@
 
 
     &:nth-child(2) {
-        .tl-home--category--image {
+        .tl-home--quicklink--image {
             background-image: url("$home_image_2");
         }
     }
 
     &:nth-child(3) {
-        .tl-home--category--image {
+        .tl-home--quicklink--image {
             background-image: url("$home_image_3");
         }
     }
 
     &:nth-child(4) {
-        .tl-home--category--image {
+        .tl-home--quicklink--image {
             background-image: url("$home_image_4");
         }
     }
 
     &:nth-child(5) {
-        .tl-home--category--image {
+        .tl-home--quicklink--image {
             background-image: url("$home_image_5");
         }
     }
 
     &:nth-child(6) {
-        .tl-home--category--image {
+        .tl-home--quicklink--image {
             background-image: url("$home_image_6");
         }
     }

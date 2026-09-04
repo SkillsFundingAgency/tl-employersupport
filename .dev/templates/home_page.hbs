@@ -9,26 +9,28 @@
 <!-- Banner -->
 <section id="tl-home--banner">
     <div class="govuk-width-container">
-         <div class="govuk-grid-row" style="text-align: right;padding-top: 5px;">
+        <div class="govuk-grid-row" style="text-align: right;padding-top: 5px;">
             <div class="govuk-grid-column-full">
-            {{#each categories}}
+                {{#each categories}}
                 {{#is name "News and updates"}}
-                    <a id="tl-home-waw--article" class="govuk-link" href="{{url}}">{{name}}</a>
+                <a id="tl-home-waw--article" class="govuk-link" href="{{url}}">{{name}}</a>
                 {{/is}}
-            {{/each}}
+                {{/each}}
             </div>
         </div>
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-full">
                 <div class="tl-home--banner">
-                    <div class="tl-home--banner--column">
+                    <div class="tl-home--banner--column tl-home--banner--column-two-thirds">
                         <div class="tl-home--banner--card govuk-!-padding-8">
-                            <h1 class="govuk-heading-xl govuk-!-margin-bottom-5 govuk-!-margin-top-0">{{settings.homepage_banner_title}}</h1>
-                            <p class="govuk-body-l">{{settings.homepage_banner_text}}</p>
+                            <h1 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-0">{{settings.homepage_banner_title}}</h1>
+                            <p class="govuk-body-l">{{settings.homepage_banner_text_1}}</p>
+                            <p class="govuk-body-l">{{settings.homepage_banner_text_2}}</p>
+                            <p class="govuk-body-l">{{settings.homepage_banner_text_3}}</p>
                             <p class="govuk-body govuk-!-margin-bottom-0"><a class="govuk-button govuk-!-margin-bottom-0" id="tl-home-banner--cta" href="/hc/en-gb/articles/{{settings.homepage_banner_button_article}}">{{settings.homepage_banner_button}}</a></p>
                         </div>
                     </div>
-                    <div class="tl-home--banner--column">
+                    <div class="tl-home--banner--column tl-home--banner--column-one-third">
                         <img class="tl-image--cover tl-home--banner--column--image" src="{{settings.homepage_banner_image}}" />
                     </div>
                 </div>
@@ -40,31 +42,69 @@
 </section>
 
 <!-- Benefits -->
-<section id="tl-home--benefits" class="govuk-!-margin-top-9">
+<section id="tl-home--benefits" class="govuk-!-margin-top-5">
     <div class="govuk-width-container">
 
-        <div class="govuk-grid-row">
-            <div class="govuk-grid-column-full">
-                <p class="govuk-body-l govuk-!-margin-bottom-2">{{settings.homepage_benefits_intro}}</p>
-            </div>
-        </div>
         <div class="govuk-grid-row tl-row-fill">
             <div class="govuk-grid-column-one-third tl-row-fill">
-                <h2 class="govuk-heading-l tl-home--benefit">Early <span class="govuk-!-font-weight-regular">access</span><br /><span class="govuk-body">to the brightest talent</span></h2>
+                <h2 class="govuk-heading-l tl-home--benefit">{{settings.benefit_section_1_percentage}}<br /><p class="govuk-!-font-weight-regular"></p><p class="govuk-body">{{settings.benefit_section_1_content}}</p></h2>
             </div>
             <div class="govuk-grid-column-one-third tl-row-fill">
-                <h2 class="govuk-heading-l tl-home--benefit"><span class="govuk-!-font-weight-regular">Shape the </span> future<br /><span class="govuk-body">of your industry </span></h2>
+                <h2 class="govuk-heading-l tl-home--benefit">{{settings.benefit_section_2_percentage}} <br /><p class="govuk-!-font-weight-regular"></p><p class="govuk-body">{{settings.benefit_section_2_content}}</p></h2>
             </div>
             <div class="govuk-grid-column-one-third tl-row-fill">
-                <h2 class="govuk-heading-l tl-home--benefit"><span class="govuk-!-font-weight-regular">5</span> simple <span class="govuk-!-font-weight-regular">steps</span><br /><span class="govuk-body-s"><a href="/hc/en-gb/sections/{{settings.section_id_how_industry}}" class="govuk-link" id="tl-home-banner--industryplacements">Find out how industry placements work</a></span></h2>
+                <h2 class="govuk-heading-l tl-home--benefit">{{settings.benefit_section_3_percentage}} <br /><p class="govuk-!-font-weight-regular"></p><p class="govuk-body">{{settings.benefit_section_3_content}}</p></h2>
             </div>
+        </div>
+        <div class="govuk-grid-row tl-home--benefit-footnote-column">
+            <p class="govuk-body-s tl-home--benefit-footnote">
+                <a class="govuk-link" href="https://employers.tlevels.gov.uk/hc/en-gb/articles/38424164938770-Technical-education-learner-surveys-TELs" target="_blank" rel="noopener">Technical education learner survey 2025</a> (opens in a new window)
+            </p>
         </div>
     </div>
 </section>
 
+<!-- IA -->
+<section id="tl-home--ia">
+    <div class="govuk-width-container govuk-main-wrapper">
+        <h2 class="govuk-heading-m">About T Levels and industry placements</h2>
+        <div class="tl-home--quicklinks">
+            <div class="tl-home--quicklink">
+                <span class="tl-home--quicklink--image"></span>
+                <h3 class="govuk-heading-s">
+                    <a href="{{settings.quick_link_1_url
+                    }}" class="govuk-link">{{settings.quick_link_1_heading}}</a>
+                </h3>
+                <p class="govuk-body">{{settings.quick_link_1_content}}</p>
+            </div>
+
+            <div class="tl-home--quicklink">
+                <span class="tl-home--quicklink--image"></span>
+                <h3 class="govuk-heading-s"><a href="{{settings.quick_link_2_url}}" class="govuk-link">{{settings.quick_link_2_heading}}</a></h3>
+                <p class="govuk-body">{{settings.quick_link_2_content}}</p>
+            </div>
+
+            <div class="tl-home--quicklink">
+                <span class="tl-home--quicklink--image"></span>
+                <h3 class="govuk-heading-s"><a href="{{settings.quick_link_3_url}}" class="govuk-link">{{settings.quick_link_3_heading}}</a></h3>
+                <p class="govuk-body">{{settings.quick_link_3_content}}</p>
+            </div>
+
+            <div class="tl-home--quicklink">
+                <span class="tl-home--quicklink--image"></span>
+                <h3 class="govuk-heading-s"><a href="{{settings.quick_link_4_url}}" class="govuk-link">{{settings.quick_link_4_heading}}</a></h3>
+                <p class="govuk-body">{{settings.quick_link_4_content}}</p>
+            </div>
+
+
+        </div>
+    </div>
+
+</section>
+
 <!-- FAP -->
 {{#if settings.fap_enabled}}
-<section id="tl-home--fap" class="govuk-!-margin-top-8">
+<section id="tl-home--fap">
     <div class="govuk-width-container">
         <div class="tl-fap-tile--home"></div>
     </div>
@@ -72,129 +112,36 @@
 {{/if}}
 
 
-<!-- IA -->
-<section id="tl-home--ia">
-    <div class="govuk-width-container govuk-main-wrapper">
-        <div class="tl-home--categories">
 
-            {{#each categories}}
-            {{#isnt name "Find a T Level school or college"}}
-            {{#isnt name "How this site works"}}
-            {{#isnt name "T Level webinars"}}
-            {{#isnt name "Tailored support sessions"}}
-            {{#isnt name "T Level subjects"}}
-            {{#isnt name "News and updates"}}
-            <div class="tl-home--category">
-                <span class="tl-home--category--image"></span>
-                <h3 class="govuk-heading-s"><a href="{{url}}" class="govuk-link" GTMname="{{name}}">{{name}}</a></h3>
-                <p class="govuk-body">{{excerpt description characters=200}}</p>
-            </div>
-            {{/isnt}}
-            {{/isnt}}
-            {{/isnt}}
-            {{/isnt}}
-            {{/isnt}}
-            {{/isnt}}
-            {{/each}}
-
-
-        </div>
-    </div>
-
-    <div class="govuk-width-container">
-        <div class="govuk-grid-row tl-row-fill">
-            <div class="govuk-grid-column-one-half tl-row-fill govuk-!-margin-bottom-5">
-                <div class="tl-card--grey tl-card--flex">
-                    {{#each categories}}
-                    {{#is name "T Level subjects"}}
-                    <h3 class="govuk-heading-m">{{name}}</h3>
-                    <div class="tl-workshopsandwebinars">
-                        
-														<p class="govuk-body">{{description}}</p>
-                      
-                    </div>
-                    <div class="tl-card--grey--lower">
-
-                        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-
-                        <p class="govuk-body govuk-!-margin-bottom-0"><a href="{{url}}" class="govuk-link" id="tl-home-skillareas--all">All T Level subjects</a></p>
-                    </div>
-                    {{/is}}
-                    {{/each}}
-                </div>
-
-            </div>
-            <div class="govuk-grid-column-one-half tl-row-fill govuk-!-margin-bottom-5">
-                <div class="tl-card--grey tl-card--flex">
-                    <h3 class="govuk-heading-m">T Level webinars and events</h3>
-
-                    <div id="tl-workshopsandwebinars">
-                        {{#each categories}}
-                        {{#is name "T Level webinars"}}
-												<div class="tl-workshopsandwebinars">
-														<p class="govuk-body">{{description}}</p>
-                    </div>
-                        {{#each sections}}
-                        {{#each articles}}
-                        {{#if @first}}
-                        <h4 class="govuk-heading-s govuk-!-margin-bottom-1"><a id="tl-home-waw--article" class="govuk-link" href="{{url}}">{{title}}</a></h4>
-                        <span class="govuk-body-s tl-text-headercase" id="tl-article--date--{{id}}"></span>
-                        <script>
-                            $.getJSON('/api/v2/help_center/articles/{{id}}', function (articlelabels) {
-
-                                if (articlelabels.article.label_names && articlelabels.article.label_names.length) {
-                                    articlelabels.article.label_names.forEach(function (labelname) {
-
-                                        if (labelname.indexOf("date") != -1) {
-                                            var date = labelname.split('/')[1];
-                                            var dateformatted = moment(date).format("dddd, Do MMMM YYYY, h:mm A");
-                                            $("#tl-article--date--{{id}}").text(dateformatted);
-                                        }
-                                    });
-                                }
-                            });
-
-                        </script>
-
-                        {{/if}}
-                        {{/each}}
-                        {{/each}}
-                        <div class="tl-card--grey--lower">
-                            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-                            {{#each sections}}
-                            <p class="govuk-body govuk-!-margin-bottom-0"><a href="{{url}}" class="govuk-link" id="tl-home-waw--all">See all webinars and events</a></p>
-                            {{/each}}
-                        </div>
-                        {{/is}}
-                        {{/each}}
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- Lower Boxes -->
 <section id="tl-home--lower">
-    <div class="govuk-width-container govuk-!-margin-bottom-5">
+    <div class="govuk-width-container govuk-!-margin-bottom-5 govuk-!-margin-top-5">
 
         <div id="tl-home--contact" class="tl-js-visible">
             <div class="govuk-grid-row tl-row-fill">
-                <div class="govuk-grid-column-one-half tl-row-fill">
+                <div class="govuk-grid-column-one-third tl-row-fill">
                     <div class="tl-card--purple" id="tl-home--question">
-                        <h3 class="govuk-heading-m">Have a T Levels question?</h3>
+                        <h3 class="govuk-heading-m">Case studies</h3>
                         <p class="govuk-body">
-                            Our T Levels support bot is here to help you find the answers. <a href="#" id="tl-home--answerbot" class="govuk-link">Ask a question</a>
+                            Discover the <a href="/hc/en-gb/categories/{{settings.article_id_benefits}}" class="govuk-link">benefits</a> of hosting an industry placement student at your organisation.
                         </p>
                     </div>
                 </div>
 
-                <div class="govuk-grid-column-one-half tl-row-fill">
+                <div class="govuk-grid-column-one-third tl-row-fill">
+                    <div class="tl-card--purple" id="tl-home--question">
+                        <h3 class="govuk-heading-m">Have a T Levels question?</h3>
+                        <p class="govuk-body">
+                            Our T Levels support bot is here to help you find the answers. <a href="#" id="tl-home--answerbot" class="govuk-link">Ask the support bot a question</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="govuk-grid-column-one-third tl-row-fill">
                     <div class="tl-card--purple tl-js-hidden" id="tl-home--ticket">
                         <h3 class="govuk-heading-m">Contact us</h3>
-                        <p class="govuk-body">If you'd like to speak to someone about T Levels or industry placements, or can't find what you're looking for, {{#link 'new_request' class='govuk-link tl-home--contact'}}contact us{{/link}}</p>
+                        <p class="govuk-body">If you'd like to speak to someone about T Levels, or can't find what you're looking for, {{#link 'new_request' class='govuk-link tl-home--contact'}}contact us{{/link}}</p>
                     </div>
                 </div>
             </div>
