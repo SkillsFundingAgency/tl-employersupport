@@ -679,13 +679,6 @@
           "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/4416565606418-Health-and-Science#health"
         },
         {
-          "identifier": "qualification_article_42",
-          "type": "text",
-          "description": "Qualification article for id 42",
-          "label": "Qualification article for id 42",
-          "value": "https://test.employers.tlevels.gov.uk/hc/en-gb/sections/4416565606418-Health-and-Science#healthcare-science"
-        },
-        {
           "identifier": "qualification_article_43",
           "type": "text",
           "description": "Qualification article for id 43",
