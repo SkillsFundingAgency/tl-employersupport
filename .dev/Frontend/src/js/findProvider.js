@@ -319,7 +319,7 @@ function FindProvider(findProviderApiUri, findProviderAppId, findProviderApiKey,
                         contactDetails += 'Email: <a href="mailto:' + providerLocation.email + '" class="govuk-link govuk-!-margin-right-4 tl-fap--result-email">' + providerLocation.email + '</a>';
                     }
 
-                    searchResult += '<h4 class="govuk-body govuk-!-font-weight-bold govuk-!-margin-top-5 govuk-!-margin-bottom-2">Get in touch:</h4> \
+                    searchResult += '<h4 class="govuk-body govuk-!-font-weight-bold govuk-!-margin-top-5 govuk-!-margin-bottom-2">Get in touch with the venue:</h4> \
                         <p class="govuk-body">' + contactDetails + '</p>';
                 }
 
